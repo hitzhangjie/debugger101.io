@@ -1,0 +1,1285 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7.10 运行到断点 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="11-pmem.html" />
+    
+    
+    <link rel="prev" href="9-step.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-preface/">
+            
+                <a href="../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../3-terms/">
+            
+                <a href="../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../4-basics/">
+            
+                <a href="../4-basics/">
+            
+                    
+                    4 调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../4-basics/1-purposes.html">
+            
+                <a href="../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../4-basics/2-dependencies.html">
+            
+                <a href="../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../4-basics/3-countertactics.html">
+            
+                <a href="../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../5-dwarf/">
+            
+                <a href="../5-dwarf/">
+            
+                    
+                    5 调试信息格式: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../5-dwarf/1-history.html">
+            
+                <a href="../5-dwarf/1-history.html">
+            
+                    
+                    5.1 发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../5-dwarf/2-structure.html">
+            
+                <a href="../5-dwarf/2-structure.html">
+            
+                    
+                    5.2 DWARF结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../5-dwarf/3-die-readme.html">
+            
+                <a href="../5-dwarf/3-die-readme.html">
+            
+                    
+                    5.3 调试信息条目：DIE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.3.1" data-path="../5-dwarf/3-die-intro.html">
+            
+                <a href="../5-dwarf/3-die-intro.html">
+            
+                    
+                    5.3.1 DIE介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.2" data-path="../5-dwarf/3-die-desc-datatype.html">
+            
+                <a href="../5-dwarf/3-die-desc-datatype.html">
+            
+                    
+                    5.3.2 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.3" data-path="../5-dwarf/3-die-desc-code.html">
+            
+                <a href="../5-dwarf/3-die-desc-code.html">
+            
+                    
+                    5.3.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3.4" data-path="../5-dwarf/3-die-encoding.html">
+            
+                <a href="../5-dwarf/3-die-encoding.html">
+            
+                    
+                    5.3.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../5-dwarf/4-other-readme.html">
+            
+                <a href="../5-dwarf/4-other-readme.html">
+            
+                    
+                    5.4 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.4.1" data-path="../5-dwarf/4-other-accelerated-access.html">
+            
+                <a href="../5-dwarf/4-other-accelerated-access.html">
+            
+                    
+                    5.4.0 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.2" data-path="../5-dwarf/4-other-lineno-table.html">
+            
+                <a href="../5-dwarf/4-other-lineno-table.html">
+            
+                    
+                    5.4.1 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.3" data-path="../5-dwarf/4-other-macro-info.html">
+            
+                <a href="../5-dwarf/4-other-macro-info.html">
+            
+                    
+                    5.4.2 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.4" data-path="../5-dwarf/4-other-callframe-info.html">
+            
+                <a href="../5-dwarf/4-other-callframe-info.html">
+            
+                    
+                    5.4.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.5" data-path="../5-dwarf/4-other-varlen-data.html">
+            
+                <a href="../5-dwarf/4-other-varlen-data.html">
+            
+                    
+                    5.4.4 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.6" data-path="../5-dwarf/4-other-shrink-data.html">
+            
+                <a href="../5-dwarf/4-other-shrink-data.html">
+            
+                    
+                    5.4.5 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4.7" data-path="../5-dwarf/4-other-elf-sections.html">
+            
+                <a href="../5-dwarf/4-other-elf-sections.html">
+            
+                    
+                    5.4.6 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../5-dwarf/5-summary.html">
+            
+                <a href="../5-dwarf/5-summary.html">
+            
+                    
+                    5.5 总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../6-debugger-skeleton/">
+            
+                <a href="../6-debugger-skeleton/">
+            
+                    
+                    6 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../6-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../6-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    6.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../6-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../6-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    6.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    7 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="1-process_start.html">
+            
+                <a href="1-process_start.html">
+            
+                    
+                    7.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="2-process_attach.html">
+            
+                <a href="2-process_attach.html">
+            
+                    
+                    7.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="3-process_start_attach.html">
+            
+                <a href="3-process_start_attach.html">
+            
+                    
+                    7.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="4-disassemble.html">
+            
+                <a href="4-disassemble.html">
+            
+                    
+                    7.4 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="5-breakpoint.html">
+            
+                <a href="5-breakpoint.html">
+            
+                    
+                    7.5 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="6-breakpoints.html">
+            
+                <a href="6-breakpoints.html">
+            
+                    
+                    7.6 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="7-clear.html">
+            
+                <a href="7-clear.html">
+            
+                    
+                    7.7 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="8-clearall.html">
+            
+                <a href="8-clearall.html">
+            
+                    
+                    7.8 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="9-step.html">
+            
+                <a href="9-step.html">
+            
+                    
+                    7.9 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.10" data-path="10-continue.html">
+            
+                <a href="10-continue.html">
+            
+                    
+                    7.10 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="11-pmem.html">
+            
+                <a href="11-pmem.html">
+            
+                    
+                    7.11 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="12-pregs.html">
+            
+                <a href="12-pregs.html">
+            
+                    
+                    7.12 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="20-bugfix-threads.md">
+            
+                <span>
+            
+                    
+                    7.20 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.14" data-path="21-refactor.md">
+            
+                <span>
+            
+                    
+                    7.21 重构程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.15" data-path="x-more.md">
+            
+                <span>
+            
+                    
+                    7.x More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../8-headto-sym-debugger/">
+            
+                <a href="../8-headto-sym-debugger/">
+            
+                    
+                    8 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../8-headto-sym-debugger/1-elf.html">
+            
+                <a href="../8-headto-sym-debugger/1-elf.html">
+            
+                    
+                    8.1 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../8-headto-sym-debugger/2-syms.html">
+            
+                <a href="../8-headto-sym-debugger/2-syms.html">
+            
+                    
+                    8.2 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../8-headto-sym-debugger/3-syms-resolve.html">
+            
+                <a href="../8-headto-sym-debugger/3-syms-resolve.html">
+            
+                    
+                    8.3 符号的解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../8-headto-sym-debugger/4-syms-reloc.html">
+            
+                <a href="../8-headto-sym-debugger/4-syms-reloc.html">
+            
+                    
+                    8.4 重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../8-headto-sym-debugger/5-loading.html">
+            
+                <a href="../8-headto-sym-debugger/5-loading.html">
+            
+                    
+                    8.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../8-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../8-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    8.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../8-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../8-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    8.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.2" data-path="../8-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../8-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    8.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../8-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../8-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    8.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../8-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../8-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    8.7 挺进DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../9-develop-sym-debugger/README.md">
+            
+                <span>
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-symtable & linetable.html">
+            
+                <a href="../9-develop-sym-debugger/1-symtable & linetable.html">
+            
+                    
+                    9.1 符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-debug-line.html">
+            
+                <a href="../9-develop-sym-debugger/2-debug-line.html">
+            
+                    
+                    9.2 行号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../9-develop-sym-debugger/3-call-frame.html">
+            
+                <a href="../9-develop-sym-debugger/3-call-frame.html">
+            
+                    
+                    9.3 调用栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../9-develop-sym-debugger/4-disass.md">
+            
+                <span>
+            
+                    
+                    9.4 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.5" data-path="../9-develop-sym-debugger/5-vars.md">
+            
+                <span>
+            
+                    
+                    9.5 变量 & 类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.6" data-path="../9-develop-sym-debugger/6-funcs.md">
+            
+                <span>
+            
+                    
+                    9.6 函数 & 方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.7" data-path="../9-develop-sym-debugger/7-goroutines.md">
+            
+                <span>
+            
+                    
+                    9.7 协程 & 线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.8" data-path="../9-develop-sym-debugger/x-gopkg.html">
+            
+                <a href="../9-develop-sym-debugger/x-gopkg.html">
+            
+                    
+                    9.x 标准库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.9" data-path="../9-develop-sym-debugger/x-more.md">
+            
+                <span>
+            
+                    
+                    9.x More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../10-thanks/">
+            
+                <a href="../10-thanks/">
+            
+                    
+                    10 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../11-appendix/">
+            
+                <a href="../11-appendix/">
+            
+                    
+                    11 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.11.1" data-path="../11-appendix/1-go-programme-start.html">
+            
+                <a href="../11-appendix/1-go-programme-start.html">
+            
+                    
+                    11.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >7.10 运行到断点</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x63A7;&#x5236;&#x8FDB;&#x7A0B;&#x6267;&#x884C;">&#x63A7;&#x5236;&#x8FDB;&#x7A0B;&#x6267;&#x884C;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;continue&#x8FD0;&#x884C;&#x5230;&#x4E0B;&#x4E2A;&#x65AD;&#x70B9;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;continue&#x8FD0;&#x884C;&#x5230;&#x4E0B;&#x4E2A;&#x65AD;&#x70B9;</h3>
+<p>&#x8FD0;&#x884C;&#x5230;&#x4E0B;&#x4E2A;&#x65AD;&#x70B9;&#x5904;&#xFF0C;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x4E3A;&#x4E00;&#x7CFB;&#x5217;&#x7684;singlestep&#x64CD;&#x4F5C;&#xFF0C;&#x76F4;&#x5230;&#x5224;&#x65AD;PC&#x5904;&#x5BF9;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x4E3A;0xCC&#x4E3A;&#x6B62;&#xFF0C;&#x7136;&#x540E;&#x518D;singlestep&#x4E00;&#x6B21;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x4E0D;&#x7528;&#x8FD9;&#x4E48;&#x9EBB;&#x70E6;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;<code>ptrace(PTRACE_COND,...)</code>&#x64CD;&#x4F5C;&#xFF0C;&#x5141;&#x8BB8;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x8FD0;&#x884C;&#x5230;&#x4E0B;&#x4E2A;&#x65AD;&#x70B9;&#x5904;&#x3002;&#x4F46;&#x662F;&#x5728;&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x8C03;&#x7528;&#x524D;&#xFF0C;&#x540C;&#x6837;&#x8981;&#x68C0;&#x67E5;&#x4E0B;&#x5F53;&#x524D;<code>PC-1</code>&#x5730;&#x5740;&#x5904;&#x7684;&#x6570;&#x636E;&#x662F;&#x5426;&#x4E3A;<code>0xCC</code>&#xFF0C;&#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x4F1A;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#x9996;&#x5B57;&#x8282;&#x6570;&#x636E;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>continue&#x547D;&#x4EE4;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x68C0;&#x67E5;&#x5F53;&#x524D;PC-1&#x5904;&#x6570;&#x636E;&#x662F;&#x5426;&#x4E3A;0xCC&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5219;&#x8BF4;&#x660E;&#x8FD9;&#x91CC;&#x4E4B;&#x524D;&#x662F;&#x4E2A;&#x591A;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#xFF0C;&#x4F46;&#x662F;&#x88AB;&#x6307;&#x4EE4;patch&#x6DFB;&#x52A0;&#x4E86;&#x65AD;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x8FD8;&#x539F;&#x56DE;&#x539F;&#x59CB;&#x6570;&#x636E;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x6267;&#x884C;PTRACE_COND&#x64CD;&#x4F5C;&#x8BF7;&#x6C42;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6062;&#x590D;&#x6267;&#x884C;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;&#x505C;&#x4E0B;&#x6765;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x901A;&#x8FC7;wait&#x7B49;&#x5F85;&#x5E76;&#x68C0;&#x67E5;&#x4E0B;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x8F93;&#x51FA;&#x5F53;&#x524D;PC&#x503C;&#x3002;&#x6CE8;&#x610F;&#x5F53;&#x524D;PC&#x503C;&#x662F;&#x6267;&#x884C;&#x4E86;0xCC&#x6307;&#x4EE4;&#x4E4B;&#x540E;&#x7684;&#x503C;&#xFF0C;&#x56E0;&#x6B64;PC=&#x65AD;&#x70B9;&#x5730;&#x5740;+1&#x3002;</p>
+<p><strong>file: cmd/debug/continue.go</strong></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;syscall&quot;</span>
+
+    <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> continueCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;continue&quot;</span>,
+    Short: <span class="hljs-string">&quot;&#x8FD0;&#x884C;&#x5230;&#x4E0B;&#x4E2A;&#x65AD;&#x70B9;&quot;</span>,
+    Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
+        cmdGroupKey: cmdGroupCtrlFlow,
+    },
+    Aliases: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;c&quot;</span>},
+    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+        fmt.Println(<span class="hljs-string">&quot;continue&quot;</span>)
+
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;PC&#x503C;</span>
+        regs := syscall.PtraceRegs{}
+        err := syscall.PtraceGetRegs(TraceePID, &amp;regs)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;get regs error: %v&quot;</span>, err)
+        }
+
+        buf := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, <span class="hljs-number">1</span>)
+        n, err := syscall.PtracePeekText(TraceePID, <span class="hljs-keyword">uintptr</span>(regs.PC()), buf)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;peek text error: %v, bytes: %d&quot;</span>, err, n)
+        }
+
+        <span class="hljs-comment">// read a breakpoint</span>
+        <span class="hljs-keyword">if</span> buf[<span class="hljs-number">0</span>] == <span class="hljs-number">0xCC</span> {
+            regs.SetPC(regs.PC() - <span class="hljs-number">1</span>)
+            <span class="hljs-comment">// TODO refactor breakpoint.Disable()/Enable() methods</span>
+            orig := breakpoints[<span class="hljs-keyword">uintptr</span>(regs.PC())].Orig
+            n, err := syscall.PtracePokeText(TraceePID, <span class="hljs-keyword">uintptr</span>(regs.PC()), []<span class="hljs-keyword">byte</span>{orig})
+            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
+                <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;poke text error: %v, bytes: %d&quot;</span>, err, n)
+            }
+        }
+
+        err = syscall.PtraceCont(TraceePID, <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;single step error: %v&quot;</span>, err)
+        }
+
+        <span class="hljs-comment">// MUST: &#x5F53;&#x53D1;&#x8D77;&#x4E86;&#x67D0;&#x4E9B;&#x5BF9;tracee&#x6267;&#x884C;&#x63A7;&#x5236;&#x7684;ptrace request&#x4E4B;&#x540E;&#xFF0C;&#x8981;&#x8C03;&#x7528;syscall.Wait&#x7B49;&#x5F85;&#x5E76;&#x83B7;&#x53D6;tracee&#x72B6;&#x6001;&#x53D8;&#x5316;</span>
+        <span class="hljs-keyword">var</span> wstatus syscall.WaitStatus
+        <span class="hljs-keyword">var</span> rusage syscall.Rusage
+        _, err = syscall.Wait4(TraceePID, &amp;wstatus, syscall.WALL, &amp;rusage)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;wait error: %v&quot;</span>, err)
+        }
+
+        <span class="hljs-comment">// display current pc</span>
+        regs = syscall.PtraceRegs{}
+        err = syscall.PtraceGetRegs(TraceePID, &amp;regs)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;get regs error: %v&quot;</span>, err)
+        }
+        fmt.Printf(<span class="hljs-string">&quot;continue ok, current PC: %#x\n&quot;</span>, regs.PC())
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    },
+}
+
+<span class="hljs-keyword">func</span> init() {
+    debugRootCmd.AddCommand(continueCmd)
+}
+</code></pre>
+<p>&#x5728;cmd/debug/step.go&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x7B80;&#x5355;&#x4FEE;&#x6539;&#x4E0B;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;continue&#x64CD;&#x4F5C;&#xFF0C;&#x8BE6;&#x89C1;&#x6E90;&#x6587;&#x4EF6;cmd/debug/continue.go&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
+<p>&#x9996;&#x5148;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>godbg attach &lt;pid&gt;</code>&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8F93;&#x5165;<code>dis</code>&#xFF08;dis&#x662F;disass&#x547D;&#x4EE4;&#x7684;&#x522B;&#x540D;&#xFF09;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x3002;</p>
+<p>&#x8981;&#x9A8C;&#x8BC1;continue&#x547D;&#x4EE4;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x9996;&#x5148;&#x8981;dis&#x53CD;&#x6C47;&#x7F16;&#x67E5;&#x770B;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x518D;break&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x518D;continue&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x65F6;&#x8981;&#x7B80;&#x5355;&#x770B;&#x4E0B;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x542B;&#x4E49;&#xFF0C;&#x56E0;&#x4E3A;&#x8003;&#x8651;&#x5230;&#x4EE3;&#x7801;&#x6267;&#x884C;&#x65F6;&#x7684;&#x5206;&#x652F;&#x63A7;&#x5236;&#x903B;&#x8F91;&#xFF0C;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x5728;&#x4EE3;&#x7801;&#x5B9E;&#x9645;&#x7684;&#x6267;&#x884C;&#x8DEF;&#x5F84;&#x4E0A;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x80FD;&#x4E0D;&#x80FD;&#x9A8C;&#x8BC1;continue&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x7684;&#x529F;&#x80FD;&#xFF08;&#x4F46;&#x662F;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x8FD0;&#x884C;&#x5230;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x7ED3;&#x675F;&#xFF09;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x9A8C;&#x8BC1;&#x8FD0;&#x884C;&#x5230;&#x4E0B;&#x4E2A;&#x65AD;&#x70B9;&#xFF0C;&#x6211;&#x591A;&#x6B21;&#x8FD0;&#x884C;dis&#x3001;step&#xFF0C;&#x6307;&#x5BFC;&#x53D1;&#x73B0;&#x6709;&#x4E00;&#x6BB5;&#x6307;&#x4EE4;&#x53EF;&#x4EE5;&#x8FDE;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x4E2D;&#x95F4;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x8DF3;&#x8F6C;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; dis
+...
+godbg&gt; dis
+...
+godbg&gt; dis
+0x42e2e0 cmp $-0x4,%eax                 ; &#x4ECE;&#x8FD9;&#x6761;&#x8BED;&#x53E5;&#x5F00;&#x59CB;&#x6267;&#x884C;
+0x42e2e3 jne 0x24c
+0x42e2e9 mov 0x20(%rsp),%eax
+0x42e2ed <span class="hljs-built_in">test</span> %eax,%eax                 ; &#x9996;&#x5B57;&#x8282;&#x88AB;&#x8986;&#x76D6;&#x6210;0xCC&#xFF0C;PC=0x42e2ed+1
+0x42e2ef jle 0xffffffffffffffbe
+0x42e2f1 movq <span class="hljs-variable">$0x0</span>,0x660(%rsp)
+0x42e2fd mov 0x648(%rsp),%rbp
+0x42e305 add <span class="hljs-variable">$0x650</span>,%rsp
+0x42e30c retq
+0x42e30d movq <span class="hljs-variable">$0x0</span>,0x30(%rsp)
+godbg&gt;
+</code></pre>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x5C1D;&#x8BD5;break&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3001;continue&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; b 0x42e2ed
+<span class="hljs-built_in">break</span> 0x42e2ed
+&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
+godbg&gt; c
+<span class="hljs-built_in">continue</span>
+<span class="hljs-built_in">continue</span> ok, current PC: 0x42e2ee
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x5728;&#x7B2C;4&#x6761;&#x6307;&#x4EE4;<code>0x42e2ed test %eax,%eax</code>&#x5904;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF0C;&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6267;&#x884C;<code>c</code>(c&#x662F;continue&#x7684;&#x522B;&#x540D;&#xFF09;&#x6765;&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;&#x3002;&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;&#x8F93;&#x51FA;&#x5F53;&#x524D;&#x7684;PC&#x503C;&#xFF0C;&#x524D;&#x9762;&#x6709;&#x5206;&#x6790;&#x8FC7;&#xFF0C;PC=0x42e2ee=0x42e2ed+1&#xFF0C;&#x56E0;&#x4E3A;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x662F;&#x5728;&#x6267;&#x884C;&#x4E86;0x42e2ed&#x5904;&#x7684;&#x6307;&#x4EE4;<code>0xCC</code>&#x624D;&#x505C;&#x4E0B;&#x6765;&#x7684;&#xFF0C;&#x5B8C;&#x5168;&#x7B26;&#x5408;&#x9884;&#x671F;&#x3002;</p>
+<h3 id="&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;">&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;</h3>
+<p>continue&#x547D;&#x4EE4;&#x6709;&#x591A;&#x91CD;&#x8981;&#xFF1F;&#x76F8;&#x5F53;&#x91CD;&#x8981;&#xFF0C;&#x7279;&#x522B;&#x662F;&#x5BF9;&#x4E8E;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x800C;&#x8A00;&#x3002;</p>
+<p>&#x6E90;&#x4EE3;&#x7801;&#x5411;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x8F6C;&#x6362;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E00;&#x6761;&#x6E90;&#x4EE3;&#x7801;&#x8BED;&#x53E5;&#x53EF;&#x80FD;&#x5BF9;&#x5E94;&#x7740;&#x591A;&#x6761;&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#xFF1A;</p>
+<ul>
+<li>&#x9010;&#x8BED;&#x53E5;&#x6267;&#x884C;&#x65F6;&#xFF1B;</li>
+<li>&#x8FDB;&#x5165;&#x3001;&#x9000;&#x51FA;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x65F6;&#xFF08;&#x51FD;&#x6570;&#x6709;prologue&#x3001;epilogue&#xFF09;&#xFF1B;</li>
+<li>&#x8FDB;&#x5165;&#x3001;&#x9000;&#x51FA;&#x4E00;&#x4E2A;&#x5FAA;&#x73AF;&#x4F53;&#x65F6;&#xFF1B;</li>
+<li>&#x7B49;&#x7B49;&#xFF1B;</li>
+</ul>
+<p>&#x8981;&#x5B9E;&#x73B0;&#x4E0A;&#x8FF0;&#x6E90;&#x7801;&#x7EA7;&#x8C03;&#x8BD5;&#x5C31;&#x5FC5;&#x987B;&#x8981;&#x501F;&#x52A9;&#x5BF9;&#x6E90;&#x7801;&#x53CA;&#x6307;&#x4EE4;&#x7684;&#x7406;&#x89E3;&#xFF0C;&#x6070;&#x5230;&#x597D;&#x5904;&#x7684;&#x5728;&#x6B63;&#x786E;&#x7684;&#x5730;&#x5740;&#x5904;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x914D;&#x5408;continue&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x4E00;&#x7AE0;&#x4E2D;&#x66F4;&#x8BE6;&#x7EC6;&#x5730;&#x7814;&#x7A76;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="9-step.html" class="navigation navigation-prev " aria-label="Previous page: 7.9 步进操作">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="11-pmem.html" class="navigation navigation-next " aria-label="Next page: 7.11 打印内存数据">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7.10 运行到断点","level":"1.7.10","depth":2,"next":{"title":"7.11 打印内存数据","level":"1.7.11","depth":2,"path":"7-develop-inst-debugger/11-pmem.md","ref":"7-develop-inst-debugger/11-pmem.md","articles":[]},"previous":{"title":"7.9 步进操作","level":"1.7.9","depth":2,"path":"7-develop-inst-debugger/9-step.md","ref":"7-develop-inst-debugger/9-step.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mermaid-cli","md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"mermaid-cli":{"chromeArgs":[],"chromeDir":"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","mermaidArgs":""},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-develop-inst-debugger/10-continue.md","mtime":"2021-05-06T02:47:57.673Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-06T03:26:53.210Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

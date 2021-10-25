@@ -1,0 +1,1218 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6.11 打印内存数据 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="12-pregs.html" />
+    
+    
+    <link rel="prev" href="10-continue.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-preface/">
+            
+                <a href="../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../3-terms/">
+            
+                <a href="../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../4-basics/">
+            
+                <a href="../4-basics/">
+            
+                    
+                    4 调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../4-basics/1-purposes.html">
+            
+                <a href="../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../4-basics/2-dependencies.html">
+            
+                <a href="../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../4-basics/3-countertactics.html">
+            
+                <a href="../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../5-debugger-skeleton/">
+            
+                <a href="../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="1-process_start.html">
+            
+                <a href="1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="2-process_attach.html">
+            
+                <a href="2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="3-process_start_attach.html">
+            
+                <a href="3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="4-disassemble.html">
+            
+                <a href="4-disassemble.html">
+            
+                    
+                    6.4 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="5-breakpoint.html">
+            
+                <a href="5-breakpoint.html">
+            
+                    
+                    6.5 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="6-breakpoints.html">
+            
+                <a href="6-breakpoints.html">
+            
+                    
+                    6.6 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="7-clear.html">
+            
+                <a href="7-clear.html">
+            
+                    
+                    6.7 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="8-clearall.html">
+            
+                <a href="8-clearall.html">
+            
+                    
+                    6.8 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="9-step.html">
+            
+                <a href="9-step.html">
+            
+                    
+                    6.9 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="10-continue.html">
+            
+                <a href="10-continue.html">
+            
+                    
+                    6.10 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.11" data-path="11-pmem.html">
+            
+                <a href="11-pmem.html">
+            
+                    
+                    6.11 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="12-pregs.html">
+            
+                <a href="12-pregs.html">
+            
+                    
+                    6.12 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="20-bugfix-threads.md">
+            
+                <span>
+            
+                    
+                    6.20 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="21-refactor.md">
+            
+                <span>
+            
+                    
+                    6.21 重构程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="x-more.md">
+            
+                <span>
+            
+                    
+                    6.x More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../7-headto-sym-debugger/">
+            
+                <a href="../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../7-headto-sym-debugger/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/1-elf.html">
+            
+                    
+                    7.1 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../7-headto-sym-debugger/2-syms.html">
+            
+                <a href="../7-headto-sym-debugger/2-syms.html">
+            
+                    
+                    7.2 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                <a href="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                    
+                    7.3 符号的解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                <a href="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                    
+                    7.4 重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../9-develop-sym-debugger/README.md">
+            
+                <span>
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../9-develop-sym-debugger/1-symtable & linetable.html">
+            
+                <a href="../9-develop-sym-debugger/1-symtable & linetable.html">
+            
+                    
+                    9.1 符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../9-develop-sym-debugger/2-debug-line.html">
+            
+                <a href="../9-develop-sym-debugger/2-debug-line.html">
+            
+                    
+                    9.2 行号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../9-develop-sym-debugger/3-call-frame.html">
+            
+                <a href="../9-develop-sym-debugger/3-call-frame.html">
+            
+                    
+                    9.3 调用栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../9-develop-sym-debugger/4-disass.md">
+            
+                <span>
+            
+                    
+                    9.4 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../9-develop-sym-debugger/5-vars.md">
+            
+                <span>
+            
+                    
+                    9.5 变量 & 类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../9-develop-sym-debugger/6-funcs.md">
+            
+                <span>
+            
+                    
+                    9.6 函数 & 方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../9-develop-sym-debugger/7-goroutines.md">
+            
+                <span>
+            
+                    
+                    9.7 协程 & 线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../9-develop-sym-debugger/x-gopkg.html">
+            
+                <a href="../9-develop-sym-debugger/x-gopkg.html">
+            
+                    
+                    9.x 标准库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../9-develop-sym-debugger/x-more.md">
+            
+                <span>
+            
+                    
+                    9.x More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../10-thanks/">
+            
+                <a href="../10-thanks/">
+            
+                    
+                    10 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../11-appendix/">
+            
+                <a href="../11-appendix/">
+            
+                    
+                    11 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../11-appendix/1-go-programme-start.html">
+            
+                <a href="../11-appendix/1-go-programme-start.html">
+            
+                    
+                    11.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >6.11 打印内存数据</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;">&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;pmem&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;pmem&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;</h3>
+<p>&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;pmem&#x547D;&#x4EE4;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x65F6;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;<code>ptrace(PTRACE_PEEKDATA,...)</code>&#x64CD;&#x4F5C;&#x5C31;&#x53EF;&#x4EE5;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3002;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x53EA;&#x662F;&#x4E00;&#x5806;&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;&#x6709;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x6839;&#x636E;&#x5E73;&#x53F0;&#x7684;&#x5DEE;&#x5F02;&#x53EF;&#x80FD;&#x8FD8;&#x6709;&#x5927;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x9664;&#x4E86;&#x80FD;&#x591F;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#x4EE5;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x4E9B;&#x95EE;&#x9898;&#xFF0C;&#x8BE5;&#x5C0F;&#x8282;&#x5185;&#x5BB9;&#x6211;&#x4EEC;&#x5206;&#x6B65;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<h4 id="&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;">&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;</h4>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5B9E;&#x73B0;&#x5BF9;&#x5185;&#x5B58;&#x5185;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;&#x91CF;&#x53EF;&#x4EE5;&#x7531;count&#x548C;size&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x6210;&#x529F;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;&#x6570;&#x91CF;&#xFF0C;&#x5E76;&#x4EE5;16&#x8FDB;&#x5236;&#x6570;&#x6253;&#x5370;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;&#x6570;&#x636E;&#x3002;</p>
+<p><strong>file: cmd/debug/pmem.go</strong></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;errors&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;strconv&quot;</span>
+    <span class="hljs-string">&quot;syscall&quot;</span>
+
+    <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> pmemCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;pmem &quot;</span>,
+    Short: <span class="hljs-string">&quot;&#x6253;&#x5370;&#x5185;&#x5B58;&#x6570;&#x636E;&quot;</span>,
+    Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
+        cmdGroupKey: cmdGroupInfo,
+    },
+    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+
+        count, _ := cmd.Flags().GetUint(<span class="hljs-string">&quot;count&quot;</span>)
+        format, _ := cmd.Flags().GetString(<span class="hljs-string">&quot;fmt&quot;</span>)
+        size, _ := cmd.Flags().GetUint(<span class="hljs-string">&quot;size&quot;</span>)
+        addr, _ := cmd.Flags().GetString(<span class="hljs-string">&quot;addr&quot;</span>)
+
+        <span class="hljs-comment">// check params</span>
+        err := checkPmemArgs(count, format, size, addr)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+
+        <span class="hljs-comment">// calculate size of memory to read</span>
+        readAt, _ := strconv.ParseUint(addr, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>)
+        bytes := count * size
+
+        buf := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, bytes, bytes)
+        n, err := syscall.PtracePeekData(TraceePID, <span class="hljs-keyword">uintptr</span>(readAt), buf)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-keyword">int</span>(bytes) {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;read %d bytes, error: %v&quot;</span>, n, err)
+        }
+
+        fmt.Printf(<span class="hljs-string">&quot;read %d bytes ok:&quot;</span>, n)
+        <span class="hljs-keyword">for</span> _, b := <span class="hljs-keyword">range</span> buf[:n] {
+            fmt.Printf(<span class="hljs-string">&quot;%x&quot;</span>, b)
+        }
+        fmt.Println()
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    },
+}
+
+<span class="hljs-keyword">func</span> init() {
+    debugRootCmd.AddCommand(pmemCmd)
+    <span class="hljs-comment">// &#x7C7B;&#x4F3C;gdb&#x7684;&#x547D;&#x4EE4;x/FMT&#xFF0C;&#x5176;&#x4E2D;FMT=&#x91CD;&#x590D;&#x6570;&#x5B57;+&#x683C;&#x5F0F;&#x5316;&#x4FEE;&#x9970;&#x7B26;+size</span>
+    pmemCmd.Flags().Uint(<span class="hljs-string">&quot;count&quot;</span>, <span class="hljs-number">16</span>, <span class="hljs-string">&quot;&#x67E5;&#x770B;&#x6570;&#x503C;&#x6570;&#x91CF;&quot;</span>)
+    pmemCmd.Flags().String(<span class="hljs-string">&quot;fmt&quot;</span>, <span class="hljs-string">&quot;hex&quot;</span>, <span class="hljs-string">&quot;&#x6570;&#x503C;&#x6253;&#x5370;&#x683C;&#x5F0F;: b(binary), o(octal), x(hex), d(decimal), ud(unsigned decimal)&quot;</span>)
+    pmemCmd.Flags().Uint(<span class="hljs-string">&quot;size&quot;</span>, <span class="hljs-number">4</span>, <span class="hljs-string">&quot;&#x6570;&#x503C;&#x5360;&#x7528;&#x5B57;&#x8282;&quot;</span>)
+    pmemCmd.Flags().String(<span class="hljs-string">&quot;addr&quot;</span>, <span class="hljs-string">&quot;&quot;</span>, <span class="hljs-string">&quot;&#x8BFB;&#x53D6;&#x7684;&#x5185;&#x5B58;&#x5730;&#x5740;&quot;</span>)
+}
+
+<span class="hljs-keyword">func</span> checkPmemArgs(count <span class="hljs-keyword">uint</span>, format <span class="hljs-keyword">string</span>, size <span class="hljs-keyword">uint</span>, addr <span class="hljs-keyword">string</span>) error {
+    <span class="hljs-keyword">if</span> count == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;invalid count&quot;</span>)
+    }
+    <span class="hljs-keyword">if</span> size == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;invalid size&quot;</span>)
+    }
+    formats := <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">struct</span>{}{
+        <span class="hljs-string">&quot;b&quot;</span>:  {},
+        <span class="hljs-string">&quot;o&quot;</span>:  {},
+        <span class="hljs-string">&quot;x&quot;</span>:  {},
+        <span class="hljs-string">&quot;d&quot;</span>:  {},
+        <span class="hljs-string">&quot;ud&quot;</span>: {},
+    }
+    <span class="hljs-keyword">if</span> _, ok := formats[format]; !ok {
+        <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;invalid format&quot;</span>)
+    }
+    <span class="hljs-comment">// TODO make it compatible</span>
+    _, err := strconv.ParseUint(addr, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>)
+    <span class="hljs-keyword">return</span> err
+}
+</code></pre>
+<h4 id="&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x89E3;&#x6790;">&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&quot;&#x7C7B;&#x578B;&quot;&#x89E3;&#x6790;</h4>
+<p>&#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x5230;&#x7684;<code>count*byte</code>&#x4E2A;&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x5E94;&#x8BE5;&#x6309;&#x7167;<code>-size</code>&#x4EE5;&#x53CA;<code>-fmt</code>&#x5BF9;&#x8FDE;&#x7EED;&#x5B57;&#x8282;&#x8FDB;&#x884C;&#x7F16;&#x7EC4;&#x3001;&#x7C7B;&#x578B;&#x89E3;&#x6790;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
+...
+
+<span class="hljs-keyword">var</span> pmemCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;pmem &quot;</span>,
+    Short: <span class="hljs-string">&quot;&#x6253;&#x5370;&#x5185;&#x5B58;&#x6570;&#x636E;&quot;</span>,
+    Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
+        cmdGroupKey: cmdGroupInfo,
+    },
+    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+        ...
+
+        <span class="hljs-comment">// &#x8BE5;&#x51FD;&#x6570;&#x4EE5;&#x7F8E;&#x89C2;&#x7684;tab+padding&#x5BF9;&#x9F50;&#x65B9;&#x5F0F;&#x6253;&#x5370;&#x6570;&#x636E;</span>
+        s := prettyPrintMem(<span class="hljs-keyword">uintptr</span>(readAt), buf, isLittleEndian(), format[<span class="hljs-number">0</span>], <span class="hljs-keyword">int</span>(size))
+        fmt.Println(s)
+
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    },
+}
+
+...
+
+<span class="hljs-comment">// prettyPrintMem &#x4F7F;&#x7528;tabwriter&#x63A7;&#x5236;&#x5BF9;&#x9F50;.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &#x6CE8;&#x610F;&#x7ED3;&#x5408;2&#x3001;8&#x3001;10&#x3001;16&#x8FDB;&#x5236;&#x7684;&#x663E;&#x793A;&#x60C5;&#x51B5;&#x8FDB;&#x884C;&#x9002;&#x5F53;&#x7684;&#x683C;&#x5F0F;&#x5316;&#x5904;&#x7406;&#x540E;&#xFF0C;&#x518D;&#x4E88;&#x4EE5;&#x663E;&#x793A;&#xFF0C;&#x770B;&#x8D77;&#x6765;&#x66F4;&#x7F8E;&#x89C2;</span>
+<span class="hljs-keyword">func</span> prettyPrintMem(address <span class="hljs-keyword">uintptr</span>, memArea []<span class="hljs-keyword">byte</span>, littleEndian <span class="hljs-keyword">bool</span>, format <span class="hljs-keyword">byte</span>, size <span class="hljs-keyword">int</span>) <span class="hljs-keyword">string</span> {
+
+    <span class="hljs-keyword">var</span> (
+        cols      <span class="hljs-keyword">int</span>
+        colFormat <span class="hljs-keyword">string</span>
+        colBytes  = size
+
+        addrLen <span class="hljs-keyword">int</span>
+        addrFmt <span class="hljs-keyword">string</span>
+    )
+
+    <span class="hljs-keyword">switch</span> format {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;b&apos;</span>:
+        cols = <span class="hljs-number">4</span> <span class="hljs-comment">// Avoid emitting rows that are too long when using binary format</span>
+        colFormat = fmt.Sprintf(<span class="hljs-string">&quot;%%0%db&quot;</span>, colBytes*<span class="hljs-number">8</span>)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;o&apos;</span>:
+        cols = <span class="hljs-number">8</span>
+        colFormat = fmt.Sprintf(<span class="hljs-string">&quot;0%%0%do&quot;</span>, colBytes*<span class="hljs-number">3</span>) <span class="hljs-comment">// Always keep one leading zero for octal.</span>
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;d&apos;</span>:
+        cols = <span class="hljs-number">8</span>
+        colFormat = fmt.Sprintf(<span class="hljs-string">&quot;%%0%dd&quot;</span>, colBytes*<span class="hljs-number">3</span>)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&apos;x&apos;</span>:
+        cols = <span class="hljs-number">8</span>
+        colFormat = fmt.Sprintf(<span class="hljs-string">&quot;0x%%0%dx&quot;</span>, colBytes*<span class="hljs-number">2</span>) <span class="hljs-comment">// Always keep one leading &apos;0x&apos; for hex.</span>
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">return</span> fmt.Sprintf(<span class="hljs-string">&quot;not supprted format %q\n&quot;</span>, <span class="hljs-keyword">string</span>(format))
+    }
+    colFormat += <span class="hljs-string">&quot;\t&quot;</span>
+
+    l := <span class="hljs-built_in">len</span>(memArea)
+    rows := l / (cols * colBytes)
+    <span class="hljs-keyword">if</span> l%(cols*colBytes) != <span class="hljs-number">0</span> {
+        rows++
+    }
+
+    <span class="hljs-comment">// Avoid the lens of two adjacent address are different, so always use the last addr&apos;s len to format.</span>
+    <span class="hljs-keyword">if</span> l != <span class="hljs-number">0</span> {
+        addrLen = <span class="hljs-built_in">len</span>(fmt.Sprintf(<span class="hljs-string">&quot;%x&quot;</span>, <span class="hljs-keyword">uint64</span>(address)+<span class="hljs-keyword">uint64</span>(l)))
+    }
+    addrFmt = <span class="hljs-string">&quot;0x%0&quot;</span> + strconv.Itoa(addrLen) + <span class="hljs-string">&quot;x:\t&quot;</span>
+
+    <span class="hljs-keyword">var</span> b strings.Builder
+    w := tabwriter.NewWriter(&amp;b, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&apos; &apos;</span>, <span class="hljs-number">0</span>)
+
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; rows; i++ {
+        fmt.Fprintf(w, addrFmt, address)
+
+        <span class="hljs-keyword">for</span> j := <span class="hljs-number">0</span>; j &lt; cols; j++ {
+            offset := i*(cols*colBytes) + j*colBytes
+            <span class="hljs-keyword">if</span> offset+colBytes &lt;= <span class="hljs-built_in">len</span>(memArea) {
+                n := byteArrayToUInt64(memArea[offset:offset+colBytes], littleEndian)
+                fmt.Fprintf(w, colFormat, n)
+            }
+        }
+        fmt.Fprintln(w, <span class="hljs-string">&quot;&quot;</span>)
+        address += <span class="hljs-keyword">uintptr</span>(cols)
+    }
+    w.Flush()
+    <span class="hljs-keyword">return</span> b.String()
+}
+
+<span class="hljs-comment">// &#x5C06;byteslice&#x8F6C;&#x6210;uint64&#x6570;&#x503C;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;</span>
+<span class="hljs-keyword">func</span> byteArrayToUInt64(buf []<span class="hljs-keyword">byte</span>, isLittleEndian <span class="hljs-keyword">bool</span>) <span class="hljs-keyword">uint64</span> {
+    <span class="hljs-keyword">var</span> n <span class="hljs-keyword">uint64</span>
+    <span class="hljs-keyword">if</span> isLittleEndian {
+        <span class="hljs-keyword">for</span> i := <span class="hljs-built_in">len</span>(buf) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- {
+            n = n&lt;&lt;<span class="hljs-number">8</span> + <span class="hljs-keyword">uint64</span>(buf[i])
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(buf); i++ {
+            n = n&lt;&lt;<span class="hljs-number">8</span> + <span class="hljs-keyword">uint64</span>(buf[i])
+        }
+    }
+    <span class="hljs-keyword">return</span> n
+}
+
+<span class="hljs-comment">// &#x68C0;&#x6D4B;&#x662F;&#x5426;&#x662F;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;</span>
+<span class="hljs-keyword">func</span> isLittleEndian() <span class="hljs-keyword">bool</span> {
+    buf := [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{}
+    *(*<span class="hljs-keyword">uint16</span>)(unsafe.Pointer(&amp;buf[<span class="hljs-number">0</span>])) = <span class="hljs-keyword">uint16</span>(<span class="hljs-number">0xABCD</span>)
+
+    <span class="hljs-keyword">switch</span> buf {
+    <span class="hljs-keyword">case</span> [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0xCD</span>, <span class="hljs-number">0xAB</span>}:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">case</span> [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0xAB</span>, <span class="hljs-number">0xCD</span>}:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Could not determine native endianness.&quot;</span>)
+    }
+}
+</code></pre>
+<p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#x903B;&#x8F91;&#x4E0D;&#x53D8;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x6DFB;&#x52A0;&#x4E86;&#x4E24;&#x90E8;&#x5206;&#x903B;&#x8F91;&#xFF1A;</p>
+<ul>
+<li>&#x6839;&#x636E;&#x673A;&#x5668;&#x5927;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;&#xFF0C;&#x5BF9;&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6B63;&#x786E;&#x89E3;&#x6790;&#xFF0C;&#x5E76;&#x8F6C;&#x6362;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x503C;&#xFF1B;</li>
+<li>&#x6839;&#x636E;&#x6570;&#x503C;&#x8981;&#x663E;&#x793A;&#x7684;&#x8FDB;&#x5236;&#x683C;&#x5F0F;&#xFF0C;&#x7ED3;&#x5408;2&#x3001;8&#x3001;16&#x3001;10&#x8FDB;&#x5236;&#x7684;&#x5BBD;&#x5EA6;&#xFF0C;&#x901A;&#x8FC7;fmt.Sprintf&#x8FDB;&#x884C;&#x9002;&#x5F53;&#x683C;&#x5F0F;&#x5316;&#xFF0C;&#x5E76;&#x7ED3;&#x5408;tabwrite&#x901A;&#x8FC7;tab+padding&#x5BF9;&#x9F50;&#x540E;&#x8F93;&#x51FA;&#xFF1B;</li>
+</ul>
+<p>&#x81F3;&#x6B64;pmem&#x547D;&#x4EE4;&#x57FA;&#x672C;&#x5B8C;&#x6210;&#x5F00;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x6D4B;&#x8BD5;&#x4E0B;pmem&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
+<h4 id="&#x6D4B;&#x8BD5;&#xFF1A;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;&#x7B2C;&#x4E00;&#x6B65;">&#x6D4B;&#x8BD5;&#xFF1A;&#x201C;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;&#x7B2C;&#x4E00;&#x6B65;...&#x201D;</h4>
+<p>&#x9996;&#x5148;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;<code>godbg attach &lt;pid&gt;</code>&#x8DDF;&#x8E2A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8F93;&#x5165;<code>disass</code>&#x67E5;&#x770B;&#x4E0B;&#x53CD;&#x6C47;&#x7F16;&#x6570;&#x636E;&#xFF0C;&#x663E;&#x793A;&#x6709;&#x5F88;&#x591A;&#x7684;<code>int3</code>&#x6307;&#x4EE4;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x8282;&#x6570;&#x636E;&#x662F;<code>0xCC</code>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x4E00;&#x5B57;&#x8282;&#x8BE5;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#x7684;&#x6570;&#x636E;&#x6765;&#x5FEB;&#x901F;&#x9A8C;&#x8BC1;pmem&#x662F;&#x5426;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#x3002;</p>
+<pre><code class="lang-bash">$ godbg attach 7764
+process 7764 attached succ
+process 7764 stopped: <span class="hljs-literal">true</span>
+godbg&gt; disass
+0x4651e0 mov %eax,0x20(%rsp)
+0x4651e4 retq
+0x4651e5 int3
+0x4651e6 int3
+0x4651e7 int3
+0x4651e8 int3
+0x4651e9 int3
+0x4651ea int3
+0x4651eb int3
+0x4651ec int3
+godbg&gt; pmem --addr 0x4651e5 --count 1 --fmt x --size 1
+<span class="hljs-built_in">read</span> 1 bytes ok:cc
+godbg&gt; pmem --addr 0x4651e5 --count 4 --fmt x --size 1
+<span class="hljs-built_in">read</span> 4 bytes ok:cccccccc
+godbg&gt;
+</code></pre>
+<p>&#x53EF;&#x89C1;&#xFF0C;&#x7A0B;&#x5E8F;&#x4ECE;&#x6307;&#x4EE4;&#x5730;&#x5740;0x4561e5&#x5148;&#x8BFB;&#x53D6;&#x4E86;1&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x5373;1&#x4E2A;int3&#x5BF9;&#x5E94;&#x7684;16&#x8FDB;&#x5236;&#x6570;0xCC&#xFF0C;&#x7136;&#x540E;&#x4ECE;&#x76F8;&#x540C;&#x5730;&#x5740;&#x5904;&#x8BFB;&#x53D6;&#x4E86;4&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x5373;&#x8FDE;&#x7EED;4&#x4E2A;int3&#x5BF9;&#x5E94;&#x7684;16&#x8FDB;&#x5236;&#x6570;0xCCCCCCC&#x3002;</p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x7B26;&#x5408;&#x9884;&#x671F;&#xFF0C;&#x8BF4;&#x660E;pmem&#x57FA;&#x672C;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x529F;&#x80FD;&#x6B63;&#x5E38;&#x3002;</p>
+<h4 id="&#x6D4B;&#x8BD5;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x89E3;&#x6790;">&#x6D4B;&#x8BD5;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&quot;&#x7C7B;&#x578B;&quot;&#x89E3;&#x6790;</h4>
+<p>&#x67E5;&#x770B;16&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;16&#x8FDB;&#x5236;&#x6570;&#x5206;&#x522B;&#x4E3A;1&#x5B57;&#x8282;&#x3001;2&#x5B57;&#x8282;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;&#x4E3A;&#x5C0F;&#x7AEF;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt x --size 1
+<span class="hljs-built_in">read</span> 16 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   0x89   0x44   0x24   0x30   0xc3   0xcc   0xcc   0xcc   
+0x464fcb:   0xcc   0xcc   0xcc   0xcc   0xcc   0xcc   0xcc   0xcc   
+
+godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt x --size 2
+<span class="hljs-built_in">read</span> 32 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   0x4489   0x3024   0xccc3   0xcccc   0xcccc   0xcccc   0xcccc   0xcccc   
+0x464fcb:   0xcccc   0xcccc   0xcccc   0xcccc   0xcccc   0xcccc   0x8bcc   0x247c
+</code></pre>
+<p>&#x67E5;&#x770B;8&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;8&#x8FDB;&#x5236;&#x6570;&#x5206;&#x522B;&#x4E3A;1&#x5B57;&#x8282;&#x3001;2&#x5B57;&#x8282;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;&#x4E3A;&#x5C0F;&#x7AEF;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt o --size 1
+<span class="hljs-built_in">read</span> 16 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   0211   0104   0044   0060   0303   0314   0314   0314   
+0x464fcb:   0314   0314   0314   0314   0314   0314   0314   0314   
+
+godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt o --size 2
+<span class="hljs-built_in">read</span> 32 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   0042211   0030044   0146303   0146314   0146314   0146314   0146314   0146314   
+0x464fcb:   0146314   0146314   0146314   0146314   0146314   0146314   0105714   0022174
+</code></pre>
+<p>&#x67E5;&#x770B;2&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;2&#x8FDB;&#x5236;&#x6570;&#x5206;&#x522B;&#x4E3A;1&#x5B57;&#x8282;&#x3001;2&#x5B57;&#x8282;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;&#x4E3A;&#x5C0F;&#x7AEF;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt b --size 1
+<span class="hljs-built_in">read</span> 16 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   10001001   01000100   00100100   00110000   
+0x464<span class="hljs-built_in">fc</span>7:   11000011   11001100   11001100   11001100   
+0x464fcb:   11001100   11001100   11001100   11001100   
+0x464fcf:   11001100   11001100   11001100   11001100   
+
+godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt b --size 2
+<span class="hljs-built_in">read</span> 32 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   0100010010001001   0011000000100100   1100110011000011   1100110011001100   
+0x464<span class="hljs-built_in">fc</span>7:   1100110011001100   1100110011001100   1100110011001100   1100110011001100   
+0x464fcb:   1100110011001100   1100110011001100   1100110011001100   1100110011001100   
+0x464fcf:   1100110011001100   1100110011001100   1000101111001100   0010010001111100
+</code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x67E5;&#x770B;&#x4E0B;10&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x6BCF;&#x4E2A;10&#x8FDB;&#x5236;&#x6570;&#x5206;&#x522B;&#x4E3A;1&#x5B57;&#x8282;&#x3001;2&#x5B57;&#x8282;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;&#x4E3A;&#x5C0F;&#x7AEF;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt d --size 1
+<span class="hljs-built_in">read</span> 16 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   137   068   036   048   195   204   204   204   
+0x464fcb:   204   204   204   204   204   204   204   204   
+
+godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --fmt d --size 2
+<span class="hljs-built_in">read</span> 32 bytes ok:
+0x464<span class="hljs-built_in">fc</span>3:   017545   012324   052419   052428   052428   052428   052428   052428   
+0x464fcb:   052428   052428   052428   052428   052428   052428   035788   009340
+</code></pre>
+<p>&#x73B0;&#x5728;&#x518D;&#x770B;pmem&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x89E3;&#x6790;&#x4E0D;&#x540C;fmt&#x3001;&#x4E0D;&#x540C;size&#x3001;&#x5927;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#x4E86;&#x3002;</p>
+<p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x7B26;&#x5408;&#x9884;&#x671F;&#xFF0C;&#x8BF4;&#x660E;pmem&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;&#x3001;&#x5C55;&#x793A;&#x529F;&#x80FD;&#x5747;&#x6B63;&#x5E38;&#x3002;</p>
+<blockquote>
+<p>ps: &#x8FD9;&#x91CC;prettyPrintMem&#x903B;&#x8F91;&#x5B9E;&#x9645;&#x4E0A;&#x53D6;&#x81EA;&#x5F53;&#x521D;&#x8D21;&#x732E;&#x7ED9;<code>go-delve/delve&#x7684;examinemem(x)</code>&#x547D;&#x4EE4;&#x3002;&#x5982;&#x60A8;&#x5BF9;&#x5B57;&#x8282;&#x5E8F;&#x5F15;&#x8D77;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x9A8C;&#x8BC1;&#x4E0B;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x901A;&#x8FC7;16&#x8FDB;&#x5236;&#x6570;&#x636E;&#x6821;&#x9A8C;&#x53EF;&#x80FD;&#x4F1A;&#x66F4;&#x65B9;&#x4FBF;&#x4E9B;&#x3002;</p>
+</blockquote>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="10-continue.html" class="navigation navigation-prev " aria-label="Previous page: 6.10 运行到断点">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="12-pregs.html" class="navigation navigation-next " aria-label="Next page: 6.12 打印寄存器数据">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6.11 打印内存数据","level":"1.6.11","depth":2,"next":{"title":"6.12 打印寄存器数据","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-pregs.md","ref":"6-develop-inst-debugger/12-pregs.md","articles":[]},"previous":{"title":"6.10 运行到断点","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-continue.md","ref":"6-develop-inst-debugger/10-continue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mermaid-cli","md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"mermaid-cli":{"chromeArgs":[],"chromeDir":"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","mermaidArgs":""},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/11-pmem.md","mtime":"2021-09-22T17:09:35.270Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-25T07:50:32.660Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

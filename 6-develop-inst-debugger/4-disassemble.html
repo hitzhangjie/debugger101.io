@@ -1,0 +1,1175 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6.4 反汇编 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="5-breakpoint.html" />
+    
+    
+    <link rel="prev" href="3-process_start_attach.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-preface/">
+            
+                <a href="../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../3-terms/">
+            
+                <a href="../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../4-basics/">
+            
+                <a href="../4-basics/">
+            
+                    
+                    4 调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../4-basics/1-purposes.html">
+            
+                <a href="../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../4-basics/2-dependencies.html">
+            
+                <a href="../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../4-basics/3-countertactics.html">
+            
+                <a href="../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../5-debugger-skeleton/">
+            
+                <a href="../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="1-process_start.html">
+            
+                <a href="1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="2-process_attach.html">
+            
+                <a href="2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="3-process_start_attach.html">
+            
+                <a href="3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.4" data-path="4-disassemble.html">
+            
+                <a href="4-disassemble.html">
+            
+                    
+                    6.4 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="5-breakpoint.html">
+            
+                <a href="5-breakpoint.html">
+            
+                    
+                    6.5 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="6-breakpoints.html">
+            
+                <a href="6-breakpoints.html">
+            
+                    
+                    6.6 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="7-clear.html">
+            
+                <a href="7-clear.html">
+            
+                    
+                    6.7 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="8-clearall.html">
+            
+                <a href="8-clearall.html">
+            
+                    
+                    6.8 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="9-step.html">
+            
+                <a href="9-step.html">
+            
+                    
+                    6.9 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="10-continue.html">
+            
+                <a href="10-continue.html">
+            
+                    
+                    6.10 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="11-pmem.html">
+            
+                <a href="11-pmem.html">
+            
+                    
+                    6.11 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="12-pregs.html">
+            
+                <a href="12-pregs.html">
+            
+                    
+                    6.12 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="20-bugfix-threads.md">
+            
+                <span>
+            
+                    
+                    6.20 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="21-refactor.md">
+            
+                <span>
+            
+                    
+                    6.21 重构程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="x-more.md">
+            
+                <span>
+            
+                    
+                    6.x More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../7-headto-sym-debugger/">
+            
+                <a href="../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../7-headto-sym-debugger/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/1-elf.html">
+            
+                    
+                    7.1 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../7-headto-sym-debugger/2-syms.html">
+            
+                <a href="../7-headto-sym-debugger/2-syms.html">
+            
+                    
+                    7.2 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                <a href="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                    
+                    7.3 符号的解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                <a href="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                    
+                    7.4 重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../9-develop-sym-debugger/README.md">
+            
+                <span>
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../9-develop-sym-debugger/1-symtable & linetable.html">
+            
+                <a href="../9-develop-sym-debugger/1-symtable & linetable.html">
+            
+                    
+                    9.1 符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../9-develop-sym-debugger/2-debug-line.html">
+            
+                <a href="../9-develop-sym-debugger/2-debug-line.html">
+            
+                    
+                    9.2 行号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../9-develop-sym-debugger/3-call-frame.html">
+            
+                <a href="../9-develop-sym-debugger/3-call-frame.html">
+            
+                    
+                    9.3 调用栈
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../9-develop-sym-debugger/4-disass.md">
+            
+                <span>
+            
+                    
+                    9.4 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../9-develop-sym-debugger/5-vars.md">
+            
+                <span>
+            
+                    
+                    9.5 变量 & 类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../9-develop-sym-debugger/6-funcs.md">
+            
+                <span>
+            
+                    
+                    9.6 函数 & 方法
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../9-develop-sym-debugger/7-goroutines.md">
+            
+                <span>
+            
+                    
+                    9.7 协程 & 线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../9-develop-sym-debugger/x-gopkg.html">
+            
+                <a href="../9-develop-sym-debugger/x-gopkg.html">
+            
+                    
+                    9.x 标准库
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../9-develop-sym-debugger/x-more.md">
+            
+                <span>
+            
+                    
+                    9.x More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../10-thanks/">
+            
+                <a href="../10-thanks/">
+            
+                    
+                    10 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../11-appendix/">
+            
+                <a href="../11-appendix/">
+            
+                    
+                    11 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../11-appendix/1-go-programme-start.html">
+            
+                <a href="../11-appendix/1-go-programme-start.html">
+            
+                    
+                    11.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >6.4 反汇编</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x53CD;&#x6C47;&#x7F16;">&#x53CD;&#x6C47;&#x7F16;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;</h3>
+<p>&#x53CD;&#x6C47;&#x7F16;&#x662F;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x53EF;&#x7F3A;&#x5C11;&#x7684;&#x73AF;&#x8282;&#xFF0C;&#x5BF9;&#x4E8E;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x5C55;&#x793A;&#x6E90;&#x7801;&#x4FE1;&#x606F;&#xFF0C;&#x5BF9;&#x4E8E;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x800C;&#x8A00;&#x5C31;&#x662F;&#x8981;&#x5C55;&#x793A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E86;&#x3002;</p>
+<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x662F;&#x548C;&#x786C;&#x4EF6;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E0D;&#x8FC7;&#x662F;&#x4E9B;&#x52A9;&#x8BB0;&#x7B26;&#xFF0C;&#x4E00;&#x6761;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x901A;&#x8FC7;&#x89C4;&#x5B9A;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;&#x4E0D;&#x540C;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x53EF;&#x80FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x64CD;&#x4F5C;&#x6570;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x4E5F;&#x53EF;&#x80FD;&#x76F8;&#x540C;&#x6216;&#x4E0D;&#x540C;&#x3002;</p>
+<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x672C;&#x6765;&#x5C31;&#x6709;&#x5F88;&#x591A;&#xFF0C;&#x9664;&#x4E86;&#x6307;&#x4EE4;&#x5B9A;&#x957F;&#x3001;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x4EE5;&#x5916;&#xFF0C;&#x8FD8;&#x6709;&#x4E9B;&#x5176;&#x4ED6;&#x56E0;&#x7D20;&#x4E5F;&#x7ED9;&#x53CD;&#x6C47;&#x7F16;&#x5E26;&#x6765;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x96BE;&#x5EA6;&#xFF0C;&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x6709;&#x975E;&#x5E38;&#x591A;&#x7684;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#xFF0C;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x6307;&#x4EE4;&#x96C6;&#x67B6;&#x6784;&#x7B49;&#x7B49;&#xFF0C;&#x8981;&#x60F3;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x8FD8;&#x771F;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x4EF6;&#x5BB9;&#x6613;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
+<p>&#x5E78;&#x597D;&#x5DF2;&#x7ECF;&#x6709;&#x53CD;&#x6C47;&#x7F16;&#x6846;&#x67B6;<a href="http://www.capstone-engine.org/" target="_blank">Capstone</a>&#x6765;&#x4E13;&#x95E8;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5BF9;&#x4E8E;go&#x8BED;&#x8A00;&#x800C;&#x8A00;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;go&#x7248;&#x672C;&#x7684;<a href="https://github.com/bnagy/gapstone" target="_blank">Gapstone</a>&#x3002;&#x6216;&#x8005;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;go&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x5DE5;&#x5177;&#x7C7B;<a href="https://golang.org/x/arch/x86/x86asm" target="_blank">arch/x86/x86asm</a>&#xFF0C;&#x6CE8;&#x610F;&#x5230;&#x5728;&#x6D41;&#x884C;&#x7684;go&#x8BED;&#x8A00;&#x8C03;&#x8BD5;&#x5668;dlv&#x91CC;&#x9762;&#x4E5F;&#x662F;&#x4F7F;&#x7528;x86asm&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x7684;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x7B80;&#x5355;&#x8D77;&#x89C1;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x5C06;&#x4F7F;&#x7528;arch/x86/x86asm&#x6765;&#x5B8C;&#x6210;&#x53CD;&#x6C47;&#x7F16;&#x4EFB;&#x52A1;&#xFF0C;&#x5F53;&#x7136;&#x4F7F;&#x7528;Capstone&#x3001;Gapstone&#x4E5F;&#x5E76;&#x975E;&#x4E0D;&#x53EF;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x611F;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x5B9E;&#x9A8C;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x4EFB;&#x52A1;&#x4E5F;&#x5206;&#x51E0;&#x6B65;&#xFF0C;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x638C;&#x63E1;&#x5BF9;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8FDB;&#x4E00;&#x6B65;&#x83B7;&#x53D6;&#x5F53;&#x524D;&#x65AD;&#x70B9;&#x5904;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x5BF9;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x3002;</p>
+<h4 id="&#x6839;&#x636E;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;">&#x6839;&#x636E;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;</h4>
+<p>&#x8C03;&#x8BD5;&#x5668;&#x548C;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x5F88;&#x591A;&#x64CD;&#x4F5C;&#x90FD;&#x9700;&#x8981;&#x4F9D;&#x8D56;pid&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x8981;&#x8BFB;&#x53D6;pid&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x5C31;&#x5FC5;&#x987B;&#x5148;&#x901A;&#x8FC7;pid&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;&#xFF0C;&#x600E;&#x4E48;&#x505A;&#x5462;&#xFF1F;</p>
+<p>&#x5728;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;&#x865A;&#x62DF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84;<code>/proc/&lt;pid&gt;/exe</code>&#x662F;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#xFF0C;&#x5B83;&#x6307;&#x5411;&#x4E86;<code>pid</code>&#x6807;&#x8BC6;&#x7684;&#x8FDB;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x7684;&#x8DEF;&#x5F84;&#x3002;&#x5728;go&#x7A0B;&#x5E8F;&#x91CC;&#x9762;&#x8BFB;&#x53D6;&#x8BE5;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x6307;&#x5411;&#x7684;&#x76EE;&#x7684;&#x4F4D;&#x7F6E;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-comment">// GetExecutable &#x6839;&#x636E;pid&#x83B7;&#x53D6;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;</span>
+<span class="hljs-keyword">func</span> GetExecutable(pid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">string</span>, error) {
+    exeLink := fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/exe&quot;</span>, pid)
+    exePath, err := os.Readlink(exeLink)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, err
+    }
+    <span class="hljs-keyword">return</span> exePath, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<h4 id="&#x5B9E;&#x73B0;&#x5BF9;&#x5B8C;&#x6574;&#x7A0B;&#x5E8F;&#x53CD;&#x6C47;&#x7F16;">&#x5B9E;&#x73B0;&#x5BF9;&#x5B8C;&#x6574;&#x7A0B;&#x5E8F;&#x53CD;&#x6C47;&#x7F16;</h4>
+<p>&#x6839;&#x636E;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x4E3A;&#x63A5;&#x4E0B;&#x6765;&#x53CD;&#x6C47;&#x7F16;&#x505A;&#x51C6;&#x5907;&#x3002;&#x4F46;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;Linux&#x4E8C;&#x8FDB;&#x5236;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x662F;&#x6709;&#x7ED3;&#x6784;&#x7684;&#xFF0C;<code>ioutil.ReadFile(fname)</code>&#x867D;&#x7136;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5185;&#x5BB9;&#x4F46;&#x662F;&#x5374;&#x4E0D;&#x80FD;&#x89E3;&#x6790;<code>ELF (Executable and Linkable Format)</code>&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;ELF&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x800C;&#x8A00;&#xFF0C;&#x5176;&#x5927;&#x81F4;&#x7684;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
+<p><img src="assets/elf_layout.png" alt="elf"></p>
+<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E00;&#x4E2A;ELF Header&#x5305;&#x542B;&#x4E86;<code>Program Header (Segments)</code>&#x3001;<code>Section Header (Sections)</code>&#x4EE5;&#x53CA;&#x4E00;&#x7CFB;&#x5217;&#x7684;Data&#x3002;</p>
+<p>&#x8FD9;&#x5176;&#x5B9E;&#x662F;ELF&#x683C;&#x5F0F;&#x4E3A;&#x6784;&#x5EFA;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x89C6;&#x56FE;&#x6240;&#x7279;&#x610F;&#x8BBE;&#x8BA1;&#x7684;&#xFF1A;</p>
+<ul>
+<li>segments&#x89C6;&#x56FE;&#xFF0C;&#x662F;&#x4E3A;linker&#x63D0;&#x4F9B;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x7528;&#x6765;&#x6307;&#x5BFC;linker&#x5982;&#x4F55;&#x6267;&#x884C;segments&#x4E2D;&#x6307;&#x4EE4;&#xFF1B;</li>
+<li>&#x53E6;&#x4E00;&#x79CD;&#x89C6;&#x56FE;&#x5C31;&#x662F;&#x5C06;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x533A;&#x5206;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x5982;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;secitions&#x7684;&#x533A;&#x5206;&#xFF1B;</li>
+</ul>
+<p>&#x90A3;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8981;&#x60F3;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x7684;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x5C06;ELF&#x6587;&#x4EF6;&#x89E3;&#x6790;&#x6210;&#x4E0A;&#x8FF0;&#x683C;&#x5F0F;&#xFF0C;&#x5E76;&#x80FD;&#x591F;&#x4ECE;&#x63D0;&#x53D6;&#x51FA;&#x7A0B;&#x5E8F;&#x5BF9;&#x5E94;&#x7684;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x6765;&#x505A;&#x8FD9;&#x4E2A;&#x4E8B;&#x60C5;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;debug/elf&quot;</span>
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
+    <span class="hljs-string">&quot;strconv&quot;</span>
+
+    <span class="hljs-string">&quot;golang.org/x/arch/x86/x86asm&quot;</span>
+)
+
+<span class="hljs-keyword">func</span> main() {
+
+    <span class="hljs-comment">// go run main.go &lt;pid&gt;</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(os.Args) != <span class="hljs-number">2</span> {
+        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;invalid params&quot;</span>)
+    }
+
+    <span class="hljs-comment">// pid</span>
+    pid, err := strconv.Atoi(os.Args[<span class="hljs-number">1</span>])
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-built_in">panic</span>(err)
+    }
+
+    <span class="hljs-comment">// &#x901A;&#x8FC7;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;</span>
+    exePath, err := GetExecutable(pid)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-built_in">panic</span>(err)
+    }
+    fmt.Println(exePath)
+
+    <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x4FE1;&#x606F;&#x5E76;&#x53CD;&#x6C47;&#x7F16;</span>
+    elfFile, err := elf.Open(exePath)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-built_in">panic</span>(err)
+    }
+    section := elfFile.Section(<span class="hljs-string">&quot;.text&quot;</span>)
+    buf, err := section.Data()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-built_in">panic</span>(err)
+    }
+
+    <span class="hljs-comment">// &#x9010;&#x8BED;&#x53E5;&#x89E3;&#x6790;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x5E76;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5370;&#x51FA;&#x6765;</span>
+    offset := <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> {
+        inst, err := x86asm.Decode(buf[offset:], <span class="hljs-number">64</span>)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-built_in">panic</span>(err)
+        }
+        fmt.Printf(<span class="hljs-string">&quot;%8x %s\n&quot;</span>, offset, inst.String())
+        offset += inst.Len
+    }
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x5B8C;&#x6574;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x4E00;&#x4E2A;pid&#xFF0C;&#x7136;&#x540E;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x7684;elf package&#x6765;&#x53D6;&#x6587;&#x4EF6;&#x5E76;&#x89E3;&#x6790;&#x6210;ELF&#x6587;&#x4EF6;&#x3002;&#x4ECE;&#x4E2D;&#x8BFB;&#x53D6;.text section&#x7684;&#x6570;&#x636E;&#x3002;&#x4F17;&#x6240;&#x5468;&#x77E5;&#xFF0C;.text&#x7AEF;&#x5185;&#x90E8;&#x6570;&#x636E;&#x5373;&#x4E3A;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x62FF;&#x5230;&#x6307;&#x4EE4;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;golang.org/x/arch/x86/x86asm&#x6765;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x6307;&#x4EE4;&#x662F;&#x53D8;&#x957F;&#x7F16;&#x7801;&#xFF0C;&#x53CD;&#x6C47;&#x7F16;&#x6210;&#x529F;&#x540E;&#x8FD4;&#x56DE;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5F53;&#x524D;&#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x5185;&#x5B58;&#x7F16;&#x7801;&#x6570;&#x636E;&#x957F;&#x5EA6;&#xFF0C;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x8C03;&#x6574;&#x504F;&#x79FB;&#x91CF;&#x7EE7;&#x7EED;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x3002;</p>
+<h4 id="&#x5BF9;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;">&#x5BF9;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;</h4>
+<p>&#x5BF9;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x9996;&#x8981;&#x4EFB;&#x52A1;&#x5C31;&#x662F;&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x65AD;&#x70B9;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF0C;&#x5F80;&#x5F80;&#x662F;&#x901A;&#x8FC7;&#x6307;&#x4EE4;patch&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5373;&#x5C06;&#x4EFB;&#x610F;&#x5B8C;&#x6574;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x6210;<code>0xCC (int 3)</code>&#x6307;&#x4EE4;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x5B8C;0xCC&#x4E4B;&#x540E;&#x81EA;&#x8EAB;&#x5C31;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x65AD;&#x70B9;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x65AD;&#x70B9;&#x901A;&#x8FC7;&#x6307;&#x4EE4;patch&#x6765;&#x5B9E;&#x73B0;&#x5FC5;&#x987B;&#x8986;&#x76D6;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x4E0D;&#x80FD;&#x8986;&#x76D6;&#x5176;&#x4ED6;&#x5B57;&#x8282;&#xFF0C;&#x539F;&#x56E0;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x6307;&#x4EE4;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x89E3;&#x7801;&#x6548;&#x7387;&#x3001;&#x652F;&#x6301;&#x66F4;&#x591A;&#x64CD;&#x4F5C;&#x7C7B;&#x578B;&#xFF0C;&#x5F80;&#x5F80;&#x90FD;&#x662F;&#x91C7;&#x7528;&#x7684;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5199;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x90A3;&#x4E48;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#xFF0C;&#x6216;&#x8005;&#x9020;&#x6210;&#x89E3;&#x6790;&#x65F6;&#x56F0;&#x96BE;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x975E;&#x8981;&#x5199;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x8282;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x90A3;&#x5C31;&#x8D77;&#x4E0D;&#x5230;&#x65AD;&#x70B9;&#x7684;&#x4F5C;&#x7528;&#x3002;&#x56E0;&#x4E3A;&#x6267;&#x884C;&#x5230;&#x8FD9;&#x4E2A;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;&#x524D;&#x9762;&#x672C;&#x4E0D;&#x5E94;&#x8BE5;&#x6267;&#x884C;&#x7684;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x4E86;&#x3002;</p>
+<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x6709;&#x7CFB;&#x7EDF;&#x6027;&#x5730;&#x4ECB;&#x7ECD;&#x8FC7;&#x6307;&#x4EE4;patch&#x7684;&#x6982;&#x5FF5;&#x3001;&#x5E94;&#x7528;&#x573A;&#x666F;&#x7B49;&#xFF08;&#x6BD4;&#x5982;&#x8C03;&#x8BD5;&#x5668;&#x3001;mock&#x6D4B;&#x8BD5;&#x6846;&#x67B6;gomonkey&#x7B49;&#x7B49;&#xFF09;&#xFF0C;&#x5982;&#x60A8;&#x8FD8;&#x611F;&#x5230;&#x4E0D;&#x719F;&#x6089;&#xFF0C;&#x8BF7;&#x56DE;&#x5934;&#x67E5;&#x770B;&#x76F8;&#x5173;&#x7AE0;&#x8282;&#xFF0C;&#x6216;&#x8005;&#x95EE;&#x4E0B;google&#x3002;</p>
+<p>&#x5047;&#x5982;&#x8BF4;&#x5F53;&#x524D;&#x6211;&#x4EEC;&#x7684;&#x65AD;&#x70B9;&#x4F4D;&#x4E8E;offset&#x5904;&#xFF0C;&#x73B0;&#x5728;&#x8981;&#x6267;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x52A8;&#x4F5C;&#xFF0C;&#x5927;&#x81F4;&#x6709;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<pre><code class="lang-bash">&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x4E4B;&#x524D;&#xFF1A;
+offset:  0x0 0x1 0x2 0x3 0x4
+
+&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x4E4B;&#x540E;&#xFF1A;
+offset: 0xcc 0x1 0x2 0x3 0x4   | orig: &lt;offset,0x0&gt;
+</code></pre>
+<ul>
+<li>&#x9996;&#x5148;&#xFF0C;&#x8981;&#x77E5;&#x9053;0xCC&#x6267;&#x884C;&#x540E;&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6B64;&#x65F6;PC=offset+1</li>
+<li>&#x518D;&#x6B21;&#xFF0C;&#x8981;&#x77E5;&#x9053;offset&#x5904;&#x7684;&#x6307;&#x4EE4;&#x4E0D;&#x662F;&#x5B8C;&#x6574;&#x6574;&#x7406;&#xFF0C;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x88AB;patch&#x4E86;&#xFF0C;&#x9700;&#x8981;&#x8FD8;&#x539F;&#xFF1B;</li>
+<li>&#x6700;&#x540E;&#xFF0C;&#x8981;&#x77E5;&#x9053;PC&#x503C;&#x662F;&#x7279;&#x6B8A;&#x5BC4;&#x5B58;&#x5668;&#x503C;&#xFF0C;&#x8981;&#x5C06;&#x5176;PC&#x503C;&#x51CF;&#x53BB;1&#xFF0C;&#x8BA9;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x4F4D;&#x7F6E;&#x5F80;&#x540E;&#x9000;1&#x5B57;&#x8282;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x65B0;&#x8BFB;&#x53D6;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x6307;&#x4EE4;&#xFF1B;</li>
+</ul>
+<p>&#x8FD9;&#x5927;&#x6982;&#x5C31;&#x662F;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x7684;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x5904;&#x4E0D;&#x662F;&#x65AD;&#x70B9;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C;pc=pc-1&#x8FD9;&#x4E00;rewind&#x52A8;&#x4F5C;&#x3002;</p>
+<h4 id="put-it-together">Put It Together</h4>
+<p>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x4E00;&#x756A;&#x8BA8;&#x8BBA;&#x4E4B;&#x540E;&#xFF0C;&#x5F97;&#x5230;&#x4E86;&#x4E0B;&#x9762;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
+    <span class="hljs-string">&quot;syscall&quot;</span>
+
+    <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
+    <span class="hljs-string">&quot;golang.org/x/arch/x86/x86asm&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> disassCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;disass &lt;locspec&gt;&quot;</span>,
+    Short: <span class="hljs-string">&quot;&#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;&quot;</span>,
+    Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
+        cmdGroupKey: cmdGroupSource,
+    },
+    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;PC&#x503C;</span>
+        regs := syscall.PtraceRegs{}
+        err := syscall.PtraceGetRegs(TraceePID, &amp;regs)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+
+        buf := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, <span class="hljs-number">1</span>)
+        n, err := syscall.PtracePeekText(TraceePID, <span class="hljs-keyword">uintptr</span>(regs.PC()), buf)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;peek text error: %v, bytes: %d&quot;</span>, err, n)
+        }
+        fmt.Printf(<span class="hljs-string">&quot;read %d bytes, value of %x\n&quot;</span>, n, buf[<span class="hljs-number">0</span>])
+        <span class="hljs-comment">// read a breakpoint</span>
+        <span class="hljs-keyword">if</span> buf[<span class="hljs-number">0</span>] == <span class="hljs-number">0xCC</span> {
+            regs.SetPC(regs.PC() - <span class="hljs-number">1</span>)
+        }
+
+        <span class="hljs-comment">// &#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;&#x8FC7;&#x65AD;&#x70B9;&#xFF0C;&#x5C06;&#x6062;&#x590D;</span>
+        dat := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, <span class="hljs-number">1024</span>)
+        n, err = syscall.PtracePeekText(TraceePID, <span class="hljs-keyword">uintptr</span>(regs.PC()), dat)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;peek text error: %v, bytes: %d&quot;</span>, err, n)
+        }
+        fmt.Printf(<span class="hljs-string">&quot;size of text: %d\n&quot;</span>, n)
+
+        <span class="hljs-comment">// &#x53CD;&#x6C47;&#x7F16;&#x8FD9;&#x91CC;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;</span>
+        offset := <span class="hljs-number">0</span>
+        <span class="hljs-keyword">for</span> {
+            inst, err := x86asm.Decode(dat[offset:], <span class="hljs-number">64</span>)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;x86asm decode error: %v&quot;</span>, err)
+            }
+            fmt.Printf(<span class="hljs-string">&quot;%8x %s\n&quot;</span>, offset, inst.String())
+            offset += inst.Len
+        }
+    },
+}
+
+<span class="hljs-keyword">func</span> init() {
+    debugRootCmd.AddCommand(disassCmd)
+}
+
+<span class="hljs-comment">// GetExecutable &#x6839;&#x636E;pid&#x83B7;&#x53D6;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;</span>
+<span class="hljs-keyword">func</span> GetExecutable(pid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">string</span>, error) {
+    exeLink := fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/exe&quot;</span>, pid)
+    exePath, err := os.Readlink(exeLink)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, err
+    }
+    <span class="hljs-keyword">return</span> exePath, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
+<p>&#x6211;&#x4EEC;&#x968F;&#x4FBF;&#x5199;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#xFF0C;&#x8BA9;&#x5176;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#xFF0C;&#x67E5;&#x770B;&#x5176;pid&#x4E3A;2507&#xFF0C;&#x968F;&#x540E;&#x6267;&#x884C;<code>godbg attach 2507</code>&#x5F00;&#x59CB;&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
+<p>&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x8F93;&#x5165;disass&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x6CE8;&#x610F;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x5B8C;&#x6210;breakpoint&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x903B;&#x8F91;&#x3002;&#x4E0D;&#x7BA1;&#x600E;&#x6837;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x7ED3;&#x679C;&#x529F;&#x80FD;&#x662F;&#x6B63;&#x5E38;&#x7684;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6B63;&#x5E38;&#x7684;&#x8F93;&#x51FA;&#x3002;</p>
+<pre><code class="lang-bash">$ godbg attach 2507
+process 2507 attached succ
+process 2507 stopped: <span class="hljs-literal">true</span>
+
+godbg&gt; disass
+<span class="hljs-built_in">read</span> 1 bytes, value of 89
+size of text: 1024
+       0 MOV [RSP+Reg(0)+0x20], EAX
+       4 RET
+       5 INT 0x3
+      ..........
+      1e INT 0x3
+      1f INT 0x3
+      20 MOV EDI, [RSP+Reg(0)+0x8]
+      24 MOV RSI, 0x2
+      2b MOV RDX, 0x1
+      32 MOV EAX, 0x48
+      37 SYSCALL
+      39 RET
+      ..........
+     100 CMP [RAX+0x8], RCX
+     104 JE .+60
+     106 XOR ECX, ECX
+     108 TEST CL, CL
+     10a JNE .+16
+     10c XOR EAX, EAX
+     10e MOV [RSP+Reg(0)+0x40], AL
+     112 MOV RBP, [RSP+Reg(0)+0x20]
+     117 ADD RSP, 0x28
+     11b RET
+     11c LEA RCX, [RDX+0x18]
+     120 MOV [RSP+Reg(0)], RCX
+     124 ADD RAX, 0x18
+      ..........
+     3fd INT 0x3
+     3fe INT 0x3
+     3ff INT 0x3
+     Error: x86asm decode error: truncated instruction
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x4E5F;&#x6CE8;&#x610F;&#x5230;&#x6700;&#x540E;&#x4E00;&#x884C;&#x6709;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x63D0;&#x793A;&#x201C;truncated instruction&#x201D;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x56FA;&#x5B9A;&#x4E86;&#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x7684;buffer&#x662F;1024 bytes&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x6761;&#x6700;&#x540E;&#x7684;&#x6307;&#x4EE4;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x8BFB;&#x53D6;&#x8FC7;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;decode&#x7684;&#x65F6;&#x5019;&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x5931;&#x8D25;&#x4E86;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x7684;&#x5931;&#x8D25;&#x662F;&#x7B26;&#x5408;&#x9884;&#x671F;&#x7684;&#x3001;&#x65E0;&#x5BB3;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#x8FD9;&#x4E48;&#x591A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#xFF0C;&#x53EA;&#x4F1A;&#x663E;&#x793A;&#x65AD;&#x70B9;&#x9644;&#x8FD1;&#x7684;&#x51E0;&#x5341;&#x6761;&#x6307;&#x4EE4;&#x800C;&#x5DF2;&#xFF0C;&#x5BF9;&#x4E8E;decode&#x5931;&#x8D25;&#x7684;buffer&#x672B;&#x5C3E;&#x51E0;&#x6761;&#x6307;&#x4EE4;&#x7B80;&#x5355;&#x5FFD;&#x7565;&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E0B;&#x4E00;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x901A;&#x8FC7;&#x6307;&#x4EE4;patch&#x6765;&#x5B9E;&#x73B0;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#x7684;&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x3002;</p>
+<h3 id="&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;">&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;</h3>
+<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6709;go&#x3001;intel&#x3001;gnu 3&#x79CD;&#x5E38;&#x89C1;&#x98CE;&#x683C;&#xFF0C;gnu&#x98CE;&#x683C;&#x7684;&#x4FD7;&#x79F0;at&amp;t&#x98CE;&#x683C;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x4E0D;&#x540C;&#x4E60;&#x60EF;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x80FD;&#x987A;&#x7545;&#x5730;&#x9605;&#x8BFB;&#x76F8;&#x5173;&#x53CD;&#x6C47;&#x7F16;&#x51FA;&#x6765;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x540E;&#x7EED;&#x53C8;&#x4E3A;disass&#x547D;&#x4EE4;&#x6DFB;&#x52A0;&#x4E86;&#x9009;&#x9879;<code>disass -s &lt;syntax&gt;</code>&#x6765;&#x6307;&#x5B9A;&#x6C47;&#x7F16;&#x6307;&#x6307;&#x4EE4;&#x7684;&#x98CE;&#x683C;&#xFF0C;&#x5982;&#x6211;&#x672C;&#x4EBA;&#x6BD4;&#x8F83;&#x503E;&#x5411;&#x4E8E;&#x9605;&#x8BFB;at&amp;t&#x683C;&#x5F0F;&#x7684;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<code>disass -s gnu</code>&#x6765;&#x67E5;&#x770B;&#x5BF9;&#x5E94;&#x98CE;&#x683C;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x51FD;&#x6570;<code>instSyntax(inst x86asm.Inst, syntax string) (string, error)</code>&#x5B9E;&#x73B0;&#x4E86;&#x5BF9;&#x4E0D;&#x540C;&#x6C47;&#x7F16;&#x98CE;&#x683C;&#x7684;&#x8F6C;&#x6362;&#x652F;&#x6301;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> instSyntax(inst x86asm.Inst, syntax <span class="hljs-keyword">string</span>) (<span class="hljs-keyword">string</span>, error) {
+    asm := <span class="hljs-string">&quot;&quot;</span>
+    <span class="hljs-keyword">switch</span> syntax {
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;go&quot;</span>:
+        asm = x86asm.GoSyntax(inst, <span class="hljs-keyword">uint64</span>(inst.PCRel), <span class="hljs-literal">nil</span>)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;gnu&quot;</span>:
+        asm = x86asm.GNUSyntax(inst, <span class="hljs-keyword">uint64</span>(inst.PCRel), <span class="hljs-literal">nil</span>)
+    <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;intel&quot;</span>:
+        asm = x86asm.IntelSyntax(inst, <span class="hljs-keyword">uint64</span>(inst.PCRel), <span class="hljs-literal">nil</span>)
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;invalid asm syntax error&quot;</span>)
+    }
+    <span class="hljs-keyword">return</span> asm, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4E5F;&#x6DFB;&#x52A0;&#x4E86;&#x9009;&#x9879;<code>disass -n &lt;num&gt;</code>&#x6765;&#x6307;&#x5B9A;&#x4E00;&#x6B21;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x8981;decode&#x7684;&#x6307;&#x4EE4;&#x6761;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x5F80;&#x5F80;&#x66F4;&#x5173;&#x5FC3;&#x5F53;&#x524D;&#x5F85;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x5FC5;&#x8981;&#x4E00;&#x6B21;&#x53CD;&#x6C47;&#x7F16;&#x6210;&#x5343;&#x4E0A;&#x4E07;&#x884C;&#x6307;&#x4EE4;&#xFF0C;&#x90A3;&#x4EC5;&#x4F1A;&#x5206;&#x6563;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x7684;&#x6CE8;&#x610F;&#x529B;&#x3001;&#x5E26;&#x6765;&#x66F4;&#x591A;&#x4E0D;&#x4FBF;&#x800C;&#x5DF2;&#x3002;</p>
+<p>&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x6E90;&#x6587;&#x4EF6;<code>cmd/debug/disass.go</code>&#x4E2D;&#x67E5;&#x770B;&#x5B8C;&#x6574;&#x5B9E;&#x73B0;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="3-process_start_attach.html" class="navigation navigation-prev " aria-label="Previous page: 6.3 启动&attach">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="5-breakpoint.html" class="navigation navigation-next " aria-label="Next page: 6.5 添加断点">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6.4 反汇编","level":"1.6.4","depth":2,"next":{"title":"6.5 添加断点","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-breakpoint.md","ref":"6-develop-inst-debugger/5-breakpoint.md","articles":[]},"previous":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mermaid-cli","md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"mermaid-cli":{"chromeArgs":[],"chromeDir":"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","mermaidArgs":""},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/4-disassemble.md","mtime":"2021-09-22T17:09:35.272Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-25T07:50:32.660Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

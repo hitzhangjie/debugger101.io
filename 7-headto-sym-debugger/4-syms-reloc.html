@@ -870,12 +870,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-using-dwarf/">
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-parsing-dwarf.html">
             
-                <a href="../9-develop-sym-debugger/1-using-dwarf/">
+                <a href="../9-develop-sym-debugger/1-parsing-dwarf.html">
             
                     
-                    9.1 DWARF解析及应用
+                    9.1 DWARF解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-using-dwarf.html">
+            
+                <a href="../9-develop-sym-debugger/2-using-dwarf.html">
+            
+                    
+                    9.2 DWARF应用
             
                 </a>
             
@@ -884,7 +897,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1.1" data-path="../9-develop-sym-debugger/1-using-dwarf/1-symtable & linetable.html">
+        <li class="chapter " data-level="1.9.2.1" data-path="../9-develop-sym-debugger/1-using-dwarf/1-symtable & linetable.html">
             
                 <a href="../9-develop-sym-debugger/1-using-dwarf/1-symtable & linetable.html">
             
@@ -897,7 +910,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.2" data-path="../9-develop-sym-debugger/1-using-dwarf/2-debug-line.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="../9-develop-sym-debugger/1-using-dwarf/2-debug-line.html">
             
                 <a href="../9-develop-sym-debugger/1-using-dwarf/2-debug-line.html">
             
@@ -910,7 +923,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.3" data-path="../9-develop-sym-debugger/1-using-dwarf/3-call-frame.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="../9-develop-sym-debugger/1-using-dwarf/3-call-frame.html">
             
                 <a href="../9-develop-sym-debugger/1-using-dwarf/3-call-frame.html">
             
@@ -923,7 +936,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.4" data-path="../9-develop-sym-debugger/1-using-dwarf/4-disass.md">
+        <li class="chapter " data-level="1.9.2.4" data-path="../9-develop-sym-debugger/1-using-dwarf/4-disass.md">
             
                 <span>
             
@@ -936,7 +949,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.5" data-path="../9-develop-sym-debugger/1-using-dwarf/5-vars.md">
+        <li class="chapter " data-level="1.9.2.5" data-path="../9-develop-sym-debugger/1-using-dwarf/5-vars.md">
             
                 <span>
             
@@ -949,7 +962,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.6" data-path="../9-develop-sym-debugger/1-using-dwarf/6-funcs.md">
+        <li class="chapter " data-level="1.9.2.6" data-path="../9-develop-sym-debugger/1-using-dwarf/6-funcs.md">
             
                 <span>
             
@@ -962,7 +975,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.7" data-path="../9-develop-sym-debugger/1-using-dwarf/7-goroutines.md">
+        <li class="chapter " data-level="1.9.2.7" data-path="../9-develop-sym-debugger/1-using-dwarf/7-goroutines.md">
             
                 <span>
             
@@ -975,7 +988,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.8" data-path="../9-develop-sym-debugger/1-using-dwarf/x-gopkg.md">
+        <li class="chapter " data-level="1.9.2.8" data-path="../9-develop-sym-debugger/1-using-dwarf/x-gopkg.md">
             
                 <span>
             
@@ -988,7 +1001,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.9" data-path="../9-develop-sym-debugger/1-using-dwarf/x-more.md">
+        <li class="chapter " data-level="1.9.2.9" data-path="../9-develop-sym-debugger/1-using-dwarf/x-more.md">
             
                 <span>
             
@@ -1191,7 +1204,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.4 重定位","level":"1.7.4","depth":2,"next":{"title":"7.5 加载","level":"1.7.5","depth":2,"path":"7-headto-sym-debugger/5-loading.md","ref":"7-headto-sym-debugger/5-loading.md","articles":[]},"previous":{"title":"7.3 符号的解析","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms-resolve.md","ref":"7-headto-sym-debugger/3-syms-resolve.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mermaid-cli","md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"mermaid-cli":{"chromeArgs":[],"chromeDir":"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","mermaidArgs":""},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/4-syms-reloc.md","mtime":"2021-11-20T05:41:33.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-02T18:13:02.835Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.4 重定位","level":"1.7.4","depth":2,"next":{"title":"7.5 加载","level":"1.7.5","depth":2,"path":"7-headto-sym-debugger/5-loading.md","ref":"7-headto-sym-debugger/5-loading.md","articles":[]},"previous":{"title":"7.3 符号的解析","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms-resolve.md","ref":"7-headto-sym-debugger/3-syms-resolve.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["mermaid-cli","md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"mermaid-cli":{"chromeArgs":[],"chromeDir":"/Applications/Google Chrome.app/Contents/MacOS/Google Chrome","mermaidArgs":""},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/4-syms-reloc.md","mtime":"2021-11-20T05:41:33.759Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-12-03T20:14:03.480Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

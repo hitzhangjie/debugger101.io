@@ -838,12 +838,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.5" data-path="5-summary.html">
+        <li class="chapter " data-level="1.8.5" data-path="5-dwarf-summary.html">
             
-                <a href="5-summary.html">
+                <a href="5-dwarf-summary.html">
             
                     
-                    8.5 总结
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="6-parsing-dwarf.html">
+            
+                <a href="6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="7-using-dwarf.html">
+            
+                <a href="7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
             
                 </a>
             
@@ -870,12 +896,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-parsing-dwarf.html">
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-design-goals/README.md">
             
-                <a href="../9-develop-sym-debugger/1-parsing-dwarf.html">
+                <span>
             
                     
-                    9.1 DWARF解析
+                    9.1 设计目标
             
                 </a>
             
@@ -883,12 +909,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-using-dwarf.html">
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-big-pictures/">
             
-                <a href="../9-develop-sym-debugger/2-using-dwarf.html">
+                <a href="../9-develop-sym-debugger/2-big-pictures/">
             
                     
-                    9.2 DWARF应用
+                    9.2 技术思路
             
                 </a>
             
@@ -1488,7 +1514,7 @@ DWARF&#x4E2D;&#x5206;&#x522B;&#x4F7F;&#x7528;&#x5982;&#x4E0B;TAG&#x6765;&#x63CF;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8.3.2 DIE描述数据和类型","level":"1.8.3.2","depth":3,"next":{"title":"8.3.3 DIE描述可执行代码","level":"1.8.3.3","depth":3,"path":"8-dwarf/3-die-desc-code.md","ref":"8-dwarf/3-die-desc-code.md","articles":[]},"previous":{"title":"8.3.1 DIE介绍","level":"1.8.3.1","depth":3,"path":"8-dwarf/3-die-intro.md","ref":"8-dwarf/3-die-intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/3-die-desc-datatype.md","mtime":"2021-11-21T15:26:12.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-15T10:45:08.894Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.3.2 DIE描述数据和类型","level":"1.8.3.2","depth":3,"next":{"title":"8.3.3 DIE描述可执行代码","level":"1.8.3.3","depth":3,"path":"8-dwarf/3-die-desc-code.md","ref":"8-dwarf/3-die-desc-code.md","articles":[]},"previous":{"title":"8.3.1 DIE介绍","level":"1.8.3.1","depth":3,"path":"8-dwarf/3-die-intro.md","ref":"8-dwarf/3-die-intro.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/3-die-desc-datatype.md","mtime":"2021-11-21T15:26:12.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-15T16:05:17.379Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

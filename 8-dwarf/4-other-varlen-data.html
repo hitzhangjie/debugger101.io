@@ -838,12 +838,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.5" data-path="5-summary.html">
+        <li class="chapter " data-level="1.8.5" data-path="5-dwarf-summary.html">
             
-                <a href="5-summary.html">
+                <a href="5-dwarf-summary.html">
             
                     
-                    8.5 总结
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="6-parsing-dwarf.html">
+            
+                <a href="6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="7-using-dwarf.html">
+            
+                <a href="7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
             
                 </a>
             
@@ -870,12 +896,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-parsing-dwarf.html">
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-design-goals/README.md">
             
-                <a href="../9-develop-sym-debugger/1-parsing-dwarf.html">
+                <span>
             
                     
-                    9.1 DWARF解析
+                    9.1 设计目标
             
                 </a>
             
@@ -883,12 +909,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-using-dwarf.html">
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-big-pictures/">
             
-                <a href="../9-develop-sym-debugger/2-using-dwarf.html">
+                <a href="../9-develop-sym-debugger/2-big-pictures/">
             
                     
-                    9.2 DWARF应用
+                    9.2 技术思路
             
                 </a>
             
@@ -1304,7 +1330,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8.4.4 变长数据","level":"1.8.4.5","depth":3,"next":{"title":"8.4.5 压缩DWARF数据","level":"1.8.4.6","depth":3,"path":"8-dwarf/4-other-shrink-data.md","ref":"8-dwarf/4-other-shrink-data.md","articles":[]},"previous":{"title":"8.4.3 调用栈帧信息","level":"1.8.4.4","depth":3,"path":"8-dwarf/4-other-callframe-info.md","ref":"8-dwarf/4-other-callframe-info.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/4-other-varlen-data.md","mtime":"2021-11-21T13:50:12.902Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-15T10:45:08.894Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.4.4 变长数据","level":"1.8.4.5","depth":3,"next":{"title":"8.4.5 压缩DWARF数据","level":"1.8.4.6","depth":3,"path":"8-dwarf/4-other-shrink-data.md","ref":"8-dwarf/4-other-shrink-data.md","articles":[]},"previous":{"title":"8.4.3 调用栈帧信息","level":"1.8.4.4","depth":3,"path":"8-dwarf/4-other-callframe-info.md","ref":"8-dwarf/4-other-callframe-info.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/4-other-varlen-data.md","mtime":"2021-11-21T13:50:12.902Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-15T16:05:17.379Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

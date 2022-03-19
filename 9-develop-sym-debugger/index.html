@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="1-analysis-design/" />
+    <link rel="next" href="1-需求分析/" />
     
     
     <link rel="prev" href="../8-dwarf/8-summary.html" />
@@ -909,12 +909,25 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="1-analysis-design/">
+        <li class="chapter " data-level="1.9.1" data-path="1-需求分析/">
             
-                <a href="1-analysis-design/">
+                <a href="1-需求分析/">
             
                     
-                    9.1 分析设计
+                    9.1. 需求分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="2-概要设计/README.md">
+            
+                <span>
+            
+                    
+                    9.2 概要设计
             
                 </a>
             
@@ -923,12 +936,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1.1" data-path="1-analysis-design/1-analysis.html">
+        <li class="chapter " data-level="1.9.2.1" data-path="2-概要设计/1-整体架构.html">
             
-                <a href="1-analysis-design/1-analysis.html">
+                <a href="2-概要设计/1-整体架构.html">
             
                     
-                    9.1.1 需求分析
+                    9.2.1 整体架构
             
                 </a>
             
@@ -936,12 +949,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.2" data-path="1-analysis-design/2-outline-design.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="2-概要设计/2-前端UI层设计.html">
             
-                <a href="1-analysis-design/2-outline-design.html">
+                <a href="2-概要设计/2-前端UI层设计.html">
             
                     
-                    9.1.2 概要设计
+                    9.2.2 前端UI层设计
             
                 </a>
             
@@ -949,12 +962,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.3" data-path="1-analysis-design/3-Frontend界面设计.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="2-概要设计/3-Service层设计.html">
             
-                <a href="1-analysis-design/3-Frontend界面设计.html">
+                <a href="2-概要设计/3-Service层设计.html">
             
                     
-                    9.1.3 Frontend UI层设计
+                    9.2.3 Service层设计
             
                 </a>
             
@@ -962,12 +975,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.4" data-path="1-analysis-design/3-Service层设计.md">
+        <li class="chapter " data-level="1.9.2.4" data-path="2-概要设计/4-后端符号层设计.html">
             
-                <span>
+                <a href="2-概要设计/4-后端符号层设计.html">
             
                     
-                    9.1.4 Service层设计
+                    9.2.4 后端符号层设计
             
                 </a>
             
@@ -975,25 +988,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.5" data-path="1-analysis-design/3-Backend符号层设计.md">
+        <li class="chapter " data-level="1.9.2.5" data-path="2-概要设计/5-后端目标层设计.html">
             
-                <span>
-            
-                    
-                    9.1.5 Backend符号层设计
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.1.6" data-path="1-analysis-design/3-Backend目标层设计.md">
-            
-                <span>
+                <a href="2-概要设计/5-后端目标层设计.html">
             
                     
-                    9.1.6 Backend目标层设计
+                    9.2.5 后端目标层设计
             
                 </a>
             
@@ -1003,19 +1003,6 @@
     
 
             </ul>
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2" data-path="2-big-pictures/">
-            
-                <a href="2-big-pictures/">
-            
-                    
-                    9.2 技术思路
-            
-                </a>
-            
-
             
         </li>
     
@@ -1390,6 +1377,7 @@
 <p>&#x4E5F;&#x6709;&#x4E9B;&#x6781;&#x7AEF;&#x7684;&#x58F0;&#x97F3;&#xFF0C;&#x5982;&#x201C;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x201D;&#x3002;&#x4F46;&#x662F;&#x9057;&#x61BE;&#x7684;&#x662F;&#xFF0C;&#x5E76;&#x975E;&#x6240;&#x6709;&#x7684;bug&#x90FD;&#x8FD9;&#x4E48;&#x5BB9;&#x6613;&#x88AB;&#x5B9A;&#x4F4D;&#x3002;&#x6709;&#x4E9B;bug&#x53EF;&#x80FD;&#x6F5C;&#x5728;&#x5730;&#x66F4;&#x6DF1;&#xFF0C;&#x5982;bug&#x9690;&#x85CF;&#x5728;&#x5916;&#x90E8;&#x4F9D;&#x8D56;&#x5E93;&#x4E2D;&#xFF0C;&#x6216;&#x8005;&#x67D0;&#x79CD;&#x7279;&#x6B8A;&#x8FB9;&#x754C;&#x6761;&#x4EF6;&#x624D;&#x80FD;&#x89E6;&#x53D1;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x8FB9;&#x754C;&#x6761;&#x4EF6;&#x5728;&#x7A0B;&#x5E8F;&#x8BBE;&#x8BA1;&#x7684;&#x65F6;&#x5019;&#x538B;&#x6839;&#x53EF;&#x80FD;&#x672A;&#x88AB;&#x8003;&#x8651;&#x8FC7;&#x3002;</p>
 <p>&#x6211;&#x8981;&#x8868;&#x8FBE;&#x7684;&#x662F;&#xFF0C;&#x6839;&#x636E;&#x5177;&#x4F53;&#x95EE;&#x9898;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x5B9A;&#x4F4D;&#x65B9;&#x6CD5;&#xFF0C;&#x800C;&#x975E;&#x201C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x201D;&#x3002;&#x6211;&#x9047;&#x5230;&#x8FC7;&#x5F88;&#x591A;&#x590D;&#x6742;&#x7684;case&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x8C03;&#x8BD5;&#x5668;&#x5C06;&#x4F1A;&#x82B1;&#x8D39;&#x6211;&#x66F4;&#x591A;&#x7684;&#x65F6;&#x95F4;&#x3002;</p>
 <p>&#x6709;&#x610F;&#x601D;&#x7684;&#x662F;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5E76;&#x4E0D;&#x53EA;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x7684;&#x529F;&#x80FD;&#x4E5F;&#x4E0D;&#x53EA;&#x662F;&#x5B9A;&#x4F4D;bug&#x8FD9;&#x4E48;&#x5355;&#x4E00;&#xFF0C;&#x5B83;&#x7684;&#x6267;&#x884C;&#x65B9;&#x5F0F;&#x51B3;&#x5B9A;&#x4E86;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x7528;&#x5B83;&#x6765;&#x8DDF;&#x8E2A;&#x3001;&#x5B66;&#x4E60;&#x51E0;&#x4E4E;&#x4EFB;&#x4F55;&#x7CFB;&#x7EDF;&#x3001;&#x7B97;&#x6CD5;&#x7684;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#xFF0C;&#x5B83;&#x5E26;&#x7ED9;&#x4F60;&#x7684;&#x5C06;&#x662F;&#x4E00;&#x4E2A;&#x77E5;&#x8BC6;&#x7684;&#x5B9D;&#x85CF;&#x3002;</p>
+<p>&#x8003;&#x8651;&#x5230;&#x672C;&#x4E66;&#x53CA;&#x914D;&#x5957;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;demo&#x662F;&#x51FA;&#x4E8E;&#x6559;&#x5B66;&#x76EE;&#x7684;&#x7684;&#xFF0C;&#x4F5C;&#x8005;&#x8BA4;&#x4E3A;&#x5728;&#x5F00;&#x59CB;&#x7F16;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x4EA4;&#x4EE3;&#x4E0B;&#x6574;&#x4F53;&#x7684;&#x529F;&#x80FD;&#x6027;&#x3001;&#x975E;&#x529F;&#x80FD;&#x6027;&#x8981;&#x6C42;&#x4EE5;&#x53CA;&#x6982;&#x8981;&#x8BBE;&#x8BA1;&#x3001;&#x8BE6;&#x7EC6;&#x8BBE;&#x8BA1;&#x975E;&#x5E38;&#x91CD;&#x8981;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x540E;&#x7EED;&#x5C0F;&#x8282;&#x4E2D;&#x8FDB;&#x884C;&#x5185;&#x5BB9;&#x5C55;&#x5F00;&#x65F6;&#xFF0C;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x4EEC;&#x5C31;&#x80FD;&#x77E5;&#x9053;&#x6211;&#x4EEC;&#x4E3A;&#x4EC0;&#x4E48;&#x5B89;&#x6392;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#xFF0C;&#x5B83;&#x7684;&#x610F;&#x4E49;&#x662F;&#x4EC0;&#x4E48;&#x4EE5;&#x53CA;&#x4E0E;&#x76F8;&#x4E92;&#x4E4B;&#x95F4;&#x7684;&#x8054;&#x7CFB;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;&#x4E5F;&#x6709;&#x52A9;&#x4E8E;&#x6839;&#x636E;&#x4E2A;&#x4EBA;&#x638C;&#x63E1;&#x60C5;&#x51B5;&#x9009;&#x62E9;&#x6027;&#x7684;&#x9605;&#x8BFB;&#x3002;</p>
 
                                 
                                 </section>
@@ -1422,7 +1410,7 @@
                 </a>
                 
                 
-                <a href="1-analysis-design/" class="navigation navigation-next " aria-label="Next page: 9.1 分析设计">
+                <a href="1-需求分析/" class="navigation navigation-next " aria-label="Next page: 9.1. 需求分析">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1433,7 +1421,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9 开发go符号级调试器","level":"1.9","depth":1,"next":{"title":"9.1 分析设计","level":"1.9.1","depth":2,"path":"9-develop-sym-debugger/1-analysis-design/README.md","ref":"9-develop-sym-debugger/1-analysis-design/README.md","articles":[{"title":"9.1.1 需求分析","level":"1.9.1.1","depth":3,"path":"9-develop-sym-debugger/1-analysis-design/1-analysis.md","ref":"9-develop-sym-debugger/1-analysis-design/1-analysis.md","articles":[]},{"title":"9.1.2 概要设计","level":"1.9.1.2","depth":3,"path":"9-develop-sym-debugger/1-analysis-design/2-outline-design.md","ref":"9-develop-sym-debugger/1-analysis-design/2-outline-design.md","articles":[]},{"title":"9.1.3 Frontend UI层设计","level":"1.9.1.3","depth":3,"path":"9-develop-sym-debugger/1-analysis-design/3-Frontend界面设计.md","ref":"9-develop-sym-debugger/1-analysis-design/3-Frontend界面设计.md","articles":[]},{"title":"9.1.4 Service层设计","level":"1.9.1.4","depth":3,"path":"9-develop-sym-debugger/1-analysis-design/3-Service层设计.md","ref":"9-develop-sym-debugger/1-analysis-design/3-Service层设计.md","articles":[]},{"title":"9.1.5 Backend符号层设计","level":"1.9.1.5","depth":3,"path":"9-develop-sym-debugger/1-analysis-design/3-Backend符号层设计.md","ref":"9-develop-sym-debugger/1-analysis-design/3-Backend符号层设计.md","articles":[]},{"title":"9.1.6 Backend目标层设计","level":"1.9.1.6","depth":3,"path":"9-develop-sym-debugger/1-analysis-design/3-Backend目标层设计.md","ref":"9-develop-sym-debugger/1-analysis-design/3-Backend目标层设计.md","articles":[]}]},"previous":{"title":"8.8 本章总结","level":"1.8.8","depth":2,"path":"8-dwarf/8-summary.md","ref":"8-dwarf/8-summary.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/README.md","mtime":"2021-11-26T08:04:18.220Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-19T15:26:55.111Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9 开发go符号级调试器","level":"1.9","depth":1,"next":{"title":"9.1. 需求分析","level":"1.9.1","depth":2,"path":"9-develop-sym-debugger/1-需求分析/README.md","ref":"9-develop-sym-debugger/1-需求分析/README.md","articles":[]},"previous":{"title":"8.8 本章总结","level":"1.8.8","depth":2,"path":"8-dwarf/8-summary.md","ref":"8-dwarf/8-summary.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/README.md","mtime":"2022-03-19T16:30:08.868Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-19T16:38:13.920Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

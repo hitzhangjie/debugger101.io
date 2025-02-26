@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>6.8 移除断点 · GitBook</title>
+        <title>6.20 跟踪多线程程序1 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="9-clearall.html" />
+    <link rel="next" href="21-trace_old_threads.html" />
     
     
-    <link rel="prev" href="7-breakpoints.html" />
+    <link rel="prev" href="13-pregs.html" />
     
 
     </head>
@@ -340,7 +340,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6.8" data-path="8-clear.html">
+        <li class="chapter " data-level="1.6.8" data-path="8-clear.html">
             
                 <a href="8-clear.html">
             
@@ -418,7 +418,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.14" data-path="20-trace_new_threads.html">
+        <li class="chapter active" data-level="1.6.14" data-path="20-trace_new_threads.html">
             
                 <a href="20-trace_new_threads.html">
             
@@ -1378,7 +1378,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >6.8 移除断点</a>
+        <a href=".." >6.20 跟踪多线程程序1</a>
     </h1>
 </div>
 
@@ -1393,109 +1393,236 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x52A8;&#x6001;&#x65AD;&#x70B9;">&#x52A8;&#x6001;&#x65AD;&#x70B9;</h2>
-<h3 id="&#x8BBE;&#x8BA1;&#x76EE;&#x6807;&#xFF1A;&#x79FB;&#x9664;&#x65AD;&#x70B9;">&#x8BBE;&#x8BA1;&#x76EE;&#x6807;&#xFF1A;&#x79FB;&#x9664;&#x65AD;&#x70B9;</h3>
-<p>&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3001;&#x663E;&#x793A;&#x65AD;&#x70B9;&#x5217;&#x8868;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5982;&#x4F55;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x3002;</p>
-<p>&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x4E0E;&#x65B0;&#x589E;&#x65AD;&#x70B9;&#xFF0C;&#x90FD;&#x662F;&#x9700;&#x8981;&#x501F;&#x52A9;ptrace&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x56DE;&#x60F3;&#x4E0B;&#x65B0;&#x589E;&#x65AD;&#x70B9;&#x9996;&#x5148;&#x901A;&#x8FC7;PTRACEPEEKDATA/PTRACEPOKEDATA&#x6765;&#x5B9E;&#x73B0;&#x5BF9;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x7684;&#x5907;&#x4EFD;&#x3001;&#x8986;&#x5199;&#xFF0C;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x7684;&#x903B;&#x8F91;&#x6709;&#x70B9;&#x76F8;&#x53CD;&#xFF0C;&#x5148;&#x5C06;&#x539F;&#x6765;&#x5907;&#x4EFD;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x8986;&#x5199;&#x56DE;&#x65AD;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x4ECE;&#x5DF2;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x4E2D;&#x79FB;&#x9664;&#x5373;&#x53EF;&#x3002;</p>
-<blockquote>
-<p>ps: &#x5728;Linux&#x4E0B;PTRACE_PEEKTEXT/PTRACE_PEEKDATA&#xFF0C;&#x4EE5;&#x53CA;PTRACE_POKETEXT/PTRACE_POKEDATA&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x6267;&#x884C;ptrace&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;ptrace request&#x53EF;&#x4EE5;&#x4EFB;&#x9009;&#x4E00;&#x4E2A;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x53EF;&#x8BFB;&#x6027;&#xFF0C;&#x8BFB;&#x5199;&#x6307;&#x4EE4;&#x65F6;&#x503E;&#x5411;&#x4E8E;PTRACE_PEEKTEXT/PTRACE_POKETEXT&#xFF0C;&#x8BFB;&#x5199;&#x6570;&#x636E;&#x65F6;&#x5219;&#x503E;&#x5411;&#x4E8E;PTRACE_PEEKDATA/PTRACE_POKEDATA&#x3002;</p>
-</blockquote>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x9996;&#x5148;&#x89E3;&#x6790;&#x65AD;&#x70B9;&#x7F16;&#x53F7;&#x53C2;&#x6570; <code>-n &lt;breakNo&gt;</code>&#xFF0C;&#x5E76;&#x4ECE;&#x5DF2;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x4E2D;&#x67E5;&#x8BE2;&#xFF0C;&#x662F;&#x5426;&#x6709;&#x7F16;&#x53F7;&#x4E3A;n&#x7684;&#x65AD;&#x70B9;&#x5B58;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219; <code>&lt;breakNo&gt;</code>&#x4E3A;&#x65E0;&#x6548;&#x53C2;&#x6570;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x65AD;&#x70B9;&#x786E;&#x5B9E;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x6267;&#x884C;ptrace(PTRACE_POKEDATA,...)&#x5C06;&#x539F;&#x6765;&#x5907;&#x4EFD;&#x7684;1&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x8986;&#x5199;&#x56DE;&#x539F;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x5373;&#x6D88;&#x9664;&#x4E86;&#x65AD;&#x70B9;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x518D;&#x4ECE;&#x5DF2;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x4E2D;&#x5220;&#x9664;&#x8FD9;&#x4E2A;&#x65AD;&#x70B9;&#x3002;</p>
-<p>clear &#x64CD;&#x4F5C;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5728; <a href="https://github.com/hitzhangjie/godbg" target="_blank">hitzhangjie/godbg</a> &#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x67E5;&#x770B; godbg &#x7684;&#x6E90;&#x7801;&#xFF08;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x8FD9;&#x91CC;&#x5217;&#x51FA;&#x7684;&#x90E8;&#x5206;&#xFF09;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4E5F;&#x5F3A;&#x8C03;&#x8FC7;&#x4E86;&#xFF0C;&#x4E0A;&#x8FF0;repo&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x76F8;&#x5BF9;&#x5B8C;&#x5907;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x4EE3;&#x7801;&#x91CF;&#x4F1A;&#x6BD4;&#x8F83;&#x5927;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4E5F;&#x5728; <a href="https://github.com/hitzhangjie/golang-debugger-lessons" target="_blank">hitzhangjie/golang-debugger-lessons</a>)/8_clear &#x63D0;&#x4F9B;&#x4E86;&#x793A;&#x4F8B;&#xFF0C;&#x5C06;break&#x3001;breakpoints&#x3001;continue&#x3001;clear&#x8FD9;&#x51E0;&#x4E2A;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF0C;&#x63D0;&#x70BC;&#x540E;&#x5728;&#x4E00;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x6F14;&#x793A;&#x3002;</p>
-<p>golang-debugger-lessons&#x8FD9;&#x4E2A;repo&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x793A;&#x4F8B;&#x90FD;&#x662F;&#x5B8C;&#x5168;&#x72EC;&#x7ACB;&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x4F60;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x4FEE;&#x6539;&#x6D4B;&#x8BD5;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x628A;godbg&#x6574;&#x4E2A;&#x9879;&#x76EE;&#x4FEE;&#x6539;&#x7684;&#x8DD1;&#x4E0D;&#x8D77;&#x6765;&#x4E86;&#x3001;&#x8FD0;&#x884C;&#x4E0D;&#x6B63;&#x5E38;&#x4E86;&#x3001;&#x67E5;&#x95EE;&#x9898;&#x53C8;&#x6CA1;&#x6709;&#x5934;&#x7EEA;&#xFF0C;&#x53EF;&#x80FD;&#x66F4;&#x9002;&#x5408;&#x65B0;&#x624B;&#x5B66;&#x4E60;&#x6D4B;&#x8BD5;&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x5177;&#x5907;&#x4E00;&#x5B9A;&#x7ECF;&#x9A8C;&#x540E;&#xFF0C;&#x518D;&#x53BB;&#x770B; godbg &#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#x3002;</p>
-<p>TODO &#x4EE3;&#x7801;&#x793A;&#x4F8B;&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x4E00;&#x4E0B;, see: <a href="https://github.com/hitzhangjie/golang-debugger-book/issues/15" target="_blank">https://github.com/hitzhangjie/golang-debugger-book/issues/15</a></p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
+                                <h2 id="&#x6269;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;&#x5982;&#x4F55;&#x8DDF;&#x8E2A;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;">&#x6269;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;&#x5982;&#x4F55;&#x8DDF;&#x8E2A;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;</h2>
+<h3 id="&#x5173;&#x952E;&#x64CD;&#x4F5C;">&#x5173;&#x952E;&#x64CD;&#x4F5C;</h3>
+<p>1&#x3001;tracer&#xFF1A;run <code>ptrace(PTRACE_ATTACH, pid, NULL, PTRACE_O_TRACECLONE)</code>
+   &#x8BE5;&#x64CD;&#x4F5C;&#x5C06;&#x4F7F;&#x5F97;tracee&#x6267;&#x884C;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x7ED9;tracer&#x53D1;&#x9001;&#x4E00;&#x4E2A;SIGTRAP&#x4FE1;&#x53F7;&#xFF0C;&#x901A;&#x77E5;&#x6709;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x53D1;&#x751F;&#xFF0C;&#x65B0;&#x7EBF;&#x7A0B;&#x6216;&#x8005;&#x65B0;&#x8FDB;&#x7A0B;&#x88AB;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x4E86;
+2&#x3001;tracer&#xFF1A;&#x9700;&#x8981;&#x4E3B;&#x52A8;&#x53BB;&#x611F;&#x77E5;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x529E;&#x6CD5;&#xFF1A;</p>
+<pre><code>- &#x901A;&#x8FC7;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x51FD;&#x6570;&#x53BB;&#x611F;&#x77E5;&#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;&#x7684;&#x53D1;&#x751F;&#xFF1B;
+- &#x901A;&#x8FC7;waitpid()&#x53BB;&#x611F;&#x77E5;&#x5230;tracee&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;waitpid&#x8FD4;&#x56DE;&#x7684;status&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;PTRACE_EVENT_CLONE&#x4E8B;&#x4EF6;
+  see: `man 2 ptrace` &#x4E2D;&#x5173;&#x4E8E;&#x9009;&#x9879; PTRACE_O_TRACECLONE &#x7684;&#x8BF4;&#x660E;&#x3002;
+</code></pre><p>3&#x3001;tracer&#x5982;&#x679C;&#x786E;&#x5B9A;&#x4E86;&#x662F;clone&#x5BFC;&#x81F4;&#x7684;&#x4EE5;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x62FF;&#x5230;deliver&#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;&#x7684;&#x5176;&#x4ED6;&#x4FE1;&#x606F;&#xFF0C;&#x5982;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;pid</p>
+<p>4&#x3001;&#x62FF;&#x5230;&#x7EBF;&#x7A0B;pid&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x53BB;&#x5E72;&#x5176;&#x4ED6;&#x4E8B;&#xFF0C;&#x6BD4;&#x5982;&#x9ED8;&#x8BA4;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x65B0;&#x7EBF;&#x7A0B;&#x7EB3;&#x5165;&#x8DDF;&#x8E2A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x653E;&#x884C;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x6216;&#x8005;&#x89C2;&#x5BDF;&#x3001;&#x63A7;&#x5236;&#x65B0;&#x7EBF;&#x7A0B;</p>
+<h3 id="&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;">&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;</h3>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF0C;&#x8BE6;&#x89C1; <a href="https://github.com/hitzhangjie/golang-debugger-lessons" target="_blank">hitzhangjie/golang-debugger-lessons</a> / 20_trace_new_threads&#x3002;</p>
+<p>&#x9996;&#x5148;&#x4E3A;&#x4E86;&#x540E;&#x9762;&#x6D4B;&#x8BD5;&#x65B9;&#x4FBF;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x7528;C&#x8BED;&#x8A00;&#x6765;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x5C31;&#x662F;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C31;&#x521B;&#x5EFA;&#x4E2A;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;&#x5C31;&#x662F;&#x6253;&#x5370;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;pid&#xFF0C;&#x4EE5;&#x53CA;&#x7EBF;&#x7A0B;lwp&#x7684;pid&#x3002;</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdio.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;stdlib.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;unistd.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;sys/syscall.h&gt;</span></span>
+<span class="hljs-meta">#<span class="hljs-meta-keyword">include</span> <span class="hljs-meta-string">&lt;pthread.h&gt;</span></span>
 
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;errors&quot;</span>
-    <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;strings&quot;</span>
-    <span class="hljs-string">&quot;syscall&quot;</span>
+<span class="hljs-keyword">pid_t</span> gettid(<span class="hljs-keyword">void</span>);
 
-    <span class="hljs-string">&quot;godbg/target&quot;</span>
-
-    <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
-)
-
-<span class="hljs-keyword">var</span> clearCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;clear &lt;n&gt;&quot;</span>,
-    Short: <span class="hljs-string">&quot;&#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;&quot;</span>,
-    Long:  <span class="hljs-string">`&#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;`</span>,
-    Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
-        cmdGroupKey: cmdGroupBreakpoints,
-    },
-    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
-        fmt.Printf(<span class="hljs-string">&quot;clear %s\n&quot;</span>, strings.Join(args, <span class="hljs-string">&quot; &quot;</span>))
-
-        id, err := cmd.Flags().GetUint64(<span class="hljs-string">&quot;n&quot;</span>)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> err
-        }
-
-        <span class="hljs-comment">// &#x67E5;&#x627E;&#x65AD;&#x70B9;</span>
-        <span class="hljs-keyword">var</span> brk *target.Breakpoint
-        <span class="hljs-keyword">for</span> _, b := <span class="hljs-keyword">range</span> breakpoints {
-            <span class="hljs-keyword">if</span> b.ID != id {
-                <span class="hljs-keyword">continue</span>
-            }
-            brk = b
-            <span class="hljs-keyword">break</span>
-        }
-
-        <span class="hljs-keyword">if</span> brk == <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;&#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&quot;</span>)
-        }
-
-        <span class="hljs-comment">// &#x79FB;&#x9664;&#x65AD;&#x70B9;</span>
-        n, err := syscall.PtracePokeData(TraceePID, brk.Addr, []<span class="hljs-keyword">byte</span>{brk.Orig})
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
-            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x5931;&#x8D25;: %v&quot;</span>, err)
-        }
-        <span class="hljs-built_in">delete</span>(breakpoints, brk.Addr)
-
-        fmt.Println(<span class="hljs-string">&quot;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x6210;&#x529F;&quot;</span>)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-    },
+<span class="hljs-function"><span class="hljs-keyword">void</span> *<span class="hljs-title">threadfunc</span><span class="hljs-params">(<span class="hljs-keyword">void</span> *arg)</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;process: %d, thread: %u\n&quot;</span>, getpid(), syscall(SYS_gettid));
+    sleep(<span class="hljs-number">1</span>);
 }
 
-<span class="hljs-keyword">func</span> init() {
-    debugRootCmd.AddCommand(clearCmd)
+<span class="hljs-function"><span class="hljs-keyword">int</span> <span class="hljs-title">main</span><span class="hljs-params">()</span> </span>{
+    <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;process: %d, thread: %u\n&quot;</span>, getpid(), syscall(SYS_gettid));
 
-    clearCmd.Flags().Uint64P(<span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;&#x65AD;&#x70B9;&#x7F16;&#x53F7;&quot;</span>)
+    <span class="hljs-keyword">pthread_t</span> tid;
+    <span class="hljs-keyword">for</span> (<span class="hljs-keyword">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">100</span>; i++)
+    {
+        <span class="hljs-keyword">if</span> (i % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>) {
+            <span class="hljs-keyword">int</span> ret = pthread_create(&amp;tid, <span class="hljs-literal">NULL</span>, threadfunc, <span class="hljs-literal">NULL</span>);
+            <span class="hljs-keyword">if</span> (ret != <span class="hljs-number">0</span>) {
+                <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;pthread_create error: %d\n&quot;</span>, ret);
+                <span class="hljs-built_in">exit</span>(<span class="hljs-number">-1</span>);
+            }
+        }
+        sleep(<span class="hljs-number">1</span>);
+    }
+    sleep(<span class="hljs-number">15</span>);
+}
+</code></pre>
+<p>&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x8FD9;&#x6837;&#x7F16;&#x8BD1; <code>gcc -o fork fork.c -lpthread</code>&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C; <code>./fork</code> &#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x770B;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x8BD5;&#x8DDF;&#x8E2A;&#x7684;&#x65F6;&#x5019;&#x662F;&#x4E2A;&#x4EC0;&#x4E48;&#x8FD0;&#x884C;&#x6548;&#x679C;&#x3002;
+&#x7136;&#x540E;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x770B;&#x8C03;&#x8BD5;&#x5668;&#x90E8;&#x5206;&#x7684;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x662F;&#x4E3A;&#x4E86;&#x6F14;&#x793A;tracer&#xFF08;debugger&#xFF09;&#x5982;&#x4F55;&#x5BF9;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x4E2D;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x611F;&#x77E5;&#xFF0C;&#x5E76;&#x80FD;&#x81EA;&#x52A8;&#x8FFD;&#x8E2A;&#xFF0C;&#x5FC5;&#x8981;&#x65F6;&#x8FD8;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; gdb <code>set follow-fork-mode=child/parent/ask</code> &#x7684;&#x8C03;&#x8BD5;&#x6548;&#x679C;&#x5462;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;os&quot;</span>
+    <span class="hljs-string">&quot;os/exec&quot;</span>
+    <span class="hljs-string">&quot;runtime&quot;</span>
+    <span class="hljs-string">&quot;strconv&quot;</span>
+    <span class="hljs-string">&quot;syscall&quot;</span>
+    <span class="hljs-string">&quot;time&quot;</span>
+)
+
+<span class="hljs-keyword">var</span> usage = <span class="hljs-string">`Usage:
+    go run main.go &lt;pid&gt;
+
+    args:
+    - pid: specify the pid of process to attach
+`</span>
+
+<span class="hljs-keyword">func</span> main() {
+    runtime.LockOSThread()
+
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(os.Args) != <span class="hljs-number">2</span> {
+        fmt.Println(usage)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+
+    <span class="hljs-comment">// pid</span>
+    pid, err := strconv.Atoi(os.Args[<span class="hljs-number">1</span>])
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-built_in">panic</span>(err)
+    }
+
+    <span class="hljs-keyword">if</span> !checkPid(<span class="hljs-keyword">int</span>(pid)) {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;process %d not existed\n\n&quot;</span>, pid)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+
+    <span class="hljs-comment">// step1: supposing running dlv attach here</span>
+    fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;===step1===: supposing running `dlv attach pid` here\n&quot;</span>)
+
+    <span class="hljs-comment">// attach</span>
+    err = syscall.PtraceAttach(<span class="hljs-keyword">int</span>(pid))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;process %d attach error: %v\n\n&quot;</span>, pid, err)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+    fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;process %d attach succ\n\n&quot;</span>, pid)
+
+    <span class="hljs-comment">// check target process stopped or not</span>
+    <span class="hljs-keyword">var</span> status syscall.WaitStatus
+    <span class="hljs-keyword">var</span> rusage syscall.Rusage
+    _, err = syscall.Wait4(<span class="hljs-keyword">int</span>(pid), &amp;status, <span class="hljs-number">0</span>, &amp;rusage)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;process %d wait error: %v\n\n&quot;</span>, pid, err)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+    <span class="hljs-keyword">if</span> !status.Stopped() {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;process %d not stopped\n\n&quot;</span>, pid)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+    fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;process %d stopped\n\n&quot;</span>, pid)
+
+    regs := syscall.PtraceRegs{}
+    <span class="hljs-keyword">if</span> err := syscall.PtraceGetRegs(<span class="hljs-keyword">int</span>(pid), &amp;regs); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;get regs fail: %v\n&quot;</span>, err)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+    fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee stopped at %0x\n&quot;</span>, regs.PC())
+
+    <span class="hljs-comment">// step2: setup to trace all new threads creation events</span>
+    time.Sleep(time.Second * <span class="hljs-number">2</span>)
+
+    opts := syscall.PTRACE_O_TRACEFORK | syscall.PTRACE_O_TRACEVFORK | syscall.PTRACE_O_TRACECLONE
+    <span class="hljs-keyword">if</span> err := syscall.PtraceSetOptions(<span class="hljs-keyword">int</span>(pid), opts); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;set options fail: %v\n&quot;</span>, err)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+
+    <span class="hljs-keyword">for</span> {
+        <span class="hljs-comment">// &#x653E;&#x884C;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x6B21;&#x4E3B;&#x7EBF;&#x7A0B;&#x90FD;&#x4F1A;&#x56E0;&#x4E3A;&#x547D;&#x4E2D;clone&#x5C31;&#x505C;&#x4E0B;&#x6765;</span>
+        <span class="hljs-keyword">if</span> err := syscall.PtraceCont(<span class="hljs-keyword">int</span>(pid), <span class="hljs-number">0</span>); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;cont fail: %v\n&quot;</span>, err)
+            os.Exit(<span class="hljs-number">1</span>)
+        }
+
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x4E3B;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#xFF0C;&#x68C0;&#x67E5;&#x5982;&#x679C;status&#x662F;clone&#x4E8B;&#x4EF6;&#xFF0C;&#x5219;&#x7EE7;&#x7EED;&#x83B7;&#x53D6;clone&#x51FA;&#x7684;&#x7EBF;&#x7A0B;&#x7684;lwp pid</span>
+        <span class="hljs-keyword">var</span> status syscall.WaitStatus
+        rusage := syscall.Rusage{}
+        _, err := syscall.Wait4(pid, &amp;status, syscall.WSTOPPED|syscall.WCLONE, &amp;rusage)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;wait4 fail: %v\n&quot;</span>, err)
+            <span class="hljs-keyword">break</span>
+        }
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x4E0B;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x662F;&#x5426;&#x662F;clone&#x4E8B;&#x4EF6; (see `man 2 ptrace` &#x5173;&#x4E8E;&#x9009;&#x9879;PTRACE_O_TRACECLONE&#x7684;&#x8BF4;&#x660E;&#x90E8;&#x5206;)</span>
+        isclone := status&gt;&gt;<span class="hljs-number">8</span> == (syscall.WaitStatus(syscall.SIGTRAP) | syscall.WaitStatus(syscall.PTRACE_EVENT_CLONE&lt;&lt;<span class="hljs-number">8</span>))
+        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee stopped, tracee pid:%d, status: %s, trapcause is clone: %v\n&quot;</span>,
+            pid,
+            status.StopSignal().String(),
+            isclone)
+
+        <span class="hljs-comment">// &#x83B7;&#x53D6;&#x5B50;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;lwp&#x7684;pid</span>
+        msg, err := syscall.PtraceGetEventMsg(<span class="hljs-keyword">int</span>(pid))
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;get event msg fail: %v\n&quot;</span>, err)
+            <span class="hljs-keyword">break</span>
+        }
+        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;eventmsg: new thread lwp pid: %d\n&quot;</span>, msg)
+
+        <span class="hljs-comment">// &#x653E;&#x884C;&#x5B50;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x6267;&#x884C;</span>
+        _ = syscall.PtraceDetach(<span class="hljs-keyword">int</span>(msg))
+
+        time.Sleep(time.Second * <span class="hljs-number">2</span>)
+    }
+
+}
+
+<span class="hljs-comment">// checkPid check whether pid is valid process&apos;s id</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// On Unix systems, os.FindProcess always succeeds and returns a Process for</span>
+<span class="hljs-comment">// the given pid, regardless of whether the process exists.</span>
+<span class="hljs-keyword">func</span> checkPid(pid <span class="hljs-keyword">int</span>) <span class="hljs-keyword">bool</span> {
+    out, err := exec.Command(<span class="hljs-string">&quot;kill&quot;</span>, <span class="hljs-string">&quot;-s&quot;</span>, <span class="hljs-string">&quot;0&quot;</span>, strconv.Itoa(pid)).CombinedOutput()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-built_in">panic</span>(err)
+    }
+
+    <span class="hljs-comment">// output error message, means pid is invalid</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-keyword">string</span>(out) != <span class="hljs-string">&quot;&quot;</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
 }
 </code></pre>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
-<p>&#x9996;&#x5148;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x5F85;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; <code>godbg attach &lt;pid&gt;</code>&#x8C03;&#x8BD5;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x9996;&#x5148;&#x901A;&#x8FC7;&#x547D;&#x4EE4; <code>disass</code>&#x663E;&#x793A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x5217;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C; <code>b &lt;locspec&gt;</code>&#x547D;&#x4EE4;&#x6DFB;&#x52A0;&#x51E0;&#x4E2A;&#x65AD;&#x70B9;&#x3002;</p>
-<pre><code class="lang-bash">godbg&gt; b 0x4653af
-<span class="hljs-built_in">break</span> 0x4653af
-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
-godbg&gt; b 0x4653b6
-<span class="hljs-built_in">break</span> 0x4653b6
-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
-godbg&gt; b 0x4653c2
-<span class="hljs-built_in">break</span> 0x4653c2
-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
-</code></pre>
-<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E86;3&#x6B21;&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x64CD;&#x4F5C;&#xFF0C;<code>breakpoints</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;&#x5217;&#x8868;&#xFF1A;</p>
-<pre><code class="lang-bash">godbg&gt; breakpoints
-breakpoint[1] 0x4653af 
-breakpoint[2] 0x4653b6 
-breakpoint[3] 0x4653c2
-</code></pre>
-<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x6267;&#x884C; <code>clear -n 2</code>&#x79FB;&#x9664;&#x7B2C;2&#x4E2A;&#x65AD;&#x70B9;&#xFF1A;</p>
-<pre><code class="lang-bash">godbg&gt; clear -n 2
-clear 
-&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x6210;&#x529F;
-</code></pre>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x518D;&#x6B21;&#x6267;&#x884C; <code>breakpoints</code>&#x67E5;&#x770B;&#x5269;&#x4F59;&#x7684;&#x65AD;&#x70B9;&#xFF1A;</p>
-<pre><code class="lang-bash">godbg&gt; bs
-breakpoint[1] 0x4653af 
-breakpoint[3] 0x4653c2
-</code></pre>
-<p>&#x73B0;&#x5728;&#x65AD;&#x70B9;2&#x5DF2;&#x7ECF;&#x88AB;&#x79FB;&#x9664;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x7684;&#x529F;&#x80FD;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x3002;</p>
+<p>1&#x3001;&#x5148;&#x770B;&#x770B;testdata/fork.c&#xFF0C;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x5C31;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;pthread&#x7EBF;&#x7A0B;&#x51FA;&#x6765;</p>
+<p>&#x4E3B;&#x7EBF;&#x7A0B;&#x3001;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x540E;&#x90FD;&#x4F1A;&#x6253;&#x5370;&#x8BE5;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;pid&#x3001;tid&#xFF08;&#x8FD9;&#x91CC;&#x7684;tid&#x5C31;&#x662F;&#x5BF9;&#x5E94;&#x7684;lwp&#x7684;pid&#xFF09;</p>
+<pre><code>zhangjie&#x1F980; testdata(master) $ ./fork 
+process: 35573, thread: 35573
+process: 35573, thread: 35574
+process: 35573, thread: 35716
+process: 35573, thread: 35853
+process: 35573, thread: 35944
+process: 35573, thread: 36086
+process: 35573, thread: 36192
+process: 35573, thread: 36295
+process: 35573, thread: 36398
+...
+</code></pre><p>2&#x3001;&#x6211;&#x4EEC;&#x540C;&#x65F6;&#x89C2;&#x5BDF; ./20_trace_new_threads <code>&lt;&#x4E0A;&#x8FF0;fork&#x7A0B;&#x5E8F;&#x8FDB;&#x7A0B;pid&gt; &#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;</code></p>
+<pre><code>zhangjie&#x1F980; 20_trace_new_threads(master) $ ./20_trace_new_threads 35573
+===step1===: supposing running `dlv attach pid` here
+process 35573 attach succ
+
+process 35573 stopped
+
+tracee stopped at 7f318346f098
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 35716
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 35853
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 35944
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 35944
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 35944
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap1, trapcause is clone: true
+eventmsg: new thread lwp pid: 36086
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 36192
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 36295
+tracee stopped, tracee pid:35573, status: trace/breakpoint trap, trapcause is clone: true
+eventmsg: new thread lwp pid: 36398
+..
+</code></pre><p>3&#x3001;20_trace_new_threads &#x6BCF;&#x9694;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x90FD;&#x4F1A;&#x6253;&#x5370;&#x4E00;&#x4E2A;event msg: <code>&lt;new thread LWP pid&gt;</code></p>
+<p>&#x7ED3;&#x8BBA;&#x5C31;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x663E;&#x793A;&#x8BBE;&#x7F6E;PtraceSetOptions(pid, syscall.PTRACE_O_TRACECLONE)&#x540E;&#xFF0C;&#x6062;&#x590D;tracee&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x6837;tracee&#x6267;&#x884C;&#x8D77;&#x6765;&#x540E;&#xFF0C;&#x5F53;&#x6267;&#x884C;&#x5230;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x4E00;&#x4E2A;TRAP&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x7ED9;tracer&#x53D1;&#x9001;&#x4E00;&#x4E2A;SIGTRAP&#x6765;&#x901A;&#x77E5;tracee&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;&#x7136;&#x540E;tracer&#x5C31;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x5BF9;&#x5E94;&#x7684;status&#x6570;&#x636E;&#xFF0C;&#x6765;&#x5224;&#x65AD;&#x662F;&#x5426;&#x662F;&#x5BF9;&#x5E94;&#x7684;clone&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x662F;clone&#x4E8B;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x901A;&#x8FC7;syscall.PtraceGetEventMsg(...)&#x6765;&#x83B7;&#x53D6;&#x65B0;clone&#x51FA;&#x6765;&#x7684;&#x7EBF;&#x7A0B;&#x7684;LWP&#x7684;pid&#x3002;</p>
+<p>&#x68C0;&#x67E5;&#x662F;&#x4E0D;&#x662F;clone&#x4E8B;&#x4EF6;&#x5462;&#xFF0C;&#x53C2;&#x8003; man 2 ptrace&#x624B;&#x518C;&#x5BF9;&#x9009;&#x9879;PTRACE_O_TRACECLONE&#x7684;&#x4ECB;&#x7ECD;&#x90E8;&#x5206;&#xFF0C;&#x6709;&#x89E3;&#x91CA;clone&#x72B6;&#x51B5;&#x4E0B;&#x7684;status&#x503C;&#x5982;&#x4F55;&#x7F16;&#x7801;&#x3002;</p>
+<p>4&#x3001;&#x53E6;&#x5916;&#x8BBE;&#x7F6E;&#x4E86;&#x9009;&#x9879;PTRACE_O_TRACECLONE&#x4E4B;&#x540E;&#xFF0C;&#x65B0;&#x7EBF;&#x7A0B;&#x4F1A;&#x81EA;&#x52A8;&#x88AB;trace&#xFF0C;&#x6240;&#x4EE5;&#x65B0;&#x7EBF;&#x7A0B;&#x4E5F;&#x4F1A;&#x88AB;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x6B64;&#x65F6;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x65B0;&#x7EBF;&#x7A0B;&#x6062;&#x590D;&#x6267;&#x884C;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x663E;&#x793A;&#x5C06;&#x5176;syscall.PtraceDetach&#x6216;&#x8005;&#x6267;&#x884C;syscall.PtraceContinue&#x64CD;&#x4F5C;&#x6765;&#x8BA9;&#x65B0;&#x7EBF;&#x7A0B;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</p>
+<h3 id="&#x5F15;&#x7533;&#x4E00;&#x4E0B;">&#x5F15;&#x7533;&#x4E00;&#x4E0B;</h3>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x6D4B;&#x8BD5;&#x65B9;&#x6CD5;&#x4ECB;&#x7ECD;&#x5B8C;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F15;&#x7533;&#x4E0B;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x6D4B;&#x8BD5;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x63D0;&#x793A;&#x7528;&#x6237;&#xFF0C;&#x4F60;&#x60F3;&#x8DDF;&#x8E2A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x5462;&#xFF0C;&#x8FD8;&#x662F;&#x60F3;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x5462;&#xFF1F;&#x7C7B;&#x4F3C;&#x5730;&#x8FD9;&#x4E2A;&#x5728;gdb&#x8C03;&#x8BD5;&#x591A;&#x8FDB;&#x7A0B;&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x65F6;&#x65F6;&#x975E;&#x5E38;&#x6709;&#x7528;&#x7684;&#xFF0C;&#x8054;&#x60F3;&#x4E0B;gdb&#x4E2D;&#x7684; <code>set follow-fork-mode</code> &#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9009;&#x62E9; parent&#x3001;child&#x3001;ask &#x4E2D;&#x7684;&#x4E00;&#x79CD;&#xFF0C;&#x5E76;&#x4E14;&#x5141;&#x8BB8;&#x5728;&#x8C03;&#x8BD5;&#x671F;&#x95F4;&#x5728;&#x4E0A;&#x8FF0;&#x9009;&#x9879;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x5207;&#x6362;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x63D0;&#x524D;&#x89C4;&#x5212;&#x597D;&#x4E86;&#xFF0C;fork&#x540E;&#x8981;&#x8DDF;&#x8E2A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8FD8;&#x662F;&#x5B50;&#x7EBF;&#x7A0B;&#xFF08;or&#x8FDB;&#x7A0B;&#xFF09;&#xFF0C;&#x8FD9;&#x4E2A;&#x529F;&#x80FD;&#x7279;&#x6027;&#x5C31;&#x975E;&#x5E38;&#x7684;&#x6709;&#x7528;&#x3002;</p>
+<p>dlv&#x91CC;&#x9762;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x5B83;&#x662F;&#x901A;&#x8FC7;threads&#x6765;&#x5207;&#x6362;&#x88AB;&#x8C03;&#x8BD5;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;go&#x4E5F;&#x4E0D;&#x4F1A;&#x66B4;&#x6F0F;&#x7EBF;&#x7A0B;&#x53D8;&#x6210;api&#x7ED9;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x5927;&#x5BB6;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x5E94;&#x8BE5;&#x4E5F;&#x7528;&#x4E0D;&#x5230;&#x53BB;&#x663E;&#x793A;&#x8DDF;&#x8E2A;clone&#x65B0;&#x5EFA;&#x7EBF;&#x7A0B;&#x540E;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;&#xFF0C;&#x6240;&#x4EE5;&#x5E94;&#x8BE5;&#x6781;&#x5C11;&#x50CF;gdb set follow-fork-mode&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#x4E00;&#x6837;&#x53BB;&#x4F7F;&#x7528;&#x3002;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x5F15;&#x7533;&#x4E00;&#x4E0B;&#x3002;</p>
 
                                 
                                 </section>
@@ -1523,12 +1650,12 @@ breakpoint[3] 0x4653c2
 
             
                 
-                <a href="7-breakpoints.html" class="navigation navigation-prev " aria-label="Previous page: 6.7 列出断点">
+                <a href="13-pregs.html" class="navigation navigation-prev " aria-label="Previous page: 6.13 打印寄存器数据">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="9-clearall.html" class="navigation navigation-next " aria-label="Next page: 6.9 清空断点">
+                <a href="21-trace_old_threads.html" class="navigation navigation-next " aria-label="Next page: 6.21 跟踪多线程程序2">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1539,7 +1666,7 @@ breakpoint[3] 0x4653c2
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"next":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"previous":{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/8-clear.md","mtime":"2025-02-26T16:24:50.904Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-02-26T20:02:20.734Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.20 跟踪多线程程序1","level":"1.6.14","depth":2,"next":{"title":"6.21 跟踪多线程程序2","level":"1.6.15","depth":2,"path":"6-develop-inst-debugger/21-trace_old_threads.md","ref":"6-develop-inst-debugger/21-trace_old_threads.md","articles":[]},"previous":{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pregs.md","ref":"6-develop-inst-debugger/13-pregs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/20-trace_new_threads.md","mtime":"2025-02-26T19:54:56.427Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-02-26T20:02:20.734Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

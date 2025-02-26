@@ -1434,7 +1434,7 @@ func LockOSThread()
 *tach from it.  Under Linux, a tracee can be detached in this*
 *way regardless of which method was used to initiate tracing.*
 </code></pre><h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p><strong>src&#x8BE6;&#x89C1;&#xFF1A;golang-debugger-lessons/1.1_cmd_attach</strong></p>
+<p><strong>src&#x8BE6;&#x89C1;&#xFF1A;golang-debugger-lessons/2_process_attach</strong></p>
 <p>file: main.go</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
 
@@ -1682,10 +1682,10 @@ cloneFlags = _CLONE_VM | <span class="hljs-comment">/* share memory */</span>
 <p><code>-H</code>&#x9009;&#x9879;&#x5C06;&#x5217;&#x51FA;&#x8FDB;&#x7A0B;pid&#x4E0B;&#x7684;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#xFF0C;&#x4EE5;&#x4E0B;&#x8FDB;&#x7A0B;5293&#x4E0B;&#x6709;4&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;Linux&#x4E0B;&#x7EBF;&#x7A0B;&#x662F;&#x901A;&#x8FC7;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;PID&#x5217;&#x4E3A;5293&#x7684;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#x4E3A;&#x4E3B;&#x7EBF;&#x7A0B;&#x3002;</p>
 <pre><code class="lang-bash">$ top -H -p 5293
 ........
-PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                                                       
- 5293 root      20   0  702968   1268    968 S  0.0  0.0   0:00.04 loop                                                          
- 5294 root      20   0  702968   1268    968 S  0.0  0.0   0:00.08 loop                                                          
- 5295 root      20   0  702968   1268    968 S  0.0  0.0   0:00.03 loop                                                          
+PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND                                                     
+ 5293 root      20   0  702968   1268    968 S  0.0  0.0   0:00.04 loop                                                        
+ 5294 root      20   0  702968   1268    968 S  0.0  0.0   0:00.08 loop                                                        
+ 5295 root      20   0  702968   1268    968 S  0.0  0.0   0:00.03 loop                                                        
  5296 root      20   0  702968   1268    968 S  0.0  0.0   0:00.03 loop
 </code></pre>
 <p>top&#x5C55;&#x793A;&#x4FE1;&#x606F;&#x4E2D;&#x5217;S&#x8868;&#x793A;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#xFF0C;&#x5E38;&#x89C1;&#x7684;&#x53D6;&#x503C;&#x53CA;&#x542B;&#x4E49;&#x5982;&#x4E0B;&#xFF1A;</p>
@@ -1714,9 +1714,9 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 <p><em>wait3, wait4 - wait for process to change state, BSD style</em></p>
 <p><strong>SYNOPSIS</strong></p>
 <p>pid_t wait3(int <em>wstatus, int options,
-                   struct rusage </em>rusage);</p>
+struct rusage </em>rusage);</p>
 <p>pid_t wait4(pid_t pid, int <em>wstatus, int options,
-                   struct rusage </em>rusage);</p>
+struct rusage </em>rusage);</p>
 <p><strong>Description</strong></p>
 <p><strong>These functions are obsolete; use waitpid(2) or waitid(2) in new programs.</strong></p>
 <p>The wait3() and wait4() system calls are similar to waitpid(2), but additionally return resource usage information about the child in the structure pointed to by rusage.</p>
@@ -1804,7 +1804,7 @@ the options argument, as described below.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"next":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},"previous":{"title":"6.1 进程启动","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/2-process_attach.md","mtime":"2025-02-19T06:32:27.331Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-02-26T03:05:30.602Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"next":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},"previous":{"title":"6.1 进程启动","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/2-process_attach.md","mtime":"2025-02-26T11:07:39.327Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-02-26T11:07:50.144Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

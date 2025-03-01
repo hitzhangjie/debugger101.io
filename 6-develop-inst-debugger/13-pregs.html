@@ -1382,9 +1382,13 @@
                                 
                                 <h2 id="&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;">&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;</h2>
 <h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;pregs&#x67E5;&#x770B;&#x5BC4;&#x5B58;&#x5668;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;pregs&#x67E5;&#x770B;&#x5BC4;&#x5B58;&#x5668;</h3>
-<p>&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;pregs&#x547D;&#x4EE4;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x65F6;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;pregs&#x547D;&#x4EE4;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x65F6;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x3002;&#x5BF9;&#x4E8E;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x800C;&#x8A00;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x53CD;&#x6C47;&#x7F16;&#x770B;&#x5230;&#x5F85;&#x6267;&#x884C;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#xFF0C;&#x4E3A;&#x4E86;&#x641E;&#x6E05;&#x695A;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x501F;&#x52A9;pmem&#x6765;&#x67E5;&#x770B;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x9700;&#x8981;pregs&#x6765;&#x67E5;&#x770B;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x5C31;&#x597D;&#x6BD4;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x770B;&#x5230;&#x6E90;&#x7801;&#x540E;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x503C;&#x4E00;&#x6837;&#x3002;</p>
+<p>&#x5728;&#x524D;&#x9762;&#x7AE0;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4E0D;&#x6B62;&#x4E00;&#x6B21;&#x4F7F;&#x7528; <code>ptrace(PTRACE_GETREGS,...)</code> &#x83B7;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5355;&#x72EC;&#x652F;&#x6301;&#x4E00;&#x4E2A;pregs&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x6BCF;&#x6B21;&#x6267;&#x884C;&#x8BE5;&#x547D;&#x4EE4;&#x6253;&#x5370;&#x51FA;&#x5F53;&#x524D;&#x6240;&#x6709;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x50CF;gdb&#x90A3;&#x6837;&#x652F;&#x6301;&#x5355;&#x72EC;&#x6253;&#x5370;&#x67D0;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x4FE1;&#x606F;&#x4E86;&#x3002;</p>
+<blockquote>
+<p>ps&#xFF1A;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x95E8;&#x69DB;&#x662F;&#x6709;&#x70B9;&#x9AD8;&#x7684;&#xFF0C;&#x81F3;&#x5C11;&#x8981;&#x61C2;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x67D0;&#x4E9B;&#x5DE5;&#x5177;&#x5E2E;&#x52A9;&#x4E0B;&#x80FD;&#x770B;&#x5F97;&#x61C2;&#x6C47;&#x7F16;&#x8BED;&#x8A00;&#xFF0C;&#x4E5F;&#x6709;&#x4E9B;&#x5DE5;&#x5177;&#x652F;&#x6301;&#x4ECE;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x8FD8;&#x539F;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x9AD8;&#x7EA7;&#x8BED;&#x8A00;&#x6E90;&#x7801;&#xFF0C;&#x5982;&#x751F;&#x6210;&#x5BF9;&#x5E94;&#x7684;C&#x7A0B;&#x5E8F;&#xFF0C;&#x4F46;&#x662F;&#x56E0;&#x4E3A;&#x53D8;&#x91CF;&#x540D;&#x3001;&#x51FD;&#x6570;&#x540D;&#x95EE;&#x9898;&#x5373;&#x4F7F;&#x751F;&#x6210;&#x4E86;&#x53EF;&#x8BFB;&#x6027;&#x4E5F;&#x6BD4;&#x8F83;&#x5DEE;&#xFF0C;&#x53EA;&#x80FD;&#x770B;&#x7A0B;&#x5E8F;&#x7EC4;&#x7EC7;&#x3001;&#x8C03;&#x7528;&#x65B9;&#x5F0F;&#x3002;&#x5728;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x540C;&#x5904;&#x7406;&#x5668;&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6BD4;&#x5982;i386&#x3001;amd64&#x3001;arm64&#x7B49;&#xFF0C;&#x8FD9;&#x8981;&#x6C42;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x5FC5;&#x987B;&#x53C2;&#x8003;&#x5E76;&#x4E86;&#x89E3;&#x76F8;&#x5173;&#x7684;&#x7EC6;&#x8282;&#x624D;&#x80FD;&#x987A;&#x5229;&#x8C03;&#x8BD5;&#x3002;</p>
+</blockquote>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;<code>ptrace(PTRACE_GETREGS,...)</code>&#x64CD;&#x4F5C;&#x6765;&#x8BFB;&#x53D6;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7; <code>ptrace(PTRACE_GETREGS,...)</code> &#x64CD;&#x4F5C;&#x6765;&#x8BFB;&#x53D6;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x3002;</p>
 <p><strong>file: cmd/debug/pregs.go</strong></p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
 
@@ -1429,43 +1433,43 @@
     w.Flush()
 }
 </code></pre>
-<p>&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x901A;&#x8FC7;ptrace&#x83B7;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;prettyPrintRegs&#x6253;&#x5370;&#x5BC4;&#x5B58;&#x5668;&#x4FE1;&#x606F;&#x3002;&#x5176;&#x4E2D;&#xFF0C;prettyPrintRegs&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x4E86;<code>tabwriter</code>&#x5BF9;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x6309;&#x6837;&#x5F0F;&#x201C;<strong>Register    &#x5BC4;&#x5B58;&#x5668;&#x540D;    &#x5BC4;&#x5B58;&#x5668;&#x503C;</strong>&#x201D;&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;&#xFF0C;&#x4FBF;&#x4E8E;&#x67E5;&#x770B;&#x3002;</p>
+<p>&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x901A;&#x8FC7;ptrace&#x83B7;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;prettyPrintRegs&#x6253;&#x5370;&#x5BC4;&#x5B58;&#x5668;&#x4FE1;&#x606F;&#x3002;&#x5176;&#x4E2D;&#xFF0C;prettyPrintRegs&#x51FD;&#x6570;&#x4F7F;&#x7528;&#x4E86; <code>tabwriter</code>&#x5BF9;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x6309;&#x6837;&#x5F0F;&#x201C;<strong>Register    &#x5BC4;&#x5B58;&#x5668;&#x540D;    &#x5BC4;&#x5B58;&#x5668;&#x503C;</strong>&#x201D;&#x683C;&#x5F0F;&#x5316;&#x8F93;&#x51FA;&#xFF0C;&#x4FBF;&#x4E8E;&#x67E5;&#x770B;&#x3002;</p>
 <blockquote>
-<p>  tabwrite&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x591A;&#x884C;&#x3001;&#x591A;&#x5217;&#x6570;&#x636E;&#x4E14;&#x9700;&#x8981;&#x5BF9;&#x6BCF;&#x5217;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5BF9;&#x9F50;&#x7684;&#x573A;&#x666F;&#x975E;&#x5E38;&#x9002;&#x7528;&#x3002;</p>
+<p>tabwrite&#x5BF9;&#x4E8E;&#x9700;&#x8981;&#x8F93;&#x51FA;&#x591A;&#x884C;&#x3001;&#x591A;&#x5217;&#x6570;&#x636E;&#x4E14;&#x9700;&#x8981;&#x5BF9;&#x6BCF;&#x5217;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x5BF9;&#x9F50;&#x7684;&#x573A;&#x666F;&#x975E;&#x5E38;&#x9002;&#x7528;&#x3002;</p>
 </blockquote>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
-<p>&#x9996;&#x5148;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x5145;&#x5F53;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;<code>godbg attach &lt;pid&gt;</code>&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x8F93;&#x5165;&#x547D;&#x4EE4;pregs&#x67E5;&#x770B;&#x5BC4;&#x5B58;&#x5668;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x5145;&#x5F53;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; <code>godbg attach &lt;pid&gt;</code>&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x8F93;&#x5165;&#x547D;&#x4EE4;pregs&#x67E5;&#x770B;&#x5BC4;&#x5B58;&#x5668;&#x4FE1;&#x606F;&#x3002;</p>
 <pre><code class="lang-bash">$ godbg attach 116
 process 116 attached succ
 process 116 stopped: <span class="hljs-literal">true</span>
 godbg&gt; pregs
-Register    R15         0x400                 
-Register    R14         0x3                   
-Register    R13         0xa                   
-Register    R12         0x4be86f              
-Register    Rbp         0x7ffc5095bd50        
-Register    Rbx         0x555900              
-Register    R11         0x286                 
-Register    R10         0x0                   
-Register    R9          0x0                   
-Register    R8          0x0                   
-Register    Rax         0xfffffffffffffe00    
-Register    Rcx         0x464<span class="hljs-built_in">fc</span>3              
-Register    Rdx         0x0                   
-Register    Rsi         0x80                  
-Register    Rdi         0x555a48              
-Register    Orig_rax    0xca                  
-Register    Rip         0x464<span class="hljs-built_in">fc</span>3              
-Register    Cs          0x33                  
-Register    Eflags      0x286                 
-Register    Rsp         0x7ffc5095bd08        
-Register    Ss          0x2b                  
-Register    Fs_base     0x555990              
-Register    Gs_base     0x0                   
-Register    Ds          0x0                   
-Register    Es          0x0                   
-Register    Fs          0x0                   
-Register    Gs          0x0                   
+Register    R15         0x400               
+Register    R14         0x3                 
+Register    R13         0xa                 
+Register    R12         0x4be86f            
+Register    Rbp         0x7ffc5095bd50      
+Register    Rbx         0x555900            
+Register    R11         0x286               
+Register    R10         0x0                 
+Register    R9          0x0                 
+Register    R8          0x0                 
+Register    Rax         0xfffffffffffffe00  
+Register    Rcx         0x464<span class="hljs-built_in">fc</span>3            
+Register    Rdx         0x0                 
+Register    Rsi         0x80                
+Register    Rdi         0x555a48            
+Register    Orig_rax    0xca                
+Register    Rip         0x464<span class="hljs-built_in">fc</span>3            
+Register    Cs          0x33                
+Register    Eflags      0x286               
+Register    Rsp         0x7ffc5095bd08      
+Register    Ss          0x2b                
+Register    Fs_base     0x555990            
+Register    Gs_base     0x0                 
+Register    Ds          0x0                 
+Register    Es          0x0                 
+Register    Fs          0x0                 
+Register    Gs          0x0                 
 godbg&gt;
 </code></pre>
 <p>&#x6211;&#x4EEC;&#x770B;&#x5230;pregs&#x547D;&#x4EE4;&#x663E;&#x793A;&#x4E86;&#x4E09;&#x5217;&#x6570;&#x636E;&#xFF1A;</p>
@@ -1474,7 +1478,9 @@ godbg&gt;
 <li>&#x7B2C;2&#x5217;&#x4E3A;&#x5BC4;&#x5B58;&#x5668;&#x540D;&#x79F0;&#xFF0C;&#x4E3A;&#x4E86;&#x7F8E;&#x89C2;&#x91C7;&#x7528;&#x4E86;&#x5DE6;&#x5BF9;&#x9F50;&#xFF1B;</li>
 <li>&#x7B2C;3&#x5217;&#x4E3A;&#x5BC4;&#x5B58;&#x5668;&#x5F53;&#x524D;&#x503C;&#xFF0C;&#x91C7;&#x7528;16&#x8FDB;&#x5236;&#x6570;&#x6253;&#x5370;&#xFF0C;&#x4E3A;&#x4E86;&#x7F8E;&#x89C2;&#x91C7;&#x7528;&#x4E86;&#x5DE6;&#x5BF9;&#x9F50;&#xFF1B;</li>
 </ul>
-<p>&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x6709;&#x65F6;&#x9700;&#x8981;&#x67E5;&#x770B;&#x3001;&#x4FEE;&#x6539;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#xFF0C;&#x6BD4;&#x5982;&#x67E5;&#x770B;&#x3001;&#x4FEE;&#x6539;&#x8FD4;&#x56DE;&#x503C;&#xFF08;&#x8FD4;&#x56DE;&#x503C;&#x901A;&#x5E38;&#x8BB0;&#x5F55;&#x5728;rax&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;go&#x8BED;&#x8A00;&#x6709;&#x70B9;&#x7279;&#x6B8A;&#xFF09;&#x3002;</p>
+<p>&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x6709;&#x65F6;&#x9700;&#x8981;&#x67E5;&#x770B;&#x3001;&#x4FEE;&#x6539;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#xFF0C;&#x6BD4;&#x5982;&#x67E5;&#x770B;&#x3001;&#x4FEE;&#x6539;&#x8FD4;&#x56DE;&#x503C;&#xFF08;&#x8FD4;&#x56DE;&#x503C;&#x901A;&#x5E38;&#x8BB0;&#x5F55;&#x5728;rax&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C;&#x4F46;&#x662F;go&#x8BED;&#x8A00;&#x652F;&#x6301;&#x591A;&#x503C;&#x8FD4;&#x56DE;&#xFF0C;&#x5BF9;&#x8FD4;&#x56DE;&#x503C;&#x7684;&#x5904;&#x7406;&#x6709;&#x70B9;&#x7279;&#x6B8A;&#x4E4B;&#x5904;&#xFF09;&#x3002;</p>
+<h3 id="&#x672C;&#x6587;&#x5C0F;&#x7ED3;">&#x672C;&#x6587;&#x5C0F;&#x7ED3;</h3>
+<p>&#x622A;&#x6B62;&#x5230;&#x76EE;&#x524D;&#x6211;&#x4EEC;&#x5B9E;&#x73B0;&#x4E86;pmem&#x3001;pregs&#x8FD9;&#x4E24;&#x4E2A;&#x67E5;&#x770B;&#x5185;&#x5B58;&#x3001;&#x67E5;&#x770B;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x53EA;&#x67E5;&#x770B;&#x8FD8;&#x4E0D;&#x591F;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5E94;&#x8BE5;&#x5B9E;&#x73B0;&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3001;&#x4FEE;&#x6539;&#x5BC4;&#x5B58;&#x5668;&#x6570;&#x636E;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x540E;&#x9762;&#x5C0F;&#x8282;&#x4ECB;&#x7ECD;&#x3002;</p>
 
                                 
                                 </section>
@@ -1518,7 +1524,7 @@ godbg&gt;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"next":{"title":"6.20 跟踪多线程程序1","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/20-trace_new_threads.md","ref":"6-develop-inst-debugger/20-trace_new_threads.md","articles":[]},"previous":{"title":"6.12 打印内存数据","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-pmem.md","ref":"6-develop-inst-debugger/12-pmem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/13-pregs.md","mtime":"2023-07-04T15:38:01.814Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-01T10:49:48.006Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"next":{"title":"6.20 跟踪多线程程序1","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/20-trace_new_threads.md","ref":"6-develop-inst-debugger/20-trace_new_threads.md","articles":[]},"previous":{"title":"6.12 打印内存数据","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-pmem.md","ref":"6-develop-inst-debugger/12-pmem.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/13-pregs.md","mtime":"2025-03-01T11:33:43.536Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-01T11:34:28.623Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

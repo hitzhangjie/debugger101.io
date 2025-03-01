@@ -1383,16 +1383,22 @@
                                 <h2 id="&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;">&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;</h2>
 <h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;pmem&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;pmem&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;</h3>
 <p>&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x5B9E;&#x73B0;pmem&#x547D;&#x4EE4;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x65F6;&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3002;</p>
+<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<p>&#x6211;&#x4EEC;&#x77E5;&#x9053;&#xFF0C;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x662F;&#x4E00;&#x4E9B;0&#x548C;1&#x5E8F;&#x5217;&#xFF0C;&#x8981;&#x6B63;&#x786E;&#x5C55;&#x793A;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B;&#x57FA;&#x672C;&#x4E8B;&#x9879;&#xFF1A;</p>
+<ul>
+<li>0&#x548C;1&#x5B57;&#x8282;&#x5E8F;&#x5217;&#x4E0D;&#x662F;&#x6700;&#x7EC8;&#x5F62;&#x6001;&#xFF0C;&#x6570;&#x636E;&#x662F;&#x6709;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8981;&#x6839;&#x636E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6765;&#x89E3;&#x91CA;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#xFF1B;</li>
+<li>&#x4E0D;&#x540C;&#x673A;&#x5668;&#x4E2D;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x662F;&#x6709;&#x5B57;&#x8282;&#x5E8F;&#x7684;&#xFF0C;&#x5C0F;&#x7AEF;&#xFF08;&#x4F4E;&#x4F4D;&#x6570;&#x636E;&#x5728;&#x4F4E;&#x5730;&#x5740;&#xFF09;or &#x5927;&#x7AEF;&#xFF08;&#x4F4E;&#x4F4D;&#x6570;&#x636E;&#x5728;&#x9AD8;&#x5730;&#x5740;&#xFF09;&#xFF1B;</li>
+</ul>
+<p>pmem&#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x5185;&#x5B58;&#x5730;&#x5740;&#x5F00;&#x59CB;&#x7684;&#x4E00;&#x6BB5;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x6309;&#x7167;&#x6307;&#x5B9A;&#x5B57;&#x8282;&#x6570;&#x7F16;&#x7EC4;&#x6210;&#x4E00;&#x4E2A;&#x6574;&#x6570;&#xFF0C;&#x7136;&#x540E;&#x4EE5;&#x4E8C;&#x8FDB;&#x5236;&#x3001;&#x516B;&#x8FDB;&#x5236;&#x3001;&#x5341;&#x8FDB;&#x5236;&#x6216;&#x8005;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x7684;&#x5F62;&#x5F0F;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;&#x548C;&#x5E38;&#x89C1;&#x7684;&#x67E5;&#x770B;&#x53D8;&#x91CF;&#x7684;&#x64CD;&#x4F5C; <code>print &lt;var&gt;</code> &#x4E0D;&#x540C;&#x7684;&#x662F;&#xFF0C;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x8003;&#x8651;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x662F;&#x4EC0;&#x4E48;&#x6570;&#x636E;&#x7C7B;&#x578B; &#xFF08;&#x5982;&#x4E00;&#x4E2A; <code>struct{...}</code> &#xFF0C;<code>slice</code>&#xFF0C;or <code>map</code>)&#x3002;pmem&#x7C7B;&#x4F3C;gdb&#x91CC;&#x9762;&#x7684; <code>x/fmt</code> &#x64CD;&#x4F5C;&#x3002;</p>
+<p>&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7; <code>ptrace(PTRACE_PEEKDATA,...)</code>&#x64CD;&#x4F5C;&#x6765;&#x8BFB;&#x53D6;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x901A;&#x8FC7;<code>ptrace(PTRACE_PEEKDATA,...)</code>&#x64CD;&#x4F5C;&#x6765;&#x8BFB;&#x53D6;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3002;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x4E0D;&#x53EA;&#x662F;&#x4E00;&#x5806;&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x5B83;&#x4EEC;&#x662F;&#x6709;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x800C;&#x4E14;&#x6839;&#x636E;&#x5E73;&#x53F0;&#x7684;&#x5DEE;&#x5F02;&#x53EF;&#x80FD;&#x8FD8;&#x6709;&#x5927;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;&#x95EE;&#x9898;&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#x9664;&#x4E86;&#x5982;&#x4F55;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3001;&#x5927;&#x5C0F;&#x7AEF;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x5C55;&#x793A;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
-<h4 id="&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;">&#x7B2C;&#x4E00;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;</h4>
-<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5B9E;&#x73B0;&#x5BF9;&#x5185;&#x5B58;&#x5185;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;&#x91CF;&#x53EF;&#x4EE5;&#x7531;count&#x548C;size&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#xFF1A;</p>
+<h4 id="&#x7B2C;1&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;">&#x7B2C;1&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;</h4>
+<p>&#x9996;&#x5148;&#xFF0C;&#x6211;&#x4EEC;&#x901A;&#x8FC7; <code>ptrace(PTRACE_PEEKDATA,...)</code> &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5B9E;&#x73B0;&#x5BF9;&#x5185;&#x5B58;&#x5185;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#xFF0C;&#x6BCF;&#x6B21;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;&#x91CF;&#x53EF;&#x4EE5;&#x7531;count&#x548C;size&#x8BA1;&#x7B97;&#x5F97;&#x5230;&#xFF1A;</p>
 <ul>
 <li>size&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5F85;&#x8BFB;&#x53D6;&#x5E76;&#x663E;&#x793A;&#x7684;&#x6570;&#x636E;&#x9879;&#x5305;&#x62EC;&#x591A;&#x5C11;&#x4E2A;&#x5B57;&#x8282;&#xFF1B;</li>
 <li>count&#x8868;&#x793A;&#x8FDE;&#x7EED;&#x8BFB;&#x53D6;&#x5E76;&#x663E;&#x793A;&#x591A;&#x5C11;&#x4E2A;&#x8FD9;&#x6837;&#x7684;&#x6570;&#x636E;&#x9879;&#xFF1B;</li>
 </ul>
-<p>&#x6BD4;&#x5982;&#x4E00;&#x4E2A;int&#x6570;&#x636E;&#x9879;&#x53EF;&#x80FD;&#x5305;&#x542B;4&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x8981;&#x663E;&#x793A;8&#x4E2A;int&#x6570;&#x5219;&#x8981;&#x6307;&#x5B9A;<code>-size=4 -count=8</code>&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x4E00;&#x4E2A;int&#x6570;&#x636E;&#x9879;&#x53EF;&#x80FD;&#x5305;&#x542B;4&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x8981;&#x663E;&#x793A;8&#x4E2A;int&#x6570;&#x5219;&#x8981;&#x6307;&#x5B9A; <code>-size=4 -count=8</code>&#x3002;</p>
 <p>&#x4E0B;&#x9762;&#x7684;&#x7A0B;&#x5E8F;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4EE5;16&#x8FDB;&#x5236;&#x6570;&#x6253;&#x5370;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;&#x6570;&#x636E;&#x3002;</p>
 <p><strong>file: cmd/debug/pmem.go</strong></p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
@@ -1435,6 +1441,7 @@
             <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;read %d bytes, error: %v&quot;</span>, n, err)
         }
 
+        <span class="hljs-comment">// print result</span>
         fmt.Printf(<span class="hljs-string">&quot;read %d bytes ok:&quot;</span>, n)
         <span class="hljs-keyword">for</span> _, b := <span class="hljs-keyword">range</span> buf[:n] {
             fmt.Printf(<span class="hljs-string">&quot;%x&quot;</span>, b)
@@ -1476,8 +1483,39 @@
     <span class="hljs-keyword">return</span> err
 }
 </code></pre>
-<h4 id="&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x89E3;&#x6790;">&#x7B2C;&#x4E8C;&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&quot;&#x7C7B;&#x578B;&quot;&#x89E3;&#x6790;</h4>
-<p>&#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x5230;&#x7684;<code>count*byte</code>&#x4E2A;&#x5B57;&#x8282;&#x6570;&#x636E;&#xFF0C;&#x5E94;&#x8BE5;&#x6309;&#x7167;<code>-size</code>&#x4EE5;&#x53CA;<code>-fmt</code>&#x5BF9;&#x8FDE;&#x7EED;&#x5B57;&#x8282;&#x8FDB;&#x884C;&#x7F16;&#x7EC4;&#x3001;&#x7C7B;&#x578B;&#x89E3;&#x6790;&#x3002;</p>
+<h4 id="&#x7B2C;2&#x6B65;&#xFF1A;&#x5224;&#x65AD;&#x5B57;&#x8282;&#x5E8F;&#x53CA;&#x6570;&#x503C;&#x89E3;&#x6790;">&#x7B2C;2&#x6B65;&#xFF1A;&#x5224;&#x65AD;&#x5B57;&#x8282;&#x5E8F;&#x53CA;&#x6570;&#x503C;&#x89E3;&#x6790;</h4>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x68C0;&#x6D4B;&#x662F;&#x5426;&#x662F;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;</span>
+<span class="hljs-keyword">func</span> isLittleEndian() <span class="hljs-keyword">bool</span> {
+    buf := [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{}
+    *(*<span class="hljs-keyword">uint16</span>)(unsafe.Pointer(&amp;buf[<span class="hljs-number">0</span>])) = <span class="hljs-keyword">uint16</span>(<span class="hljs-number">0xABCD</span>)
+
+    <span class="hljs-keyword">switch</span> buf {
+    <span class="hljs-keyword">case</span> [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0xCD</span>, <span class="hljs-number">0xAB</span>}:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
+    <span class="hljs-keyword">case</span> [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0xAB</span>, <span class="hljs-number">0xCD</span>}:
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
+    <span class="hljs-keyword">default</span>:
+        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Could not determine native endianness.&quot;</span>)
+    }
+}
+
+<span class="hljs-comment">// &#x5C06;byteslice&#x8F6C;&#x6210;uint64&#x6570;&#x503C;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;</span>
+<span class="hljs-keyword">func</span> byteArrayToUInt64(buf []<span class="hljs-keyword">byte</span>, isLittleEndian <span class="hljs-keyword">bool</span>) <span class="hljs-keyword">uint64</span> {
+    <span class="hljs-keyword">var</span> n <span class="hljs-keyword">uint64</span>
+    <span class="hljs-keyword">if</span> isLittleEndian {
+        <span class="hljs-keyword">for</span> i := <span class="hljs-built_in">len</span>(buf) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- {
+            n = n&lt;&lt;<span class="hljs-number">8</span> + <span class="hljs-keyword">uint64</span>(buf[i])
+        }
+    } <span class="hljs-keyword">else</span> {
+        <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(buf); i++ {
+            n = n&lt;&lt;<span class="hljs-number">8</span> + <span class="hljs-keyword">uint64</span>(buf[i])
+        }
+    }
+    <span class="hljs-keyword">return</span> n
+}
+</code></pre>
+<h4 id="&#x7B2C;3&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x89E3;&#x6790;">&#x7B2C;3&#x6B65;&#xFF1A;&#x5B9E;&#x73B0;&#x6570;&#x636E;&quot;&#x7C7B;&#x578B;&quot;&#x89E3;&#x6790;</h4>
+<p>&#x4ECE;&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E94;&#x8BE5;&#x6309;&#x7167;&#x6BCF;&#x4E2A;&#x6570;&#x636E;&#x9879;&#x5360;&#x7528;&#x7684;&#x5B57;&#x8282;&#x6570; <code>-size</code>&#x4EE5;&#x53CA;&#x8981;&#x5C55;&#x793A;&#x7684;&#x8FDB;&#x5236; <code>-fmt</code> &#x5BF9;&#x8FDE;&#x7EED;&#x5B57;&#x8282;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x7F16;&#x7EC4;&#x3001;&#x89E3;&#x6790;&#x3002;&#x4E14;&#x9700;&#x8981;&#x8003;&#x8651;&#x4E8C;&#x8FDB;&#x5236;&#x3001;&#x516B;&#x8FDB;&#x5236;&#x3001;&#x5341;&#x8FDB;&#x5236;&#x3001;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x6570;&#x5C55;&#x793A;&#x65F6;&#x5360;&#x7528;&#x7684;&#x7EC8;&#x7AEF;&#x5217;&#x6570;&#x95EE;&#x9898;&#xFF0C;&#x6BCF;&#x884C;&#x5217;&#x6570;&#x6709;&#x9650;&#xFF0C;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x8FDB;&#x5236;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x6BCF;&#x884C;&#x9002;&#x5408;&#x5C55;&#x793A;&#x7684;&#x6570;&#x5B57;&#x7684;&#x6570;&#x91CF;&#x4E0D;&#x540C;&#x3002;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
 ...
 
@@ -1506,9 +1544,9 @@
 <span class="hljs-keyword">func</span> prettyPrintMem(address <span class="hljs-keyword">uintptr</span>, memArea []<span class="hljs-keyword">byte</span>, littleEndian <span class="hljs-keyword">bool</span>, format <span class="hljs-keyword">byte</span>, size <span class="hljs-keyword">int</span>) <span class="hljs-keyword">string</span> {
 
     <span class="hljs-keyword">var</span> (
-        cols      <span class="hljs-keyword">int</span>
-        colFormat <span class="hljs-keyword">string</span>
-        colBytes  = size
+        cols      <span class="hljs-keyword">int</span>         <span class="hljs-comment">// &#x4E0D;&#x540C;&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x6BCF;&#x884C;&#x5C55;&#x793A;&#x7684;&#x5217;&#x6570;(&#x5982;cols=4&#xFF0C; 1 2 3 4)</span>
+        colFormat <span class="hljs-keyword">string</span>     <span class="hljs-comment">// &#x4E0D;&#x540C;&#x8FDB;&#x5236;&#x6570;&#xFF0C;&#x6BCF;&#x5217;&#x6570;&#x5B57;&#x683C;&#x5F0F;&#x5316;&#x65B9;&#x5F0F;&#xFF08;&#x5982;%08b, 00000001)</span>
+        colBytes  = size    <span class="hljs-comment">// &#x6BCF;&#x5217;&#x6570;&#x5B57;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#xFF08;&#x5982;2, &#x9700;2&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x8003;&#x8651;&#x5B57;&#x8282;&#x5E8F;&#xFF09;</span>
 
         addrLen <span class="hljs-keyword">int</span>
         addrFmt <span class="hljs-keyword">string</span>
@@ -1532,18 +1570,22 @@
     }
     colFormat += <span class="hljs-string">&quot;\t&quot;</span>
 
+    <span class="hljs-comment">// the number of rows to print</span>
     l := <span class="hljs-built_in">len</span>(memArea)
     rows := l / (cols * colBytes)
     <span class="hljs-keyword">if</span> l%(cols*colBytes) != <span class="hljs-number">0</span> {
         rows++
     }
 
-    <span class="hljs-comment">// Avoid the lens of two adjacent address are different, so always use the last addr&apos;s len to format.</span>
+    <span class="hljs-comment">// We should print memory address in the beginnning of every line.</span>
+    <span class="hljs-comment">// And we should use fixed length bytes to print the address for </span>
+    <span class="hljs-comment">// better readability.</span>
     <span class="hljs-keyword">if</span> l != <span class="hljs-number">0</span> {
         addrLen = <span class="hljs-built_in">len</span>(fmt.Sprintf(<span class="hljs-string">&quot;%x&quot;</span>, <span class="hljs-keyword">uint64</span>(address)+<span class="hljs-keyword">uint64</span>(l)))
     }
     addrFmt = <span class="hljs-string">&quot;0x%0&quot;</span> + strconv.Itoa(addrLen) + <span class="hljs-string">&quot;x:\t&quot;</span>
 
+    <span class="hljs-comment">// use tabwriter to print lines with columns aligned vertically.</span>
     <span class="hljs-keyword">var</span> b strings.Builder
     w := tabwriter.NewWriter(&amp;b, <span class="hljs-number">0</span>, <span class="hljs-number">0</span>, <span class="hljs-number">3</span>, <span class="hljs-string">&apos; &apos;</span>, <span class="hljs-number">0</span>)
 
@@ -1563,36 +1605,6 @@
     w.Flush()
     <span class="hljs-keyword">return</span> b.String()
 }
-
-<span class="hljs-comment">// &#x5C06;byteslice&#x8F6C;&#x6210;uint64&#x6570;&#x503C;&#xFF0C;&#x6CE8;&#x610F;&#x5B57;&#x8282;&#x5E8F;</span>
-<span class="hljs-keyword">func</span> byteArrayToUInt64(buf []<span class="hljs-keyword">byte</span>, isLittleEndian <span class="hljs-keyword">bool</span>) <span class="hljs-keyword">uint64</span> {
-    <span class="hljs-keyword">var</span> n <span class="hljs-keyword">uint64</span>
-    <span class="hljs-keyword">if</span> isLittleEndian {
-        <span class="hljs-keyword">for</span> i := <span class="hljs-built_in">len</span>(buf) - <span class="hljs-number">1</span>; i &gt;= <span class="hljs-number">0</span>; i-- {
-            n = n&lt;&lt;<span class="hljs-number">8</span> + <span class="hljs-keyword">uint64</span>(buf[i])
-        }
-    } <span class="hljs-keyword">else</span> {
-        <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-built_in">len</span>(buf); i++ {
-            n = n&lt;&lt;<span class="hljs-number">8</span> + <span class="hljs-keyword">uint64</span>(buf[i])
-        }
-    }
-    <span class="hljs-keyword">return</span> n
-}
-
-<span class="hljs-comment">// &#x68C0;&#x6D4B;&#x662F;&#x5426;&#x662F;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;</span>
-<span class="hljs-keyword">func</span> isLittleEndian() <span class="hljs-keyword">bool</span> {
-    buf := [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{}
-    *(*<span class="hljs-keyword">uint16</span>)(unsafe.Pointer(&amp;buf[<span class="hljs-number">0</span>])) = <span class="hljs-keyword">uint16</span>(<span class="hljs-number">0xABCD</span>)
-
-    <span class="hljs-keyword">switch</span> buf {
-    <span class="hljs-keyword">case</span> [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0xCD</span>, <span class="hljs-number">0xAB</span>}:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>
-    <span class="hljs-keyword">case</span> [<span class="hljs-number">2</span>]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0xAB</span>, <span class="hljs-number">0xCD</span>}:
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>
-    <span class="hljs-keyword">default</span>:
-        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;Could not determine native endianness.&quot;</span>)
-    }
-}
 </code></pre>
 <p>&#x4E0A;&#x9762;&#x7684;&#x4EE3;&#x7801;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#x903B;&#x8F91;&#x4E0D;&#x53D8;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x6DFB;&#x52A0;&#x4E86;&#x4E24;&#x90E8;&#x5206;&#x903B;&#x8F91;&#xFF1A;</p>
 <ul>
@@ -1602,7 +1614,7 @@
 <p>&#x81F3;&#x6B64;pmem&#x547D;&#x4EE4;&#x57FA;&#x672C;&#x5B8C;&#x6210;&#x5F00;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x6D4B;&#x8BD5;&#x4E0B;pmem&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
 <h4 id="&#x6D4B;&#x8BD5;&#xFF1A;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;">&#x6D4B;&#x8BD5;&#xFF1A;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;</h4>
-<p>&#x9996;&#x5148;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C;<code>godbg attach &lt;pid&gt;</code>&#x8DDF;&#x8E2A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8F93;&#x5165;<code>disass</code>&#x67E5;&#x770B;&#x4E0B;&#x53CD;&#x6C47;&#x7F16;&#x6570;&#x636E;&#xFF0C;&#x663E;&#x793A;&#x6709;&#x5F88;&#x591A;&#x7684;<code>int3</code>&#x6307;&#x4EE4;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x8282;&#x6570;&#x636E;&#x662F;<code>0xCC</code>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x4E00;&#x5B57;&#x8282;&#x8BE5;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#x7684;&#x6570;&#x636E;&#x6765;&#x5FEB;&#x901F;&#x9A8C;&#x8BC1;pmem&#x662F;&#x5426;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#x3002;</p>
+<p>&#x9996;&#x5148;&#x8FD0;&#x884C;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x8FD0;&#x884C; <code>godbg attach &lt;pid&gt;</code>&#x8DDF;&#x8E2A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8F93;&#x5165; <code>disass</code>&#x67E5;&#x770B;&#x4E0B;&#x53CD;&#x6C47;&#x7F16;&#x6570;&#x636E;&#xFF0C;&#x663E;&#x793A;&#x6709;&#x5F88;&#x591A;&#x7684; <code>int3</code>&#x6307;&#x4EE4;&#xFF0C;&#x5176;&#x5BF9;&#x5E94;&#x7684;&#x5B57;&#x8282;&#x6570;&#x636E;&#x662F; <code>0xCC</code>&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x4E00;&#x5B57;&#x8282;&#x8BE5;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#x7684;&#x6570;&#x636E;&#x6765;&#x5FEB;&#x901F;&#x9A8C;&#x8BC1;pmem&#x662F;&#x5426;&#x5DE5;&#x4F5C;&#x6B63;&#x5E38;&#x3002;</p>
 <pre><code class="lang-bash">$ godbg attach 7764
 process 7764 attached succ
 process 7764 stopped: <span class="hljs-literal">true</span>
@@ -1677,8 +1689,11 @@ godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --f
 <p>pmem&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x89E3;&#x6790;&#x4E0D;&#x540C;fmt&#x3001;&#x4E0D;&#x540C;size&#x3001;&#x5927;&#x5C0F;&#x7AEF;&#x5B57;&#x8282;&#x5E8F;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#x4E86;&#x3002;</p>
 <p>&#x8FD0;&#x884C;&#x7ED3;&#x679C;&#x7B26;&#x5408;&#x9884;&#x671F;&#xFF0C;&#x8BF4;&#x660E;pmem&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;&#x3001;&#x5C55;&#x793A;&#x529F;&#x80FD;&#x5747;&#x6B63;&#x5E38;&#x3002;</p>
 <blockquote>
-<p>ps: &#x8FD9;&#x91CC;prettyPrintMem&#x903B;&#x8F91;&#x5B9E;&#x9645;&#x4E0A;&#x53D6;&#x81EA;&#x5F53;&#x521D;&#x8D21;&#x732E;&#x7ED9;<code>go-delve/delve&#x7684;examinemem(x)</code>&#x547D;&#x4EE4;&#x3002;&#x5982;&#x60A8;&#x5BF9;&#x5B57;&#x8282;&#x5E8F;&#x5F15;&#x8D77;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x9A8C;&#x8BC1;&#x4E0B;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x901A;&#x8FC7;16&#x8FDB;&#x5236;&#x6570;&#x636E;&#x6821;&#x9A8C;&#x53EF;&#x80FD;&#x4F1A;&#x66F4;&#x65B9;&#x4FBF;&#x4E9B;&#x3002;</p>
+<p>ps: &#x8FD9;&#x91CC;prettyPrintMem&#x903B;&#x8F91;&#x5B9E;&#x9645;&#x4E0A;&#x53D6;&#x81EA;&#x5F53;&#x521D;&#x8D21;&#x732E;&#x7ED9; <code>go-delve/delve&#x7684;examinemem(x)</code>&#x547D;&#x4EE4;&#x3002;&#x5982;&#x60A8;&#x5BF9;&#x5B57;&#x8282;&#x5E8F;&#x5F15;&#x8D77;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x6362;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x53EF;&#x4EE5;&#x5BF9;&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6821;&#x9A8C;&#x9A8C;&#x8BC1;&#x4E0B;&#x6B63;&#x786E;&#x6027;&#xFF0C;&#x901A;&#x8FC7;16&#x8FDB;&#x5236;&#x6570;&#x636E;&#x6821;&#x9A8C;&#x53EF;&#x80FD;&#x4F1A;&#x66F4;&#x65B9;&#x4FBF;&#x4E9B;&#x3002;</p>
 </blockquote>
+<h3 id="&#x672C;&#x6587;&#x5C0F;&#x7ED3;">&#x672C;&#x6587;&#x5C0F;&#x7ED3;</h3>
+<p>&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x4ECE;&#x6307;&#x5B9A;&#x5185;&#x5B58;&#x5730;&#x5740;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x4F55;&#x9AD8;&#x6548;&#x5224;&#x65AD;&#x673A;&#x5668;&#x5B57;&#x8282;&#x5E8F;&#xFF0C;&#x4E0D;&#x540C;&#x5B57;&#x8282;&#x5E8F;&#x4E0B;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x6570;&#x503C;&#x89E3;&#x6790;&#xFF0C;&#x5E76;&#x4E14;&#x4EE5;&#x4E0D;&#x540C;&#x8BA1;&#x6570;&#x5236;&#x8FDB;&#x884C;&#x683C;&#x5F0F;&#x5316;&#x5C55;&#x793A;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x7528;&#x4E86;go&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x597D;&#x7528;&#x7684;&#x5305;tabwriter&#xFF0C;&#x5B83;&#x652F;&#x6301;&#x8F93;&#x51FA;&#x7684;&#x6570;&#x636E;&#x6309;&#x5217;&#x5BF9;&#x9F50;&#xFF0C;&#x4F7F;&#x5F97;&#x8F93;&#x51FA;&#x66F4;&#x52A0;&#x6E05;&#x6670;&#x6613;&#x8BFB;&#x3002;</p>
+<p>&#x5728;&#x540E;&#x7EED;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x73AF;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x6253;&#x5370;&#x4EFB;&#x610F;&#x53D8;&#x91CF;&#x503C;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#x540E;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5176;&#x4ED6;&#x6280;&#x672F;&#x6765;&#x5E2E;&#x52A9;&#x89E3;&#x6790;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x9AD8;&#x7EA7;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x5982;&#x4F55;&#x8BFB;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x76F8;&#x5173;&#x6570;&#x636E;&#x3002;</p>
 
                                 
                                 </section>
@@ -1722,7 +1737,7 @@ godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --f
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.12 打印内存数据","level":"1.6.12","depth":2,"next":{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pregs.md","ref":"6-develop-inst-debugger/13-pregs.md","articles":[]},"previous":{"title":"6.11 运行到断点","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-continue.md","ref":"6-develop-inst-debugger/11-continue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/12-pmem.md","mtime":"2023-07-04T15:38:01.814Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-02-28T18:31:31.820Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.12 打印内存数据","level":"1.6.12","depth":2,"next":{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pregs.md","ref":"6-develop-inst-debugger/13-pregs.md","articles":[]},"previous":{"title":"6.11 运行到断点","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-continue.md","ref":"6-develop-inst-debugger/11-continue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/12-pmem.md","mtime":"2025-03-01T10:36:52.940Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-01T10:37:48.302Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

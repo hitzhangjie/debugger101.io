@@ -664,6 +664,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.7.9" data-path="90-why-buildid-loaded.html">
+            
+                <a href="90-why-buildid-loaded.html">
+            
+                    
+                    7.90 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1580,7 +1593,9 @@ Key to Flags:
 <p>&#x4E00;&#x4E2A;section&#x4E2D;&#x6570;&#x636E;&#x6700;&#x7EC8;&#x4F1A;&#x4E0D;&#x4F1A;&#x88AB;mmap&#x5230;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x4E5F;&#x662F;&#x7531;&#x5F15;&#x7528;&#x5B83;&#x7684;Program Header&#x7684;&#x7C7B;&#x578B;&#x51B3;&#x5B9A;&#x7684;&#xFF0C;&#x5982;&#x679C;Program Header&#x7C7B;&#x578B;&#x4E3A;LOAD&#x7C7B;&#x578B;&#xFF0C;&#x5219;&#x4F1A;&#x88AB;mmap&#x5230;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x53CD;&#x4E4B;&#x5219;&#x4E0D;&#x4F1A;&#x3002;</p>
 <p>&#x4ECD;&#x4EE5;&#x524D;&#x9762;&#x793A;&#x4F8B;&#x505A;&#x53C2;&#x8003;&#xFF0C;&#x6211;&#x4EEC;&#x53D1;&#x73B0;.gosymtab&#x3001;.gopclntab&#x6240;&#x5C5E;&#x7684;&#x6BB5;&#xFF08;&#x6BB5;&#x7D22;&#x5F15;&#x503C; 03&#xFF09;&#x662F;LOAD&#x7C7B;&#x578B;&#xFF0C;&#x8868;&#x793A;&#x5176;&#x6570;&#x636E;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;go runtime&#x4F9D;&#x8D56;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x6765;&#x8BA1;&#x7B97;stacktrace&#x3002;</p>
 <p>&#x800C;.note.go.buildid&#x6240;&#x5C5E;&#x7684;&#x6BB5;&#xFF08;&#x6BB5;&#x7D22;&#x5F15; 01&#xFF09;&#x4E3A;NOTE&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x770B;&#x8FD9;&#x4E2A;&#x6BB5;&#x7684;&#x8BDD;&#xFF0C;section .note.go.buildid&#x4E0D;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x4F46;&#x662F;&#x6CE8;&#x610F;&#x5230;.note.go.buildid&#x8FD8;&#x88AB;&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x6BB5;&#x7D22;&#x5F15;&#x4E3A;02&#x3001;PT_TYPE=LOAD&#x7684;&#x6BB5;&#x5F15;&#x7528;&#xFF0C;&#x90A3;&#x8FD9;&#x4E2A;section&#x6700;&#x7EC8;&#x5C31;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#x3002;</p>
-<p>&#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;.note.* &#x8FD9;&#x79CD;sections&#x5C31;&#x662F;&#x7ED9;&#x4E00;&#x4E9B;&#x5916;&#x90E8;&#x5DE5;&#x5177;&#x8BFB;&#x53D6;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x9664;&#x975E;go&#x8BBE;&#x8BA1;&#x8005;&#x5E0C;&#x671B;&#x80FD;&#x4ECE;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x4E2D;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x5230;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#x3002;</p>
+<blockquote>
+<p>ps: &#x4E00;&#x822C;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;.note.* &#x8FD9;&#x79CD;sections&#x5C31;&#x662F;&#x7ED9;&#x4E00;&#x4E9B;&#x5916;&#x90E8;&#x5DE5;&#x5177;&#x8BFB;&#x53D6;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x9664;&#x975E;go&#x8BBE;&#x8BA1;&#x8005;&#x5E0C;&#x671B;&#x80FD;&#x4ECE;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x4E2D;&#x76F4;&#x63A5;&#x8BFB;&#x53D6;&#x5230;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#xFF0C;&#x6216;&#x8005;&#x5E0C;&#x671B;core&#x8F6C;&#x50A8;&#x65F6;&#x80FD;&#x5305;&#x542B;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x4EE5;&#x4F9B;&#x540E;&#x7EED;&#x63D0;&#x53D6;&#x4F7F;&#x7528;&#x3002;</p>
+</blockquote>
 <p><strong>vendor&#x81EA;&#x5B9A;&#x4E49;sections&#x4E3E;&#x4F8B;&#xFF1F;</strong></p>
 <p>&#x4EE5;go&#x8BED;&#x8A00;&#x4E3A;&#x4F8B;&#xFF0C;&#x65B9;&#x4FBF; <code>go tool buildid &lt;prog&gt;</code>&#x63D0;&#x53D6;buildid&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x4E2A;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x5B58;&#x50A8;&#x5728;.note.go.buildid section&#x4E2D;&#x7684;&#x3002;</p>
 <p>&#x6765;&#x9A8C;&#x8BC1;&#x4E0B;&#xFF0C;&#x9996;&#x5148;&#x901A;&#x8FC7; <code>go tool buildid</code>&#x6765;&#x63D0;&#x53D6;buildid&#x4FE1;&#x606F;&#xFF1A;</p>
@@ -1658,142 +1673,6 @@ Hex dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</span
 <li>&#x5176;&#x4ED6;&#xFF0C;&#x5982; <code>readelf [--relocated-dump | --debug-dump]</code>&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x9700;&#x9009;&#x7528;&#x3002;</li>
 </ul>
 <p>&#x672C;&#x8282;ELF&#x5185;&#x5BB9;&#x5C31;&#x5148;&#x4ECB;&#x7ECD;&#x5230;&#xFF0C;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x51E0;&#x4E2A;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F9D;&#x6B21;&#x4ECB;&#x7ECD;linker&#x3001;loader&#x3001;debugger&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x3002;</p>
-<h3 id="&#x9057;&#x7559;&#x95EE;&#x9898;">&#x9057;&#x7559;&#x95EE;&#x9898;</h3>
-<p>.note.go.build&#x4E3A;&#x4F55;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5462;&#xFF1F;</p>
-<p>&#x5728;&#x9605;&#x8BFB;&#x4E86;go&#x6E90;&#x7801;&#x4EE5;&#x540E;&#xFF0C;&#x521D;&#x6B65;&#x5224;&#x65AD;&#x662F;pprof&#x9700;&#x8981;&#x3002;pprof&#x751F;&#x6210;profile&#x4FE1;&#x606F;&#x4E2D;&#xFF0C;&#x5E0C;&#x671B;&#x80FD;&#x591F;&#x5305;&#x542B;&#x88AB;&#x5206;&#x6790;&#x7684;&#x8FDB;&#x7A0B;&#x7684;buildid&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x662F;GNU buildid&#xFF0C;&#x800C;&#x975E;go builid&#xFF0C;&#x8BE6;&#x89C1;&#xFF1A;</p>
-<pre><code>// newProfileBuilder returns a new profileBuilder.
-// CPU profiling data obtained from the runtime can be added
-// by calling b.addCPUData, and then the eventual profile
-// can be obtained by calling b.finish.
-func newProfileBuilder(w io.Writer) *profileBuilder {
-    zw, _ := gzip.NewWriterLevel(w, gzip.BestSpeed)
-    b := &amp;profileBuilder{
-        w:         w,
-        zw:        zw,
-        start:     time.Now(),
-        strings:   []string{&quot;&quot;},
-        stringMap: map[string]int{&quot;&quot;: 0},
-        locs:      map[uintptr]locInfo{},
-        funcs:     map[string]int{},
-    }
-    b.readMapping()
-    return b
-}
-
-// readMapping reads /proc/self/maps and writes mappings to b.pb.
-// It saves the address ranges of the mappings in b.mem for use
-// when emitting locations.
-func (b *profileBuilder) readMapping() {
-    data, _ := os.ReadFile(&quot;/proc/self/maps&quot;)
-    parseProcSelfMaps(data, b.addMapping)
-    ...
-}
-
-func parseProcSelfMaps(data []byte, addMapping func(lo, hi, offset uint64, file, buildID string)) {
-    // $ cat /proc/self/maps
-    // 00400000-0040b000 r-xp 00000000 fc:01 787766                             /bin/cat
-    // 0060a000-0060b000 r--p 0000a000 fc:01 787766                             /bin/cat
-    // 0060b000-0060c000 rw-p 0000b000 fc:01 787766                             /bin/cat
-    // 014ab000-014cc000 rw-p 00000000 00:00 0                                  [heap]
-    // 7f7d76af8000-7f7d7797c000 r--p 00000000 fc:01 1318064                    /usr/lib/locale/locale-archive
-    // 7f7d7797c000-7f7d77b36000 r-xp 00000000 fc:01 1180226                    /lib/x86_64-linux-gnu/libc-2.19.so
-    // 7f7d77b36000-7f7d77d36000 ---p 001ba000 fc:01 1180226                    /lib/x86_64-linux-gnu/libc-2.19.so
-    // 7f7d77d36000-7f7d77d3a000 r--p 001ba000 fc:01 1180226                    /lib/x86_64-linux-gnu/libc-2.19.so
-    // 7f7d77d3a000-7f7d77d3c000 rw-p 001be000 fc:01 1180226                    /lib/x86_64-linux-gnu/libc-2.19.so
-    // 7f7d77d3c000-7f7d77d41000 rw-p 00000000 00:00 0
-    // 7f7d77d41000-7f7d77d64000 r-xp 00000000 fc:01 1180217                    /lib/x86_64-linux-gnu/ld-2.19.so
-    // 7f7d77f3f000-7f7d77f42000 rw-p 00000000 00:00 0
-    // 7f7d77f61000-7f7d77f63000 rw-p 00000000 00:00 0
-    // 7f7d77f63000-7f7d77f64000 r--p 00022000 fc:01 1180217                    /lib/x86_64-linux-gnu/ld-2.19.so
-    // 7f7d77f64000-7f7d77f65000 rw-p 00023000 fc:01 1180217                    /lib/x86_64-linux-gnu/ld-2.19.so
-    // 7f7d77f65000-7f7d77f66000 rw-p 00000000 00:00 0
-    // 7ffc342a2000-7ffc342c3000 rw-p 00000000 00:00 0                          [stack]
-    // 7ffc34343000-7ffc34345000 r-xp 00000000 00:00 0                          [vdso]
-    // ffffffffff600000-ffffffffff601000 r-xp 00000000 00:00 0                  [vsyscall]
-
-    ...
-
-    for len(data) &gt; 0 {
-        ...
-        buildID, _ := elfBuildID(file)
-        addMapping(lo, hi, offset, file, buildID)
-    }
-}
-
-// elfBuildID returns the GNU build ID of the named ELF binary,
-// without introducing a dependency on debug/elf and its dependencies.
-func elfBuildID(file string) (string, error) {
-    ...
-}
-</code></pre><p>&#x5728;&#x8FD9;&#x4E2A;&#x57FA;&#x7840;&#x4E0A;&#xFF1A;</p>
-<pre><code>$ cat main.go
-package main
-
-import (
-    &quot;log&quot;
-    &quot;os&quot;
-    &quot;runtime/pprof&quot;
-)
-
-func main() {
-    f, err := os.Create(&quot;profile.pb.gz&quot;)
-    if err != nil {
-        log.Fatal(err)
-    }
-    pprof.StartCPUProfile(f)
-    defer pprof.StopCPUProfile()
-    var i int64
-    for i = 0; i &lt; (1 &lt;&lt; 33); i++ {
-    }
-}
-</code></pre><pre><code class="lang-bash">$ go build -ldflags <span class="hljs-string">&quot;-B gobuildid&quot;</span> main.go
-
-$ file main
-main: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, BuildID[sha1]=f4b5d514bc46fad9417898216b23910ae874a85d, with debug_info, not stripped
-
-$ readelf -n main
-
-Displaying notes found <span class="hljs-keyword">in</span>: .note.gnu.build-id
-  Owner                Data size     Description
-  GNU                  0x00000014    NT_GNU_BUILD_ID (unique build ID bitstring)
-    Build ID: f4b5d514bc46fad9417898216b23910ae874a85d
-
-Displaying notes found <span class="hljs-keyword">in</span>: .note.go.buildid
-  Owner                Data size     Description
-  Go                   0x00000053    GO BUILDID
-   description data: 45 72 5a 36 6f 30 30 37 79 53 35 48 4c 67 41 7a 51 66 6e 52 2f 42 5a 53 51 58 54 4b 49 35 53 61 61 4f 4d 6e 65 49 36 63 56 2f 52 37 41 42 44 38 68 6c 34 6c 6b 65 79 44 66 7a 35 35 69 4d 2f 73 58 6a 56 4b 38 6d 52 58 79 35 4d 79 41 73 46 46 52 6d 74
-
-$ ./main
-
-$ pprof -raw profile.pb.gz | grep -A10 Mappings
-Mappings
-1: 0x400000/0x4ac000/0x0 /tmp/main f4b5d514bc46fad9417898216b23910ae874a85d [FN]
-</code></pre>
-<p>&#x5F88;&#x53EF;&#x80FD;&#x662F;&#x8FD9;&#x91CC;&#x7684;&#x5DE5;&#x5177;&#x5199;&#x7684;&#x4E0D;&#x5B8C;&#x5584;&#xFF0C;&#x53EA;&#x6709;&#x663E;&#x793A;&#x52A0;&#x4E86; <code>-ldflags &quot;-B gobuildid&quot;</code> &#x540E;&#xFF0C;&#x624D;&#x751F;&#x6210;&#x4E86;GNU buildID&#xFF0C;profile&#x4FE1;&#x606F;&#x91CC;&#x624D;&#x5305;&#x542B;&#x4E86;&#x8FD9;&#x4E2A;buildid&#x4FE1;&#x606F;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x52A0;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x6700;&#x540E;&#x751F;&#x6210;&#x7684;profile&#x4FE1;&#x606F;&#x91CC;&#x4E5F;&#x662F;&#x6CA1;&#x6709;&#x7684;&#x3002;
-&#x6211;&#x63A8;&#x6D4B;&#x662F;&#xFF0C;go&#x8BBE;&#x8BA1;&#x8005;&#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x672A;&#x6307;&#x5B9A;&#x6253;&#x5F00;GNU buildID&#x65F6;&#xFF0C;&#x5C31;&#x9ED8;&#x8BA4;&#x586B;&#x5145;go buildid&#xFF0C;&#x6240;&#x4EE5;&#x624D;&#x4F1A;&#x5C06;.text&#x548C;.note.go.builid&#x4E00;&#x540C;&#x52A0;&#x8F7D;&#x5230;text segment&#xFF0C;&#x4F46;&#x662F;&#x53EF;&#x80FD;&#x662F;&#x5F00;&#x53D1;&#x8005;&#x5199;&#x7684;&#x89E3;&#x6790;buildID&#x7684;&#x51FD;&#x6570;&#x53EA;&#x652F;&#x6301;GNU buildID&#x3001;&#x4E0D;&#x652F;&#x6301;go buildID&#xFF0C;&#x6240;&#x4EE5;&#x6700;&#x7EC8;&#x6CA1;&#x6709;&#x751F;&#x6210;&#x5230;profile&#x4FE1;&#x606F;&#x4E2D;&#x3002;</p>
-<pre><code>$ go build main.go
-
-$ file main
-main: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), statically linked, Go BuildID=llrn1go725_F2vCvvETz/OITeRu6kDScHG6FVjdK8/R7ABD8hl4lkeyDfz55iM/uoTostDrfB5kdwhy6UpG, with debug_info, not stripped
-
-$ readelf -n main
-
-Displaying notes found in: .note.go.buildid
-  Owner                Data size     Description
-  Go                   0x00000053    GO BUILDID
-   description data: 6c 6c 72 6e 31 67 6f 37 32 35 5f 46 32 76 43 76 76 45 54 7a 2f 4f 49 54 65 52 75 36 6b 44 53 63 48 47 36 46 56 6a 64 4b 38 2f 52 37 41 42 44 38 68 6c 34 6c 6b 65 79 44 66 7a 35 35 69 4d 2f 75 6f 54 6f 73 74 44 72 66 42 35 6b 64 77 68 79 36 55 70 47
-
-$ ./main
-
-$ pprof -raw profile.pb.gz | grep -A10 Mappings
-Mappings
-1: 0x400000/0x4ac000/0x0 /tmp/main  [FN]
-</code></pre><p>&#x6211;&#x63A8;&#x6D4B;&#x5C31;&#x662F;&#x4E00;&#x4E2A;go&#x5F00;&#x53D1;&#x8005;pprof&#x5DE5;&#x5177;&#x5B9E;&#x73B0;&#x4E0A;&#x7684;BUG&#xFF0C;see also: </p>
-<ul>
-<li><a href="https://github.com/golang/go/issues/68652" target="_blank">https://github.com/golang/go/issues/68652</a>.</li>
-<li>&#x6307;&#x5B9A;&#x4E86;-B gobuildid&#x540E;&#xFF0C;&#x4F1A;&#x4ECE;go buildid&#x751F;&#x6210;&#x4E00;&#x4E2A;GNU buildid&#xFF0C;<a href="https://go-review.googlesource.com/c/go/+/511475" target="_blank">https://go-review.googlesource.com/c/go/+/511475</a></li>
-</ul>
-<p>TODO Weired, <a href="https://github.com/golang/go/issues/68186" target="_blank">https://github.com/golang/go/issues/68186</a>.</p>
 <h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
 <ol>
 <li>Executable and Linkable Format, <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
@@ -1852,7 +1731,7 @@ Mappings
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.1 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.2 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/2-syms.md","ref":"7-headto-sym-debugger/2-syms.md","articles":[]},"previous":{"title":"7.0 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/0-how-go-build-works.md","ref":"7-headto-sym-debugger/0-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/1-elf.md","mtime":"2025-03-06T19:37:00.040Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-06T19:37:27.499Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.1 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.2 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/2-syms.md","ref":"7-headto-sym-debugger/2-syms.md","articles":[]},"previous":{"title":"7.0 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/0-how-go-build-works.md","ref":"7-headto-sym-debugger/0-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/1-elf.md","mtime":"2025-03-07T09:01:19.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-07T09:01:31.528Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1447,7 +1447,7 @@
                                 
                                 <h2 id="&#x95EE;&#x9898;&#x63A2;&#x8BA8;&#xFF1A;why-load-buildid-sections">&#x95EE;&#x9898;&#x63A2;&#x8BA8;&#xFF1A;why load buildid sections</h2>
 <h3 id="&#x5148;&#x8BF4;&#x70B9;&#x7ED3;&#x8BBA;&#x6027;&#x7684;">&#x5148;&#x8BF4;&#x70B9;&#x7ED3;&#x8BBA;&#x6027;&#x7684;</h3>
-<p>&#x53CA;&#x5230;build id&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x7684;sections&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#xFF0C;.note.go.buildid&#xFF0C;&#x4EE5;&#x53CA;.note.gnu.build-id&#xFF0C;&#x524D;&#x8005;&#x5C31;&#x662F;&#x5927;&#x5BB6;&#x719F;&#x77E5;&#x7684;go tool buildid <binary> &#x663E;&#x793A;&#x7684;buildid&#xFF0C;&#x540E;&#x8005;&#x662F;&#x66F4;&#x591A;&#x7684;Linux&#x751F;&#x6001;&#x4E2D;&#x7684;&#x5DE5;&#x5177;&#x4F7F;&#x7528;&#x7684;&#x3002;</binary></p>
+<p>&#x6D89;&#x53CA;&#x5230;build id&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#x7684;sections&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x4E2A;&#xFF0C;.note.go.buildid&#xFF0C;&#x4EE5;&#x53CA;.note.gnu.build-id&#xFF0C;&#x524D;&#x8005;&#x5C31;&#x662F;&#x5927;&#x5BB6;&#x719F;&#x77E5;&#x7684;go tool buildid <code>&lt;binary&gt;</code> &#x663E;&#x793A;&#x7684;buildid&#xFF0C;&#x540E;&#x8005;&#x662F;&#x66F4;&#x591A;&#x7684;Linux&#x751F;&#x6001;&#x4E2D;&#x7684;&#x5DE5;&#x5177;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
 <p>&#x524D;&#x9762;&#x8BB2;&#x89E3;ELF&#x6587;&#x4EF6;&#x6BB5;&#x5934;&#x8868;&#x7684;&#x65F6;&#x5019;&#x53D1;&#x73B0;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;.note.go.build, .note.gnu.build-id &#x4E3A;&#x4F55;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#x4E2D;&#x5462;&#xFF1F;&#x6709;&#x51E0;&#x4E2A;&#x731C;&#x6D4B;&#xFF1A;</p>
 <ul>
 <li>&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#x5E0C;&#x671B;&#x4E0D;&#x8BFB;&#x53D6;ELF&#x6587;&#x4EF6;&#x76F4;&#x63A5;&#x83B7;&#x53D6;&#x8FD9;&#x4E9B;buildid&#x4FE1;&#x606F;&#xFF1B;</li>
@@ -1584,40 +1584,40 @@ Mappings
 <p>&#x52A0;&#x8F7D;&#x8FD9;&#x4E2A;core&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x8BFB;&#x53D6;buildid&#x4FE1;&#x606F;</p>
 <ol>
 <li>gdb main.core main</li>
-<li>gdb&gt; maintenance info sections<pre><code class="lang-bash"> Exec file:
-     `/home/zhangjie/<span class="hljs-built_in">test</span>/main<span class="hljs-string">&apos;, file type elf64-x86-64.
-  [0]     0x00401000-&gt;0x00480c75 at 0x00001000: .text ALLOC LOAD READONLY CODE HAS_CONTENTS
-  [1]     0x00481000-&gt;0x004be35d at 0x00081000: .rodata ALLOC LOAD READONLY DATA HAS_CONTENTS
-  [2]     0x004be360-&gt;0x004be8f0 at 0x000be360: .typelink ALLOC LOAD READONLY DATA HAS_CONTENTS
-  [3]     0x004be900-&gt;0x004be958 at 0x000be900: .itablink ALLOC LOAD READONLY DATA HAS_CONTENTS
-  [4]     0x004be958-&gt;0x004be958 at 0x000be958: .gosymtab ALLOC LOAD READONLY DATA HAS_CONTENTS
-  [5]     0x004be960-&gt;0x00523070 at 0x000be960: .gopclntab ALLOC LOAD READONLY DATA HAS_CONTENTS
-  [6]     0x00524000-&gt;0x00524150 at 0x00124000: .go.buildinfo ALLOC LOAD DATA HAS_CONTENTS
-  [7]     0x00524160-&gt;0x00529600 at 0x00124160: .noptrdata ALLOC LOAD DATA HAS_CONTENTS
-  [8]     0x00529600-&gt;0x0052d850 at 0x00129600: .data ALLOC LOAD DATA HAS_CONTENTS
-  [9]     0x0052d860-&gt;0x0058d390 at 0x0012d860: .bss ALLOC
-  [10]     0x0058d3a0-&gt;0x00590de0 at 0x0018d3a0: .noptrbss ALLOC
-  [11]     0x00000000-&gt;0x00000214 at 0x0012e000: .debug_abbrev READONLY HAS_CONTENTS
-  [12]     0x00000000-&gt;0x00037302 at 0x0012e135: .debug_line READONLY HAS_CONTENTS
-  [13]     0x00000000-&gt;0x00012674 at 0x0014d803: .debug_frame READONLY HAS_CONTENTS
-  [14]     0x00000000-&gt;0x0000002a at 0x00153a70: .debug_gdb_scripts READONLY HAS_CONTENTS
-  [15]     0x00000000-&gt;0x000928ac at 0x00153a9a: .debug_info READONLY HAS_CONTENTS
-  [16]     0x00000000-&gt;0x000a772c at 0x00191567: .debug_loc READONLY HAS_CONTENTS
-  [17]     0x00000000-&gt;0x0003e3a0 at 0x001adaae: .debug_ranges READONLY HAS_CONTENTS
-  [18]     0x00400fdc-&gt;0x00401000 at 0x00000fdc: .note.gnu.build-id ALLOC LOAD READONLY DATA HAS_CONTENTS
-  [19]     0x00400f78-&gt;0x00400fdc at 0x00000f78: .note.go.buildid ALLOC LOAD READONLY DATA HAS_CONTENTS
- Core file:
-     `/home/zhangjie/test/mycore.444388&apos;</span>, file <span class="hljs-built_in">type</span> elf64-x86-64.
-  [0]     0x00000000-&gt;0x00002798 at 0x00000548: note0 READONLY HAS_CONTENTS
-  [1]     0x00000000-&gt;0x000000d8 at 0x00000668: .reg/444388 HAS_CONTENTS
-  [2]     0x00000000-&gt;0x000000d8 at 0x00000668: .reg HAS_CONTENTS
-  ...
+<li>gdb&gt; maintenance info sections<pre><code class="lang-bash">Exec file:
+    `/home/zhangjie/<span class="hljs-built_in">test</span>/main<span class="hljs-string">&apos;, file type elf64-x86-64.
+ [0]     0x00401000-&gt;0x00480c75 at 0x00001000: .text ALLOC LOAD READONLY CODE HAS_CONTENTS
+ [1]     0x00481000-&gt;0x004be35d at 0x00081000: .rodata ALLOC LOAD READONLY DATA HAS_CONTENTS
+ [2]     0x004be360-&gt;0x004be8f0 at 0x000be360: .typelink ALLOC LOAD READONLY DATA HAS_CONTENTS
+ [3]     0x004be900-&gt;0x004be958 at 0x000be900: .itablink ALLOC LOAD READONLY DATA HAS_CONTENTS
+ [4]     0x004be958-&gt;0x004be958 at 0x000be958: .gosymtab ALLOC LOAD READONLY DATA HAS_CONTENTS
+ [5]     0x004be960-&gt;0x00523070 at 0x000be960: .gopclntab ALLOC LOAD READONLY DATA HAS_CONTENTS
+ [6]     0x00524000-&gt;0x00524150 at 0x00124000: .go.buildinfo ALLOC LOAD DATA HAS_CONTENTS
+ [7]     0x00524160-&gt;0x00529600 at 0x00124160: .noptrdata ALLOC LOAD DATA HAS_CONTENTS
+ [8]     0x00529600-&gt;0x0052d850 at 0x00129600: .data ALLOC LOAD DATA HAS_CONTENTS
+ [9]     0x0052d860-&gt;0x0058d390 at 0x0012d860: .bss ALLOC
+ [10]     0x0058d3a0-&gt;0x00590de0 at 0x0018d3a0: .noptrbss ALLOC
+ [11]     0x00000000-&gt;0x00000214 at 0x0012e000: .debug_abbrev READONLY HAS_CONTENTS
+ [12]     0x00000000-&gt;0x00037302 at 0x0012e135: .debug_line READONLY HAS_CONTENTS
+ [13]     0x00000000-&gt;0x00012674 at 0x0014d803: .debug_frame READONLY HAS_CONTENTS
+ [14]     0x00000000-&gt;0x0000002a at 0x00153a70: .debug_gdb_scripts READONLY HAS_CONTENTS
+ [15]     0x00000000-&gt;0x000928ac at 0x00153a9a: .debug_info READONLY HAS_CONTENTS
+ [16]     0x00000000-&gt;0x000a772c at 0x00191567: .debug_loc READONLY HAS_CONTENTS
+ [17]     0x00000000-&gt;0x0003e3a0 at 0x001adaae: .debug_ranges READONLY HAS_CONTENTS
+ [18]     0x00400fdc-&gt;0x00401000 at 0x00000fdc: .note.gnu.build-id ALLOC LOAD READONLY DATA HAS_CONTENTS
+ [19]     0x00400f78-&gt;0x00400fdc at 0x00000f78: .note.go.buildid ALLOC LOAD READONLY DATA HAS_CONTENTS
+Core file:
+    `/home/zhangjie/test/mycore.444388&apos;</span>, file <span class="hljs-built_in">type</span> elf64-x86-64.
+ [0]     0x00000000-&gt;0x00002798 at 0x00000548: note0 READONLY HAS_CONTENTS
+ [1]     0x00000000-&gt;0x000000d8 at 0x00000668: .reg/444388 HAS_CONTENTS
+ [2]     0x00000000-&gt;0x000000d8 at 0x00000668: .reg HAS_CONTENTS
+ ...
 </code></pre>
 </li>
-<li>&#x751F;&#x6210;&#x8F6C;&#x50A8;&#xFF0C;&#x5305;&#x542B;&#x4E86;go buildid<pre><code class="lang-bash"> gdb$ dump memory dump.go.buildid 0x00400f78 0x00400fdc
+<li>&#x751F;&#x6210;&#x8F6C;&#x50A8;&#xFF0C;&#x5305;&#x542B;&#x4E86;go buildid<pre><code class="lang-bash">gdb$ dump memory dump.go.buildid 0x00400f78 0x00400fdc
 </code></pre>
 </li>
-<li>&#x751F;&#x6210;&#x8F6C;&#x50A8;&#xFF0C;&#x5305;&#x542B;&#x4E86;GNU build-id<pre><code class="lang-bash"> gdb$ dump memory dump.gnu.buildid 0x00400fdc 0x00401000
+<li>&#x751F;&#x6210;&#x8F6C;&#x50A8;&#xFF0C;&#x5305;&#x542B;&#x4E86;GNU build-id<pre><code class="lang-bash">gdb$ dump memory dump.gnu.buildid 0x00400fdc 0x00401000
 </code></pre>
 </li>
 </ol>
@@ -1687,7 +1687,7 @@ Mappings
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.90 More: GNU build-id+gobuildid","level":"1.7.9","depth":2,"next":{"title":"8 调试信息标准: DWARF","level":"1.8","depth":1,"path":"8-dwarf/README.md","ref":"8-dwarf/README.md","articles":[{"title":"8.1 发展历史","level":"1.8.1","depth":2,"path":"8-dwarf/1-history.md","ref":"8-dwarf/1-history.md","articles":[]},{"title":"8.2 DWARF结构","level":"1.8.2","depth":2,"path":"8-dwarf/2-structure.md","ref":"8-dwarf/2-structure.md","articles":[]},{"title":"8.3 调试信息条目：DIE","level":"1.8.3","depth":2,"path":"8-dwarf/3-die-readme.md","ref":"8-dwarf/3-die-readme.md","articles":[{"title":"8.3.1 DIE介绍","level":"1.8.3.1","depth":3,"path":"8-dwarf/3-die-intro.md","ref":"8-dwarf/3-die-intro.md","articles":[]},{"title":"8.3.2 DIE描述数据和类型","level":"1.8.3.2","depth":3,"path":"8-dwarf/3-die-desc-datatype.md","ref":"8-dwarf/3-die-desc-datatype.md","articles":[]},{"title":"8.3.3 DIE描述可执行代码","level":"1.8.3.3","depth":3,"path":"8-dwarf/3-die-desc-code.md","ref":"8-dwarf/3-die-desc-code.md","articles":[]},{"title":"8.3.4 DIE数据编码","level":"1.8.3.4","depth":3,"path":"8-dwarf/3-die-encoding.md","ref":"8-dwarf/3-die-encoding.md","articles":[]}]},{"title":"8.4 其他调试数据","level":"1.8.4","depth":2,"path":"8-dwarf/4-other-readme.md","ref":"8-dwarf/4-other-readme.md","articles":[{"title":"8.4.0 加速访问","level":"1.8.4.1","depth":3,"path":"8-dwarf/4-other-accelerated-access.md","ref":"8-dwarf/4-other-accelerated-access.md","articles":[]},{"title":"8.4.1 行号表信息","level":"1.8.4.2","depth":3,"path":"8-dwarf/4-other-lineno-table.md","ref":"8-dwarf/4-other-lineno-table.md","articles":[]},{"title":"8.4.2 宏信息","level":"1.8.4.3","depth":3,"path":"8-dwarf/4-other-macro-info.md","ref":"8-dwarf/4-other-macro-info.md","articles":[]},{"title":"8.4.3 调用栈帧信息","level":"1.8.4.4","depth":3,"path":"8-dwarf/4-other-callframe-info.md","ref":"8-dwarf/4-other-callframe-info.md","articles":[]},{"title":"8.4.4 变长数据","level":"1.8.4.5","depth":3,"path":"8-dwarf/4-other-varlen-data.md","ref":"8-dwarf/4-other-varlen-data.md","articles":[]},{"title":"8.4.5 压缩DWARF数据","level":"1.8.4.6","depth":3,"path":"8-dwarf/4-other-shrink-data.md","ref":"8-dwarf/4-other-shrink-data.md","articles":[]},{"title":"8.4.6 ELF Sections","level":"1.8.4.7","depth":3,"path":"8-dwarf/4-other-elf-sections.md","ref":"8-dwarf/4-other-elf-sections.md","articles":[]}]},{"title":"8.5 DWARF总结","level":"1.8.5","depth":2,"path":"8-dwarf/5-dwarf-summary.md","ref":"8-dwarf/5-dwarf-summary.md","articles":[]},{"title":"8.6 解析DWARF","level":"1.8.6","depth":2,"path":"8-dwarf/6-parsing-dwarf.md","ref":"8-dwarf/6-parsing-dwarf.md","articles":[]},{"title":"8.7 使用DWARF","level":"1.8.7","depth":2,"path":"8-dwarf/7-using-dwarf.md","ref":"8-dwarf/7-using-dwarf.md","articles":[]},{"title":"8.8 本章总结","level":"1.8.8","depth":2,"path":"8-dwarf/8-summary.md","ref":"8-dwarf/8-summary.md","articles":[]}]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.8","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/90-why-buildid-loaded.md","mtime":"2025-03-07T09:01:19.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-07T09:01:31.528Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.90 More: GNU build-id+gobuildid","level":"1.7.9","depth":2,"next":{"title":"8 调试信息标准: DWARF","level":"1.8","depth":1,"path":"8-dwarf/README.md","ref":"8-dwarf/README.md","articles":[{"title":"8.1 发展历史","level":"1.8.1","depth":2,"path":"8-dwarf/1-history.md","ref":"8-dwarf/1-history.md","articles":[]},{"title":"8.2 DWARF结构","level":"1.8.2","depth":2,"path":"8-dwarf/2-structure.md","ref":"8-dwarf/2-structure.md","articles":[]},{"title":"8.3 调试信息条目：DIE","level":"1.8.3","depth":2,"path":"8-dwarf/3-die-readme.md","ref":"8-dwarf/3-die-readme.md","articles":[{"title":"8.3.1 DIE介绍","level":"1.8.3.1","depth":3,"path":"8-dwarf/3-die-intro.md","ref":"8-dwarf/3-die-intro.md","articles":[]},{"title":"8.3.2 DIE描述数据和类型","level":"1.8.3.2","depth":3,"path":"8-dwarf/3-die-desc-datatype.md","ref":"8-dwarf/3-die-desc-datatype.md","articles":[]},{"title":"8.3.3 DIE描述可执行代码","level":"1.8.3.3","depth":3,"path":"8-dwarf/3-die-desc-code.md","ref":"8-dwarf/3-die-desc-code.md","articles":[]},{"title":"8.3.4 DIE数据编码","level":"1.8.3.4","depth":3,"path":"8-dwarf/3-die-encoding.md","ref":"8-dwarf/3-die-encoding.md","articles":[]}]},{"title":"8.4 其他调试数据","level":"1.8.4","depth":2,"path":"8-dwarf/4-other-readme.md","ref":"8-dwarf/4-other-readme.md","articles":[{"title":"8.4.0 加速访问","level":"1.8.4.1","depth":3,"path":"8-dwarf/4-other-accelerated-access.md","ref":"8-dwarf/4-other-accelerated-access.md","articles":[]},{"title":"8.4.1 行号表信息","level":"1.8.4.2","depth":3,"path":"8-dwarf/4-other-lineno-table.md","ref":"8-dwarf/4-other-lineno-table.md","articles":[]},{"title":"8.4.2 宏信息","level":"1.8.4.3","depth":3,"path":"8-dwarf/4-other-macro-info.md","ref":"8-dwarf/4-other-macro-info.md","articles":[]},{"title":"8.4.3 调用栈帧信息","level":"1.8.4.4","depth":3,"path":"8-dwarf/4-other-callframe-info.md","ref":"8-dwarf/4-other-callframe-info.md","articles":[]},{"title":"8.4.4 变长数据","level":"1.8.4.5","depth":3,"path":"8-dwarf/4-other-varlen-data.md","ref":"8-dwarf/4-other-varlen-data.md","articles":[]},{"title":"8.4.5 压缩DWARF数据","level":"1.8.4.6","depth":3,"path":"8-dwarf/4-other-shrink-data.md","ref":"8-dwarf/4-other-shrink-data.md","articles":[]},{"title":"8.4.6 ELF Sections","level":"1.8.4.7","depth":3,"path":"8-dwarf/4-other-elf-sections.md","ref":"8-dwarf/4-other-elf-sections.md","articles":[]}]},{"title":"8.5 DWARF总结","level":"1.8.5","depth":2,"path":"8-dwarf/5-dwarf-summary.md","ref":"8-dwarf/5-dwarf-summary.md","articles":[]},{"title":"8.6 解析DWARF","level":"1.8.6","depth":2,"path":"8-dwarf/6-parsing-dwarf.md","ref":"8-dwarf/6-parsing-dwarf.md","articles":[]},{"title":"8.7 使用DWARF","level":"1.8.7","depth":2,"path":"8-dwarf/7-using-dwarf.md","ref":"8-dwarf/7-using-dwarf.md","articles":[]},{"title":"8.8 本章总结","level":"1.8.8","depth":2,"path":"8-dwarf/8-summary.md","ref":"8-dwarf/8-summary.md","articles":[]}]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.8","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/90-why-buildid-loaded.md","mtime":"2025-03-08T04:34:31.074Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-08T04:34:42.140Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -1613,26 +1613,43 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
 <p>&#x672C;&#x7AE0;&#x7A0D;&#x540E;&#x7684;&#x7AE0;&#x8282;&#xFF0C;&#x4F1A;&#x4ECB;&#x7ECD;ELF&#x8282;&#x5934;&#x8868;&#x4FE1;&#x606F;&#x5982;&#x4F55;&#x6307;&#x5BFC;&#x94FE;&#x63A5;&#x5668;&#x6267;&#x884C;&#x94FE;&#x63A5;&#x64CD;&#x4F5C;&#x3002;</p>
 <h3 id="elf-sections">ELF Sections</h3>
 <p>ELF&#x6587;&#x4EF6;&#x4F1A;&#x5305;&#x542B;&#x5F88;&#x591A;&#x7684;sections&#xFF0C;&#x524D;&#x9762;&#x7ED9;&#x51FA;&#x7684;&#x6D4B;&#x8BD5;&#x5B9E;&#x4F8B;&#x4E2D;&#x5C31;&#x5305;&#x542B;&#x4E86;25&#x4E2A;sections&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x4E86;&#x89E3;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;sections&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x52A0;&#x6DF1;&#x5BF9;linkers&#x3001;loaders&#x3001;debgguers&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x7684;&#x8BA4;&#x8BC6;&#x63D0;&#x524D;&#x505A;&#x70B9;&#x51C6;&#x5907;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x6765;&#x4E86;&#x89E3;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;sections&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x52A0;&#x6DF1;&#x5BF9;linker&#x3001;loader&#x3001;debgguer&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x7684;&#x8BA4;&#x8BC6;&#x63D0;&#x524D;&#x505A;&#x70B9;&#x51C6;&#x5907;&#x3002;</p>
 <ul>
 <li>.text: &#x7F16;&#x8BD1;&#x597D;&#x7684;&#x7A0B;&#x5E8F;&#x6307;&#x4EE4;&#xFF1B;</li>
 <li>.rodata: &#x53EA;&#x8BFB;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x5E38;&#x91CF;&#x5B57;&#x7B26;&#x4E32;&#xFF1B;</li>
 <li>.data&#xFF1A;&#x5DF2;&#x7ECF;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF1B;</li>
 <li>.bss&#xFF1A;&#x672A;&#x7ECF;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#xFF0C;&#x5728;ELF&#x6587;&#x4EF6;&#x4E2D;&#x53EA;&#x662F;&#x4E2A;&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x4E0D;&#x5360;&#x7528;&#x5B9E;&#x9645;&#x7A7A;&#x95F4;&#xFF1B;</li>
-<li><p>.symtab&#xFF1A;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x6BCF;&#x4E2A;&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x6587;&#x4EF6;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x5B58;&#x653E;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x548C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6CE8;&#x610F;&#x5B83;&#x4E0D;&#x5305;&#x542B;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#xFF0C;&#x5C40;&#x90E8;&#x975E;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7531;&#x6808;&#x6765;&#x7BA1;&#x7406;&#xFF0C;&#x5B83;&#x4EEC;&#x5BF9;&#x94FE;&#x63A5;&#x5668;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x6CA1;&#x6709;&#x5E2E;&#x52A9;&#x3002;<strong>&#x4E5F;&#x8981;&#x6CE8;&#x610F;&#xFF0C;.symtab&#x548C;DWARF&#x8C03;&#x8BD5;&#x7B26;&#x53F7;&#x65E0;&#x5173;</strong>&#xFF1B;</p>
+<li><p>.symtab&#xFF1A;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x6BCF;&#x4E2A;&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x6587;&#x4EF6;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x8868;&#xFF0C;&#x5B58;&#x653E;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x548C;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6CE8;&#x610F;&#x5B83;&#x4E0D;&#x5305;&#x542B;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#xFF0C;&#x5C40;&#x90E8;&#x975E;&#x9759;&#x6001;&#x53D8;&#x91CF;&#x7531;&#x6808;&#x6765;&#x7BA1;&#x7406;&#xFF0C;&#x5B83;&#x4EEC;&#x5BF9;&#x94FE;&#x63A5;&#x5668;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x6CA1;&#x6709;&#x5E2E;&#x52A9;&#x3002;</p>
 <blockquote>
-<p>ps: .symtab&#x3001;DWARF&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x201C;&#x7B26;&#x53F7;&#x201D;&#x4E00;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F7F;&#x7528;.symtab&#x53EF;&#x4EE5;&#x66F4;&#x5FEB;&#x901F;&#x8FDB;&#x884C;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#x67E5;&#x8BE2;&#xFF0C;&#x4F46;&#x662F;DWARF&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#xFF08;&#x6BD4;&#x5982;gdb&#xFF09;&#x4F1A;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x4E8C;&#x8005;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x53EF;&#x4EE5;&#x517C;&#x987E;&#x6548;&#x7387;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x4E5F;&#x53EF;&#x4EE5;&#x5BF9;&#x4E0D;&#x5305;&#x542B;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x7A0B;&#x5E8F;&#x8C03;&#x8BD5;&#x8FDB;&#x884C;&#x517C;&#x5BB9;&#x3002;</p>
+<p>ps: .symtab&#x3001;DWARF&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x201C;&#x7B26;&#x53F7;&#x201D;&#x4E00;&#x7C7B;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x662F;&#x72EC;&#x7ACB;&#x7684;&#x3002;&#x4F7F;&#x7528;.symtab&#x53EF;&#x4EE5;&#x66F4;&#x5FEB;&#x901F;&#x67E5;&#x8BE2;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;DWARF&#x63CF;&#x8FF0;&#x66F4;&#x8BE6;&#x7EC6;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#xFF08;&#x6BD4;&#x5982;gdb&#xFF09;&#x53EF;&#x540C;&#x65F6;&#x4F7F;&#x7528;&#x4E8C;&#x8005;&#xFF0C;&#x517C;&#x987E;&#x6548;&#x7387;&#x7684;&#x540C;&#x65F6;&#x8FD8;&#x80FD;&#x63D0;&#x9AD8;&#x517C;&#x5BB9;&#x6027;&#x3002;</p>
 </blockquote>
 </li>
-<li>.debug_*: &#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x8BFB;&#x53D6;&#x8BE5;&#x4FE1;&#x606F;&#x4EE5;&#x652F;&#x6301;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#xFF08;&#x5982;gcc -g&#x751F;&#x6210;&#xFF09;&#xFF1B;</li>
-<li>.strtab&#xFF1A;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#xFF0C;&#x5305;&#x62EC;.symtab&#x548C;.[z]debug_*&#x8282;&#x7B26;&#x53F7;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#xFF0C;&#x4EE5;&#x53CA;section&#x540D;&#xFF1B;</li>
-<li>.rel.text&#xFF1A;&#x4E00;&#x4E2A;.text section&#x4E2D;&#x4F4D;&#x7F6E;&#x7684;&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x94FE;&#x63A5;&#x5668;&#x5C1D;&#x8BD5;&#x628A;&#x8FD9;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x548C;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4FEE;&#x6539;&#x8FD9;&#x4E9B;&#x4F4D;&#x7F6E;&#x7684;&#x503C;&#xFF0C;&#x8C03;&#x7528;&#x5916;&#x90E8;&#x51FD;&#x6570;&#x6216;&#x8005;&#x5F15;&#x7528;&#x5916;&#x90E8;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x94FE;&#x63A5;&#x662F;&#x901A;&#x8FC7;&#x7B26;&#x53F7;&#x8FDB;&#x884C;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x6210;&#x6B63;&#x786E;&#x7684;&#x8BBF;&#x95EE;&#x5730;&#x5740;&#x3002;</li>
-<li>.rel.data&#xFF1A;&#x5F15;&#x7528;&#x7684;&#x4E00;&#x4E9B;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x91CD;&#x5B9A;&#x4F4D;&#x4FE1;&#x606F;&#xFF0C;&#x548C;.rel.text&#x6709;&#x4E9B;&#x7C7B;&#x4F3C;&#xFF1B;</li>
+<li>.debug_*: &#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x8BFB;&#x53D6;&#x8BE5;&#x4FE1;&#x606F;&#x4EE5;&#x652F;&#x6301;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#xFF08;&#x5982;gcc -g&#x751F;&#x6210;&#xFF0C;go build&#x9ED8;&#x8BA4;&#x751F;&#x6210;&#xFF09;&#xFF1B;</li>
+<li>.strtab&#xFF1A;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#xFF0C;&#x5305;&#x62EC;.symtab&#x548C;.[z]debug_*&#x8282;&#x5F15;&#x7528;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x503C;&#x3001;section&#x540D;&#xFF1B;</li>
+<li>.rel.text&#xFF1A;&#x4E00;&#x4E2A;.text section&#x4E2D;&#x4F4D;&#x7F6E;&#x53CA;&#x7B26;&#x53F7;&#x5217;&#x8868;&#xFF0C;&#x5F53;&#x94FE;&#x63A5;&#x5668;&#x5C1D;&#x8BD5;&#x628A;&#x8FD9;&#x4E2A;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x548C;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x94FE;&#x63A5;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5BF9;&#x7B26;&#x53F7;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x6210;&#x6B63;&#x786E;&#x7684;&#x5730;&#x5740;&#xFF1B;</li>
+<li>.rel.data&#xFF1A;&#x5F15;&#x7528;&#x7684;&#x4E00;&#x4E9B;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x7684;&#x4F4D;&#x7F6E;&#x53CA;&#x7B26;&#x53F7;&#x5217;&#x8868;&#xFF0C;&#x548C;.rel.text&#x6709;&#x4E9B;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E5F;&#x9700;&#x8981;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x6210;&#x6B63;&#x786E;&#x7684;&#x5730;&#x5740;&#xFF1B;</li>
 </ul>
 <p>&#x5F53;&#x7136;&#x9664;&#x4E86;&#x5217;&#x51FA;&#x7684;&#x8FD9;&#x4E9B;&#xFF0C;&#x8FD8;&#x6709;&#x5F88;&#x591A;&#x5176;&#x4ED6;sections&#xFF0C;ELF&#x4E5F;&#x5141;&#x8BB8;vendor&#x81EA;&#x5B9A;&#x4E49;sections&#xFF0C;&#x4EE5;&#x652F;&#x6301;&#x4E00;&#x4E9B;&#x671F;&#x671B;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5982;go&#x8BED;&#x8A00;&#x5C31;&#x6DFB;&#x52A0;&#x4E86;.gosymtab&#x3001;.gopclntab&#x3001;.note.build.id&#x6765;&#x652F;&#x6301;go&#x8FD0;&#x884C;&#x65F6;&#x3001;go&#x5DE5;&#x5177;&#x94FE;&#x7684;&#x4E00;&#x4E9B;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x5E38;&#x7528;&#x67E5;&#x770B;&#x547D;&#x4EE4;">&#x5E38;&#x7528;&#x67E5;&#x770B;&#x547D;&#x4EE4;</h3>
 <p>&#x6211;&#x4EEC;&#x6765;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x5982;&#x4F55;&#x67E5;&#x770B;sections&#x4E2D;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
 <ul>
-<li><p>&#x67E5;&#x770B;sections&#x5217;&#x8868; <code>readelf -S &lt;prog&gt;</code></p>
+<li>&#x67E5;&#x770B;&#x6BB5;&#x5934;&#x8868; <code>readelf -l &lt;prog&gt;</code></li>
+</ul>
+<pre><code class="lang-bash">  $ readelf <span class="hljs-_">-l</span> testdata/loop2 
+  ...
+  Program Headers:
+    Type           Offset             VirtAddr           PhysAddr
+                   FileSiz            MemSiz              Flags  Align
+    PHDR           0x0000000000000040 0x0000000000400040 0x0000000000400040
+                   0x0000000000000150 0x0000000000000150  R      0x1000
+    NOTE           0x0000000000000f9c 0x0000000000400f9c 0x0000000000400f9c
+                   0x0000000000000064 0x0000000000000064  R      0x4
+    LOAD           0x0000000000000000 0x0000000000400000 0x0000000000400000
+                   0x00000000000af317 0x00000000000af317  R E    0x1000
+    ...
+</code></pre>
+<ul>
+<li><p>&#x67E5;&#x770B;&#x8282;&#x5934;&#x8868; <code>readelf -S &lt;prog&gt;</code></p>
 <pre><code class="lang-bash">$ readelf -S testdata/loop2 
 There are 25 section headers, starting at offset 0x1c8:
 
@@ -1648,7 +1665,7 @@ Section Headers:
   ...
 </code></pre>
 </li>
-<li><p>&#x67E5;&#x770B;&#x6307;&#x5B9A;section&#x6570;&#x636E; <code>readelf --string-dump</code></p>
+<li><p>&#x67E5;&#x770B;&#x6307;&#x5B9A;section&#x6570;&#x636E; <code>readelf --string-dump=&lt;section&gt; &lt;prog&gt;</code></p>
 <pre><code class="lang-bash">$ readelf --string-dump=.note.go.buildid loop
 
 String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</span>:
@@ -1657,7 +1674,7 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
   [    10]  z3BnMb0ZcNprbNCHGFUE/tKoFiTkxKf0367OgPv1m/xoZJRttC9Gcwqc67tiDf/1NjCWH3otcISEg7g8lG7
 </code></pre>
 </li>
-<li><p>&#x67E5;&#x770B;&#x6307;&#x5B9A;section&#x6570;&#x636E; <code>readelf --hex-dump</code></p>
+<li><p>&#x67E5;&#x770B;&#x6307;&#x5B9A;section&#x6570;&#x636E; <code>readelf --hex-dump=&lt;section&gt; &lt;prog&gt;</code></p>
 <pre><code class="lang-bash">$ readelf --hex-dump=.note.go.buildid loop
 
 Hex dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</span>:
@@ -1670,9 +1687,9 @@ Hex dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</span
   0x00400ffc 6c473700                            lG7.
 </code></pre>
 </li>
-<li>&#x5176;&#x4ED6;&#xFF0C;&#x5982; <code>readelf [--relocated-dump | --debug-dump]</code>&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x9700;&#x9009;&#x7528;&#x3002;</li>
+<li>&#x5176;&#x4ED6;&#xFF0C;&#x5982; <code>readelf [--relocated-dump=|--debug-dump=] &lt;prog&gt;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x9700;&#x9009;&#x7528;&#x3002;</li>
 </ul>
-<p>&#x672C;&#x8282;ELF&#x5185;&#x5BB9;&#x5C31;&#x5148;&#x4ECB;&#x7ECD;&#x5230;&#xFF0C;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x51E0;&#x4E2A;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4F9D;&#x6B21;&#x4ECB;&#x7ECD;linker&#x3001;loader&#x3001;debugger&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x3002;</p>
+<p>&#x672C;&#x8282;ELF&#x5185;&#x5BB9;&#x5C31;&#x5148;&#x4ECB;&#x7ECD;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x51E0;&#x4E2A;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5FAA;&#x5E8F;&#x6E10;&#x8FDB;&#x5730;&#x4ECB;&#x7ECD;linker&#x3001;loader&#x3001;debugger&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
 <ol>
 <li>Executable and Linkable Format, <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
@@ -1731,7 +1748,7 @@ Hex dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</span
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.1 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.2 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/2-syms.md","ref":"7-headto-sym-debugger/2-syms.md","articles":[]},"previous":{"title":"7.0 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/0-how-go-build-works.md","ref":"7-headto-sym-debugger/0-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/1-elf.md","mtime":"2025-03-07T09:01:19.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-07T09:01:31.528Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.1 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.2 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/2-syms.md","ref":"7-headto-sym-debugger/2-syms.md","articles":[]},"previous":{"title":"7.0 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/0-how-go-build-works.md","ref":"7-headto-sym-debugger/0-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/1-elf.md","mtime":"2025-03-08T04:34:31.074Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-08T04:34:42.140Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -716,6 +716,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.7.13" data-path="91-syntax-and-semantic-analysis.html">
+            
+                <a href="91-syntax-and-semantic-analysis.html">
+            
+                    
+                    7.91 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1489,20 +1502,17 @@
 <p>&#x60A8;&#x53EF;&#x80FD;&#x542C;&#x5230;&#x8FC7;&quot;&#x524D;&#x7AEF;&#xFF08;front-end&#xFF09;&quot;&#x548C;&quot;&#x540E;&#x7AEF;&#xFF08;back-end&#xFF09;&quot;&#x8FD9;&#x4E24;&#x4E2A;&#x672F;&#x8BED;&#x3002;&#x7C97;&#x7565;&#x5730;&#x8BF4;&#xFF0C;&#x5B83;&#x4EEC;&#x5BF9;&#x5E94;&#x6211;&#x4EEC;&#x5217;&#x51FA;&#x7684;&#x524D;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#x548C;&#x540E;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#x3002;&#x7B2C;&#x4E09;&#x4E2A;&#x672F;&#x8BED;&quot;&#x4E2D;&#x7AEF;&#xFF08;middle-end&#xFF09;&quot;&#x901A;&#x5E38;&#x6307;&#x7B2C;&#x4E8C;&#x9636;&#x6BB5;&#x4E2D;&#x8FDB;&#x884C;&#x7684;&#x5927;&#x90E8;&#x5206;&#x5DE5;&#x4F5C;&#x3002;</p>
 <p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;<code>go/*</code> &#x7CFB;&#x5217;&#x5305;&#xFF08;&#x5982; <code>go/parser</code> &#x548C; <code>go/types</code>&#xFF09;&#x4E3B;&#x8981;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x5185;&#x90E8;API&#x4F7F;&#x7528;&#x3002;&#x7531;&#x4E8E;&#x7F16;&#x8BD1;&#x5668;&#x6700;&#x521D;&#x662F;&#x7528;C&#x8BED;&#x8A00;&#x7F16;&#x5199;&#x7684;&#xFF0C;<code>go/*</code> &#x5305;&#x88AB;&#x5F00;&#x53D1;&#x7528;&#x4E8E;&#x7F16;&#x5199;&#x5904;&#x7406;Go&#x4EE3;&#x7801;&#x7684;&#x5DE5;&#x5177;&#xFF08;&#x5982; <code>gofmt</code> &#x548C; <code>vet</code>&#xFF09;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x968F;&#x7740;&#x65F6;&#x95F4;&#x63A8;&#x79FB;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x5185;&#x90E8;API&#x5DF2;&#x9010;&#x6E10;&#x6F14;&#x53D8;&#x4E3A;&#x66F4;&#x7B26;&#x5408; <code>go/*</code> &#x5305;&#x7528;&#x6237;&#x7684;&#x4E60;&#x60EF;&#x3002;</p>
 <p>&#x9700;&#x8981;&#x6F84;&#x6E05;&#x7684;&#x662F;&#xFF0C;&quot;gc&quot;&#x4EE3;&#x8868;&quot;Go&#x7F16;&#x8BD1;&#x5668;&quot;&#xFF0C;&#x4E0E;&#x8868;&#x793A;&#x5783;&#x573E;&#x56DE;&#x6536;&#x7684;&#x5927;&#x5199;&quot;GC&quot;&#x65E0;&#x5173;&#x3002;</p>
-<hr>
 <h3 id="1-&#x89E3;&#x6790;&#xFF08;parsing&#xFF09;">1. &#x89E3;&#x6790;&#xFF08;Parsing&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/syntax</code>&#xFF08;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x3001;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x3001;&#x8BED;&#x6CD5;&#x6811;&#xFF09;</li>
 </ul>
 <p>&#x7F16;&#x8BD1;&#x7684;&#x7B2C;&#x4E00;&#x9636;&#x6BB5;&#x5C06;&#x6E90;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x5206;&#x8BCD;&#xFF08;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#xFF09;&#x3001;&#x89E3;&#x6790;&#xFF08;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#xFF09;&#xFF0C;&#x5E76;&#x4E3A;&#x6BCF;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#x6784;&#x5EFA;&#x8BED;&#x6CD5;&#x6811;&#x3002;</p>
 <p>&#x6BCF;&#x4E2A;&#x8BED;&#x6CD5;&#x6811;&#x90FD;&#x662F;&#x76F8;&#x5E94;&#x6E90;&#x6587;&#x4EF6;&#x7684;&#x7CBE;&#x786E;&#x8868;&#x793A;&#xFF0C;&#x8282;&#x70B9;&#x5BF9;&#x5E94;&#x6E90;&#x4EE3;&#x7801;&#x7684;&#x5404;&#x79CD;&#x5143;&#x7D20;&#xFF08;&#x5982;&#x8868;&#x8FBE;&#x5F0F;&#x3001;&#x58F0;&#x660E;&#x548C;&#x8BED;&#x53E5;&#xFF09;&#x3002;&#x8BED;&#x6CD5;&#x6811;&#x8FD8;&#x5305;&#x542B;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x9519;&#x8BEF;&#x62A5;&#x544A;&#x548C;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#x3002;</p>
-<hr>
 <h3 id="2-&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF08;type-checking&#xFF09;">2. &#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF08;Type checking&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/types2</code>&#xFF08;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#xFF09;</li>
 </ul>
 <p><code>types2</code> &#x5305;&#x662F;&#x5C06; <code>go/types</code> &#x79FB;&#x690D;&#x5230;&#x4F7F;&#x7528; <code>syntax</code> &#x5305;&#x7684;AST&#x800C;&#x975E; <code>go/ast</code> &#x7684;&#x7248;&#x672C;&#x3002;</p>
-<hr>
 <h3 id="3-&#x4E2D;&#x95F4;&#x8868;&#x793A;&#x6784;&#x5EFA;&#xFF08;ir-construction-noding&#xFF09;">3. &#x4E2D;&#x95F4;&#x8868;&#x793A;&#x6784;&#x5EFA;&#xFF08;IR construction, &quot;noding&quot;&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/types</code>&#xFF08;&#x7F16;&#x8BD1;&#x5668;&#x7C7B;&#x578B;&#xFF09;</li>
@@ -1511,7 +1521,6 @@
 </ul>
 <p>&#x7F16;&#x8BD1;&#x5668;&#x4E2D;&#x7AEF;&#x4F7F;&#x7528;&#x81EA;&#x5DF1;&#x7684;AST&#x5B9A;&#x4E49;&#x548C;Go&#x7C7B;&#x578B;&#x8868;&#x793A;&#xFF08;&#x6E90;&#x81EA;C&#x8BED;&#x8A00;&#x7248;&#x672C;&#xFF09;&#x3002;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x540E;&#x7684;&#x4E0B;&#x4E00;&#x6B65;&#x662F;&#x5C06; <code>syntax</code> &#x548C; <code>types2</code> &#x8868;&#x793A;&#x8F6C;&#x6362;&#x4E3A; <code>ir</code> &#x548C; <code>types</code>&#x3002;&#x6B64;&#x8FC7;&#x7A0B;&#x79F0;&#x4E3A;&quot;noding&quot;&#x3002;</p>
 <p>&#x4F7F;&#x7528;&#x79F0;&#x4E3A;&#x7EDF;&#x4E00;IR&#xFF08;Unified IR&#xFF09;&#x7684;&#x6280;&#x672F;&#x6784;&#x5EFA;&#x8282;&#x70B9;&#x8868;&#x793A;&#xFF0C;&#x8BE5;&#x6280;&#x672F;&#x57FA;&#x4E8E;&#x7B2C;2&#x9636;&#x6BB5;&#x7C7B;&#x578B;&#x68C0;&#x67E5;&#x4EE3;&#x7801;&#x7684;&#x5E8F;&#x5217;&#x5316;&#x7248;&#x672C;&#x3002;&#x7EDF;&#x4E00;IR&#x8FD8;&#x53C2;&#x4E0E;&#x5305;&#x7684;&#x5BFC;&#x5165;&#x5BFC;&#x51FA;&#x548C;&#x5185;&#x8054;&#x4F18;&#x5316;&#x3002;</p>
-<hr>
 <h3 id="4-&#x4E2D;&#x7AEF;&#x4F18;&#x5316;&#xFF08;middle-end&#xFF09;">4. &#x4E2D;&#x7AEF;&#x4F18;&#x5316;&#xFF08;Middle end&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/inline</code>&#xFF08;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x5185;&#x8054;&#xFF09;</li>
@@ -1526,7 +1535,6 @@
 <li>&#x9003;&#x9038;&#x5206;&#x6790;</li>
 </ul>
 <p>&#x65E9;&#x671F;&#x6B7B;&#x4EE3;&#x7801;&#x6D88;&#x9664;&#x96C6;&#x6210;&#x5728;&#x7EDF;&#x4E00;IR&#x5199;&#x5165;&#x9636;&#x6BB5;&#x3002;</p>
-<hr>
 <h3 id="5-&#x904D;&#x5386;&#xFF08;walk&#xFF09;">5. &#x904D;&#x5386;&#xFF08;Walk&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/walk</code>&#xFF08;&#x6C42;&#x503C;&#x987A;&#x5E8F;&#x3001;&#x89E3;&#x7CD6;&#xFF09;</li>
@@ -1540,7 +1548,6 @@
 </ul>
 </li>
 </ol>
-<hr>
 <h3 id="6-&#x901A;&#x7528;ssa&#xFF08;generic-ssa&#xFF09;">6. &#x901A;&#x7528;SSA&#xFF08;Generic SSA&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/ssa</code>&#xFF08;SSA&#x4F20;&#x9012;&#x548C;&#x89C4;&#x5219;&#xFF09;</li>
@@ -1555,7 +1562,6 @@
 <li>&#x5220;&#x9664;&#x672A;&#x4F7F;&#x7528;&#x7684;&#x5206;&#x652F;</li>
 </ul>
 <p>&#x901A;&#x7528;&#x91CD;&#x5199;&#x89C4;&#x5219;&#x4E3B;&#x8981;&#x6D89;&#x53CA;&#x8868;&#x8FBE;&#x5F0F;&#x4F18;&#x5316;&#xFF0C;&#x4F8B;&#x5982;&#x7528;&#x5E38;&#x91CF;&#x66FF;&#x6362;&#x67D0;&#x4E9B;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4F18;&#x5316;&#x4E58;&#x6CD5;&#x548C;&#x6D6E;&#x70B9;&#x8FD0;&#x7B97;&#x3002;</p>
-<hr>
 <h3 id="7-&#x751F;&#x6210;&#x673A;&#x5668;&#x7801;&#xFF08;generating-machine-code&#xFF09;">7. &#x751F;&#x6210;&#x673A;&#x5668;&#x7801;&#xFF08;Generating machine code&#xFF09;</h3>
 <ul>
 <li><code>cmd/compile/internal/ssa</code>&#xFF08;SSA&#x964D;&#x7EA7;&#x548C;&#x67B6;&#x6784;&#x76F8;&#x5173;&#x4F20;&#x9012;&#xFF09;</li>
@@ -1576,7 +1582,6 @@
 <li>&#x6307;&#x9488;&#x5B58;&#x6D3B;&#x5206;&#x6790;&#xFF08;&#x8BA1;&#x7B97;&#x6BCF;&#x4E2A;GC&#x5B89;&#x5168;&#x70B9;&#x4E0A;&#x6808;&#x4E0A;&#x6307;&#x9488;&#x7684;&#x5B58;&#x6D3B;&#x72B6;&#x6001;&#xFF09;</li>
 </ul>
 <p>SSA&#x751F;&#x6210;&#x9636;&#x6BB5;&#x7ED3;&#x675F;&#x65F6;&#xFF0C;Go&#x51FD;&#x6570;&#x5DF2;&#x8F6C;&#x6362;&#x4E3A;&#x4E00;&#x7CFB;&#x5217; <code>obj.Prog</code> &#x6307;&#x4EE4;&#x3002;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x4F20;&#x9012;&#x7ED9;&#x6C47;&#x7F16;&#x5668;&#xFF08;<code>cmd/internal/obj</code>&#xFF09;&#xFF0C;&#x540E;&#x8005;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x673A;&#x5668;&#x7801;&#x5E76;&#x8F93;&#x51FA;&#x6700;&#x7EC8;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x3002;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x8FD8;&#x5C06;&#x5305;&#x542B;&#x53CD;&#x5C04;&#x6570;&#x636E;&#x3001;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x548C;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x3002;</p>
-<hr>
 <h3 id="7a-&#x5BFC;&#x51FA;&#xFF08;export&#xFF09;">7a. &#x5BFC;&#x51FA;&#xFF08;Export&#xFF09;</h3>
 <p>&#x9664;&#x4E86;&#x4E3A;&#x94FE;&#x63A5;&#x5668;&#x7F16;&#x5199;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x5916;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x8FD8;&#x4E3A;&#x4E0B;&#x6E38;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7F16;&#x5199;&quot;&#x5BFC;&#x51FA;&#x6570;&#x636E;&quot;&#x6587;&#x4EF6;&#x3002;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x5305;&#x542B;&#x7F16;&#x8BD1;&#x5305;P&#x65F6;&#x8BA1;&#x7B97;&#x7684;&#x4EE5;&#x4E0B;&#x4FE1;&#x606F;&#xFF1A;</p>
 <ul>
@@ -1589,7 +1594,6 @@
 <p>GOROOT&#x4ED3;&#x5E93;&#x5305;&#x542B;&#x7EDF;&#x4E00;&#x683C;&#x5F0F;&#x7684;&#x8BFB;&#x53D6;&#x5668;&#x548C;&#x5199;&#x5165;&#x5668;&#xFF1B;&#x5B83;&#x4ECE;/&#x5411;&#x7F16;&#x8BD1;&#x5668;&#x7684;IR&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x548C;&#x89E3;&#x7801;&#x3002;<code>golang.org/x/tools</code> &#x4ED3;&#x5E93;&#x4E5F;&#x4E3A;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x8BFB;&#x8005;&#x63D0;&#x4F9B;&#x516C;&#x5171;API&#xFF08;&#x4F7F;&#x7528; <code>go/types</code> &#x8868;&#x793A;&#xFF09;&#xFF0C;&#x59CB;&#x7EC8;&#x652F;&#x6301;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x5F53;&#x524D;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x548C;&#x5C11;&#x91CF;&#x5386;&#x53F2;&#x7248;&#x672C;&#x3002;&#xFF08;<code>x/tools/go/packages</code> &#x5728;&#x9700;&#x8981;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x4F46;&#x4E0D;&#x9700;&#x8981;&#x5E26;&#x7C7B;&#x578B;&#x6CE8;&#x91CA;&#x7684;&#x8BED;&#x6CD5;&#x6A21;&#x5F0F;&#x4E2D;&#x4F7F;&#x7528;&#x5B83;&#x3002;&#xFF09;</p>
 <p><code>x/tools</code> &#x4ED3;&#x5E93;&#x8FD8;&#x4E3A;&#x4F7F;&#x7528;&#x65E7;&#x7248;&quot;&#x7D22;&#x5F15;&#x683C;&#x5F0F;&quot;&#x7684;&#x5BFC;&#x51FA;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF08;&#x4EC5;&#x9650;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF09;&#x63D0;&#x4F9B;&#x516C;&#x5171;API&#x3002;&#xFF08;&#x4F8B;&#x5982;&#xFF0C;<code>gopls</code> &#x4F7F;&#x7528;&#x6B64;&#x7248;&#x672C;&#x5B58;&#x50A8;&#x5DE5;&#x4F5C;&#x533A;&#x4FE1;&#x606F;&#x6570;&#x636E;&#x5E93;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x62EC;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x3002;&#xFF09;</p>
 <p>&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x901A;&#x5E38;&#x63D0;&#x4F9B;&quot;&#x6DF1;&#x5EA6;&quot;&#x6458;&#x8981;&#xFF0C;&#x56E0;&#x6B64;&#x7F16;&#x8BD1;&#x5305;Q&#x53EA;&#x9700;&#x8BFB;&#x53D6;&#x6BCF;&#x4E2A;&#x76F4;&#x63A5;&#x5BFC;&#x5165;&#x7684;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x6587;&#x4EF6;&#xFF0C;&#x5373;&#x53EF;&#x786E;&#x4FDD;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x63D0;&#x4F9B;&#x95F4;&#x63A5;&#x5BFC;&#x5165;&#xFF08;&#x5982;P&#x7684;&#x516C;&#x5171;API&#x4E2D;&#x5F15;&#x7528;&#x7684;&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x548C;&#x7ED3;&#x6784;&#x5B57;&#x6BB5;&#xFF09;&#x7684;&#x6240;&#x6709;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#x3002;&#x6DF1;&#x5EA6;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x7B80;&#x5316;&#x4E86;&#x6784;&#x5EFA;&#x7CFB;&#x7EDF;&#xFF0C;&#x56E0;&#x4E3A;&#x6BCF;&#x4E2A;&#x76F4;&#x63A5;&#x4F9D;&#x8D56;&#x53EA;&#x9700;&#x8981;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5F53;&#x5904;&#x4E8E;&#x5927;&#x578B;&#x4ED3;&#x5E93;&#x7684;&#x5BFC;&#x5165;&#x56FE;&#x8F83;&#x9AD8;&#x5C42;&#x65F6;&#xFF0C;&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x81A8;&#x80C0;&#xFF1A;&#x5982;&#x679C;&#x6709;&#x5E38;&#x7528;&#x7C7B;&#x578B;&#x5177;&#x6709;&#x5927;&#x578B;API&#xFF0C;&#x51E0;&#x4E4E;&#x6BCF;&#x4E2A;&#x5305;&#x7684;&#x5BFC;&#x51FA;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x5305;&#x542B;&#x526F;&#x672C;&#x3002;&#x8FD9;&#x4E00;&#x95EE;&#x9898;&#x63A8;&#x52A8;&#x4E86;&quot;&#x7D22;&#x5F15;&quot;&#x8BBE;&#x8BA1;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x8BE5;&#x8BBE;&#x8BA1;&#x5141;&#x8BB8;&#x6309;&#x9700;&#x90E8;&#x5206;&#x52A0;&#x8F7D;&#x3002;</p>
-<hr>
 <h3 id="8-&#x5B9E;&#x7528;&#x6280;&#x5DE7;">8. &#x5B9E;&#x7528;&#x6280;&#x5DE7;</h3>
 <h4 id="&#x5165;&#x95E8;&#x6307;&#x5357;">&#x5165;&#x95E8;&#x6307;&#x5357;</h4>
 <ul>
@@ -1606,15 +1610,15 @@ $ go tool compile -bench=out.txt x.go      <span class="hljs-comment"># &#x6253;
 $ go build -gcflags=<span class="hljs-_">-d</span>=checkptr=2          <span class="hljs-comment"># &#x542F;&#x7528;&#x989D;&#x5916;&#x7684;unsafe&#x6307;&#x9488;&#x68C0;&#x67E5;</span>
 </code></pre>
 </li>
-<li>&#x66F4;&#x591A;&#x6807;&#x5FD7;&#x8BE6;&#x60C5;&#x53EF;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#xFF1A;<pre><code class="lang-bash">$ go tool compile -h              <span class="hljs-comment"># &#x67E5;&#x770B;&#x7F16;&#x8BD1;&#x5668;&#x6807;&#x5FD7;&#xFF08;&#x5982; -m=1 -l&#xFF09;</span>
+<li><p>&#x66F4;&#x591A;&#x6807;&#x5FD7;&#x8BE6;&#x60C5;&#x53EF;&#x901A;&#x8FC7;&#x4EE5;&#x4E0B;&#x65B9;&#x5F0F;&#x83B7;&#x53D6;&#xFF1A;</p>
+<pre><code class="lang-bash">$ go tool compile -h              <span class="hljs-comment"># &#x67E5;&#x770B;&#x7F16;&#x8BD1;&#x5668;&#x6807;&#x5FD7;&#xFF08;&#x5982; -m=1 -l&#xFF09;</span>
 $ go tool compile <span class="hljs-_">-d</span> <span class="hljs-built_in">help</span>         <span class="hljs-comment"># &#x67E5;&#x770B;&#x8C03;&#x8BD5;&#x6807;&#x5FD7;&#xFF08;&#x5982; -d=checkptr=2&#xFF09;</span>
 $ go tool compile <span class="hljs-_">-d</span> ssa/<span class="hljs-built_in">help</span>     <span class="hljs-comment"># &#x67E5;&#x770B;SSA&#x6807;&#x5FD7;&#xFF08;&#x5982; -d=ssa/prove/debug=2&#xFF09;</span>
 </code></pre>
-</li>
-</ul>
 <h4 id="&#x6D4B;&#x8BD5;&#x4FEE;&#x6539;">&#x6D4B;&#x8BD5;&#x4FEE;&#x6539;</h4>
-<ul>
-<li>&#x8BF7;&#x52A1;&#x5FC5;&#x9605;&#x8BFB; <a href="https://go.dev/doc/contribute#quick_test" target="_blank">&#x5FEB;&#x901F;&#x6D4B;&#x8BD5;&#x4FEE;&#x6539;</a> &#x90E8;&#x5206;&#x3002;</li>
+</li>
+<li><p>&#x8BF7;&#x52A1;&#x5FC5;&#x9605;&#x8BFB; <a href="https://go.dev/doc/contribute#quick_test" target="_blank">&#x5FEB;&#x901F;&#x6D4B;&#x8BD5;&#x4FEE;&#x6539;</a> &#x90E8;&#x5206;&#x3002;</p>
+</li>
 <li><p>&#x90E8;&#x5206;&#x6D4B;&#x8BD5;&#x4F4D;&#x4E8E; <code>cmd/compile</code> &#x5305;&#x5185;&#xFF0C;&#x53EF;&#x901A;&#x8FC7; <code>go test ./...</code> &#x8FD0;&#x884C;&#xFF0C;&#x4F46;&#x8BB8;&#x591A;&#x6D4B;&#x8BD5;&#x4F4D;&#x4E8E;&#x9876;&#x7EA7; <a href="https://github.com/golang/go/tree/master/test" target="_blank">test</a> &#x76EE;&#x5F55;&#xFF1A;</p>
 <pre><code class="lang-bash">$ go <span class="hljs-built_in">test</span> cmd/internal/testdir                           <span class="hljs-comment"># &#x8FD0;&#x884C;&apos;test&apos;&#x76EE;&#x5F55;&#x6240;&#x6709;&#x6D4B;&#x8BD5;</span>
 $ go <span class="hljs-built_in">test</span> cmd/internal/testdir -run=<span class="hljs-string">&apos;Test/escape.*.go&apos;</span>   <span class="hljs-comment"># &#x8FD0;&#x884C;&#x7279;&#x5B9A;&#x6A21;&#x5F0F;&#x7684;&#x6D4B;&#x8BD5;</span>
@@ -1629,11 +1633,10 @@ $ GOCOVERDIR=/tmp/coverdir go <span class="hljs-built_in">test</span> [...]     
 $ go tool covdata textfmt -i=/tmp/coverdir -o coverage.out <span class="hljs-comment"># &#x8F6C;&#x6362;&#x4E3A;&#x4F20;&#x7EDF;&#x8986;&#x76D6;&#x7387;&#x683C;&#x5F0F;</span>
 $ go tool cover -html coverage.out                         <span class="hljs-comment"># &#x901A;&#x8FC7;&#x4F20;&#x7EDF;&#x5DE5;&#x5177;&#x67E5;&#x770B;&#x8986;&#x76D6;&#x7387;</span>
 </code></pre>
-</li>
-</ul>
 <h4 id="&#x5904;&#x7406;&#x7F16;&#x8BD1;&#x5668;&#x7248;&#x672C;">&#x5904;&#x7406;&#x7F16;&#x8BD1;&#x5668;&#x7248;&#x672C;</h4>
-<ul>
-<li>&#x8BB8;&#x591A;&#x7F16;&#x8BD1;&#x5668;&#x6D4B;&#x8BD5;&#x4F7F;&#x7528; <code>$PATH</code> &#x4E2D;&#x7684; <code>go</code> &#x547D;&#x4EE4;&#x53CA;&#x5176;&#x5BF9;&#x5E94;&#x7684; <code>compile</code> &#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x3002;</li>
+</li>
+<li><p>&#x8BB8;&#x591A;&#x7F16;&#x8BD1;&#x5668;&#x6D4B;&#x8BD5;&#x4F7F;&#x7528; <code>$PATH</code> &#x4E2D;&#x7684; <code>go</code> &#x547D;&#x4EE4;&#x53CA;&#x5176;&#x5BF9;&#x5E94;&#x7684; <code>compile</code> &#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x3002;</p>
+</li>
 <li>&#x5982;&#x679C;&#x60A8;&#x5728;&#x5206;&#x652F;&#x4E2D;&#x4E14; <code>$PATH</code> &#x5305;&#x542B; <code>&lt;go-repo&gt;/bin</code>&#xFF0C;&#x6267;&#x884C; <code>go install cmd/compile</code> &#x5C06;&#x4F7F;&#x7528;&#x5206;&#x652F;&#x4EE3;&#x7801;&#x6784;&#x5EFA;&#x7F16;&#x8BD1;&#x5668;&#xFF0C;&#x5E76;&#x5B89;&#x88C5;&#x5230;&#x6B63;&#x786E;&#x4F4D;&#x7F6E;&#xFF0C;&#x4EE5;&#x4FBF;&#x540E;&#x7EED; <code>go</code> &#x547D;&#x4EE4;&#x4F7F;&#x7528;&#x65B0;&#x7F16;&#x8BD1;&#x5668;&#x3002;</li>
 <li><p><a href="https://pkg.go.dev/golang.org/x/tools/cmd/toolstash" target="_blank">toolstash</a> &#x63D0;&#x4F9B;&#x4FDD;&#x5B58;&#x3001;&#x8FD0;&#x884C;&#x548C;&#x6062;&#x590D;Go&#x5DE5;&#x5177;&#x94FE;&#x5DF2;&#x77E5;&#x826F;&#x597D;&#x7248;&#x672C;&#x7684;&#x529F;&#x80FD;&#x3002;&#x4F8B;&#x5982;&#xFF1A;</p>
 <pre><code class="lang-bash">$ go install golang.org/x/tools/cmd/toolstash@latest
@@ -1658,11 +1661,10 @@ $ go build -toolexec <span class="hljs-string">&quot;toolstash -cmp&quot;</span>
 <li><p>&#x5982;&#x679C;&#x7248;&#x672C;&#x4E0D;&#x540C;&#x6B65;&#xFF08;&#x4F8B;&#x5982;&#x51FA;&#x73B0; <code>linked object header mismatch</code> &#x9519;&#x8BEF;&#xFF09;&#xFF0C;&#x53EF;&#x6267;&#x884C;&#xFF1A;</p>
 <pre><code class="lang-bash">$ toolstash restore &amp;&amp; go install cmd/...
 </code></pre>
-</li>
-</ul>
 <h4 id="&#x5176;&#x4ED6;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;">&#x5176;&#x4ED6;&#x6709;&#x7528;&#x7684;&#x5DE5;&#x5177;</h4>
-<ul>
-<li><a href="https://pkg.go.dev/golang.org/x/tools/cmd/compilebench" target="_blank">compilebench</a> &#x7528;&#x4E8E;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x7F16;&#x8BD1;&#x5668;&#x901F;&#x5EA6;&#x3002;</li>
+</li>
+<li><p><a href="https://pkg.go.dev/golang.org/x/tools/cmd/compilebench" target="_blank">compilebench</a> &#x7528;&#x4E8E;&#x57FA;&#x51C6;&#x6D4B;&#x8BD5;&#x7F16;&#x8BD1;&#x5668;&#x901F;&#x5EA6;&#x3002;</p>
+</li>
 <li><a href="https://pkg.go.dev/golang.org/x/perf/cmd/benchstat" target="_blank">benchstat</a> &#x662F;&#x62A5;&#x544A;&#x7F16;&#x8BD1;&#x5668;&#x4FEE;&#x6539;&#x6027;&#x80FD;&#x53D8;&#x5316;&#x7684;&#x6807;&#x51C6;&#x5DE5;&#x5177;&#xFF1A;<pre><code class="lang-bash">$ go <span class="hljs-built_in">test</span> -bench=SomeBenchmarks -count=20 &gt; new.txt   <span class="hljs-comment"># &#x4F7F;&#x7528;&#x65B0;&#x7F16;&#x8BD1;&#x5668;&#x6D4B;&#x8BD5;</span>
 $ toolstash restore                                   <span class="hljs-comment"># &#x6062;&#x590D;&#x65E7;&#x7F16;&#x8BD1;&#x5668;</span>
 $ go <span class="hljs-built_in">test</span> -bench=SomeBenchmarks -count=20 &gt; old.txt   <span class="hljs-comment"># &#x4F7F;&#x7528;&#x65E7;&#x7F16;&#x8BD1;&#x5668;&#x6D4B;&#x8BD5;</span>
@@ -1721,7 +1723,7 @@ $ benchstat old.txt new.txt                           <span class="hljs-comment"
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.80 编译工具链/compile","level":"1.7.9","depth":2,"next":{"title":"7.81 编译工具链/asm","level":"1.7.10","depth":2,"path":"7-headto-sym-debugger/81-go-tool-asm.md","ref":"7-headto-sym-debugger/81-go-tool-asm.md","articles":[]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.8","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/80-go-tool-compile.md","mtime":"2025-03-09T16:54:22.134Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-09T17:57:00.835Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.80 编译工具链/compile","level":"1.7.9","depth":2,"next":{"title":"7.81 编译工具链/asm","level":"1.7.10","depth":2,"path":"7-headto-sym-debugger/81-go-tool-asm.md","ref":"7-headto-sym-debugger/81-go-tool-asm.md","articles":[]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.8","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/80-go-tool-compile.md","mtime":"2025-03-11T18:43:52.839Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-11T18:57:14.707Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

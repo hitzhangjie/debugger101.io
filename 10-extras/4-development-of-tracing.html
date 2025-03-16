@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>12.1 go程序启动流程 · GitBook</title>
+        <title>10.4 跟踪系统发展历程 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="2-auto-track-new-threads.md" />
+    <link rel="next" href="../11-thanks/" />
     
     
-    <link rel="prev" href="./" />
+    <link rel="prev" href="3-development-of-metrics.html" />
     
 
     </head>
@@ -1407,9 +1407,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10" data-path="../10-extras/">
+        <li class="chapter " data-level="1.10" data-path="./">
             
-                <a href="../10-extras/">
+                <a href="./">
             
                     
                     10 主流调试技术解析
@@ -1421,9 +1421,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.10.1" data-path="../10-extras/1-development-of-debugger.html">
+        <li class="chapter " data-level="1.10.1" data-path="1-development-of-debugger.html">
             
-                <a href="../10-extras/1-development-of-debugger.html">
+                <a href="1-development-of-debugger.html">
             
                     
                     10.1 调试器发展历程
@@ -1434,9 +1434,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.2" data-path="../10-extras/2-development-of-logging.html">
+        <li class="chapter " data-level="1.10.2" data-path="2-development-of-logging.html">
             
-                <a href="../10-extras/2-development-of-logging.html">
+                <a href="2-development-of-logging.html">
             
                     
                     10.2 日志系统展历程
@@ -1447,9 +1447,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.3" data-path="../10-extras/3-development-of-metrics.html">
+        <li class="chapter " data-level="1.10.3" data-path="3-development-of-metrics.html">
             
-                <a href="../10-extras/3-development-of-metrics.html">
+                <a href="3-development-of-metrics.html">
             
                     
                     10.3 指标系统发展历程
@@ -1460,9 +1460,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.10.4" data-path="../10-extras/4-development-of-tracing.html">
+        <li class="chapter active" data-level="1.10.4" data-path="4-development-of-tracing.html">
             
-                <a href="../10-extras/4-development-of-tracing.html">
+                <a href="4-development-of-tracing.html">
             
                     
                     10.4 跟踪系统发展历程
@@ -1491,9 +1491,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12" data-path="./">
+        <li class="chapter " data-level="1.12" data-path="../12-appendix/">
             
-                <a href="./">
+                <a href="../12-appendix/">
             
                     
                     12 附录
@@ -1505,9 +1505,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.12.1" data-path="1-go-programme-start.html">
+        <li class="chapter " data-level="1.12.1" data-path="../12-appendix/1-go-programme-start.html">
             
-                <a href="1-go-programme-start.html">
+                <a href="../12-appendix/1-go-programme-start.html">
             
                     
                     12.1 go程序启动流程
@@ -1518,7 +1518,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.2" data-path="2-auto-track-new-threads.md">
+        <li class="chapter " data-level="1.12.2" data-path="../12-appendix/2-auto-track-new-threads.md">
             
                 <span>
             
@@ -1531,9 +1531,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.3" data-path="3-git-bisect.html">
+        <li class="chapter " data-level="1.12.3" data-path="../12-appendix/3-git-bisect.html">
             
-                <a href="3-git-bisect.html">
+                <a href="../12-appendix/3-git-bisect.html">
             
                     
                     12.3 git bisect
@@ -1579,7 +1579,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >12.1 go程序启动流程</a>
+        <a href=".." >10.4 跟踪系统发展历程</a>
     </h1>
 </div>
 
@@ -1594,360 +1594,140 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="go-runtime-go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x6D41;&#x7A0B;">go runtime: go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x6D41;&#x7A0B;</h1>
-<h2 id="go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x6982;&#x89C8;">go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x6982;&#x89C8;</h2>
-<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528;&#x5982;&#x4E0B;&#x6E90;&#x7A0B;&#x5E8F;&#x4F5C;&#x4E3A;&#x793A;&#x4F8B;&#xFF0C;&#x6765;&#x770B;&#x4E00;&#x770B;go&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;:</p>
-<p><strong>file: main.go</strong></p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
-
-<span class="hljs-keyword">func</span> main() {
-    fmt.Println(<span class="hljs-string">&quot;vim-go&quot;</span>)
-}
-</code></pre>
-<p>&#x8FD0;&#x884C;dlv&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x5C06;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;main.main&#x5904;&#xFF1A;</p>
-<pre><code>$ dlv debug main.go
-Type &apos;help&apos; for list of commands.
-(dlv) b main.main
-Breakpoint 1 set at 0x10d0faf for main.main() ./main.go:5
-(dlv) c
-&gt; main.main() ./main.go:5 (hits goroutine(1):1 total:1) (PC: 0x10d0faf)
-     1:    package main
-     2:    
-     3:    import &quot;fmt&quot;
-     4:    
-=&gt;   5:    func main() {
-     6:        fmt.Println(&quot;vim-go&quot;)
-     7:    }
-(dlv)
-</code></pre><p>&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x770B;&#x4E00;&#x4E0B;&#x8C03;&#x7528;&#x5806;&#x6808;&#xFF1A;</p>
-<pre><code class="lang-bash">(dlv) bt
-0  0x00000000010d0faf <span class="hljs-keyword">in</span> main.main
-   at ./main.go:5
-1  0x000000000103aacf <span class="hljs-keyword">in</span> runtime.main
-   at /usr/<span class="hljs-built_in">local</span>/go/src/runtime/proc.go:204
-2  0x000000000106d021 <span class="hljs-keyword">in</span> runtime.goexit
-   at /usr/<span class="hljs-built_in">local</span>/go/src/runtime/asm_amd64.s:1374
-(dlv)
-</code></pre>
-<p>&#x7531;&#x6B64;&#x53EF;&#x77E5;go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x662F;&#x6309;&#x7167;&#x5982;&#x4E0B;&#x6D41;&#x7A0B;&#x542F;&#x52A8;&#x7684;&#xFF1A;</p>
-<ol>
-<li><p>asm_amd64.s:1374 runtime&#xB7;goexit:runtime&#xB7;goexit1(SB)</p>
-</li>
-<li><p>runtime/proc.go:204 runtime.main:fn()</p>
-<p>&#x8FD9;&#x91CC;&#x7684;fn&#x5C31;&#x662F;&#x6D4B;&#x8BD5;&#x6E90;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;main.main</p>
-</li>
-<li><p>&#x73B0;&#x5728;PC&#x5C31;&#x505C;&#x5728;main.main&#x5904;&#xFF0C;&#x7B49;&#x5F85;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x540E;&#x7EED;&#x8C03;&#x8BD5;&#x3002;</p>
-</li>
-</ol>
-<h2 id="go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x524D;&#x521D;&#x59CB;&#x5316;">go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x524D;&#x521D;&#x59CB;&#x5316;</h2>
-<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8BB2;&#x7684;&#x542F;&#x52A8;&#x524D;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x5165;&#x53E3;&#x51FD;&#x6570;main.main&#x4E4B;&#x524D;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x7406;&#x89E3;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#xFF0C;&#x5C06;&#x6709;&#x52A9;&#x4E8E;&#x5EFA;&#x7ACB;&#x5BF9;go&#x7684;&#x5168;&#x5C40;&#x8BA4;&#x8BC6;&#xFF0C;&#x4E5F;&#x6709;&#x52A9;&#x4E8E;&#x52A0;&#x5F3A;&#x5BF9;&#x5B9E;&#x73B0;go&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x8BA4;&#x8BC6;&#x3002;</p>
-<h3 id="go&#x8FDB;&#x7A0B;&#x5B9E;&#x4F8B;&#x5316;">go&#x8FDB;&#x7A0B;&#x5B9E;&#x4F8B;&#x5316;</h3>
-<p>&#x5F53;&#x6211;&#x4EEC;&#x5728;shell&#x91CC;&#x9762;&#x952E;&#x5165;<code>./prog</code>&#x65F6;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E3A;&#x6211;&#x4EEC;&#x5B9E;&#x4F8B;&#x5316;&#x4E86;&#x4E00;&#x4E2A;prog&#x7A0B;&#x5E8F;&#x7684;&#x5B9E;&#x4F8B;&#xFF0C;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x4E86;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x4E2D;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+                                <h2 id="&#x8F6F;&#x4EF6;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;tracing&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;">&#x8F6F;&#x4EF6;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;(Tracing)&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;</h2>
+<h3 id="1-tracing&#x8BDE;&#x751F;&#x7684;&#x95EE;&#x9898;&#x80CC;&#x666F;">1. Tracing&#x8BDE;&#x751F;&#x7684;&#x95EE;&#x9898;&#x80CC;&#x666F;</h3>
+<p>&#x8F6F;&#x4EF6;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;(Tracing)&#x7684;&#x51FA;&#x73B0;&#x6E90;&#x4E8E;&#x5F00;&#x53D1;&#x8005;&#x9762;&#x4E34;&#x7684;&#x4E00;&#x4E2A;&#x6C38;&#x6052;&#x6311;&#x6218;&#xFF1A;&#x5982;&#x4F55;&#x6709;&#x6548;&#x5730;&#x7406;&#x89E3;&#x548C;&#x6392;&#x67E5;&#x590D;&#x6742;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5728;&#x65E9;&#x671F;&#x8BA1;&#x7B97;&#x673A;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x8C03;&#x8BD5;&#x4E3B;&#x8981;&#x4F9D;&#x9760;&#x7B80;&#x5355;&#x7684;&#x65E5;&#x5FD7;&#x8BB0;&#x5F55;&#x548C;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x5728;&#x5355;&#x4F53;&#x5E94;&#x7528;&#x4E2D;&#x8868;&#x73B0;&#x5C1A;&#x53EF;&#xFF0C;&#x4F46;&#x968F;&#x7740;&#x7CFB;&#x7EDF;&#x89C4;&#x6A21;&#x7684;&#x6269;&#x5927;&#x548C;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x63D0;&#x5347;&#xFF0C;&#x5B83;&#x4EEC;&#x9010;&#x6E10;&#x663E;&#x9732;&#x51FA;&#x5C40;&#x9650;&#x6027;&#x3002;</p>
+<p>&#x5728;20&#x4E16;&#x7EAA;90&#x5E74;&#x4EE3;&#x672B;&#x5230;21&#x4E16;&#x7EAA;&#x521D;&#xFF0C;&#x968F;&#x7740;&#x4E92;&#x8054;&#x7F51;&#x7684;&#x5174;&#x8D77;&#xFF0C;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5F00;&#x59CB;&#x666E;&#x53CA;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x4EEC;&#x9762;&#x4E34;&#x7740;&#x524D;&#x6240;&#x672A;&#x6709;&#x7684;&#x6311;&#x6218;&#xFF1A;</p>
 <ul>
-<li>shell&#x4E2D;&#x9996;&#x5148;fork&#x4E00;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x5C31;&#x79F0;&#x4E3A;&#x5B50;shell&#x5427;&#xFF1B;</li>
-<li>&#x5B50;shell&#x4E2D;&#x518D;&#x901A;&#x8FC7;&#x6267;&#x884C;execvp&#x66FF;&#x6362;&#x6389;&#x8FDB;&#x7A0B;&#x5F85;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x4EE3;&#x7801;&#x3001;&#x6570;&#x636E;&#x7B49;&#x7B49;&#xFF1B;</li>
-<li>&#x4E00;&#x5207;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5C06;&#x51C6;&#x5907;&#x597D;&#x7684;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x4EA4;&#x7ED9;&#x8C03;&#x5EA6;&#x5668;&#x8C03;&#x5EA6;&#x6267;&#x884C;&#xFF1B;</li>
+<li>&#x7CFB;&#x7EDF;&#x7EC4;&#x4EF6;&#x5206;&#x5E03;&#x5728;&#x4E0D;&#x540C;&#x7684;&#x7269;&#x7406;&#x673A;&#x5668;&#x4E0A;</li>
+<li>&#x8BF7;&#x6C42;&#x7A7F;&#x8D8A;&#x591A;&#x4E2A;&#x670D;&#x52A1;&#x548C;&#x7F51;&#x7EDC;&#x8FB9;&#x754C;</li>
+<li>&#x5931;&#x8D25;&#x53EF;&#x80FD;&#x53D1;&#x751F;&#x5728;&#x4EFB;&#x4F55;&#x73AF;&#x8282;&#xFF0C;&#x4E14;&#x96BE;&#x4EE5;&#x5B9A;&#x4F4D;</li>
+<li>&#x6027;&#x80FD;&#x95EE;&#x9898;&#x7684;&#x6839;&#x6E90;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x96BE;&#x4EE5;&#x8FFD;&#x8E2A;</li>
 </ul>
-<p>&#x6211;&#x4EEC;&#x5C31;&#x5047;&#x5B9A;&#x5F53;&#x524D;&#x8C03;&#x5EA6;&#x5668;&#x9009;&#x4E2D;&#x4E86;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#xFF0C;&#x770B;&#x4E0B;go&#x8FDB;&#x7A0B;&#x4ECE;&#x542F;&#x52A8;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4E86;&#x4EC0;&#x4E48;&#x903B;&#x8F91;&#x3002;</p>
-<p>&#x5728;&#x7F16;&#x8BD1;c&#x7A0B;&#x5E8F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E00;&#x4E2A;&#x6E90;&#x7A0B;&#x5E8F;&#x9996;&#x5148;&#x4F1A;&#x88AB;&#x7F16;&#x8BD1;&#x6210;*.o&#x6587;&#x4EF6;&#xFF0C;&#x7136;&#x540E;&#x540C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x5171;&#x4EAB;&#x5E93;&#x3001;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x7684;&#x542F;&#x52A8;&#x4EE3;&#x7801;&#x7ED3;&#x5408;&#x8D77;&#x6765;&#x8FDB;&#x884C;&#x94FE;&#x63A5;&#xFF08;link&#xFF09;&#x4E4B;&#x540E;&#xFF0C;&#x5F62;&#x6210;&#x4E00;&#x4E2A;&#x6700;&#x7EC8;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;&#x94FE;&#x63A5;&#x7684;&#x65F6;&#x5019;&#x6709;internal linkage&#xFF08;&#x9759;&#x6001;&#x94FE;&#x63A5;&#xFF09;&#x6216;&#x8005;external linkage&#xFF08;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF09;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
-<p>go&#x7A0B;&#x5E8F;&#x548C;c&#x7A0B;&#x5E8F;&#x7C7B;&#x4F3C;&#xFF0C;&#x4E5F;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x94FE;&#x63A5;&#x65B9;&#x5F0F;&#xFF0C;&#x53C2;&#x8003;<code>go tool link</code>&#x4E2D;&#x7684;<code>-linkmode</code>&#x9009;&#x9879;&#x8BF4;&#x660E;&#x8FDB;&#x884C;&#x4E86;&#x89E3;&#x3002;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x5982;&#x679C;&#x6CA1;&#x6709;cgo&#xFF0C;&#x9ED8;&#x8BA4;go build&#x6784;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x90FD;&#x662F;internal linkage&#xFF0C;&#x6240;&#x4EE5;&#x5176;&#x4F53;&#x79EF;&#x4E5F;&#x7A0D;&#x5927;&#xFF0C;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x5DE5;&#x5177;<code>ldd &lt;prog&gt;</code>&#x67E5;&#x770B;&#x4F9D;&#x8D56;&#x7684;&#x5171;&#x4EAB;&#x5E93;&#x4F1A;&#x63D0;&#x793A;&#x9519;&#x8BEF;<code>not dynamic executable</code>&#x4E5F;&#x53EF;&#x4EE5;&#x8BC1;&#x5B9E;&#x8FD9;&#x70B9;&#x3002;</p>
-<h3 id="go&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x4EE3;&#x7801;">go&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x4EE3;&#x7801;</h3>
-<p>go&#x7A0B;&#x5E8F;&#x5BF9;&#x5E94;&#x7684;&#x8FDB;&#x7A0B;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x4E4B;&#x540E;&#xFF0C;&#x5176;&#x9996;&#x5148;&#x8981;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#x5C31;&#x662F;&#x542F;&#x52A8;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF1A;</p>
-<p><strong>file: asm_amd64.s</strong></p>
-<pre><code class="lang-asm">// _rt0_amd64 is common startup code for most amd64 systems when using
-// internal linking. This is the entry point for the program from the
-// kernel for an ordinary -buildmode=exe program. The stack holds the
-// number of arguments and the C-style argv.
-TEXT _rt0_amd64(SB),NOSPLIT,$-8
-    MOVQ    0(SP), DI    // argc
-    LEAQ    8(SP), SI    // argv
-    JMP    runtime&#xB7;rt0_go(SB)
-
-// main is common startup code for most amd64 systems when using
-// external linking. The C startup code will call the symbol &quot;main&quot;
-// passing argc and argv in the usual C ABI registers DI and SI.
-TEXT main(SB),NOSPLIT,$-8
-    JMP    runtime&#xB7;rt0_go(SB)
-</code></pre>
-<p>&#x4E0A;&#x8FF0;&#x662F;go&#x7A0B;&#x5E8F;&#x6784;&#x5EFA;&#x65F6;&#x5206;&#x522B;&#x91C7;&#x7528;internal&#x3001;external linkage&#x65F6;&#x4F7F;&#x7528;&#x7684;&#x542F;&#x52A8;&#x4EE3;&#x7801;&#xFF0C;go&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x65F6;&#x5C06;&#x9996;&#x5148;&#x6267;&#x884C;&#x8FD9;&#x6BB5;&#x6307;&#x4EE4;&#x3002;&#x7B2C;&#x4E00;&#x79CD;&#x662F;&#x9996;&#x5148;&#x4E3A;&#x8FDB;&#x7A0B;&#x4F20;&#x9012;&#x53C2;&#x6570;argc&#x3001;argv&#xFF0C;&#x7136;&#x540E;&#x8DF3;&#x5230;<code>runtime.rt0_go(SB)</code>&#x6267;&#x884C;&#xFF0C;&#x7B2C;&#x4E8C;&#x79CD;&#x662F;&#x8BF4;c&#x542F;&#x52A8;&#x4EE3;&#x7801;&#x5728;&#x8C03;&#x7528;main&#x4E4B;&#x524D;&#x4F1A;&#x8D1F;&#x8D23;&#x4F20;&#x9012;argc&#x3001;argv&#xFF0C;<code>runtime.rt0_go(SB)</code>&#x3002;</p>
-<p>&#x5C31;&#x5148;&#x4E0D;&#x5728;linkmode&#x5BF9;&#x542F;&#x52A8;&#x4EE3;&#x7801;&#x7684;&#x5F71;&#x54CD;&#x8FD9;&#x591A;&#x505A;&#x8BA8;&#x8BBA;&#x4E86;&#xFF0C;&#x76F4;&#x63A5;&#x770B;<code>runtime.rt0_go(SB)</code>&#x3002;</p>
-<h3 id="runtimert0gosb"><code>runtime.rt0_go(SB)</code></h3>
-<p>&#x8FD9;&#x91CC;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#x7BC7;&#x5E45;&#x8FC7;&#x957F;&#xFF0C;&#x6211;&#x4EEC;&#x7701;&#x53BB;&#x4E86;&#x5927;&#x90E8;&#x5206;&#x6C47;&#x7F16;&#x4EE3;&#x7801;&#xFF0C;&#x53EA;&#x4FDD;&#x7559;&#x4E86;&#x6BD4;&#x8F83;&#x91CD;&#x8981;&#x7684;&#x6B65;&#x9AA4;&#x7684;&#x8BF4;&#x660E;&#x3002;</p>
-<pre><code class="lang-asm">TEXT runtime&#xB7;rt0_go(SB),NOSPLIT,$0
-    // copy arguments forward on an even stack
-    ...
-
-    // create istack out of the given (operating system) stack.
-    ...
-
-    // find out information about the processor we&apos;re on
-    ...
-
-    // others
-    ...
-ok:
-    // set the per-goroutine and per-mach &quot;registers&quot;
-    ...
-
-    // save m-&gt;g0 = g0
-    ...
-    // save m0 to g0-&gt;m
-    ...
-
-
-    // copy argc
-    ...
-    // copy argv
-    ...
-    CALL    runtime&#xB7;args(SB)
-    CALL    runtime&#xB7;osinit(SB)
-    CALL    runtime&#xB7;schedinit(SB)
-
-    // create a new goroutine to start program
-    MOVQ    $runtime&#xB7;mainPC(SB), AX        // entry
-    PUSHQ    AX
-    PUSHQ    $0            // arg size
-    CALL    runtime&#xB7;newproc(SB)
-    POPQ    AX
-    POPQ    AX
-
-    // start this M
-    CALL    runtime&#xB7;mstart(SB)
-
-    CALL    runtime&#xB7;abort(SB)    // mstart should never return
-    RET
-
-    // Prevent dead-code elimination of debugCallV1, which is
-    // intended to be called by debuggers.
-    MOVQ    $runtime&#xB7;debugCallV1(SB), AX
-    RET
-</code></pre>
-<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x5728;&#x5B8C;&#x6210;&#x4E0A;&#x534A;&#x90E8;&#x5206;&#x7684;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x4E4B;&#x540E;&#xFF0C;&#x8FD8;&#x505A;&#x4E86;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<ol>
-<li>copy argc, copy argv</li>
-<li>call runtime&#xB7;args(SB), call runtime&#xB7;osinit(SB), call runtime&#xB7;schedinit(SB)</li>
-<li>create a new goroutine to start program<ol>
-<li>push entry: $runtime&#xB7;mainPC(SB)</li>
-<li>push arg size: $0</li>
-<li>call runtime&#xB7;newproc(SB)</li>
-</ol>
-</li>
-<li>call runtime&#xB7;mstart(SB)</li>
-</ol>
-<p>&#x8FD9;&#x4E9B;&#x6B65;&#x9AA4;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x7684;go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x7684;&#x5173;&#x952E;&#x90E8;&#x5206;&#x4E86;&#xFF0C;&#x4E0D;&#x59A8;&#x4E00;&#x4E00;&#x6765;&#x770B;&#x4E0B;&#x3002;</p>
-<blockquote>
-<p>ps&#xFF1A;&#x9605;&#x8BFB;go&#x6C47;&#x7F16;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x9605;&#x8BFB;&#x4E0B;&#x76F8;&#x5173;&#x7684;&#x57FA;&#x7840;&#x77E5;&#x8BC6;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x4E0B; <a href="https://golang.org/doc/asm" target="_blank">a quick guide to go&apos;s assembler</a>.</p>
+<p>&#x4F20;&#x7EDF;&#x7684;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x5728;&#x8FD9;&#x79CD;&#x73AF;&#x5883;&#x4E0B;&#x6349;&#x895F;&#x89C1;&#x8098;&#x3002;&#x5F53;&#x4E00;&#x4E2A;&#x8BF7;&#x6C42;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x4E0D;&#x5F97;&#x4E0D;&#x624B;&#x52A8;&#x5173;&#x8054;&#x5404;&#x4E2A;&#x7EC4;&#x4EF6;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x9879;&#x8017;&#x65F6;&#x4E14;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#x7684;&#x5DE5;&#x4F5C;&#x3002;&#x8FD9;&#x79CD;&#x75DB;&#x70B9;&#x50AC;&#x751F;&#x4E86;&#x5BF9;&#x66F4;&#x5148;&#x8FDB;&#x8DDF;&#x8E2A;&#x6280;&#x672F;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x4FC3;&#x4F7F;&#x4E86;&#x4E13;&#x95E8;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x7684;&#x8BDE;&#x751F;&#x3002;</p>
+<h3 id="2-tracing&#x7CFB;&#x7EDF;&#x7684;&#x6280;&#x672F;&#x6F14;&#x8FDB;">2. Tracing&#x7CFB;&#x7EDF;&#x7684;&#x6280;&#x672F;&#x6F14;&#x8FDB;</h3>
+<h4 id="&#x65E9;&#x671F;&#x57FA;&#x7840;&#xFF1A;&#x4ECE;&#x65E5;&#x5FD7;&#x5230;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;">&#x65E9;&#x671F;&#x57FA;&#x7840;&#xFF1A;&#x4ECE;&#x65E5;&#x5FD7;&#x5230;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;</h4>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7684;&#x6982;&#x5FF5;&#x6700;&#x65E9;&#x53EF;&#x4EE5;&#x8FFD;&#x6EAF;&#x5230;2000&#x5E74;&#x4EE3;&#x521D;&#x671F;&#x3002;&#x8FD9;&#x4E00;&#x65F6;&#x671F;&#x7684;&#x91CD;&#x8981;&#x91CC;&#x7A0B;&#x7891;&#x5305;&#x62EC;&#xFF1A;</p>
+<p> <strong>Magpie (2003)</strong> &#xFF1A;&#x5FAE;&#x8F6F;&#x7814;&#x7A76;&#x9662;&#x5F00;&#x53D1;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x80FD;&#x591F;&#x81EA;&#x52A8;&#x63D0;&#x53D6;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x4E8B;&#x4EF6;&#x7684;&#x56E0;&#x679C;&#x5173;&#x7CFB;&#xFF0C;&#x88AB;&#x8BA4;&#x4E3A;&#x662F;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7684;&#x5148;&#x9A71;&#x4E4B;&#x4E00;&#x3002;</p>
+<p> <strong>X-Trace (2007)</strong> &#xFF1A;UC Berkeley&#x5F00;&#x53D1;&#x7684;&#x6846;&#x67B6;&#xFF0C;&#x9996;&#x6B21;&#x5F15;&#x5165;&#x4E86;&#x8DE8;&#x591A;&#x4E2A;&#x534F;&#x8BAE;&#x548C;&#x7CFB;&#x7EDF;&#x8FB9;&#x754C;&#x7684;&#x7AEF;&#x5230;&#x7AEF;&#x8DDF;&#x8E2A;&#x80FD;&#x529B;&#x3002;X-Trace&#x7684;&#x521B;&#x65B0;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#x5B83;&#x4E3A;&#x6BCF;&#x4E2A;&#x8BF7;&#x6C42;&#x5206;&#x914D;&#x4E86;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x7B26;&#xFF0C;&#x4F7F;&#x5F97;&#x8FFD;&#x8E2A;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#x6210;&#x4E3A;&#x53EF;&#x80FD;&#x3002;</p>
+<h4 id="google-dapper&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7684;&#x5960;&#x57FA;&#x77F3;">Google Dapper&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7684;&#x5960;&#x57FA;&#x77F3;</h4>
+<p>2010&#x5E74;&#xFF0C;Google&#x53D1;&#x8868;&#x4E86;&#x9898;&#x4E3A;&#x300A;Dapper, a Large-Scale Distributed Systems Tracing Infrastructure&#x300B;&#x7684;&#x8BBA;&#x6587;&#xFF0C;&#x8FD9;&#x88AB;&#x5E7F;&#x6CDB;&#x8BA4;&#x4E3A;&#x662F;&#x73B0;&#x4EE3;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x7684;&#x5960;&#x57FA;&#x4E4B;&#x4F5C;&#x3002;Dapper&#x5F15;&#x5165;&#x4E86;&#x51E0;&#x4E2A;&#x5173;&#x952E;&#x6982;&#x5FF5;&#xFF1A;</p>
 <ul>
-<li><code>FP</code>: Frame pointer: arguments and locals.</li>
-<li><code>PC</code>: Program counter: jumps and branches.</li>
-<li><code>SB</code>: Static base pointer: global symbols.</li>
-<li><code>SP</code>: Stack pointer: top of stack.</li>
+<li><strong>Trace</strong> &#xFF1A;&#x8868;&#x793A;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x6216;&#x8BF7;&#x6C42;&#x7684;&#x5B8C;&#x6574;&#x8DEF;&#x5F84;</li>
+<li><strong>Span</strong> &#xFF1A;&#x8868;&#x793A;&#x5728;&#x5355;&#x4E2A;&#x670D;&#x52A1;&#x4E2D;&#x5B8C;&#x6210;&#x7684;&#x5DE5;&#x4F5C;&#x5355;&#x5143;</li>
+<li><strong>SpanId&#x548C;TraceId</strong> &#xFF1A;&#x7528;&#x4E8E;&#x552F;&#x4E00;&#x6807;&#x8BC6;&#x548C;&#x5173;&#x8054;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x64CD;&#x4F5C;</li>
 </ul>
-<p>All user-defined symbols are written as offsets to the pseudo-registers <code>FP</code> (arguments and locals) and <code>SB</code> (globals).</p>
-<p>The <code>SB</code> pseudo-register can be thought of as the origin of memory, so the symbol <code>foo(SB)</code> is the name <code>foo</code> as an address in memory. This form is used to name global functions and data. Adding <code>&lt;&gt;</code> to the name, as in <code>foo&lt;&gt;(SB)</code>, makes the name visible only in the current source file, like a top-level <code>static</code> declaration in a C file. Adding an offset to the name refers to that offset from the symbol&apos;s address, so <code>foo+4(SB)</code> is four bytes past the start of <code>foo</code>.</p>
-</blockquote>
-<h4 id="call-runtime&#xB7;argssb">call runtime&#xB7;args(SB)</h4>
-<p>&#x6307;&#x7684;&#x662F;runtime package&#x4E0B;&#x7684;args&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x603B;&#x4E4B;&#x5C31;&#x662F;&#x8BBE;&#x7F6E;argc&#x3001;argv&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x7684;&#x3002;</p>
-<p><strong>file: runtime/runtime1.go</strong></p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> args(c <span class="hljs-keyword">int32</span>, v **<span class="hljs-keyword">byte</span>) {
-    argc = c
-    argv = v
-    sysargs(c, v)
-}
-</code></pre>
-<h4 id="runtime&#xB7;osinitsb">runtime&#xB7;osinit(SB)</h4>
-<p>&#x6307;&#x7684;&#x662F;runtime package&#x4E0B;&#x7684;osinit&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x603B;&#x4E4B;&#x5C31;&#x662F;&#x5199;&#x7CFB;&#x7EDF;&#x8BBE;&#x7F6E;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x5148;&#x4E0D;&#x5173;&#x5FC3;&#x3002;</p>
-<p><strong>file: runtime/os_linux.go</strong></p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> osinit() {
-    ncpu = getproccount()
-    physHugePageSize = getHugePageSize()
-    osArchInit()
-}
-</code></pre>
-<h4 id="call-runtime&#xB7;schedinitsb">call runtime&#xB7;schedinit(SB)</h4>
-<p>&#x6307;&#x7684;&#x662F;runtime package&#x4E0B;&#x7684;schedinit&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x505A;&#x4E86;&#x4E00;&#x4E9B;&#x8C03;&#x5EA6;&#x6267;&#x884C;&#x524D;&#x7684;&#x51C6;&#x5907;&#x3002;</p>
-<pre><code class="lang-go"><span class="hljs-comment">// The bootstrap sequence is:</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">//    call osinit</span>
-<span class="hljs-comment">//    call schedinit</span>
-<span class="hljs-comment">//    make &amp; queue new G</span>
-<span class="hljs-comment">//    call runtime&#xB7;mstart</span>
-<span class="hljs-comment">//</span>
-<span class="hljs-comment">// The new G calls runtime&#xB7;main.</span>
-<span class="hljs-keyword">func</span> schedinit() {
-    <span class="hljs-comment">// lockInit Linux&#x4E0B;&#x4E3A;&#x7A7A;&#x64CD;&#x4F5C;</span>
-    ...
-
-    <span class="hljs-comment">// raceinit must be the first call to race detector.</span>
-    <span class="hljs-comment">// In particular, it must be done before mallocinit below calls racemapshadow.</span>
-
-    <span class="hljs-comment">// @see https://github.com/golang/go/blob/master/src/runtime/HACKING.md</span>
-    <span class="hljs-comment">// &#x53C2;&#x8003;&#x5BF9;getg()&#x7684;&#x89E3;&#x91CA;&#xFF1A;&#x8FD9;&#x91CC;&#x5E94;&#x8BE5;&#x662F;&#x5728;&#x7CFB;&#x7EDF;&#x6808;&#x4E0A;&#x8FD0;&#x884C;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;_g_&#x5E94;&#x8BE5;&#x662F;&#x5F53;&#x524D;M&#x7684;g0</span>
-    _g_ := getg()
-    <span class="hljs-keyword">if</span> raceenabled {
-        _g_.racectx, raceprocctx0 = raceinit()
-    }
-
-    sched.maxmcount = <span class="hljs-number">10000</span>
-
-    moduledataverify()
-    stackinit()
-    mallocinit()
-    fastrandinit() <span class="hljs-comment">// must run before mcommoninit</span>
-    mcommoninit(_g_.m, <span class="hljs-number">-1</span>)
-    cpuinit()       <span class="hljs-comment">// must run before alginit</span>
-    alginit()       <span class="hljs-comment">// maps must not be used before this call</span>
-    modulesinit()   <span class="hljs-comment">// provides activeModules</span>
-    typelinksinit() <span class="hljs-comment">// uses maps, activeModules</span>
-    itabsinit()     <span class="hljs-comment">// uses activeModules</span>
-
-    msigsave(_g_.m)
-    initSigmask = _g_.m.sigmask
-
-    goargs()
-    goenvs()
-    parsedebugvars()
-    gcinit()
-
-    lock(&amp;sched.lock)
-    sched.lastpoll = <span class="hljs-keyword">uint64</span>(nanotime())
-    procs := ncpu
-    <span class="hljs-keyword">if</span> n, ok := atoi32(gogetenv(<span class="hljs-string">&quot;GOMAXPROCS&quot;</span>)); ok &amp;&amp; n &gt; <span class="hljs-number">0</span> {
-        procs = n
-    }
-    procresize(procs)
-    ...
-    unlock(&amp;sched.lock)
-    ...
-}
-</code></pre>
-<h4 id="&#x542F;&#x52A8;runtimemain--mainmain">&#x542F;&#x52A8;runtime.main &amp; main.main</h4>
-<p>&#x597D;&#x4E86;&#xFF0C;&#x4E0A;&#x9762;&#x4E00;&#x5927;&#x5806;&#x90FD;&#x662F;&#x4E00;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x73B0;&#x5728;&#x770B;&#x4E0B;runtime.main&#x542F;&#x52A8;&#x7684;&#x6700;&#x76F4;&#x63A5;&#x90E8;&#x5206;&#xFF1A;</p>
-<pre><code class="lang-asm">    // create a new goroutine to start program
-    MOVQ    $runtime&#xB7;mainPC(SB), AX        // entry
-    PUSHQ    AX
-    PUSHQ    $0            // arg size
-    CALL    runtime&#xB7;newproc(SB)
-    POPQ    AX
-    POPQ    AX
-
-    // start this M
-    CALL    runtime&#xB7;mstart(SB)
-</code></pre>
-<p>&#x8FD9;&#x91CC;&#x9996;&#x5148;&#x9996;&#x5148;&#x83B7;&#x53D6;&#x7B26;&#x53F7;<code>$runtime.mainPC(SB)</code>&#x7684;&#x5730;&#x5740;&#x653E;&#x5165;AX&#xFF0C;&#x8FD9;&#x4E2A;&#x5176;&#x5B9E;&#x662F;&#x51FD;&#x6570;runtime.main&#x7684;&#x5165;&#x53E3;&#x5730;&#x5740;&#xFF0C;&#x7136;&#x540E;&#x538B;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x53C2;&#x6570;argsize 0&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x3002;</p>
-<pre><code class="lang-asm">DATA    runtime&#xB7;mainPC+0(SB)/8,$runtime&#xB7;main(SB)
-GLOBL    runtime&#xB7;mainPC(SB),RODATA,$8
-</code></pre>
-<p>runtime&#xB7;main(SB)&#x5BF9;&#x5E94;&#x7684;&#x5C31;&#x662F;runtime.main&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-comment">// The main goroutine.</span>
-<span class="hljs-keyword">func</span> main() {
-    g := getg()
-
-    <span class="hljs-comment">// Racectx of m0-&gt;g0 is used only as the parent of the main goroutine.</span>
-    <span class="hljs-comment">// It must not be used for anything else.</span>
-    g.m.g0.racectx = <span class="hljs-number">0</span>
-
-    <span class="hljs-comment">// &#x8C03;&#x6574;&#x534F;&#x7A0B;&#x6808;&#x5927;&#x5C0F;&#xFF0C;64&#x4F4D;&#x6700;&#x5927;1GB&#xFF0C;32&#x4F4D;&#x6700;&#x5927;250M</span>
-    ...
-
-    <span class="hljs-comment">// Allow newproc to start new Ms.</span>
-    mainStarted = <span class="hljs-literal">true</span>
-
-    <span class="hljs-keyword">if</span> GOARCH != <span class="hljs-string">&quot;wasm&quot;</span> { <span class="hljs-comment">// no threads on wasm yet, so no sysmon</span>
-        systemstack(<span class="hljs-keyword">func</span>() {
-            <span class="hljs-comment">// &#x521B;&#x5EFA;&#x65B0;&#x7684;m&#xFF0C;&#x5E76;&#x6267;&#x884C;sysmon&#xFF0C;-1&#x8868;&#x793A;&#x4E0D;&#x9884;&#x5148;&#x6307;&#x5B9A;m&#x7684;id</span>
-            newm(sysmon, <span class="hljs-literal">nil</span>, <span class="hljs-number">-1</span>)
-        })
-    }
-
-    <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF0C;&#x73B0;&#x5728;&#x6267;&#x884C;&#x7684;&#x662F;main goroutine&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;</span>
-    <span class="hljs-comment">// &#x8C03;&#x7528;&#x8BE5;&#x65B9;&#x6CD5;&#x5C06;&#x662F;&#x7684;main goroutine&#x7ED1;&#x5B9A;&#x8C03;&#x5EA6;&#x7EBF;&#x7A0B;&#x5230;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;</span>
-    <span class="hljs-comment">// &#x610F;&#x5473;&#x7740;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x65AD;&#x5B9A;&#xFF0C;main.main&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x6C38;&#x8FDC;&#x8FD0;&#x884C;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E4B;&#x4E0A;&#xFF0C;&#x9664;&#x975E;&#x4E4B;&#x540E;&#x89E3;&#x7ED1;</span>
-    lockOSThread()
-    ...
-
-    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x5C31;&#x662F;&#x6267;&#x884C;runtime package&#x4E0B;&#x7684;&#x521D;&#x59CB;&#x5316;&#x903B;&#x8F91;&#xFF1A;</span>
-    <span class="hljs-comment">// - &#x6BCF;&#x4E2A;package&#x90FD;&#x6709;&#x4E00;&#x4E9B;import&#x8FDB;&#x6765;&#x7684;&#x4F9D;&#x8D56;&#xFF0C;&#x8FD9;&#x4E9B;import&#x7684;package&#x9700;&#x8981;&#x505A;&#x521D;&#x59CB;&#x5316;&#x903B;&#x8F91;&#xFF1B;</span>
-    <span class="hljs-comment">// - &#x6BCF;&#x4E2A;package&#x5185;&#x90E8;&#x7684;func init()&#x9700;&#x8981;&#x5728;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x4F9D;&#x8D56;&#x4E4B;&#x540E;&#x5B8C;&#x6210;&#x8C03;&#x7528;&#xFF1B;</span>
-    doInit(&amp;runtime_inittask) <span class="hljs-comment">// must be before defer</span>
-    ...
-
-    <span class="hljs-comment">// Defer unlock so that runtime.Goexit during init does the unlock too.</span>
-    needUnlock := <span class="hljs-literal">true</span>
-    <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
-        <span class="hljs-keyword">if</span> needUnlock {
-            unlockOSThread()
-        }
-    }()
-    ...
-
-    <span class="hljs-comment">// &#x5728;&#x8C03;&#x7528;&#x7528;&#x6237;&#x7F16;&#x5199;&#x7684;&#x7A0B;&#x5E8F;&#x4EE3;&#x7801;&#x4E4B;&#x524D;&#xFF0C;&#x5F00;&#x542F;gc&#xFF0C;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x521B;&#x5EFA;&#x72EC;&#x7ACB;&#x7EBF;&#x7A0B;&#x6765;&#x505A;gc&#xFF0C;&#x53EF;&#x80FD;&#x4EE5;&#x540E;&#x4F1A;</span>
-    gcenable()
-
-    main_init_done = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">bool</span>)
-    <span class="hljs-keyword">if</span> iscgo {
-        ...
-        <span class="hljs-comment">// Start the template thread in case we enter Go from</span>
-        <span class="hljs-comment">// a C-created thread and need to create a new thread.</span>
-        startTemplateThread()
-        cgocall(_cgo_notify_runtime_init_done, <span class="hljs-literal">nil</span>)
-    }
-
-    <span class="hljs-comment">// &#x521D;&#x59CB;&#x5316;main package&#xFF0C;&#x5305;&#x62EC;&#x5176;import&#x7684;&#x4F9D;&#x8D56;&#xFF0C;&#x4EE5;&#x53CA;main package&#x4E0B;&#x7684;func init()</span>
-    doInit(&amp;main_inittask)
-    <span class="hljs-comment">// main package&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;</span>
-    <span class="hljs-built_in">close</span>(main_init_done)
-
-    needUnlock = <span class="hljs-literal">false</span>
-
-    <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF0C;&#x6B64;&#x5904;&#x53C8;&#x5C06;&#x5F53;&#x524D;goroutine&#x4E0E;thread&#x505A;&#x4E86;&#x5206;&#x79BB;&#xFF0C;&#x770B;&#x6765;go&#x7684;&#x8BBE;&#x8BA1;&#x8005;&#x53EA;&#x662F;&#x60F3;</span>
-    <span class="hljs-comment">// &#x5C06;&#x67D0;&#x4E9B;&#x521D;&#x59CB;&#x5316;&#x52A8;&#x4F5C;&#x653E;&#x5728;main thread&#x4E0A;&#x5B8C;&#x6210;&#xFF0C;&#x5E76;&#x4E0D;&#x60F3;&#x4E8B;&#x540E;&#x4ECD;&#x7136;&#x7279;&#x6B8A;&#x5BF9;&#x5F85;main goroutine&#xFF0C;</span>
-    <span class="hljs-comment">// main goroutine&#x548C;&#x5176;&#x4ED6;goroutine&#x4E00;&#x6837;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;scheduler&#x9009;&#x62E9;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8C03;&#x5EA6;</span>
-    unlockOSThread()
-
-    <span class="hljs-comment">// &#x5982;&#x679C;&#x7F16;&#x8BD1;&#x6210;&#x7684;&#x662F;&#x9759;&#x6001;&#x5E93;&#x3001;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x867D;&#x7136;&#x6709;main&#x51FD;&#x6570;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x80FD;&#x6267;&#x884C;</span>
-    <span class="hljs-keyword">if</span> isarchive || islibrary {
-        <span class="hljs-keyword">return</span>
-    }
-
-    <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF0C;&#x8C03;&#x7528;main_main&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;main.main&#xFF0C;&#x8BF7;&#x67E5;&#x770B;&#x524D;&#x9762;&#x7684;go directive&#x5B9A;&#x4E49;&#xFF1A;</span>
-    <span class="hljs-comment">// &#x5C31;&#x662F;//go:linkname main_main main.main&#xFF0C;&#x5BF9;main_main&#x7684;&#x8C03;&#x7528;&#x5C06;&#x8F6C;&#x5165;main.main</span>
-    <span class="hljs-comment">//</span>
-    <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x89E3;&#x7ED1;&#x4E86;main goroutine&#x548C;main thread&#x7684;&#x5173;&#x7CFB;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x552F;&#x4E00;&#x53EF;&#x4EE5;&#x65AD;&#x5B9A;&#x7684;&#xFF0C;</span>
-    <span class="hljs-comment">// &#x662F;main.main&#x65B9;&#x6CD5;&#x662F;&#x6267;&#x884C;&#x5728;main goroutine&#x4E0A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x4E00;&#x5B9A;&#x5728;main thread&#x4E0A;</span>
-    fn := main_main 
-    fn()
-    <span class="hljs-keyword">if</span> raceenabled {
-        racefini()
-    }
-
-    <span class="hljs-comment">// main.main&#x7ED3;&#x675F;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x51C6;&#x5907;&#x7ED3;&#x675F;&#xFF0C;</span>
-    <span class="hljs-comment">// &#x5982;&#x679C;&#x6709;panic&#x53D1;&#x751F;&#xFF0C;&#x4F1A;&#x901A;&#x77E5;&#x6240;&#x6709;&#x534F;&#x7A0B;&#x6253;&#x5370;&#x5806;&#x6808;</span>
-    <span class="hljs-keyword">if</span> atomic.Load(&amp;runningPanicDefers) != <span class="hljs-number">0</span> {
-        <span class="hljs-comment">// Running deferred functions should not take long.</span>
-        <span class="hljs-keyword">for</span> c := <span class="hljs-number">0</span>; c &lt; <span class="hljs-number">1000</span>; c++ {
-            <span class="hljs-keyword">if</span> atomic.Load(&amp;runningPanicDefers) == <span class="hljs-number">0</span> {
-                <span class="hljs-keyword">break</span>
-            }
-            Gosched()
-        }
-    }
-    <span class="hljs-keyword">if</span> atomic.Load(&amp;panicking) != <span class="hljs-number">0</span> {
-        gopark(<span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, waitReasonPanicWait, traceEvGoStop, <span class="hljs-number">1</span>)
-    }
-
-    exit(<span class="hljs-number">0</span>)
-    ...
-}
-</code></pre>
-<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5206;&#x6790;&#x4E86;go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x7684;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x4EE5;&#x53CA;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x51FA;&#x7684;&#x4E00;&#x4E2A;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#x7ED3;&#x8BBA;&#xFF1A;</p>
-<blockquote>
-<p>main.main&#x65B9;&#x6CD5;&#x662F;&#x7531;main goroutine&#x6765;&#x6267;&#x884C;&#xFF0C;&#x4F46;&#x662F;main goroutine&#x4E0D;&#x4E00;&#x5B9A;&#x7531;main thread&#x6765;&#x8C03;&#x5EA6;&#x6267;&#x884C;&#x3002;</p>
-<p>main goroutine&#x548C;main thread&#x4E8C;&#x8005;&#x4E4B;&#x95F4;&#x6CA1;&#x6709;&#x9ED8;&#x8BA4;&#x7684;&#x7ED1;&#x5B9A;&#x5173;&#x7CFB;&#xFF01;</p>
-</blockquote>
-<p>&#x660E;&#x786E;&#x8FD9;&#x70B9;&#x662F;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x5B83;&#x5C06;&#x6709;&#x52A9;&#x4E8E;&#x6211;&#x4EEC;&#x7406;&#x89E3;<code>godbg attach &lt;pid&gt;</code>&#x4E4B;&#x540E;&#x4E3A;&#x4EC0;&#x4E48;main&#x65B9;&#x6CD5;&#x6CA1;&#x6709;&#x505C;&#x4E0B;&#x6765;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+<p>Dapper&#x7684;&#x8BBE;&#x8BA1;&#x7406;&#x5FF5;&#x5F71;&#x54CD;&#x6DF1;&#x8FDC;&#xFF0C;&#x5B83;&#x5E73;&#x8861;&#x4E86;&#x4F4E;&#x5F00;&#x9500;&#x548C;&#x9AD8;&#x53EF;&#x7528;&#x6027;&#xFF0C;&#x540C;&#x65F6;&#x4FDD;&#x6301;&#x4E86;&#x5BF9;&#x5F00;&#x53D1;&#x8005;&#x7684;&#x900F;&#x660E;&#x6027;&#x3002;&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x4F7F;&#x5176;&#x6210;&#x4E3A;&#x540E;&#x6765;&#x4F17;&#x591A;&#x5F00;&#x6E90;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x7684;&#x7075;&#x611F;&#x6765;&#x6E90;&#x3002;</p>
+<h4 id="&#x5F00;&#x6E90;&#x751F;&#x6001;&#x7684;&#x7E41;&#x8363;">&#x5F00;&#x6E90;&#x751F;&#x6001;&#x7684;&#x7E41;&#x8363;</h4>
+<p>&#x5728;Dapper&#x8BBA;&#x6587;&#x53D1;&#x8868;&#x540E;&#xFF0C;&#x5F00;&#x6E90;&#x793E;&#x533A;&#x5F00;&#x59CB;&#x6D3B;&#x8DC3;&#x5F00;&#x53D1;&#x5404;&#x79CD;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF1A;</p>
+<p> <strong>Zipkin (2012)</strong> &#xFF1A;&#x7531;Twitter&#x5F00;&#x6E90;&#xFF0C;&#x76F4;&#x63A5;&#x53D7;Dapper&#x542F;&#x53D1;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x4F7F;&#x7528;&#x7B80;&#x5355;&#x7684;&#x5E93;&#x4F7F;&#x5F00;&#x53D1;&#x4EBA;&#x5458;&#x80FD;&#x591F;&#x68C0;&#x6D4B;&#x4ED6;&#x4EEC;&#x7684;&#x4EE3;&#x7801;&#x3002;</p>
+<p> <strong>Jaeger (2016)</strong> &#xFF1A;&#x7531;Uber&#x5F00;&#x53D1;&#x5E76;&#x5F00;&#x6E90;&#xFF0C;&#x517C;&#x5BB9;OpenTracing API&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x5206;&#x5E03;&#x5F0F;&#x4E0A;&#x4E0B;&#x6587;&#x4F20;&#x64AD;&#x3001;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x52A1;&#x76D1;&#x63A7;&#x7B49;&#x529F;&#x80FD;&#x3002;</p>
+<p> <strong>OpenTracing (2016)</strong> &#xFF1A;&#x4E00;&#x4E2A;&#x5382;&#x5546;&#x4E2D;&#x7ACB;&#x7684;&#x5F00;&#x653E;&#x6807;&#x51C6;&#xFF0C;&#x65E8;&#x5728;&#x7EDF;&#x4E00;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x63A5;&#x53E3;&#x3002;&#x901A;&#x8FC7;OpenTracing&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x81F4;&#x7684;API&#xFF0C;&#x800C;&#x4E0D;&#x5FC5;&#x5173;&#x5FC3;&#x5E95;&#x5C42;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002;</p>
+<p> <strong>OpenCensus (2018)</strong> &#xFF1A;&#x7531;Google&#x4E3B;&#x5BFC;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5C06;&#x6307;&#x6807;&#x6536;&#x96C6;&#x548C;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x7ED3;&#x5408;&#x5728;&#x4E00;&#x4E2A;&#x6846;&#x67B6;&#x4E2D;&#x3002;</p>
+<h4 id="&#x6807;&#x51C6;&#x5316;&#xFF1A;opentelemetry&#x7684;&#x8BDE;&#x751F;">&#x6807;&#x51C6;&#x5316;&#xFF1A;OpenTelemetry&#x7684;&#x8BDE;&#x751F;</h4>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x751F;&#x6001;&#x7CFB;&#x7EDF;&#x7684;&#x591A;&#x6837;&#x5316;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x788E;&#x7247;&#x5316;&#x7684;&#x95EE;&#x9898;&#x3002;&#x4E3A;&#x89E3;&#x51B3;&#x8FD9;&#x4E00;&#x6311;&#x6218;&#xFF0C;2019&#x5E74;&#xFF0C;OpenTracing&#x548C;OpenCensus&#x9879;&#x76EE;&#x5408;&#x5E76;&#xFF0C;&#x5F62;&#x6210;&#x4E86; <strong>OpenTelemetry</strong> &#x3002;&#x8FD9;&#x4E00;&#x91CC;&#x7A0B;&#x7891;&#x4E8B;&#x4EF6;&#x6807;&#x5FD7;&#x7740;&#x5206;&#x5E03;&#x5F0F;&#x89C2;&#x6D4B;&#x9886;&#x57DF;&#x5411;&#x6807;&#x51C6;&#x5316;&#x7684;&#x91CD;&#x8981;&#x4E00;&#x6B65;&#x3002;</p>
+<p>OpenTelemetry&#x63D0;&#x4F9B;&#xFF1A;</p>
+<ul>
+<li>&#x4E0E;&#x5382;&#x5546;&#x65E0;&#x5173;&#x7684;APIs&#x548C;SDKs</li>
+<li>&#x7528;&#x4E8E;&#x6536;&#x96C6;&#x548C;&#x5904;&#x7406;&#x9065;&#x6D4B;&#x6570;&#x636E;&#x7684;&#x89C4;&#x8303;</li>
+<li>&#x6574;&#x5408;&#x4E86;&#x5206;&#x5E03;&#x5F0F;&#x8DDF;&#x8E2A;&#x3001;&#x6307;&#x6807;&#x548C;&#x65E5;&#x5FD7;</li>
+<li>&#x5E7F;&#x6CDB;&#x7684;&#x8BED;&#x8A00;&#x548C;&#x5E73;&#x53F0;&#x652F;&#x6301;</li>
+</ul>
+<p>&#x5230;2021&#x5E74;&#xFF0C;OpenTelemetry&#x5DF2;&#x7ECF;&#x6210;&#x4E3A;&#x4E91;&#x539F;&#x751F;&#x8BA1;&#x7B97;&#x57FA;&#x91D1;&#x4F1A;(CNCF)&#x7684;&#x7B2C;&#x4E8C;&#x5927;&#x6D3B;&#x8DC3;&#x9879;&#x76EE;&#xFF0C;&#x4EC5;&#x6B21;&#x4E8E;Kubernetes&#xFF0C;&#x663E;&#x793A;&#x4E86;&#x4E1A;&#x754C;&#x5BF9;&#x7EDF;&#x4E00;&#x53EF;&#x89C2;&#x6D4B;&#x6027;&#x6807;&#x51C6;&#x7684;&#x5F3A;&#x70C8;&#x9700;&#x6C42;&#x3002;</p>
+<h3 id="3-&#x4E0D;&#x540C;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;&#x4E0E;&#x5E94;&#x5BF9;">3. &#x4E0D;&#x540C;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;&#x4E0E;&#x5E94;&#x5BF9;</h3>
+<h4 id="&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;">&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;</h4>
+<p>&#x5728;&#x65E9;&#x671F;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;tracing&#x9762;&#x4E34;&#x7684;&#x4E3B;&#x8981;&#x6311;&#x6218;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li><strong>&#x6027;&#x80FD;&#x5F00;&#x9500;</strong> &#xFF1A;&#x65E9;&#x671F;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x5BF9;&#x5E94;&#x7528;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x8F83;&#x5927;</li>
+<li><strong>&#x517C;&#x5BB9;&#x6027;</strong> &#xFF1A;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x548C;&#x6846;&#x67B6;&#x7684;&#x96C6;&#x6210;&#x96BE;&#x5EA6;&#x9AD8;</li>
+<li><p><strong>&#x91C7;&#x6837;&#x7B56;&#x7565;</strong> &#xFF1A;&#x5982;&#x4F55;&#x5728;&#x6570;&#x636E;&#x91CF;&#x548C;&#x7CBE;&#x786E;&#x5EA6;&#x4E4B;&#x95F4;&#x53D6;&#x5F97;&#x5E73;&#x8861;</p>
+<p><strong>&#x60E8;&#x75DB;&#x6559;&#x8BAD;</strong> &#xFF1A;2012&#x5E74;&#xFF0C;&#x4E00;&#x5BB6;&#x5927;&#x578B;&#x7535;&#x5B50;&#x5546;&#x52A1;&#x5E73;&#x53F0;&#x5728;&#x9ED1;&#x8272;&#x661F;&#x671F;&#x4E94;&#x90E8;&#x7F72;&#x4E86;&#x65B0;&#x7248;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#xFF0C;&#x4F46;&#x7531;&#x4E8E;&#x8DDF;&#x8E2A;&#x4EE3;&#x7406;&#x7684;&#x9AD8;CPU&#x5360;&#x7528;&#xFF0C;&#x5BFC;&#x81F4;&#x6574;&#x4E2A;&#x4EA4;&#x6613;&#x7CFB;&#x7EDF;&#x54CD;&#x5E94;&#x7F13;&#x6162;&#xFF0C;&#x635F;&#x5931;&#x6570;&#x767E;&#x4E07;&#x7F8E;&#x5143;&#x7684;&#x9500;&#x552E;&#x989D;&#x3002;&#x8FD9;&#x4E00;&#x4E8B;&#x4EF6;&#x51F8;&#x663E;&#x4E86;&#x5728;&#x8BBE;&#x8BA1;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x65F6;&#x5FC5;&#x987B;&#x8003;&#x8651;&#x6027;&#x80FD;&#x5F71;&#x54CD;&#x3002;</p>
+</li>
+</ul>
+<h4 id="&#x5FAE;&#x670D;&#x52A1;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;">&#x5FAE;&#x670D;&#x52A1;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;</h4>
+<p>&#x968F;&#x7740;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x7684;&#x6D41;&#x884C;&#xFF0C;&#x65B0;&#x7684;&#x6311;&#x6218;&#x51FA;&#x73B0;&#xFF1A;</p>
+<ul>
+<li><strong>&#x670D;&#x52A1;&#x6FC0;&#x589E;</strong> &#xFF1A;&#x9700;&#x8981;&#x8FFD;&#x8E2A;&#x7A7F;&#x8D8A;&#x6570;&#x5341;&#x751A;&#x81F3;&#x6570;&#x767E;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x8BF7;&#x6C42;</li>
+<li><strong>&#x5F02;&#x6784;&#x73AF;&#x5883;</strong> &#xFF1A;&#x4E0D;&#x540C;&#x6280;&#x672F;&#x6808;&#x7684;&#x670D;&#x52A1;&#x9700;&#x8981;&#x7EDF;&#x4E00;&#x7684;&#x8DDF;&#x8E2A;&#x65B9;&#x6848;</li>
+<li><p><strong>&#x4E0A;&#x4E0B;&#x6587;&#x4F20;&#x64AD;</strong> &#xFF1A;&#x5728;&#x5F02;&#x6B65;&#x901A;&#x4FE1;&#x548C;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x67B6;&#x6784;&#x4E2D;&#x4FDD;&#x6301;&#x8DDF;&#x8E2A;&#x4E0A;&#x4E0B;&#x6587;</p>
+<p><strong>&#x5E94;&#x5BF9;&#x63AA;&#x65BD;</strong> &#xFF1A;</p>
+</li>
+<li><p>&#x8F7B;&#x91CF;&#x7EA7;&#x8DDF;&#x8E2A;&#x534F;&#x8BAE;&#x7684;&#x53D1;&#x5C55;</p>
+</li>
+<li>&#x81EA;&#x52A8;&#x5316;&#x68C0;&#x6D4B;&#x6280;&#x672F;&#x7684;&#x63D0;&#x5347;</li>
+<li><p>&#x667A;&#x80FD;&#x91C7;&#x6837;&#x7B97;&#x6CD5;&#x7684;&#x5E94;&#x7528;</p>
+<p><strong>&#x60E8;&#x75DB;&#x6559;&#x8BAD;</strong> &#xFF1A;2018&#x5E74;&#xFF0C;&#x4E00;&#x5BB6;&#x91D1;&#x878D;&#x79D1;&#x6280;&#x516C;&#x53F8;&#x7684;&#x652F;&#x4ED8;&#x7CFB;&#x7EDF;&#x56E0;&#x4E3A;&#x8DDF;&#x8E2A;&#x4E0A;&#x4E0B;&#x6587;&#x4F20;&#x64AD;&#x5931;&#x8D25;&#xFF0C;&#x5BFC;&#x81F4;&#x65E0;&#x6CD5;&#x786E;&#x5B9A;&#x54EA;&#x4E9B;&#x4EA4;&#x6613;&#x6210;&#x529F;&#x5B8C;&#x6210;&#x3001;&#x54EA;&#x4E9B;&#x5931;&#x8D25;&#xFF0C;&#x6700;&#x7EC8;&#x4E0D;&#x5F97;&#x4E0D;&#x8FDB;&#x884C;&#x957F;&#x8FBE;36&#x5C0F;&#x65F6;&#x7684;&#x7CFB;&#x7EDF;&#x91CD;&#x5EFA;&#xFF0C;&#x9020;&#x6210;&#x4E25;&#x91CD;&#x7684;&#x7528;&#x6237;&#x4FE1;&#x4EFB;&#x5371;&#x673A;&#x3002;</p>
+</li>
+</ul>
+<h4 id="&#x4E91;&#x539F;&#x751F;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;">&#x4E91;&#x539F;&#x751F;&#x65F6;&#x4EE3;&#x7684;&#x6311;&#x6218;</h4>
+<p>&#x4E91;&#x539F;&#x751F;&#x73AF;&#x5883;&#x4E3A;Tracing&#x5E26;&#x6765;&#x4E86;&#x66F4;&#x590D;&#x6742;&#x7684;&#x573A;&#x666F;&#xFF1A;</p>
+<ul>
+<li><strong>&#x52A8;&#x6001;&#x57FA;&#x7840;&#x8BBE;&#x65BD;</strong> &#xFF1A;&#x5BB9;&#x5668;&#x548C;Kubernetes&#x73AF;&#x5883;&#x4E2D;&#x670D;&#x52A1;&#x5B9E;&#x4F8B;&#x9891;&#x7E41;&#x521B;&#x5EFA;&#x548C;&#x9500;&#x6BC1;</li>
+<li><strong>&#x670D;&#x52A1;&#x7F51;&#x683C;</strong> &#xFF1A;&#x5982;Istio&#x7B49;&#x6280;&#x672F;&#x5F15;&#x5165;&#x4E86;&#x65B0;&#x7684;&#x901A;&#x4FE1;&#x5C42;</li>
+<li><strong>&#x65E0;&#x670D;&#x52A1;&#x5668;&#x67B6;&#x6784;</strong> &#xFF1A;&#x51FD;&#x6570;&#x8BA1;&#x7B97;(FaaS)&#x6A21;&#x578B;&#x4E0B;&#x7684;&#x8DDF;&#x8E2A;&#x590D;&#x6742;&#x6027;</li>
+<li><p><strong>&#x53EF;&#x89C2;&#x6D4B;&#x6027;&#x878D;&#x5408;</strong> &#xFF1A;&#x9700;&#x8981;&#x5C06;&#x8DDF;&#x8E2A;&#x4E0E;&#x65E5;&#x5FD7;&#x3001;&#x6307;&#x6807;&#x7B49;&#x5176;&#x4ED6;&#x4FE1;&#x53F7;&#x6574;&#x5408;</p>
+<p><strong>&#x5E94;&#x5BF9;&#x7B56;&#x7565;</strong> &#xFF1A;</p>
+</li>
+<li><p>&#x670D;&#x52A1;&#x7F51;&#x683C;&#x4E2D;&#x7684;sidecar&#x81EA;&#x52A8;&#x6CE8;&#x5165;&#x8DDF;&#x8E2A;&#x4FE1;&#x606F;</p>
+</li>
+<li>&#x4E91;&#x539F;&#x751F;&#x8DDF;&#x8E2A;&#x6536;&#x96C6;&#x5668;&#x7684;&#x53D1;&#x5C55;</li>
+<li>&#x81EA;&#x52A8;&#x5173;&#x8054;&#x5404;&#x79CD;&#x53EF;&#x89C2;&#x6D4B;&#x6027;&#x6570;&#x636E;</li>
+</ul>
+<h3 id="4-&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x65F6;&#x4EE3;&#x7684;tracing&#x53D1;&#x5C55;&#x65B9;&#x5411;">4. &#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x65F6;&#x4EE3;&#x7684;Tracing&#x53D1;&#x5C55;&#x65B9;&#x5411;</h3>
+<p>&#x968F;&#x7740;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x6280;&#x672F;&#x7684;&#x53D1;&#x5C55;&#xFF0C;Tracing&#x7CFB;&#x7EDF;&#x6B63;&#x5728;&#x8FCE;&#x6765;&#x65B0;&#x7684;&#x53D8;&#x9769;&#xFF1A;</p>
+<h4 id="ai&#x9A71;&#x52A8;&#x7684;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x4E0E;&#x6839;&#x56E0;&#x5206;&#x6790;">AI&#x9A71;&#x52A8;&#x7684;&#x5F02;&#x5E38;&#x68C0;&#x6D4B;&#x4E0E;&#x6839;&#x56E0;&#x5206;&#x6790;</h4>
+<p>&#x73B0;&#x4EE3;&#x7CFB;&#x7EDF;&#x751F;&#x6210;&#x5927;&#x91CF;&#x8DDF;&#x8E2A;&#x6570;&#x636E;&#xFF0C;&#x4EBA;&#x5DE5;&#x5206;&#x6790;&#x53D8;&#x5F97;&#x51E0;&#x4E4E;&#x4E0D;&#x53EF;&#x80FD;&#x3002;AI&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#xFF1A;</p>
+<ul>
+<li>&#x81EA;&#x52A8;&#x8BC6;&#x522B;&#x5F02;&#x5E38;&#x7684;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#x548C;&#x6A21;&#x5F0F;</li>
+<li>&#x9884;&#x6D4B;&#x6F5C;&#x5728;&#x7684;&#x7CFB;&#x7EDF;&#x74F6;&#x9888;&#x548C;&#x6545;&#x969C;&#x70B9;</li>
+<li>&#x901A;&#x8FC7;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x6A21;&#x578B;&#x5173;&#x8054;&#x6839;&#x672C;&#x539F;&#x56E0;</li>
+</ul>
+<p>&#x4F8B;&#x5982;&#xFF0C;Facebook&#x7684;Narya&#x7CFB;&#x7EDF;&#x5229;&#x7528;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x9884;&#x6D4B;&#x7F51;&#x7EDC;&#x4E2D;&#x7684;&#x6F5C;&#x5728;&#x6545;&#x969C;&#x5E76;&#x81EA;&#x52A8;&#x4FEE;&#x590D;&#xFF0C;&#x5927;&#x5E45;&#x51CF;&#x5C11;&#x4E86;&#x7CFB;&#x7EDF;&#x4E2D;&#x65AD;&#x3002;</p>
+<h4 id="&#x5927;&#x89C4;&#x6A21;&#x8BED;&#x8A00;&#x6A21;&#x578B;&#x7684;&#x5E94;&#x7528;">&#x5927;&#x89C4;&#x6A21;&#x8BED;&#x8A00;&#x6A21;&#x578B;&#x7684;&#x5E94;&#x7528;</h4>
+<p>LLM&#x6B63;&#x5728;&#x6539;&#x53D8;&#x5F00;&#x53D1;&#x8005;&#x4E0E;&#x8DDF;&#x8E2A;&#x6570;&#x636E;&#x7684;&#x4EA4;&#x4E92;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li>&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x67E5;&#x8BE2;&#x8DDF;&#x8E2A;&#x6570;&#x636E;&#xFF08;&quot;&#x4E0A;&#x5468;&#x661F;&#x671F;&#x56DB;&#x7684;&#x652F;&#x4ED8;&#x5931;&#x8D25;&#x662F;&#x4EC0;&#x4E48;&#x539F;&#x56E0;&#xFF1F;&quot;&#xFF09;</li>
+<li>&#x81EA;&#x52A8;&#x751F;&#x6210;&#x6545;&#x969C;&#x6392;&#x67E5;&#x5EFA;&#x8BAE;</li>
+<li>&#x5C06;&#x590D;&#x6742;&#x7684;&#x8DDF;&#x8E2A;&#x6570;&#x636E;&#x8F6C;&#x5316;&#x4E3A;&#x4EBA;&#x7C7B;&#x53EF;&#x7406;&#x89E3;&#x7684;&#x53D9;&#x8FF0;</li>
+</ul>
+<h4 id="&#x667A;&#x80FD;&#x91C7;&#x6837;&#x4E0E;&#x538B;&#x7F29;">&#x667A;&#x80FD;&#x91C7;&#x6837;&#x4E0E;&#x538B;&#x7F29;</h4>
+<p>AI&#x53EF;&#x4EE5;&#x4F18;&#x5316;&#x8DDF;&#x8E2A;&#x6570;&#x636E;&#x7684;&#x91C7;&#x96C6;&#x7B56;&#x7565;&#xFF1A;</p>
+<ul>
+<li>&#x9488;&#x5BF9;&#x7279;&#x5B9A;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#x7684;&#x81EA;&#x9002;&#x5E94;&#x91C7;&#x6837;&#x7387;</li>
+<li>&#x5728;&#x4FDD;&#x7559;&#x5173;&#x952E;&#x4FE1;&#x606F;&#x7684;&#x540C;&#x65F6;&#x538B;&#x7F29;&#x8DDF;&#x8E2A;&#x6570;&#x636E;</li>
+<li>&#x57FA;&#x4E8E;&#x8FC7;&#x5F80;&#x6A21;&#x5F0F;&#x9884;&#x6D4B;&#x6027;&#x5730;&#x8C03;&#x6574;&#x91C7;&#x6837;&#x884C;&#x4E3A;</li>
+</ul>
+<h4 id="&#x81EA;&#x6CBB;&#x4FEE;&#x590D;&#x80FD;&#x529B;">&#x81EA;&#x6CBB;&#x4FEE;&#x590D;&#x80FD;&#x529B;</h4>
+<p>&#x672A;&#x6765;&#x7684;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x4E0D;&#x4EC5;&#x4EC5;&#x662F;&#x89C2;&#x6D4B;&#x5DE5;&#x5177;&#xFF0C;&#x8FD8;&#x80FD;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x4FEE;&#x590D;&#xFF1A;</p>
+<ul>
+<li>&#x5B9E;&#x65F6;&#x68C0;&#x6D4B;&#x5230;&#x5F02;&#x5E38;&#x540E;&#x81EA;&#x52A8;&#x8C03;&#x6574;&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;</li>
+<li>&#x57FA;&#x4E8E;&#x5386;&#x53F2;&#x8DDF;&#x8E2A;&#x6570;&#x636E;&#x8BAD;&#x7EC3;&#x7684;AI&#x6A21;&#x578B;&#x63D0;&#x4F9B;&#x4F18;&#x5316;&#x5EFA;&#x8BAE;</li>
+<li>&#x5728;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x5B9E;&#x73B0;&#x5168;&#x81EA;&#x52A8;&#x6545;&#x969C;&#x4FEE;&#x590D;</li>
+</ul>
+<h4 id="&#x5206;&#x5E03;&#x5F0F;ai&#x7CFB;&#x7EDF;&#x7684;&#x8DDF;&#x8E2A;&#x6311;&#x6218;">&#x5206;&#x5E03;&#x5F0F;AI&#x7CFB;&#x7EDF;&#x7684;&#x8DDF;&#x8E2A;&#x6311;&#x6218;</h4>
+<p>&#x968F;&#x7740;AI&#x7CFB;&#x7EDF;&#x672C;&#x8EAB;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x5206;&#x5E03;&#x5F0F;&#x548C;&#x590D;&#x6742;&#xFF0C;&#x8DDF;&#x8E2A;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x65B0;&#x7684;&#x6311;&#x6218;&#xFF1A;</p>
+<ul>
+<li>&#x8FFD;&#x8E2A;&#x5927;&#x89C4;&#x6A21;&#x5206;&#x5E03;&#x5F0F;&#x8BAD;&#x7EC3;&#x548C;&#x63A8;&#x7406;&#x8FC7;&#x7A0B;</li>
+<li>&#x7406;&#x89E3;&#x548C;&#x53EF;&#x89C6;&#x5316;&#x590D;&#x6742;&#x7684;&#x795E;&#x7ECF;&#x7F51;&#x7EDC;&#x51B3;&#x7B56;&#x8DEF;&#x5F84;</li>
+<li>&#x76D1;&#x63A7;&#x548C;&#x8C03;&#x8BD5;AI&#x6A21;&#x578B;&#x6027;&#x80FD;&#x6CE2;&#x52A8;&#x7684;&#x6839;&#x672C;&#x539F;&#x56E0;</li>
+</ul>
+<h3 id="5-&#x603B;&#x7ED3;&#x4E0E;&#x5C55;&#x671B;">5. &#x603B;&#x7ED3;&#x4E0E;&#x5C55;&#x671B;</h3>
+<p>&#x4ECE;&#x6700;&#x521D;&#x89E3;&#x51B3;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x96BE;&#x9898;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5230;&#x5982;&#x4ECA;&#x878D;&#x5408;AI&#x6280;&#x672F;&#x7684;&#x667A;&#x80FD;&#x5316;&#x7CFB;&#x7EDF;&#xFF0C;&#x8F6F;&#x4EF6;&#x8DDF;&#x8E2A;&#x6280;&#x672F;&#x5DF2;&#x7ECF;&#x8D70;&#x8FC7;&#x4E86;&#x957F;&#x8DB3;&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;&#x3002;&#x8FD9;&#x4E00;&#x6F14;&#x8FDB;&#x8FC7;&#x7A0B;&#x6E05;&#x6670;&#x5730;&#x53CD;&#x6620;&#x4E86;&#x8F6F;&#x4EF6;&#x7CFB;&#x7EDF;&#x672C;&#x8EAB;&#x4ECE;&#x5355;&#x4F53;&#x5230;&#x5206;&#x5E03;&#x5F0F;&#xFF0C;&#x518D;&#x5230;&#x4E91;&#x539F;&#x751F;&#x548C;AI&#x9A71;&#x52A8;&#x7684;&#x6280;&#x672F;&#x53D8;&#x9769;&#x3002;</p>
+<p>&#x5173;&#x952E;&#x7684;&#x53D1;&#x5C55;&#x8109;&#x7EDC;&#x53EF;&#x4EE5;&#x603B;&#x7ED3;&#x4E3A;&#xFF1A;</p>
+<ol>
+<li><strong>&#x95EE;&#x9898;&#x9A71;&#x52A8;</strong> &#xFF1A;&#x6BCF;&#x4E00;&#x6B21;&#x6280;&#x672F;&#x7A81;&#x7834;&#x90FD;&#x6765;&#x6E90;&#x4E8E;&#x5B9E;&#x9645;&#x5F00;&#x53D1;&#x8FD0;&#x7EF4;&#x75DB;&#x70B9;</li>
+<li><strong>&#x6807;&#x51C6;&#x5316;</strong> &#xFF1A;&#x4ECE;&#x5404;&#x81EA;&#x4E3A;&#x6218;&#x5230;OpenTelemetry&#x7684;&#x7EDF;&#x4E00;&#x6807;&#x51C6;</li>
+<li><strong>&#x878D;&#x5408;&#x5316;</strong> &#xFF1A;&#x4ECE;&#x5355;&#x4E00;&#x7684;&#x8DDF;&#x8E2A;&#x5411;&#x5168;&#x65B9;&#x4F4D;&#x53EF;&#x89C2;&#x6D4B;&#x6027;&#x7684;&#x8F6C;&#x53D8;</li>
+<li><strong>&#x667A;&#x80FD;&#x5316;</strong> &#xFF1A;AI&#x6280;&#x672F;&#x4E3A;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x6CE8;&#x5165;&#x667A;&#x80FD;&#x5206;&#x6790;&#x80FD;&#x529B;</li>
+</ol>
+<p>&#x672A;&#x6765;&#xFF0C;&#x968F;&#x7740;&#x7CFB;&#x7EDF;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x6301;&#x7EED;&#x63D0;&#x5347;&#x548C;AI&#x6280;&#x672F;&#x7684;&#x6DF1;&#x5165;&#x5E94;&#x7528;&#xFF0C;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x5C06;&#x7EE7;&#x7EED;&#x6F14;&#x5316;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x5448;&#x73B0;&#x4EE5;&#x4E0B;&#x8D8B;&#x52BF;&#xFF1A;</p>
+<ul>
+<li><strong>&#x9884;&#x6D4B;&#x6027;&#x6D1E;&#x5BDF;</strong> &#xFF1A;&#x4ECE;&#x88AB;&#x52A8;&#x89C2;&#x6D4B;&#x8F6C;&#x5411;&#x4E3B;&#x52A8;&#x9884;&#x6D4B;</li>
+<li><strong>&#x65E0;&#x4EE3;&#x7801;&#x8DDF;&#x8E2A;</strong> &#xFF1A;&#x964D;&#x4F4E;&#x5F00;&#x53D1;&#x8005;&#x96C6;&#x6210;&#x6210;&#x672C;</li>
+<li><strong>&#x4E0A;&#x4E0B;&#x6587;&#x611F;&#x77E5;</strong> &#xFF1A;&#x66F4;&#x52A0;&#x667A;&#x80FD;&#x5730;&#x7406;&#x89E3;&#x4E1A;&#x52A1;&#x8BED;&#x5883;</li>
+<li><strong>&#x9690;&#x79C1;&#x4FDD;&#x62A4;</strong> &#xFF1A;&#x5728;&#x4FDD;&#x8BC1;&#x53EF;&#x89C2;&#x6D4B;&#x6027;&#x7684;&#x540C;&#x65F6;&#x4FDD;&#x62A4;&#x654F;&#x611F;&#x6570;&#x636E;</li>
+</ul>
+<p>&#x65E0;&#x8BBA;&#x6280;&#x672F;&#x5982;&#x4F55;&#x53D8;&#x9769;&#xFF0C;&#x8DDF;&#x8E2A;&#x7CFB;&#x7EDF;&#x7684;&#x6838;&#x5FC3;&#x4EF7;&#x503C;&#x59CB;&#x7EC8;&#x5982;&#x4E00;&#xFF1A;&#x8BA9;&#x5F00;&#x53D1;&#x8005;&#x80FD;&#x591F;&#x7406;&#x89E3;&#x3001;&#x76D1;&#x63A7;&#x548C;&#x4F18;&#x5316;&#x4ED6;&#x4EEC;&#x521B;&#x5EFA;&#x7684;&#x7CFB;&#x7EDF;&#xFF0C;&#x786E;&#x4FDD;&#x8F6F;&#x4EF6;&#x80FD;&#x591F;&#x53EF;&#x9760;&#x9AD8;&#x6548;&#x5730;&#x8FD0;&#x884C;&#xFF0C;&#x4E3A;&#x7528;&#x6237;&#x63D0;&#x4F9B;&#x4F18;&#x8D28;&#x7684;&#x670D;&#x52A1;&#x4F53;&#x9A8C;&#x3002;</p>
 
                                 
                                 </section>
@@ -1975,12 +1755,12 @@ GLOBL    runtime&#xB7;mainPC(SB),RODATA,$8
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 12 附录">
+                <a href="3-development-of-metrics.html" class="navigation navigation-prev " aria-label="Previous page: 10.3 指标系统发展历程">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="2-auto-track-new-threads.md" class="navigation navigation-next " aria-label="Next page: 12.2 自动跟踪新线程">
+                <a href="../11-thanks/" class="navigation navigation-next " aria-label="Next page: 11 致谢">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1991,7 +1771,7 @@ GLOBL    runtime&#xB7;mainPC(SB),RODATA,$8
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"12.1 go程序启动流程","level":"1.12.1","depth":2,"next":{"title":"12.2 自动跟踪新线程","level":"1.12.2","depth":2,"path":"12-appendix/2-auto-track-new-threads.md","ref":"12-appendix/2-auto-track-new-threads.md","articles":[]},"previous":{"title":"12 附录","level":"1.12","depth":1,"path":"12-appendix/README.md","ref":"12-appendix/README.md","articles":[{"title":"12.1 go程序启动流程","level":"1.12.1","depth":2,"path":"12-appendix/1-go-programme-start.md","ref":"12-appendix/1-go-programme-start.md","articles":[]},{"title":"12.2 自动跟踪新线程","level":"1.12.2","depth":2,"path":"12-appendix/2-auto-track-new-threads.md","ref":"12-appendix/2-auto-track-new-threads.md","articles":[]},{"title":"12.3 git bisect","level":"1.12.3","depth":2,"path":"12-appendix/3-git-bisect.md","ref":"12-appendix/3-git-bisect.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"12-appendix/1-go-programme-start.md","mtime":"2023-07-04T15:38:01.814Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-16T16:18:56.982Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10.4 跟踪系统发展历程","level":"1.10.4","depth":2,"next":{"title":"11 致谢","level":"1.11","depth":1,"path":"11-thanks/README.md","ref":"11-thanks/README.md","articles":[]},"previous":{"title":"10.3 指标系统发展历程","level":"1.10.3","depth":2,"path":"10-extras/3-development-of-metrics.md","ref":"10-extras/3-development-of-metrics.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/4-development-of-tracing.md","mtime":"2025-03-16T16:13:37.683Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-16T16:18:56.982Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

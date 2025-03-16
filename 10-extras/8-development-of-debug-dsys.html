@@ -1,0 +1,1915 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>10.8 分布式调试发展历程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../11-thanks/" />
+    
+    
+    <link rel="prev" href="7-development-of-replay.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-preface/">
+            
+                <a href="../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../3-terms/">
+            
+                <a href="../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../4-basics/">
+            
+                <a href="../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../4-basics/1-purposes.html">
+            
+                <a href="../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../4-basics/2-dependencies.html">
+            
+                <a href="../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../4-basics/3-countertactics.html">
+            
+                <a href="../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../5-debugger-skeleton/">
+            
+                <a href="../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../6-develop-inst-debugger/">
+            
+                <a href="../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../7-headto-sym-debugger/">
+            
+                <a href="../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../7-headto-sym-debugger/0-how-go-build-works.html">
+            
+                <a href="../7-headto-sym-debugger/0-how-go-build-works.html">
+            
+                    
+                    7.0 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../7-headto-sym-debugger/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/1-elf.html">
+            
+                    
+                    7.1 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../7-headto-sym-debugger/2-syms.html">
+            
+                <a href="../7-headto-sym-debugger/2-syms.html">
+            
+                    
+                    7.2 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                <a href="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                    
+                    7.3 符号的解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                <a href="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                    
+                    7.4 重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../7-headto-sym-debugger/80-go-tool-compile.html">
+            
+                <a href="../7-headto-sym-debugger/80-go-tool-compile.html">
+            
+                    
+                    7.80 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../7-headto-sym-debugger/81-go-tool-asm.html">
+            
+                <a href="../7-headto-sym-debugger/81-go-tool-asm.html">
+            
+                    
+                    7.81 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../7-headto-sym-debugger/82-go-tool-link.html">
+            
+                <a href="../7-headto-sym-debugger/82-go-tool-link.html">
+            
+                    
+                    7.82 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../7-headto-sym-debugger/90-why-buildid-loaded.html">
+            
+                <a href="../7-headto-sym-debugger/90-why-buildid-loaded.html">
+            
+                    
+                    7.90 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="../7-headto-sym-debugger/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../7-headto-sym-debugger/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    7.91 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../8-dwarf/">
+            
+                <a href="../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../8-dwarf/1-history.html">
+            
+                <a href="../8-dwarf/1-history.html">
+            
+                    
+                    8.1 发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../8-dwarf/2-structure.html">
+            
+                <a href="../8-dwarf/2-structure.html">
+            
+                    
+                    8.2 DWARF结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../8-dwarf/3-die-readme.html">
+            
+                <a href="../8-dwarf/3-die-readme.html">
+            
+                    
+                    8.3 调试信息条目：DIE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../8-dwarf/3-die-intro.html">
+            
+                <a href="../8-dwarf/3-die-intro.html">
+            
+                    
+                    8.3.1 DIE介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../8-dwarf/3-die-desc-datatype.html">
+            
+                <a href="../8-dwarf/3-die-desc-datatype.html">
+            
+                    
+                    8.3.2 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../8-dwarf/3-die-desc-code.html">
+            
+                <a href="../8-dwarf/3-die-desc-code.html">
+            
+                    
+                    8.3.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../8-dwarf/3-die-encoding.html">
+            
+                <a href="../8-dwarf/3-die-encoding.html">
+            
+                    
+                    8.3.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../8-dwarf/4-other-readme.html">
+            
+                <a href="../8-dwarf/4-other-readme.html">
+            
+                    
+                    8.4 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../8-dwarf/4-other-accelerated-access.html">
+            
+                <a href="../8-dwarf/4-other-accelerated-access.html">
+            
+                    
+                    8.4.0 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../8-dwarf/4-other-lineno-table.html">
+            
+                <a href="../8-dwarf/4-other-lineno-table.html">
+            
+                    
+                    8.4.1 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../8-dwarf/4-other-macro-info.html">
+            
+                <a href="../8-dwarf/4-other-macro-info.html">
+            
+                    
+                    8.4.2 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../8-dwarf/4-other-callframe-info.html">
+            
+                <a href="../8-dwarf/4-other-callframe-info.html">
+            
+                    
+                    8.4.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.5" data-path="../8-dwarf/4-other-varlen-data.html">
+            
+                <a href="../8-dwarf/4-other-varlen-data.html">
+            
+                    
+                    8.4.4 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.6" data-path="../8-dwarf/4-other-shrink-data.html">
+            
+                <a href="../8-dwarf/4-other-shrink-data.html">
+            
+                    
+                    8.4.5 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.7" data-path="../8-dwarf/4-other-elf-sections.html">
+            
+                <a href="../8-dwarf/4-other-elf-sections.html">
+            
+                    
+                    8.4.6 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../8-dwarf/5-dwarf-summary.html">
+            
+                <a href="../8-dwarf/5-dwarf-summary.html">
+            
+                    
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-parsing-dwarf.html">
+            
+                <a href="../8-dwarf/6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-using-dwarf.html">
+            
+                <a href="../8-dwarf/7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../8-dwarf/8-summary.html">
+            
+                <a href="../8-dwarf/8-summary.html">
+            
+                    
+                    8.8 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../9-develop-sym-debugger/">
+            
+                <a href="../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-需求分析/">
+            
+                <a href="../9-develop-sym-debugger/1-需求分析/">
+            
+                    
+                    9.1. 需求分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.2 概要设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                    
+                    9.2.1 整体架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                    
+                    9.2.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                    
+                    9.2.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                    
+                    9.2.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                    
+                    9.2.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.3 详细设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../9-develop-sym-debugger/4-编码实现/">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/">
+            
+                    
+                    9.4 编码实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                    
+                    9.4.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                    
+                    9.4.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                    
+                    9.4.3 进程启动并attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.4" data-path="../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                    
+                    9.4.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.5" data-path="../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                    
+                    9.4.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.6" data-path="../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                    
+                    9.4.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.7" data-path="../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                    
+                    9.4.7 查询断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.8" data-path="../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                    
+                    9.4.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.9" data-path="../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                    
+                    9.4.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.10" data-path="../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                    
+                    9.4.10 步进执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.11" data-path="../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                    
+                    9.4.11 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.12" data-path="../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                    
+                    9.4.12 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.13" data-path="../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                    
+                    9.4.13 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.14" data-path="../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                    
+                    9.4.14 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.15" data-path="../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                    
+                    9.4.15 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.16" data-path="../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                    
+                    9.4.16 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.17" data-path="../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                    
+                    9.4.17 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.18" data-path="../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                    
+                    9.4.18 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.19" data-path="../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                    
+                    9.4.19 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="1-development-of-debugger.html">
+            
+                <a href="1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="2-development-of-logging.html">
+            
+                <a href="2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="3-development-of-metrics.html">
+            
+                <a href="3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="4-development-of-tracing.html">
+            
+                <a href="4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="5-development-of-bisect.html">
+            
+                <a href="5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="6-development-of-eBPF.md">
+            
+                <span>
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="7-development-of-replay.html">
+            
+                <a href="7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.8" data-path="8-development-of-debug-dsys.html">
+            
+                <a href="8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../11-thanks/">
+            
+                <a href="../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../12-appendix/">
+            
+                <a href="../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../12-appendix/1-go-programme-start.html">
+            
+                <a href="../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../12-appendix/2-auto-track-new-threads.md">
+            
+                <span>
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../12-appendix/3-git-bisect.html">
+            
+                <a href="../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >10.8 分布式调试发展历程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;">&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;</h2>
+<h3 id="1-&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x8BDE;&#x751F;&#x7684;&#x95EE;&#x9898;&#x80CC;&#x666F;">1. &#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x8BDE;&#x751F;&#x7684;&#x95EE;&#x9898;&#x80CC;&#x666F;</h3>
+<p>&#x968F;&#x7740;&#x8BA1;&#x7B97;&#x673A;&#x79D1;&#x5B66;&#x7684;&#x53D1;&#x5C55;&#xFF0C;&#x5355;&#x673A;&#x7CFB;&#x7EDF;&#x9010;&#x6E10;&#x65E0;&#x6CD5;&#x6EE1;&#x8DB3;&#x9AD8;&#x5E76;&#x53D1;&#x3001;&#x9AD8;&#x53EF;&#x7528;&#x3001;&#x5927;&#x89C4;&#x6A21;&#x6570;&#x636E;&#x5904;&#x7406;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5E94;&#x8FD0;&#x800C;&#x751F;&#x3002;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x5C06;&#x8BA1;&#x7B97;&#x4EFB;&#x52A1;&#x5206;&#x6563;&#x5230;&#x591A;&#x53F0;&#x8BA1;&#x7B97;&#x673A;&#x4E0A;&#xFF0C;&#x901A;&#x8FC7;&#x7F51;&#x7EDC;&#x534F;&#x4F5C;&#x5B8C;&#x6210;&#x590D;&#x6742;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x6781;&#x5927;&#x5730;&#x63D0;&#x9AD8;&#x4E86;&#x7CFB;&#x7EDF;&#x7684;&#x6027;&#x80FD;&#x548C;&#x53EF;&#x9760;&#x6027;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x590D;&#x6742;&#x6027;&#x4E5F;&#x5E26;&#x6765;&#x4E86;&#x524D;&#x6240;&#x672A;&#x6709;&#x7684;&#x8C03;&#x8BD5;&#x6311;&#x6218;&#xFF1A;</p>
+<ul>
+<li><strong>&#x72B6;&#x6001;&#x5206;&#x6563;&#x6027;</strong> &#xFF1A;&#x7CFB;&#x7EDF;&#x72B6;&#x6001;&#x5206;&#x6563;&#x5728;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x4E0A;&#xFF0C;&#x96BE;&#x4EE5;&#x83B7;&#x5F97;&#x5168;&#x5C40;&#x4E00;&#x81F4;&#x7684;&#x89C6;&#x56FE;</li>
+<li><strong>&#x65F6;&#x5E8F;&#x4E0D;&#x786E;&#x5B9A;&#x6027;</strong> &#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;&#x987A;&#x5E8F;&#x96BE;&#x4EE5;&#x7CBE;&#x786E;&#x63A7;&#x5236;&#x548C;&#x590D;&#x73B0;</li>
+<li><strong>&#x5F02;&#x6B65;&#x901A;&#x4FE1;</strong> &#xFF1A;&#x7EC4;&#x4EF6;&#x95F4;&#x7684;&#x5F02;&#x6B65;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x589E;&#x52A0;&#x4E86;&#x8C03;&#x8BD5;&#x590D;&#x6742;&#x5EA6;</li>
+<li><strong>&#x90E8;&#x5206;&#x6545;&#x969C;</strong> &#xFF1A;&#x7CFB;&#x7EDF;&#x53EF;&#x80FD;&#x5904;&#x4E8E;&#x90E8;&#x5206;&#x5931;&#x6548;&#x72B6;&#x6001;&#xFF0C;&#x67D0;&#x4E9B;&#x8282;&#x70B9;&#x6545;&#x969C;&#x800C;&#x5176;&#x4ED6;&#x8282;&#x70B9;&#x6B63;&#x5E38;&#x8FD0;&#x884C;</li>
+<li><strong>&#x73AF;&#x5883;&#x4F9D;&#x8D56;&#x6027;</strong> &#xFF1A;&#x95EE;&#x9898;&#x53EF;&#x80FD;&#x53EA;&#x5728;&#x7279;&#x5B9A;&#x73AF;&#x5883;&#x6216;&#x914D;&#x7F6E;&#x4E0B;&#x51FA;&#x73B0;</li>
+</ul>
+<p>&#x8FD9;&#x4E9B;&#x7279;&#x6027;&#x4F7F;&#x5F97;&#x4F20;&#x7EDF;&#x7684;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#xFF08;&#x5982;&#x5355;&#x6B65;&#x6267;&#x884C;&#x3001;&#x65AD;&#x70B9;&#x8C03;&#x8BD5;&#xFF09;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x96BE;&#x4EE5;&#x5E94;&#x7528;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x9762;&#x4E34;&#x7740;&#x5982;&#x4F55;&#x7406;&#x89E3;&#x3001;&#x5206;&#x6790;&#x548C;&#x4FEE;&#x590D;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x7684;&#x9519;&#x8BEF;&#x8FD9;&#x4E00;&#x5DE8;&#x5927;&#x6311;&#x6218;&#x3002;</p>
+<h4 id="&#x4F20;&#x7EDF;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x7684;&#x5C40;&#x9650;&#x6027;">&#x4F20;&#x7EDF;&#x8C03;&#x8BD5;&#x65B9;&#x6CD5;&#x7684;&#x5C40;&#x9650;&#x6027;</h4>
+<p>&#x5728;&#x5355;&#x673A;&#x7CFB;&#x7EDF;&#x65F6;&#x4EE3;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x53EF;&#x4EE5;&#x4F9D;&#x8D56;&#x8BF8;&#x5982;GDB&#x3001;Visual Studio Debugger&#x7B49;&#x5DE5;&#x5177;&#xFF0C;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x3001;&#x68C0;&#x67E5;&#x53D8;&#x91CF;&#x3001;&#x5355;&#x6B65;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x7B49;&#x65B9;&#x5F0F;&#x76F4;&#x89C2;&#x5730;&#x8DDF;&#x8E2A;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x6D41;&#x7A0B;&#x3002;&#x7136;&#x800C;&#xFF0C;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;&#x9762;&#x4E34;&#x4E25;&#x91CD;&#x5C40;&#x9650;&#xFF1A;</p>
+<ol>
+<li><strong>&#x65E0;&#x6CD5;&#x6355;&#x83B7;&#x8DE8;&#x8282;&#x70B9;&#x4EA4;&#x4E92;</strong> &#xFF1A;&#x4F20;&#x7EDF;&#x8C03;&#x8BD5;&#x5668;&#x65E0;&#x6CD5;&#x6355;&#x83B7;&#x8DE8;&#x8282;&#x70B9;&#x7684;&#x6D88;&#x606F;&#x4F20;&#x9012;&#x548C;&#x72B6;&#x6001;&#x53D8;&#x5316;</li>
+<li><strong>&#x96BE;&#x4EE5;&#x91CD;&#x73B0;&#x95EE;&#x9898;</strong> &#xFF1A;&#x7531;&#x4E8E;&#x65F6;&#x5E8F;&#x4E0D;&#x786E;&#x5B9A;&#x6027;&#xFF0C;&#x540C;&#x6837;&#x7684;&#x64CD;&#x4F5C;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x679C;</li>
+<li><strong>&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x5F71;&#x54CD;&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;</strong> &#xFF1A;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x4ECB;&#x5165;&#x53EF;&#x80FD;&#x6539;&#x53D8;&#x7CFB;&#x7EDF;&#x7684;&#x65F6;&#x5E8F;&#x7279;&#x6027;&#xFF0C;&#x5BFC;&#x81F4;&quot;&#x89C2;&#x5BDF;&#x8005;&#x6548;&#x5E94;&quot;</li>
+<li><strong>&#x96BE;&#x4EE5;&#x5904;&#x7406;&#x5927;&#x89C4;&#x6A21;&#x6570;&#x636E;</strong> &#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4EA7;&#x751F;&#x7684;&#x65E5;&#x5FD7;&#x548C;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x5E38;&#x5E38;&#x8FC7;&#x4E8E;&#x5E9E;&#x5927;&#xFF0C;&#x96BE;&#x4EE5;&#x624B;&#x52A8;&#x5206;&#x6790;</li>
+</ol>
+<p>&#x8FD9;&#x4E9B;&#x6311;&#x6218;&#x50AC;&#x751F;&#x4E86;&#x4E13;&#x95E8;&#x9488;&#x5BF9;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x8C03;&#x8BD5;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x7684;&#x9700;&#x6C42;&#x3002;</p>
+<h3 id="2-&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x65B9;&#x6848;&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;">2. &#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x65B9;&#x6848;&#x7684;&#x53D1;&#x5C55;&#x5386;&#x7A0B;</h3>
+<h4 id="&#x521D;&#x671F;&#x9636;&#x6BB5;&#xFF1A;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x4E0E;&#x8FFD;&#x8E2A;&#xFF08;1990&#x5E74;&#x4EE3;-2000&#x5E74;&#x4EE3;&#x521D;&#xFF09;">&#x521D;&#x671F;&#x9636;&#x6BB5;&#xFF1A;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x4E0E;&#x8FFD;&#x8E2A;&#xFF08;1990&#x5E74;&#x4EE3;-2000&#x5E74;&#x4EE3;&#x521D;&#xFF09;</h4>
+<p>&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x7684;&#x65E9;&#x671F;&#x9636;&#x6BB5;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x4E3B;&#x8981;&#x4F9D;&#x8D56;&#x4E8E;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x3002;&#x6BCF;&#x4E2A;&#x8282;&#x70B9;&#x4EA7;&#x751F;&#x72EC;&#x7ACB;&#x7684;&#x65E5;&#x5FD7;&#x6587;&#x4EF6;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x901A;&#x8FC7;&#x624B;&#x52A8;&#x5206;&#x6790;&#x548C;&#x5173;&#x8054;&#x8FD9;&#x4E9B;&#x65E5;&#x5FD7;&#x6765;&#x7406;&#x89E3;&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;&#x3002;</p>
+<p><strong>&#x4EE3;&#x8868;&#x6027;&#x6280;&#x672F;&#x4E0E;&#x4E8B;&#x4EF6;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x96C6;&#x4E2D;&#x5F0F;&#x65E5;&#x5FD7;&#x7CFB;&#x7EDF;</strong> &#xFF1A;&#x5982;Syslog&#xFF0C;&#x5141;&#x8BB8;&#x5C06;&#x591A;&#x4E2A;&#x8282;&#x70B9;&#x7684;&#x65E5;&#x5FD7;&#x96C6;&#x4E2D;&#x5230;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x5206;&#x6790;</li>
+<li><strong>&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x5DE5;&#x5177;</strong> &#xFF1A;&#x5982;Splunk&#xFF08;2003&#x5E74;&#x63A8;&#x51FA;&#xFF09;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x5F3A;&#x5927;&#x7684;&#x65E5;&#x5FD7;&#x641C;&#x7D22;&#x548C;&#x5206;&#x6790;&#x80FD;&#x529B;</li>
+<li><strong>&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x7684;&#x7406;&#x8BBA;&#x57FA;&#x7840;</strong> &#xFF1A;Google&#x53D1;&#x8868;&#x4E86;Dapper&#x8BBA;&#x6587;&#xFF08;2010&#x5E74;&#xFF09;&#xFF0C;&#x4E3A;&#x540E;&#x6765;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x7CFB;&#x7EDF;&#x5960;&#x5B9A;&#x4E86;&#x57FA;&#x7840;</li>
+</ul>
+<p><strong>&#x6559;&#x8BAD;&#x4E0E;&#x6311;&#x6218;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x65F6;&#x95F4;&#x540C;&#x6B65;&#x95EE;&#x9898;</strong> &#xFF1A;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x7684;&#x65F6;&#x949F;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#x6B65;&#xFF0C;&#x5BFC;&#x81F4;&#x65E5;&#x5FD7;&#x65F6;&#x95F4;&#x6233;&#x4E0D;&#x51C6;&#x786E;&#xFF0C;&#x96BE;&#x4EE5;&#x91CD;&#x5EFA;&#x4E8B;&#x4EF6;&#x987A;&#x5E8F;</li>
+<li><strong>&#x7F3A;&#x4E4F;&#x5173;&#x8054;&#x6027;</strong> &#xFF1A;&#x96BE;&#x4EE5;&#x5C06;&#x4E0D;&#x540C;&#x8282;&#x70B9;&#x4E0A;&#x7684;&#x76F8;&#x5173;&#x4E8B;&#x4EF6;&#x8054;&#x7CFB;&#x8D77;&#x6765;</li>
+<li><strong>&#x5206;&#x6790;&#x6548;&#x7387;&#x4F4E;</strong> &#xFF1A;&#x624B;&#x52A8;&#x5206;&#x6790;&#x5927;&#x91CF;&#x65E5;&#x5FD7;&#x8017;&#x65F6;&#x4E14;&#x5BB9;&#x6613;&#x51FA;&#x9519;</li>
+</ul>
+<h4 id="&#x53D1;&#x5C55;&#x9636;&#x6BB5;&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x4E0E;&#x76D1;&#x63A7;&#xFF08;2000&#x5E74;&#x4EE3;&#x4E2D;&#x671F;-2010&#x5E74;&#x4EE3;&#x4E2D;&#x671F;&#xFF09;">&#x53D1;&#x5C55;&#x9636;&#x6BB5;&#xFF1A;&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x4E0E;&#x76D1;&#x63A7;&#xFF08;2000&#x5E74;&#x4EE3;&#x4E2D;&#x671F;-2010&#x5E74;&#x4EE3;&#x4E2D;&#x671F;&#xFF09;</h4>
+<p>&#x968F;&#x7740;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x89C4;&#x6A21;&#x7684;&#x6269;&#x5927;&#xFF0C;&#x5355;&#x7EAF;&#x4F9D;&#x9760;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x53D8;&#x5F97;&#x8D8A;&#x6765;&#x8D8A;&#x56F0;&#x96BE;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x5F00;&#x59CB;&#x5BFB;&#x6C42;&#x66F4;&#x7CFB;&#x7EDF;&#x5316;&#x7684;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x3002;</p>
+<p><strong>&#x4EE3;&#x8868;&#x6027;&#x6280;&#x672F;&#x4E0E;&#x4E8B;&#x4EF6;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x7CFB;&#x7EDF;</strong> &#xFF1A;</li>
+<li>Zipkin&#xFF08;2012&#x5E74;&#xFF0C;&#x7531;Twitter&#x5F00;&#x6E90;&#xFF09;</li>
+<li>Jaeger&#xFF08;2017&#x5E74;&#xFF0C;&#x7531;Uber&#x5F00;&#x6E90;&#xFF09;</li>
+<li>X-Trace&#xFF08;2007&#x5E74;&#xFF0C;UC Berkeley&#xFF09;</li>
+<li><strong>&#x76D1;&#x63A7;&#x7CFB;&#x7EDF;&#x7684;&#x6F14;&#x8FDB;</strong> &#xFF1A;</li>
+<li>Nagios&#xFF08;1999&#x5E74;&#xFF09;</li>
+<li>Prometheus&#xFF08;2012&#x5E74;&#xFF09;</li>
+<li>Grafana&#xFF08;2014&#x5E74;&#xFF09;</li>
+<li><strong>APM&#x5DE5;&#x5177;</strong> &#xFF1A;</li>
+<li>New Relic&#xFF08;2008&#x5E74;&#xFF09;</li>
+<li>AppDynamics&#xFF08;2008&#x5E74;&#xFF09;</li>
+<li>Dynatrace&#xFF08;1993&#x5E74;&#xFF0C;&#x4F46;&#x5728;2000&#x5E74;&#x4EE3;&#x540E;&#x671F;&#x91CD;&#x65B0;&#x5B9A;&#x4F4D;&#x4E3A;APM&#x5DE5;&#x5177;&#xFF09;</li>
+</ul>
+<p><strong>&#x6559;&#x8BAD;&#x4E0E;&#x6311;&#x6218;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x8FFD;&#x8E2A;&#x6570;&#x636E;&#x7206;&#x70B8;</strong> &#xFF1A;&#x968F;&#x7740;&#x7CFB;&#x7EDF;&#x89C4;&#x6A21;&#x589E;&#x957F;&#xFF0C;&#x8FFD;&#x8E2A;&#x6570;&#x636E;&#x91CF;&#x5448;&#x7206;&#x70B8;&#x5F0F;&#x589E;&#x957F;&#xFF0C;&#x9700;&#x8981;&#x62BD;&#x6837;&#x6216;&#x8FC7;&#x6EE4;</li>
+<li><strong>&#x8FFD;&#x8E2A;&#x5BF9;&#x6027;&#x80FD;&#x7684;&#x5F71;&#x54CD;</strong> &#xFF1A;&#x5168;&#x9762;&#x8FFD;&#x8E2A;&#x53EF;&#x80FD;&#x5BFC;&#x81F4;&#x7CFB;&#x7EDF;&#x6027;&#x80FD;&#x4E0B;&#x964D;</li>
+<li><strong>&#x7F3A;&#x4E4F;&#x4E8B;&#x540E;&#x8C03;&#x8BD5;&#x80FD;&#x529B;</strong> &#xFF1A;&#x8FD9;&#x4E9B;&#x7CFB;&#x7EDF;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x76D1;&#x63A7;&#x548C;&#x5206;&#x6790;&#xFF0C;&#x800C;&#x975E;&#x5B9E;&#x65F6;&#x8C03;&#x8BD5;</li>
+</ul>
+<h4 id="&#x7A81;&#x7834;&#x9636;&#x6BB5;&#xFF1A;&#x4EA4;&#x4E92;&#x5F0F;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#xFF08;2010&#x5E74;&#x4EE3;&#x4E2D;&#x671F;-2020&#x5E74;&#x4EE3;&#x521D;&#xFF09;">&#x7A81;&#x7834;&#x9636;&#x6BB5;&#xFF1A;&#x4EA4;&#x4E92;&#x5F0F;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#xFF08;2010&#x5E74;&#x4EE3;&#x4E2D;&#x671F;-2020&#x5E74;&#x4EE3;&#x521D;&#xFF09;</h4>
+<p>&#x968F;&#x7740;&#x5BB9;&#x5668;&#x5316;&#x548C;Kubernetes&#x7B49;&#x6280;&#x672F;&#x7684;&#x666E;&#x53CA;&#xFF0C;&#x51FA;&#x73B0;&#x4E86;&#x771F;&#x6B63;&#x610F;&#x4E49;&#x4E0A;&#x7684;&#x4EA4;&#x4E92;&#x5F0F;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x3002;</p>
+<p><strong>&#x4EE3;&#x8868;&#x6027;&#x6280;&#x672F;&#x4E0E;&#x4E8B;&#x4EF6;&#xFF1A;</strong></p>
+<ul>
+<li><strong>SquashIO&#x7684;Squash Debugger</strong> &#xFF08;2017&#x5E74;&#xFF09;&#xFF1A;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7684;&#x91CC;&#x7A0B;&#x7891;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x5728;Kubernetes&#x96C6;&#x7FA4;&#x4E2D;&#x8FDB;&#x884C;&#x5B9E;&#x65F6;&#x8C03;&#x8BD5;&#x3002;Squash&#x96C6;&#x6210;&#x4E86;&#x4F20;&#x7EDF;&#x8C03;&#x8BD5;&#x5668;&#xFF08;&#x5982;GDB&#x3001;Delve&#xFF09;&#x4E0E;Kubernetes&#x73AF;&#x5883;&#xFF0C;&#x4F7F;&#x5F00;&#x53D1;&#x8005;&#x80FD;&#x591F;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x73AF;&#x5883;&#x4E2D;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x548C;&#x68C0;&#x67E5;&#x53D8;&#x91CF;&#x3002;</li>
+<li><strong>Telepresence</strong> &#xFF08;2017&#x5E74;&#xFF09;&#xFF1A;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x5C06;&#x672C;&#x5730;&#x5F00;&#x53D1;&#x73AF;&#x5883;&#x4E0E;&#x8FDC;&#x7A0B;Kubernetes&#x96C6;&#x7FA4;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x5728;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x8FD0;&#x884C;&#x5728;&#x96C6;&#x7FA4;&#x4E2D;&#x7684;&#x670D;&#x52A1;&#x3002;</li>
+<li><strong>Rookout</strong> &#xFF08;2018&#x5E74;&#xFF09;&#xFF1A;&#x63D0;&#x4F9B;&#x4E86;&#x975E;&#x4FB5;&#x5165;&#x5F0F;&#x7684;&#x8C03;&#x8BD5;&#x80FD;&#x529B;&#xFF0C;&#x5141;&#x8BB8;&#x5728;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x4E2D;&#x5B9E;&#x65F6;&#x6536;&#x96C6;&#x8C03;&#x8BD5;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x65E0;&#x9700;&#x91CD;&#x542F;&#x5E94;&#x7528;&#x6216;&#x4FEE;&#x6539;&#x4EE3;&#x7801;&#x3002;</li>
+</ul>
+<p><strong>&#x6559;&#x8BAD;&#x4E0E;&#x6311;&#x6218;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x5E73;&#x53F0;&#x7279;&#x5B9A;&#x6027;</strong> &#xFF1A;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x5F80;&#x5F80;&#x4E0E;&#x7279;&#x5B9A;&#x5E73;&#x53F0;&#xFF08;&#x5982;Kubernetes&#xFF09;&#x7D27;&#x5BC6;&#x8026;&#x5408;</li>
+<li><strong>&#x8BED;&#x8A00;&#x4F9D;&#x8D56;&#x6027;</strong> &#xFF1A;&#x90E8;&#x5206;&#x5DE5;&#x5177;&#x53EA;&#x652F;&#x6301;&#x7279;&#x5B9A;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;</li>
+<li><strong>&#x96BE;&#x4EE5;&#x6269;&#x5C55;&#x5230;&#x8D85;&#x5927;&#x89C4;&#x6A21;&#x7CFB;&#x7EDF;</strong> &#xFF1A;&#x5728;&#x6709;&#x6570;&#x5343;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x7684;&#x73AF;&#x5883;&#x4E2D;&#xFF0C;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x4ECD;&#x7136;&#x5341;&#x5206;&#x590D;&#x6742;</li>
+</ul>
+<h4 id="&#x60E8;&#x75DB;&#x6559;&#x8BAD;&#xFF1A;&#x771F;&#x5B9E;&#x6848;&#x4F8B;">&#x60E8;&#x75DB;&#x6559;&#x8BAD;&#xFF1A;&#x771F;&#x5B9E;&#x6848;&#x4F8B;</h4>
+<p><strong>&#x6848;&#x4F8B;1&#xFF1A;Knight Capital&#x7684;&#x707E;&#x96BE;&#x6027;&#x90E8;&#x7F72;&#xFF08;2012&#x5E74;&#xFF09;</strong></p>
+<p>Knight Capital&#x662F;&#x4E00;&#x5BB6;&#x91D1;&#x878D;&#x4EA4;&#x6613;&#x516C;&#x53F8;&#xFF0C;&#x5728;2012&#x5E74;8&#x6708;1&#x65E5;&#xFF0C;&#x7531;&#x4E8E;&#x4E00;&#x4E2A;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x90E8;&#x7F72;&#x9519;&#x8BEF;&#xFF0C;&#x516C;&#x53F8;&#x5728;45&#x5206;&#x949F;&#x5185;&#x635F;&#x5931;&#x4E86;4.6&#x4EBF;&#x7F8E;&#x5143;&#x3002;&#x95EE;&#x9898;&#x7684;&#x6839;&#x6E90;&#x662F;&#x8F6F;&#x4EF6;&#x90E8;&#x7F72;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x5BFC;&#x81F4;&#x6D3B;&#x8DC3;&#x670D;&#x52A1;&#x5668;&#x4F7F;&#x7528;&#x4E86;&#x65E7;&#x4EE3;&#x7801;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;&#x670D;&#x52A1;&#x5668;&#x53C8;&#x4E0E;&#x4F7F;&#x7528;&#x65B0;&#x4EE3;&#x7801;&#x7684;&#x670D;&#x52A1;&#x5668;&#x4EA4;&#x4E92;&#x3002;&#x7531;&#x4E8E;&#x7F3A;&#x4E4F;&#x6709;&#x6548;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;Knight Capital&#x82B1;&#x4E86;&#x6570;&#x5C0F;&#x65F6;&#x624D;&#x7406;&#x89E3;&#x5E76;&#x4FEE;&#x590D;&#x95EE;&#x9898;&#xFF0C;&#x4F46;&#x4E3A;&#x65F6;&#x5DF2;&#x665A;&#x3002;</p>
+<p><strong>&#x6848;&#x4F8B;2&#xFF1A;&#x4E9A;&#x9A6C;&#x900A;S3&#x5B95;&#x673A;&#x4E8B;&#x4EF6;&#xFF08;2017&#x5E74;&#xFF09;</strong></p>
+<p>2017&#x5E74;2&#x6708;28&#x65E5;&#xFF0C;&#x4E9A;&#x9A6C;&#x900A;S3&#x670D;&#x52A1;&#x53D1;&#x751F;&#x4E86;&#x4E25;&#x91CD;&#x7684;&#x5B95;&#x673A;&#x4E8B;&#x4EF6;&#xFF0C;&#x5F71;&#x54CD;&#x4E86;&#x5927;&#x91CF;&#x4F9D;&#x8D56;AWS&#x7684;&#x7F51;&#x7AD9;&#x548C;&#x670D;&#x52A1;&#x3002;&#x95EE;&#x9898;&#x7684;&#x6839;&#x6E90;&#x662F;&#x4E00;&#x4E2A;&#x770B;&#x4F3C;&#x7B80;&#x5355;&#x7684;&#x547D;&#x4EE4;&#x9519;&#x8BEF;&#xFF0C;&#x4F46;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#x4EA7;&#x751F;&#x4E86;&#x7EA7;&#x8054;&#x6545;&#x969C;&#x3002;&#x5C3D;&#x7BA1;&#x4E9A;&#x9A6C;&#x900A;&#x62E5;&#x6709;&#x5927;&#x91CF;&#x76D1;&#x63A7;&#x548C;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;&#x4F46;&#x7CFB;&#x7EDF;&#x7684;&#x590D;&#x6742;&#x6027;&#x4F7F;&#x5F97;&#x5FEB;&#x901F;&#x8BC6;&#x522B;&#x548C;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x53D8;&#x5F97;&#x6781;&#x5176;&#x56F0;&#x96BE;&#x3002;</p>
+<h3 id="3-&#x5FAE;&#x670D;&#x52A1;&#x4E0E;&#x4E91;&#x539F;&#x751F;&#x65F6;&#x4EE3;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#x6311;&#x6218;">3. &#x5FAE;&#x670D;&#x52A1;&#x4E0E;&#x4E91;&#x539F;&#x751F;&#x65F6;&#x4EE3;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#x6311;&#x6218;</h3>
+<p>&#x968F;&#x7740;&#x5FAE;&#x670D;&#x52A1;&#x67B6;&#x6784;&#x548C;&#x4E91;&#x539F;&#x751F;&#x6280;&#x672F;&#x7684;&#x5E7F;&#x6CDB;&#x91C7;&#x7528;&#xFF0C;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x9762;&#x4E34;&#x65B0;&#x7684;&#x6311;&#x6218;&#xFF1A;</p>
+<ul>
+<li><strong>&#x670D;&#x52A1;&#x6570;&#x91CF;&#x6FC0;&#x589E;</strong> &#xFF1A;&#x4E00;&#x4E2A;&#x4F01;&#x4E1A;&#x7EA7;&#x5E94;&#x7528;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x6570;&#x767E;&#x751A;&#x81F3;&#x6570;&#x5343;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;</li>
+<li><strong>&#x52A8;&#x6001;&#x6027;&#x589E;&#x5F3A;</strong> &#xFF1A;&#x5BB9;&#x5668;&#x7684;&#x81EA;&#x52A8;&#x6269;&#x7F29;&#x5BB9;&#x3001;&#x670D;&#x52A1;&#x7F51;&#x683C;&#x7B49;&#x6280;&#x672F;&#x4F7F;&#x7CFB;&#x7EDF;&#x66F4;&#x52A0;&#x52A8;&#x6001;</li>
+<li><strong>&#x591A;&#x8BED;&#x8A00;&#x3001;&#x591A;&#x6846;&#x67B6;</strong> &#xFF1A;&#x5FAE;&#x670D;&#x52A1;&#x53EF;&#x80FD;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x548C;&#x6846;&#x67B6;&#x5B9E;&#x73B0;</li>
+<li><strong>&#x590D;&#x6742;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;</strong> &#xFF1A;&#x670D;&#x52A1;&#x4E4B;&#x95F4;&#x7684;&#x590D;&#x6742;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x4F7F;&#x5F97;&#x6545;&#x969C;&#x5B9A;&#x4F4D;&#x66F4;&#x52A0;&#x56F0;&#x96BE;</li>
+</ul>
+<h4 id="&#x5F53;&#x524D;&#x89E3;&#x51B3;&#x65B9;&#x6848;">&#x5F53;&#x524D;&#x89E3;&#x51B3;&#x65B9;&#x6848;</h4>
+<p> <strong>&#x670D;&#x52A1;&#x7F51;&#x683C;&#x6280;&#x672F;</strong> &#xFF1A;</p>
+<ul>
+<li><strong>Istio</strong> &#xFF08;2017&#x5E74;&#xFF09;&#xFF1A;&#x63D0;&#x4F9B;&#x4E86;&#x6D41;&#x91CF;&#x7BA1;&#x7406;&#x3001;&#x5B89;&#x5168;&#x6027;&#x548C;&#x53EF;&#x89C2;&#x5BDF;&#x6027;&#x529F;&#x80FD;</li>
+<li><strong>Linkerd</strong> &#xFF08;2016&#x5E74;&#xFF09;&#xFF1A;&#x4E13;&#x6CE8;&#x4E8E;&#x8F7B;&#x91CF;&#x7EA7;&#x3001;&#x7B80;&#x5355;&#x7684;&#x670D;&#x52A1;&#x7F51;&#x683C;&#x5B9E;&#x73B0;</li>
+<li><p><strong>Consul</strong> &#xFF08;2014&#x5E74;&#xFF09;&#xFF1A;&#x63D0;&#x4F9B;&#x670D;&#x52A1;&#x53D1;&#x73B0;&#x548C;&#x914D;&#x7F6E;&#x7BA1;&#x7406;&#x529F;&#x80FD;</p>
+<p><strong>&#x53EF;&#x89C2;&#x5BDF;&#x6027;&#x4E09;&#x652F;&#x67F1;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>&#x65E5;&#x5FD7;&#xFF08;Logs&#xFF09;</strong> &#xFF1A;ELK/EFK Stack&#xFF08;Elasticsearch&#x3001;Logstash/Fluentd&#x3001;Kibana&#xFF09;</p>
+</li>
+<li><strong>&#x6307;&#x6807;&#xFF08;Metrics&#xFF09;</strong> &#xFF1A;Prometheus&#x3001;Grafana&#x7B49;</li>
+<li><p><strong>&#x8FFD;&#x8E2A;&#xFF08;Traces&#xFF09;</strong> &#xFF1A;OpenTelemetry&#xFF08;2019&#x5E74;&#xFF09;&#x7EDF;&#x4E00;&#x4E86;&#x8FFD;&#x8E2A;&#x6807;&#x51C6;</p>
+<p><strong>&#x6DF7;&#x6C8C;&#x5DE5;&#x7A0B;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>Chaos Monkey</strong> &#xFF08;2011&#x5E74;&#xFF0C;Netflix&#xFF09;&#xFF1A;&#x6709;&#x610F;&#x5F15;&#x5165;&#x6545;&#x969C;&#x4EE5;&#x6D4B;&#x8BD5;&#x7CFB;&#x7EDF;&#x5F39;&#x6027;</p>
+</li>
+<li><p><strong>Gremlin</strong> &#xFF08;2016&#x5E74;&#xFF09;&#xFF1A;&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x7CFB;&#x7EDF;&#x5316;&#x7684;&#x6DF7;&#x6C8C;&#x5DE5;&#x7A0B;&#x5E73;&#x53F0;</p>
+<p><strong>&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x8C03;&#x8BD5;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>Lightstep</strong> &#xFF08;2015&#x5E74;&#xFF09;&#xFF1A;&#x63D0;&#x4F9B;&#x4E86;&#x6DF1;&#x5165;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x548C;&#x5206;&#x6790;&#x80FD;&#x529B;</p>
+</li>
+<li><strong>Honeycomb</strong> &#xFF08;2016&#x5E74;&#xFF09;&#xFF1A;&#x4E13;&#x6CE8;&#x4E8E;&#x53EF;&#x89C2;&#x5BDF;&#x6027;&#x548C;&#x4E8B;&#x4EF6;&#x9A71;&#x52A8;&#x7684;&#x8C03;&#x8BD5;</li>
+</ul>
+<p>&#x867D;&#x7136;&#x8FD9;&#x4E9B;&#x5DE5;&#x5177;&#x6781;&#x5927;&#x5730;&#x63D0;&#x9AD8;&#x4E86;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x89C2;&#x5BDF;&#x6027;&#xFF0C;&#x4F46;&#x4ECD;&#x7136;&#x7F3A;&#x4E4F;&#x771F;&#x6B63;&#x7684;&#x4EA4;&#x4E92;&#x5F0F;&#x8C03;&#x8BD5;&#x80FD;&#x529B;&#x3002;&#x5F00;&#x53D1;&#x8005;&#x9700;&#x8981;&#x7EC4;&#x5408;&#x4F7F;&#x7528;&#x591A;&#x79CD;&#x5DE5;&#x5177;&#xFF0C;&#x5E76;&#x4E14;&#x9700;&#x8981;&#x989D;&#x5916;&#x7684;&#x4E13;&#x4E1A;&#x77E5;&#x8BC6;&#x6765;&#x89E3;&#x91CA;&#x548C;&#x5206;&#x6790;&#x83B7;&#x5F97;&#x7684;&#x6570;&#x636E;&#x3002;</p>
+<h3 id="4-&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x65F6;&#x4EE3;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;">4. &#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x65F6;&#x4EE3;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;</h3>
+<p>&#x968F;&#x7740;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x6280;&#x672F;&#x7684;&#x98DE;&#x901F;&#x53D1;&#x5C55;&#xFF0C;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x4E5F;&#x5F00;&#x59CB;&#x878D;&#x5165;AI&#x80FD;&#x529B;&#xFF0C;&#x5F00;&#x542F;&#x4E86;&#x65B0;&#x7684;&#x53EF;&#x80FD;&#x6027;&#x3002;</p>
+<h4 id="&#x5F53;&#x524D;&#x8D8B;&#x52BF;&#x4E0E;&#x63A2;&#x7D22;">&#x5F53;&#x524D;&#x8D8B;&#x52BF;&#x4E0E;&#x63A2;&#x7D22;</h4>
+<p> <strong>AIOps&#xFF08;&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x8FD0;&#x7EF4;&#xFF09;</strong> &#xFF1A;</p>
+<ul>
+<li><strong>&#x5F02;&#x5E38;&#x68C0;&#x6D4B;</strong> &#xFF1A;&#x4F7F;&#x7528;&#x673A;&#x5668;&#x5B66;&#x4E60;&#x7B97;&#x6CD5;&#x81EA;&#x52A8;&#x68C0;&#x6D4B;&#x7CFB;&#x7EDF;&#x5F02;&#x5E38;</li>
+<li><strong>&#x6839;&#x56E0;&#x5206;&#x6790;</strong> &#xFF1A;&#x901A;&#x8FC7;&#x56E0;&#x679C;&#x63A8;&#x7406;&#x5206;&#x6790;&#x6545;&#x969C;&#x6839;&#x6E90;</li>
+<li><p><strong>&#x81EA;&#x52A8;&#x4FEE;&#x590D;</strong> &#xFF1A;&#x5728;&#x67D0;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x7CFB;&#x7EDF;&#x53EF;&#x4EE5;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x4FEE;&#x590D;&#x65B9;&#x6848;</p>
+<p><strong>&#x4EE3;&#x8868;&#x6027;&#x6280;&#x672F;&#x4E0E;&#x5E73;&#x53F0;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>Datadog&#x7684;Watchdog</strong> &#xFF08;2018&#x5E74;&#xFF09;&#xFF1A;&#x4F7F;&#x7528;AI&#x68C0;&#x6D4B;&#x7CFB;&#x7EDF;&#x5F02;&#x5E38;</p>
+</li>
+<li><strong>IBM&#x7684;Watson AIOps</strong> &#xFF08;2020&#x5E74;&#xFF09;&#xFF1A;&#x5E94;&#x7528;AI&#x6280;&#x672F;&#x8FDB;&#x884C;&#x95EE;&#x9898;&#x8BCA;&#x65AD;&#x548C;&#x89E3;&#x51B3;</li>
+<li><strong>Microsoft&#x7684;BugLab</strong> &#xFF08;2021&#x5E74;&#xFF09;&#xFF1A;&#x4F7F;&#x7528;AI&#x8F85;&#x52A9;bug&#x5B9A;&#x4F4D;&#x548C;&#x4FEE;&#x590D;</li>
+</ul>
+<h4 id="&#x672A;&#x6765;&#x53D1;&#x5C55;&#x65B9;&#x5411;">&#x672A;&#x6765;&#x53D1;&#x5C55;&#x65B9;&#x5411;</h4>
+<p> <strong>&#x5927;&#x578B;&#x8BED;&#x8A00;&#x6A21;&#x578B;&#xFF08;LLM&#xFF09;&#x8F85;&#x52A9;&#x8C03;&#x8BD5;</strong> &#xFF1A;</p>
+<ul>
+<li><strong>&#x4EE3;&#x7801;&#x7406;&#x89E3;&#x4E0E;&#x5206;&#x6790;</strong> &#xFF1A;LLM&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x590D;&#x6742;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4EE3;&#x7801;&#x548C;&#x67B6;&#x6784;</li>
+<li><strong>&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x4E0E;&#x89E3;&#x91CA;</strong> &#xFF1A;&#x81EA;&#x52A8;&#x5206;&#x6790;&#x65E5;&#x5FD7;&#x5E76;&#x63D0;&#x4F9B;&#x4EBA;&#x7C7B;&#x53EF;&#x7406;&#x89E3;&#x7684;&#x89E3;&#x91CA;</li>
+<li><p><strong>&#x81EA;&#x52A8;&#x751F;&#x6210;&#x8C03;&#x8BD5;&#x8BA1;&#x5212;</strong> &#xFF1A;&#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x63CF;&#x8FF0;&#x548C;&#x95EE;&#x9898;&#x73B0;&#x8C61;&#xFF0C;&#x751F;&#x6210;&#x8C03;&#x8BD5;&#x6B65;&#x9AA4;</p>
+<p><strong>&#x81EA;&#x9002;&#x5E94;&#x8C03;&#x8BD5;&#x7CFB;&#x7EDF;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>&#x52A8;&#x6001;&#x8C03;&#x6574;&#x89C2;&#x5BDF;&#x70B9;</strong> &#xFF1A;&#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;&#x81EA;&#x52A8;&#x8C03;&#x6574;&#x6570;&#x636E;&#x6536;&#x96C6;&#x70B9;</p>
+</li>
+<li><strong>&#x667A;&#x80FD;&#x91C7;&#x6837;</strong> &#xFF1A;&#x5728;&#x4FDD;&#x8BC1;&#x6709;&#x6548;&#x6027;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x51CF;&#x5C11;&#x6570;&#x636E;&#x6536;&#x96C6;&#x91CF;</li>
+<li><p><strong>&#x9884;&#x6D4B;&#x6027;&#x8C03;&#x8BD5;</strong> &#xFF1A;&#x5728;&#x95EE;&#x9898;&#x53D1;&#x751F;&#x524D;&#x9884;&#x6D4B;&#x53EF;&#x80FD;&#x7684;&#x6545;&#x969C;&#x70B9;</p>
+<p><strong>&#x6570;&#x5B57;&#x5B6A;&#x751F;&#x4E0E;&#x6A21;&#x62DF;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;&#x6A21;&#x62DF;</strong> &#xFF1A;&#x901A;&#x8FC7;&#x6570;&#x5B57;&#x5B6A;&#x751F;&#x6280;&#x672F;&#x6A21;&#x62DF;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;</p>
+</li>
+<li><strong>&#x5047;&#x8BBE;&#x9A8C;&#x8BC1;</strong> &#xFF1A;&#x5728;&#x865A;&#x62DF;&#x73AF;&#x5883;&#x4E2D;&#x6D4B;&#x8BD5;&#x4FEE;&#x590D;&#x65B9;&#x6848;</li>
+<li><p><strong>&#x65F6;&#x95F4;&#x65C5;&#x884C;&#x8C03;&#x8BD5;</strong> &#xFF1A;&#x5728;&#x6A21;&#x62DF;&#x73AF;&#x5883;&#x4E2D;&#x5B9E;&#x73B0;&#x65F6;&#x95F4;&#x524D;&#x540E;&#x79FB;&#x52A8;&#x7684;&#x8C03;&#x8BD5;&#x80FD;&#x529B;</p>
+<p><strong>&#x81EA;&#x4E3B;&#x5F0F;&#x8C03;&#x8BD5;&#x52A9;&#x624B;</strong> &#xFF1A;</p>
+</li>
+<li><p><strong>&#x8C03;&#x8BD5;&#x4EE3;&#x7406;</strong> &#xFF1A;&#x81EA;&#x4E3B;&#x8FD0;&#x884C;&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x4E2D;&#xFF0C;&#x6536;&#x96C6;&#x548C;&#x5206;&#x6790;&#x6570;&#x636E;</p>
+</li>
+<li><strong>&#x81EA;&#x52A8;&#x5316;&#x5DE5;&#x5177;&#x94FE;</strong> &#xFF1A;&#x96C6;&#x6210;&#x591A;&#x79CD;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#xFF0C;&#x5F62;&#x6210;&#x95ED;&#x73AF;&#x8C03;&#x8BD5;&#x6D41;&#x7A0B;</li>
+<li><strong>&#x6301;&#x7EED;&#x5B66;&#x4E60;</strong> &#xFF1A;&#x901A;&#x8FC7;&#x5386;&#x53F2;&#x8C03;&#x8BD5;&#x6570;&#x636E;&#x4E0D;&#x65AD;&#x6539;&#x8FDB;&#x8C03;&#x8BD5;&#x80FD;&#x529B;</li>
+</ul>
+<h3 id="5-&#x603B;&#x7ED3;&#x4E0E;&#x5C55;&#x671B;">5. &#x603B;&#x7ED3;&#x4E0E;&#x5C55;&#x671B;</h3>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x4ECE;&#x6700;&#x521D;&#x7684;&#x7B80;&#x5355;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#xFF0C;&#x53D1;&#x5C55;&#x5230;&#x4ECA;&#x5929;&#x7684;&#x7EFC;&#x5408;&#x6027;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#xFF0C;&#x7ECF;&#x5386;&#x4E86;&#x591A;&#x4E2A;&#x9636;&#x6BB5;&#x7684;&#x6F14;&#x53D8;&#x3002;&#x6BCF;&#x4E2A;&#x9636;&#x6BB5;&#x90FD;&#x4F34;&#x968F;&#x7740;&#x6280;&#x672F;&#x7684;&#x7A81;&#x7834;&#x548C;&#x60E8;&#x75DB;&#x7684;&#x6559;&#x8BAD;&#x3002;</p>
+<h4 id="&#x5173;&#x952E;&#x53D1;&#x5C55;&#x9636;&#x6BB5;&#x56DE;&#x987E;">&#x5173;&#x952E;&#x53D1;&#x5C55;&#x9636;&#x6BB5;&#x56DE;&#x987E;</h4>
+<ol>
+<li><strong>&#x521D;&#x671F;&#x7684;&#x65E5;&#x5FD7;&#x5206;&#x6790;&#x9636;&#x6BB5;</strong> &#xFF1A;&#x4F9D;&#x9760;&#x7B80;&#x5355;&#x5DE5;&#x5177;&#xFF0C;&#x6548;&#x7387;&#x4F4E;&#x4E0B;</li>
+<li><strong>&#x5206;&#x5E03;&#x5F0F;&#x8FFD;&#x8E2A;&#x4E0E;&#x76D1;&#x63A7;&#x9636;&#x6BB5;</strong> &#xFF1A;&#x63D0;&#x9AD8;&#x4E86;&#x7CFB;&#x7EDF;&#x7684;&#x53EF;&#x89C2;&#x5BDF;&#x6027;&#xFF0C;&#x4F46;&#x7F3A;&#x4E4F;&#x4EA4;&#x4E92;&#x80FD;&#x529B;</li>
+<li><strong>&#x4EA4;&#x4E92;&#x5F0F;&#x8C03;&#x8BD5;&#x9636;&#x6BB5;</strong> &#xFF1A;&#x4EE5;Squash Debugger&#x4E3A;&#x4EE3;&#x8868;&#xFF0C;&#x5B9E;&#x73B0;&#x4E86;&#x771F;&#x6B63;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;</li>
+<li><strong>&#x5FAE;&#x670D;&#x52A1;&#x4E0E;&#x4E91;&#x539F;&#x751F;&#x65F6;&#x4EE3;</strong> &#xFF1A;&#x670D;&#x52A1;&#x7F51;&#x683C;&#x548C;&#x53EF;&#x89C2;&#x5BDF;&#x6027;&#x5DE5;&#x5177;&#x7684;&#x5E7F;&#x6CDB;&#x5E94;&#x7528;</li>
+<li><strong>&#x4EBA;&#x5DE5;&#x667A;&#x80FD;&#x8F85;&#x52A9;&#x8C03;&#x8BD5;</strong> &#xFF1A;&#x5F00;&#x59CB;&#x63A2;&#x7D22;AI&#x5728;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#x4E2D;&#x7684;&#x5E94;&#x7528;</li>
+</ol>
+<h4 id="&#x672A;&#x6765;&#x5C55;&#x671B;">&#x672A;&#x6765;&#x5C55;&#x671B;</h4>
+<p>&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x7684;&#x672A;&#x6765;&#x5C06;&#x53EF;&#x80FD;&#x662F;&#x4E00;&#x4E2A;&#x5168;&#x65B9;&#x4F4D;&#x7684;&#x7EFC;&#x5408;&#x5E73;&#x53F0;&#xFF0C;&#x5B83;&#x5C06;&#x5305;&#x542B;&#xFF1A;</p>
+<ul>
+<li><strong>AI&#x9A71;&#x52A8;&#x7684;&#x6839;&#x56E0;&#x5206;&#x6790;</strong> &#xFF1A;&#x81EA;&#x52A8;&#x5206;&#x6790;&#x7CFB;&#x7EDF;&#x884C;&#x4E3A;&#xFF0C;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x6839;&#x6E90;</li>
+<li><strong>&#x81EA;&#x9002;&#x5E94;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;</strong> &#xFF1A;&#x6839;&#x636E;&#x7CFB;&#x7EDF;&#x7279;&#x6027;&#x548C;&#x95EE;&#x9898;&#x7C7B;&#x578B;&#x81EA;&#x52A8;&#x9009;&#x62E9;&#x5408;&#x9002;&#x7684;&#x8C03;&#x8BD5;&#x7B56;&#x7565;</li>
+<li><strong>&#x65E0;&#x4EE3;&#x7801;&#x8C03;&#x8BD5;&#x63A5;&#x53E3;</strong> &#xFF1A;&#x5141;&#x8BB8;&#x5F00;&#x53D1;&#x8005;&#x901A;&#x8FC7;&#x81EA;&#x7136;&#x8BED;&#x8A00;&#x63CF;&#x8FF0;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;</li>
+<li><strong>&#x5B9E;&#x65F6;&#x534F;&#x4F5C;&#x8C03;&#x8BD5;</strong> &#xFF1A;&#x652F;&#x6301;&#x591A;&#x4EBA;&#x534F;&#x4F5C;&#x8C03;&#x8BD5;&#x590D;&#x6742;&#x7CFB;&#x7EDF;</li>
+<li><strong>&#x9884;&#x9632;&#x6027;&#x8C03;&#x8BD5;</strong> &#xFF1A;&#x5728;&#x95EE;&#x9898;&#x53D1;&#x751F;&#x524D;&#x9884;&#x6D4B;&#x5E76;&#x9632;&#x8303;&#x6F5C;&#x5728;&#x95EE;&#x9898;</li>
+</ul>
+<p>&#x968F;&#x7740;&#x6280;&#x672F;&#x7684;&#x4E0D;&#x65AD;&#x8FDB;&#x6B65;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x7406;&#x7531;&#x76F8;&#x4FE1;&#xFF0C;&#x672A;&#x6765;&#x7684;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x8C03;&#x8BD5;&#x5C06;&#x53D8;&#x5F97;&#x66F4;&#x52A0;&#x667A;&#x80FD;&#x3001;&#x9AD8;&#x6548;&#x548C;&#x7528;&#x6237;&#x53CB;&#x597D;&#x3002;&#x8FD9;&#x5C06;&#x5927;&#x5927;&#x964D;&#x4F4E;&#x5F00;&#x53D1;&#x548C;&#x7EF4;&#x62A4;&#x5206;&#x5E03;&#x5F0F;&#x7CFB;&#x7EDF;&#x7684;&#x6210;&#x672C;&#xFF0C;&#x63A8;&#x52A8;&#x5206;&#x5E03;&#x5F0F;&#x8BA1;&#x7B97;&#x6280;&#x672F;&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x53D1;&#x5C55;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
+<ol>
+<li><a href="https://squash.solo.io/overview/" target="_blank">squash debugger</a>, <a href="https://squash.solo.io/overview/" target="_blank">https://squash.solo.io/overview/</a></li>
+<li><a href="https://www.rookout.com/solutions/live-debugger/" target="_blank">rookout debugger</a>, <a href="https://www.rookout.com/solutions/live-debugger/" target="_blank">https://www.rookout.com/solutions/live-debugger/</a></li>
+<li><a href="https://telepresence.io/" target="_blank">telepresence</a>, <a href="https://telepresence.io/" target="_blank">https://telepresence.io/</a></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="7-development-of-replay.html" class="navigation navigation-prev " aria-label="Previous page: 10.7 录制重放发展历程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../11-thanks/" class="navigation navigation-next " aria-label="Next page: 11 致谢">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"10.8 分布式调试发展历程","level":"1.10.8","depth":2,"next":{"title":"11 致谢","level":"1.11","depth":1,"path":"11-thanks/README.md","ref":"11-thanks/README.md","articles":[]},"previous":{"title":"10.7 录制重放发展历程","level":"1.10.7","depth":2,"path":"10-extras/7-development-of-replay.md","ref":"10-extras/7-development-of-replay.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/8-development-of-debug-dsys.md","mtime":"2025-03-16T18:37:38.369Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-16T18:41:33.965Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

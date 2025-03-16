@@ -1,0 +1,2153 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>10.5 Bisect发展历程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../11-thanks/" />
+    
+    
+    <link rel="prev" href="4-development-of-tracing.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-preface/">
+            
+                <a href="../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../3-terms/">
+            
+                <a href="../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../4-basics/">
+            
+                <a href="../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../4-basics/1-purposes.html">
+            
+                <a href="../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../4-basics/2-dependencies.html">
+            
+                <a href="../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../4-basics/3-countertactics.html">
+            
+                <a href="../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../5-debugger-skeleton/">
+            
+                <a href="../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../6-develop-inst-debugger/">
+            
+                <a href="../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../7-headto-sym-debugger/">
+            
+                <a href="../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../7-headto-sym-debugger/0-how-go-build-works.html">
+            
+                <a href="../7-headto-sym-debugger/0-how-go-build-works.html">
+            
+                    
+                    7.0 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../7-headto-sym-debugger/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/1-elf.html">
+            
+                    
+                    7.1 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../7-headto-sym-debugger/2-syms.html">
+            
+                <a href="../7-headto-sym-debugger/2-syms.html">
+            
+                    
+                    7.2 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                <a href="../7-headto-sym-debugger/3-syms-resolve.html">
+            
+                    
+                    7.3 符号的解析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                <a href="../7-headto-sym-debugger/4-syms-reloc.html">
+            
+                    
+                    7.4 重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.8" data-path="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.9" data-path="../7-headto-sym-debugger/80-go-tool-compile.html">
+            
+                <a href="../7-headto-sym-debugger/80-go-tool-compile.html">
+            
+                    
+                    7.80 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.10" data-path="../7-headto-sym-debugger/81-go-tool-asm.html">
+            
+                <a href="../7-headto-sym-debugger/81-go-tool-asm.html">
+            
+                    
+                    7.81 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.11" data-path="../7-headto-sym-debugger/82-go-tool-link.html">
+            
+                <a href="../7-headto-sym-debugger/82-go-tool-link.html">
+            
+                    
+                    7.82 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.12" data-path="../7-headto-sym-debugger/90-why-buildid-loaded.html">
+            
+                <a href="../7-headto-sym-debugger/90-why-buildid-loaded.html">
+            
+                    
+                    7.90 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.13" data-path="../7-headto-sym-debugger/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../7-headto-sym-debugger/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    7.91 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../8-dwarf/">
+            
+                <a href="../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../8-dwarf/1-history.html">
+            
+                <a href="../8-dwarf/1-history.html">
+            
+                    
+                    8.1 发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../8-dwarf/2-structure.html">
+            
+                <a href="../8-dwarf/2-structure.html">
+            
+                    
+                    8.2 DWARF结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../8-dwarf/3-die-readme.html">
+            
+                <a href="../8-dwarf/3-die-readme.html">
+            
+                    
+                    8.3 调试信息条目：DIE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../8-dwarf/3-die-intro.html">
+            
+                <a href="../8-dwarf/3-die-intro.html">
+            
+                    
+                    8.3.1 DIE介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../8-dwarf/3-die-desc-datatype.html">
+            
+                <a href="../8-dwarf/3-die-desc-datatype.html">
+            
+                    
+                    8.3.2 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../8-dwarf/3-die-desc-code.html">
+            
+                <a href="../8-dwarf/3-die-desc-code.html">
+            
+                    
+                    8.3.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../8-dwarf/3-die-encoding.html">
+            
+                <a href="../8-dwarf/3-die-encoding.html">
+            
+                    
+                    8.3.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../8-dwarf/4-other-readme.html">
+            
+                <a href="../8-dwarf/4-other-readme.html">
+            
+                    
+                    8.4 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../8-dwarf/4-other-accelerated-access.html">
+            
+                <a href="../8-dwarf/4-other-accelerated-access.html">
+            
+                    
+                    8.4.0 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../8-dwarf/4-other-lineno-table.html">
+            
+                <a href="../8-dwarf/4-other-lineno-table.html">
+            
+                    
+                    8.4.1 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../8-dwarf/4-other-macro-info.html">
+            
+                <a href="../8-dwarf/4-other-macro-info.html">
+            
+                    
+                    8.4.2 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../8-dwarf/4-other-callframe-info.html">
+            
+                <a href="../8-dwarf/4-other-callframe-info.html">
+            
+                    
+                    8.4.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.5" data-path="../8-dwarf/4-other-varlen-data.html">
+            
+                <a href="../8-dwarf/4-other-varlen-data.html">
+            
+                    
+                    8.4.4 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.6" data-path="../8-dwarf/4-other-shrink-data.html">
+            
+                <a href="../8-dwarf/4-other-shrink-data.html">
+            
+                    
+                    8.4.5 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.7" data-path="../8-dwarf/4-other-elf-sections.html">
+            
+                <a href="../8-dwarf/4-other-elf-sections.html">
+            
+                    
+                    8.4.6 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../8-dwarf/5-dwarf-summary.html">
+            
+                <a href="../8-dwarf/5-dwarf-summary.html">
+            
+                    
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-parsing-dwarf.html">
+            
+                <a href="../8-dwarf/6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-using-dwarf.html">
+            
+                <a href="../8-dwarf/7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../8-dwarf/8-summary.html">
+            
+                <a href="../8-dwarf/8-summary.html">
+            
+                    
+                    8.8 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../9-develop-sym-debugger/">
+            
+                <a href="../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-需求分析/">
+            
+                <a href="../9-develop-sym-debugger/1-需求分析/">
+            
+                    
+                    9.1. 需求分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.2 概要设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                    
+                    9.2.1 整体架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                    
+                    9.2.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                    
+                    9.2.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                    
+                    9.2.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                    
+                    9.2.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.3 详细设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../9-develop-sym-debugger/4-编码实现/">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/">
+            
+                    
+                    9.4 编码实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                    
+                    9.4.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                    
+                    9.4.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                    
+                    9.4.3 进程启动并attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.4" data-path="../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                    
+                    9.4.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.5" data-path="../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                    
+                    9.4.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.6" data-path="../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                    
+                    9.4.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.7" data-path="../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                    
+                    9.4.7 查询断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.8" data-path="../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                    
+                    9.4.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.9" data-path="../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                    
+                    9.4.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.10" data-path="../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                    
+                    9.4.10 步进执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.11" data-path="../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                    
+                    9.4.11 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.12" data-path="../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                    
+                    9.4.12 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.13" data-path="../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                    
+                    9.4.13 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.14" data-path="../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                    
+                    9.4.14 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.15" data-path="../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                    
+                    9.4.15 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.16" data-path="../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                    
+                    9.4.16 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.17" data-path="../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                    
+                    9.4.17 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.18" data-path="../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                    
+                    9.4.18 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.19" data-path="../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                <a href="../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                    
+                    9.4.19 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="1-development-of-debugger.html">
+            
+                <a href="1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="2-development-of-logging.html">
+            
+                <a href="2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="3-development-of-metrics.html">
+            
+                <a href="3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="4-development-of-tracing.html">
+            
+                <a href="4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.10.5" data-path="5-development-of-bisect.html">
+            
+                <a href="5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../11-thanks/">
+            
+                <a href="../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../12-appendix/">
+            
+                <a href="../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../12-appendix/1-go-programme-start.html">
+            
+                <a href="../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../12-appendix/2-auto-track-new-threads.md">
+            
+                <span>
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../12-appendix/3-git-bisect.html">
+            
+                <a href="../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >10.5 Bisect发展历程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="hash-based-bisect-debugging-in-compilers-and-runtimes">Hash-Based Bisect Debugging in Compilers and Runtimes</h2>
+<p>&#x3010;&#x6CE8;&#x3011;&#x672C;&#x6587;&#x7FFB;&#x8BD1;&#x81EA; Russ Cox &#x4E8E;2024-07-18 &#x53D1;&#x8868;&#x7684;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;<a href="https://research.swtch.com/bisect" target="_blank">&#x300A;Hash-Based Bisect Debugging in Compilers and Runtimes&#x300B;</a>&#x3002;&#x4E3A;&#x4E86;&#x672C;&#x7AE0;bisect reduce&#x8C03;&#x8BD5;&#x6280;&#x672F;&#x7684;&#x5185;&#x5BB9;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x7279;&#x522B;&#x5F15;&#x7528;&#x5E76;&#x7FFB;&#x8BD1;&#x8BE5;&#x6587;&#x7AE0;&#x6765;&#x4ECB;&#x7ECD;&#x4E0B;bisect reduce&#x7684;&#x7B97;&#x6CD5;&#x903B;&#x8F91;&#x3002;</p>
+<h3 id="setting-the-stage"><a href="https://research.swtch.com/bisect#setting_the_stage" target="_blank">Setting the Stage</a></h3>
+<p>Does this sound familar? You make a change to a library to optimize its performance or clean up technical debt or fix a bug, only to get a bug report: some very large, incomprehensibly opaque test is now failing. Or you add a new compiler optimization with a similar result. Now you have a major debugging job in an unfamiliar code base.</p>
+<p>What if I told you that a magic wand exists that can pinpoint the relevant line of code or call stack in that unfamiliar code base? It exists. It is a real tool, and I&#x2019;m going to show it to you. This description might seem a bit over the top, but every time I use this tool, it really does feel like magic. Not just any magic either, but the best kind of magic: delightful to watch even when you know exactly how it works.<a href="https://research.swtch.com/bisect#binary_search_and_bisecting_data" target="_blank"></a></p>
+<h3 id="binary-search-and-bisecting-data"><a href="https://research.swtch.com/bisect#binary_search_and_bisecting_data" target="_blank">Binary Search and Bisecting Data</a></h3>
+<p>Before we get to the new trick, let&#x2019;s take a look at some simpler, older tricks. Every good magician starts with mastery of the basic techniques. In our case, that technique is binary search. Most presentations of binary search talk about finding an item in a sorted list, but there are far more interesting uses. Here is an example I wrote long ago for Go&#x2019;s <a href="https://go.dev/pkg/sort/#Search" target="_blank"><code>sort.Search</code></a> documentation:</p>
+<pre><code>func GuessingGame() {
+    var s string
+    fmt.Printf(&quot;Pick an integer from 0 to 100.\n&quot;)
+    answer := sort.Search(100, func(i int) bool {
+        fmt.Printf(&quot;Is your number &lt;= %d? &quot;, i)
+        fmt.Scanf(&quot;%s&quot;, &amp;s)
+        return s != &quot;&quot; &amp;&amp; s[0] == &apos;y&apos;
+    })
+    fmt.Printf(&quot;Your number is %d.\n&quot;, answer)
+}
+</code></pre><p>If we run this code, it plays a guessing game with us:</p>
+<pre><code>% go run guess.go
+Pick an integer from 0 to 100.
+Is your number &lt;= 50? y
+Is your number &lt;= 25? n
+Is your number &lt;= 38? y
+Is your number &lt;= 32? y
+Is your number &lt;= 29? n
+Is your number &lt;= 31? n
+Your number is 32.
+%
+</code></pre><p>The same guessing game can be applied to debugging. In his <em>Programming Pearls</em> column titled &#x201C;Aha! Algorithms&#x201D; in <em>Communications of the ACM</em> (September 1983), Jon Bentley called binary search &#x201C;a solution that looks for problems.&#x201D; Here&#x2019;s one of his examples:</p>
+<blockquote>
+<p>Roy Weil applied the technique [binary search] in cleaning a deck of about a thousand punched cards that contained a single bad card. Unfortunately the bad card wasn&#x2019;t known by sight; it could only be identified by running some subset of the cards through a program and seeing a wildly erroneous answer&#x2014;this process took several minutes. His predecessors at the task tried to solve it by running a few cards at a time through the program, and were making steady (but slow) progress toward a solution. How did Weil find the culprit in just ten runs of the program?</p>
+</blockquote>
+<p>Obviously, Weil played the guessing game using binary search. Is the bad card in the first 500? Yes. The first 250? No. And so on. This is the earliest published description of debugging by binary search that I have been able to find. In this case, it was for debugging data.<a href="https://research.swtch.com/bisect#bisecting_version_history" target="_blank"></a></p>
+<h3 id="bisecting-version-history"><a href="https://research.swtch.com/bisect#bisecting_version_history" target="_blank">Bisecting Version History</a></h3>
+<p>We can apply binary search to a program&#x2019;s version history instead of data. Every time we notice a new bug in an old program, we play the guessing game &#x201C;when did this program last work?&#x201D;</p>
+<ul>
+<li>Did it work 50 days ago? Yes.</li>
+<li>Did it work 25 days ago? No.</li>
+<li>Did it work 38 days ago? Yes.</li>
+</ul>
+<p>And so on, until we find that the program last worked correctly 32 days ago, meaning the bug was introduced 31 days ago.</p>
+<p>Debugging through time with binary search is a very old trick, independently discovered many times by many people. For example, we could play the guessing game using commands like <code>cvs checkout -D &apos;31 days ago&apos;</code> or Plan 9&#x2019;s <a href="https://9fans.github.io/plan9port/man/man1/yesterday.html" target="_blank">more musical</a> <code>yesterday -n 31</code>. To some programmers, the techniques of using binary search to debug data or debug through time seem &#x201C;<a href="https://groups.google.com/g/comp.compilers/c/vGh4s3HBQ-s/m/qmrVKmF5AgAJ" target="_blank">so basic that there is no need to write them down</a>.&#x201D; But writing a trick down is the first step to making sure everyone can do it: magic tricks can be basic but not obvious. In software, writing a trick down is also the first step to automating it and building good tools.</p>
+<p>In the late-1990s, the idea of binary search over version history was <a href="https://groups.google.com/g/comp.compilers/c/vGh4s3HBQ-s/m/Chvpu7vTAgAJ" target="_blank">written down at least twice</a>. Brian Ness and Viet Ngo published &#x201C;<a href="https://ieeexplore.ieee.org/abstract/document/625082" target="_blank">Regression containment through source change isolation</a>&#x201D; at COMPSAC &#x2019;97 (August 1997) describing a system built at Cray Research that they used to deliver much more frequent non-regressing compiler releases. Independently, Larry McVoy published a file &#x201C;<a href="https://elixir.bootlin.com/linux/1.3.73/source/Documentation/BUG-HUNTING" target="_blank">Documentation/BUG-HUNTING</a>&#x201D; in the Linux 1.3.73 release (March 1996). He captured how magical it feels that the trick works even if you have no particular expertise in the code being tested:</p>
+<blockquote>
+<p>This is how to track down a bug if you know nothing about kernel hacking. It&#x2019;s a brute force approach but it works pretty well.</p>
+<p>You need:</p>
+<ul>
+<li>A reproducible bug - it has to happen predictably (sorry)</li>
+<li>All the kernel tar files from a revision that worked to the revision that doesn&#x2019;t</li>
+</ul>
+<p>You will then do:</p>
+<ul>
+<li>Rebuild a revision that you believe works, install, and verify that.</li>
+<li>Do a binary search over the kernels to figure out which one introduced the bug. I.e., suppose 1.3.28 didn&#x2019;t have the bug, but you know that 1.3.69 does. Pick a kernel in the middle and build that, like 1.3.50. Build &amp; test; if it works, pick the mid point between .50 and .69, else the mid point between .28 and .50.</li>
+<li>You&#x2019;ll narrow it down to the kernel that introduced the bug. You can probably do better than this but it gets tricky.</li>
+</ul>
+<p>. . .</p>
+<p>My apologies to Linus and the other kernel hackers for describing this brute force approach, it&#x2019;s hardly what a kernel hacker would do. However, it does work and it lets non-hackers help bug fix. And it is cool because Linux snapshots will let you do this - something that you can&#x2019;t do with vender supplied releases.</p>
+</blockquote>
+<p>Later, Larry McVoy created Bitkeeper, which Linux used as its first source control system. Bitkeeper provided a way to print the longest straight line of changes through the directed acyclic graph of commits, providing a more fine-grained timeline for binary search. When Linus Torvalds created Git, he carried that idea forward as <a href="https://github.com/git/git/commit/8b3a1e056f2107deedfdada86046971c9ad7bb87" target="_blank"><code>git rev-list --bisect</code></a>, which enabled the same kind of manual binary search. A few days after adding it, he <a href="https://groups.google.com/g/fa.linux.kernel/c/N4CqlNCvFCY/m/ItQoFhVZyJgJ" target="_blank">explained how to use it</a> on the Linux kernel mailing list:</p>
+<blockquote>
+<p>Hmm.. Since you seem to be a git user, maybe you could try the git &quot;bisect&quot; thing to help narrow down exactly where this happened (and help test that thing too ;).</p>
+<p>You can basically use git to find the half-way point between a set of &quot;known good&quot; points and a &quot;known bad&quot; point (&quot;bisecting&quot; the set of commits), and doing just a few of those should give us a much better view of where things started going wrong.</p>
+<p>For example, since you know that 2.6.12-rc3 is good, and 2.6.12 is bad, you&#x2019;d do</p>
+<p>git-rev-list --bisect v2.6.12 ^v2.6.12-rc3</p>
+<p>where the &quot;v2.6.12 ^v2.6.12-rc3&quot; thing basically means &quot;everything in v2.6.12 but <em>not</em> in v2.6.12-rc3&quot; (that&#x2019;s what the ^ marks), and the &quot;--bisect&quot; flag just asks git-rev-list to list the middle-most commit, rather than all the commits in between those kernel versions.</p>
+</blockquote>
+<p>This response started a <a href="https://groups.google.com/g/fa.linux.kernel/c/cp6abJnEN5U/m/5Z5s14LkzR4J" target="_blank">separate discussion</a> about making the process easier, which led eventually to the <a href="https://git-scm.com/docs/git-bisect" target="_blank"><code>git bisect</code></a> tool that exists today.</p>
+<p>Here&#x2019;s an example. We tried updating to a newer version of Go and found that a test fails. We can use <code>git bisect</code> to pinpoint the specific commit that caused the failure:</p>
+<pre><code>% git bisect start master go1.21.0
+Previous HEAD position was 3b8b550a35 doc: document run..
+Switched to branch &apos;master&apos;
+Your branch is ahead of &apos;origin/master&apos; by 5 commits.
+Bisecting: a merge base must be tested
+[2639a17f146cc7df0778298c6039156d7ca68202] doc: run rel...
+% git bisect run sh -c &apos;
+    git clean -df
+    cd src
+    ./make.bash || exit 125
+    cd $HOME/src/rsc.io/tmp/timertest/retry
+    go list || exit 0
+    go test -count=5
+&apos;
+</code></pre><p>It takes some care to write a correct <code>git bisect</code> invocation, but once you get it right, you can walk away while <code>git bisect</code> works its magic. In this case, the script we pass to <code>git bisect run</code> cleans out any stale files and then builds the Go toolchain (<code>./make.bash</code>). If that step fails, it exits with code 125, a special inconclusive answer for <code>git bisect</code>: something else is wrong with this commit and we can&#x2019;t say whether or not the bug we&#x2019;re looking for is present. Otherwise it changes into the directory of the failing test. If <code>go list</code> fails, which happens if the bisect uses a version of Go that&#x2019;s too old, the script exits successfully, indicating that the bug is not present. Otherwise the script runs <code>go test</code> and exits with the status from that command. The <code>-count=5</code> is there because this is a flaky failure that does not always happen: running five times is enough to make sure we observe the bug if it is present.</p>
+<p>When we run this command, <code>git bisect</code> prints a lot of output, along with the output of our test script, to make sure we can see the progress:</p>
+<pre><code>% git bisect run ...
+...
+go: download go1.23 for darwin/arm64: toolchain not available
+Bisecting: 1360 revisions left to test after this (roughly 10 steps)
+[752379113b7c3e2170f790ec8b26d590defc71d1]
+    runtime/race: update race syso for PPC64LE
+...
+go: download go1.23 for darwin/arm64: toolchain not available
+Bisecting: 680 revisions left to test after this (roughly 9 steps)
+[ff8a2c0ad982ed96aeac42f0c825219752e5d2f6]
+    go/types: generate mono.go from types2 source
+...
+ok      rsc.io/tmp/timertest/retry  10.142s
+Bisecting: 340 revisions left to test after this (roughly 8 steps)
+[97f1b76b4ba3072ab50d0d248fdce56e73b45baf]
+    runtime: optimize timers.cleanHead
+...
+FAIL    rsc.io/tmp/timertest/retry  22.136s
+Bisecting: 169 revisions left to test after this (roughly 7 steps)
+[80157f4cff014abb418004c0892f4fe48ee8db2e]
+    io: close PipeReader in test
+...
+ok      rsc.io/tmp/timertest/retry  10.145s
+Bisecting: 84 revisions left to test after this (roughly 6 steps)
+[8f7df2256e271c8d8d170791c6cd90ba9cc69f5e]
+    internal/asan: match runtime.asan{read,write} len parameter type
+...
+FAIL    rsc.io/tmp/timertest/retry  20.148s
+Bisecting: 42 revisions left to test after this (roughly 5 steps)
+[c9ed561db438ba413ba8cfac0c292a615bda45a8]
+    debug/elf: avoid using binary.Read() in NewFile()
+...
+FAIL    rsc.io/tmp/timertest/retry  14.146s
+Bisecting: 20 revisions left to test after this (roughly 4 steps)
+[2965dc989530e1f52d80408503be24ad2582871b]
+    runtime: fix lost sleep causing TestZeroTimer flakes
+...
+FAIL    rsc.io/tmp/timertest/retry  18.152s
+Bisecting: 10 revisions left to test after this (roughly 3 steps)
+[b2e9221089f37400f309637b205f21af7dcb063b]
+    runtime: fix another lock ordering problem
+...
+ok      rsc.io/tmp/timertest/retry  10.142s
+Bisecting: 5 revisions left to test after this (roughly 3 steps)
+[418e6d559e80e9d53e4a4c94656e8fb4bf72b343]
+    os,internal/godebugs: add missing IncNonDefault calls
+...
+ok      rsc.io/tmp/timertest/retry  10.163s
+Bisecting: 2 revisions left to test after this (roughly 2 steps)
+[6133c1e4e202af2b2a6d4873d5a28ea3438e5554]
+    internal/trace/v2: support old trace format
+...
+FAIL    rsc.io/tmp/timertest/retry  22.164s
+Bisecting: 0 revisions left to test after this (roughly 1 step)
+[508bb17edd04479622fad263cd702deac1c49157]
+    time: garbage collect unstopped Tickers and Timers
+...
+FAIL    rsc.io/tmp/timertest/retry  16.159s
+Bisecting: 0 revisions left to test after this (roughly 0 steps)
+[74a0e3160d969fac27a65cd79a76214f6d1abbf5]
+    time: clean up benchmarks
+...
+ok      rsc.io/tmp/timertest/retry  10.147s
+508bb17edd04479622fad263cd702deac1c49157 is the first bad commit
+commit 508bb17edd04479622fad263cd702deac1c49157
+Author:     Russ Cox &lt;rsc@golang.org&gt;
+AuthorDate: Wed Feb 14 20:36:47 2024 -0500
+Commit:     Russ Cox &lt;rsc@golang.org&gt;
+CommitDate: Wed Mar 13 21:36:04 2024 +0000
+
+    time: garbage collect unstopped Tickers and Timers
+    ...
+    This CL adds an undocumented GODEBUG asynctimerchan=1
+    that will disable the change. The documentation happens in
+    the CL 568341.
+    ...
+
+bisect found first bad commit
+%
+</code></pre><p>This bug appears to be caused by my new garbage-collection-friendly timer implementation that will be in Go 1.23. <em>Abracadabra!</em><a href="https://research.swtch.com/bisect#new_trick" target="_blank"></a></p>
+<h3 id="a-new-trick-bisecting-program-locations"><a href="https://research.swtch.com/bisect#new_trick" target="_blank">A New Trick: Bisecting Program Locations</a></h3>
+<p>The culprit commit that <code>git bisect</code> identified is a significant change to the timer implementation. I anticipated that it might cause subtle test failures, so I included a <a href="https://go.dev/doc/godebug" target="_blank">GODEBUG setting</a> to toggle between the old implementation and the new one. Sure enough, toggling it makes the bug disappear:</p>
+<pre><code>% GODEBUG=asynctimerchan=1 go test -count=5 # old
+PASS
+ok      rsc.io/tmp/timertest/retry  10.117s
+% GODEBUG=asynctimerchan=0 go test -count=5 # new
+--- FAIL: TestDo (4.00s)
+    ...
+--- FAIL: TestDo (6.00s)
+    ...
+--- FAIL: TestDo (4.00s)
+    ...
+FAIL    rsc.io/tmp/timertest/retry  18.133s
+%
+</code></pre><p>Knowing which commit caused a bug, along with minimal information about the failure, is often enough to help identify the mistake. But what if it&#x2019;s not? What if the test is large and complicated and entirely code you&#x2019;ve never seen before, and it fails in some inscrutable way that doesn&#x2019;t seem to have anything to do with your change? When you work on compilers or low-level libraries, this happens quite often. For that, we have a new magic trick: bisecting program locations.</p>
+<p>That is, we can run binary search on a different axis: over the  <em>program&#x2019;s code</em> , not its version history. We&#x2019;ve implemented this search in a new tool unimaginatively named <code>bisect</code>. When applied to library function behavior like the timer change, <code>bisect</code> can search over all stack traces leading to the new code, enabling the new code for some stacks and disabling it for others. By repeated execution, it can narrow the failure down to enabling the code only for one specific stack:</p>
+<pre><code>% go install golang.org/x/tools/cmd/bisect@latest
+% bisect -godebug asynctimerchan=1 go test -count=5
+...
+bisect: FOUND failing change set
+--- change set #1 (disabling changes causes failure)
+internal/godebug.(*Setting).Value()
+    /Users/rsc/go/src/internal/godebug/godebug.go:165
+time.syncTimer()
+    /Users/rsc/go/src/time/sleep.go:25
+time.NewTimer()
+    /Users/rsc/go/src/time/sleep.go:145
+time.After()
+    /Users/rsc/go/src/time/sleep.go:203
+rsc.io/tmp/timertest/retry.Do()
+    /Users/rsc/src/rsc.io/tmp/timertest/retry/retry.go:37
+rsc.io/tmp/timertest/retry.TestDo()
+    /Users/rsc/src/rsc.io/tmp/timertest/retry/retry_test.go:63
+</code></pre><p>Here the <code>bisect</code> tool is reporting that disabling <code>asynctimerchan=1</code> (that is, enabling the new implementation) only for this one call stack suffices to provoke the test failure.</p>
+<p>One of the hardest things about debugging is running a program backward: there&#x2019;s a data structure with a bad value, or the control flow has zigged instead of zagged, and it&#x2019;s very difficult to understand how it could have gotten into that state. In contrast, this <code>bisect</code> tool is showing the stack at the moment just <em>before</em> things go wrong: the stack identifies the critical decision point that determines whether the test passes or fails. In contrast to puzzling backward, it is usually easy to look forward in the program execution to understand why this specific decision would matter. Also, in an enormous code base, the bisection has identified the specific few lines where we should start debugging. We can read the code responsible for that specific sequence of calls and look into why the new timers would change the code&#x2019;s behavior.</p>
+<p>When you are working on a compiler or runtime and cause a test failure in an enormous, unfamiliar code base, and then this <code>bisect</code> tool narrows down the cause to a few specific lines of code, it is truly a magical experience.</p>
+<p>The rest of this post explains the inner workings of this <code>bisect</code> tool, which Keith Randall, David Chase, and I developed and refined over the past decade of work on Go. Other people and projects have realized the idea of bisecting program locations too: I am not claiming that we were the first to discover it. However, I think we have developed the approach further and systematized it more than others. This post documents what we&#x2019;ve learned, so that others can build on our efforts rather than rediscover them.<a href="https://research.swtch.com/bisect#example" target="_blank"></a></p>
+<h3 id="example-bisecting-function-optimization"><a href="https://research.swtch.com/bisect#example" target="_blank">Example: Bisecting Function Optimization</a></h3>
+<p>Let&#x2019;s start with a simple example and work back up to stack traces. Suppose we are working on a compiler and know that a test program fails only when compiled with optimizations enabled. We could make a list of all the functions in the program and then try disabling optimization of functions one at a time until we find a minimal set of functions (probably just one) whose optimization triggers the bug. Unsurprisingly, we can speed up that process using binary search:</p>
+<ol>
+<li>Change the compiler to print a list of every function it considers for optimization.</li>
+<li>Change the compiler to accept a list of functions where optimization is allowed. Passing it an empty list (optimize no functions) should make the test pass, while passing the complete list (optimize all functions) should make the test fail.</li>
+<li>Use binary search to determine the shortest list prefix that can be passed to the compiler to make the test fail. The last function in that list prefix is one that must be optimized for the test to fail (but perhaps not the only one).</li>
+<li>Forcing that function to always be optimized, we can repeat the process to find any other functions that must also be optimized to provoke the bug.</li>
+</ol>
+<p>For example, suppose there are ten functions in the program and we run these three binary search trials:</p>
+<p><img src="https://research.swtch.com/hashbisect0func.png" alt=""></p>
+<p>When we optimize the first 5 functions, the test passes. 7? fail. 6? still pass. This tells us that the seventh function, <code>sin</code>, is one function that must be optimized to provoke the failure. More precisely, with <code>sin</code> optimized, we know that no functions later in the list need to be optimized, but we don&#x2019;t know whether any of functions earlier in the list must also be optimized. To check the earlier locations, we can run another binary search over the other remaining six list entries, always adding <code>sin</code> as well:</p>
+<p><img src="https://research.swtch.com/hashbisect0funcstep2.png" alt=""></p>
+<p>This time, optimizing the first two (plus the hard-wired <code>sin</code>) fails, but optimizing the first one passes, indicating that <code>cos</code> must also be optimized. Then we have just one suspect location left: <code>add</code>. A binary search over that one-entry list (plus the two hard-wired <code>cos</code> and <code>sin</code>) shows that <code>add</code> can be left off the list without losing the failure.</p>
+<p>Now we know the answer: one locally minimal set of functions to optimize to cause the test failure is <code>cos</code> and <code>sin</code>. By locally minimal, I mean that removing any function from the set makes the test failure disappear: optimizing <code>cos</code> or <code>sin</code> by itself is not enough. However, the set may still not be globally minimal: perhaps optimizing only <code>tan</code> would cause a different failure (or not).</p>
+<p>It might be tempting to run the search more like a traditional binary search, cutting the list being searched in half at each step. That is, after confirming that the program passes when optimizing the first half, we might consider discarding that half of the list and continuing the binary search on the other half. Applied to our example, that algorithm would run like this:</p>
+<p><img src="https://research.swtch.com/hashbisect0funcbad.png" alt=""></p>
+<p>The first trial passing would suggest the incorrect optimization is in the second half of the list, so we discard the first half. But now <code>cos</code> is never optimized (it just got discarded), so all future trials pass too, leading to a contradiction: we lost track of the way to make the program fail. The problem is that discarding part of the list is only justified if we know that part doesn&#x2019;t matter. That&#x2019;s only true if the bug is caused by optimizing a single function, which may be likely but is not guaranteed. If the bug only manifests when optimizing multiple functions at once, discarding half the list discards the failure. That&#x2019;s why the binary search must in general be over list prefix lengths, not list subsections.<a href="https://research.swtch.com/bisect#bisect-reduce" target="_blank"></a></p>
+<h3 id="bisect-reduce"><a href="https://research.swtch.com/bisect#bisect-reduce" target="_blank">Bisect-Reduce</a></h3>
+<p>The &#x201C;repeated binary search&#x201D; algorithm we just looked at does work, but the need for the repetition suggests that binary search may not be the right core algorithm. Here is a more direct algorithm, which I&#x2019;ll call the &#x201C;bisect-reduce&#x201D; algorithm, since it is a bisection-based reduction.</p>
+<p>For simplicity, let&#x2019;s assume we have a global function <code>buggy</code> that reports whether the bug is triggered when our change is enabled at the given list of locations:</p>
+<pre><code>// buggy reports whether the bug is triggered
+// by enabling the change at the listed locations.
+func buggy(locations []string) bool
+</code></pre><p><code>BisectReduce</code> takes a single input list <code>targets</code> for which <code>buggy(targets)</code> is true and returns a locally minimal subset <code>x</code> for which <code>buggy(x)</code> remains true. It invokes a more generalized helper <code>bisect</code>, which takes an additional argument: a <code>forced</code> list of locations to keep enabled during the reduction.</p>
+<pre><code>// BisectReduce returns a locally minimal subset x of targets
+// where buggy(x) is true, assuming that buggy(targets) is true.
+func BisectReduce(targets []string) []string {
+    return bisect(targets, []string{})
+}
+
+// bisect returns a locally minimal subset x of targets
+// where buggy(x+forced) is true, assuming that
+// buggy(targets+forced) is true.
+//
+// Precondition: buggy(targets+forced) = true.
+//
+// Postcondition: buggy(result+forced) = true,
+// and buggy(x+forced) = false for any x &#x2282; result.
+func bisect(targets []string, forced []string) []string {
+    if len(targets) == 0 || buggy(forced) {
+        // Targets are not needed at all.
+        return []string{}
+    }
+    if len(targets) == 1 {
+        // Reduced list to a single required entry.
+        return []string{targets[0]}
+    }
+
+    // Split targets in half and reduce each side separately.
+    m := len(targets)/2
+    left, right := targets[:m], targets[m:]
+    leftReduced := bisect(left, slices.Concat(right, forced))
+    rightReduced := bisect(right, slices.Concat(leftReduced, forced))
+    return slices.Concat(leftReduced, rightReduced)
+}
+</code></pre><p>Like any good divide-and-conquer algorithm, a few lines do quite a lot:</p>
+<ul>
+<li>If the target list has been reduced to nothing, or if <code>buggy(forced)</code> (without any targets) is true, then we can return an empty list. Otherwise we know something from targets is needed.</li>
+<li>If the target list is a single entry, that entry is what&#x2019;s needed: we can return a single-element list.</li>
+<li>Otherwise, the recursive case: split the target list in half and reduce each side separately. Note that it is important to force <code>leftReduced</code> (not <code>left</code>) while reducing <code>right</code>.</li>
+</ul>
+<p>Applied to the function optimization example, <code>BisectReduce</code> would end up at a call to</p>
+<pre><code>bisect([add cos div exp mod mul sin sqr sub tan], [])
+</code></pre><p>which would split the targets list into</p>
+<pre><code>left = [add cos div exp mod]
+right = [mul sin sqr sub tan]
+</code></pre><p>The recursive calls compute:</p>
+<pre><code>bisect([add cos div exp mod], [mul sin sqr sub tan]) = [cos]
+bisect([mul sin sqr sub tan], [cos]) = [sin]
+</code></pre><p>Then the <code>return</code> puts the two halves together: <code>[cos sin]</code>.</p>
+<p>The version of <code>BisectReduce</code> we have been considering is the shortest one I know; let&#x2019;s call it the &#x201C;short algorithm&#x201D;. A longer version handles the &#x201C;easy&#x201D; case of the bug being contained in one half before the &#x201C;hard&#x201D; one of needing parts of both halves. Let&#x2019;s call it the &#x201C;easy/hard algorithm&#x201D;:</p>
+<pre><code>// BisectReduce returns a locally minimal subset x of targets
+// where buggy(x) is true, assuming that buggy(targets) is true.
+func BisectReduce(targets []string) []string {
+    if len(targets) == 0 || buggy(nil) {
+        return nil
+    }
+    return bisect(targets, []string{})
+}
+
+// bisect returns a locally minimal subset x of targets
+// where buggy(x+forced) is true, assuming that
+// buggy(targets+forced) is true.
+//
+// Precondition: buggy(targets+forced) = true,
+// and buggy(forced) = false.
+//
+// Postcondition: buggy(result+forced) = true,
+// and buggy(x+forced) = false for any x &#x2282; result.
+// Also, if there are any valid single-element results,
+// then bisect returns one of them.
+func bisect(targets []string, forced []string) []string {
+    if len(targets) == 1 {
+        // Reduced list to a single required entry.
+        return []string{targets[0]}
+    }
+
+    // Split targets in half.
+    m := len(targets)/2
+    left, right := targets[:m], targets[m:]
+
+    // If either half is sufficient by itself, focus there.
+    if buggy(slices.Concat(left, forced)) {
+        return bisect(left, forced)
+    }
+    if buggy(slices.Concat(right, forced)) {
+        return bisect(right, forced)
+    }
+
+    // Otherwise need parts of both halves.
+    leftReduced := bisect(left, slices.Concat(right, forced))
+    rightReduced := bisect(right, slices.Concat(leftReduced, forced))
+    return slices.Concat(leftReduced, rightReduced)
+}
+</code></pre><p>The easy/hard algorithm has two benefits and one drawback compared to the short algorithm.</p>
+<p>One benefit is that the easy/hard algorithm more directly maps to our intuitions about what bisecting should do: try one side, try the other, fall back to some combination of both sides. In contrast, the short algorithm always relies on the general case and is harder to understand.</p>
+<p>Another benefit of the easy/hard algorithm is that it guarantees to find a single-culprit answer when one exists. Since most bugs can be reduced to a single culprit, guaranteeing to find one when one exists makes for easier debugging sessions. Supposing that optimizing <code>tan</code> would have triggered the test failure, the easy/hard algorithm would try</p>
+<pre><code>buggy([add cos div exp mod]) = false // left
+buggy([mul sin sqr sub tan]) = true  // right
+</code></pre><p>and then would discard the left side, focusing on the right side and eventually finding <code>[tan]</code>, instead of <code>[sin cos]</code>.</p>
+<p>The drawback is that because the easy/hard algorithm doesn&#x2019;t often rely on the general case, the general case needs more careful testing and is easier to get wrong without noticing. For example, Andreas Zeller&#x2019;s 1999 paper &#x201C;<a href="https://dl.acm.org/doi/10.1145/318774.318946" target="_blank">Yesterday, my program worked. Today, it does not. Why?</a>&#x201D; gives what should be the easy/hard version of the bisect-reduce algorithm as a way to bisect over independent program changes, except that the algorithm has a bug: in the &#x201C;hard&#x201D; case, the <code>right</code> bisection forces <code>left</code> instead of <code>leftReduced</code>. The result is that if there are two culprit pairs crossing the <code>left</code>/<code>right</code> boundary, the reductions can choose one culprit from each pair instead of a matched pair. Simple test cases are all handled by the easy case, masking the bug. In contrast, if we insert the same bug into the general case of the short algorithm, very simple test cases fail.</p>
+<p>Real implementations are better served by the easy/hard algorithm, but they must take care to implement it correctly.<a href="https://research.swtch.com/bisect#list-based_bisect-reduce" target="_blank"></a></p>
+<h3 id="list-based-bisect-reduce"><a href="https://research.swtch.com/bisect#list-based_bisect-reduce" target="_blank">List-Based Bisect-Reduce</a></h3>
+<p>Having established the algorithm, let&#x2019;s now turn to the details of hooking it up to a compiler. Exactly how do we obtain the list of source locations, and how do we feed it back into the compiler?</p>
+<p>The most direct answer is to implement one debug mode that prints the full list of locations for the optimization in question and another debug mode that accepts a list indicating where the optimization is permitted. <a href="https://bernsteinbear.com/blog/cinder-jit-bisect/" target="_blank">Meta&#x2019;s Cinder JIT for Python</a>, published in 2021, takes this approach for deciding which functions to compile with the JIT (as opposed to interpret). Its <a href="https://github.com/facebookincubator/cinder/blob/cinder/3.10/Tools/scripts/jitlist_bisect.py" target="_blank"><code>Tools/scripts/jitlist_bisect.py</code></a> is the earliest correct published version of the bisect-reduce algorithm that I&#x2019;m aware of, using the easy/hard form.</p>
+<p>The only downside to this approach is the potential size of the lists, especially since bisect debugging is critical for reducing failures in very large programs. If there is some way to reduce the amount of data that must be sent back to the compiler on each iteration, that would be helpful. In complex build systems, the function lists may be too large to pass on the command line or in an environment variable, and it may be difficult or even impossible to arrange for a new input file to be passed to every compiler invocation. An approach that can specify the target list as a short command line argument will be easier to use in practice.<a href="https://research.swtch.com/bisect#counter-based_bisect-reduce" target="_blank"></a></p>
+<h3 id="counter-based-bisect-reduce"><a href="https://research.swtch.com/bisect#counter-based_bisect-reduce" target="_blank">Counter-Based Bisect-Reduce</a></h3>
+<p>Java&#x2019;s HotSpot C2 just-in-time (JIT) compiler provided a debug mechanism to control which functions to compile with the JIT, but instead of using an explicit list of functions like in Cinder, HotSpot numbered the functions as it considered them. The compiler flags <code>-XX:CIStart</code> and <code>-XX:CIStop</code> set the range of function numbers that were eligible to be compiled. Those flags are <a href="https://github.com/openjdk/jdk/blob/151ef5d4d261c9fc740d3ccd64a70d3b9ccc1ab5/src/hotspot/share/compiler/compileBroker.cpp#L1569" target="_blank">still present today (in debug builds)</a>, and you can find uses of them in <a href="https://bugs.java.com/bugdatabase/view_bug?bug_id=4311720" target="_blank">Java bug reports dating back at least to early 2000</a>.</p>
+<p>There are at least two limitations to numbering functions.</p>
+<p>The first limitation is minor and easily fixed: allowing only a single contiguous range enables binary search for a single culprit but not the general bisect-reduce for multiple culprits. To enable bisect-reduce, it would suffice to accept a list of integer ranges, like <code>-XX:CIAllow=1-5,7-10,12,15</code>.</p>
+<p>The second limitation is more serious: it can be difficult to keep the numbering stable from run to run. Implementation strategies like compiling functions in parallel might mean considering functions in varying orders based on thread interleaving. In the context of a JIT, even threaded runtime execution might change the order that functions are considered for compilation. Twenty-five years ago, threads were rarely used and this limitation may not have been much of a problem. Today, assuming a consistent function numbering is a show-stopper.<a href="https://research.swtch.com/bisect#hash-based_bisect-reduce" target="_blank"></a></p>
+<h3 id="hash-based-bisect-reduce"><a href="https://research.swtch.com/bisect#hash-based_bisect-reduce" target="_blank">Hash-Based Bisect-Reduce</a></h3>
+<p>A different way to keep the location list implicit is to hash each location to a (random-looking) integer and then use bit suffixes to identify sets of locations. The hash computation does not depend on the sequence in which the source locations are encountered, making hashing compatible with parallel compilation, thread interleaving, and so on. The hashes effectively arrange the functions into a binary tree:</p>
+<p><img src="https://research.swtch.com/hashbisect1.png" alt=""></p>
+<p>Looking for a single culprit is a basic walk down the tree. Even better, the general bisect-reduce algorithm is easily adapted to hash suffix patterns. First we have to adjust the definition of <code>buggy</code>: we need it to tell us the number of matches for the suffix we are considering, so we know whether we can stop reducing the case:</p>
+<pre><code>// buggy reports whether the bug is triggered
+// by enabling the change at the locations with
+// hashes ending in suffix or any of the extra suffixes.
+// It also returns the number of locations found that
+// end in suffix (only suffix, ignoring extra).
+func buggy(suffix string, extra []string) (fail bool, n int)
+</code></pre><p>Now we can translate the easy/hard algorithm more or less directly:</p>
+<pre><code>// BisectReduce returns a locally minimal list of hash suffixes,
+// each of which uniquely identifies a single location hash,
+// such that buggy(list) is true.
+func BisectReduce() []string {
+    if fail, _ := buggy(&quot;none&quot;, nil); fail {
+        return nil
+    }
+    return bisect(&quot;&quot;, []string{})
+}
+
+// bisect returns a locally minimal list of hash suffixes,
+// each of which uniquely identifies a single location hash,
+// and all of which end in suffix,
+// such that buggy(result+forced) = true.
+//
+// Precondition: buggy(suffix, forced) = true, _.
+// and buggy(&quot;none&quot;, forced) = false, 0.
+//
+// Postcondition: buggy(&quot;none&quot;, result+forced) = true, 0;
+// each suffix in result matches a single location hash;
+// and buggy(&quot;none&quot;, x+forced) = false for any x &#x2282; result.
+// Also, if there are any valid single-element results,
+// then bisect returns one of them.
+func bisect(suffix string, forced []string) []string {
+    if _, n := buggy(suffix, forced); n == 1 {
+        // Suffix identifies a single location.
+        return []string{suffix}
+    }
+
+    // If either of 0suffix or 1suffix is sufficient
+    // by itself, focus there.
+    if fail, _ := buggy(&quot;0&quot;+suffix, forced); fail {
+        return bisect(&quot;0&quot;+suffix, forced)
+    }
+    if fail, _ := buggy(&quot;1&quot;+suffix, forced); fail {
+        return bisect(&quot;1&quot;+suffix, forced)
+    }
+
+    // Matches from both extensions are needed.
+    // Otherwise need parts of both halves.
+    leftReduced := bisect(&quot;0&quot;+suffix,
+        slices.Concat([]string{&quot;1&quot;+suffix&quot;}, forced))
+    rightReduced := bisect(&quot;1&quot;+suffix,
+        slices.Concat(leftReduced, forced))
+    return slices.Concat(leftReduce, rightReduce)
+}
+</code></pre><p>Careful readers might note that in the easy cases, the recursive call to <code>bisect</code> starts by repeating the same call to <code>buggy</code> that the caller did, this time to count the number of matches for the suffix in question. An efficient implementation could pass the result of that run to the recursive call, avoiding redundant trials.</p>
+<p>In this version, <code>bisect</code> does not guarantee to cut the search space in half at each level of the recursion. Instead, the randomness of the hashes means that it cuts the search space roughly in half on average. That&#x2019;s still enough for logarithmic behavior when there are just a few culprits. The algorithm would also work correctly if the suffixes were applied to match a consistent sequential numbering instead of hashes; the only problem is obtaining the numbering.</p>
+<p>The hash suffixes are about as short as the function number ranges and easily passed on the command line. For example, a hypothetical Java compiler could use <code>-XX:CIAllowHash=000,10,111</code>.<a href="https://research.swtch.com/bisect#use_case" target="_blank"></a></p>
+<h3 id="use-case-function-selection"><a href="https://research.swtch.com/bisect#use_case" target="_blank">Use Case: Function Selection</a></h3>
+<p>The earliest use of hash-based bisect-reduce in Go was for selecting functions, as in the example we&#x2019;ve been considering. In 2015, Keith Randall was working on a new SSA backend for the Go compiler. The old and new backends coexisted, and the compiler could use either for any given function in the program being compiled. Keith introduced an <a href="https://go.googlesource.com/go/+/e3869a6b65bb0f95dac7eca3d86055160b12589f" target="_blank">environment variable GOSSAHASH</a> that specified the last few binary digits of the hash of function names that should use the new backend: GOSSAHASH=0110 meant &#x201C;compile only those functions whose names hash to a value with last four bits 0110.&#x201D; When a test was failing with the new backend, a person debugging the test case tried GOSSAHASH=0 and GOSSAHASH=1 and then used binary search to progressively refine the pattern, narrowing the failure down until only a single function was being compiled with the new backend. This was invaluable for approaching failures in large real-world tests (tests for libraries or production code, not for the compiler) that we had not written and did not understand. The approach assumed that the failure could always be reduced to a single culprit function.</p>
+<p>It is fascinating that HotSpot, Cinder, and Go all hit upon the idea of binary search to find miscompiled functions in a compiler, and yet all three used different selection mechanisms (counters, function lists, and hashes).<a href="https://research.swtch.com/bisect#use_case" target="_blank"></a></p>
+<h3 id="use-case-ssa-rewrite-selection"><a href="https://research.swtch.com/bisect#use_case" target="_blank">Use Case: SSA Rewrite Selection</a></h3>
+<p>In late 2016, David Chase was debugging a new optimizer rewrite rule that should have been correct but was causing mysterious test failures. He <a href="https://go-review.googlesource.com/29273" target="_blank">reused the same technique</a> but at finer granularity: the bit pattern now controlled which functions that rewrite rule could be used in.</p>
+<p>David also wrote the <a href="https://github.com/dr2chase/gossahash/tree/e0bba144af8b1cc8325650ea8fbe3a5c946eb138" target="_blank">initial version of a tool, <code>gossahash</code></a>, for taking on the job of binary search. Although <code>gossahash</code> only looked for a single failure, but it was remarkably helpful. It served for many years and eventually became <code>bisect</code>.<a href="https://research.swtch.com/bisect#use_case" target="_blank"></a></p>
+<h3 id="use-case-fused-multiply-add"><a href="https://research.swtch.com/bisect#use_case" target="_blank">Use Case: Fused Multiply-Add</a></h3>
+<p>Having a tool available, instead of needing to bisect manually, made us keep finding problems we could solve. In 2022, another presented itself. We had updated the Go compiler to use floating-point fused multiply-add (FMA) instructions on a new architecture, and some tests were failing. By making the FMA rewrite conditional on a suffix of a hash that included the current file name and line number, we could apply bisect-reduce to identify the specific line in the source code where FMA instruction broke the test.</p>
+<p>For example, this bisection finds that <code>b.go:7</code> is the culprit line:</p>
+<p><img src="https://research.swtch.com/hashbisect0.png" alt=""></p>
+<p>FMA is not something most programmers encounter. If they do get an FMA-induced test failure, having a tool that automatically identifies the exact culprit line is invaluable.<a href="https://research.swtch.com/bisect#use_case" target="_blank"></a></p>
+<h3 id="use-case-language-changes"><a href="https://research.swtch.com/bisect#use_case" target="_blank">Use Case: Language Changes</a></h3>
+<p>The next problem that presented itself was a language change. Go, like C# and JavaScript, learned the hard way that loop-scoped loop variables don&#x2019;t mix well with closures and concurrency. Like those languages, Go recently changed to <a href="https://go.dev/blog/loopvar-preview" target="_blank">iteration-scoped loop variables</a>, correcting many buggy programs in the process.</p>
+<p>Unfortunately, sometimes tests unintentionally check for buggy behavior. Deploying the loop change in a large code base, we confronted truly mysterious failures in complex, unfamiliar code. Conditioning the loop change on a suffix of a hash of the source file name and line number enabled bisect-reduce to pinpoint the specific loop or loops that triggered the test failures. We even found a few cases where changing any one loop did not cause a failure, but changing a specific pair of loops did. The generality of finding multiple culprits is necessary in practice.</p>
+<p>The loop change would have been far more difficult without automated diagnosis.<a href="https://research.swtch.com/bisect#use_case" target="_blank"></a></p>
+<h3 id="use-case-library-changes"><a href="https://research.swtch.com/bisect#use_case" target="_blank">Use Case: Library Changes</a></h3>
+<p>Bisect-reduce also applies to library changes: we can hash the caller, or more precisely the call stack, and then choose between the old and new implementation based on a hash suffix.</p>
+<p>For example, suppose you add a new sort implementation and a large program fails. Assuming the sort is correct, the problem is almost certainly that the new sort and the old sort disagree about the final order of some values that compare equal. Or maybe the sort is buggy. Either way, the large program probably calls sort in many different places. Running bisect-reduce over hashes of the call stacks will identify the exact call stack where using the new sort causes a failure. This is what was happening in the example at the start of the post, with a new timer implementation instead of a new sort.</p>
+<p>Call stacks are a use case that only works with hashing, not with sequential numbering. For the examples up to this point, a setup pass could number all the functions in a program or number all the source lines presented to the compiler, and then bisect-reduce could apply to binary suffixes of the sequence number. But there is no dense sequential numbering of all the possible call stacks a program will encounter. On the other hand, hashing a list of program counters is trivial.</p>
+<p>We realized that bisect-reduce would apply to library changes around the time we were introducing the <a href="https://go.dev/doc/godebug" target="_blank">GODEBUG mechanism</a>, which provides a framework for tracking and toggling these kinds of compatible-but-breaking changes. We arranged for that framework to provide <code>bisect</code> support for all GODEBUG settings automatically.</p>
+<p>For Go 1.23, we rewrote the <a href="https://go.dev/pkg/time/#Timer" target="_blank">time.Timer</a> implementation and changed its semantics slightly, to remove some races in existing APIs and also enable earlier garbage collection in some common cases. One effect of the new implementation is that very short timers trigger more reliably. Before, a 0ns or 1ns timer (which are often used in tests) could take many microseconds to trigger. Now, they trigger on time. But of course, buggy code (mostly in tests) exists that fails when the timers start triggering as early as they should. We debugged a dozen or so of these inside Google&#x2019;s source tree&#x2014;all of them complex and unfamiliar&#x2014;and <code>bisect</code> made the process painless and maybe even fun.</p>
+<p>For one failing test case, I made a mistake. The test looked simple enough to eyeball, so I spent half an hour puzzling through how the only timer in the code under test, a hard-coded one minute timer, could possibly be affected by the new implementation. Eventually I gave up and ran <code>bisect</code>. The stack trace showed immediately that there was a testing middleware layer that was rewriting the one-minute timeout into a 1ns timeout to speed the test. Tools see what people cannot.<a href="https://research.swtch.com/bisect#interesting_lessons_learned" target="_blank"></a></p>
+<h3 id="interesting-lessons-learned"><a href="https://research.swtch.com/bisect#interesting_lessons_learned" target="_blank">Interesting Lessons Learned</a></h3>
+<p>One interesting thing we learned while working on <code>bisect</code> is that it is important to try to detect flaky tests. Early in debugging loop change failures, <code>bisect</code> pointed at a completely correct, trivial loop in a cryptography package. At first, we were very scared: if <em>that</em> loop was changing behavior, something would have to be very wrong in the compiler. We realized the problem was flaky tests. A test that fails randomly causes <code>bisect</code> to make a random walk over the source code, eventually pointing a finger at entirely innocent code. After that, we added a <code>-count=N</code> flag to <code>bisect</code> that causes it to run every trial <em>N</em> times and bail out entirely if they disagree. We set the default to <code>-count=2</code> so that <code>bisect</code> always does basic flakiness checking.</p>
+<p>Flaky tests remain an area that needs more work. If the problem being debugged is that a test went from passing reliably to failing half the time, running <code>go test -count=5</code> increases the chance of failure by running the test five times. Equivalently, it can help to use a tiny shell script like</p>
+<pre><code>% cat bin/allpass
+##!/bin/sh
+n=$1
+shift
+for i in $(seq $n); do
+    &quot;$@&quot; || exit 1
+done
+</code></pre><p>Then <code>bisect</code> can be invoked as:</p>
+<pre><code>% bisect -godebug=timer allpass 5 ./flakytest
+</code></pre><p>Now bisect only sees <code>./flakytest</code> passing five times in a row as a successful run.</p>
+<p>Similarly, if a test goes from passing unreliably to failing all the time, an <code>anypass</code> variant works instead:</p>
+<pre><code>% cat bin/anypass
+##!/bin/sh
+n=$1
+shift
+for i in $(seq $n); do
+    &quot;$@&quot; &amp;&amp; exit 0
+done
+exit 1
+</code></pre><p>The <a href="https://man7.org/linux/man-pages/man1/timeout.1.html" target="_blank"><code>timeout</code> command</a> is also useful if the change has made a test run forever instead of failing.</p>
+<p>The tool-based approach to handling flakiness works decently but does not seem like a complete solution. A more principled approach inside <code>bisect</code> would be better. We are still working out what that would be.</p>
+<p>Another interesting thing we learned is that when bisecting over run-time changes, hash decisions are made so frequently that it is too expensive to print the full stack trace of every decision made at every stage of the bisect-reduce, (The first run uses an empty suffix that matches every hash!) Instead, bisect hash patterns default to a &#x201C;quiet&#x201D; mode where each decision prints only the hash bits, since that&#x2019;s all <code>bisect</code> needs to guide the search and narrow down the relevant stacks. Once <code>bisect</code> has identified a minimal set of relevant stacks, it runs the test once more with the hash pattern in &#x201C;verbose&#x201D; mode. That causes the bisect library to print both the hash bits and the corresponding stack traces, and <code>bisect</code> displays those stack traces in its report.<a href="https://research.swtch.com/bisect#try_bisect" target="_blank"></a></p>
+<h3 id="try-bisect"><a href="https://research.swtch.com/bisect#try_bisect" target="_blank">Try Bisect</a></h3>
+<p>The <a href="https://pkg.go.dev/golang.org/x/tools/cmd/bisect" target="_blank"><code>bisect</code> tool</a> can be downloaded and used today:</p>
+<pre><code>% go install golang.org/x/tools/cmd/bisect@latest
+</code></pre><p>If you are debugging a <a href="https://go.dev/wiki/LoopvarExperiment" target="_blank">loop variable problem</a> in Go 1.22, you can use a command like</p>
+<pre><code>% bisect -compile=loopvar go test
+</code></pre><p>If you are debugging a <a href="https://go.dev/change/966609ad9e82ba173bcc8f57f4bfc35a86a62c8a" target="_blank">timer problem in Go 1.23</a>, you can use:</p>
+<pre><code>% bisect -godebug asynctimerchan=1 go test
+</code></pre><p>The <code>-compile</code> and <code>-godebug</code> flags are conveniences. The general form of the command is</p>
+<pre><code>% bisect [KEY=value...] cmd [args...]
+</code></pre><p>where the leading <code>KEY=value</code> arguments set environment variables before invoking the command with the remaining arguments. <code>Bisect</code> expects to find the literal string <code>PATTERN</code> somewhere on its command line, and it replaces that string with a hash pattern each time it repeats the command.</p>
+<p>You can use <code>bisect</code> to debug problems in your own compilers or libraries by having them accept a hash pattern either in the environment or on the command line and then print specially formatted lines for <code>bisect</code> on standard output or standard error. The easiest way to do this is to use <a href="https://pkg.go.dev/golang.org/x/tools/internal/bisect" target="_blank">the bisect package</a>. That package is not available for direct import yet (there is a <a href="https://go.dev/issue/67140" target="_blank">pending proposal</a> to add it to the Go standard library), but the package is only a <a href="https://cs.opensource.google/go/x/tools/+/master:internal/bisect/bisect.go" target="_blank">single file with no imports</a>, so it is easily copied into new projects or even translated to other languages. The package documentation also documents the hash pattern syntax and required output format.</p>
+<p>If you work on compilers or libraries and ever need to debug why a seemingly correct change you made broke a complex program, give <code>bisect</code> a try. It never stops feeling like magic.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="4-development-of-tracing.html" class="navigation navigation-prev " aria-label="Previous page: 10.4 跟踪系统发展历程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../11-thanks/" class="navigation navigation-next " aria-label="Next page: 11 致谢">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"10.5 Bisect发展历程","level":"1.10.5","depth":2,"next":{"title":"11 致谢","level":"1.11","depth":1,"path":"11-thanks/README.md","ref":"11-thanks/README.md","articles":[]},"previous":{"title":"10.4 跟踪系统发展历程","level":"1.10.4","depth":2,"path":"10-extras/4-development-of-tracing.md","ref":"10-extras/4-development-of-tracing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/5-development-of-bisect.md","mtime":"2025-03-16T17:01:01.778Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-03-16T17:03:18.221Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -683,84 +683,6 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.8" data-path="80-go-tool-compile.html">
-            
-                <a href="80-go-tool-compile.html">
-            
-                    
-                    7.80 编译工具链/compile
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.9" data-path="81-go-tool-asm.html">
-            
-                <a href="81-go-tool-asm.html">
-            
-                    
-                    7.81 编译工具链/asm
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.10" data-path="82-go-tool-link.html">
-            
-                <a href="82-go-tool-link.html">
-            
-                    
-                    7.82 编译工具链/link
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.11" data-path="90-why-buildid-loaded.html">
-            
-                <a href="90-why-buildid-loaded.html">
-            
-                    
-                    7.90 More: GNU build-id+gobuildid
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.12" data-path="91-syntax-and-semantic-analysis.html">
-            
-                <a href="91-syntax-and-semantic-analysis.html">
-            
-                    
-                    7.91 More: 语法分析vs语义分析区别
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.13" data-path="92-why-gdb-uses-symtab.html">
-            
-                <a href="92-why-gdb-uses-symtab.html">
-            
-                    
-                    7.92 More: 为什么GDB使用符号表+DWARF
-            
-                </a>
-            
-
-            
-        </li>
-    
 
             </ul>
             
@@ -1628,6 +1550,84 @@
             
         </li>
     
+        <li class="chapter " data-level="1.12.4" data-path="80-go-tool-compile.md">
+            
+                <span>
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="81-go-tool-asm.md">
+            
+                <span>
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="82-go-tool-link.md">
+            
+                <span>
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="90-why-buildid-loaded.md">
+            
+                <span>
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="91-syntax-and-semantic-analysis.md">
+            
+                <span>
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="92-why-gdb-uses-symtab.md">
+            
+                <span>
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2101,7 +2101,7 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
 <h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
 <p>&#x672C;&#x6587;&#x8F83;&#x4E3A;&#x8BE6;&#x7EC6;&#x5730;&#x4ECB;&#x7ECD;&#x4E86;ELF&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#xFF0C;&#x4ECB;&#x7ECD;&#x4E86;ELF&#x6587;&#x4EF6;&#x5934;&#x3001;&#x6BB5;&#x5934;&#x8868;&#x3001;&#x8282;&#x5934;&#x8868;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x4EE5;&#x53CA;&#x901A;&#x8FC7;&#x5B9E;&#x4F8B;&#x6F14;&#x793A;&#x4E86;&#x6BB5;&#x5934;&#x8868;&#x3001;&#x8282;&#x5934;&#x8868;&#x5BF9;&#x8282;&#x7684;&#x5F15;&#x7528;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x901A;&#x8FC7;readelf&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x67E5;&#x770B;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x4ECB;&#x7ECD;&#x4E86;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;&#x7684;&#x8282;&#x7684;&#x4F5C;&#x7528;&#xFF0C;go&#x8BED;&#x8A00;&#x4E2D;&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#x81EA;&#x4E3B;&#x6269;&#x5C55;&#x7684;&#x4E00;&#x4E9B;&#x8282;&#x3002;&#x8BFB;&#x5B8C;&#x672C;&#x8282;&#x5185;&#x5BB9;&#x540E;&#x76F8;&#x4FE1;&#x8BFB;&#x8005;&#x5DF2;&#x7ECF;&#x5BF9;ELF&#x6587;&#x4EF6;&#x7ED3;&#x6784;&#x6709;&#x4E86;&#x4E00;&#x4E2A;&#x521D;&#x6B65;&#x7684;&#x8BA4;&#x8BC6;&#x3002;</p>
 <p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x7B26;&#x53F7;&#x8868;&#x3001;&#x7B26;&#x53F7;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x7B80;&#x5355;&#x63D0;&#x4E00;&#x4E0B;&#x3002;&#x8BF4;&#x8D77;&#x7B26;&#x53F7;&#xFF0C;ELF .symtab&#x3001;DWARF .debug<em>* sections&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x201C;&#x7B26;&#x53F7;&#x201D;&#x4FE1;&#x606F;&#xFF0C;&#x7F16;&#x8BD1;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#x6709;&#x54EA;&#x4E9B;&#x7B26;&#x53F7;&#xFF0C;&#x94FE;&#x63A5;&#x5668;&#x8FDE;&#x63A5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x51B3;&#x5B9A;&#x5C06;&#x4E0A;&#x8FF0;&#x54EA;&#x4E9B;&#x7B26;&#x53F7;&#x751F;&#x6210;&#x5230;.symtab&#xFF0C;&#x4EE5;&#x53CA;&#x54EA;&#x4E9B;&#x8C03;&#x8BD5;&#x7C7B;&#x578B;&#x7684;&#x7B26;&#x53F7;&#x9700;&#x8981;&#x751F;&#x6210;&#x4FE1;&#x606F;&#x5230;.debug</em><em> sections&#x3002;&#x73B0;&#x5728;&#x6765;&#x770B;.debug_</em> sections&#x662F;&#x4E13;&#x95E8;&#x4E3A;&#x8C03;&#x8BD5;&#x51C6;&#x5907;&#x7684;&#xFF0C;&#x662F;&#x94FE;&#x63A5;&#x5668;&#x4E25;&#x683C;&#x6309;&#x7167;DWARF&#x6807;&#x51C6;&#x3001;&#x8BED;&#x8A00;&#x8BBE;&#x8BA1;&#x3001;&#x548C;&#x8C03;&#x8BD5;&#x5668;&#x7EA6;&#x5B9A;&#x6765;&#x751F;&#x6210;&#x7684;&#xFF0C;.symtab&#x5219;&#x4E3B;&#x8981;&#x5305;&#x542B;&#x94FE;&#x63A5;&#x5668;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;&#x7B26;&#x53F7;&#x3002;.symtab&#x4E2D;&#x5176;&#x5B9E;&#x4E5F;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x7528;&#x4E8E;&#x652F;&#x6301;&#x8C03;&#x8BD5;&#x7684;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#xFF0C;&#x4E3B;&#x8981;&#x770B;&#x94FE;&#x63A5;&#x5668;&#x662F;&#x4E2A;&#x4EC0;&#x4E48;&#x7B56;&#x7565;&#x3002;</p>
-<p>&#x6BD4;&#x5982;&#xFF0C;gdb&#x4F5C;&#x4E3A;&#x4E00;&#x6B3E;&#x8BDE;&#x751F;&#x5E74;&#x4EE3;&#x5F88;&#x4E45;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5C31;&#x975E;&#x5E38;&#x4F9D;&#x8D56;.symtab&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#x6765;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;DWARF&#x662F;&#x540E;&#x8D77;&#x4E4B;&#x79C0;&#xFF0C;&#x5C3D;&#x7BA1;gdb&#x73B0;&#x5728;&#x4E5F;&#x9010;&#x6E10;&#x5F80;DWARF&#x4E0A;&#x53BB;&#x9760;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x6027;&#xFF08;&#x5982;&#x652F;&#x6301;&#x8001;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x8C03;&#x8BD5;&#x3001;&#x5DE5;&#x5177;&#x94FE;&#xFF09;&#x8FD8;&#x662F;&#x4F1A;&#x4FDD;&#x7559;&#x5229;&#x7528;&#x7B26;&#x53F7;&#x8868;&#x8C03;&#x8BD5;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8BA9;gdb&#x4E5F;&#x80FD;&#x8C03;&#x8BD5;go&#x7A0B;&#x5E8F;&#xFF0C;&#x5C31;&#x5F97;&#x4E86;&#x89E3;gdb&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#xFF0C;&#x5728;.symtab, .debug_* sections&#x4E2D;&#x751F;&#x6210;&#x5176;&#x9700;&#x8981;&#x7684;&#x4FE1;&#x606F;&#xFF0C;see&#xFF1A;<a href="92-why-gdb-uses-symtab.html">GDB&#x4E3A;&#x4EC0;&#x4E48;&#x540C;&#x65F6;&#x4F7F;&#x7528;.symtab&#x548C;DWARF</a>&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#xFF0C;gdb&#x4F5C;&#x4E3A;&#x4E00;&#x6B3E;&#x8BDE;&#x751F;&#x5E74;&#x4EE3;&#x5F88;&#x4E45;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5C31;&#x975E;&#x5E38;&#x4F9D;&#x8D56;.symtab&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#x6765;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;DWARF&#x662F;&#x540E;&#x8D77;&#x4E4B;&#x79C0;&#xFF0C;&#x5C3D;&#x7BA1;gdb&#x73B0;&#x5728;&#x4E5F;&#x9010;&#x6E10;&#x5F80;DWARF&#x4E0A;&#x53BB;&#x9760;&#xFF0C;&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x517C;&#x5BB9;&#x6027;&#xFF08;&#x5982;&#x652F;&#x6301;&#x8001;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x8C03;&#x8BD5;&#x3001;&#x5DE5;&#x5177;&#x94FE;&#xFF09;&#x8FD8;&#x662F;&#x4F1A;&#x4FDD;&#x7559;&#x5229;&#x7528;&#x7B26;&#x53F7;&#x8868;&#x8C03;&#x8BD5;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;&#x5982;&#x679C;&#x60F3;&#x8BA9;gdb&#x4E5F;&#x80FD;&#x8C03;&#x8BD5;go&#x7A0B;&#x5E8F;&#xFF0C;&#x5C31;&#x5F97;&#x4E86;&#x89E3;gdb&#x7684;&#x5DE5;&#x4F5C;&#x673A;&#x5236;&#xFF0C;&#x5728;.symtab, .debug_* sections&#x4E2D;&#x751F;&#x6210;&#x5176;&#x9700;&#x8981;&#x7684;&#x4FE1;&#x606F;&#xFF0C;see&#xFF1A;<a href="92-why-gdb-uses-symtab.md">GDB&#x4E3A;&#x4EC0;&#x4E48;&#x540C;&#x65F6;&#x4F7F;&#x7528;.symtab&#x548C;DWARF</a>&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
 <ol>
 <li>Executable and Linkable Format, <a href="https://en.wikipedia.org/wiki/Executable_and_Linkable_Format" target="_blank">https://en.wikipedia.org/wiki/Executable_and_Linkable_Format</a></li>
@@ -2160,7 +2160,7 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2025-05-03T21:21:22.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-04T21:06:45.696Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2025-05-03T21:21:22.947Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-04T21:13:18.747Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

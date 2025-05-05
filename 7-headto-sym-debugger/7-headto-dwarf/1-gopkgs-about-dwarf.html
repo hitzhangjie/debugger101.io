@@ -1,0 +1,1987 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7.7.1 相关的GoPackages · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2-compiler-gen-dwarfdata.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+            
+                <a href="../../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../1-how-go-build-works.html">
+            
+                <a href="../1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../2-elf.html">
+            
+                <a href="../2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../3-syms.html">
+            
+                <a href="../3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../4-syms-resolve-reloc.html">
+            
+                <a href="../4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../5-loading.html">
+            
+                <a href="../5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../6-gopkg-debug/">
+            
+                <a href="../6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../6-gopkg-debug/1-elf.html">
+            
+                <a href="../6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../6-gopkg-debug/2-gosym.html">
+            
+                <a href="../6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.7.7.1" data-path="1-gopkgs-about-dwarf.html">
+            
+                <a href="1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="2-compiler-gen-dwarfdata.html">
+            
+                <a href="2-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.2 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="3-linker-gen-dwarfdata.html">
+            
+                <a href="3-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../8-dwarf/">
+            
+                <a href="../../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../8-dwarf/1-history.html">
+            
+                <a href="../../8-dwarf/1-history.html">
+            
+                    
+                    8.1 发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../8-dwarf/2-structure.html">
+            
+                <a href="../../8-dwarf/2-structure.html">
+            
+                    
+                    8.2 DWARF结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../8-dwarf/3-die-readme.html">
+            
+                <a href="../../8-dwarf/3-die-readme.html">
+            
+                    
+                    8.3 调试信息条目：DIE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../../8-dwarf/3-die-intro.html">
+            
+                <a href="../../8-dwarf/3-die-intro.html">
+            
+                    
+                    8.3.1 DIE介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../../8-dwarf/3-die-desc-datatype.html">
+            
+                <a href="../../8-dwarf/3-die-desc-datatype.html">
+            
+                    
+                    8.3.2 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../../8-dwarf/3-die-desc-code.html">
+            
+                <a href="../../8-dwarf/3-die-desc-code.html">
+            
+                    
+                    8.3.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../../8-dwarf/3-die-encoding.html">
+            
+                <a href="../../8-dwarf/3-die-encoding.html">
+            
+                    
+                    8.3.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../8-dwarf/4-other-readme.html">
+            
+                <a href="../../8-dwarf/4-other-readme.html">
+            
+                    
+                    8.4 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../8-dwarf/4-other-accelerated-access.html">
+            
+                <a href="../../8-dwarf/4-other-accelerated-access.html">
+            
+                    
+                    8.4.0 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../8-dwarf/4-other-lineno-table.html">
+            
+                <a href="../../8-dwarf/4-other-lineno-table.html">
+            
+                    
+                    8.4.1 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../8-dwarf/4-other-macro-info.html">
+            
+                <a href="../../8-dwarf/4-other-macro-info.html">
+            
+                    
+                    8.4.2 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../../8-dwarf/4-other-callframe-info.html">
+            
+                <a href="../../8-dwarf/4-other-callframe-info.html">
+            
+                    
+                    8.4.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.5" data-path="../../8-dwarf/4-other-varlen-data.html">
+            
+                <a href="../../8-dwarf/4-other-varlen-data.html">
+            
+                    
+                    8.4.4 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.6" data-path="../../8-dwarf/4-other-shrink-data.html">
+            
+                <a href="../../8-dwarf/4-other-shrink-data.html">
+            
+                    
+                    8.4.5 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.7" data-path="../../8-dwarf/4-other-elf-sections.html">
+            
+                <a href="../../8-dwarf/4-other-elf-sections.html">
+            
+                    
+                    8.4.6 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../8-dwarf/5-dwarf-summary.html">
+            
+                <a href="../../8-dwarf/5-dwarf-summary.html">
+            
+                    
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-parsing-dwarf.html">
+            
+                <a href="../../8-dwarf/6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-using-dwarf.html">
+            
+                <a href="../../8-dwarf/7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../../8-dwarf/8-summary.html">
+            
+                <a href="../../8-dwarf/8-summary.html">
+            
+                    
+                    8.8 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../9-develop-sym-debugger/">
+            
+                <a href="../../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../9-develop-sym-debugger/1-需求分析/">
+            
+                <a href="../../9-develop-sym-debugger/1-需求分析/">
+            
+                    
+                    9.1. 需求分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.2 概要设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                    
+                    9.2.1 整体架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                    
+                    9.2.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                    
+                    9.2.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                    
+                    9.2.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                    
+                    9.2.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.3 详细设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../9-develop-sym-debugger/4-编码实现/">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/">
+            
+                    
+                    9.4 编码实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                    
+                    9.4.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                    
+                    9.4.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="../../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                    
+                    9.4.3 进程启动并attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.4" data-path="../../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                    
+                    9.4.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.5" data-path="../../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                    
+                    9.4.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.6" data-path="../../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                    
+                    9.4.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.7" data-path="../../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                    
+                    9.4.7 查询断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.8" data-path="../../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                    
+                    9.4.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.9" data-path="../../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                    
+                    9.4.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.10" data-path="../../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                    
+                    9.4.10 步进执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.11" data-path="../../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                    
+                    9.4.11 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.12" data-path="../../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                    
+                    9.4.12 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.13" data-path="../../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                    
+                    9.4.13 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.14" data-path="../../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                    
+                    9.4.14 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.15" data-path="../../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                    
+                    9.4.15 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.16" data-path="../../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                    
+                    9.4.16 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.17" data-path="../../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                    
+                    9.4.17 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.18" data-path="../../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                    
+                    9.4.18 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.19" data-path="../../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                    
+                    9.4.19 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../80-go-tool-compile.md">
+            
+                <span>
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../81-go-tool-asm.md">
+            
+                <span>
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../82-go-tool-link.md">
+            
+                <span>
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../90-why-buildid-loaded.md">
+            
+                <span>
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../91-syntax-and-semantic-analysis.md">
+            
+                <span>
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../92-why-gdb-uses-symtab.md">
+            
+                <span>
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >7.7.1 相关的GoPackages</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="go-dwarf-support">Go DWARF Support</h2>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x63A2;&#x8BA8;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;">&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x63A2;&#x8BA8;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;</h3>
+<p>Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x5728;&#x8FDB;&#x884C;&#x7F16;&#x8BD1;&#x94FE;&#x63A5;&#x65F6;&#x4F1A;&#x751F;&#x6210;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x6709;&#x54EA;&#x4E9B;Go&#x5E93;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#x5462;&#xFF1F;&#x8BFB;&#x53D6;&#x7684;&#x8BDD;&#xFF0C;&#x9488;&#x5BF9;&#x7C7B;&#x578B;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x3001;&#x51FD;&#x6570;&#xFF08;&#x5305;&#x62EC;&#x53C2;&#x6570;&#x5217;&#x8868;&#x3001;&#x8FD4;&#x56DE;&#x503C;&#xFF09;&#x7B49;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x53C2;&#x8003;&#x624B;&#x518C;&#x53EF;&#x4EE5;&#x5F97;&#x77E5;&#x5177;&#x4F53;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x8BFB;&#x53D6;&#x5462;&#xFF08;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x4E0D;&#x540C;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x7684;DWARF&#x6570;&#x636E;&#x4E5F;&#x4E0D;&#x540C;&#xFF09;&#xFF1F;&#x73B0;&#x5728;2025&#x5E74;&#x4E86;&#xFF0C;&#x6709;&#x6CA1;&#x6709;&#x8FD9;&#x65B9;&#x9762;&#x66F4;&#x53CB;&#x597D;&#x7684;&#x5F00;&#x6E90;&#x5E93;&#x3001;&#x53C2;&#x8003;&#x624B;&#x518C;&#x3001;&#x6587;&#x6863;&#x5462;&#xFF1F;</p>
+<p>&#x6211;&#x56E0;&#x4E3A;&#x8BE6;&#x7EC6;&#x94BB;&#x7814;&#x8FC7;DWARF&#x89C4;&#x8303;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x80FD;&#x975E;&#x5E38;&#x81EA;&#x7136;&#x7406;&#x89E3;DWARF&#x6570;&#x636E;&#x751F;&#x6210;&#x3001;&#x89E3;&#x6790;&#x8FD9;&#x5176;&#x4E2D;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#x6709;&#x591A;&#x5927;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x4E9B;&#x8BFB;&#x8005;&#x53EF;&#x80FD;&#x4F1A;&#x60F3;&#x96BE;&#x9053;&#x548C;&#x8BFB;&#x5199;&#x4E00;&#x4E2A;ELF&#x6587;&#x4EF6;&#x7684;&#x5DE5;&#x4F5C;&#x91CF;&#x6709;&#x5565;&#x5DE8;&#x5927;&#x7684;&#x5DEE;&#x8DDD;&#x4E0D;&#x6210;&#xFF1F;&#x662F;&#x7684;&#xFF0C;&#x6709;&#x975E;&#x5E38;&#x5927;&#x7684;&#x5DEE;&#x8DDD;&#xFF0C;&#x5B8C;&#x5168;&#x6CA1;&#x6CD5;&#x7C7B;&#x6BD4;&#x3002;&#x5927;&#x5BB6;&#x770B;&#x4E0B;delve&#x8C03;&#x8BD5;&#x5668;&#x4E2D;pkg/dwarf&#x4E0B;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x5C31;&#x77E5;&#x9053;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x8981;&#x63A2;&#x8BA8;Go DWARF Support&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x4E86;&#x3002;</p>
+<pre><code class="lang-bash">$ cloc path-to/delve/pkg/dwarf
+      35 text files.
+      34 unique files.                            
+       3 files ignored.
+
+github.com/AlDanial/cloc v 2.04  T=0.03 s (1200.7 files/s, 279205.9 lines/s)
+-------------------------------------------------------------------------------
+Language                     files          blank        comment           code
+-------------------------------------------------------------------------------
+Go                              34            920            573           6413
+-------------------------------------------------------------------------------
+SUM:                            34            920            573           6413
+-------------------------------------------------------------------------------
+</code></pre>
+<p>&#x4E13;&#x6CE8;&#x4E8E;&#x8C03;&#x8BD5;&#x9886;&#x57DF;&#x7684;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x5E94;&#x8BE5;&#x8BF4;&#x975E;&#x5E38;&#x5C0F;&#x4F17;&#xFF0C;&#x800C;Go&#x76EE;&#x524D;&#x4ECD;&#x7136;&#x662F;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x5E74;&#x8F7B;&#x7684;&#x8BED;&#x8A00;&#xFF0C;So&#xFF1A;</p>
+<ul>
+<li>Go&#x4E0D;&#x592A;&#x53EF;&#x80FD;&#x503E;&#x6CE8;&#x5927;&#x91CF;&#x7CBE;&#x529B;&#x53BB;&#x6784;&#x5EFA;&#x4E00;&#x4E2A;&#x53D7;&#x4F17;&#x4E0D;&#x591A;&#x4F46;&#x662F;&#x53EF;&#x80FD;&#x8017;&#x8D39;&#x5927;&#x91CF;&#x7CBE;&#x529B;&#x7684;&#x201C;&#x5B8C;&#x7F8E;&#x7684;&#x201D;&#x6807;&#x51C6;&#x5E93;&#x5B9E;&#x73B0;&#x4E0A;&#x3002;</li>
+<li>Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x4E13;&#x6CE8;&#x4E8E;&#x751F;&#x6210;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#x662F;&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x5168;&#x9762;&#x7684;&#xFF0C;&#x8BE5;&#x751F;&#x6210;&#x7684;&#x90FD;&#x751F;&#x6210;&#x4E86;&#xFF0C;&#x7F3A;&#x70B9;&#x662F;&#x6587;&#x6863;&#x6BD4;&#x8F83;&#x5C11;&#x3002;</li>
+<li>debug/dwarf&#x662F;&#x4E13;&#x6CE8;&#x4E8E;DWARF&#x6570;&#x636E;&#x8BFB;&#x53D6;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x4E0D;&#x662F;Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x751F;&#x6210;&#x7684;&#x4FE1;&#x606F;&#x90FD;&#x652F;&#x6301;&#x8BFB;&#x53D6;&#xFF0C;&#x6BD4;&#x5982;.debug_frame&#x5B83;&#x5C31;&#x4E0D;&#x652F;&#x6301;&#x8BFB;&#x53D6;&#x3002;</li>
+</ul>
+<p>&#x4E5F;&#x662F;&#x56E0;&#x6B64;&#xFF0C;Go&#x975E;&#x5B98;&#x65B9;&#x8C03;&#x8BD5;&#x5668; <a href="https://github.com/go-delve/delve" target="_blank">go-delve/delve</a> &#x5185;&#x90E8;&#x624D;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E86;&#x8FD9;&#x90E8;&#x5206;DWARF&#x7684;&#x751F;&#x6210;&#x3001;&#x89E3;&#x6790;&#x903B;&#x8F91;&#xFF0C;&#x5B83;&#x8FD8;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x4E86;&#x751F;&#x6210;&#x903B;&#x8F91;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x4E0E;Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x56E2;&#x961F;&#x751F;&#x6210;&#x7684;DWARf&#x6570;&#x636E;&#x505A;&#x5BF9;&#x6BD4;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x5BF9;Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x751F;&#x6210;DWARF&#x6570;&#x636E;&#x63CF;&#x8FF0;&#x4E0D;&#x591F;&#x5145;&#x5206;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4E5F;&#x65B9;&#x4FBF;&#x4ECE;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x8005;&#x89C6;&#x89D2;&#x53BB;&#x53CD;&#x9988;&#x4E0B;&#x6B64;&#x5904;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x751F;&#x6210;&#x66F4;&#x597D;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x5F62;&#x6210;&#x4E86;&#x548C;Go&#x6838;&#x5FC3;&#x56E2;&#x961F;&#x7684;&#x534F;&#x4F5C;&#x3001;&#x5171;&#x5EFA;&#x3002;</p>
+<blockquote>
+<p>ps: &#x6709;&#x4E2A;&#x5C0F;&#x54E5;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x81EA;&#x5DF1;&#x7684;&#x8C03;&#x8BD5;&#x5668; <a href="https://github.com/ConradIrwin/ggg" target="_blank">ggg</a> &#x65F6;&#x4E5F;&#x5B9A;&#x5236;&#x5316;&#x4E86;debug/dwarf&#xFF0C;&#x8BE6;&#x89C1;&#xFF1A;<a href="https://github.com/ConradIrwin/go-dwarf" target="_blank">ConradIrwin/go-dwarf</a>&#x3002;&#x8FD9;&#x91CC;&#x53EA;&#x662F;&#x4E3E;&#x4E2A;&#x5B9A;&#x5236;&#x5316; <code>debug/dwarf</code>&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x4E0D;&#x4EE3;&#x8868;&#x8FD9;&#x4E2A;&#x5E93;&#x53EF;&#x7528;&#xFF0C;&#x800C;&#x4E14;&#x6700;&#x540E;&#x66F4;&#x65B0;&#x5DF2;&#x7ECF;&#x662F;11&#x5E74;&#x524D;&#x7684;&#x4E8B;&#x60C5;&#x4E86;&#x3002;&#x5373;&#x4F7F;&#x8981;&#x7528;&#xFF0C;&#x4E5F;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x8003;&#x8651; <code>go-delve/delve</code> &#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#x90E8;&#x5206;&#x3002;</p>
+</blockquote>
+<h3 id="&#x5B9E;&#x73B0;1&#xFF1A;go&#x6807;&#x51C6;&#x5E93;-debugdwarf">&#x5B9E;&#x73B0;1&#xFF1A;Go&#x6807;&#x51C6;&#x5E93; debug/dwarf</h3>
+<p>&#x524D;&#x9762;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;go&#x6807;&#x51C6;&#x5E93; <code>debug/*</code>&#xFF0C;&#x8FD9;&#x5176;&#x4E2D;&#x5C31;&#x5305;&#x62EC;&#x4E86; <code>debug/dwarf</code>&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x4F5C;&#x4E3A;&#x5B98;&#x65B9;&#x5B9E;&#x73B0;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x5E95;&#x5C42;&#x7684;API&#xFF0C;&#x5141;&#x8BB8;&#x4F60;&#x904D;&#x5386;&#x548C;&#x68C0;&#x67E5;DWARF&#x6570;&#x636E;&#x7ED3;&#x6784;&#x3002;</p>
+<p>&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#xFF0C;&#x5B98;&#x65B9;&#x5E93;&#x662F;&#x6700;&#x57FA;&#x7840;&#x548C;&#x53EF;&#x9760;&#x7684;&#x9009;&#x62E9;&#x3002;&#x5982;&#x679C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x5206;&#x6790;&#x6216;&#x96C6;&#x6210;&#xFF0C;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x57FA;&#x4E8E;&#x5B98;&#x65B9;&#x5E93;&#x8FDB;&#x884C;&#x4E8C;&#x6B21;&#x5F00;&#x53D1;&#xFF0C;&#x518D;&#x6B21;&#x57FA;&#x7840;&#x4E0A;&#x589E;&#x52A0;&#x66F4;&#x591A;&#x7684;&#x7279;&#x6027;&#x3001;&#x63D0;&#x4F9B;&#x66F4;&#x9AD8;&#x7EA7;&#x7684;&#x62BD;&#x8C61;&#x7B49;&#x3002;&#x6211;&#x4EEC;&#x5206;&#x6790;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;&#x5F53;&#x524D;debug/dwarf&#x4E0D;&#x592A;&#x53EF;&#x80FD;&#x662F;&#x8FBE;&#x5230;&#x201C;&#x5B8C;&#x7F8E;&#x201D;&#x7A0B;&#x5EA6;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x4E5F;&#x5217;&#x4E3E;&#x4E86; <code>go-delve/delve</code> &#x548C; <code>ggg</code> &#x7684;&#x4F8B;&#x5B50;&#x3002;</p>
+<p>OK&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x770B;&#x4E0B; <code>debug/dwarf</code> &#x7684;&#x652F;&#x6301;&#x7A0B;&#x5EA6;&#x548C;&#x5C40;&#x9650;&#x6027;&#xFF0C;&#x524D;&#x9762;&#x6709;&#x63D0;&#x5230; <code>debug/dwarf</code>&#x53EA;&#x652F;&#x6301;&#x90E8;&#x5206;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>.debug_abbrev&#xFF0C;&#x63CF;&#x8FF0;&#x4E00;&#x4E9B;&#x7F29;&#x5199;&#x4FE1;&#x606F;&#xFF0C;.debug_info section&#x4E2D;&#x4F1A;&#x5F15;&#x7528;&#xFF1B;</li>
+<li><p>.debug_info&#xFF0C;&#x63CF;&#x8FF0;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x3001;&#x7C7B;&#x578B;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x51FD;&#x6570;&#xFF1B;</p>
+<blockquote>
+<p>.debug_types section&#x4E5F;&#x53EF;&#x4EE5;&#x4FDD;&#x5B58;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#xFF0C;&#x4F55;&#x65F6;&#x9700;&#x5C06;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x653E;&#x5728;.debug_types section&#xFF1F;</p>
+<p>&#x6709;&#x4E9B;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x5728;&#x591A;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x4E2D;&#x51FA;&#x73B0;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x9020;&#x6210;&#x591A;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x91CD;&#x590D;&#x751F;&#x6210;&#x7C7B;&#x578B;&#x5BF9;&#x5E94;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x5BFC;&#x81F4;&#x4E8C;&#x8FDB;&#x5236;&#x6587;&#x4EF6;&#x5C3A;&#x5BF8;&#x504F;&#x5927;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x5C06;&#x8BE5;&#x7C7B;&#x578B;&#x7684;&#x63CF;&#x8FF0;&#x4ECE;.debug_info section&#x8F6C;&#x79FB;&#x5230;.debug_types section&#xFF0C;&#x5E76;&#x5229;&#x7528;COMDAT section+&#x94FE;&#x63A5;&#x5668;&#x5BF9;COMDAT groups&#x7684;&#x5904;&#x7406;&#xFF0C;&#x53EF;&#x4EE5;&#x51CF;&#x5C11;&#x6587;&#x4EF6;&#x5C3A;&#x5BF8;&#x3002;</p>
+<p>see <a href="https://gcc.gnu.org/wiki/DwarfSeparateTypeInfo" target="_blank">https://gcc.gnu.org/wiki/DwarfSeparateTypeInfo</a></p>
+</blockquote>
+</li>
+<li>.debug_str&#xFF0C;&#x63CF;&#x8FF0;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#xFF0C;.debug_info section&#x4E2D;&#x4F1A;&#x5F15;&#x7528;&#xFF1B;</li>
+<li>.debug_line&#xFF0C;&#x63CF;&#x8FF0;&#x884C;&#x53F7;&#x8868;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4E8E;&#x5728;pc&#x548C;&#x884C;&#x53F7;&#x4E4B;&#x95F4;&#x6620;&#x5C04;&#xFF1B;</li>
+<li>.debug_ranges&#xFF0C;&#x67E5;&#x8BE2;&#x8868;&#xFF0C;&#x7528;&#x4E8E;&#x5728;pc&#x548C;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x4E4B;&#x95F4;&#x6620;&#x5C04;&#xFF1B;</li>
+</ul>
+<p>&#x5173;&#x4E8E;&#x6807;&#x51C6;&#x5E93;debug/dwarf&#x652F;&#x6301;&#x8BFB;&#x53D6;&#x89E3;&#x6790;&#x54EA;&#x4E9B;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x70B9;&#x53EF;&#x4EE5;&#x4ECE;&#x4E0B;&#x9762;&#x7684;&#x6E90;&#x7801;&#x770B;&#x51FA;&#x6765;&#x3002;</p>
+<p><strong>src/debug/elf/file.go</strong></p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (f *File) DWARF() (*dwarf.Data, error) {
+    dwarfSuffix := <span class="hljs-keyword">func</span>(s *Section) <span class="hljs-keyword">string</span> {
+        <span class="hljs-comment">// &#x53BB;&#x6389;.debug_/.zdebug_&#x540E;&#x7684;&#x540E;&#x7F00;</span>
+    }
+    <span class="hljs-comment">// sectionData gets the data for s, checks its size, and</span>
+    <span class="hljs-comment">// applies any applicable relations.</span>
+    sectionData := <span class="hljs-keyword">func</span>(i <span class="hljs-keyword">int</span>, s *Section) ([]<span class="hljs-keyword">byte</span>, error) {
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;section&#x6570;&#x636E;</span>
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x662F;zlib&#x538B;&#x7F29;&#x6570;&#x636E;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x89E3;&#x538B;&#x7F29;</span>
+        <span class="hljs-comment">// &#x5982;&#x679C;&#x662F;&#x9700;&#x8981;&#x91CD;&#x5B9A;&#x4F4D;&#x7684;&#xFF0C;&#x5219;&#x6267;&#x884C;&#x91CD;&#x5B9A;&#x4F4D;&#x64CD;&#x4F5C;</span>
+        <span class="hljs-comment">// &#x8FD4;&#x56DE;&#x5904;&#x7406;&#x540E;section&#x6570;&#x636E;</span>
+    }
+
+    <span class="hljs-comment">// debug/dwarf package&#x5F53;&#x524D;&#x53EA;&#x652F;&#x6301;&#x5904;&#x7406;&#x8FD9;&#x4E9B;sections</span>
+    <span class="hljs-keyword">var</span> dat = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>][]<span class="hljs-keyword">byte</span>{<span class="hljs-string">&quot;abbrev&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;info&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;str&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;line&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;ranges&quot;</span>: <span class="hljs-literal">nil</span>}
+    <span class="hljs-keyword">for</span> i, s := <span class="hljs-keyword">range</span> f.Sections {
+      suffix := dwarfSuffix(s)
+      <span class="hljs-keyword">if</span> _, ok := dat[suffix]; !ok {
+        <span class="hljs-keyword">continue</span>
+      }
+      b, err := sectionData(i, s)
+      ...
+      dat[suffix] = b
+    }
+
+    <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF0C;nil&#x5BF9;&#x5E94;&#x7684;&#x53C2;&#x6570;&#xFF0C;debug/dwarf&#x5F53;&#x524D;&#x5E76;&#x4E0D;&#x652F;&#x6301;&#x89E3;&#x6790;</span>
+    d, err := dwarf.New(dat[<span class="hljs-string">&quot;abbrev&quot;</span>], <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, dat[<span class="hljs-string">&quot;info&quot;</span>], dat[<span class="hljs-string">&quot;line&quot;</span>], <span class="hljs-literal">nil</span>, dat[<span class="hljs-string">&quot;ranges&quot;</span>], dat[<span class="hljs-string">&quot;str&quot;</span>])
+    ...
+
+    <span class="hljs-comment">// &#x7EE7;&#x7EED;&#x5904;&#x7406;&#xFF0C;DWARF4 .debug_types sections and DWARF5 sections.</span>
+    <span class="hljs-keyword">for</span> i, s := <span class="hljs-keyword">range</span> f.Sections {
+    ...
+    }
+
+    <span class="hljs-keyword">return</span> d, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p><code>debug/dwarf</code> &#x786E;&#x5B9E;&#x53EA;&#x5B9E;&#x73B0;&#x4E86;&#x90E8;&#x5206;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x8BFB;&#x53D6;&#x89E3;&#x6790;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x8981;&#x80FD;&#x6B63;&#x5E38;&#x8C03;&#x8BD5;&#x8FD8;&#x4F9D;&#x8D56;&#x5176;&#x4ED6;&#x51E0;&#x4E2A;sections&#x7684;&#x4FE1;&#x606F;&#x7684;&#x652F;&#x6301;&#xFF0C;&#x5982;&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;&#x8868; <code>.debug_frame</code>&#x3001;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x4FE1;&#x606F; <code>.debug_loc</code>&#x7B49;&#x7B49;&#xFF0C;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#x5E93;&#x5E76;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x8BFB;&#x53D6;&#x89E3;&#x6790;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x52A8;&#x624B;&#x7F16;&#x7801;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;2&#xFF1A;go&#x5DE5;&#x5177;&#x94FE;-cmdinternaldwarf">&#x5B9E;&#x73B0;2&#xFF1A;Go&#x5DE5;&#x5177;&#x94FE; cmd/internal/dwarf</h3>
+<p>&#x5728;Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x5C42;&#x9762;&#xFF0C;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x751F;&#x6210;&#xFF0C;&#x662F;&#x5206;&#x6563;&#x5728;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x94FE;&#x63A5;&#x5668;&#x4E2D;&#x7684;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x6D89;&#x53CA;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x5206;&#x5DE5;&#x4E0D;&#x540C;&#xFF0C;cmd/internal/dwarf&#x8FD9;&#x4E2A;&#x516C;&#x5171;&#x5E93;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x94FE;&#x63A5;&#x5668;&#x90FD;&#x5728;&#x4F7F;&#x7528;&#x3002;</p>
+<ul>
+<li><code>go tool compile</code> &#xFF0C;&#x4F1A;&#x8BB0;&#x5F55;&#x4E00;&#x7CFB;&#x5217;&#x7684; link.LSym (link.LSym.Type=SDWARFXXX&#xFF0C;link.LSym.P=DWARF&#x7F16;&#x7801;&#x6570;&#x636E;&#xFF09;&#xFF1B;</li>
+<li><code>go tool link</code>&#xFF0C;&#x4F1A;&#x6574;&#x5408;&#x3001;&#x8F6C;&#x6362;&#x3001;&#x52A0;&#x5DE5;&#x8F93;&#x5165;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E2D;&#x7F16;&#x8BD1;&#x5668;&#x8BB0;&#x5F55;&#x7684;&#x4E0A;&#x8FF0;&#x4FE1;&#x606F;&#xFF0C;&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x5230;.debug_ sections&#xFF1B;</li>
+</ul>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4E24;&#x4E2A;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x8BE6;&#x7EC6;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x94FE;&#x63A5;&#x5668;&#x7684;&#x4E0A;&#x8FF0;&#x5DE5;&#x4F5C;&#x8FC7;&#x7A0B;&#xFF0C;&#x5BF9;&#x6211;&#x4EEC;&#x540E;&#x7EED;&#x5F00;&#x53D1;&#x3001;&#x6D4B;&#x8BD5;&#x81EA;&#x5DF1;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x8FD8;&#x662F;&#x5F88;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x770B;&#x4E0B;cmd/internal/dwarf&#x8FD9;&#x4E2A;package&#x652F;&#x6301;&#x54EA;&#x4E9B;&#x529F;&#x80FD;&#xFF1A;</p>
+<ul>
+<li><p>dwarf_defs.go&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;DWARF&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x5E38;&#x91CF;&#xFF0C;DW_TAG&#x7C7B;&#x578B;&#x3001;DW_CLS&#x7C7B;&#x578B;&#x3001;DW_AT&#x5C5E;&#x6027;&#x7C7B;&#x578B;&#x3001;DW_FORM&#x7F16;&#x7801;&#x5F62;&#x5F0F;&#x3001;DW_OP&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#x3001;DW_ATE&#x5C5E;&#x6027;&#x7F16;&#x7801;&#x7C7B;&#x578B;&#x3001;DW_ACCESS&#x8BBF;&#x95EE;&#x4FEE;&#x9970;&#x3001;DW_VIS&#x53EF;&#x89C1;&#x6027;&#x4FEE;&#x9970;&#x3001;DW_VIRTUALITY&#x865A;&#x51FD;&#x6570;&#x4FEE;&#x9970;&#x3001;DW_LANG&#x8BED;&#x8A00;&#x7C7B;&#x578B;&#xFF08;go&#x662F;22&#xFF09;&#x3001;DW_INL&#x5185;&#x8054;&#x7C7B;&#x578B;&#x3001;DW_ORD&#x6309;&#x884C;&#xFF08;&#x5217;&#xFF09;&#x4E3B;&#x5E8F;&#x3001;DW_LNS&#x884C;&#x53F7;&#x8868;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#x3001;DW_MACINFO&#x5B8F;&#x5B9A;&#x4E49;&#x64CD;&#x4F5C;&#x3001;DW_CFA&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;&#x8868;&#x64CD;&#x4F5C;&#xFF0C;&#x7B49;&#x7B49;&#xFF1B;</p>
+<p>&#x8FD9;&#x4E9B;&#x5B9A;&#x4E49;&#x5728; <code>go-delve/delve</code>&#x4E2D;&#x88AB;&#x5F52;&#x7C7B;&#x5230;&#x4E86;&#x4E0D;&#x540C;&#x7684;package&#x4E2D;&#xFF0C;&#x8FD9;&#x6837;&#x66F4;&#x6E05;&#x6670;&#x4E00;&#x70B9;&#x3002;</p>
+</li>
+<li>dwarf.go&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x751F;&#x6210;&#x3001;&#x7F16;&#x7801;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x516C;&#x5171;&#x4EE3;&#x7801;&#xFF0C;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x751F;&#x6210;&#x662F;&#x7531;&#x7F16;&#x8BD1;&#x5668;&#x548C;&#x94FE;&#x63A5;&#x5668;&#x5B8C;&#x6210;&#x7684;&#xFF0C;dwarf.go&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x751F;&#x6210;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x5BFC;&#x51FA;&#x51FD;&#x6570;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x94FE;&#x63A5;&#x5668;&#x4E2D;&#x5747;&#x6709;&#x4F7F;&#x7528;&#x8FD9;&#x90E8;&#x5206;&#x51FD;&#x6570;&#x3002;</li>
+</ul>
+<blockquote>
+<p>ps: dwarf.go&#x5BF9;&#x6211;&#x4EEC;&#x5E2E;&#x52A9;&#x5F88;&#x5927;&#xFF0C;&#x975E;&#x5E38;&#x5177;&#x6709;&#x53C2;&#x8003;&#x4EF7;&#x503C;&#xFF0C;&#x56E0;&#x4E3A;&#x5404;&#x79CD;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x7684;DWARF&#x8868;&#x793A;&#xFF0C;&#x6709;&#x4E0D;&#x5C11;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#x4E2D;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x9605;&#x8BFB;&#x8FD9;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#xFF0C;&#x80FD;&#x591F;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x63CF;&#x8FF0;&#x4E0D;&#x540C;&#x7684;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x4F7F;&#x7528;&#x7684;DIE TAG&#x3001;Attr&#x7B49;DWARF&#x63CF;&#x8FF0;&#x5143;&#x7D20;&#xFF0C;&#x8FD9;&#x6837;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x8C03;&#x8BD5;&#x5668;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x4ECE;&#x4E2D;&#x63D0;&#x53D6;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#x65F6;&#x5C31;&#x77E5;&#x9053;&#x5982;&#x4F55;&#x7CBE;&#x51C6;&#x7684;&#x53CD;&#x5411;&#x64CD;&#x4F5C;&#x3002;</p>
+</blockquote>
+<p>&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x4E3B;&#x8981;&#x662F;&#x7ED9;Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x4F7F;&#x7528;&#x7684;&#xFF0C;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x548C;&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x7684;&#x5176;&#x4ED6;&#x90E8;&#x5206;&#x7D27;&#x5BC6;&#x7ED3;&#x5408;&#xFF0C;&#x5F88;&#x96BE;&#x62FF;&#x51FA;&#x6765;&#x590D;&#x7528;&#x3002;&#x8FD9;&#x4E2A;&#x5305;&#x7684;&#x7EC4;&#x7EC7;&#x4E5F;&#x662F;&#x653E;&#x5728;internal&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x4E0D;&#x50CF; <code>debug/dwarf</code> &#x662F;&#x66B4;&#x6F0F;&#x7ED9;&#x666E;&#x901A;Go&#x5F00;&#x53D1;&#x8005;&#x7528;&#x7684;&#x3002;&#x5373;&#x4FBF;&#x89C9;&#x5F97;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x4E5F;&#x8981;copy&#x3001;paste&#x540E;&#x518D;&#x505A;&#x5927;&#x91CF;&#x6539;&#x52A8;&#x3002;<code>go-delve/delve</code> &#x4E2D;copy&#x3001;paste&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7528;&#x4E8E;&#x751F;&#x6210;DWARF&#x6570;&#x636E;&#x8FDB;&#x884C;&#x6BD4;&#x5BF9;&#x3001;&#x6D4B;&#x8BD5;&#xFF0C;&#x4F46;&#x9664;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x672C;&#x8EAB;&#x8FD9;&#x4E2A;&#x9879;&#x76EE;&#xFF0C;&#x53EF;&#x80FD;&#x5F88;&#x96BE;&#x627E;&#x5230;&#x5176;&#x4ED6;&#x9879;&#x76EE;&#x4F1A;&#x8FD9;&#x4E48;&#x5E72;&#x4E86;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x771F;&#x60F3;&#x590D;&#x7528;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x670D;&#x7528; <code>go-delve/delve</code> &#x91CC;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;3&#xFF1A;go-delvedelvepkgdwarf">&#x5B9E;&#x73B0;3&#xFF1A;go-delve/delve/pkg/dwarf</h3>
+<h4 id="how-dlv-handles-dwarf">how dlv handles DWARF?</h4>
+<p>&#x4EE5;&#x6D41;&#x884C;&#x7684;go&#x8C03;&#x8BD5;&#x5668; <code>go-delve/delve</code>&#x4E3A;&#x4F8B;&#xFF0C;&#x5B83;&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x5462;&#xFF1F;&#x6709;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5E93;&#x5462;&#xFF1F;&#x4E3A;&#x4E86;&#x6C42;&#x8BC1;&#x8FD9;&#x51E0;&#x70B9;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;git&#x4ED3;&#x5E93;&#x4E0B;&#x6267;&#x884C; <code>git log -S &quot;DWARF()&quot;</code>&#x6765;&#x641C;&#x7D22;&#x4E0B;&#x63D0;&#x4EA4;&#x8BB0;&#x5F55;&#xFF0C;&#x627E;&#x5230;&#x51E0;&#x6761;&#x5173;&#x952E;&#x4FE1;&#x606F;&#xFF1A;</p>
+<ol>
+<li><p>delve&#x65E9;&#x671F;&#x4E5F;&#x662F;&#x4F7F;&#x7528;&#x7684;&#x6807;&#x51C6;&#x5E93; <code>debug/dwarf</code>&#x6765;&#x5B9E;&#x73B0;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x89E3;&#x6790;&#xFF0C;&#x90A3;&#x4E2A;&#x65F6;&#x5019;&#x5BF9;go&#x3001;delve&#x90FD;&#x662F;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x65E9;&#x671F;&#x7684;&#x9636;&#x6BB5;&#xFF0C;&#x5404;&#x65B9;&#x9762;&#x90FD;&#x8FD8;&#x4E0D;&#x5F88;&#x6210;&#x719F;&#x3002;</p>
+<pre><code class="lang-bash">commit f1e5a70a4b58e9caa4b40a0493bfb286e99789b9
+Author: Derek Parker &lt;parkerderek86@gmail.com&gt;
+Date:   Sat Sep 13 12:28:46 2014 -0500
+
+Update <span class="hljs-keyword">for</span> Go 1.3.1
+
+I decided to vendor all debug/dwarf and debug/elf files so that the
+project can be go get-table. All changes that I am waiting to land <span class="hljs-keyword">in</span> Go
+1.4 are now captured <span class="hljs-keyword">in</span> /vendor/debug/*.
+</code></pre>
+</li>
+<li><p>delve&#x5F00;&#x53D1;&#x8005;&#x53D1;&#x73B0;&#x4F7F;&#x7528; <code>debug/dwarf</code>&#x89E3;&#x6790;&#x67D0;&#x4E9B;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x5B58;&#x5728;&#x95EE;&#x9898;&#xFF0C;&#x4E8E;&#x662F;&#x4F7F;&#x7528;package <code>x/debug/dwarf</code>&#x4E88;&#x4EE5;&#x4E86;&#x66FF;&#x6362;&#xFF0C;&#x4E34;&#x65F6;&#x5148;&#x5E94;&#x4ED8;&#x4E0B;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x73B0;&#x5728;&#x518D;&#x770B; <code>x/debug/dwarf</code>&#x8FD9;&#x4E2A;package&#xFF0C;&#x53D1;&#x73B0;&#x4E4B;&#x524D;&#x7684;&#x4E00;&#x4E9B;&#x6E90;&#x6587;&#x4EF6;&#x4E0D;&#x89C1;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x5DF2;&#x7ECF;&#x88AB;&#x8FC1;&#x79FB;&#x5230;go&#x6E90;&#x7801;&#x6811;&#x4E2D;&#x3002;</p>
+<pre><code class="lang-bash">commit 54f1c9b3d40f606f7574c971187e7331699f378e
+Author: aarzilli &lt;alessandro.arzilli@gmail.com&gt;
+Date:   Sun Jan 24 10:25:54 2016 +0100
+
+    proc: replace debug/dwarf with golang.org/x/debug/dwarf
+
+    Typedefs that resolve to slices are not recorded <span class="hljs-keyword">in</span> DWARF as typedefs
+    but instead as structs <span class="hljs-keyword">in</span> a way that there is no way to know they
+    are really slices using debug/dwarf.
+    Using golang.org/x/debug/dwarf instead this problem is solved and
+    as a bonus some types are printed with a nicer names: (struct string
+    &#x2192; string, struct []int &#x2192; []int, etc)
+
+     Fixes <span class="hljs-comment">#356 and #293</span>
+</code></pre>
+</li>
+<li><p>&#x540E;&#x9762; <code>debug/dwarf</code>&#x4FEE;&#x590D;&#x4E86;&#x4E4B;&#x524D;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;&#xFF0C;delve&#x53C8;&#x4ECE; <code>x/debug/dwarf</code>&#x66FF;&#x6362;&#x56DE;&#x4E86; <code>debug/dwarf</code>&#x3002;</p>
+<pre><code class="lang-bash">commit 1e3ff49610690e9890a669c95d903184baae1f4f
+Author: aarzilli &lt;alessandro.arzilli@gmail.com&gt;
+Date:   Mon May 29 15:20:01 2017 +0200
+
+    pkg/dwarf/godwarf: split out <span class="hljs-built_in">type</span> parsing from x/debug/dwarf
+
+    Splits out <span class="hljs-built_in">type</span> parsing and go-specific Type hierarchy from
+    x/debug/dwarf, replace x/debug/dwarf with debug/dwarf everywhere,
+    remove x/debug/dwarf from vendoring.
+</code></pre>
+</li>
+<li><p>&#x540E;&#x7EED;delve&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x5BF9;debug_line&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x5E76;&#x4E0E;&#x6807;&#x51C6;&#x5E93;&#x5BF9;&#x6BD4;&#x4E86;&#x5904;&#x7406;&#x7ED3;&#x679C;&#xFF0C;&#x53D1;&#x73B0;&#x5904;&#x7406;&#x7684;&#x529F;&#x80FD;&#x6B63;&#x786E;&#x6027;&#x4E0A;&#x4E0E;&#x6807;&#x51C6;&#x5E93;&#x5DF2;&#x7ECF;&#x4E00;&#x81F4;&#x4E86;&#x3002;</p>
+<p>&#x4E0D;&#x7981;&#x8981;&#x95EE;&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x5462;&#xFF1F;&#x6211;&#x7406;&#x89E3;&#x4E00;&#x65B9;&#x9762;&#x662F;go&#x3001;delve&#x90FD;&#x5728;&#x5FEB;&#x901F;&#x6F14;&#x8FDB;&#xFF0C;go&#x5B98;&#x65B9;&#x56E2;&#x961F;&#x4E5F;&#x6CA1;&#x6709;&#x5728;&#x8C03;&#x8BD5;&#x65B9;&#x9762;&#x540C;&#x6B65;&#x5730;&#x4E0B;&#x90A3;&#x4E48;&#x591A;&#x529F;&#x592B;&#x3002;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#xFF0C;delve&#x4E0D;&#x53EF;&#x907F;&#x514D;&#x5730;&#x8981;&#x81EA;&#x5DF1;&#x89E3;&#x6790;&#x4E00;&#x90E8;&#x5206;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x3002;&#x6700;&#x7EC8;&#xFF0C;delve&#x5F00;&#x53D1;&#x8005;&#x628A;.debug_line&#x8FDE;&#x540C;&#x5176;&#x4ED6;sections&#x7684;&#x89E3;&#x6790;&#x5168;&#x90E8;&#x91CD;&#x5199;&#xFF0C;&#x4F7F;&#x5F97;delve&#x5BF9;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x89E3;&#x6790;&#x5177;&#x5907;&#x4E86;&#x66F4;&#x597D;&#x7684;&#x5B8C;&#x5907;&#x6027;&#x3002;</p>
+<pre><code class="lang-bash">commit 3f9875e272cbaae7e507537346757ac4db6d25fa
+Author: aarzilli &lt;alessandro.arzilli@gmail.com&gt;
+Date:   Mon Jul 30 11:18:41 2018 +0200
+
+    dwarf/line: fix some bugs with the state machine
+
+    Adds a <span class="hljs-built_in">test</span> that compares the output of our state machine with the
+    output of the debug_line reader <span class="hljs-keyword">in</span> the standard library and checks that
+    they produce the same output <span class="hljs-keyword">for</span> the debug_line section of grafana as
+    compiled on macOS (<span class="hljs-built_in">which</span> is the most interesting <span class="hljs-keyword">case</span> since it uses cgo
+    and therefore goes through dsymutil).
+
+    ...
+</code></pre>
+</li>
+</ol>
+<p>&#x603B;&#x4E4B;&#x6807;&#x51C6;&#x5E93;&#x5BF9;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x8BFB;&#x53D6;&#x89E3;&#x6790;&#x652F;&#x6301;&#x6709;&#x9650;&#xFF0C;go&#x3001;delve&#x90FD;&#x5728;&#x5FEB;&#x901F;&#x6F14;&#x8FDB;&#x4E2D;&#xFF0C;&#x5F88;&#x660E;&#x663E;delve&#x5BF9;DWARF&#x7684;&#x9700;&#x6C42;&#x662F;&#x660E;&#x663E;&#x6BD4;go&#x672C;&#x8EAB;&#x5F3A;&#x70C8;&#x7684;&#x3002;delve&#x4E00;&#x5F00;&#x59CB;&#x4F7F;&#x7528;&#x6807;&#x51C6;&#x5E93;&#xFF0C;&#x540E;&#x9762;&#x53D1;&#x73B0;&#x6709;&#x5C40;&#x9650;&#x6027;&#xFF0C;&#x4E8E;&#x662F;&#x5F00;&#x59CB;&#x81EA;&#x5DF1;&#x91CD;&#x5199;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x8BFB;&#x53D6;&#x89E3;&#x6790;&#x3002;&#x5F53;&#x7136;&#x8FD9;&#x4E2A;&#x91CD;&#x5199;&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E5F;&#x6709;&#x501F;&#x9274;go&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x4E5F;&#x6709;&#x6536;&#x5230;delve&#x5F00;&#x53D1;&#x8005;&#x7684;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#x7684;&#x4F18;&#x5316;&#x5EFA;&#x8BAE;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x534F;&#x4F5C;&#x3001;&#x5171;&#x5EFA;&#x7684;&#x8FC7;&#x7A0B;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x5230;&#x8FD9;&#x4E2A;&#x7A0B;&#x5EA6;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x53EA;&#x8981;Go&#x6807;&#x51C6;&#x5E93;&#x652F;&#x6301;&#x4E86;&#xFF0C;delve&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x5C31;&#x4F1A;&#x53BB;&#x5411;Go&#x6807;&#x51C6;&#x5E93;&#x9760;&#x62E2;&#xFF0C;&#x8FD9;&#x4E2A;&#x80AF;&#x5B9A;&#x662F;&#x6CA1;&#x95EE;&#x9898;&#x7684;&#x3002;&#x4F46;&#x662F;Go&#x6807;&#x51C6;&#x5E93;&#x8FD8;&#x6CA1;&#x652F;&#x6301;&#x7684;&#xFF0C;&#x6216;&#x8005;&#x4E0D;&#x6253;&#x7B97;&#x652F;&#x6301;&#x7684;&#xFF0C;&#x90A3;&#x5C31;&#x5F97;delve&#x5F00;&#x53D1;&#x8005;&#x5148;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x3001;&#x9A8C;&#x8BC1;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53CD;&#x9988;&#x7ED9;Go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x5171;&#x5EFA;&#x7684;&#x5F62;&#x5F0F;&#x6765;&#x5B8C;&#x5584;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#x4E5F;&#x662F;&#x4E00;&#x4E2A;&#x4E0D;&#x65AD;&#x4F18;&#x5316;&#x7684;&#x8FC7;&#x7A0B;&#xFF0C;&#x6BD4;&#x5982;&#x73B0;&#x5728;&#x6216;&#x8005;&#x4EE5;&#x540E;&#x4F1A;&#x7EE7;&#x7EED;&#x5411;DWARF v5&#x4E2D;&#x7684;&#x4F18;&#x79C0;&#x7279;&#x6027;&#x770B;&#x9F50;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5904;&#x7406;&#x903B;&#x8F91;&#x8FD8;&#x4F1A;&#x4E0D;&#x65AD;&#x4F18;&#x5316;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x8FD9;&#x4E2A;&#x5171;&#x5EFA;&#x8FC7;&#x7A0B;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x8C03;&#x8BD5;&#x5668;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;delve&#x8C03;&#x8BD5;&#x5668;&#x5F53;&#x524D;&#x7684;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<h4 id="understand-delve-pkgdwarf">understand delve pkg/dwarf</h4>
+<p>go-delve/delve&#x91CC;&#x9762;dwarf&#x64CD;&#x4F5C;&#x76F8;&#x5173;&#x7684;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x662F;&#x5728;package <code>pkg/dwarf</code>&#x4E2D;&#xFF0C;&#x7B80;&#x5355;&#x7F57;&#x5217;&#x4E0B;&#x4E3B;&#x8981;&#x5B9E;&#x73B0;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
+<ul>
+<li>pkg/dwarf/util
+&#x8BE5;package&#x4E0B;&#x6709;&#x4E9B;&#x4EE3;&#x7801;&#x662F;&#x4ECE;go&#x6807;&#x51C6;&#x5E93;&#x91CC;&#x9762;copy&#x8FC7;&#x6765;&#x4FEE;&#x6539;&#x7684;&#xFF0C;&#x6BD4;&#x5982; <code>pkg/dwarf/util/buf.go</code>&#x5927;&#x90E8;&#x5206;&#x662F;&#x6807;&#x51C6;&#x5E93;&#x4EE3;&#x7801;&#xFF0C;&#x53EA;&#x505A;&#x4E86;&#x4E00;&#x70B9;&#x5FAE;&#x8C03;&#xFF0C;&#x589E;&#x52A0;&#x4E86;&#x51E0;&#x4E2A;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x6765;&#x8BFB;&#x53D6;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x7684;&#x6570;&#x503C;&#x3001;&#x8BFB;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x548C;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x5F00;&#x5934;&#x7684;DWARF&#x4FE1;&#x606F;&#x3002;</li>
+<li>pkg/dwarf/dwarfbuilder
+&#x8BE5;package&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#x7C7B;&#x3001;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x6765;&#x5FEB;&#x901F;&#x5BF9;DWARF&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x6BD4;&#x5982;&#x5411;.debug_info&#x4E2D;&#x589E;&#x52A0;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x3001;&#x589E;&#x52A0;&#x51FD;&#x6570;&#x3001;&#x589E;&#x52A0;&#x53D8;&#x91CF;&#x3001;&#x589E;&#x52A0;&#x7C7B;&#x578B;&#x3002;&#x8FD8;&#x6709;&#x5C31;&#x662F;&#x5F80;.debug_loc&#x4E2D;&#x589E;&#x52A0;LocEntry&#x4FE1;&#x606F;&#x3002;
+go-delve/delve&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#x7684;package&#x5B9E;&#x73B0;&#x5462;&#xFF1F;&#x6211;&#x8BA4;&#x4E3A;&#x4E00;&#x65B9;&#x9762;go&#x6807;&#x51C6;&#x5E93;&#x6CA1;&#x6709;&#x63D0;&#x4F9B;&#x8FD9;&#x65B9;&#x9762;&#x4FE1;&#x606F;&#xFF08;&#x5DE5;&#x5177;&#x94FE;cmd/internal/dwarf&#x867D;&#x6709;&#xFF0C;&#x524D;&#x9762;&#x8BB2;&#x4E86;&#x672A;&#x7EB3;&#x5165;&#x6807;&#x51C6;&#x5E93;&#x3001;&#x4E14;&#x96BE;copy&amp;paste&#x540E;&#x590D;&#x7528;&#xFF09;&#xFF0C;&#x5BF9;&#x5982;&#x4F55;&#x4F7F;&#x7528;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6765;&#x5B8C;&#x5584;&#x5730;&#x63CF;&#x8FF0;go&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x7B49;&#x4E5F;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x9AD8;&#x6295;&#x5165;&#xFF0C;go-delve/delve&#x8FD9;&#x91CC;&#x5E94;&#x8BE5;&#x4E5F;&#x662F;&#x505A;&#x4E86;&#x4E00;&#x90E8;&#x5206;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x63A2;&#x7D22;&#xFF0C;&#x7136;&#x540E;&#x548C;go&#x5F00;&#x53D1;&#x56E2;&#x961F;&#x6765;&#x534F;&#x4F5C;&#x5171;&#x5EFA;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x7EF4;&#x62A4;&#x8FD9;&#x90E8;&#x5206;DWARF&#x6570;&#x636E;&#x751F;&#x6210;&#x903B;&#x8F91;&#x4E5F;&#x5C31;&#x7406;&#x89E3;&#x4E86;&#x3002;</li>
+<li>pkg/dwarf/frame
+&#x8FD9;&#x4E2A;package&#x4E0B;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;.debug_frame&#x3001;.zdebug_frame&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x6BCF;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x90FD;&#x6709;&#x81EA;&#x5DF1;&#x7684;.debug_frame&#xFF0C;&#x6700;&#x540E;&#x94FE;&#x63A5;&#x5668;&#x5C06;&#x5176;&#x5408;&#x5E76;&#x6210;&#x4E00;&#x4E2A;&#x3002;&#x5BF9;&#x6BCF;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;cu&#x6765;&#x8BF4;&#xFF0C;&#x90FD;&#x662F;&#x5148;&#x7F16;&#x7801;&#x5BF9;&#x5E94;&#x7684;CIE&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8DDF;&#x7740;&#x7F16;&#x8BD1;&#x5355;&#x5143;cu&#x4E2D;&#x5305;&#x542B;&#x7684;FDE&#x4FE1;&#x606F;&#x3002;&#x7136;&#x540E;&#x518D;&#x662F;&#x4E0B;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7684;CIE&#x3001;FDEs&#x2026;&#x2026;&#x5982;&#x6B64;&#x53CD;&#x590D;&#x3002;&#x5BF9;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4E00;&#x4E2A;&#x72B6;&#x6001;&#x673A;&#x6765;&#x89E3;&#x6790;&#x3002;</li>
+<li>pkg/dwarf/line
+&#x8FD9;&#x4E2A;package&#x4E0B;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;.debug_line&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x4E4B;&#x6240;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x7528;go&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;debug/gosym&#xFF0C;&#x524D;&#x9762;&#x5DF2;&#x7ECF;&#x63D0;&#x8FC7;&#x5F88;&#x591A;&#x6B21;&#x4E86;&#xFF0C;&#x6807;&#x51C6;&#x5E93;&#x5B9E;&#x73B0;&#x53EA;&#x652F;&#x6301;&#x7EAF;go&#x4EE3;&#x7801;&#xFF0C;cgo&#x4EE3;&#x7801;&#x4E0D;&#x652F;&#x6301;&#xFF0C;&#x7F3A;&#x5931;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x884C;&#x8868;&#x6570;&#x636E;&#x3002;&#x4E4B;&#x6240;&#x4EE5;&#x4E5F;&#x4E0D;&#x7528;&#x6807;&#x51C6;&#x5E93;debug/dwarf&#xFF0C;&#x6211;&#x8BA4;&#x4E3A;&#x4E5F;&#x662F;delve&#x7684;&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#x7B56;&#x7565;&#xFF0C;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#xFF0C;&#x4FDD;&#x8BC1;&#x4E86;delve&#x5B9E;&#x73B0;DWARF&#x89E3;&#x6790;&#x3001;&#x8C03;&#x8BD5;&#x529F;&#x80FD;&#x7684;&#x5B8C;&#x5907;&#x6027;&#x3002;</li>
+<li>pkg/dwarf/godwarf
+&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x548C;go&#x6807;&#x51C6;&#x5E93;debug/dwarf&#x5BF9;&#x6BD4;&#xFF0C;&#x6709;&#x5F88;&#x591A;&#x76F8;&#x4F3C;&#x7684;&#x5730;&#x65B9;&#xFF0C;&#x5E94;&#x8BE5;&#x662F;&#x5728;&#x6807;&#x51C6;&#x5E93;&#x57FA;&#x7840;&#x4E0A;&#x4FEE;&#x6539;&#x7684;&#x3002;&#x5B83;&#x4E3B;&#x8981;&#x662F;&#x5B9E;&#x73B0;&#x4E86;DWARF&#x4FE1;&#x606F;&#x7684;&#x8BFB;&#x53D6;&#xFF0C;&#x5E76;&#x4E14;&#x652F;&#x6301;ZLIB&#x89E3;&#x538B;&#x7F29;&#x3002;&#x4EE5;&#x53CA;&#x4E3A;&#x4E86;&#x652F;&#x6301;DWARF v5&#x4E2D;&#x65B0;&#x589E;&#x7684;.debug_addr&#x589E;&#x52A0;&#x7684;&#x4EE3;&#x7801;&#xFF0C;.debug_addr&#x6709;&#x52A9;&#x4E8E;&#x7B80;&#x5316;&#x73B0;&#x6709;&#x7684;&#x91CD;&#x5B9A;&#x4F4D;&#x64CD;&#x4F5C;&#x3002;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;DWARF&#x6807;&#x51C6;&#x4E2D;&#x89C4;&#x5B9A;&#x7684;&#x4E00;&#x4E9B;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x7684;&#x8BFB;&#x53D6;&#x3002;&#x4E5F;&#x652F;&#x6301;.debug_info&#x4E2D;DIE&#x7684;&#x8BFB;&#x53D6;&#x89E3;&#x6790;&#xFF0C;&#x4E3A;&#x4E86;&#x66F4;&#x65B9;&#x4FBF;&#x4F7F;&#x7528;&#xFF0C;&#x5B83;&#x5C06;&#x5176;&#x7EC4;&#x7EC7;&#x6210;&#x4E00;&#x68F5;DIE Tree&#x7684;&#x5F62;&#x5F0F;&#x3002;</li>
+<li>pkg/dwarf/loclist
+&#x540C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x5728;&#x5176;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#xFF0C;&#x5176;&#x4F4D;&#x7F6E;&#x6709;&#x53EF;&#x80FD;&#x662F;&#x4F1A;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#xFF0C;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x4FE1;&#x606F;&#x5C31;&#x662F;&#x7528;&#x6765;&#x63CF;&#x8FF0;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x7684;&#x3002;DWARF v2~v4&#x90FD;&#x6709;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x63CF;&#x8FF0;&#xFF0C;DWARF v5&#x4E5F;&#x6709;&#x6539;&#x8FDB;&#x3002;</li>
+<li>pkg/dwarf/op
+DWARF&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E2A;package&#x4E3B;&#x8981;&#x662F;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>pkg/dwarf/reader
+&#x5728;&#x6807;&#x51C6;&#x5E93;dwarf.Reader&#x4E0A;&#x7684;&#x8FDB;&#x4E00;&#x6B65;&#x5C01;&#x88C5;&#xFF0C;&#x4EE5;&#x5B9E;&#x73B0;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x7684;DWARF&#x4FE1;&#x606F;&#x8BBF;&#x95EE;&#x3002;</li>
+<li>pkg/dwarf/util
+&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;DWARF&#x6570;&#x636E;&#x89E3;&#x6790;&#x9700;&#x8981;&#x7528;&#x5230;&#x7684;buffer&#x5B9E;&#x73B0;&#xFF0C;&#x4EE5;&#x53CA;&#x8BFB;&#x53D6;LEB128&#x7F16;&#x89E3;&#x7801;&#x3001;&#x8BFB;&#x53D6;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x4E2D;&#x5B57;&#x7B26;&#x4E32;&#xFF08;&#x4EE5;null&#x7ED3;&#x5C3E;&#xFF09;&#x7684;&#x5DE5;&#x5177;&#x51FD;&#x6570;&#x3002;</li>
+</ul>
+<h2 id="&#x672C;&#x6587;&#x5C0F;&#x7ED3;">&#x672C;&#x6587;&#x5C0F;&#x7ED3;</h2>
+<p>&#x540E;&#x9762;&#x6211;&#x4EEC;&#x5C06;&#x53C2;&#x8003;go-delve/delve/pkg/dwarf&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x7528;&#x4E8E;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x7684;DWARF&#x6570;&#x636E;&#x7684;&#x89E3;&#x6790;&#x3002;&#x5728;&#x4F7F;&#x7528;&#x4E4B;&#x524D;&#x6211;&#x4F1A;&#x5E26;&#x9886;&#x5927;&#x5BB6;&#x8FC7;&#x4E00;&#x904D;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#xFF0C;&#x505A;&#x5230;&#x77E5;&#x5176;&#x7136;&#x77E5;&#x5176;&#x6240;&#x4EE5;&#x7136;&#xFF0C;&#x8FD9;&#x6837;&#x54B1;&#x4EEC;&#x7528;&#x7684;&#x624D;&#x653E;&#x5FC3;&#xFF0C;&#x624D;&#x80FD;&#x8BF4;&#x771F;&#x6B63;&#x7684;&#x201C;&#x638C;&#x63E1;&#x201D;&#x4E86;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x4E0E;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#x606F;&#x606F;&#x76F8;&#x5173;&#xFF0C;&#x5982;&#x8BFB;&#x8005;&#x80FD;&#x591F;&#x7ED3;&#x5408;&#x63A5;&#x4E0B;&#x6765;&#x4E00;&#x7AE0;DWARF&#x6807;&#x51C6;&#x7684;&#x5185;&#x5BB9;&#xFF08;&#x6216;&#x8005;&#x624B;&#x8FB9;&#x5E38;&#x5907;DWARF v4/v5&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#xFF09;&#x6765;&#x9605;&#x8BFB;&#xFF0C;&#x7ECF;&#x5E38;&#x6027;&#x7684;&#x5199;&#x70B9;&#x6D4B;&#x8BD5;&#x4EE3;&#x7801;&#xFF0C;&#x7136;&#x540E;&#x770B;&#x770B;&#x751F;&#x6210;&#x7684;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x957F;&#x4EC0;&#x4E48;&#x6837;&#x5B50;&#xFF0C;&#x8FD9;&#x6837;&#x7406;&#x89E3;&#x8D77;&#x6765;&#x4F1A;&#x66F4;&#x52A0;&#x987A;&#x5229;&#x3001;&#x900F;&#x5F7B;&#x3002;</p>
+<blockquote>
+<p>&#x6211;&#x4EEC;&#x5F00;&#x53D1;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x9645;&#x4E0A;&#x53EA;&#x9700;&#x8981;&#x8BFB;&#xFF0C;&#x4F46;&#x4E3A;&#x4E86;&#x8BA9;&#x5927;&#x5BB6;&#x66F4;&#x597D;&#x7406;&#x89E3;DWARF&#x50CF;derekparker&#x3001;arzillia&#x5927;&#x4F6C;&#x4EEC;&#x90A3;&#x6837;&#x80FD;&#x81EA;&#x5982;&#x5730;&#x6269;&#x5C55;&#x5BF9;Go&#x65B0;&#x7279;&#x6027;&#x7684;&#x652F;&#x6301;&#x3001;&#x80FD;&#x548C;Go&#x5DE5;&#x5177;&#x94FE;&#x6838;&#x5FC3;&#x56E2;&#x961F;&#x534F;&#x4F5C;&#x5171;&#x5EFA;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x8981;&#x601D;&#x8003;&#x5982;&#x4F55;&#x7528;DWARF&#x53BB;&#x63CF;&#x8FF0;&#x4E0D;&#x540C;&#x7684;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x6240;&#x4EE5;&#x751F;&#x6210;DWARF&#x6570;&#x636E;&#x54B1;&#x4EEC;&#x4E5F;&#x8981;&#x9002;&#x5F53;&#x638C;&#x63E1;&#x3002;&#x5C3D;&#x7BA1;&#x770B;&#x4E0A;&#x53BB;&#x201C;&#x67AF;&#x71E5;&quot;&#xFF0C;&#x67AF;&#x71E5;&#x662F;&#x4EC0;&#x4E48;&#xFF1F;&#x6211;&#x5728;&#x6574;&#x7406;&#x8FD9;&#x4E9B;&#x770B;&#x4E0A;&#x53BB;&#x67AF;&#x71E5;&#x7684;&#x6587;&#x5B57;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4ECE;&#x6765;&#x6CA1;&#x89C9;&#x5F97;&#x67AF;&#x71E5;&#x3002;</p>
+</blockquote>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x7B2C;8&#x7AE0;&#x4E2D;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#xFF0C;&#x7B2C;9&#x7AE0;&#x5B9E;&#x73B0;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5230;&#x65F6;&#x5019;&#x6211;&#x4EEC;&#x201C;&#x53EF;&#x80FD;&#x4F1A;&#x201D;&#x88C1;&#x526A;go-delve/delve&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#x3001;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x6F14;&#x793A;&#x3002;&#x5355;&#x5355;go-delve/delve/pkg/dwarf&#x4EE3;&#x7801;&#x91CF;&#x5C31;&#x8D85;&#x8FC7;6500&#x884C;&#xFF0C;&#x6211;&#x4EEC;&#x672C;&#x5C31;&#x662F;&#x51FA;&#x4E8E;&#x5B66;&#x4E60;&#x4EA4;&#x6D41;&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x4E3A;&#x4E86;&#x8282;&#x7701;&#x672C;&#x4E66;&#x7BC7;&#x5E45;&#x3001;&#x4EE3;&#x7801;&#x91CF;&#xFF0C;&#x5C3D;&#x5FEB;&#x8BA9;&#x6B64;&#x4E66;&#x7B2C;1&#x4E2A;&#x5B8C;&#x6574;&#x7248;&#x8DDF;&#x8BFB;&#x8005;&#x89C1;&#x9762;&#xFF0C;&#x6211;&#x5F88;&#x53EF;&#x80FD;&#x4F1A;&#x8003;&#x8651;&#x88C1;&#x526A;delve&#x4EE3;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982;&#x4FDD;&#x7559;&#x5927;&#x5BB6;&#x90FD;&#x6BD4;&#x8F83;&#x5BB9;&#x6613;&#x83B7;&#x5F97;&#x7684;linux+amd64&#x73AF;&#x5883;&#x4E0B;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4F46;&#x662F;&#x4FDD;&#x7559;&#x5FC5;&#x8981;&#x7684;&#x62BD;&#x8C61;&#x5C42;&#x6B21;&#xFF0C;&#x8FD9;&#x6837;&#x5927;&#x5BB6;&#x8FD8;&#x80FD;&#x4E86;&#x89E3;&#x5230;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x53EF;&#x7528;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x9762;&#x4E34;&#x7684;&#x66F4;&#x591A;&#x6311;&#x6218;&#x3002;</p>
+<blockquote>
+<p>&#x6BD4;&#x5982;&#xFF0C;&#x5220;&#x51CF;&#x5176;&#x4E2D;&#x4E0E;Linux ELF&#x65E0;&#x5173;&#x7684;&#x4E00;&#x4E9B;&#x4EE3;&#x7801;&#xFF0C;&#x5982;&#x67D0;&#x4E9B;&#x4E0E;Windows PE&#x3001;Darwin macho&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x662F;&#x4F1A;&#x4FDD;&#x7559;&#x5BF9;&#x63A5;&#x4E0D;&#x540C;&#x5E73;&#x53F0;&#x3001;&#x4E0D;&#x540C;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7684;interface&#x62BD;&#x8C61;&#x3002;</p>
+</blockquote>
+<p>&#x8FD9;&#x6837;&#x4E00;&#x6765;&#x53EF;&#x8282;&#x7701;&#x7B14;&#x8005;&#x65F6;&#x95F4;&#xFF0C;&#x4FDD;&#x8BC1;&#x5168;&#x4E66;&#x6574;&#x4F53;&#x8FDB;&#x5EA6;&#xFF0C;&#x4E0D;&#x81F3;&#x4E8E;&#x5728;&#x8FC7;&#x591A;&#x7684;&#x7EC6;&#x8282;&#x4E0A;&#x803D;&#x6401;&#x592A;&#x4E45;&#xFF0C;&#x4E5F;&#x80FD;&#x4EE5;&#x66F4;&#x5FEB;&#x7684;&#x8FDB;&#x5EA6;&#x5B8C;&#x6210;&#x5168;&#x4E66;&#x5E76;&#x5F00;&#x59CB;&#x52D8;&#x8BEF;&#x3002;&#x6C89;&#x6DC0;&#x77E5;&#x8BC6;&#x4F7F;&#x6BCF;&#x4F4D;&#x8BFB;&#x8005;&#x5177;&#x5907;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x662F;&#x6211;&#x5199;&#x4F5C;&#x8FD9;&#x672C;&#x4E66;&#x59CB;&#x7EC8;&#x4E0D;&#x53D8;&#x7684;&#x521D;&#x8877;&#x3002;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x8FD9;&#x6837;&#x7684;&#x5FC5;&#x8981;&#x6027;&#x53BB;0&#x5F00;&#x59CB;&#x5199;&#x4E00;&#x4E2A;DWARF&#x8BFB;&#x5199;&#x5E93;&#xFF0C;&#x5E0C;&#x671B;&#x8BFB;&#x8005;&#x4EEC;&#x7406;&#x89E3;&#x8FD9;&#x4E48;&#x51B3;&#x7B56;&#x7684;&#x539F;&#x56E0;&#x3002;&#x66F4;&#x4F55;&#x51B5;&#x8FD9;&#x672C;&#x7535;&#x5B50;&#x4E66;&#xFF0C;&#x5DF2;&#x7ECF;&#x7ECF;&#x5386;&#x8FC7;&#x4E86;&#x592A;&#x957F;&#x7684;&#x65F6;&#x95F4;&#xFF0C;&#x5B83;&#x5FC5;&#x987B;&#x5C3D;&#x5FEB;&#x51FA;&#x7B2C;1&#x4E2A;&#x5B8C;&#x6574;&#x7248;&#x3002;&#x4E5F;&#x8BB8;&#x5728;&#x6211;&#x4EEC;&#x62E5;&#x6709;&#x66F4;&#x591A;&#x8D21;&#x732E;&#x8005;&#x4EE5;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x63D0;&#x4F9B;&#x4E00;&#x4E2A;&#x66F4;&#x9002;&#x5408;&#x6211;&#x4EEC;&#x8FD9;&#x4E2A;&#x6559;&#x7A0B;&#x7684;&#x6BD4; <code>go-delve/delve/pkg/dwarf</code> &#x66F4;&#x7CBE;&#x7B80;&#x7684;&#x3001;&#x6070;&#x5230;&#x597D;&#x5904;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 7.7 挺进DWARF">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2-compiler-gen-dwarfdata.html" class="navigation navigation-next " aria-label="Next page: 7.7.2 编译器生成DWARF数据">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"next":{"title":"7.7.2 编译器生成DWARF数据","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.md","articles":[]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 编译器生成DWARF数据","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.3 链接器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-linker-gen-dwarfdata.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","mtime":"2025-05-05T08:25:18.343Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-05T08:26:32.656Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

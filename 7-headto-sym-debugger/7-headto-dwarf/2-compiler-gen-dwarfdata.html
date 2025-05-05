@@ -1,0 +1,2241 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>7.7.2 编译器生成DWARF数据 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3-linker-gen-dwarfdata.html" />
+    
+    
+    <link rel="prev" href="1-gopkgs-about-dwarf.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+            
+                <a href="../../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../1-how-go-build-works.html">
+            
+                <a href="../1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../2-elf.html">
+            
+                <a href="../2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../3-syms.html">
+            
+                <a href="../3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../4-syms-resolve-reloc.html">
+            
+                <a href="../4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../5-loading.html">
+            
+                <a href="../5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../6-gopkg-debug/">
+            
+                <a href="../6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../6-gopkg-debug/1-elf.html">
+            
+                <a href="../6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../6-gopkg-debug/2-gosym.html">
+            
+                <a href="../6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="1-gopkgs-about-dwarf.html">
+            
+                <a href="1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.7.2" data-path="2-compiler-gen-dwarfdata.html">
+            
+                <a href="2-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.2 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="3-linker-gen-dwarfdata.html">
+            
+                <a href="3-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../8-dwarf/">
+            
+                <a href="../../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../8-dwarf/1-history.html">
+            
+                <a href="../../8-dwarf/1-history.html">
+            
+                    
+                    8.1 发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../8-dwarf/2-structure.html">
+            
+                <a href="../../8-dwarf/2-structure.html">
+            
+                    
+                    8.2 DWARF结构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../8-dwarf/3-die-readme.html">
+            
+                <a href="../../8-dwarf/3-die-readme.html">
+            
+                    
+                    8.3 调试信息条目：DIE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.3.1" data-path="../../8-dwarf/3-die-intro.html">
+            
+                <a href="../../8-dwarf/3-die-intro.html">
+            
+                    
+                    8.3.1 DIE介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.2" data-path="../../8-dwarf/3-die-desc-datatype.html">
+            
+                <a href="../../8-dwarf/3-die-desc-datatype.html">
+            
+                    
+                    8.3.2 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.3" data-path="../../8-dwarf/3-die-desc-code.html">
+            
+                <a href="../../8-dwarf/3-die-desc-code.html">
+            
+                    
+                    8.3.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3.4" data-path="../../8-dwarf/3-die-encoding.html">
+            
+                <a href="../../8-dwarf/3-die-encoding.html">
+            
+                    
+                    8.3.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../8-dwarf/4-other-readme.html">
+            
+                <a href="../../8-dwarf/4-other-readme.html">
+            
+                    
+                    8.4 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../8-dwarf/4-other-accelerated-access.html">
+            
+                <a href="../../8-dwarf/4-other-accelerated-access.html">
+            
+                    
+                    8.4.0 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../8-dwarf/4-other-lineno-table.html">
+            
+                <a href="../../8-dwarf/4-other-lineno-table.html">
+            
+                    
+                    8.4.1 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../8-dwarf/4-other-macro-info.html">
+            
+                <a href="../../8-dwarf/4-other-macro-info.html">
+            
+                    
+                    8.4.2 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../../8-dwarf/4-other-callframe-info.html">
+            
+                <a href="../../8-dwarf/4-other-callframe-info.html">
+            
+                    
+                    8.4.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.5" data-path="../../8-dwarf/4-other-varlen-data.html">
+            
+                <a href="../../8-dwarf/4-other-varlen-data.html">
+            
+                    
+                    8.4.4 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.6" data-path="../../8-dwarf/4-other-shrink-data.html">
+            
+                <a href="../../8-dwarf/4-other-shrink-data.html">
+            
+                    
+                    8.4.5 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.7" data-path="../../8-dwarf/4-other-elf-sections.html">
+            
+                <a href="../../8-dwarf/4-other-elf-sections.html">
+            
+                    
+                    8.4.6 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../8-dwarf/5-dwarf-summary.html">
+            
+                <a href="../../8-dwarf/5-dwarf-summary.html">
+            
+                    
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-parsing-dwarf.html">
+            
+                <a href="../../8-dwarf/6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-using-dwarf.html">
+            
+                <a href="../../8-dwarf/7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../../8-dwarf/8-summary.html">
+            
+                <a href="../../8-dwarf/8-summary.html">
+            
+                    
+                    8.8 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../9-develop-sym-debugger/">
+            
+                <a href="../../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../9-develop-sym-debugger/1-需求分析/">
+            
+                <a href="../../9-develop-sym-debugger/1-需求分析/">
+            
+                    
+                    9.1. 需求分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.2 概要设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                    
+                    9.2.1 整体架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                    
+                    9.2.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                    
+                    9.2.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                    
+                    9.2.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                    
+                    9.2.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.3 详细设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../9-develop-sym-debugger/4-编码实现/">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/">
+            
+                    
+                    9.4 编码实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                    
+                    9.4.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                    
+                    9.4.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="../../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                    
+                    9.4.3 进程启动并attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.4" data-path="../../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                    
+                    9.4.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.5" data-path="../../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                    
+                    9.4.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.6" data-path="../../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                    
+                    9.4.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.7" data-path="../../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                    
+                    9.4.7 查询断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.8" data-path="../../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                    
+                    9.4.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.9" data-path="../../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                    
+                    9.4.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.10" data-path="../../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                    
+                    9.4.10 步进执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.11" data-path="../../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                    
+                    9.4.11 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.12" data-path="../../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                    
+                    9.4.12 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.13" data-path="../../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                    
+                    9.4.13 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.14" data-path="../../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                    
+                    9.4.14 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.15" data-path="../../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                    
+                    9.4.15 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.16" data-path="../../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                    
+                    9.4.16 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.17" data-path="../../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                    
+                    9.4.17 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.18" data-path="../../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                    
+                    9.4.18 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.19" data-path="../../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                    
+                    9.4.19 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../80-go-tool-compile.md">
+            
+                <span>
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../81-go-tool-asm.md">
+            
+                <span>
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../82-go-tool-link.md">
+            
+                <span>
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../90-why-buildid-loaded.md">
+            
+                <span>
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../91-syntax-and-semantic-analysis.md">
+            
+                <span>
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../92-why-gdb-uses-symtab.md">
+            
+                <span>
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >7.7.2 编译器生成DWARF数据</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="go-tool-compile-dwarf&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;">go tool compile: DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;</h2>
+<h3 id="gcmain&#x2192;dwarfgenrecordflags">gc.Main()&#x2192;dwarfgen.RecordFlags()</h3>
+<p><strong>&#x8BB0;&#x5F55;&#x5F53;&#x524D;&#x6784;&#x5EFA;&#x4FE1;&#x606F;&#x5230;dwarf&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E2D;&#x53BB;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x5668;&#x8C03;&#x8BD5;&#x65F6;&#x67E5;&#x770B;tracee&#x7684;&#x6784;&#x5EFA;&#x7EC6;&#x8282;</strong></p>
+<pre><code class="lang-go">&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;&#x4E3B;&#x8981;&#x76EE;&#x7684;&#x662F;&#x5C06;&#x7F16;&#x8BD1;&#x5668;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x8BB0;&#x5F55;&#x5230; DWARF &#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E2D;&#x3002;DWARF &#x662F;&#x4E00;&#x79CD;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x683C;&#x5F0F;&#xFF0C;&#x7528;&#x4E8E;&#x5E2E;&#x52A9;&#x8C03;&#x8BD5;&#x5668;&#x7406;&#x89E3;&#x7A0B;&#x5E8F;&#x7684;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x3002;&#x5177;&#x4F53;&#x6765;&#x8BF4;&#xFF1A;
+<span class="hljs-number">1.</span> &#x51FD;&#x6570;&#x63A5;&#x6536;&#x4E00;&#x7CFB;&#x5217;&#x6807;&#x5FD7;&#x540D;&#x79F0;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF0C;&#x8FD9;&#x4E9B;&#x6807;&#x5FD7;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;
+<span class="hljs-number">2.</span> &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x6807;&#x5FD7;&#xFF0C;&#x51FD;&#x6570;&#x4F1A;&#xFF1A;
+    - &#x68C0;&#x67E5;&#x6807;&#x5FD7;&#x662F;&#x5426;&#x5B58;&#x5728;
+    - &#x68C0;&#x67E5;&#x6807;&#x5FD7;&#x503C;&#x662F;&#x5426;&#x4E0E;&#x9ED8;&#x8BA4;&#x503C;&#x4E0D;&#x540C;&#xFF08;&#x5982;&#x679C;&#x76F8;&#x540C;&#x5219;&#x8DF3;&#x8FC7;&#xFF09;
+    - &#x6839;&#x636E;&#x6807;&#x5FD7;&#x7C7B;&#x578B;&#xFF08;&#x5E03;&#x5C14;&#x578B;&#x3001;&#x8BA1;&#x6570;&#x578B;&#x6216;&#x666E;&#x901A;&#x578B;&#xFF09;&#x4EE5;&#x4E0D;&#x540C;&#x683C;&#x5F0F;&#x8BB0;&#x5F55;&#x5230;&#x7F13;&#x51B2;&#x533A;&#x4E2D;
+<span class="hljs-number">3.</span> &#x7279;&#x6B8A;&#x5904;&#x7406;&#xFF1A;
+    - &#x5BF9;&#x4E8E;&#x5E03;&#x5C14;&#x578B;&#x6807;&#x5FD7;&#xFF08;&#x5982; -race&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x503C;&#x4E3A; <span class="hljs-literal">true</span>&#xFF0C;&#x53EA;&#x8BB0;&#x5F55;&#x6807;&#x5FD7;&#x540D;
+    - &#x5BF9;&#x4E8E;&#x8BA1;&#x6570;&#x578B;&#x6807;&#x5FD7;&#xFF08;&#x5982; -v&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x503C;&#x4E3A; <span class="hljs-number">1</span>&#xFF0C;&#x53EA;&#x8BB0;&#x5F55;&#x6807;&#x5FD7;&#x540D;
+    - &#x5BF9;&#x4E8E;&#x5176;&#x4ED6;&#x6807;&#x5FD7;&#xFF0C;&#x8BB0;&#x5F55;&#x6807;&#x5FD7;&#x540D;&#x548C;&#x503C;&#xFF08;&#x5982; -gcflags=<span class="hljs-string">&quot;-N -l&quot;</span>&#xFF09;
+<span class="hljs-number">4.</span> &#x6700;&#x540E;&#xFF0C;&#x8FD9;&#x4E9B;&#x53C2;&#x6570;&#x4F1A;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;&#x7B26;&#x53F7;&#x4E2D;&#xFF1A;
+    - &#x7B26;&#x53F7;&#x540D;&#x683C;&#x5F0F;&#x4E3A; dwarf.CUInfoPrefix + <span class="hljs-string">&quot;producer.&quot;</span> + base.Ctxt.Pkgpath
+    - &#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x8BBE;&#x7F6E;&#x4E3A; objabi.SDWARFCUINFO&#xFF08;&#x8868;&#x793A;&#x8FD9;&#x662F;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x4FE1;&#x606F;&#xFF09;
+    - &#x5141;&#x8BB8;&#x91CD;&#x590D;&#xFF08;&#x56E0;&#x4E3A;&#x6D4B;&#x8BD5;&#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x94FE;&#x63A5;&#x591A;&#x4E2A; main &#x5305;&#xFF09;
+    - &#x5C06;&#x53C2;&#x6570;&#x4FE1;&#x606F;&#x5B58;&#x50A8;&#x5728;&#x7B26;&#x53F7;&#x7684;&#x6570;&#x636E;&#x4E2D;
+&#x8FD9;&#x6837;&#x505A;&#x7684;&#x76EE;&#x7684;&#x662F;&#x8BA9;&#x8C03;&#x8BD5;&#x5668;&#x80FD;&#x591F;&#x77E5;&#x9053;&#x7A0B;&#x5E8F;&#x662F;&#x5982;&#x4F55;&#x88AB;&#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x8FD9;&#x5BF9;&#x4E8E;&#x8C03;&#x8BD5;&#x548C;&#x95EE;&#x9898;&#x8BCA;&#x65AD;&#x5F88;&#x6709;&#x5E2E;&#x52A9;&#x3002;&#x6BD4;&#x5982;&#xFF0C;&#x5982;&#x679C;&#x7A0B;&#x5E8F;&#x662F;&#x7528; -race &#x7F16;&#x8BD1;&#x7684;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5C31;&#x80FD;&#x77E5;&#x9053;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7ADE;&#x6001;&#x68C0;&#x6D4B;&#x7248;&#x672C;&#x7684;&#x7A0B;&#x5E8F;&#x3002;
+&#x8FD9;&#x4E2A;&#x4FE1;&#x606F;&#x4F1A;&#x88AB;&#x5199;&#x5165;&#x5230;&#x6700;&#x7EC8;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x4F5C;&#x4E3A; DWARF &#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;&#x5F53;&#x4F7F;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#xFF08;&#x5982; GDB&#xFF09;&#x65F6;&#xFF0C;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x53EF;&#x4EE5;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x66F4;&#x597D;&#x5730;&#x7406;&#x89E3;&#x7A0B;&#x5E8F;&#x7684;&#x7F16;&#x8BD1;&#x73AF;&#x5883;&#x548C;&#x914D;&#x7F6E;&#x3002;
+</code></pre>
+<h3 id="gcmain&#x2192;dwarf-flags&#x8BBE;&#x7F6E;">gc.Main()&#x2192;dwarf flags&#x8BBE;&#x7F6E;</h3>
+<p><strong>&#x6839;&#x636E;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x5BF9;&#x5E94;&#x7684;dwarf&#x8BBE;&#x7F6E;</strong></p>
+<pre><code class="lang-go"><span class="hljs-keyword">if</span> base.Flag.Dwarf {
+    base.Ctxt.DebugInfo = dwarfgen.Info
+    base.Ctxt.GenAbstractFunc = dwarfgen.AbstractFunc
+    base.Ctxt.DwFixups = obj.NewDwarfFixupTable(base.Ctxt)
+} <span class="hljs-keyword">else</span> {
+    <span class="hljs-comment">// turn off inline generation if no dwarf at all</span>
+    base.Flag.GenDwarfInl = <span class="hljs-number">0</span>
+    base.Ctxt.Flag_locationlists = <span class="hljs-literal">false</span>
+}
+<span class="hljs-keyword">if</span> base.Ctxt.Flag_locationlists &amp;&amp; <span class="hljs-built_in">len</span>(base.Ctxt.Arch.DWARFRegisters) == <span class="hljs-number">0</span> {
+    log.Fatalf(<span class="hljs-string">&quot;location lists requested but register mapping not available on %v&quot;</span>, base.Ctxt.Arch.Name)
+}
+<span class="hljs-keyword">if</span> base.Flag.Dwarf {
+    dwarf.EnableLogging(base.Debug.DwarfInl != <span class="hljs-number">0</span>)
+}
+</code></pre>
+<h3 id="gcmain&#x2192;dwarfgenrecordpackagename">gc.Main()&#x2192;dwarfgen.RecordPackageName()</h3>
+<p><strong>&#x8BB0;&#x5F55;&#x4E0B;&#x5F53;&#x524D;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7684;PackageName&#xFF0C;&#x8BB0;&#x5F55;&#x5728;&#x54EA;&#x5462;&#xFF1F;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x8868;&#x7B26;&#x53F7;&#xFF0C;&#x7C7B;&#x578B;&#x4E3A;SDWARFCUINFO</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// RecordPackageName records the name of the package being</span>
+<span class="hljs-comment">// compiled, so that the linker can save it in the compile unit&apos;s DIE.</span>
+<span class="hljs-keyword">func</span> RecordPackageName() {
+    s := base.Ctxt.Lookup(dwarf.CUInfoPrefix + <span class="hljs-string">&quot;packagename.&quot;</span> + base.Ctxt.Pkgpath)
+    s.Type = objabi.SDWARFCUINFO
+    <span class="hljs-comment">// Sometimes (for example when building tests) we can link</span>
+    <span class="hljs-comment">// together two package main archives. So allow dups.</span>
+    s.Set(obj.AttrDuplicateOK, <span class="hljs-literal">true</span>)
+    base.Ctxt.Data = <span class="hljs-built_in">append</span>(base.Ctxt.Data, s)
+    s.P = []<span class="hljs-keyword">byte</span>(types.LocalPkg.Name)
+}
+</code></pre>
+<h3 id="gcmain&#x2192;dumpglobalndumpglobalconstn">gc.Main()&#x2192;dumpGlobal(n)/dumpGlobalConst(n)</h3>
+<p><strong>&#x5C06;&#x5F53;&#x524D;localpackage&#x4E2D;&#x7684;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x751F;&#x6210;&#x5230;dwarf&#x8C03;&#x8BD5;&#x4FE1;&#x606F;</strong></p>
+<pre><code class="lang-go"><span class="hljs-keyword">for</span> nextFunc, nextExtern := <span class="hljs-number">0</span>, <span class="hljs-number">0</span>; ; {
+        ...
+        <span class="hljs-keyword">if</span> nextExtern &lt; <span class="hljs-built_in">len</span>(typecheck.Target.Externs) {
+            <span class="hljs-keyword">switch</span> n := typecheck.Target.Externs[nextExtern]; n.Op() {
+            <span class="hljs-keyword">case</span> ir.ONAME:
+                dumpGlobal(n)
+            <span class="hljs-keyword">case</span> ir.OLITERAL:
+                dumpGlobalConst(n)
+            ...
+            }
+            nextExtern++
+            <span class="hljs-keyword">continue</span>
+        }
+        ...
+}
+
+<span class="hljs-keyword">func</span> dumpGlobal(n *ir.Name) {
+    ...
+    <span class="hljs-keyword">if</span> n.Class == ir.PFUNC { <span class="hljs-keyword">return</span>    }
+    <span class="hljs-keyword">if</span> n.Sym().Pkg != types.LocalPkg { <span class="hljs-keyword">return</span> }
+    ...
+    base.Ctxt.DwarfGlobal(types.TypeSymName(n.Type()), n.Linksym())
+}
+
+<span class="hljs-comment">// DwarfGlobal creates a link symbol containing a DWARF entry for</span>
+<span class="hljs-comment">// a global variable.</span>
+<span class="hljs-keyword">func</span> (ctxt *Link) DwarfGlobal(typename <span class="hljs-keyword">string</span>, varSym *LSym) {
+    myimportpath := ctxt.Pkgpath
+    <span class="hljs-keyword">if</span> myimportpath == <span class="hljs-string">&quot;&quot;</span> || varSym.Local() {
+        <span class="hljs-keyword">return</span>
+    }
+    varname := varSym.Name
+    dieSym := &amp;LSym{
+        Type: objabi.SDWARFVAR,
+    }
+    varSym.NewVarInfo().dwarfInfoSym = dieSym
+    ctxt.Data = <span class="hljs-built_in">append</span>(ctxt.Data, dieSym)
+    typeSym := ctxt.Lookup(dwarf.InfoPrefix + typename)
+    dwarf.PutGlobal(dwCtxt{ctxt}, dieSym, typeSym, varSym, varname)
+}
+
+<span class="hljs-comment">// PutGlobal writes a DIE for a global variable.</span>
+<span class="hljs-keyword">func</span> PutGlobal(ctxt Context, info, typ, gvar Sym, name <span class="hljs-keyword">string</span>) {
+    Uleb128put(ctxt, info, DW_ABRV_VARIABLE)
+    putattr(ctxt, info, DW_ABRV_VARIABLE, DW_FORM_string, DW_CLS_STRING, <span class="hljs-keyword">int64</span>(<span class="hljs-built_in">len</span>(name)), name)
+    putattr(ctxt, info, DW_ABRV_VARIABLE, DW_FORM_block1, DW_CLS_ADDRESS, <span class="hljs-number">0</span>, gvar)
+    putattr(ctxt, info, DW_ABRV_VARIABLE, DW_FORM_ref_addr, DW_CLS_REFERENCE, <span class="hljs-number">0</span>, typ)
+    putattr(ctxt, info, DW_ABRV_VARIABLE, DW_FORM_flag, DW_CLS_FLAG, <span class="hljs-number">1</span>, <span class="hljs-literal">nil</span>)
+}
+
+<span class="hljs-keyword">func</span> dumpGlobalConst(n *ir.Name) {
+    ...
+    base.Ctxt.DwarfIntConst(n.Sym().Name, types.TypeSymName(t), ir.IntVal(t, v))
+}
+
+<span class="hljs-comment">// DwarfIntConst creates a link symbol for an integer constant with the</span>
+<span class="hljs-comment">// given name, type and value.</span>
+<span class="hljs-keyword">func</span> (ctxt *Link) DwarfIntConst(name, typename <span class="hljs-keyword">string</span>, val <span class="hljs-keyword">int64</span>) {
+    myimportpath := ctxt.Pkgpath
+    <span class="hljs-keyword">if</span> myimportpath == <span class="hljs-string">&quot;&quot;</span> {
+        <span class="hljs-keyword">return</span>
+    }
+    s := ctxt.LookupInit(dwarf.ConstInfoPrefix+myimportpath, <span class="hljs-keyword">func</span>(s *LSym) {
+        s.Type = objabi.SDWARFCONST
+        ctxt.Data = <span class="hljs-built_in">append</span>(ctxt.Data, s)
+    })
+    dwarf.PutIntConst(dwCtxt{ctxt}, s, ctxt.Lookup(dwarf.InfoPrefix+typename), myimportpath+<span class="hljs-string">&quot;.&quot;</span>+name, val)
+}
+
+<span class="hljs-comment">// PutIntConst writes a DIE for an integer constant</span>
+<span class="hljs-keyword">func</span> PutIntConst(ctxt Context, info, typ Sym, name <span class="hljs-keyword">string</span>, val <span class="hljs-keyword">int64</span>) {
+    Uleb128put(ctxt, info, DW_ABRV_INT_CONSTANT)
+    putattr(ctxt, info, DW_ABRV_INT_CONSTANT, DW_FORM_string, DW_CLS_STRING, <span class="hljs-keyword">int64</span>(<span class="hljs-built_in">len</span>(name)), name)
+    putattr(ctxt, info, DW_ABRV_INT_CONSTANT, DW_FORM_ref_addr, DW_CLS_REFERENCE, <span class="hljs-number">0</span>, typ)
+    putattr(ctxt, info, DW_ABRV_INT_CONSTANT, DW_FORM_sdata, DW_CLS_CONSTANT, val, <span class="hljs-literal">nil</span>)
+}
+</code></pre>
+<h3 id="gcmain&#x2192;enqueuefuncfcompilequeue">gc.Main()&#x2192;enqueueFunc(f)+compilequeue</h3>
+<pre><code class="lang-bash">gc.Main()
+   \-&gt; enqueueFunc 
+         \-&gt; compileFunctions 
+               \-&gt; compile 
+                     \-&gt; (*Progs).FLush
+                             \-&gt; (*Progs).Flushplist
+                                   \-&gt; (*Link).populateDWARF
+</code></pre>
+<p>OK&#xFF0C;&#x8BE6;&#x7EC6;&#x5C55;&#x5F00;&#x770B;&#x770B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> gc.Main(...) {
+    ...
+    <span class="hljs-keyword">for</span> nextFunc, nextExtern := <span class="hljs-number">0</span>, <span class="hljs-number">0</span>; ; {
+        <span class="hljs-keyword">if</span> nextFunc &lt; <span class="hljs-built_in">len</span>(typecheck.Target.Funcs) {
+            enqueueFunc(typecheck.Target.Funcs[nextFunc])
+            nextFunc++
+            <span class="hljs-keyword">continue</span>
+        }
+
+        <span class="hljs-comment">// The SSA backend supports using multiple goroutines, so keep it</span>
+        <span class="hljs-comment">// as late as possible to maximize how much work we can batch and</span>
+        <span class="hljs-comment">// process concurrently.</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(compilequeue) != <span class="hljs-number">0</span> {
+            compileFunctions(profile)
+            <span class="hljs-keyword">continue</span>
+        }
+        ...
+
+        <span class="hljs-comment">// Finalize DWARF inline routine DIEs, then explicitly turn off</span>
+        <span class="hljs-comment">// further DWARF inlining generation to avoid problems with</span>
+        <span class="hljs-comment">// generated method wrappers.</span>
+        <span class="hljs-comment">//</span>
+        <span class="hljs-comment">// Note: The DWARF fixup code for inlined calls currently doesn&apos;t</span>
+        <span class="hljs-comment">// allow multiple invocations, so we intentionally run it just</span>
+        <span class="hljs-comment">// once after everything else. Worst case, some generated</span>
+        <span class="hljs-comment">// functions have slightly larger DWARF DIEs.</span>
+        <span class="hljs-keyword">if</span> base.Ctxt.DwFixups != <span class="hljs-literal">nil</span> {
+            base.Ctxt.DwFixups.Finalize(base.Ctxt.Pkgpath, base.Debug.DwarfInl != <span class="hljs-number">0</span>)
+            base.Ctxt.DwFixups = <span class="hljs-literal">nil</span>
+            base.Flag.GenDwarfInl = <span class="hljs-number">0</span>
+            <span class="hljs-keyword">continue</span> <span class="hljs-comment">// may have called reflectdata.TypeLinksym (#62156)</span>
+        }
+        ...
+    }
+}
+
+<span class="hljs-comment">// &#x9012;&#x5F52;&#x5730;&#x5206;&#x6790;fn&#x4E2D;&#x7684;body&#xFF0C;&#x5982;&#x679C;&#x5185;&#x90E8;&#x8FD8;&#x6709;&#x65B0;&#x521B;&#x5EFA;&#x7684;fn&#x5C06;&#x7EE7;&#x7EED;&#x5047;&#x5982;compilequeue</span>
+<span class="hljs-keyword">func</span> enqueueFunc(fn *ir.Func) {
+    todo := []*ir.Func{fn}
+    <span class="hljs-keyword">for</span> <span class="hljs-built_in">len</span>(todo) &gt; <span class="hljs-number">0</span> {
+        next := todo[<span class="hljs-built_in">len</span>(todo)<span class="hljs-number">-1</span>]
+        todo = todo[:<span class="hljs-built_in">len</span>(todo)<span class="hljs-number">-1</span>]
+
+        prepareFunc(next)
+        todo = <span class="hljs-built_in">append</span>(todo, next.Closures...)
+    }
+    ...
+
+    <span class="hljs-comment">// Enqueue just fn itself. compileFunctions will handle</span>
+    <span class="hljs-comment">// scheduling compilation of its closures after it&apos;s done.</span>
+    compilequeue = <span class="hljs-built_in">append</span>(compilequeue, fn)
+}
+
+<span class="hljs-comment">// compileFunctions compiles all functions in compilequeue.</span>
+<span class="hljs-comment">// It fans out nBackendWorkers to do the work</span>
+<span class="hljs-comment">// and waits for them to complete.</span>
+<span class="hljs-keyword">func</span> compileFunctions(profile *pgoir.Profile) {
+    ...
+    <span class="hljs-keyword">var</span> compile <span class="hljs-keyword">func</span>([]*ir.Func)
+    compile = <span class="hljs-keyword">func</span>(fns []*ir.Func) {
+        <span class="hljs-keyword">for</span> _, fn := <span class="hljs-keyword">range</span> fns {
+            fn := fn
+            queue(<span class="hljs-keyword">func</span>(worker <span class="hljs-keyword">int</span>) {
+                ssagen.Compile(fn, worker, profile)
+                compile(fn.Closures)
+            })
+        }
+    }
+    ...
+    compile(compilequeue)
+}
+
+<span class="hljs-comment">// Compile builds an SSA backend function,</span>
+<span class="hljs-comment">// uses it to generate a plist,</span>
+<span class="hljs-comment">// and flushes that plist to machine code.</span>
+<span class="hljs-comment">// worker indicates which of the backend workers is doing the processing.</span>
+<span class="hljs-keyword">func</span> Compile(fn *ir.Func, worker <span class="hljs-keyword">int</span>, profile *pgoir.Profile) {
+    f := buildssa(fn, worker, inline.IsPgoHotFunc(fn, profile) || inline.HasPgoHotInline(fn))
+    ...
+    pp := objw.NewProgs(fn, worker)
+    <span class="hljs-keyword">defer</span> pp.Free()
+    genssa(f, pp)
+    ...
+    pp.Flush() <span class="hljs-comment">// assemble, fill in boilerplate, etc.</span>
+    ...
+}
+
+<span class="hljs-comment">// Flush converts from pp to machine code.</span>
+<span class="hljs-keyword">func</span> (pp *Progs) Flush() {
+    plist := &amp;obj.Plist{Firstpc: pp.Text, Curfn: pp.CurFunc}
+    obj.Flushplist(base.Ctxt, plist, pp.NewProg)
+}
+
+<span class="hljs-keyword">func</span> Flushplist(ctxt *Link, plist *Plist, newprog ProgAlloc) {
+    ...
+    ctxt.populateDWARF(plist.Curfn, s)
+    ...
+}
+
+<span class="hljs-comment">// populateDWARF fills in the DWARF Debugging Information Entries for</span>
+<span class="hljs-comment">// TEXT symbol &apos;s&apos;. The various DWARF symbols must already have been</span>
+<span class="hljs-comment">// initialized in InitTextSym.</span>
+<span class="hljs-keyword">func</span> (ctxt *Link) populateDWARF(curfn Func, s *LSym) {
+    <span class="hljs-comment">// see more details below</span>
+    ...
+}
+</code></pre>
+<h3 id="linkpopulatedwarffunc-lsym">(<em>Link).populateDWARF(Func, </em>LSym)</h3>
+<pre><code class="lang-go"><span class="hljs-comment">// populateDWARF fills in the DWARF Debugging Information Entries for</span>
+<span class="hljs-comment">// TEXT symbol &apos;s&apos;. The various DWARF symbols must already have been</span>
+<span class="hljs-comment">// initialized in InitTextSym.</span>
+<span class="hljs-keyword">func</span> (ctxt *Link) populateDWARF(curfn Func, s *LSym) {
+    ...
+    info, loc, ranges, absfunc, lines := ctxt.dwarfSym(s)
+    ...
+    <span class="hljs-keyword">var</span> scopes []dwarf.Scope
+    <span class="hljs-keyword">var</span> inlcalls dwarf.InlCalls
+    <span class="hljs-keyword">if</span> ctxt.DebugInfo != <span class="hljs-literal">nil</span> {
+        scopes, inlcalls = ctxt.DebugInfo(s, info, curfn)
+    }
+    <span class="hljs-keyword">var</span> err error
+    dwctxt := dwCtxt{ctxt}
+    startPos := ctxt.InnermostPos(textPos(s))
+    ...
+    fnstate := &amp;dwarf.FnState{
+        Name:          s.Name,
+        Info:          info,
+        Loc:           loc,
+        Ranges:        ranges,
+        Absfn:         absfunc,
+        StartPC:       s,
+        Size:          s.Size,
+        StartPos:      startPos,
+        External:      !s.Static(),
+        Scopes:        scopes,
+        InlCalls:      inlcalls,
+        UseBASEntries: ctxt.UseBASEntries,
+    }
+    <span class="hljs-keyword">if</span> absfunc != <span class="hljs-literal">nil</span> {
+        err = dwarf.PutAbstractFunc(dwctxt, fnstate)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            ctxt.Diag(<span class="hljs-string">&quot;emitting DWARF for %s failed: %v&quot;</span>, s.Name, err)
+        }
+        err = dwarf.PutConcreteFunc(dwctxt, fnstate, s.Wrapper())
+    } <span class="hljs-keyword">else</span> {
+        err = dwarf.PutDefaultFunc(dwctxt, fnstate, s.Wrapper())
+    }
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        ctxt.Diag(<span class="hljs-string">&quot;emitting DWARF for %s failed: %v&quot;</span>, s.Name, err)
+    }
+    <span class="hljs-comment">// Fill in the debug lines symbol.</span>
+    ctxt.generateDebugLinesSymbol(s, lines)
+}
+
+<span class="hljs-keyword">func</span> PutAbstractFunc(ctxt Context, s *FnState) error {...}
+<span class="hljs-keyword">func</span> putAbstractVar(...)
+<span class="hljs-keyword">func</span> putAbstractVarAbbrev(...)
+<span class="hljs-keyword">func</span> putattr(...)
+...
+<span class="hljs-comment">// &#x5C06;&#x51FD;&#x6570;&#x58F0;&#x660E;&#x8BB0;&#x5F55;&#x5230;dwarf&#x4FE1;&#x606F;&#x4E2D;</span>
+<span class="hljs-keyword">func</span> PutConcreteFunc(ctxt Context, s *FnState, isWrapper <span class="hljs-keyword">bool</span>) error {...}
+<span class="hljs-keyword">func</span> putattr(...)
+<span class="hljs-keyword">func</span> concreteVar(...)
+<span class="hljs-keyword">func</span> inlinedVarTable(...)
+<span class="hljs-keyword">func</span> putparamtypes(...)
+...
+<span class="hljs-comment">// &#x8FD9;&#x4E9B;&#x51FD;&#x6570;&#x662F;&#x5C06;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#x4E0D;&#x540C;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x53D8;&#x91CF;&#x7ED9;&#x8BB0;&#x5F55;&#x5230;dwarf&#x4FE1;&#x606F;&#x4E2D;</span>
+<span class="hljs-keyword">func</span> putPrunedScopes(...)
+<span class="hljs-keyword">func</span> putscope(...)
+<span class="hljs-keyword">func</span> putparamtypes(...)
+...
+<span class="hljs-keyword">func</span> putInlinedFunc(...)
+...
+<span class="hljs-keyword">func</span> Uleb128put(...)
+...
+<span class="hljs-comment">// &#x5C06;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#x7684;&#x8BED;&#x53E5;&#x7684;pc&#x503C;&#x53D8;&#x5316;&#x3001;&#x884C;&#x53F7;&#x503C;&#x53D8;&#x5316;&#x8BB0;&#x5F55;&#x5230;dwarf&#x884C;&#x53F7;&#x4FE1;&#x606F;&#x8868;&#x4E2D;</span>
+<span class="hljs-keyword">func</span> generateDebugLinesSymbol(...)
+<span class="hljs-keyword">func</span> putpclcdelta(...) <span class="hljs-comment">// pc&lt; delta &lt;-&gt; ln delta</span>
+</code></pre>
+<h3 id="gcmain&#x2192;-foreach-func-&#x2192;-dwarffixuptablefinalize">gc.Main()&#x2192; foreach func &#x2192; (*DwarfFixupTable).Finalize()</h3>
+<p><strong>&#x8C8C;&#x4F3C;&#x662F;&#x6709;&#x5F15;&#x7528;&#x67D0;&#x4E9B;&#x5185;&#x8054;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#xFF0C;&#x6B64;&#x65F6;&#x53EF;&#x80FD;&#x9700;&#x8981;&#x8FD9;&#x91CC;&#x5904;&#x7406;&#x4E0B;</strong></p>
+<pre><code class="lang-go"><span class="hljs-comment">// Called after all functions have been compiled; the main job of this</span>
+<span class="hljs-comment">// function is to identify cases where there are outstanding fixups.</span>
+<span class="hljs-comment">// This scenario crops up when we have references to variables of an</span>
+<span class="hljs-comment">// inlined routine, but that routine is defined in some other package.</span>
+<span class="hljs-comment">// This helper walks through and locate these fixups, then invokes a</span>
+<span class="hljs-comment">// helper to create an abstract subprogram DIE for each one.</span>
+<span class="hljs-keyword">func</span> (ft *DwarfFixupTable) Finalize(myimportpath <span class="hljs-keyword">string</span>, trace <span class="hljs-keyword">bool</span>) {
+    ...
+    <span class="hljs-comment">// Collect up the keys from the precursor map, then sort the</span>
+    <span class="hljs-comment">// resulting list (don&apos;t want to rely on map ordering here).</span>
+    fns := <span class="hljs-built_in">make</span>([]*LSym, <span class="hljs-built_in">len</span>(ft.precursor))
+    idx := <span class="hljs-number">0</span>
+    <span class="hljs-keyword">for</span> fn := <span class="hljs-keyword">range</span> ft.precursor {
+        fns[idx] = fn
+        idx++
+    }
+    sort.Sort(BySymName(fns))
+    ...
+
+    <span class="hljs-comment">// Generate any missing abstract functions.</span>
+    <span class="hljs-keyword">for</span> _, s := <span class="hljs-keyword">range</span> fns {
+        absfn := ft.AbsFuncDwarfSym(s)
+        slot, found := ft.symtab[absfn]
+        <span class="hljs-keyword">if</span> !found || !ft.svec[slot].defseen {
+            ft.ctxt.GenAbstractFunc(s)
+        }
+    }
+
+    <span class="hljs-comment">// Apply fixups.</span>
+    <span class="hljs-keyword">for</span> _, s := <span class="hljs-keyword">range</span> fns {
+        absfn := ft.AbsFuncDwarfSym(s)
+        slot, found := ft.symtab[absfn]
+        <span class="hljs-keyword">if</span> !found {
+            ft.ctxt.Diag(<span class="hljs-string">&quot;internal error: DwarfFixupTable.Finalize orphan abstract function for %v&quot;</span>, s)
+        } <span class="hljs-keyword">else</span> {
+            ft.processFixups(slot, s)
+        }
+    }
+}
+</code></pre>
+<h3 id="dwarf&#x6570;&#x636E;&#x6700;&#x7EC8;&#x8BB0;&#x5F55;&#x5728;&#x54EA;&#x91CC;&#x4E86;&#xFF1F;">DWARF&#x6570;&#x636E;&#x6700;&#x7EC8;&#x8BB0;&#x5F55;&#x5728;&#x54EA;&#x91CC;&#x4E86;&#xFF1F;</h3>
+<p>OK, &#x5148;&#x8BF4;&#x7ED3;&#x8BBA;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x8FD9;&#x4E9B;&#x5F85;&#x751F;&#x6210;&#x7684;&#x67D0;&#x4E2A;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#xFF08;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x3001;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#x3001;&#x5E38;&#x91CF;&#x5B9A;&#x4E49;&#x3001;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x7B49;&#xFF09;&#x90FD;&#x7528;&#x4E00;&#x4E2A;link.LSym&#x6765;&#x8868;&#x793A;&#xFF0C;&#x5C06;&#x5176;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x8BBE;&#x7F6E;&#x4E3A;link.LSym.Type=SDWARFXXX&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x4E14;&#x6839;&#x636E;&#x8BED;&#x8A00;&#x8BBE;&#x8BA1;&#x4EE5;&#x53CA;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#xFF0C;&#x6839;&#x636E;&#x591A;&#x65B9;&#x7EA6;&#x5B9A;&#x597D;&#x7684;&#x751F;&#x6210;&#x65B9;&#x5F0F;&#xFF08;&#x6BD4;&#x5982;&#x4E0E;&#x94FE;&#x63A5;&#x5668;&#x3001;&#x8C03;&#x8BD5;&#x5668;&#x7EF4;&#x62A4;&#x8005;&#x6C9F;&#x901A;&#x597D;&#xFF09;&#xFF0C;&#x5C06;&#x8BE5;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x5BF9;&#x5E94;&#x7684;DWARF&#x7F16;&#x7801;&#x6570;&#x636E;&#x5199;&#x5165;&#x5230;link.LSym.P&#x4E2D;&#x3002;</p>
+<p>file: cmd/internal/obj/link.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// An LSym is the sort of symbol that is written to an object file.</span>
+<span class="hljs-comment">// It represents Go symbols in a flat pkg+&quot;.&quot;+name namespace.</span>
+<span class="hljs-keyword">type</span> LSym <span class="hljs-keyword">struct</span> {
+    Name <span class="hljs-keyword">string</span>
+    Type objabi.SymKind <span class="hljs-comment">// &lt;= &#x8FD9;&#x91CC;&#x7684;&#x7C7B;&#x578B;&#x4E3A;DWARF&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#xFF0C;</span>
+                        <span class="hljs-comment">//    1) &#x5C06;&#x6765;&#x94FE;&#x63A5;&#x5668;&#x4F1A;&#x5C06;&#x5176;&#x7EDF;&#x4E00;&#x751F;&#x6210;&#x5230;.debug_ &#x76F8;&#x5173;&#x7684;sections</span>
+                        <span class="hljs-comment">//    2) &#x90A3;&#x662F;&#x4E0D;&#x662F;&#x6240;&#x6709;DWARF&#x4FE1;&#x606F;&#x90FD;&#x662F;&#x901A;&#x8FC7;LSym&#x8BB0;&#x5F55;&#x7684;&#x5462;&#xFF1F;</span>
+                        <span class="hljs-comment">//       &#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x8BF4;&#xFF01;&#x94FE;&#x63A5;&#x5668;&#x8D1F;&#x8D23;&#x6574;&#x5408;&#x3001;&#x518D;&#x52A0;&#x5DE5;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x751F;&#x6210;&#x5230;.debug_ sections,</span>
+                        <span class="hljs-comment">//       &#x6BD4;&#x5982;&#x5178;&#x578B;&#x7684;.debug_frames&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x8BB0;&#x5F55;&#x51FD;&#x6570;&#x76F8;&#x5173;&#x7684;LSym&#xFF0C;</span>
+                        <span class="hljs-comment">//       </span>
+    Attribute
+
+    Size   <span class="hljs-keyword">int64</span>
+    Gotype *LSym
+    P      []<span class="hljs-keyword">byte</span>       <span class="hljs-comment">// &lt;= DWARF&#x7F16;&#x7801;&#x6570;&#x636E;&#x4F1A;&#x8BB0;&#x5F55;&#x5728;&#x8FD9;&#x91CC;</span>
+    R      []Reloc
+
+    Extra *<span class="hljs-keyword">interface</span>{} <span class="hljs-comment">// *FuncInfo, *VarInfo, *FileInfo, or *TypeInfo, if present</span>
+
+    Pkg    <span class="hljs-keyword">string</span>
+    PkgIdx <span class="hljs-keyword">int32</span>
+    SymIdx <span class="hljs-keyword">int32</span>
+}
+</code></pre>
+<p>file: cmd/internal/dwarf/dwarf.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (ctxt *Link) DwarfAbstractFunc(curfn Func, s *LSym) {
+    ...
+    <span class="hljs-keyword">if</span> err := dwarf.PutAbstractFunc(dwctxt, &amp;fnstate); err != <span class="hljs-literal">nil</span> {
+        ctxt.Diag(<span class="hljs-string">&quot;emitting DWARF for %s failed: %v&quot;</span>, s.Name, err)
+    }
+}
+
+<span class="hljs-comment">// Emit DWARF attributes and child DIEs for an &apos;abstract&apos; subprogram.</span>
+<span class="hljs-comment">// The abstract subprogram DIE for a function contains its</span>
+<span class="hljs-comment">// location-independent attributes (name, type, etc). Other instances</span>
+<span class="hljs-comment">// of the function (any inlined copy of it, or the single out-of-line</span>
+<span class="hljs-comment">// &apos;concrete&apos; instance) will contain a pointer back to this abstract</span>
+<span class="hljs-comment">// DIE (as a space-saving measure, so that name/type etc doesn&apos;t have</span>
+<span class="hljs-comment">// to be repeated for each inlined copy).</span>
+<span class="hljs-keyword">func</span> PutAbstractFunc(ctxt Context, s *FnState) error {
+    <span class="hljs-keyword">if</span> logDwarf {
+        ctxt.Logf(<span class="hljs-string">&quot;PutAbstractFunc(%v)\n&quot;</span>, s.Absfn)
+    }
+
+    abbrev := DW_ABRV_FUNCTION_ABSTRACT
+    Uleb128put(ctxt, s.Absfn, <span class="hljs-keyword">int64</span>(abbrev))
+    ...
+}
+
+<span class="hljs-comment">// Uleb128put appends v to s using DWARF&apos;s unsigned LEB128 encoding.</span>
+<span class="hljs-keyword">func</span> Uleb128put(ctxt Context, s Sym, v <span class="hljs-keyword">int64</span>) {
+    b := sevenBitU(v)
+    <span class="hljs-keyword">if</span> b == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">var</span> encbuf [<span class="hljs-number">20</span>]<span class="hljs-keyword">byte</span>
+        b = AppendUleb128(encbuf[:<span class="hljs-number">0</span>], <span class="hljs-keyword">uint64</span>(v))
+    }
+    ctxt.AddBytes(s, b)
+}
+</code></pre>
+<p>file: cmd/internal/obj/dwarf.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// A Context specifies how to add data to a Sym.</span>
+<span class="hljs-keyword">type</span> Context <span class="hljs-keyword">interface</span> {
+    PtrSize() <span class="hljs-keyword">int</span>
+    Size(s Sym) <span class="hljs-keyword">int64</span>
+    AddInt(s Sym, size <span class="hljs-keyword">int</span>, i <span class="hljs-keyword">int64</span>)
+    AddBytes(s Sym, b []<span class="hljs-keyword">byte</span>)
+    AddAddress(s Sym, t <span class="hljs-keyword">interface</span>{}, ofs <span class="hljs-keyword">int64</span>)
+    AddCURelativeAddress(s Sym, t <span class="hljs-keyword">interface</span>{}, ofs <span class="hljs-keyword">int64</span>)
+    AddSectionOffset(s Sym, size <span class="hljs-keyword">int</span>, t <span class="hljs-keyword">interface</span>{}, ofs <span class="hljs-keyword">int64</span>)
+    AddDWARFAddrSectionOffset(s Sym, t <span class="hljs-keyword">interface</span>{}, ofs <span class="hljs-keyword">int64</span>)
+    CurrentOffset(s Sym) <span class="hljs-keyword">int64</span>
+    RecordDclReference(from Sym, to Sym, dclIdx <span class="hljs-keyword">int</span>, inlIndex <span class="hljs-keyword">int</span>)
+    RecordChildDieOffsets(s Sym, vars []*Var, offsets []<span class="hljs-keyword">int32</span>)
+    AddString(s Sym, v <span class="hljs-keyword">string</span>)
+    Logf(format <span class="hljs-keyword">string</span>, args ...<span class="hljs-keyword">interface</span>{})
+}
+
+<span class="hljs-keyword">func</span> (c dwCtxt) AddBytes(s dwarf.Sym, b []<span class="hljs-keyword">byte</span>) {
+    ls := s.(*LSym)
+    ls.WriteBytes(c.Link, ls.Size, b)
+}
+</code></pre>
+<p>file: cmd/internal/obj/data.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// WriteBytes writes a slice of bytes into s at offset off.</span>
+<span class="hljs-keyword">func</span> (s *LSym) WriteBytes(ctxt *Link, off <span class="hljs-keyword">int64</span>, b []<span class="hljs-keyword">byte</span>) <span class="hljs-keyword">int64</span> {
+    s.prepwrite(ctxt, off, <span class="hljs-built_in">len</span>(b))
+    <span class="hljs-built_in">copy</span>(s.P[off:], b)
+    <span class="hljs-keyword">return</span> off + <span class="hljs-keyword">int64</span>(<span class="hljs-built_in">len</span>(b))
+}
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1-gopkgs-about-dwarf.html" class="navigation navigation-prev " aria-label="Previous page: 7.7.1 相关的GoPackages">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3-linker-gen-dwarfdata.html" class="navigation navigation-next " aria-label="Next page: 7.7.3 链接器生成DWARF数据">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"7.7.2 编译器生成DWARF数据","level":"1.7.7.2","depth":3,"next":{"title":"7.7.3 链接器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-linker-gen-dwarfdata.md","articles":[]},"previous":{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.md","mtime":"2025-05-05T05:45:25.958Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-05T08:26:32.656Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -665,12 +665,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.html">
+        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
             
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/2-compiler-gen-dwarfdata.html">
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
             
                     
-                    7.7.2 编译器生成DWARF数据
+                    7.7.2 如何破解那些细节
             
                 </a>
             
@@ -678,12 +678,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-sym-debugger/7-headto-dwarf/3-linker-gen-dwarfdata.html">
+        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
             
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/3-linker-gen-dwarfdata.html">
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
             
                     
-                    7.7.3 链接器生成DWARF数据
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
             
                 </a>
             
@@ -1865,7 +1891,7 @@ godbg&gt; <span class="hljs-built_in">exit</span>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.6 添加断点","level":"1.6.6","depth":2,"next":{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},"previous":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/6-breakpoint.md","mtime":"2025-02-22T04:30:41.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-07T12:48:54.490Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.6 添加断点","level":"1.6.6","depth":2,"next":{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},"previous":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/6-breakpoint.md","mtime":"2025-02-22T04:30:41.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-07T18:42:17.725Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

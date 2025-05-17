@@ -1,0 +1,2099 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>8.3.1 DIE描述数据和类型 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="2-desc-code.html" />
+    
+    
+    <link rel="prev" href="./" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+            
+                <a href="../../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../7-headto-sym-debugger/">
+            
+                <a href="../../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                <a href="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../7-headto-sym-debugger/2-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../7-headto-sym-debugger/3-syms.html">
+            
+                <a href="../../7-headto-sym-debugger/3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                <a href="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                    
+                    7.7.2 如何破解那些细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../1-history.html">
+            
+                <a href="../1-history.html">
+            
+                    
+                    8.1 DWARF发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../2-overview.html">
+            
+                <a href="../2-overview.html">
+            
+                    
+                    8.2 DWARF内容概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../3-dwarfdata.html">
+            
+                <a href="../3-dwarfdata.html">
+            
+                    
+                    8.3 DWARF数据分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    8.3 DIE详细介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.8.4.1" data-path="1-desc-data-type.html">
+            
+                <a href="1-desc-data-type.html">
+            
+                    
+                    8.3.1 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="2-desc-code.html">
+            
+                <a href="2-desc-code.html">
+            
+                    
+                    8.3.2 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="3-encoding.html">
+            
+                <a href="3-encoding.html">
+            
+                    
+                    8.3.3 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../4-other-readme.html">
+            
+                <a href="../4-other-readme.html">
+            
+                    
+                    8.4 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../4-other-accelerated-access.html">
+            
+                <a href="../4-other-accelerated-access.html">
+            
+                    
+                    8.4.0 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../4-other-lineno-table.html">
+            
+                <a href="../4-other-lineno-table.html">
+            
+                    
+                    8.4.1 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../4-other-macro-info.html">
+            
+                <a href="../4-other-macro-info.html">
+            
+                    
+                    8.4.2 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../4-other-callframe-info.html">
+            
+                <a href="../4-other-callframe-info.html">
+            
+                    
+                    8.4.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../4-other-varlen-data.html">
+            
+                <a href="../4-other-varlen-data.html">
+            
+                    
+                    8.4.4 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../4-other-shrink-data.html">
+            
+                <a href="../4-other-shrink-data.html">
+            
+                    
+                    8.4.5 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../4-other-elf-sections.html">
+            
+                <a href="../4-other-elf-sections.html">
+            
+                    
+                    8.4.6 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../5-dwarf-summary.html">
+            
+                <a href="../5-dwarf-summary.html">
+            
+                    
+                    8.5 DWARF总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../6-parsing-dwarf.html">
+            
+                <a href="../6-parsing-dwarf.html">
+            
+                    
+                    8.6 解析DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../7-using-dwarf.html">
+            
+                <a href="../7-using-dwarf.html">
+            
+                    
+                    8.7 使用DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../8-summary.html">
+            
+                <a href="../8-summary.html">
+            
+                    
+                    8.8 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../9-develop-sym-debugger/">
+            
+                <a href="../../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../9-develop-sym-debugger/1-需求分析/">
+            
+                <a href="../../9-develop-sym-debugger/1-需求分析/">
+            
+                    
+                    9.1. 需求分析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.2 概要设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/1-整体架构.html">
+            
+                    
+                    9.2.1 整体架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/2-前端UI层设计.html">
+            
+                    
+                    9.2.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/3-Service层设计.html">
+            
+                    
+                    9.2.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/4-后端符号层设计.html">
+            
+                    
+                    9.2.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/5-后端目标层设计.html">
+            
+                    
+                    9.2.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../9-develop-sym-debugger/2-概要设计/">
+            
+                <a href="../../9-develop-sym-debugger/2-概要设计/">
+            
+                    
+                    9.3 详细设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4" data-path="../../9-develop-sym-debugger/4-编码实现/">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/">
+            
+                    
+                    9.4 编码实现
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.4.1" data-path="../../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/1-process_start.html">
+            
+                    
+                    9.4.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.2" data-path="../../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/2-process_attach.html">
+            
+                    
+                    9.4.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.3" data-path="../../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/3-process_start_attach.html">
+            
+                    
+                    9.4.3 进程启动并attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.4" data-path="../../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/4-debug-session.html">
+            
+                    
+                    9.4.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.5" data-path="../../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/5-disassemble.html">
+            
+                    
+                    9.4.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.6" data-path="../../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/6-breakpoint.html">
+            
+                    
+                    9.4.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.7" data-path="../../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/7-breakpoints.html">
+            
+                    
+                    9.4.7 查询断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.8" data-path="../../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/8-clear.html">
+            
+                    
+                    9.4.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.9" data-path="../../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/9-clearall.html">
+            
+                    
+                    9.4.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.10" data-path="../../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/10-step.html">
+            
+                    
+                    9.4.10 步进执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.11" data-path="../../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/11-continue.html">
+            
+                    
+                    9.4.11 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.12" data-path="../../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/12-pmem.html">
+            
+                    
+                    9.4.12 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.13" data-path="../../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/13-regs.html">
+            
+                    
+                    9.4.13 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.14" data-path="../../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/14-call-frame.html">
+            
+                    
+                    9.4.14 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.15" data-path="../../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/15-vars.html">
+            
+                    
+                    9.4.15 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.16" data-path="../../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/16-funcs.html">
+            
+                    
+                    9.4.16 函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.17" data-path="../../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/17-goroutines.html">
+            
+                    
+                    9.4.17 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.18" data-path="../../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/18-multi-threads.html">
+            
+                    
+                    9.4.18 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.4.19" data-path="../../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                <a href="../../9-develop-sym-debugger/4-编码实现/x-more.html">
+            
+                    
+                    9.4.19 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/80-go-tool-compile.html">
+            
+                <a href="../../12-appendix/80-go-tool-compile.html">
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/81-go-tool-asm.html">
+            
+                <a href="../../12-appendix/81-go-tool-asm.html">
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/82-go-tool-link.html">
+            
+                <a href="../../12-appendix/82-go-tool-link.html">
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/90-why-buildid-loaded.html">
+            
+                <a href="../../12-appendix/90-why-buildid-loaded.html">
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                <a href="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >8.3.1 DIE描述数据和类型</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x63CF;&#x8FF0;&#x6570;&#x636E;&#x548C;&#x7C7B;&#x578B;">&#x63CF;&#x8FF0;&#x6570;&#x636E;&#x548C;&#x7C7B;&#x578B;</h2>
+<p>&#x8F6F;&#x4EF6;&#x8C03;&#x8BD5;&#x671F;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x6253;&#x5370;&#x53D8;&#x91CF;&#x503C;&#x3001;&#x67E5;&#x770B;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x3001;&#x4FEE;&#x6539;&#x53D8;&#x91CF;&#x503C;&#xFF0C;&#x5982;dlv&#x7684;print&#x3001;whatis&#x3001;set&#x64CD;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x7684;&#x5B9E;&#x73B0;&#x5C31;&#x79BB;&#x4E0D;&#x5F00;DWARF&#x5BF9;&#x6570;&#x636E;&#x548C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x63CF;&#x8FF0;&#x3002;</p>
+<p>&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x5B9A;&#x4E49;&#x4E86;&#x5185;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x81EA;&#x5B9A;&#x4E49;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x65B9;&#x6CD5;&#x3002;&#x5728;&#x4E0D;&#x540C;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x5373;&#x4F7F;&#x662F;&#x770B;&#x4E0A;&#x53BB;&#x540D;&#x5B57;&#x4E00;&#x6837;&#x7684;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5728;&#x76F8;&#x540C;&#x786C;&#x4EF6;&#x3001;OS&#x4E0A;&#x53EF;&#x80FD;&#x4E5F;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x66F4;&#x4E0D;&#x7528;&#x8BF4;&#x4E0D;&#x540C;&#x786C;&#x4EF6;&#x3001;OS&#x4E0A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4E86;&#xFF0C;&#x5982;int&#x5728;C&#x548C;Go&#x4E2D;&#x7684;&#x4E0D;&#x540C;&#xFF0C;Go int&#x5728;32&#x4F4D;&#x3001;64&#x4F4D;&#x4E0B;&#x7684;&#x4E0D;&#x540C;&#x3002;</p>
+<p>&#x5982;&#x679C;DWARF&#x8981;&#x5BF9;&#x4E0D;&#x540C;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x5B9E;&#x73B0;&#x7CBE;&#x51C6;&#x7684;&#x4F4E;&#x7EA7;&#x8868;&#x793A;&#x3001;&#x63CF;&#x8FF0;&#xFF0C;&#x5E94;&#x8BE5;&#x600E;&#x4E48;&#x505A;&#xFF1F;DWARF&#x9996;&#x5148;&#x6839;&#x636E;&#x673A;&#x5668;&#x786C;&#x4EF6;&#x62BD;&#x8C61;&#x51FA;&#x51E0;&#x79CD;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF08;&#x6570;&#x503C;&#x7C7B;&#x578B;&#xFF09;&#xFF0C;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x7EC4;&#x5408;&#x6765;&#x6784;&#x5EFA;&#x5176;&#x4ED6;&#x590D;&#x5408;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x8FD9;&#x4E9B;&#x65B0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E5F;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x7528;&#x4E8E;&#x6784;&#x5EFA;&#x5176;&#x4ED6;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5982;&#x4F55;&#x4F7F;&#x7528;DIE&#x6765;&#x63CF;&#x8FF0;&#x6570;&#x636E;&#x548C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</p>
+<h3 id="&#x57FA;&#x672C;&#x7C7B;&#x578B;">&#x57FA;&#x672C;&#x7C7B;&#x578B;</h3>
+<p>&#x6BCF;&#x79CD;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5E76;&#x5185;&#x7F6E;&#x5230;&#x8BED;&#x8A00;&#x7684;&#x7C7B;&#x578B;&#x7CFB;&#x7EDF;&#x4E2D;&#x3002;&#x4F8B;&#x5982;&#xFF0C;C&#x3001;Go&#x548C;Java &#x90FD;&#x5B9A;&#x4E49;&#x4E86; int&#xFF0C;Java&#x63D0;&#x4F9B;&#x4E86;&#x660E;&#x786E;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;int&#x5728;&#x4EFB;&#x4F55;&#x5E73;&#x53F0;&#x4E0A;&#x90FD;&#x662F;4&#x5B57;&#x8282;&#xFF0C;&#x4F46; C&#x3001;Go &#x53EA;&#x6307;&#x5B9A;&#x4E86;&#x4E00;&#x4E9B;&#x4E00;&#x822C;&#x7279;&#x5F81;&#xFF0C;&#x5141;&#x8BB8;&#x7F16;&#x8BD1;&#x5668;&#x9009;&#x62E9;&#x6700;&#x9002;&#x5408;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#x7684;&#x5B9E;&#x9645;&#x89C4;&#x683C;&#xFF0C;&#x5982;Go&#x5728;32&#x4F4D;&#x548C;64&#x4F4D;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E0A;&#x5206;&#x522B;&#x662F;4&#x5B57;&#x8282;&#x548C;8&#x5B57;&#x8282;&#x3002;&#x6709;&#x4E9B;&#x8BED;&#x8A00;&#x66F4;&#x7279;&#x6B8A;&#xFF0C;&#x5982; Pascal &#x751A;&#x81F3;&#x5141;&#x8BB8;&#x5B9A;&#x4E49;&#x65B0;&#x7684;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#xFF0C;&#x4F8B;&#x5982;&#x53EF;&#x4EE5;&#x5BB9;&#x7EB3; 0 &#x5230; 100 &#x4E4B;&#x95F4;&#x7684;&#x6574;&#x6570;&#x503C;&#x7684;&#x6574;&#x6570;&#x7C7B;&#x578B;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// see: src/cmd/compile/internal/types2/sizes.go</span>
+<span class="hljs-keyword">var</span> gcArchSizes = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*gcSizes{
+    <span class="hljs-string">&quot;386&quot;</span>:      {<span class="hljs-number">4</span>, <span class="hljs-number">4</span>},  <span class="hljs-comment">// 32-bit</span>
+    <span class="hljs-string">&quot;amd64&quot;</span>:    {<span class="hljs-number">8</span>, <span class="hljs-number">8</span>},  <span class="hljs-comment">// 64-bit</span>
+    <span class="hljs-string">&quot;amd64p32&quot;</span>: {<span class="hljs-number">4</span>, <span class="hljs-number">8</span>},  <span class="hljs-comment">// 32-bit pointers on 64-bit CPU</span>
+    <span class="hljs-comment">// ...</span>
+}
+
+<span class="hljs-keyword">type</span> gcSizes <span class="hljs-keyword">struct</span> {
+    WordSize <span class="hljs-keyword">int64</span> <span class="hljs-comment">// word size in bytes - must be &gt;= 4 (32bits)</span>
+    MaxAlign <span class="hljs-keyword">int64</span> <span class="hljs-comment">// maximum alignment in bytes - must be &gt;= 1</span>
+}
+</code></pre>
+<p>&#x7B80;&#x8A00;&#x4E4B;&#xFF0C;&#x5C31;&#x662F;&#x4E0D;&#x540C;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x3001;&#x5E73;&#x53F0;&#x5B58;&#x5728;&#x8FD9;&#x6837;&#x7684;&#x4E8B;&#x5B9E;&#xFF1A;</p>
+<ul>
+<li>&#x76F8;&#x540C;&#x8BED;&#x8A00;&#x5728;&#x4E0D;&#x540C;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5176;&#x5C3A;&#x5BF8;&#x53EF;&#x80FD;&#x4E5F;&#x4E0D;&#x540C;&#xFF1B;</li>
+<li>&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x5728;&#x76F8;&#x540C;&#x7684;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x4E0A;&#xFF0C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x76F8;&#x540C;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5176;&#x5C3A;&#x5BF8;&#x4E5F;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#x3002;</li>
+</ul>
+<p>&#x5728; DWARF v1&#x53CA;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x683C;&#x5F0F;&#x4E2D;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x548C;&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x5C31; int &#x7A76;&#x7ADF;&#x591A;&#x5C11;&#x5B57;&#x8282;&#x8FBE;&#x6210;&#x4E00;&#x79CD;&#x4E00;&#x81F4;&#xFF0C;&#x7C7B;&#x4F3C;&#x786C;&#x7F16;&#x7801;&#x7684;&#x65B9;&#x5F0F;&#x3002;&#x4F46;&#x662F;&#x5F53;&#x540C;&#x4E00;&#x786C;&#x4EF6;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x4E0D;&#x540C;&#x5927;&#x5C0F;&#x7684;&#x6574;&#x6570;&#xFF0C;&#x6216;&#x8005;&#x5F53;&#x4E0D;&#x540C;&#x7684;&#x7F16;&#x8BD1;&#x5668;&#x5BF9;&#x540C;&#x4E00;&#x76EE;&#x6807;&#x5904;&#x7406;&#x5668;&#x505A;&#x51FA;&#x4E0D;&#x540C;&#x7684;&#x5B9E;&#x73B0;&#x51B3;&#x7B56;&#x65F6;&#xFF0C;&#x8FD9;&#x4F1A;&#x53D8;&#x5F97;&#x6709;&#x4E9B;&#x5C34;&#x5C2C;&#x3002;&#x8FD9;&#x4E9B;&#x901A;&#x5E38;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x5728;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E2D;&#x7684;&#x5047;&#x8BBE;&#xFF0C;&#x5C06;&#x4F7F;&#x5F97;&#x4E0D;&#x540C;&#x7F16;&#x8BD1;&#x5668;&#x6216;&#x8C03;&#x8BD5;&#x5668;&#x4E4B;&#x95F4;&#xFF0C;&#x751A;&#x81F3;&#x540C;&#x4E00;&#x5DE5;&#x5177;&#x7684;&#x4E0D;&#x540C;&#x7248;&#x672C;&#x4E4B;&#x95F4;&#x96BE;&#x4EE5;&#x5B9E;&#x73B0;&#x517C;&#x5BB9;&#x6027;&#x3002;</p>
+<p>&#x5982;&#x4F55;&#x5C06;&#x8FD9;&#x4E9B;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x4E5F;&#x80FD;&#x591F;&#x7075;&#x6D3B;&#x5730;&#x6620;&#x5C04;&#x4E3A;&#x4E0D;&#x540C;&#x8F6F;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x4E0A;&#x7684;bytesize&#xFF1F;C&#x8BED;&#x8A00;&#x8FD8;&#x652F;&#x6301;&#x4F4D;&#x5B57;&#x6BB5;&#xFF0C;&#x5373;&#x4F7F;&#x5B58;&#x50A8;&#x5206;&#x914D;&#x4E0A;&#x5206;&#x914D;&#x4E86;N&#x5B57;&#x8282;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x6709;&#x53EF;&#x80FD;&#x4EC5;&#x4F7F;&#x7528;&#x4E00;&#x90E8;&#x5206;bits&#xFF0C;&#x8FD9;&#x79CD;&#x53C8;&#x5982;&#x4F55;&#x63CF;&#x8FF0;&#xFF1F; DWARF v2&#x89E3;&#x51B3;&#x4E86;&#x6B64;&#x95EE;&#x9898;&#xFF0C;&#x5B83;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x4F4E;&#x7EA7;&#x6620;&#x5C04;&#x65B9;&#x6848;&#xFF0C;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x201C;<strong>&#x7B80;&#x5355;&#x6570;&#x636E;&#x7C7B;&#x578B;</strong>&#x201D;&#x548C;&#x201C;<strong>&#x76EE;&#x6807;&#x8F6F;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x4E0A;&#x7684;&#x5B9E;&#x73B0;</strong>&#x201D;&#x4E4B;&#x95F4;&#x7684;&#x7075;&#x6D3B;&#x6620;&#x5C04;&#x3002;</p>
+<p><strong>DW_TAG_base_type</strong>&#xFF0C;&#x5BF9;&#x5E94;&#x7684;attributes&#x5305;&#x62EC;&#xFF08;&#x53EF;&#x4EE5;&#x53C2;&#x8003;DWARFv2-Appendix: Current Attributes by Tag Value)&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Attributes</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">DW_AT_name</td>
+<td style="text-align:left">&#x7C7B;&#x578B;&#x540D;&#x79F0;&#xFF0C;&#x5982; int</td>
+</tr>
+<tr>
+<td style="text-align:left">DW_AT_encoding</td>
+<td style="text-align:left">&#x6307;&#x793A;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x7F16;&#x7801;&#x3001;&#x89E3;&#x8BFB;&#x8BE5;&#x6570;&#x636E;&#xFF0C;&#x5982; address&#x3001;boolean&#x3001;float&#x3001;signed&#x3001;unsigned&#x3001;signed char&#x3001;unsigned char&#x3001;packed&#x3001;UTF&#x7B49;</td>
+</tr>
+<tr>
+<td style="text-align:left">DW_AT_byte_size</td>
+<td style="text-align:left">&#x9700;&#x8981;&#x5360;&#x636E;&#x591A;&#x5C11;&#x5B57;&#x8282;</td>
+</tr>
+<tr>
+<td style="text-align:left">DW_AT_bit_size</td>
+<td style="text-align:left">&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x591A;&#x5C11;bits</td>
+</tr>
+<tr>
+<td style="text-align:left">DW_AT_bit_offset</td>
+<td style="text-align:left">&#x5B9E;&#x9645;&#x4F7F;&#x7528;&#x7684;bitsize&#x4E2A;bits&#x5728;bytesize&#x4E2A;&#x5B57;&#x8282;&#x4E2D;&#x7684;&#x8D77;&#x59CB;&#x504F;&#x79FB;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:left">DW_AT_sibling</td>
+<td style="text-align:left">&#x6307;&#x5411;&#x5144;&#x5F1F;DIE&#xFF0C;DWARF&#x4FE1;&#x606F;&#x751F;&#x6210;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x8BA4;&#x4E3A;&#x6709;&#x5FC5;&#x8981;&#x5FEB;&#x901F;&#x8DF3;&#x8FC7;children&#x800C;&#x626B;&#x63CF;Siblings&#x66F4;&#x91CD;&#x8981;&#x65F6;&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x8BE5;&#x5C5E;&#x6027;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x5C5E;&#x6027; <code>DW_AT_encoding</code> &#x662F;&#x4E0D;&#x540C;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5DEE;&#x5F02;&#x7684;&#x4F53;&#x73B0;&#xFF0C;&#x5B83;&#x6307;&#x793A;&#x4E86;&#x4E0D;&#x540C;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x7F16;&#x7801;&#x3001;&#x5982;&#x4F55;&#x89E3;&#x8BFB;&#x3002;&#x4E0B;&#x9762;&#x662F;&#x51E0;&#x4E2A;&#x793A;&#x4F8B;&#xFF0C;&#x5E2E;&#x52A9;&#x5927;&#x5BB6;&#x52A0;&#x6DF1;&#x7406;&#x89E3;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x8BED;&#x8A00;&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x751F;&#x6210;DWARF&#x4FE1;&#x606F;&#x7684;&#x65F6;&#x5019;&#x53C2;&#x8003;&#x8FD9;&#x4E2A;&#x751F;&#x6210;&#x5373;&#x53EF;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x8BFB;&#x53D6;&#x7684;&#x65F6;&#x5019;&#x53C2;&#x8003;&#x8FD9;&#x4E2A;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x8BFB;&#x6570;&#x636E;&#x5373;&#x53EF;&#x3002;</p>
+<p>Figure 2a &#x5B9A;&#x4E49;&#x7C7B;&#x578B; int &#x5728;32&#x4F4D;&#x5904;&#x7406;&#x5668;&#x4E0A;&#x662F;4&#x5B57;&#x8282;&#x6709;&#x7B26;&#x53F7;&#x6570;, &#x56FE; 2b &#x5B9A;&#x4E49;&#x7C7B;&#x578B; int &#x5728;16&#x4F4D;&#x5904;&#x7406;&#x5668;&#x4E0A;&#x662F;2&#x5B57;&#x8282;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x3002;</p>
+<p><img alt="basetype" src="assets/clip_image003.png" width="480px"></p>
+<p>&#x56FE; 3 &#x5B9A;&#x4E49;&#x7C7B;&#x578B;word&#x662F;16&#x4F4D;&#x6709;&#x7B26;&#x53F7;&#x6570;&#x503C;&#xFF0C;&#x4F46;&#x8BE5;&#x7C7B;&#x578B;&#x5B9E;&#x9645;&#x5360;&#x7528;4&#x5B57;&#x8282;&#xFF0C;&#x4F46;&#x53EA;&#x6709;&#x9AD8;&#x4F4D;2&#x4E2A;&#x5B57;&#x8282;&#x88AB;&#x4F7F;&#x7528;&#xFF0C;&#x4F4E;&#x4F4D;2&#x4E2A;&#x5B57;&#x8282;&#x5168;&#x90E8;&#x4E3A;0&#x3002;</p>
+<p><img alt="basetype" src="assets/clip_image004.png" width="480px"></p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x4E0A;&#x56FE;&#x793A;&#x4F8B;&#x53D6;&#x81EA;DWARF v2&#x7684;&#x5B98;&#x65B9;&#x793A;&#x4F8B;&#xFF0C;&#x5728;DWARF v4&#x4E2D;&#x5DF2;&#x7ECF;&#x5E9F;&#x5F03;&#x4E86;DW_AT_bit_offset&#xFF0C;&#x800C;&#x662F;&#x7528;DW_AT_data_bit_offset&#x4EE3;&#x66FF;&#x3002;&#x5728;DWARF v2&#x3001;v3&#x4E2D;&#x8BE5;&#x5C5E;&#x6027;DW_AT_bit_offset&#x7528;&#x6765;&#x8868;&#x793A;big endian&#x673A;&#x5668;&#x4E0A;&#x7684;&#x4F4D;&#x5B57;&#x6BB5;&#xFF0C;&#x5BF9;little endian&#x673A;&#x5668;&#x65E0;&#x7528;&#x6709;&#x70B9;&#x6D6A;&#x8D39;&#x3002;</p>
+<h3 id="&#x590D;&#x5408;&#x7C7B;&#x578B;">&#x590D;&#x5408;&#x7C7B;&#x578B;</h3>
+<p>&#x5982;Figure 4&#x6240;&#x793A;&#xFF0C;&#x5148;&#x6765;&#x770B;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x6709;&#x540D;&#x53D8;&#x91CF;&#x7684;&#x4F8B;&#x5B50;&#x3002;&#x9996;&#x5148;&#x6709;&#x4E00;&#x4E2A; DW_TAG_variable&#x7C7B;&#x578B;&#x7684;DIE&#x63CF;&#x8FF0;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF; x&#xFF0C;&#x8FD9;&#x4E2A;DIE&#x7684;&#x5C5E;&#x6027; <code>DW_AT_name=x</code> &#x8868;&#x793A;&#x53D8;&#x91CF;&#x540D;&#x4E3A;x&#xFF0C;<code>DW_AT_type=&lt;1&gt;</code> &#x5219;&#x8868;&#x793A;&#x8BE5;&#x5C5E;&#x6027;&#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x5F15;&#x7528;&#xFF0C;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x7531; <code>&lt;1&gt;</code>&#x6307;&#x5411;&#x7684;DIE&#x786E;&#x5B9A;&#x3002;&#x800C; <code>&lt;1&gt;</code> &#x8FD9;&#x4E2A;DIE&#x8868;&#x793A;&#x662F;&#x4E00;&#x4E2A;&#x5927;&#x5C0F;&#x4E3A;4&#x5B57;&#x8282;&#x7684;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x3002;&#x6700;&#x7EC8;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5F97;&#x77E5;&#xFF0C;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x4E3A;4&#x5B57;&#x8282;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x7684;&#x53D8;&#x91CF;x&#x3002;</p>
+<p><img alt="compositetype" src="assets/dwarf_desc_variable.png" width="480px"></p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x518D;&#x7EE7;&#x7EED;&#x770B;&#xFF0C;&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x8FD9;&#x4E9B;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6784;&#x9020;&#x66F4;&#x590D;&#x6742;&#x7684;&#x590D;&#x5408;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;Figure 5&#x4E2D;&#xFF0C;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;px&#xFF0C;&#x5176;&#x7C7B;&#x578B;&#x901A;&#x8FC7; <code>DW_AT_type=&lt;2&gt;</code> &#x5F15;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x7F16;&#x53F7;&#x4E3A; <code>&lt;2&gt;</code>&#x7684;DIE&#x3002;</p>
+<p>&#x7F16;&#x53F7;&#x4E3A; <code>&lt;2&gt;</code> &#x8FD9;&#x4E2A;DIE&#x7684;TAG&#x4E3A; <code>DW_TAG_pointer_type</code>&#xFF0C;&#x8BF4;&#x660E;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x9488;&#x7C7B;&#x578B;&#xFF0C;&#x8BE5;DIE&#x5185;&#x90E8;&#x53C8;&#x901A;&#x8FC7; <code>Attribute DW_AT_type=&lt;3&gt;</code>&#x5F15;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;&#x7F16;&#x53F7;&#x4E3A; <code>&lt;3&gt;</code>&#x7684;DIE&#xFF0C;<code>&lt;3&gt;</code>&#x8FD9;&#x4E2A;DIE&#x7684;TAG&#x4E3A; <code>DW_TAG_base_type</code>&#xFF0C;&#x8868;&#x793A;&#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x5177;&#x4F53;&#x4E3A;4&#x5B57;&#x8282;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;&#x3002;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E0D;&#x4F9D;&#x8D56;&#x4EFB;&#x4F55;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#xFF0C;&#x5206;&#x6790;&#x7ED3;&#x675F;&#x3002;</p>
+<p>&#x8FD9;&#x6837;&#xFF0C;&#x4E00;&#x8FDE;&#x4E32;&#x5206;&#x6790;&#x4E0B;&#x6765;&#xFF0C;&#x6700;&#x7EC8;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x53D8;&#x91CF;px&#x662F;&#x4E00;&#x4E2A;4&#x5B57;&#x8282;&#x4F4D;&#x5BBD;&#x7684;&#x6307;&#x9488;&#xFF0C;&#x8FD9;&#x4E2A;&#x6307;&#x9488;&#x6307;&#x5411;1&#x4E2A;4&#x5B57;&#x8282;&#x7684;&#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;int&#x3002;</p>
+<p><img alt="compositetype" src="assets/clip_image005.png" width="480px"></p>
+<p>&#x5176;&#x4ED6;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x94FE;&#x63A5;&#x591A;&#x4E2A;DIE&#xFF08;DW_TAG&#x2026;+DW_AT_type&#x2026;&#xFF09;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x4F8B;&#x5982;&#x53EF;&#x4EE5;&#x5728;DW_TAG_pointer_type&#x57FA;&#x7840;&#x4E0A;&#x6269;&#x5C55;&#x6765;&#x652F;&#x6301;&#x63CF;&#x8FF0;C++&#x7684;&#x5F15;&#x7528;&#x7C7B;&#x578B;&#xFF0C;&#x6216;&#x8005;&#x5728;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x57FA;&#x7840;&#x4E0A;&#x6269;&#x5C55;&#x6765;&#x652F;&#x6301;&#x63CF;&#x8FF0;Go uintptr&#x7684;&#xFF0C;&#x8FDB;&#x800C;Unsafe.Pointer&#x3002;</p>
+<blockquote>
+<p>ps&#xFF1A;<strong>&#x5173;&#x4E8E;&#x5F15;&#x7528;&#x5C5E;&#x6027;&#x7684;&#x53D6;&#x503C;&#x7684;&#x4E00;&#x70B9;&#x8865;&#x5145;&#xFF1F;</strong></p>
+<p>&#x8FD9;&#x91CC;&#x4E3A;&#x4E86;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x5F15;&#x7528;DIE&#x65F6;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x81EA;&#x7136;&#x7F16;&#x53F7;&#xFF0C;&#x771F;&#x5B9E;DWARF&#x6570;&#x636E;&#x5B58;&#x50A8;&#x4E2D;&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x662F;&#x7F16;&#x53F7;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x504F;&#x79FB;&#x91CF;&#xFF08;&#x88AB;&#x5F15;&#x7528;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x7684;DIE&#x7684;&#x4F4D;&#x7F6E;&#x8DDD;&#x79BB;&#x5305;&#x542B;&#x5B83;&#x7684;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x5F00;&#x5934;&#x7684;&#x504F;&#x79FB;&#x91CF;&#xFF09;&#x3002;</p>
+</blockquote>
+<h3 id="&#x6570;&#x7EC4;&#x7C7B;&#x578B;">&#x6570;&#x7EC4;&#x7C7B;&#x578B;</h3>
+<p><strong>DW_TAG_array_type&#xFF0C;&#x7ED3;&#x5408;&#x4E00;&#x4E9B;&#x76F8;&#x5173;attributes&#x5171;&#x540C;&#x6765;&#x63CF;&#x8FF0;&#x6570;&#x7EC4;&#x3002;</strong></p>
+<p>&#x6570;&#x7EC4;&#x5BF9;&#x5E94;&#x7684;DIE&#xFF0C;&#x8BE5;DIE&#x5305;&#x542B;&#x4E86;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E9B;&#x5C5E;&#x6027;&#x6765;&#x63CF;&#x8FF0;&#x6570;&#x7EC4;&#x5143;&#x7D20;&#xFF1A;</p>
+<ul>
+<li><strong>DW_AT_ordering</strong>&#xFF1A;&#x63CF;&#x8FF0;&#x6570;&#x7EC4;&#x662F;&#x6309;&#x7167;&#x201C;<strong>&#x884C;&#x4E3B;&#x5E8F;</strong>&#x201D;&#x8FD8;&#x662F;&#x6309;&#x7167;&#x201C;<strong>&#x5217;&#x4E3B;&#x5E8F;</strong>&#x201D;&#x5B58;&#x50A8;&#xFF0C;&#x5982;Fortran&#x662F;&#x6309;&#x7167;&#x5217;&#x4E3B;&#x5E8F;&#x5B58;&#x50A8;&#xFF0C;C&#x548C;C++&#x662F;&#x6309;&#x7167;&#x884C;&#x4E3B;&#x5E8F;&#x5B58;&#x50A8;&#x3002;&#x5982;&#x679C;&#x672A;&#x6307;&#x5B9A;&#x8BE5;&#x5C5E;&#x6027;&#x503C;&#xFF0C;&#x5219;&#x4F7F;&#x7528;DW_AT_language&#x6307;&#x5B9A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;&#x9ED8;&#x8BA4;&#x6570;&#x7EC4;&#x6392;&#x5217;&#x89C4;&#x5219;&#xFF1B;</li>
+<li><strong>DW_AT_type</strong>&#xFF1A;&#x63CF;&#x8FF0;&#x6570;&#x7EC4;&#x4E2D;&#x5404;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF1B;</li>
+<li><strong>DW_AT_byte_stride/DW_AT_bit_stride</strong>&#xFF1A;&#x5982;&#x679C;&#x6570;&#x7EC4;&#x4E2D;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#x7684;&#x5B9E;&#x9645;&#x5927;&#x5C0F;&#x548C;&#x5206;&#x914D;&#x7684;&#x7A7A;&#x95F4;&#x5927;&#x5C0F;&#x4E0D;&#x540C;&#x7684;&#x8BDD;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x4E24;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x8BF4;&#x660E;&#xFF1B;</li>
+<li><p><strong>&#x6570;&#x7EC4;&#x7684;&#x7D22;&#x5F15;&#x503C;&#x8303;&#x56F4;</strong>&#xFF0C;DIE&#x4E2D;&#x4E5F;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x6700;&#x5C0F;&#x3001;&#x6700;&#x5927;&#x7D22;&#x5F15;&#x503C;&#x6765;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;&#x7D22;&#x5F15;&#x503C;&#x533A;&#x95F4;&#x3002;&#x8FD9;&#x6837;DWARF&#x5C31;&#x53EF;&#x4EE5;&#x65E2;&#x80FD;&#x591F;&#x63CF;&#x8FF0;C&#x98CE;&#x683C;&#x7684;&#x6570;&#x7EC4;&#xFF08;&#x7528;0&#x4F5C;&#x4E3A;&#x6570;&#x7EC4;&#x8D77;&#x59CB;&#x7D22;&#x5F15;&#xFF09;&#xFF0C;&#x4E5F;&#x80FD;&#x591F;&#x63CF;&#x8FF0;Pascal&#x548C;Ada&#x7684;&#x6570;&#x7EC4;&#xFF08;&#x5176;&#x6570;&#x7EC4;&#x6700;&#x5C0F;&#x7D22;&#x5F15;&#x503C;&#x3001;&#x6700;&#x5927;&#x7D22;&#x5F15;&#x503C;&#x662F;&#x53EF;&#x4EE5;&#x53D8;&#x5316;&#x7684;&#xFF09;&#x3002;</p>
+<p>&#x6570;&#x7EC4;&#x7EF4;&#x5EA6;&#x4E00;&#x822C;&#x662F;&#x901A;&#x8FC7;&#x6362;&#x4E00;&#x4E2A;TAG&#x4E3A;<strong>DW_TAG_subrange_type</strong>&#x6216;&#x8005;<strong>DW_TAG_enumeration_type</strong>&#x7684;DIE&#x6765;&#x63CF;&#x8FF0;&#x3002;</p>
+</li>
+<li>&#x5176;&#x4ED6;&#xFF1B;</li>
+</ul>
+<p>&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x4EE5;&#x53CA;&#x63CF;&#x8FF0;&#x6570;&#x7EC4;&#x7EF4;&#x5EA6;&#x76F8;&#x5173;&#x7684;DIE&#xFF0C;&#x6765;&#x5171;&#x540C;&#x660E;&#x786E;&#x63CF;&#x8FF0;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#x3002;</p>
+<p>&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;&#x6211;&#x4EEC;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x6570;&#x7EC4;&#xFF0C;&#x7136;&#x540E;&#x7F16;&#x8BD1;&#x6784;&#x5EFA; <code>go build -o main -gcflags &apos;all=-N -l&apos; main.go</code>, &#x7136;&#x540E;&#x4F7F;&#x7528;&#x4F5C;&#x8005;&#x63D0;&#x4F9B;&#x7684;&#x5DE5;&#x5177;dwarfviewer&#x6765;&#x53EF;&#x89C6;&#x5316;&#x6587;&#x4EF6;&#x4E2D;DIE&#x4E4B;&#x95F4;&#x7684;&#x4F9D;&#x8D56;&#x5173;&#x7CFB;&#x3002;</p>
+<pre><code class="lang-go">$ cat main.<span class="hljs-keyword">go</span>
+<span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">func</span> main() {
+        <span class="hljs-keyword">var</span> nums [<span class="hljs-number">16</span>]<span class="hljs-keyword">int</span>
+        _ = nums
+}
+</code></pre>
+<p>&#x8FD0;&#x884C; <code>dwarfviewer -file main -webui</code>&#xFF0C;&#x7136;&#x540E;&#x641C;&#x7D22;main.main&#x5E76;&#x4E00;&#x7EA7;&#x4E00;&#x7EA7;&#x5C55;&#x5F00;nums&#x76F8;&#x5173;&#x7684;DIE&#x5B9A;&#x4E49;&#xFF0C;&#x4F5C;&#x8005;&#x5DF2;&#x7ECF;&#x5C06;array&#x76F8;&#x5173;&#x7684;&#x91CD;&#x8981;&#x4FE1;&#x606F;&#x5728;&#x622A;&#x56FE;&#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x6807;&#x6CE8;&#xFF0C;&#x7ED3;&#x5408;&#x4E0A;&#x8FF0;&#x6587;&#x5B57;&#x63CF;&#x8FF0;&#x5E94;&#x8BE5;&#x4E0D;&#x96BE;&#x7406;&#x89E3;&#x3002;</p>
+<p><img alt="dwarf_desc_array" src="assets/dwarf_desc_array.png" width="720px"></p>
+<h3 id="struct-classe-union-and-interface">Struct, Classe, Union, and Interface</h3>
+<p>&#x5927;&#x591A;&#x6570;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x90FD;&#x5141;&#x8BB8;&#x901A;&#x8FC7;&#x7EC4;&#x5408;&#x591A;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x6765;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;DWARF&#x4E2D;&#x4E5F;&#x9700;&#x8981;&#x652F;&#x6301;&#x5BF9;&#x8FD9;&#x79CD;&#x80FD;&#x529B;&#x7684;&#x63CF;&#x8FF0;&#xFF0C;&#x56E0;&#x6B64;DWARF&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x4E0B;&#x9762;&#x7684;TAG&#x7C7B;&#x578B;&#xFF1A;</p>
+<ul>
+<li><strong>DW_TAG_structure_type</strong>&#xFF0C;&#x63CF;&#x8FF0;&#x7ED3;&#x6784;&#x4F53;struct&#xFF1B;</li>
+<li><strong>DW_TAG_class_type</strong>&#xFF0C;&#x63CF;&#x8FF0;&#x7C7B;class&#xFF1B;</li>
+<li><strong>DW_TAG_union_type</strong>&#xFF0C;&#x63CF;&#x8FF0;&#x8054;&#x5408;union&#xFF1B;</li>
+<li><strong>DW_TAG_interface_type</strong>&#xFF0C;&#x63CF;&#x8FF0;interface&#xFF1B;</li>
+</ul>
+<p>struct&#x5141;&#x8BB8;&#x7EC4;&#x5408;&#x591A;&#x4E2A;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x6210;&#x5458;&#x3002;C&#x8BED;&#x8A00;&#x4E2D;&#x8054;&#x5408;union&#x4E5F;&#x5141;&#x8BB8;&#x8FD9;&#x6837;&#x505A;&#xFF0C;&#x4F46;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x6210;&#x5458;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x7684;&#x5B58;&#x50A8;&#x7A7A;&#x95F4;&#x3002;C++ struct&#x76F8;&#x6BD4;C&#x8BED;&#x8A00;&#x53C8;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E9B;&#x7279;&#x6027;&#xFF0C;&#x5141;&#x8BB8;&#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x6210;&#x5458;&#x51FD;&#x6570;&#x3002;C++&#x4E2D;class&#x548C;Java&#x4E2D;interface&#x3001;class&#x6709;&#x76F8;&#x4F3C;&#x4E4B;&#x5904;&#xFF0C;&#x4F46;&#x4E5F;&#x6709;&#x4E0D;&#x540C;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x4E00;&#x822C;&#x90FD;&#x6709;&#x76F8;&#x4F3C;&#x7684;&#x7EC4;&#x5408;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF0C;&#x53EA;&#x662F;&#x53D6;&#x7684;&#x540D;&#x5B57;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x6BD4;&#x5982;C++&#x4E2D;&#x53EB;class&#x548C;class members&#xFF08;&#x7C7B;&#x548C;&#x7C7B;&#x6210;&#x5458;&#xFF09;&#xFF0C;&#x5728;Pascal&#x4E2D;&#x53EB;Record&#x548C;Fields&#xFF08;&#x8BB0;&#x5F55;&#x548C;&#x5B57;&#x6BB5;&#xFF09;&#x3002;DWARF&#x62BD;&#x8C61;&#x8FD9;&#x4E9B;&#x63CF;&#x8FF0;&#x65F6;&#x4E5F;&#x8981;&#x9009;&#x4E2A;&#x5408;&#x9002;&#x7684;&#x540D;&#x5B57;&#xFF0C;DWARF&#x4E2D;&#x91C7;&#x7528;&#x4E86;C++&#x4E2D;&#x7684;&#x672F;&#x8BED;&#x3002;&#x63CF;&#x8FF0;class&#x7684;DIE&#x662F;&#x63CF;&#x8FF0;&#x8BE5;class members&#x7684;&#x8BF8;&#x591A;DIE&#x7684;&#x7236;DIE&#xFF0C;&#x6BCF;&#x4E2A;class&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x540D;&#x5B57;&#x548C;&#x53EF;&#x80FD;&#x7684;&#x5C5E;&#x6027;&#xFF08;&#x6210;&#x5458;&#xFF09;&#x3002;&#x5982;&#x679C;class&#x5B9E;&#x4F8B;&#x7684;&#x5927;&#x5C0F;&#x5728;&#x7F16;&#x8BD1;&#x65F6;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#xFF0C;&#x63CF;&#x8FF0;class&#x7684;DIE&#x5C31;&#x4F1A;&#x591A;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;DW_AT_byte_size&#x3002;class&#x53CA;class member&#x7684;&#x63CF;&#x8FF0;&#x4E0E;&#x57FA;&#x672C;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x7684;&#x65B9;&#x5F0F;&#x5E76;&#x6CA1;&#x6709;&#x592A;&#x5927;&#x7684;&#x4E0D;&#x540C;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x589E;&#x52A0;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#xFF0C;&#x5982;class member&#x7684;&#x8BBF;&#x95EE;&#x4FEE;&#x9970;&#x7B26;&#x3002;C\C++&#x4E2D;&#x4E5F;&#x652F;&#x6301;&#x7ED3;&#x6784;&#x4F53;&#x4F4D;&#x5B57;&#x6BB5;&#xFF0C;&#x5373;struct&#x4E2D;&#x591A;&#x4E2A;&#x6210;&#x5458;&#x53EF;&#x4EE5;&#x5171;&#x4EAB;&#x540C;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x53EA;&#x662F;&#x4E0D;&#x540C;&#x7684;&#x6210;&#x5458;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4F4D;&#x6570;&#x4E0D;&#x540C;&#x7684;&#x76F8;&#x90BB;&#x7684;&#x6BD4;&#x7279;&#x3002;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x63CF;&#x8FF0;&#xFF0C;DW_AT_byte_size&#x63CF;&#x8FF0;&#x7ED3;&#x6784;&#x4F53;&#x5B9E;&#x9645;&#x5360;&#x7528;&#x591A;&#x5C11;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x5C5E;&#x6027;DW_AT_bit_offset&#x548C;DW_AT_bit_size&#x63CF;&#x8FF0;&#x4F4D;&#x5B57;&#x6BB5;&#x5B9E;&#x9645;&#x5360;&#x7528;&#x54EA;&#x4E9B;&#x6BD4;&#x7279;&#xFF0C;&#x4ECE;&#x7B2C;&#x51E0;&#x4E2A;bit&#x5F00;&#x59CB;&#x5B58;&#x50A8;&#xFF0C;&#x4E00;&#x5171;&#x5360;&#x7528;&#x591A;&#x5C11;&#x4E2A;&#x6BD4;&#x7279;&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x8FD9;&#x51E0;&#x79CD;&#x7C7B;&#x578B;&#x6240;&#x63CF;&#x8FF0;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x7684;&#x5DEE;&#x5F02;&#xFF0C;DWARf&#x8981;&#x4E3A;&#x5176;&#x5B9A;&#x4E49;&#x5BF9;&#x5E94;&#x7684;&#x4E00;&#x4E9B;attributes&#x624D;&#x80FD;&#x7CBE;&#x786E;&#x5730;&#x63CF;&#x8FF0;&#x4E0D;&#x540C;&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x8FD9;&#x4E9B;&#x5171;&#x6027;&#x3001;&#x5DEE;&#x5F02;&#x6027;&#x3002;&#x7531;&#x4E8E;&#x7BC7;&#x5E45;&#x539F;&#x56E0;&#xFF0C;&#x5C31;&#x4E0D;&#x4E00;&#x4E00;&#x5217;&#x4E3E;&#x548C;&#x5BF9;&#x6BD4;&#x4E86;&#x3002;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8BDD;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x53C2;&#x8003;DWARF v4&#x7684; $5.5&#x7AE0;&#x8282;&#x6765;&#x8BE6;&#x7EC6;&#x4E86;&#x89E3;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E00;&#x4E2A;go&#x4E2D;&#x8FDB;&#x884C;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x8FD9;&#x91CC;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x7ED3;&#x6784;&#x4F53;&#x7C7B;&#x578B;Student&#xFF0C;&#x5E76;&#x4E14;&#x901A;&#x8FC7;&#x533F;&#x540D;&#x5D4C;&#x5957;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;CollegeStudent&#xFF0C;&#x7136;&#x540E;main&#x51FD;&#x6570;&#x4E2D;&#x521B;&#x5EFA;&#x4E8C;&#x8005;&#x7684;&#x53D8;&#x91CF;&#x3002;</p>
+<pre><code class="lang-go">$ cat main.<span class="hljs-keyword">go</span>
+<span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">type</span> Student <span class="hljs-keyword">struct</span> {
+        Name   <span class="hljs-keyword">string</span>
+        Age    <span class="hljs-keyword">int</span>
+        Sex    <span class="hljs-keyword">int</span>
+        Grades <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">float32</span>
+}
+
+<span class="hljs-keyword">type</span> CollegeStudent <span class="hljs-keyword">struct</span> {
+        Student
+        Clubs []<span class="hljs-keyword">string</span>
+}
+
+<span class="hljs-keyword">func</span> main() {
+        <span class="hljs-keyword">var</span> s1 Student
+        <span class="hljs-keyword">var</span> s2 CollegeStudent
+        _ = s1
+        _ = s2
+}
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x7F16;&#x8BD1;&#x6784;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x4ECD;&#x7136;&#x5173;&#x6389;&#x5185;&#x8054;&#x548C;&#x5176;&#x4ED6;&#x4F18;&#x5316;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x53EF;&#x89C6;&#x5316;&#x770B;&#x4E0B;&#x751F;&#x6210;&#x7684;DIE&#x4FE1;&#x606F;&#xFF0C;&#x4F5C;&#x8005;&#x5DF2;&#x7ECF;&#x5728;&#x9014;&#x4E2D;&#x901A;&#x8FC7;&#x56FE;&#x4F8B;&#x8FDB;&#x884C;&#x4E86;&#x6807;&#x6CE8;&#xFF0C;&#x7ED3;&#x5408;&#x524D;&#x9762;&#x7684;&#x4ECB;&#x7ECD;&#xFF0C;&#x4E5F;&#x662F;&#x5F88;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x7684;&#xFF1A;</p>
+<p><img alt="dwarf_desc_struct" src="assets/dwarf_desc_struct.png" width="720px"></p>
+<h3 id="&#x53D8;&#x91CF;&#x5B9A;&#x4E49;">&#x53D8;&#x91CF;&#x5B9A;&#x4E49;</h3>
+<p><strong>DW_TAG_variable&#xFF0C;&#x7528;&#x6765;&#x63CF;&#x8FF0;&#x53D8;&#x91CF;</strong>&#xFF0C;&#x524D;&#x9762;&#x7ED9;&#x51FA;&#x7684;&#x793A;&#x4F8B;&#x4E2D;&#x5DF2;&#x7ECF;&#x591A;&#x6B21;&#x8FDB;&#x884C;&#x4E86;&#x63D0;&#x53CA;&#x3002;&#x53D8;&#x91CF;&#x901A;&#x5E38;&#x975E;&#x5E38;&#x7B80;&#x5355;&#xFF0C;&#x53D8;&#x91CF;&#x6709;&#x53D8;&#x91CF;&#x540D;&#xFF08;DW_AT_name&#xFF09;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E2D;&#x4F7F;&#x7528;&#x53D8;&#x91CF;&#x540D;&#x6765;&#x4EE3;&#x6307;&#x53D8;&#x91CF;&#x5728;&#x5185;&#x5B58;&#x6216;&#x8005;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C;&#x3002;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x4E86;&#x503C;&#x7684;&#x7C7B;&#x578B;&#x4EE5;&#x53CA;&#x8BBF;&#x95EE;&#x4FEE;&#x9970;&#xFF08;&#x5982;&#x53EA;&#x8BFB;const&#xFF09;&#x3002;&#x53E6;&#x5916;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;DWARF&#x4E2D;&#x5C06;variables&#x5206;&#x6210;3&#x7C7B;&#xFF1A;constants&#xFF08;&#x5E38;&#x91CF;&#xFF09;&#x3001;formal parameters&#xFF08;&#x51FD;&#x6570;&#x5F62;&#x53C2;&#xFF09;&#x3001;variables&#xFF08;&#x53D8;&#x91CF;&#xFF09;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x5148;&#x53EA;&#x5173;&#x6CE8;variables&#x5C31;&#x53EF;&#x4EE5;&#xFF0C;&#x540E;&#x7EED;&#x6709;&#x7684;&#x662F;&#x673A;&#x4F1A;&#x9047;&#x5230;constants&#x3001;formal parameters&#xFF0C;&#x90A3;&#x65F6;&#x5019;&#x518D;&#x4ECB;&#x7ECD;&#x4E0D;&#x8FDF;&#x3002;</p>
+<p>&#x5BF9;&#x53D8;&#x91CF;&#x8FDB;&#x884C;&#x533A;&#x5206;&#x7684;&#x4E24;&#x4E2A;&#x8981;&#x7D20;&#x662F;&#x53D8;&#x91CF;&#x7684;<strong>&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;</strong>&#x548C;<strong>&#x4F5C;&#x7528;&#x57DF;&#xFF1A;</strong></p>
+<ul>
+<li><strong>&#x53D8;&#x91CF;&#x7684;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;</strong>&#xFF1A;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x88AB;&#x5B58;&#x50A8;&#x5728;&#x5168;&#x5C40;&#x6570;&#x636E;&#x533A;&#xFF08;.data section&#xFF09;&#x3001;&#x6808;&#x3001;&#x5806;&#x6216;&#x8005;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF1B;</li>
+<li><strong>&#x53D8;&#x91CF;&#x7684;&#x4F5C;&#x7528;&#x57DF;</strong>&#xFF1A;&#x63CF;&#x8FF0;&#x4E86;&#x5B83;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x662F;&#x53EF;&#x89C1;&#x7684;&#xFF0C;&#x67D0;&#x79CD;&#x7A0B;&#x5EA6;&#x4E0A;&#xFF0C;&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;&#x662F;&#x7531;&#x5176;&#x58F0;&#x660E;&#x65F6;&#x7684;&#x4F4D;&#x7F6E;&#x786E;&#x5B9A;&#x7684;&#x3002;DWARF&#x4E2D;&#x901A;&#x8FC7;&#x4E09;&#x5143;&#x7EC4;&#xFF08;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x884C;&#x53F7;&#xFF0C;&#x5217;&#x53F7;&#xFF09;&#x5BF9;&#x53D8;&#x91CF;&#x58F0;&#x660E;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#xFF1B;</li>
+</ul>
+<p>&#x5728;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x65E2;&#x7136;&#x80FD;&#x62FF;&#x5230;&#x53D8;&#x91CF;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;PTRACE_PEEKDATA&#x64CD;&#x4F5C;&#x8BFB;&#x53D6;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x8981;&#x8BFB;&#x53D6;&#x591A;&#x5C11;&#x6570;&#x636E;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x89E3;&#x91CA;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x518D;&#x53C2;&#x8003;&#x8FD9;&#x91CC;&#x53D8;&#x91CF;&#x5F15;&#x7528;&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x3002;&#x6709;&#x4E86;&#x6570;&#x636E;&#xFF0C;&#x6709;&#x4E86;&#x7C7B;&#x578B;&#xFF0C;&#x6709;&#x53CD;&#x5C04;&#x53D8;&#x6210;&#x7ECF;&#x9A8C;&#x7684;&#x540C;&#x5B66;&#xFF0C;&#x81EA;&#x7136;&#x5C31;&#x4F1A;&#x89C9;&#x5F97;&#x8F7B;&#x8F66;&#x719F;&#x8DEF;&#x4E86;&#xFF0C;&#x8FD8;&#x6709;&#x5565;&#x73A9;&#x4E0D;&#x8F6C;&#x7684;&#xFF1F;&#x5BF9;&#x5427;&#x3002;</p>
+<p>&#x524D;&#x9762;&#x7ED9;&#x51FA;&#x7684;demo&#x622A;&#x56FE;&#x4E2D;&#xFF0C;&#x773C;&#x775B;&#x654F;&#x9510;&#x7684;&#x8BFB;&#x8005;&#x5E94;&#x8BE5;&#x53D1;&#x73B0;&#x95EE;&#x9898;&#x4E86;&#xFF0C;&#x53D8;&#x91CF;&#x5730;&#x5740;&#x503C;&#x663E;&#x793A;&#x7684;&#x66F4;&#x50CF;&#x662F;&#x4E71;&#x7801;&#xFF1F;&#x6CA1;&#x9519;&#xFF0C;DW_AT_location&#x5C5E;&#x6027;&#x7684;&#x503C;&#x662F;&#x4E00;&#x4E2A;byte&#x6570;&#x7EC4;&#xFF0C;&#x5728;dwarfviewer server&#x7AEF;&#x56DE;&#x5305;&#x65F6;&#x4F1A;&#x5C06;&#x5176;&#x5148;&#x8FDB;&#x884C;base64&#x7F16;&#x7801;&#xFF0C;&#x8FD4;&#x56DE;&#x7ED9;&#x524D;&#x7AEF;&#x540E;&#x5C31;&#x76F4;&#x63A5;&#x5C55;&#x793A;&#x51FA;&#x6765;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x5730;&#x5740;&#x503C;&#x663E;&#x793A;&#x4E3A;&#x4E86;&#x4E00;&#x4E2A;&#x8BE1;&#x5F02;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x3002;&#x90A3;&#x4E48;&#x76F4;&#x63A5;&#x663E;&#x793A;&#x8FD9;&#x4E2A;byte&#x6570;&#x7EC4;&#x53EF;&#x4EE5;&#x5417;&#xFF1F;&#x4E0D;&#x884C;&#x7684;&#x3002;&#x8FD9;&#x5C31;&#x662F;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x4ECB;&#x7ECD;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x8BE5;byte&#x6570;&#x7EC4;&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x503C;&#xFF0C;&#x800C;&#x662F;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x662F;&#x4E00;&#x4E32;&#x5730;&#x5740;&#x7684;&#x8BA1;&#x7B97;&#x89C4;&#x5219;&#x3002;&#x6211;&#x4EEC;&#x8981;&#x6267;&#x884C;&#x8FD9;&#x91CC;&#x7684;&#x8BA1;&#x7B97;&#x89C4;&#x5219;&#xFF0C;&#x624D;&#x80FD;&#x5F97;&#x5230;&#x6709;&#x6548;&#x5730;&#x5740;&#x3002;&#x6211;&#x4EEC;&#x5BF9;dwarfviewer&#x903B;&#x8F91;&#x8FDB;&#x884C;&#x4E86;&#x8C03;&#x6574;&#xFF0C;&#x4F7F;&#x5F97;&#x5B83;&#x53EF;&#x4EE5;&#x5C06;&#x4E0A;&#x8FF0;byte&#x6570;&#x7EC4;&#xFF0C;&#x8F6C;&#x6362;&#x6210;&#x53EF;&#x8BFB;&#x7684;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</p>
+<p>&#x53D8;&#x91CF;&#x4F4D;&#x7F6E;demo&#xFF1A;&#x4E0B;&#x9762;&#x793A;&#x4F8B;&#x53CA;&#x622A;&#x56FE;&#x4E2D;&#x6B63;&#x5E38;&#x5C55;&#x793A;&#x4E86;&#x53D8;&#x91CF;&#x7684;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;&#x53D8;&#x91CF;&#x7684;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x662F;&#x57FA;&#x4E8E;fbreg&#x7684;&#x5BFB;&#x5740;&#x89C4;&#x5219;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x4E0D;&#x5C55;&#x5F00;&#xFF0C;&#x4ECB;&#x7ECD;&#x5B8C;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x5185;&#x5BB9;&#x4E4B;&#x540E;&#x5927;&#x5BB6;&#x81EA;&#x7136;&#x4F1A;&#x660E;&#x767D;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">func</span> main() {
+        <span class="hljs-keyword">var</span> a <span class="hljs-keyword">string</span> = <span class="hljs-string">&quot;helloworld&quot;</span>
+        <span class="hljs-keyword">var</span> b <span class="hljs-keyword">int</span> = <span class="hljs-number">100</span>
+        _ = a
+        _ = b
+}
+</code></pre>
+<p><img alt="dwarf_desc_variable" src="assets/dwarf_desc_variable_location.png" width="720px"></p>
+<p>&#x53D8;&#x91CF;&#x4F5C;&#x7528;&#x57DF;demo&#xFF1A;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x5C55;&#x793A;&#x4E00;&#x4E2A;&#x60C5;&#x51B5;&#xFF0C;&#x5C31;&#x662F;&#x5728;&#x4E0D;&#x540C;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x5B9A;&#x4E49;&#x53D8;&#x91CF;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5FAE;&#x8C03;&#x4E0B;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x4E0B;&#x6D4B;&#x8BD5;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">func</span> main() {
+        <span class="hljs-keyword">var</span> a <span class="hljs-keyword">string</span> = <span class="hljs-string">&quot;helloworld&quot;</span>
+        <span class="hljs-keyword">var</span> b <span class="hljs-keyword">int</span> = <span class="hljs-number">100</span>
+        _ = a
+        _ = b
+        {
+                <span class="hljs-keyword">var</span> a <span class="hljs-keyword">string</span> = <span class="hljs-string">&quot;helloworld2&quot;</span>
+                _ = a
+        }
+}
+</code></pre>
+<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x518D;&#x6765;&#x53EF;&#x89C6;&#x5316;&#x751F;&#x6210;&#x7684;DIE&#x4FE1;&#x606F;&#xFF0C;&#x770B;&#x4E0B;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF0C;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x8868;&#x793A;&#x662F;&#x901A;&#x8FC7; <code>DW_TAG_lexical_block</code> &#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<p><img alt="dwarf_desc_variable" src="assets/dwarf_desc_variable_scopes.png" width="720px"></p>
+<h3 id="&#x4F4D;&#x7F6E;&#x6570;&#x636E;">&#x4F4D;&#x7F6E;&#x6570;&#x636E;</h3>
+<p>DWARF&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x975E;&#x5E38;&#x901A;&#x7528;&#x7684;&#x673A;&#x5236;&#x63CF;&#x8FF0;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5B9E;&#x9645;&#x4F4D;&#x7F6E;&#xFF0C;&#x5C31;&#x662F;&#x901A;&#x8FC7;&#x5C5E;&#x6027;<strong>DW_AT_location</strong>&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x5141;&#x8BB8;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#xFF0C;&#x6765;&#x544A;&#x77E5;&#x8C03;&#x8BD5;&#x5668;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x793A;&#x4F8B;&#xFF0C;&#x5C55;&#x793A;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x5C5E;&#x6027;DW_AT_location&#x6765;&#x5B9A;&#x4F4D;&#x53D8;&#x91CF;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6CE8;&#x610F;&#x53D8;&#x91CF;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3001;&#x5185;&#x5B58;&#x4E2D;&#xFF08;&#x5806;&#x4E2D;&#x3001;&#x6808;&#x4E2D;&#x3001;&#x5168;&#x5C40;&#x5B58;&#x50A8;&#x533A;&#xFF09;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;&#x5BFB;&#x5740;&#x89C4;&#x5219;&#x4E5F;&#x6709;&#x5DEE;&#x5F02;&#x3002;</p>
+<p><img src="assets/clip_image006.png" alt="img"></p>
+<p>Figure 7&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#x4E2D;&#xFF1A;</p>
+<ul>
+<li>&#x53D8;&#x91CF;b&#x5B9A;&#x4E49;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C; <code>DW_AT_location = (DW_OP_reg0)</code>&#xFF0C;&#x76F4;&#x63A5;&#x5B58;&#x50A8;&#x5728;reg0&#x5BF9;&#x5E94;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF1B;</li>
+<li>&#x53D8;&#x91CF;c&#x5B58;&#x50A8;&#x5728;&#x6808;&#x4E0A;&#xFF0C;<code>DW_AT_location = (DW_OP_fbreg: -12)</code>&#xFF0C;EA=fbreg-12&#xFF1B;</li>
+<li>&#x53D8;&#x91CF;a&#x5B58;&#x50A8;&#x5728;&#x56FA;&#x5B9A;&#x5730;&#x5740;&#xFF08;.data section&#x4E2D;&#xFF09;&#xFF0C;<code>DW_AT_location = (DW_OP_addr: 0)</code>&#xFF0C;&#x5B58;&#x50A8;&#x5728;.data&#x7AEF;&#x5F00;&#x5934;&#xFF1B;</li>
+</ul>
+<p>&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x5FC5;&#x987B;&#x4E3A;&#x8C03;&#x8BD5;&#x5668;&#x63D0;&#x4F9B;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#xFF0C;&#x4F7F;&#x5176;&#x80FD;&#x591F;&#x67E5;&#x627E;&#x7A0B;&#x5E8F;&#x53D8;&#x91CF;&#x7684;&#x4F4D;&#x7F6E;&#x3001;&#x786E;&#x5B9A;&#x52A8;&#x6001;&#x6570;&#x7EC4;&#x548C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x8303;&#x56F4;&#xFF0C;&#x4EE5;&#x53CA;&#x80FD;&#x627E;&#x5230;&#x51FD;&#x6570;&#x6808;&#x5E27;&#x7684;&#x57FA;&#x5730;&#x5740;&#x6216;&#x51FD;&#x6570;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x6B64;&#x5916;&#xFF0C;&#x4E3A;&#x4E86;&#x6EE1;&#x8DB3;&#x6700;&#x65B0;&#x7684;&#x8BA1;&#x7B97;&#x673A;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x548C;&#x4F18;&#x5316;&#x6280;&#x672F;&#x7684;&#x9700;&#x6C42;&#xFF0C;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x5FC5;&#x987B;&#x80FD;&#x591F;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x8BE5;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#x53EF;&#x80FD;&#x4F1A;&#x5728;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF08;&#x5982;Java GC&#x65F6;&#x4F1A;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x8FC1;&#x79FB;&#x5BF9;&#x8C61;&#xFF0C;&#x800C;Go&#x662F;&#x975E;&#x79FB;&#x52A8;&#x5F0F;GC&#xFF09;&#x3002;</p>
+<p>&#x901A;&#x8FC7;location&#x6765;&#x63CF;&#x8FF0;&#x7A0B;&#x5E8F;&#x4E2D;&#x67D0;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x4F4D;&#x7F6E;&#x63CF;&#x8FF0;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x4E24;&#x7C7B;&#xFF1A;</p>
+<ul>
+<li><strong>&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;Location expressions&#xFF09;</strong>&#xFF0C;&#x662F;&#x4E0E;&#x8BED;&#x8A00;&#x65E0;&#x5173;&#x7684;&#x5BFB;&#x5740;&#x89C4;&#x5219;&#x8868;&#x793A;&#x5F62;&#x5F0F;&#xFF0C;&#x5B83;&#x662F;&#x7531;&#x4E00;&#x4E9B;&#x57FA;&#x672C;&#x6784;&#x5EFA;&#x5757;&#x3001;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#x7EC4;&#x5408;&#x800C;&#x6210;&#x7684;&#x4EFB;&#x610F;&#x590D;&#x6742;&#x5EA6;&#x7684;&#x5BFB;&#x5740;&#x89C4;&#x5219;&#x3002; &#x53EA;&#x8981;&#x5BF9;&#x8C61;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x662F;&#x9759;&#x6001;&#x7684;&#xFF08;static&#xFF09;&#x6216;&#x4E0E;&#x62E5;&#x6709;&#x5B83;&#x7684;&#x8BCD;&#x6CD5;&#x5757;&#x76F8;&#x540C;&#xFF0C;&#x5E76;&#x4E14;&#x5728;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x90FD;&#x4E0D;&#x4F1A;&#x79FB;&#x52A8;&#xFF0C;&#x5B83;&#x4EEC;&#x5C31;&#x8DB3;&#x4EE5;&#x63CF;&#x8FF0;&#x4EFB;&#x4F55;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</li>
+<li><strong>&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#xFF08;Location lists&#xFF09;</strong>&#xFF0C;&#x7528;&#x4E8E;&#x63CF;&#x8FF0;&#x751F;&#x547D;&#x5468;&#x671F;&#x6709;&#x9650;&#x7684;&#x5BF9;&#x8C61;&#x6216;&#x5728;&#x6574;&#x4E2A;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x53EF;&#x80FD;&#x4F1A;&#x66F4;&#x6539;&#x4F4D;&#x7F6E;&#x7684;&#x5BF9;&#x8C61;&#x3002;</li>
+</ul>
+<h4 id="&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;">&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;</h4>
+<p>&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x7531;0&#x6216;&#x8005;&#x591A;&#x4E2A;&#x4F4D;&#x7F6E;&#x64CD;&#x4F5C;&#x7EC4;&#x6210;&#x3002;&#x4F4D;&#x7F6E;&#x64CD;&#x4F5C;&#x53EF;&#x4EE5;&#x5212;&#x5206;&#x4E3A;&#x4E24;&#x79CD;&#x7C7B;&#x578B;&#xFF0C;&#x5BC4;&#x5B58;&#x5668;&#x540D; &#x548C; &#x5730;&#x5740;&#x64CD;&#x4F5C;&#xFF0C;&#x4E0B;&#x9762;&#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x4F4D;&#x7F6E;&#x8FD0;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5219;&#x8868;&#x793A;&#x8BE5;&#x5BF9;&#x8C61;&#x5728;&#x6E90;&#x4EE3;&#x7801;&#x4E2D;&#x5B58;&#x5728;&#xFF0C;&#x4F46;&#x5728;&#x76EE;&#x6807;&#x4EE3;&#x7801;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x5982;&#x6784;&#x5EFA;&#x671F;&#x95F4;&#x88AB;&#x7F16;&#x8BD1;&#x5668;&#x7ED9;&#x4F18;&#x5316;&#x6389;&#x4E86;&#x3002;</p>
+<h5 id="&#x5BC4;&#x5B58;&#x5668;&#x540D;">&#x5BC4;&#x5B58;&#x5668;&#x540D;</h5>
+<p>&#x5BC4;&#x5B58;&#x5668;&#x540D;&#xFF0C;&#x59CB;&#x7EC8;&#x662F;&#x5355;&#x72EC;&#x51FA;&#x73B0;&#x7684;&#xFF0C;&#x5E76;&#x6307;&#x793A;&#x6240;&#x5F15;&#x7528;&#x7684;&#x5BF9;&#x8C61;&#x5305;&#x542B;&#x5728;&#x7279;&#x5B9A;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x3002;&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x5BC4;&#x5B58;&#x5668;&#x53F7;&#x662F;DWARF&#x4E2D;&#x7279;&#x5B9A;&#x7684;&#x6570;&#x5B57;&#x5230;&#x7ED9;&#x5B9A;&#x4F53;&#x7CFB;&#x7ED3;&#x6784;&#x7684;&#x5B9E;&#x9645;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x6620;&#x5C04;&#x3002;<code>DW_OP_reg${n} (0&lt;=n&lt;=31)</code> &#x64CD;&#x4F5C;&#x7F16;&#x7801;&#x4E86;32&#x4E2A;&#x5BC4;&#x5B58;&#x5668;, &#x8BE5;&#x5BF9;&#x8C61;&#x5730;&#x5740;&#x5728;&#x5BC4;&#x5B58;&#x5668;n&#x4E2D;. <code>DW_OP_regx</code> &#x64CD;&#x4F5C;&#x6709;&#x4E00;&#x4E2A;&#x65E0;&#x7B26;&#x53F7;LEB128&#x7F16;&#x7801;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x8BE5;&#x64CD;&#x4F5C;&#x6570;&#x4EE3;&#x8868;&#x5BC4;&#x5B58;&#x5668;&#x53F7;&#x3002;</p>
+<h5 id="&#x5730;&#x5740;&#x64CD;&#x4F5C;">&#x5730;&#x5740;&#x64CD;&#x4F5C;</h5>
+<p>&#x5730;&#x5740;&#x64CD;&#x4F5C;&#x662F;&#x5B58;&#x50A8;&#x5668;&#x5730;&#x5740;&#x8BA1;&#x7B97;&#x89C4;&#x5219;&#x3002; &#x6240;&#x6709;&#x4F4D;&#x7F6E;&#x64CD;&#x4F5C;&#x90FD;&#x88AB;&#x7F16;&#x7801;&#x4E3A;&#x64CD;&#x4F5C;&#x7801;&#x6D41;&#xFF0C;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x7801;&#x540E;&#x8DDF;&#x96F6;&#x4E2A;&#x6216;&#x591A;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x3002; &#x64CD;&#x4F5C;&#x6570;&#x7684;&#x6570;&#x91CF;&#x7531;&#x64CD;&#x4F5C;&#x7801;&#x51B3;&#x5B9A;&#x3002;</p>
+<p>&#x6BCF;&#x4E2A;&#x5BFB;&#x5740;&#x64CD;&#x4F5C;&#x90FD;&#x8868;&#x793A;<strong>&#x6808;&#x67B6;&#x6784;&#x673A;&#x5668;&#x4E0A;&#x7684;&#x540E;&#x7F00;&#x64CD;&#x4F5C;</strong>&#x3002;</p>
+<ul>
+<li>&#x6808;&#x4E0A;&#x6BCF;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x662F;&#x4E00;&#x4E2A;&#x76EE;&#x6807;&#x673A;&#x5668;&#x4E0A;&#x7684;&#x5730;&#x5740;&#x7684;&#x503C;&#xFF1B;</li>
+<li>&#x6267;&#x884C;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x4E4B;&#x540E;&#xFF0C;&#x6808;&#x9876;&#x5143;&#x7D20;&#x7684;&#x503C;&#x5C31;&#x662F;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#xFF08;&#x5BF9;&#x8C61;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x6216;&#x8005;&#x6570;&#x7EC4;&#x957F;&#x5EA6;&#xFF0C;&#x6216;&#x8005;&#x5B57;&#x7B26;&#x4E32;&#x957F;&#x5EA6;&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x5BF9;&#x4E8E;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x5730;&#x5740;&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x5728;&#x6267;&#x884C;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x5C06;&#x5305;&#x542B;&#x8BE5;&#x6210;&#x5458;&#x7684;&#x7ED3;&#x6784;&#x4F53;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;push&#x5230;&#x6808;&#x4E0A;&#x3002;</p>
+<p><strong>&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x5730;&#x5740;&#x8BA1;&#x7B97;&#x65B9;&#x5F0F;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x5982;&#x4E0B;&#x51E0;&#x79CD;&#xFF1A;</strong></p>
+<ol>
+<li><p><strong>&#x5BC4;&#x5B58;&#x5668;&#x5BFB;&#x5740;</strong></p>
+<p>&#x5BC4;&#x5B58;&#x5668;&#x5BFB;&#x5740;&#x65B9;&#x5F0F;&#xFF0C; &#x8BA1;&#x7B97;&#x76EE;&#x6807;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C;&#x4E0E;&#x6307;&#x5B9A;&#x504F;&#x79FB;&#x91CF;&#x7684;&#x548C;&#xFF0C;&#x7ED3;&#x679C;push&#x5230;&#x6808;&#x4E0A;&#xFF1A;</p>
+<ul>
+<li>DW_OP_fbreg $offset, &#x8BA1;&#x7B97;&#x6808;&#x57FA;&#x5740;&#x5BC4;&#x5B58;&#x5668; (rbp)&#x4E2D;&#x7684;&#x503C; &#x4E0E; &#x504F;&#x79FB;&#x91CF; $offset&#x7684;&#x548C;&#xFF1B;</li>
+<li>DW_OP_breg${n} ${offset}, &#x8BA1;&#x7B97;&#x7F16;&#x53F7;n&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C; &#x4E0E; &#x504F;&#x79FB;&#x91CF;$offset&#xFF08;LEB128&#x7F16;&#x7801;&#xFF09;&#x7684;&#x548C;&#xFF1B;</li>
+<li>DW_OP_bregx ${n} ${offset}, &#x8BA1;&#x7B97;&#x7F16;&#x53F7;n&#xFF08;LEB128&#x7F16;&#x7801;&#xFF09;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x7684;&#x503C; &#x4E0E; &#x504F;&#x79FB;&#x91CF; $offset&#xFF08;LEB128&#x7F16;&#x7801;&#xFF09;&#x7684;&#x548C;&#xFF1B;</li>
+</ul>
+</li>
+<li><p><strong>&#x6808;&#x64CD;&#x4F5C;</strong></p>
+<p>&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x540E;&#x90FD;&#x4F1A;push&#x4E00;&#x4E2A;&#x503C;&#x5230;addressing stack&#x4E0A;&#xFF1A;</p>
+<ul>
+<li>DW_OP_lit${n} (0&lt;=n&lt;=31), &#x7F16;&#x7801;&#x4E00;&#x4E2A;&#x65E0;&#x7B26;&#x53F7;&#x5B57;&#x9762;&#x91CF;&#x503C;${n}&#xFF1B;</li>
+<li>DW_OP_addr, &#x7F16;&#x7801;&#x4E00;&#x4E2A;&#x4E0E;&#x76EE;&#x6807;&#x673A;&#x5668;&#x5339;&#x914D;&#x7684;&#x673A;&#x5668;&#x5730;&#x5740;&#xFF1B;</li>
+<li>DW_OP_const1u/1s/2u/2s/4u/4s/8u/8s, &#x7F16;&#x7801;&#x4E00;&#x4E2A;1/2/4/8 &#x5B57;&#x8282; &#x65E0;&#x7B26;&#x53F7; or &#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;&#xFF1B;</li>
+<li>DW_OP_constu/s, &#x7F16;&#x7801;&#x4E00;&#x4E2A; LEB128 &#x65E0;&#x7B26;&#x53F7; or &#x6709;&#x7B26;&#x53F7;&#x6574;&#x6570;.</li>
+</ul>
+<p>&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#x4F1A;&#x64CD;&#x4F5C;location stack&#xFF0C;&#x6808;&#x9876;&#x7D22;&#x5F15;&#x503C;&#x4E3A;0&#xFF1A;</p>
+<ul>
+<li>DW_OP_dup, duplicates the top stack entry and pushes.</li>
+<li>DW_OP_drop, pops the value at the top of stack.</li>
+<li>DW_OP_pick, picks the stack entry specified by 1-byte ${index} and pushes.</li>
+<li>DW_OP_over, duplicate the stack entry with index 2 and pushes.</li>
+<li>DW_OP_swap, swap two stack entries, which are specified by two operands.</li>
+<li>DW_OP_rot, rotate the top 3 stack entries.</li>
+<li>DW_OP_deref, pops the value at the top of stack as address and retrieves data from that address, then pushes the data whose size is the size of address on target machine.</li>
+<li>DW_OP_deref_size, similar to DW_OP_deref, plus when retrieveing data from address, bytes that&#x2019;ll be read is specified by 1-byte operand, the read data will be zero-extended to match the size of address on target machine.</li>
+<li>DW_OP_xderef &amp; DW_OP_xderef_size, similar to DW_OP_deref, plus extended dereference mechanism. When dereferencing, the top stack entry is popped as address, the second top stack entry is popped as an address space identifier. Do some calculation to get the address and retrieve data from it, then push the data to the stack.</li>
+</ul>
+</li>
+<li><p><strong>&#x7B97;&#x672F;&#x548C;&#x903B;&#x8F91;&#x8FD0;&#x7B97;</strong></p>
+<p>DW_OP_abs, DW_OP_and, DW_OP_div, DW_OP_minus, DW_OP_mod, DW_OP_mul, DW_OP_neg, DW_OP_not, DW_OP_or, DW_OP_plus, DW_OP_plus_uconst, DW_OP_shl, DW_OP_shr, DW_OP_shra, DW_OP_xor, &#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x7C7B;&#x4F3C;&#xFF0C;&#x90FD;&#x662F;&#x4ECE;&#x6808;&#x91CC;&#x9762;pop&#x64CD;&#x4F5C;&#x6570;&#x7136;&#x540E;&#x8BA1;&#x7B97;&#xFF0C;&#x5E76;&#x5C06;&#x7ED3;&#x679C;push&#x5230;&#x6808;&#x4E0A;&#x3002;</p>
+</li>
+<li><p><strong>&#x63A7;&#x5236;&#x6D41;&#x64CD;&#x4F5C;</strong></p>
+<p>&#x4EE5;&#x4E0B;&#x64CD;&#x4F5C;&#x63D0;&#x4F9B;&#x5BF9;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x6D41;&#x7A0B;&#x7684;&#x7B80;&#x5355;&#x63A7;&#x5236;&#xFF1A;</p>
+<ul>
+<li>&#x5173;&#x7CFB;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x8FD9;&#x516D;&#x4E2A;&#x8FD0;&#x7B97;&#x7B26;&#x5206;&#x522B;&#x5F39;&#x51FA;&#x9876;&#x90E8;&#x7684;&#x4E24;&#x4E2A;&#x5806;&#x6808;&#x5143;&#x7D20;&#xFF0C;&#x5E76;&#x5C06;&#x9876;&#x90E8;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4E0E;&#x7B2C;&#x4E8C;&#x4E2A;&#x6761;&#x76EE;&#x8FDB;&#x884C;&#x6BD4;&#x8F83;&#xFF0C;&#x5982;&#x679C;&#x7ED3;&#x679C;&#x4E3A;true&#xFF0C;&#x5219;push&#x503C;1&#xFF1B;&#x5982;&#x679C;&#x7ED3;&#x679C;&#x4E3A;false&#xFF0C;&#x5219;push&#x503C;0&#xFF1B;</li>
+<li>DW_OP_skip&#xFF0C;&#x65E0;&#x6761;&#x4EF6;&#x5206;&#x652F;&#xFF0C;&#x5176;&#x64CD;&#x4F5C;&#x6570;&#x662F;&#x4E00;&#x4E2A;2&#x5B57;&#x8282;&#x5E38;&#x91CF;&#xFF0C;&#x8868;&#x793A;&#x8981;&#x4ECE;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x8DF3;&#x8FC7;&#x7684;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF0C;&#x4ECE;2&#x5B57;&#x8282;&#x5E38;&#x91CF;&#x4E4B;&#x540E;&#x5F00;&#x59CB;&#xFF1B;</li>
+<li>DW_OP_bra&#xFF0C;&#x6761;&#x4EF6;&#x5206;&#x652F;&#xFF0C;&#x6B64;&#x64CD;&#x4F5C;&#x4ECE;&#x6808;&#x4E0A;pop&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5982;&#x679C;&#x5F39;&#x51FA;&#x7684;&#x503C;&#x4E0D;&#x4E3A;&#x96F6;&#xFF0C;&#x5219;&#x8DF3;&#x8FC7;&#x4E00;&#x4E9B;&#x5B57;&#x8282;&#x4EE5;&#x8DF3;&#x8F6C;&#x5230;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x3002; &#x8981;&#x8DF3;&#x8FC7;&#x7684;&#x5B57;&#x8282;&#x6570;&#x7531;&#x5176;&#x64CD;&#x4F5C;&#x6570;&#x6307;&#x5B9A;&#xFF0C;&#x8BE5;&#x64CD;&#x4F5C;&#x6570;&#x662F;&#x4E00;&#x4E2A;2&#x5B57;&#x8282;&#x7684;&#x5E38;&#x91CF;&#xFF0C;&#x8868;&#x793A;&#x4ECE;&#x5F53;&#x524D;&#x5B9A;&#x4F4D;&#x8868;&#x8FBE;&#x5F0F;&#x5F00;&#x59CB;&#x8981;&#x8DF3;&#x8FC7;&#x7684;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF08;&#x4ECE;2&#x5B57;&#x8282;&#x5E38;&#x91CF;&#x5F00;&#x59CB;&#xFF09;&#xFF1B;</li>
+</ul>
+</li>
+<li><p><strong>&#x7279;&#x6B8A;&#x64CD;&#x4F5C;</strong></p>
+<p>DWARF v2&#x4E2D;&#x6709;&#x4E24;&#x79CD;&#x7279;&#x6B8A;&#x7684;&#x64CD;&#x4F5C;&#xFF08;DWARF v4&#x4E2D;&#x662F;&#x5426;&#x6709;&#x65B0;&#x589E;&#xFF0C;&#x6682;&#x65F6;&#x5148;&#x4E0D;&#x5173;&#x6CE8;&#xFF09;&#xFF1A;</p>
+<ul>
+<li>DW_OP_piece, &#x8BB8;&#x591A;&#x7F16;&#x8BD1;&#x5668;&#x5C06;&#x5355;&#x4E2A;&#x53D8;&#x91CF;&#x5B58;&#x50A8;&#x5728;&#x4E00;&#x7EC4;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C;&#x6216;&#x8005;&#x90E8;&#x5206;&#x5B58;&#x50A8;&#x5728;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#xFF0C;&#x90E8;&#x5206;&#x5B58;&#x50A8;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x3002; DW_OP_piece&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x79CD;&#x63CF;&#x8FF0;&#x7279;&#x5B9A;&#x5730;&#x5740;&#x4F4D;&#x7F6E;&#x6240;&#x6307;&#x5411;&#x53D8;&#x91CF;&#x7684;&#x54EA;&#x4E00;&#x90E8;&#x5206;&#x3001;&#x8BE5;&#x90E8;&#x5206;&#x6709;&#x591A;&#x5927;&#x7684;&#x65B9;&#x5F0F;&#xFF1B;</li>
+<li>DW_OP_nop, &#x5B83;&#x662F;&#x4E00;&#x4E2A;&#x5360;&#x4F4D;&#x7B26;&#xFF0C;&#x5B83;&#x5BF9;&#x4F4D;&#x7F6E;&#x5806;&#x6808;&#x6216;&#x5176;&#x4EFB;&#x4F55;&#x503C;&#x90FD;&#x6CA1;&#x6709;&#x5F71;&#x54CD;&#xFF1B;</li>
+</ul>
+</li>
+</ol>
+<h5 id="&#x64CD;&#x4F5C;&#x793A;&#x4F8B;">&#x64CD;&#x4F5C;&#x793A;&#x4F8B;</h5>
+<p>&#x4E0A;&#x9762;&#x63D0;&#x5230;&#x7684;&#x5BFB;&#x5740;&#x64CD;&#x4F5C;&#x90FD;&#x662F;&#x4E9B;&#x5E38;&#x89C4;&#x63CF;&#x8FF0;&#xFF0C;&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E9B;&#x793A;&#x4F8B;&#x3002;</p>
+<ul>
+<li>&#x6808;&#x64CD;&#x4F5C;&#x793A;&#x4F8B;</li>
+</ul>
+<p><img src="assets/clip_image007.png" alt="img"></p>
+<ul>
+<li><p>&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x793A;&#x4F8B;</p>
+<p>&#x4EE5;&#x4E0B;&#x662F;&#x4E00;&#x4E9B;&#x6709;&#x5173;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x4F4D;&#x7F6E;&#x8FD0;&#x7B97;&#x6765;&#x5F62;&#x6210;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x793A;&#x4F8B;&#x3002;</p>
+<p><img src="assets/clip_image008.png" alt="img"></p>
+</li>
+</ul>
+<h4 id="&#x4F4D;&#x7F6E;&#x5217;&#x8868;">&#x4F4D;&#x7F6E;&#x5217;&#x8868;</h4>
+<p>&#x5982;&#x679C;&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#x5728;&#x5176;&#x751F;&#x547D;&#x5468;&#x671F;&#x5185;&#x53EF;&#x80FD;&#x4F1A;&#x53D1;&#x751F;&#x6539;&#x53D8;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x4EE3;&#x66FF;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x6765;&#x63CF;&#x8FF0;&#x5176;&#x4F4D;&#x7F6E;&#x3002;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x5305;&#x542B;&#x5728;&#x5355;&#x72EC;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x90E8;&#x5206; <strong>.debug_loc</strong> &#x4E2D;&#x3002;</p>
+<p>&#x4E00;&#x4E2A;&#x5BF9;&#x8C61;&#x7684;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x662F;&#x7531;.debug_loc&#x4E2D;&#x8BE5;&#x5BF9;&#x8C61;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x7684;&#x8D77;&#x59CB;&#x5B57;&#x8282;&#x76F8;&#x5BF9;&#x4E8E;.debug_loc&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x6765;&#x6307;&#x793A;&#x7684;&#x3002;</p>
+<p>&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x9879;&#x5305;&#x62EC;:</p>
+<ul>
+<li>&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF0C;&#x76F8;&#x5BF9;&#x4E8E;&#x5F15;&#x7528;&#x6B64;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x7684;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7684;&#x57FA;&#x5740;&#xFF0C;&#x5B83;&#x6807;&#x8BB0;&#x8BE5;&#x4F4D;&#x7F6E;&#x6709;&#x6548;&#x7684;&#x5730;&#x5740;&#x8303;&#x56F4;&#x7684;&#x8D77;&#x59CB;&#x4F4D;&#x7F6E;&#xFF1B;</li>
+<li>&#x7ED3;&#x675F;&#x5730;&#x5740;&#xFF0C;&#x5B83;&#x8FD8;&#x662F;&#x76F8;&#x5BF9;&#x4E8E;&#x5F15;&#x7528;&#x6B64;&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x7684;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x7684;&#x57FA;&#x5740;&#x800C;&#x8A00;&#x7684;&#xFF0C;&#x5B83;&#x6807;&#x8BB0;&#x4E86;&#x8BE5;&#x4F4D;&#x7F6E;&#x6709;&#x6548;&#x7684;&#x5730;&#x5740;&#x8303;&#x56F4;&#x7684;&#x7ED3;&#x5C3E;&#xFF1B;</li>
+<li>&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5B83;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x5728;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x548C;&#x7ED3;&#x675F;&#x5730;&#x5740;&#x6307;&#x5B9A;&#x7684;&#x8303;&#x56F4;&#x5185;&#x7684;&#x4F4D;&#x7F6E;&#xFF1B;</li>
+</ul>
+<p>&#x4F4D;&#x7F6E;&#x5217;&#x8868;&#x4EE5;&#x4E00;&#x4E2A;&#x7279;&#x6B8A;&#x7684;list entry&#x6807;&#x8BC6;&#x5217;&#x8868;&#x7684;&#x7ED3;&#x675F;&#xFF0C;&#x8BE5;list entry&#x4E2D;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x3001;&#x7ED3;&#x675F;&#x5730;&#x5740;&#x90FD;&#x662F;0&#xFF0C;&#x5E76;&#x4E14;&#x6CA1;&#x6709;&#x4F4D;&#x7F6E;&#x63CF;&#x8FF0;&#x3002;</p>
+<blockquote>
+<p>DWARF v5&#x4F1A;&#x5C06;.debug_loc&#x548C;.debug_ranges&#x66FF;&#x6362;&#x4E3A;.debug_loclists&#x548C;.debug_rnglists&#xFF0C;&#x4ECE;&#x800C;&#x5B9E;&#x73B0;&#x66F4;&#x7D27;&#x51D1;&#x7684;&#x6570;&#x636E;&#x8868;&#x793A;&#xFF0C;&#x5E76;&#x6D88;&#x9664;&#x91CD;&#x5B9A;&#x4F4D;&#x3002;</p>
+</blockquote>
+<h3 id="&#x4E86;&#x89E3;&#x66F4;&#x591A;">&#x4E86;&#x89E3;&#x66F4;&#x591A;</h3>
+<ul>
+<li>Debugging Using DWARF (2012), <a href="https://www.scribd.com/document/403070136/Debugging-Using-DWARF-2012" target="_blank">https://www.scribd.com/document/403070136/Debugging-Using-DWARF-2012</a></li>
+<li>Types of Declarations, &#x8BF7;&#x53C2;&#x8003; DWARF v2 &#x7AE0;&#x8282;3.2.2.1 &#x548C; &#x7AE0;&#x8282;3.2.2.2&#xFF1B;</li>
+<li>Accessibility of Declarations, &#x6709;&#x4E9B;&#x8BED;&#x8A00;&#x63D0;&#x4F9B;&#x4E86;&#x5BF9;&#x5BF9;&#x8C61;&#x6216;&#x8005;&#x5176;&#x4ED6;&#x5B9E;&#x4F53;&#x7684;&#x8BBF;&#x95EE;&#x63A7;&#x5236;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x5C5E;&#x6027; DW_AT_accessibility &#x6765;&#x5B9E;&#x73B0;, &#x53EF;&#x53D6;&#x503C; DW_ACCESS_public, DW_ACCESS_private, DW_ACCESS_protected&#xFF1B;</li>
+<li>Visualbility of Declarations, &#x6307;&#x5B9A;&#x58F0;&#x660E;&#x7684;&#x53EF;&#x89C1;&#x6027;&#xFF0C;&#x58F0;&#x660E;&#x662F;&#x5426;&#x5728;&#x5176;&#x5B83;&#x6A21;&#x5757;&#x4E2D;&#x53EF;&#x89C1;&#xFF0C;&#x8FD8;&#x662F;&#x53EA;&#x5728;&#x5F53;&#x524D;&#x58F0;&#x660E;&#x6A21;&#x5757;&#x4E2D;&#x53EF;&#x89C1;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x5C5E;&#x6027; attribute DW_AT_visualbility &#x6765;&#x5B9E;&#x73B0;, &#x53EF;&#x53D6;&#x503C; DW_VIS_local, DW_VIS_exported, DW_VIS_qualified&#xFF1B;</li>
+<li>Virtuality of Declarations, C++&#x63D0;&#x4F9B;&#x4E86;&#x865A;&#x51FD;&#x6570;&#x3001;&#x7EAF;&#x865A;&#x51FD;&#x6570;&#x652F;&#x6301;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6307;&#x5B9A;&#x5C5E;&#x6027; DW_AT_virtuality &#x6765;&#x5B9E;&#x73B0;, &#x53EF;&#x53D6;&#x503C; DW_VIRTUALITY_none, DW_VIRTUALITY_virtual, DW_VIRTUALITY_pure_virtual&#xFF1B;</li>
+<li>Artificial Entries, &#x7F16;&#x8BD1;&#x5668;&#x53EF;&#x80FD;&#x5E0C;&#x671B;&#x4E3A;&#x90A3;&#x4E9B;&#x4E0D;&#x662F;&#x5728;&#x7A0B;&#x5E8F;&#x6E90;&#x7801;&#x4E2D;&#x58F0;&#x660E;&#x7684;&#x5BF9;&#x8C61;&#x6216;&#x7C7B;&#x578B;&#x6DFB;&#x52A0;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6761;&#x76EE;&#xFF0C;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF0C;C++&#x4E2D;&#x7C7B;&#x6210;&#x5458;&#x51FD;&#x6570;&#xFF08;&#x975E;&#x9759;&#x6001;&#x6210;&#x5458;&#xFF09;&#xFF0C;&#x6BCF;&#x4E2A;&#x5F62;&#x5F0F;&#x53C2;&#x6570;&#x90FD;&#x6709;&#x4E00;&#x4E2A;&#x5F62;&#x53C2;&#x63CF;&#x8FF0;&#x6761;&#x76EE;&#xFF0C;&#x6B64;&#x5916;&#x8FD8;&#x9700;&#x8981;&#x591A;&#x52A0;&#x4E00;&#x4E2A;&#x63CF;&#x8FF0;&#x9690;&#x5F0F;&#x4F20;&#x9012;&#x7684;this&#x6307;&#x9488;&#xFF1B;</li>
+<li>Declaration coordinates, &#x6BCF;&#x4E2A;&#x63CF;&#x8FF0;&#x5BF9;&#x8C61;&#x3001;&#x6A21;&#x5757;&#x3001;&#x51FD;&#x6570;&#x6216;&#x8005;&#x7C7B;&#x578B;&#x7684;DIE&#xFF08;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6761;&#x76EE;&#xFF09;&#x90FD;&#x4F1A;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#x5C5E;&#x6027; DW_AT_decl_file&#x3001;DW_AT_decl_line&#x3001;DW_AT_decl_column&#xFF0C;&#x8FD9;&#x51E0;&#x4E2A;&#x5C5E;&#x6027;&#x63CF;&#x8FF0;&#x4E86;&#x58F0;&#x660E;&#x5728;&#x6E90;&#x6587;&#x4EF6;&#x4E2D;&#x51FA;&#x73B0;&#x7684;&#x4F4D;&#x7F6E;&#xFF1B;</li>
+</ul>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: 8.3 DIE详细介绍">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="2-desc-code.html" class="navigation navigation-next " aria-label="Next page: 8.3.2 DIE描述可执行代码">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"8.3.1 DIE描述数据和类型","level":"1.8.4.1","depth":3,"next":{"title":"8.3.2 DIE描述可执行代码","level":"1.8.4.2","depth":3,"path":"8-dwarf/3-die/2-desc-code.md","ref":"8-dwarf/3-die/2-desc-code.md","articles":[]},"previous":{"title":"8.3 DIE详细介绍","level":"1.8.4","depth":2,"path":"8-dwarf/3-die/README.md","ref":"8-dwarf/3-die/README.md","articles":[{"title":"8.3.1 DIE描述数据和类型","level":"1.8.4.1","depth":3,"path":"8-dwarf/3-die/1-desc-data-type.md","ref":"8-dwarf/3-die/1-desc-data-type.md","articles":[]},{"title":"8.3.2 DIE描述可执行代码","level":"1.8.4.2","depth":3,"path":"8-dwarf/3-die/2-desc-code.md","ref":"8-dwarf/3-die/2-desc-code.md","articles":[]},{"title":"8.3.3 DIE数据编码","level":"1.8.4.3","depth":3,"path":"8-dwarf/3-die/3-encoding.md","ref":"8-dwarf/3-die/3-encoding.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/3-die/1-desc-data-type.md","mtime":"2025-05-17T11:48:54.864Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-17T11:49:33.596Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

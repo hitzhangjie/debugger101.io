@@ -833,9 +833,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.4.4" data-path="../3-die/4-data-encoding.html">
+        <li class="chapter " data-level="1.8.4.4" data-path="../3-die/4-encoding.html">
             
-                <a href="../3-die/4-data-encoding.html">
+                <a href="../3-die/4-encoding.html">
             
                     
                     8.3.4 DIE数据编码
@@ -1731,8 +1731,43 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="&#x538B;&#x7F29;dwarf&#x6570;&#x636E;">&#x538B;&#x7F29;DWARF&#x6570;&#x636E;</h2>
-<p>&#x4E0E;DWARF v1&#x76F8;&#x6BD4;&#xFF0C;DWARF&#x65B0;&#x7248;&#x672C;&#x4F7F;&#x7528;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x6848;&#x5927;&#x5927;&#x51CF;&#x5C11;&#x4E86;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x5927;&#x5C0F;&#x3002; &#x4F46;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684;&#x8BB8;&#x591A;&#x7A0B;&#x5E8F;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4ECD;&#x7136;&#x53EF;&#x80FD;&#x5F88;&#x5927;&#xFF0C;&#x901A;&#x5E38;&#x5927;&#x4E8E;&#x53EF;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;&#x3002;</p>
-<p>DWARF&#x63D0;&#x4F9B;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x51CF;&#x5C11;&#x8C03;&#x8BD5;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x7684;&#x65B9;&#x6CD5;&#x3002; &#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x6682;&#x65F6;&#x5148;&#x4E0D;&#x8BE6;&#x7EC6;&#x5C55;&#x5F00;&#x3002;</p>
+<p>&#x4E0E;DWARF v1&#x76F8;&#x6BD4;&#xFF0C;DWARF&#x65B0;&#x7248;&#x672C;&#x4F7F;&#x7528;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x6848;&#x5927;&#x5927;&#x51CF;&#x5C11;&#x4E86;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x5927;&#x5C0F;&#x3002;&#x4F46;&#x4E0D;&#x5E78;&#x7684;&#x662F;&#xFF0C;&#x7F16;&#x8BD1;&#x5668;&#x751F;&#x6210;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4ECD;&#x7136;&#x5F88;&#x5927;&#xFF0C;&#x901A;&#x5E38;&#x5927;&#x4E8E;&#x53EF;&#x6267;&#x884C;&#x4EE3;&#x7801;&#x548C;&#x6570;&#x636E;&#x7684;&#x5B58;&#x50A8;&#x5360;&#x7528;&#x3002;DWARF&#x65B0;&#x7248;&#x672C;&#x63D0;&#x4F9B;&#x4E86;&#x8FDB;&#x4E00;&#x6B65;&#x51CF;&#x5C11;&#x8C03;&#x8BD5;&#x6570;&#x636E;&#x5927;&#x5C0F;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6BD4;&#x5982;&#x4F7F;&#x7528;zlib&#x6570;&#x636E;&#x538B;&#x7F29;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x4E00;&#x4E2A;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x670D;&#x52A1;&#xFF08;&#x7F16;&#x8BD1;&#x540E;&#x5927;&#x7EA6;147MB&#xFF09;&#xFF0C;&#x5373;&#x4F7F;&#x91C7;&#x7528;&#x4E86;DWARF v4&#x5E76;&#x4E14;&#x5F00;&#x542F;&#x4E86;DWARF&#x6570;&#x636E;&#x538B;&#x7F29;&#x4E4B;&#x540E; (Flags==C&#xFF09;&#xFF0C;&#x7F16;&#x8BD1;&#x5B8C;&#x4E5F;&#x6709;147MB&#x3002;&#x6784;&#x5EFA;&#x540E;&#x6587;&#x4EF6;&#x5C3A;&#x5BF8;&#x5927;&#xFF0C;&#x662F;&#x591A;&#x65B9;&#x9762;&#x539F;&#x56E0;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x7684;Go&#x7A0B;&#x5E8F;&#x4F7F;&#x7528;&#x9759;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x7B26;&#x53F7;&#x8868;&#x4FE1;&#x606F;&#xFF0C;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E5F;&#x90FD;&#x6709;&#x4FDD;&#x7559;&#x3002;</p>
+<pre><code class="lang-bash">root&#x1F980; bin $ readelf -S grpc_admin_svr
+There are 36 section headers, starting at offset 0x238:
+
+Section Headers:
+  [Nr] Name              Type             Address           Offset
+       Size              EntSize          Flags  Link  Info  Align
+       ...
+  [24] .debug_abbrev     PROGBITS         0000000000000000  0688d000
+       0000000000000135  0000000000000000   C       0     0     1
+  [25] .debug_line       PROGBITS         0000000000000000  0688d135
+       00000000006538d5  0000000000000000   C       0     0     1
+  [26] .debug_frame      PROGBITS         0000000000000000  06ee0a0a
+       000000000012ada4  0000000000000000   C       0     0     1
+  [27] .debug_gdb_script PROGBITS         0000000000000000  0700b7ae
+       0000000000000030  0000000000000000           0     0     1
+  [28] .debug_info       PROGBITS         0000000000000000  0700b7de
+       0000000000ace1cb  0000000000000000   C       0     0     1
+  [29] .debug_loc        PROGBITS         0000000000000000  07ad99a9
+       0000000000881add  0000000000000000   C       0     0     1
+  [30] .debug_ranges     PROGBITS         0000000000000000  0835b486
+       00000000004836ee  0000000000000000   C       0     0     1
+  ...
+</code></pre>
+<p>&#x90A3;&#x6211;&#x4EEC;&#x53BB;&#x6389;DWARF&#x6570;&#x636E;&#x770B;&#x770B;&#x80FD;&#x8282;&#x7701;&#x591A;&#x5C11;&#x5B58;&#x50A8;&#x5360;&#x7528;&#xFF0C;&#x4F7F;&#x7528;objcopy&#x53BB;&#x6389;&#x6240;&#x6709;&#x7684;DWARF debug sections&#xFF0C;&#x7136;&#x540E;&#x67E5;&#x770B;&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#xFF0C;32MB!!!</p>
+<pre><code class="lang-bash">root&#x1F980; bin $ objcopy --strip-debug grpc_admin_svr grpc_admin_svr.stripped
+root&#x1F980; bin $ ll -h
+total 262M
+drwxr-xr-x 2 root root 4.0K May 18 11:34 ./
+drwxr-xr-x 4 root root 4.0K Apr 28 16:05 ../
+-rwxr-xr-x 1 root root 147M May 12 13:01 grpc_admin_svr
+-rwxr-xr-x 1 root root 115M May 18 11:34 grpc_admin_svr.stripped
+</code></pre>
+<p>32MB&#x8FD8;&#x662F;&#x6709;&#x70B9;&#x5927;&#x7684;&#xFF0C;&#x5927;&#x591A;&#x6570;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x662F;&#x9ED8;&#x8BA4;&#x4E0D;&#x751F;&#x6210;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#xFF0C;Go&#x8BED;&#x8A00;&#x662F;&#x4E2A;&#x4F8B;&#x5916;&#x3002;</p>
+<p>golang/go issues&#x4E5F;&#x6709;&#x8BA8;&#x8BBA;&#x662F;&#x5426;&#x5E94;&#x8BE5;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;DWARF&#x6570;&#x636E;&#x751F;&#x6210;&#x3002;&#x81F3;&#x4E8E;Go&#x65B0;&#x7248;&#x672C;&#x662F;&#x5426;&#x4F1A;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;DWARF&#x751F;&#x6210;&#xFF0C;&#x5F88;&#x53EF;&#x80FD;&#x4E0D;&#x4F1A;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x4E5F;&#x4F1A;&#x589E;&#x52A0;&#x8C03;&#x8BD5;&#x7684;&#x6210;&#x672C;&#xFF0C;&#x5236;&#x54C1;&#x5E93;&#x3001;&#x4EE3;&#x7801;&#x7248;&#x672C;&#x3001;&#x8C03;&#x8BD5;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#x4E00;&#x4E00;&#x5BF9;&#x5E94;&#x7684;&#x7BA1;&#x7406;&#x6210;&#x672C;&#x3002;&#x5728;&#x5B58;&#x50A8;&#x6210;&#x672C;&#x4F4E;&#x5EC9;&#x7684;&#x4ECA;&#x5929;&#xFF0C;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#x7684;&#x7B56;&#x7565;&#xFF0C;&#x53EF;&#x80FD;&#x662F;&#x4E00;&#x4E2A;&#x6309;&#x4E0B;&#x846B;&#x82A6;&#x8D77;&#x4E86;&#x74E2;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x5BF9;&#x5B9E;&#x8DF5;&#x5E76;&#x4E0D;&#x89C1;&#x7684;&#x7279;&#x522B;&#x6709;&#x4EF7;&#x503C;&#x3002;</p>
+<p>&#x5F53;&#x7136;&#x5982;&#x679C;&#x4F60;&#x60F3;&#x663E;&#x793A;&#x5173;&#x95ED;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>go build -ldflags=&apos;-w&apos;</code> &#x6765;&#x5173;&#x95ED;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#x3002;</p>
 
                                 
                                 </section>
@@ -1776,7 +1811,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8.4.6 压缩DWARF数据","level":"1.8.5.6","depth":3,"next":{"title":"8.4.7 ELF Sections","level":"1.8.5.7","depth":3,"path":"8-dwarf/4-other/7-elf-sections.md","ref":"8-dwarf/4-other/7-elf-sections.md","articles":[]},"previous":{"title":"8.4.5 变长数据","level":"1.8.5.5","depth":3,"path":"8-dwarf/4-other/5-varlen-data.md","ref":"8-dwarf/4-other/5-varlen-data.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/4-other/6-shrink-data.md","mtime":"2025-03-03T01:54:28.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-18T01:24:43.826Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.4.6 压缩DWARF数据","level":"1.8.5.6","depth":3,"next":{"title":"8.4.7 ELF Sections","level":"1.8.5.7","depth":3,"path":"8-dwarf/4-other/7-elf-sections.md","ref":"8-dwarf/4-other/7-elf-sections.md","articles":[]},"previous":{"title":"8.4.5 变长数据","level":"1.8.5.5","depth":3,"path":"8-dwarf/4-other/5-varlen-data.md","ref":"8-dwarf/4-other/5-varlen-data.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/4-other/6-shrink-data.md","mtime":"2025-05-18T04:07:35.151Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-18T04:40:11.610Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

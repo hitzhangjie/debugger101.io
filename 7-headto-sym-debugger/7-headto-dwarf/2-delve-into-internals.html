@@ -961,12 +961,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-dwarf-summary.html">
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-practices.html">
             
-                <a href="../../8-dwarf/6-dwarf-summary.html">
+                <a href="../../8-dwarf/6-practices.html">
             
                     
-                    8.6 DWARF总结
+                    8.6 DWARF解析及应用
             
                 </a>
             
@@ -974,38 +974,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-parsing-dwarf.html">
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-summary.html">
             
-                <a href="../../8-dwarf/7-parsing-dwarf.html">
-            
-                    
-                    8.7 解析DWARF
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.8" data-path="../../8-dwarf/8-using-dwarf.html">
-            
-                <a href="../../8-dwarf/8-using-dwarf.html">
+                <a href="../../8-dwarf/7-summary.html">
             
                     
-                    8.8 使用DWARF
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.8.9" data-path="../../8-dwarf/9-summary.html">
-            
-                <a href="../../8-dwarf/9-summary.html">
-            
-                    
-                    8.9 本章总结
+                    8.7 本章总结
             
                 </a>
             
@@ -1732,14 +1706,14 @@
                                 
                                 <h2 id="&#x5982;&#x4F55;&#x8DDF;&#x8E2A;dwarf&#x751F;&#x6210;&#x8FC7;&#x7A0B;">&#x5982;&#x4F55;&#x8DDF;&#x8E2A;DWARF&#x751F;&#x6210;&#x8FC7;&#x7A0B;</h2>
 <p>&#x672C;&#x7AE0;&#x8282;&#x5F00;&#x5934;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86; <code>go build</code> &#x6267;&#x884C;&#x671F;&#x95F4;&#x5B9E;&#x9645;&#x8C03;&#x7528;&#x7684;&#x5DE5;&#x5177;&#x5217;&#x8868;&#xFF0C;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x751F;&#x6210;&#x903B;&#x8F91;&#x662F;&#x7531;compile&#x3001;link&#x751F;&#x6210;&#x7684;&#xFF0C;&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E0B;&#x7F16;&#x8BD1;&#x5668;compile&#x4E2D;&#x751F;&#x6210;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x7684;&#x5927;&#x81F4;&#x8FC7;&#x7A0B;&#x3002;</p>
-<p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x964C;&#x751F;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x80FD;&#x4F1A;&#x901A;&#x8FC7;&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x3001;&#x8C03;&#x8BD5;&#x5668;&#x8DDF;&#x8E2A;&#x6267;&#x884C;&#x6765;&#x5927;&#x81F4;&#x4E86;&#x89E3;&#x5176;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p>&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x76F8;&#x5BF9;&#x6BD4;&#x8F83;&#x964C;&#x751F;&#x7684;&#x9879;&#x76EE;&#xFF0C;&#x5927;&#x5BB6;&#x53EF;&#x80FD;&#x4F1A;&#x901A;&#x8FC7;&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x3001;&#x8C03;&#x8BD5;&#x5668;&#x8DDF;&#x8E2A;&#x6267;&#x884C;&#x6765;&#x5927;&#x81F4;&#x4E86;&#x89E3;&#x5176;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x3002;</p>
 <h3 id="&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x7684;&#x65B9;&#x5F0F;">&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x7684;&#x65B9;&#x5F0F;</h3>
 <p>&#x8FD9;&#x53EF;&#x80FD;&#x662F;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x60F3;&#x5230;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x53EF;&#x4EE5;&#x638C;&#x63E1;&#x4E3B;&#x6D41;&#x7A0B;&#x4EE5;&#x53CA;&#x8FB9;&#x8FB9;&#x89D2;&#x89D2;&#x7684;&#x7EC6;&#x8282;&#x3002;&#x4F46;&#x4EE3;&#x7801;&#x91CF;&#x6BD4;&#x8F83;&#x5927;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x6392;&#x9664;&#x4E00;&#x4E9B;&#x65E0;&#x5173;&#x4EE3;&#x7801;&#xFF0C;&#x5426;&#x5219;&#x5BB9;&#x6613;&#x8FF7;&#x5931;&#x5728;&#x4EE3;&#x7801;&#x4E2D;&#x3002;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x9879;&#x76EE;&#x4E0D;&#x719F;&#xFF0C;&#x90A3;&#x5C31;&#x66F4;&#x8BA9;&#x4EBA;&#x5934;&#x5927;&#x4E86;&#x3002;</p>
 <p>&#x4EE5;go&#x4E3A;&#x4F8B;&#xFF0C;&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x8FDB;&#x8003;&#x8651;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x94FE;&#x63A5;&#x5668;&#xFF0C;go&#x6E90;&#x7801;&#x884C;&#x6570;&#x9AD8;&#x8FBE;44w&#x3002;&#x5C3D;&#x7BA1;&#x4F5C;&#x8005;&#x5BF9;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x5DF2;&#x7ECF;&#x6BD4;&#x8F83;&#x719F;&#x6089;&#x4E86;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x4E0D;&#x501F;&#x52A9;&#x4EFB;&#x4F55;&#x5DE5;&#x5177;&#xFF0C;&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x8FD8;&#x662F;&#x4F1A;&#x6709;&#x201C;&#x8FF7;&#x5931;&#x5728;&#x68EE;&#x6797;&#x201D;&#x4E2D;&#x7684;&#x611F;&#x89C9;&#x3002;</p>
 <pre><code class="lang-bash">path-to/go/src/cmd $ cloc compile/ link/
 
      877 text files.
-     853 unique files.                                          
+     853 unique files.                                        
       34 files ignored.
 
 github.com/AlDanial/cloc v 2.01  T=1.00 s (853.0 files/s, 561112.0 lines/s)
@@ -1818,7 +1792,7 @@ y
 add arg rule at 47cc40: {Type:1 Reg:0 Size:8 Length:1 Offsets:[0 0 0 0 0 0 0 0] Deference:[1 0 0 0 0 0 0 0]}
 add arg rule at 47cc40: {Type:1 Reg:0 Size:8 Length:1 Offsets:[8 0 0 0 0 0 0 0] Deference:[0 0 0 0 0 0 0 0]}
 add arg rule at 47cc40: {Type:1 Reg:0 Size:8 Length:1 Offsets:[16 0 0 0 0 0 0 0] Deference:[0 0 0 0 0 0 0 0]}
-INFO[0002] start tracing                                
+INFO[0002] start tracing                              
 
 ...
 
@@ -1843,7 +1817,7 @@ INFO[0002] start tracing
 
 &gt;&gt;&gt; press `Ctrl+C` to quit.
 
-INFO[0007] start detaching                              
+INFO[0007] start detaching                            
 detaching 16/16
 </code></pre>
 <p>&#x8FD9;&#x4E2A;&#x57FA;&#x4E8E;ebpf&#x5B9E;&#x73B0;&#x7684;&#x8DDF;&#x8E2A;&#x5DE5;&#x5177;&#xFF0C;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x5206;&#x6790;go&#x6E90;&#x7801;&#x6267;&#x884C;&#x5386;&#x7A0B;&#xFF0C;&#x4F60;&#x4E0D;&#x9700;&#x8981;&#x8D70;&#x8BFB;&#x4EE3;&#x7801;&#x8FD9;&#x4E48;&#x673A;&#x68B0;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#x53BB;&#x63A7;&#x5236;&#x6267;&#x884C;&#xFF0C;&#x4F60;&#x53EA;&#x9700;&#x8981;&#x7528;go-ftrace&#x53BB;&#x8DDF;&#x8E2A;&#x4E00;&#x904D;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x5B83;&#x5C31;&#x53EF;&#x4EE5;&#x628A;&#x6267;&#x884C;&#x671F;&#x95F4;&#x8D70;&#x8FC7;&#x7684;&#x6240;&#x6709;&#x51FD;&#x6570;&#x7ED9;&#x8F93;&#x51FA;&#x51FA;&#x6765;&#x3002;&#x7136;&#x540E;&#x53EF;&#x4EE5;&#x6709;&#x7684;&#x653E;&#x77E2;&#x7684;&#x53BB;&#x770B;&#x770B;&#x6E90;&#x7801;&#xFF0C;&#x4E8B;&#x534A;&#x529F;&#x500D;&#xFF01;</p>
@@ -1906,7 +1880,7 @@ detaching 16/16
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"next":{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},"previous":{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","mtime":"2025-05-07T18:45:26.360Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-20T14:31:39.759Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"next":{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},"previous":{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","mtime":"2025-05-20T14:36:25.705Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-20T15:15:50.533Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

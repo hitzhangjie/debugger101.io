@@ -2018,9 +2018,159 @@
     <span class="hljs-keyword">select</span> {}
 }
 </code></pre>
+<h3 id="&#x8C03;&#x8BD5;&#x5668;&#x96C6;&#x6210;-starlark">&#x8C03;&#x8BD5;&#x5668;&#x96C6;&#x6210; starlark</h3>
+<p>go-delve/delve &#x4E2D;&#x96C6;&#x6210;&#x4E86;starlark&#xFF0C;&#x5E76;&#x4F7F;&#x7528;&#x672C;&#x6587;&#x4F53;&#x79EF;&#x7684;&#x65B9;&#x6CD5;&#x6765;&#x652F;&#x6301;&#x4E86;&#x5BF9;&#x67D0;&#x4E9B;&#x8C03;&#x8BD5;&#x5668;&#x5185;&#x90E8;&#x51FD;&#x6570;&#x7684;&#x8C03;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">//go:generate go run ../../../_scripts/gen-starlark-bindings.go go ./starlark_mapping.go</span>
+<span class="hljs-keyword">const</span> (
+    dlvCommandBuiltinName        = <span class="hljs-string">&quot;dlv_command&quot;</span>
+    readFileBuiltinName          = <span class="hljs-string">&quot;read_file&quot;</span>
+    writeFileBuiltinName         = <span class="hljs-string">&quot;write_file&quot;</span>
+    commandPrefix                = <span class="hljs-string">&quot;command_&quot;</span>
+    dlvContextName               = <span class="hljs-string">&quot;dlv_context&quot;</span>
+    curScopeBuiltinName          = <span class="hljs-string">&quot;cur_scope&quot;</span>
+    defaultLoadConfigBuiltinName = <span class="hljs-string">&quot;default_load_config&quot;</span>
+    helpBuiltinName              = <span class="hljs-string">&quot;help&quot;</span>
+)
+</code></pre>
+<p>&#x6BD4;&#x5982;&#x6709;&#x4E0B;&#x9762;&#x7684;go&#x6E90;&#x7A0B;&#x5E8F;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528; go-delve/delve &#x6765;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5316;&#x8C03;&#x8BD5;&#xFF1A;</p>
+<p>file: main.go &#xFF08;&#x8FD9;&#x91CC;&#x4FDD;&#x7559;&#x884C;&#x53F7;&#x4FE1;&#x606F;&#xFF0C;&#x65B9;&#x4FBF;&#x4E0E;starlark&#x811A;&#x672C;&#x5BF9;&#x5E94;&#xFF09;</p>
+<pre><code class="lang-go">     <span class="hljs-number">1</span> <span class="hljs-keyword">package</span> main                                                                                                        
+     <span class="hljs-number">2</span> 
+     <span class="hljs-number">3</span> <span class="hljs-keyword">import</span> (
+     <span class="hljs-number">4</span>     <span class="hljs-string">&quot;fmt&quot;</span>
+     <span class="hljs-number">5</span>     <span class="hljs-string">&quot;time&quot;</span>
+     <span class="hljs-number">6</span> )
+     <span class="hljs-number">7</span> 
+     <span class="hljs-number">8</span> <span class="hljs-keyword">type</span> Person <span class="hljs-keyword">struct</span> {
+     <span class="hljs-number">9</span>     Name <span class="hljs-keyword">string</span>
+    <span class="hljs-number">10</span>     Age  <span class="hljs-keyword">int</span>
+    <span class="hljs-number">11</span> }
+    <span class="hljs-number">12</span> 
+    <span class="hljs-number">13</span> <span class="hljs-keyword">func</span> main() {
+    <span class="hljs-number">14</span>     people := []Person{
+    <span class="hljs-number">15</span>         {Name: <span class="hljs-string">&quot;Alice&quot;</span>, Age: <span class="hljs-number">25</span>},
+    <span class="hljs-number">16</span>         {Name: <span class="hljs-string">&quot;Bob&quot;</span>, Age: <span class="hljs-number">30</span>},
+    <span class="hljs-number">17</span>         {Name: <span class="hljs-string">&quot;Charlie&quot;</span>, Age: <span class="hljs-number">35</span>},
+    <span class="hljs-number">18</span>     }
+    <span class="hljs-number">19</span> 
+    <span class="hljs-number">20</span>     <span class="hljs-keyword">for</span> i, p := <span class="hljs-keyword">range</span> people {
+    <span class="hljs-number">21</span>         fmt.Printf(<span class="hljs-string">&quot;Processing person %d: %s\n&quot;</span>, i, p.Name)
+    <span class="hljs-number">22</span>         time.Sleep(time.Second) <span class="hljs-comment">// &#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x5EF6;&#x8FDF;&#x4EE5;&#x4FBF;&#x4E8E;&#x8C03;&#x8BD5;</span>
+    <span class="hljs-number">23</span>         processPerson(p)
+    <span class="hljs-number">24</span>     }
+    <span class="hljs-number">25</span> }
+    <span class="hljs-number">26</span> 
+    <span class="hljs-number">27</span> <span class="hljs-keyword">func</span> processPerson(p Person) {
+    <span class="hljs-number">28</span>     fmt.Printf(<span class="hljs-string">&quot;Name: %s, Age: %d\n&quot;</span>, p.Name, p.Age)
+    <span class="hljs-number">29</span> }
+</code></pre>
+<p>starlark&#x81EA;&#x52A8;&#x5316;&#x8C03;&#x8BD5;&#x811A;&#x672C;&#xFF1A;</p>
+<p>file: debug.star</p>
+<pre><code># &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x6253;&#x5370;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x4FE1;&#x606F;
+def print_scope():
+    scope = cur_scope()
+    print(&quot;Current scope:&quot;, scope)
+    dlv_command(&quot;locals&quot;)
+
+# &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x5E76;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;
+def debug_person():
+    # &#x6253;&#x5370;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;
+    print_scope()
+
+    # &#x6253;&#x5370;&#x53D8;&#x91CF; p &#x7684;&#x503C;
+    dlv_command(&quot;print p&quot;)
+
+    # &#x5355;&#x6B65;&#x6267;&#x884C;
+    dlv_command(&quot;next&quot;)
+
+    # &#x518D;&#x6B21;&#x6253;&#x5370;&#x4F5C;&#x7528;&#x57DF;
+    print_scope()
+
+# &#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x6765;&#x4FDD;&#x5B58;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x5230;&#x6587;&#x4EF6;
+def save_debug_info():
+    # &#x83B7;&#x53D6;&#x5F53;&#x524D;&#x4F5C;&#x7528;&#x57DF;
+    scope = cur_scope()
+
+    # &#x5C06;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x5199;&#x5165;&#x6587;&#x4EF6;
+    debug_info = &quot;Debug session at &quot; + str(time.time()) + &quot;\n&quot;
+    debug_info += &quot;Current scope: &quot; + str(scope) + &quot;\n&quot;
+
+    # &#x4FDD;&#x5B58;&#x5230;&#x6587;&#x4EF6;
+    write_file(&quot;debug_info.txt&quot;, debug_info)
+
+# &#x4E3B;&#x51FD;&#x6570;
+def main():
+    print(&quot;Starting debug session...&quot;)
+
+    # &#x8BBE;&#x7F6E;&#x65AD;&#x70B9;
+    dlv_command(&quot;break main.main&quot;)
+    dlv_command(&quot;break main.processPerson&quot;)
+
+    # &#x7EE7;&#x7EED;&#x6267;&#x884C;&#x5230;main.main
+    dlv_command(&quot;continue&quot;)
+
+    # &#x7EE7;&#x7EED;&#x6267;&#x884C;&#x5230;main.processPerson
+    dlv_command(&quot;continue&quot;)
+
+    # &#x6267;&#x884C;&#x8C03;&#x8BD5;&#x64CD;&#x4F5C;
+    debug_person()
+
+    # &#x4FDD;&#x5B58;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;
+    save_debug_info()
+
+    print(&quot;Debug session completed.&quot;)
+
+# &#x76F4;&#x63A5;&#x8C03;&#x7528; main &#x51FD;&#x6570; (source&#x547D;&#x4EE4;&#x4F1A;&#x81EA;&#x52A8;&#x8C03;&#x7528;&#x5B9A;&#x4E49;&#x7684; `main` &#x51FD;&#x6570;)
+#main()
+</code></pre><p>&#x8FD0;&#x884C;&#x8C03;&#x8BD5;&#x5668; <code>dlv debug main.go</code>&#xFF0C;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C31;&#x7EEA;&#x540E;&#x8FD0;&#x884C; <code>source debug.star</code> &#x5373;&#x53EF;&#x3002;</p>
+<pre><code class="lang-bash">$ tinydbg debug main.go
+Type <span class="hljs-string">&apos;help&apos;</span> <span class="hljs-keyword">for</span> list of commands.
+(dlv) <span class="hljs-built_in">source</span> debug.star
+Starting debug session...
+Breakpoint 1 <span class="hljs-built_in">set</span> at 0x49d0f6 <span class="hljs-keyword">for</span> main.main() ./main.go:13
+Breakpoint 2 <span class="hljs-built_in">set</span> at 0x49d40e <span class="hljs-keyword">for</span> main.processPerson() ./main.go:27
+&gt; [Breakpoint 1] main.main() ./main.go:13 (hits goroutine(1):1 total:1) (PC: 0x49d0f6)
+     8: <span class="hljs-built_in">type</span> Person struct {
+     9:         Name string
+    10:         Age  int
+    11: }
+    12:
+=&gt;  13: func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
+    14:         people := []Person{
+    15:                 {Name: <span class="hljs-string">&quot;Alice&quot;</span>, Age: 25},
+    16:                 {Name: <span class="hljs-string">&quot;Bob&quot;</span>, Age: 30},
+    17:                 {Name: <span class="hljs-string">&quot;Charlie&quot;</span>, Age: 35},
+    18:         }
+Processing person 0: Alice
+&gt; [Breakpoint 2] main.processPerson() ./main.go:27 (hits goroutine(1):1 total:1) (PC: 0x49d40e)
+    22:                 time.Sleep(time.Second) // &#x6DFB;&#x52A0;&#x4E00;&#x4E9B;&#x5EF6;&#x8FDF;&#x4EE5;&#x4FBF;&#x4E8E;&#x8C03;&#x8BD5;
+    23:                 processPerson(p)
+    24:         }
+    25: }
+    26:
+=&gt;  27: func processPerson(p Person) {
+    28:         fmt.Printf(<span class="hljs-string">&quot;Name: %s, Age: %d\n&quot;</span>, p.Name, p.Age)
+    29: }
+Current scope: api.EvalScope{GoroutineID:-1, Frame:0, DeferredCall:0}
+(no locals)
+main.Person {Name: <span class="hljs-string">&quot;Alice&quot;</span>, Age: 25}
+&gt; main.processPerson() ./main.go:28 (PC: 0x49d42a)
+    23:                 processPerson(p)
+    24:         }
+    25: }
+    26:
+    27: func processPerson(p Person) {
+=&gt;  28:         fmt.Printf(<span class="hljs-string">&quot;Name: %s, Age: %d\n&quot;</span>, p.Name, p.Age)
+    29: }
+Current scope: api.EvalScope{GoroutineID:-1, Frame:0, DeferredCall:0}
+(no locals)
+Debug session completed.
+</code></pre>
+<p>tinydbg&#x6682;&#x65F6;&#x4FDD;&#x7559;&#x4E86;go-delve/delve&#x4E2D;&#x7684;starlark&#x5B9E;&#x73B0;&#xFF0C;pkg/terminal/starlark.go + pkg/terminal/starlark_test.go &#x4E00;&#x5171;300&#x884C;&#x4EE3;&#x7801;&#xFF0C;starbind/ &#x4E0B;&#x6709;&#x8FD1;3000&#x884C;&#x4EE3;&#x7801;&#xFF0C;&#x4E0D;&#x8FC7;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x662F;&#x901A;&#x8FC7;&#x811A;&#x672C;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x3002;&#x7531;&#x4E8E;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x76F8;&#x5BF9;&#x6765;&#x8BF4;&#x6BD4;&#x8F83;&#x72EC;&#x7ACB;&#xFF0C;&#x4E0D;&#x50CF;ebpf-based tracing&#x90A3;&#x6837;&#x5F71;&#x54CD;&#x5230;&#x5F88;&#x591A;&#x5730;&#x65B9;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x6682;&#x65F6;&#x4FDD;&#x7559;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x3002;&#x4E0A;&#x8FF0;&#x6D4B;&#x8BD5;&#x7528;&#x7684;&#x6E90;&#x7801;&#x3001;star&#x811A;&#x672C;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x8DEF;&#x5F84; tinydbg/examples/starlark_demo &#x627E;&#x5230;&#x3002;</p>
 <h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
 <p>&#x6211;&#x5728;&#x5B66;&#x4E60;bazelbuild&#x65F6;&#x4E86;&#x89E3;&#x5230;starlark&#x8FD9;&#x95E8;&#x8BED;&#x8A00;&#xFF0C;&#x5728;&#x5B66;&#x4E60;go-delve/delve&#x65F6;&#x8FDB;&#x4E00;&#x6B65;&#x4E86;&#x89E3;&#x4E86;&#x5B83;&#x3002;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x6B63;&#x5728;&#x7F16;&#x5199;&#x4E00;&#x4E2A;&#x5DE5;&#x5177;&#x6216;&#x8005;&#x5206;&#x6790;&#x578B;&#x5DE5;&#x5177;&#xFF0C;&#x5E0C;&#x671B;&#x901A;&#x8FC7;&#x66B4;&#x6F0F;&#x6211;&#x4EEC;&#x7684;&#x5E95;&#x5C42;&#x80FD;&#x529B;&#xFF0C;&#x4EE5;&#x8BA9;&#x7528;&#x6237;&#x81EA;&#x7531;&#x53D1;&#x6325;&#x4ED6;&#x4EEC;&#x7684;&#x521B;&#x9020;&#x6027;&#x7528;&#x9014;&#xFF0C;&#x6BD4;&#x5982;&#x7C7B;&#x4F3C;go-delve/delve&#x5E0C;&#x671B;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6309;&#x9700;&#x6267;&#x884C;&#x81EA;&#x52A8;&#x5316;&#x8C03;&#x8BD5;&#xFF0C;&#x6211;&#x4EEC;&#x5176;&#x5B9E;&#x53EF;&#x4EE5;&#x5C06;starlark&#x89E3;&#x91CA;&#x5668;&#x5F15;&#x64CE;&#x96C6;&#x6210;&#x5230;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x4E00;&#x70B9;&#x80F6;&#x6C34;&#x4EE3;&#x7801;&#x6253;&#x901A;starlark&#x4E0E;&#x6211;&#x4EEC;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x4F7F;&#x5F97;starlark&#x89E3;&#x91CA;&#x5668;&#x8C03;&#x7528;starlark&#x51FD;&#x6570;&#x6765;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x51FD;&#x6570;&#x3002;&#x8FD9;&#x65E0;&#x7591;&#x4F1A;&#x91CA;&#x653E;&#x6211;&#x4EEC;&#x7A0B;&#x5E8F;&#x7684;&#x5E95;&#x5C42;&#x80FD;&#x529B;&#xFF0C;&#x5141;&#x8BB8;&#x4F7F;&#x7528;&#x8005;&#x5728;&#x5E95;&#x5C42;&#x80FD;&#x529B;&#x5F00;&#x653E;&#x7A0B;&#x5EA6;&#x53D7;&#x63A7;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x8FDB;&#x4E00;&#x6B65;&#x53BB;&#x53D1;&#x6325;&#x3001;&#x53BB;&#x6316;&#x6398;&#x3002;</p>
 <p>&#x672C;&#x6587;&#x6F14;&#x793A;&#x4E86;&#x5982;&#x4F55;&#x8F7B;&#x677E;starklark&#x96C6;&#x6210;&#x5230;&#x60A8;&#x7684;Go&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;starlark&#x7684;&#x66F4;&#x591A;&#x7528;&#x6CD5;&#x8BF7;&#x53C2;&#x8003; <a href="https://github.com/bazelbuild/starlark" target="_blank">bazelbuild/starlark</a>&#x3002;</p>
+<p>&#x672C;&#x6587;&#x8FD8;&#x4ECB;&#x7ECD;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x4E0E;starlark&#x96C6;&#x6210;&#x4EE5;&#x53CA;&#x4F7F;&#x7528;&#x793A;&#x4F8B;&#xFF0C;&#x6709;&#x81EA;&#x52A8;&#x5316;&#x6D4B;&#x8BD5;&#x8BC9;&#x6C42;&#xFF0C;&#x6216;&#x8005;&#x5E0C;&#x671B;&#x5206;&#x4EAB;&#x4F60;&#x7684;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
 
                                 
                                 </section>
@@ -2064,7 +2214,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.3.100 扩展:集成starlark","level":"1.9.2.22","depth":3,"next":{"title":"9.3.101 扩展:基于eBPF跟踪","level":"1.9.2.23","depth":3,"path":"9-develop-sym-debugger/2-详细实现/101-howto_tracing_via_ebpf.md","ref":"9-develop-sym-debugger/2-详细实现/101-howto_tracing_via_ebpf.md","articles":[]},"previous":{"title":"9.3.19 More...","level":"1.9.2.21","depth":3,"path":"9-develop-sym-debugger/3-详细实现/x-more.md","ref":"9-develop-sym-debugger/3-详细实现/x-more.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-详细实现/100-howto_integrate_starlark.md","mtime":"2025-05-30T23:16:16.177Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-05-30T23:51:30.846Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.3.100 扩展:集成starlark","level":"1.9.2.22","depth":3,"next":{"title":"9.3.101 扩展:基于eBPF跟踪","level":"1.9.2.23","depth":3,"path":"9-develop-sym-debugger/2-详细实现/101-howto_tracing_via_ebpf.md","ref":"9-develop-sym-debugger/2-详细实现/101-howto_tracing_via_ebpf.md","articles":[]},"previous":{"title":"9.3.19 More...","level":"1.9.2.21","depth":3,"path":"9-develop-sym-debugger/3-详细实现/x-more.md","ref":"9-develop-sym-debugger/3-详细实现/x-more.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-详细实现/100-howto_integrate_starlark.md","mtime":"2025-06-03T03:22:57.464Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-03T03:23:36.425Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

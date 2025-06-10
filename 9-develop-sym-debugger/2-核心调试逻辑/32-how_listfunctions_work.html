@@ -1947,9 +1947,43 @@
     InlinedCalls []InlinedCall
 }
 </code></pre>
+<h4 id="&#x83B7;&#x53D6;&#x51FD;&#x6570;&#x5217;&#x8868;">&#x83B7;&#x53D6;&#x51FD;&#x6570;&#x5217;&#x8868;</h4>
 <h4 id="&#x51FD;&#x6570;&#x8C03;&#x7528;&#x904D;&#x5386;">&#x51FD;&#x6570;&#x8C03;&#x7528;&#x904D;&#x5386;</h4>
 <p>&#x5F53;<code>FollowCalls</code>&#x5927;&#x4E8E;0&#x65F6;,&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x6267;&#x884C;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x7684;&#x5E7F;&#x5EA6;&#x4F18;&#x5148;&#x904D;&#x5386;&#x3002;&#x8FD9;&#x662F;&#x5728;<code>traverse</code>&#x51FD;&#x6570;&#x4E2D;&#x5B9E;&#x73B0;&#x7684;:</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> traverse(t proc.ValidTargets, f *proc.Function, depth <span class="hljs-keyword">int</span>, followCalls <span class="hljs-keyword">int</span>) ([]<span class="hljs-keyword">string</span>, error) {
+<pre><code class="lang-go"><span class="hljs-comment">// Functions returns a list of functions in the target process.</span>
+<span class="hljs-keyword">func</span> (d *Debugger) Functions(filter <span class="hljs-keyword">string</span>, followCalls <span class="hljs-keyword">int</span>) ([]<span class="hljs-keyword">string</span>, error) {
+    d.targetMutex.Lock()
+    <span class="hljs-keyword">defer</span> d.targetMutex.Unlock()
+
+    regex, err := regexp.Compile(filter)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;invalid filter argument: %s&quot;</span>, err.Error())
+    }
+
+    funcs := []<span class="hljs-keyword">string</span>{}
+    t := proc.ValidTargets{Group: d.target}
+    <span class="hljs-keyword">for</span> t.Next() {
+        <span class="hljs-keyword">for</span> _, f := <span class="hljs-keyword">range</span> t.BinInfo().Functions {
+            <span class="hljs-keyword">if</span> regex.MatchString(f.Name) {
+                <span class="hljs-keyword">if</span> followCalls &gt; <span class="hljs-number">0</span> {
+                    newfuncs, err := traverse(t, &amp;f, <span class="hljs-number">1</span>, followCalls)
+                    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;traverse failed with error %w&quot;</span>, err)
+                    }
+                    funcs = <span class="hljs-built_in">append</span>(funcs, newfuncs...)
+                } <span class="hljs-keyword">else</span> {
+                    funcs = <span class="hljs-built_in">append</span>(funcs, f.Name)
+                }
+            }
+        }
+    }
+    <span class="hljs-comment">// uniq = sort + compact</span>
+    sort.Strings(funcs)
+    funcs = slices.Compact(funcs)
+    <span class="hljs-keyword">return</span> funcs, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-keyword">func</span> traverse(t proc.ValidTargets, f *proc.Function, depth <span class="hljs-keyword">int</span>, followCalls <span class="hljs-keyword">int</span>) ([]<span class="hljs-keyword">string</span>, error) {
     <span class="hljs-keyword">type</span> TraceFunc <span class="hljs-keyword">struct</span> {
         Func    *proc.Function
         Depth   <span class="hljs-keyword">int</span>
@@ -2098,7 +2132,7 @@ tinydbg&gt; trace main.*
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.32 how ListFunctions work","level":"1.9.2.20","depth":3,"next":{"title":"9.2.32 funcs","level":"1.9.2.21","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/32-funcs.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/32-funcs.md","articles":[]},"previous":{"title":"9.2.31 变量&类型系统","level":"1.9.2.19","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/31-vars.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/31-vars.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/32-how_listfunctions_work.md","mtime":"2025-06-10T17:13:47.444Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-10T17:34:35.095Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.32 how ListFunctions work","level":"1.9.2.20","depth":3,"next":{"title":"9.2.32 funcs","level":"1.9.2.21","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/32-funcs.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/32-funcs.md","articles":[]},"previous":{"title":"9.2.31 变量&类型系统","level":"1.9.2.19","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/31-vars.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/31-vars.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/32-how_listfunctions_work.md","mtime":"2025-06-10T17:53:25.145Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-10T17:58:47.786Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

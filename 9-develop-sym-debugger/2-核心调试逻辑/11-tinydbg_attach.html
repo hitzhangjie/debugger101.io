@@ -1,0 +1,2627 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>9.2.11 tinydbg attach · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="12-tinydbg_attach_waitfor.html" />
+    
+    
+    <link rel="prev" href="01-debug-session.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+            
+                <a href="../../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../7-headto-sym-debugger/">
+            
+                <a href="../../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                <a href="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../7-headto-sym-debugger/2-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../7-headto-sym-debugger/3-syms.html">
+            
+                <a href="../../7-headto-sym-debugger/3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                <a href="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                    
+                    7.7.2 如何破解那些细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../8-dwarf/">
+            
+                <a href="../../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../8-dwarf/1-history.html">
+            
+                <a href="../../8-dwarf/1-history.html">
+            
+                    
+                    8.1 DWARF发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../8-dwarf/2-overview.html">
+            
+                <a href="../../8-dwarf/2-overview.html">
+            
+                    
+                    8.2 DWARF内容概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../8-dwarf/3-dwarfdata.html">
+            
+                <a href="../../8-dwarf/3-dwarfdata.html">
+            
+                    
+                    8.3 DWARF数据分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../8-dwarf/4-die/">
+            
+                <a href="../../8-dwarf/4-die/">
+            
+                    
+                    8.4 DIE详细介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                <a href="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                    
+                    8.4.1 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                <a href="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                    
+                    8.4.2 位置数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../8-dwarf/4-die/3-desc-code.html">
+            
+                <a href="../../8-dwarf/4-die/3-desc-code.html">
+            
+                    
+                    8.4.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../../8-dwarf/4-die/4-encoding.html">
+            
+                <a href="../../8-dwarf/4-die/4-encoding.html">
+            
+                    
+                    8.4.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../8-dwarf/5-other/">
+            
+                <a href="../../8-dwarf/5-other/">
+            
+                    
+                    8.5 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                <a href="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                    
+                    8.5.1 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                <a href="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                    
+                    8.5.2 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                <a href="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                    
+                    8.5.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../../8-dwarf/5-other/4-macro-info.html">
+            
+                <a href="../../8-dwarf/5-other/4-macro-info.html">
+            
+                    
+                    8.5.4 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                <a href="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                    
+                    8.5.5 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                <a href="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                    
+                    8.5.6 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                <a href="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                    
+                    8.5.7 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-practices.html">
+            
+                <a href="../../8-dwarf/6-practices.html">
+            
+                    
+                    8.6 DWARF解析及应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-summary.html">
+            
+                <a href="../../8-dwarf/7-summary.html">
+            
+                    
+                    8.7 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../1-架构设计/">
+            
+                <a href="../1-架构设计/">
+            
+                    
+                    9.1 架构设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../1-架构设计/1-现代调试器架构.html">
+            
+                <a href="../1-架构设计/1-现代调试器架构.html">
+            
+                    
+                    9.1.1 现代调试器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../1-架构设计/2-前端UI层设计.html">
+            
+                <a href="../1-架构设计/2-前端UI层设计.html">
+            
+                    
+                    9.1.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../1-架构设计/3-Service层设计.html">
+            
+                <a href="../1-架构设计/3-Service层设计.html">
+            
+                    
+                    9.1.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../1-架构设计/4-后端符号层设计.html">
+            
+                <a href="../1-架构设计/4-后端符号层设计.html">
+            
+                    
+                    9.1.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../1-架构设计/5-后端目标层设计.html">
+            
+                <a href="../1-架构设计/5-后端目标层设计.html">
+            
+                    
+                    9.1.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../1-架构设计/6-日志系统设计.html">
+            
+                <a href="../1-架构设计/6-日志系统设计.html">
+            
+                    
+                    9.1.6 日志系统设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    9.2 核心调试逻辑
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="00-cmds.html">
+            
+                <a href="00-cmds.html">
+            
+                    
+                    9.2.00 核心调试命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="01-debug-session.html">
+            
+                <a href="01-debug-session.html">
+            
+                    
+                    9.2.01 打开调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2.3" data-path="11-tinydbg_attach.html">
+            
+                <a href="11-tinydbg_attach.html">
+            
+                    
+                    9.2.11 tinydbg attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="12-tinydbg_attach_waitfor.html">
+            
+                <a href="12-tinydbg_attach_waitfor.html">
+            
+                    
+                    9.2.12 tinydbg attach+waitfor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="13-tinydbg_exec.html">
+            
+                <a href="13-tinydbg_exec.html">
+            
+                    
+                    9.2.13 tinydbg exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" data-path="14-tinydbg_debug.html">
+            
+                <a href="14-tinydbg_debug.html">
+            
+                    
+                    9.2.14 tinydbg debug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7" data-path="15-tinydbg_core.html">
+            
+                <a href="15-tinydbg_core.html">
+            
+                    
+                    9.2.15 tinydbg core
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.8" data-path="16-tinydbg_connect.html">
+            
+                <a href="16-tinydbg_connect.html">
+            
+                    
+                    9.2.16 tinydbg connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.9" data-path="17-tinydbg_trace.html">
+            
+                <a href="17-tinydbg_trace.html">
+            
+                    
+                    9.2.17 tinydbg trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.10" data-path="21-disassemble.html">
+            
+                <a href="21-disassemble.html">
+            
+                    
+                    9.2.21 tinydbg> disass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.11" data-path="22-breakpoint.html">
+            
+                <a href="22-breakpoint.html">
+            
+                    
+                    9.2.22 tinydbg> breakpoint
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.12" data-path="23-breakpoints.html">
+            
+                <a href="23-breakpoints.html">
+            
+                    
+                    9.2.23 tinydbg> breakpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.13" data-path="24-clear.html">
+            
+                <a href="24-clear.html">
+            
+                    
+                    9.2.24 tinydbg> clear | toggle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.14" data-path="25-clearall.html">
+            
+                <a href="25-clearall.html">
+            
+                    
+                    9.2.25 tinydbg> clearall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.15" data-path="26-step.html">
+            
+                <a href="26-step.html">
+            
+                    
+                    9.2.26 tinydbg> next | step | stepi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.16" data-path="27-continue.html">
+            
+                <a href="27-continue.html">
+            
+                    
+                    9.2.27 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.17" data-path="28-pmem.html">
+            
+                <a href="28-pmem.html">
+            
+                    
+                    9.2.28 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.18" data-path="29-regs.html">
+            
+                <a href="29-regs.html">
+            
+                    
+                    9.2.29 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.19" data-path="30-call-frame.html">
+            
+                <a href="30-call-frame.html">
+            
+                    
+                    9.2.30 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.20" data-path="31-vars.html">
+            
+                <a href="31-vars.html">
+            
+                    
+                    9.2.31 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.21" data-path="32-how_listfunctions_work.html">
+            
+                <a href="32-how_listfunctions_work.html">
+            
+                    
+                    9.2.32 how ListFunctions work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.22" data-path="32-funcs.html">
+            
+                <a href="32-funcs.html">
+            
+                    
+                    9.2.32 funcs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.23" data-path="33-goroutines.html">
+            
+                <a href="33-goroutines.html">
+            
+                    
+                    9.2.33 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.24" data-path="34-multi-threads.html">
+            
+                <a href="34-multi-threads.html">
+            
+                    
+                    9.2.34 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../3-高级功能扩展/">
+            
+                <a href="../3-高级功能扩展/">
+            
+                    
+                    9.3 高级功能扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                <a href="../3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                    
+                    9.3.100 集成starlark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                <a href="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                    
+                    9.3.101 基于eBPF跟踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                <a href="../3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                    
+                    9.3.102 实现语法高亮
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../3-高级功能扩展/103-howto_paging_output.html">
+            
+                <a href="../3-高级功能扩展/103-howto_paging_output.html">
+            
+                    
+                    9.3.103 实现分页输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                <a href="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                    
+                    9.3.104 读取分离存储的DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                <a href="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                    
+                    9.3.105 自动推测源文件路径映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                <a href="../3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                    
+                    9.3.106 实现目标进程IO重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                <a href="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                    
+                    9.3.107 支持用户偏好配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                <a href="../3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                    
+                    9.3.108 支持多客户端调试模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                <a href="../3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                    
+                    9.3.109 支持调试活动记录本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/80-go-tool-compile.html">
+            
+                <a href="../../12-appendix/80-go-tool-compile.html">
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/81-go-tool-asm.html">
+            
+                <a href="../../12-appendix/81-go-tool-asm.html">
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/82-go-tool-link.html">
+            
+                <a href="../../12-appendix/82-go-tool-link.html">
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/90-why-buildid-loaded.html">
+            
+                <a href="../../12-appendix/90-why-buildid-loaded.html">
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                <a href="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >9.2.11 tinydbg attach</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="attach">Attach</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;tinydbg-attach-pid">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>tinydbg attach &lt;pid&gt;</code></h3>
+<p>&#x672C;&#x8282;&#x4ECB;&#x7ECD;attach&#x8FD9;&#x4E2A;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x7684;&#x547D;&#x4EE4;&#xFF1A;<code>tinydbg attach &lt;pid&gt; [executable] [flags]</code>&#xFF0C;attach&#x64CD;&#x4F5C;&#x5C06;&#x6302;&#x4F4F;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x3001;&#x8BA9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x505C;&#x4E0B;&#x6765;&#x3002;</p>
+<p>&#x4E0E;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;godbg attach&#x76F8;&#x6BD4;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;tinydbg attach&#x589E;&#x52A0;&#x4E86;&#x66F4;&#x591A;&#x9009;&#x9879;&#xFF0C;&#x6765;&#x652F;&#x6301;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#x5730;&#x8C03;&#x8BD5;&#x3002;</p>
+<pre><code class="lang-bash">$ tinydbg <span class="hljs-built_in">help</span> attach
+Attach to an already running process and begin debugging it.
+
+This <span class="hljs-built_in">command</span> will cause Delve to take control of an already running process, and
+begin a new debug session.  When exiting the debug session you will have the
+option to <span class="hljs-built_in">let</span> the process <span class="hljs-built_in">continue</span> or <span class="hljs-built_in">kill</span> it.
+
+Usage:
+  tinydbg attach pid [executable] [flags]
+
+Flags:
+      --continue                 Continue the debugged process on start.
+  -h, --help                     <span class="hljs-built_in">help</span> <span class="hljs-keyword">for</span> attach
+      --waitfor string           Wait <span class="hljs-keyword">for</span> a process with a name beginning with this prefix
+      --waitfor-duration <span class="hljs-built_in">float</span>   Total time to <span class="hljs-built_in">wait</span> <span class="hljs-keyword">for</span> a process
+      --waitfor-interval <span class="hljs-built_in">float</span>   Interval between checks of the process list, <span class="hljs-keyword">in</span> millisecond (default 1)
+
+Global Flags:
+      --accept-multiclient               Allows a headless server to accept multiple client connections via JSON-RPC.
+      --allow-non-terminal-interactive   Allows interactive sessions of Delve that don<span class="hljs-string">&apos;t have a terminal as stdin, stdout and stderr
+      --headless                         Run debug server only, in headless mode. Server will accept JSON-RPC client connections.
+      --init string                      Init file, executed by the terminal client.
+  -l, --listen string                    Debugging server listen address. Prefix with &apos;</span>unix:<span class="hljs-string">&apos; to use a unix domain socket. (default &quot;127.0.0.1:0&quot;)
+      --log                              Enable debugging server logging.
+      --log-dest string                  Writes logs to the specified file or file descriptor (see &apos;</span>dlv <span class="hljs-built_in">help</span> <span class="hljs-built_in">log</span><span class="hljs-string">&apos;).
+      --log-output string                Comma separated list of components that should produce debug output (see &apos;</span>dlv <span class="hljs-built_in">help</span> <span class="hljs-built_in">log</span><span class="hljs-string">&apos;)
+</span></code></pre>
+<p>&#x6211;&#x4EEC;&#x89E3;&#x91CA;&#x4E0B;&#x4E0A;&#x9762;&#x7684;attach&#x547D;&#x4EE4;&#x9009;&#x9879;&#xFF1A;</p>
+<ol>
+<li>tinydbg attach pid&#xFF0C;&#x8FD9;&#x4E2A;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x7591;&#x95EE;&#xFF0C;&#x6302;&#x4F4F;&#x6B63;&#x5728;&#x6267;&#x884C;&#x7684;&#x8FDB;&#x7A0B;id==pid&#x7684;&#x8FDB;&#x7A0B;&#xFF1B;</li>
+<li>--waitfor, --waitfor-duration, --waitfor-interval&#xFF0C;&#x7B49;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x540D;&#x524D;&#x7F00;&#x4E3A;xxx&#x7684;&#x8FDB;&#x7A0B;&#x8D77;&#x6765;&#x3001;&#x7136;&#x540E;&#x6302;&#x4F4F;&#xFF0C;&#x8BE6;&#x89C1; <a href="1-tinydbg_attach_waitfor.md">waitfor&#x8BBE;&#x8BA1;</a>&#x3002;</li>
+<li>--accept-multiclient&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;&#x4E3A;&#x4E86;&#x5141;&#x8BB8;&#x540C;&#x4E00;&#x4E2A;debugger backend&#x53EF;&#x4EE5;&#x670D;&#x52A1;&#x4E8E;&#x591A;&#x4E2A;debugger client&#xFF0C;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x8C03;&#x8BD5;&#xFF0C;&#x6216;&#x8005;&#x5148;&#x540E;&#x8C03;&#x8BD5;&#xFF0C;&#x8BE6;&#x89C1; <a href="../3-&#x9AD8;&#x7EA7;&#x529F;&#x80FD;&#x6269;&#x5C55;/108-howto_accept_multiclient.html">multiclient&#x8BBE;&#x8BA1;</a>&#x3002;</li>
+<li>--allow-non-terminal-interactive&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x60F3;&#x5728;CI/CD&#x6216;&#x8005;&#x81EA;&#x52A8;&#x5316;&#x8C03;&#x8BD5;&#x6D41;&#x7A0B;&#x4E2D;&#x6267;&#x884C;&#x4E0A;&#x8FF0;&#x975E;&#x57FA;&#x4E8E;&#x63A7;&#x5236;&#x7EC8;&#x7AEF;&#x7684;&#x8C03;&#x8BD5;&#xFF1B;</li>
+<li>--headless&#xFF0C;&#x542F;&#x52A8;&#x4E00;&#x4E2A;debugger backend&#x5E76;&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#xFF1B;</li>
+<li>--listen&#xFF0C;&#x542F;&#x52A8;debugger backend&#x5E76;&#x4F5C;&#x4E3A;&#x670D;&#x52A1;&#x5668;&#x6A21;&#x5F0F;&#x8FD0;&#x884C;&#xFF0C;&#x540C;&#x65F6;&#x6307;&#x5B9A;&#x670D;&#x52A1;&#x5668;&#x7684;&#x76D1;&#x542C;&#x5730;&#x5740;&#xFF1B;</li>
+<li>--log, --log-output&#xFF0C;--log-dest, &#x662F;&#x5426;&#x542F;&#x7528;&#x670D;&#x52A1;&#x7AEF;&#x65E5;&#x5FD7;&#xFF0C;&#x542F;&#x52A8;&#x54EA;&#x4E9B;&#x5C42;&#x6B21;&#x7684;&#x65E5;&#x5FD7;&#xFF0C;&#x65E5;&#x5FD7;&#x8F93;&#x51FA;&#x5230;&#x54EA;&#x91CC;&#xFF0C;&#x8BE6;&#x89C1; <a href="../1-&#x67B6;&#x6784;&#x8BBE;&#x8BA1;/6-&#x65E5;&#x5FD7;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;">&#x65E5;&#x5FD7;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;</a>&#x3002;</li>
+</ol>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x8D77;&#x6765;&#x770B;&#x770B;Attach&#x7684;&#x8BE6;&#x7EC6;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<p>&#x5728;&#x7B2C;&#x516D;&#x7AE0;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ED3;&#x5408;Linux&#x5185;&#x6838;&#x6E90;&#x7801;&#x975E;&#x5E38;&#x8BE6;&#x7EC6;&#x5730;&#x4ECB;&#x7ECD;&#x4E86;syscall.PtraceAttach(...)&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x5DF2;&#x7ECF;&#x5FD8;&#x8BB0;&#x4E86;&#x8FD9;&#x91CC;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x53EF;&#x4EE5;&#x56DE;&#x53BB;&#x518D;&#x770B;&#x770B;&#x76F8;&#x5E94;&#x5185;&#x5BB9;&#x3002;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4EC5;&#x901A;&#x8FC7;&#x4E00;&#x5F20;&#x65F6;&#x5E8F;&#x56FE;&#x5BF9;&#x5173;&#x952E;&#x5904;&#x7406;&#x903B;&#x8F91;&#x8FDB;&#x884C;&#x603B;&#x7ED3;&#x3002;</p>
+<p>FIXME: &#x8FD9;&#x4E2A;&#x56FE;&#x6709;&#x95EE;&#x9898;&#xFF0C;&#x53C2;&#x8003;&#x7B2C;6&#x7AE0;start+attach&#x7684;put it together&#x90E8;&#x5206;&#x603B;&#x7ED3;&#x3002;</p>
+<p align="center">
+<img alt="tinydbg attach" src="assets/how_attach_works.png">
+</p>
+
+<p>&#x5927;&#x81F4;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<ul>
+<li>&#x7528;&#x6237;&#x5728;&#x524D;&#x7AEF;&#x8F93;&#x5165; <code>attach &lt;pid&gt;</code> &#x547D;&#x4EE4;&#x3002;</li>
+<li>&#x524D;&#x7AEF;&#x901A;&#x8FC7; json-rpc&#xFF08;&#x8FDC;&#x7A0B;&#xFF09;&#x6216; net.Pipe&#xFF08;&#x672C;&#x5730;&#xFF09;&#x5C06; attach &#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x7ED9;&#x540E;&#x7AEF;&#x3002;</li>
+<li>&#x540E;&#x7AEF;&#x89E3;&#x6790;&#x8BF7;&#x6C42;&#xFF0C;&#x8C03;&#x7528;&#x7CFB;&#x7EDF;API&#xFF08;&#x5982; ptrace &#x6216;&#x7B49;&#x6548;&#x673A;&#x5236;&#xFF09;&#x9644;&#x52A0;&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x3002;</li>
+<li>&#x540E;&#x7AEF;&#x521D;&#x59CB;&#x5316;&#x8C03;&#x8BD5;&#x4E0A;&#x4E0B;&#x6587;&#xFF08;&#x5982;&#x7B26;&#x53F7;&#x8868;&#x3001;&#x65AD;&#x70B9;&#x3001;&#x7EBF;&#x7A0B;&#x4FE1;&#x606F;&#x7B49;&#xFF09;&#x3002;</li>
+<li>&#x8FD4;&#x56DE; attach &#x7ED3;&#x679C;&#xFF0C;&#x524D;&#x7AEF;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x3002;</li>
+</ul>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>attach&#x64CD;&#x4F5C;&#x4F5C;&#x4E3A;&#x6211;&#x4EEC;&#x7B2C;&#x4E00;&#x4E2A;&#x4ECB;&#x7ECD;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5B9E;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x6709;&#x5FC5;&#x8981;&#x5728;&#x6B64;&#x8BE6;&#x7EC6;&#x5730;&#x628A;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x540E;&#x7AEF;&#x4EA4;&#x4E92;&#x7684;&#x5168;&#x6D41;&#x7A0B;&#x4ECB;&#x7ECD;&#x4E00;&#x904D;&#xFF0C;&#x4ECB;&#x7ECD;&#x540E;&#x7EED;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x4F1A;&#x518D;&#x8FD9;&#x4E48;&#x91CD;&#x590D;&#x5730;&#x3001;&#x8BE6;&#x7EC6;&#x5730;&#x4ECB;&#x7ECD;&#x4E86;&#x3002;&#x6240;&#x4EE5;&#x8BF7;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x4EEC;&#x8010;&#x5FC3;&#x3002;</p>
+<h4 id="&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x6267;&#x884C;-tinydbg-attach-pid">&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x6267;&#x884C; <code>tinydbg attach &lt;pid&gt;</code></h4>
+<p>&#x9996;&#x5148;&#xFF0C;&#x7528;&#x6237;&#x6267;&#x884C;&#x547D;&#x4EE4; <code>tinydbg attach &lt;pid&gt;</code>&#xFF0C;tinydbg&#x4E3B;&#x7A0B;&#x5E8F;&#x662F;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;spf13/cobra&#x7684;&#x547D;&#x4EE4;&#x884C;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<p>file: path-to/tinydbg/main.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> (
+  ...
+
+    <span class="hljs-string">&quot;github.com/hitzhangjie/tinydbg/cmds&quot;</span>
+    <span class="hljs-string">&quot;github.com/hitzhangjie/tinydbg/pkg/logflags&quot;</span>
+    <span class="hljs-string">&quot;github.com/hitzhangjie/tinydbg/pkg/version&quot;</span>
+)
+
+<span class="hljs-comment">// Build is the git sha of this binaries build.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// note: we can pass -ldflags &quot;-X main.Build=v0.0.1&quot; to set the build version when building.</span>
+<span class="hljs-keyword">var</span> Build <span class="hljs-keyword">string</span> = <span class="hljs-string">&quot;v0.0.1&quot;</span>
+
+<span class="hljs-keyword">func</span> main() {
+    <span class="hljs-comment">// current demo only supports linux/amd64</span>
+    <span class="hljs-keyword">if</span> runtime.GOOS != <span class="hljs-string">&quot;linux&quot;</span> || runtime.GOARCH != <span class="hljs-string">&quot;amd64&quot;</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;WARNING: tinydbg only supports linux/amd64&quot;</span>)
+        os.Exit(<span class="hljs-number">1</span>)
+    }
+
+    <span class="hljs-comment">// this build version will be dumped when generating the core file</span>
+    <span class="hljs-keyword">if</span> Build != <span class="hljs-string">&quot;&quot;</span> {
+        version.DelveVersion.Build = Build
+    }
+
+    <span class="hljs-comment">// if cgo used, pass &quot;-O0 -g&quot; to disable optimization and enable debugging symbols</span>
+    <span class="hljs-keyword">const</span> cgoCflagsEnv = <span class="hljs-string">&quot;CGO_CFLAGS&quot;</span>
+    <span class="hljs-keyword">if</span> os.Getenv(cgoCflagsEnv) == <span class="hljs-string">&quot;&quot;</span> {
+        os.Setenv(cgoCflagsEnv, <span class="hljs-string">&quot;-O0 -g&quot;</span>)
+    } <span class="hljs-keyword">else</span> {
+        logflags.WriteCgoFlagsWarning()
+    }
+
+    cmds.New().Execute()
+}
+</code></pre>
+<p>&#x65E2;&#x7136;&#x662F;spf13/cobra&#x7BA1;&#x7406;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x90A3;&#x5B83;&#x7684;&#x5B50;&#x547D;&#x4EE4;&#x6CE8;&#x518C;&#x903B;&#x8F91;&#x662F;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#x7684;&#xFF0C;&#x5B83;&#x5E94;&#x8BE5;&#x6709;&#x4E2A;&#x5BF9;&#x5E94;&#x7684;attach subcmd&#x3002;</p>
+<p>see: path-to/tinydbg/cmds/cmd_root.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// New returns an initialized command tree.</span>
+<span class="hljs-keyword">func</span> New() *cobra.Command {
+    <span class="hljs-comment">// Config setup and load.</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// Delay reporting errors about configuration loading delayed until after the</span>
+    <span class="hljs-comment">// server is started so that the &quot;server listening at&quot; message is always</span>
+    <span class="hljs-comment">// the first thing emitted. Also, logflags hasn&apos;t been set up yet at this point.</span>
+    conf, loadConfErr = config.LoadConfig()
+    buildFlagsDefault := <span class="hljs-string">&quot;&quot;</span>
+
+    <span class="hljs-comment">// Main dlv root command.</span>
+    rootCommand = &amp;cobra.Command{
+        Use:   <span class="hljs-string">&quot;tinydbg&quot;</span>,
+        Short: <span class="hljs-string">&quot;tinydbg is a lightweight debugger trimmed from Delve (Dlv) for the Go programming language.&quot;</span>,
+        Long:  longDesc,
+    }
+  ...
+  rootCommand.AddCommand(attachCommand)
+    rootCommand.AddCommand(connectCommand)
+  ...
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E86;&#x8FD9;&#x91CC;&#x7684;attachCommand&#x7684;&#x6CE8;&#x518C;&#xFF0C;&#x5F53;&#x6267;&#x884C; <code>tinydbg attach</code> &#x65F6;&#x5B9E;&#x9645;&#x4E0A;&#x6267;&#x884C;&#x7684;&#x53E5;&#x5F0F;attachCommand.Run&#x65B9;&#x6CD5;&#x3002;</p>
+<p>see: path-to/tinydbg/cmds/cmd_attach.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// &apos;attach&apos; subcommand.</span>
+<span class="hljs-keyword">var</span> attachCommand = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;attach pid [executable]&quot;</span>,
+    Short: <span class="hljs-string">&quot;Attach to running process and begin debugging.&quot;</span>,
+    Long: <span class="hljs-string">`Attach to an already running process and begin debugging it.
+
+This command will cause Delve to take control of an already running process, and
+begin a new debug session.  When exiting the debug session you will have the
+option to let the process continue or kill it.
+`</span>,
+    PersistentPreRunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) == <span class="hljs-number">0</span> &amp;&amp; attachWaitFor == <span class="hljs-string">&quot;&quot;</span> {
+            <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;you must provide a PID&quot;</span>)
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    },
+    Run: attachCmd,
+    ValidArgsFunction: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>, toComplete <span class="hljs-keyword">string</span>) ([]<span class="hljs-keyword">string</span>, cobra.ShellCompDirective) {
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) != <span class="hljs-number">1</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, cobra.ShellCompDirectiveNoFileComp
+        }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, cobra.ShellCompDirectiveDefault
+    },
+}
+
+...
+
+<span class="hljs-keyword">func</span> attachCmd(_ *cobra.Command, args []<span class="hljs-keyword">string</span>) {
+    <span class="hljs-keyword">var</span> pid <span class="hljs-keyword">int</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) &gt; <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">var</span> err error
+        pid, err = strconv.Atoi(args[<span class="hljs-number">0</span>])
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;Invalid pid: %s\n&quot;</span>, args[<span class="hljs-number">0</span>])
+            os.Exit(<span class="hljs-number">1</span>)
+        }
+        args = args[<span class="hljs-number">1</span>:]
+    }
+    os.Exit(execute(pid, args, conf, <span class="hljs-string">&quot;&quot;</span>, debugger.ExecutingOther, args, buildFlags))
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC; <code>attachCommand.Run()</code> -&gt; <code>attachCmd(...)</code> -&gt; <code>execute(pid, args, conf, ....)</code> &#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x7528;&#x4E8E;&#x524D;&#x540E;&#x7AEF;&#x901A;&#x4FE1;&#x7684;RPC client&#x5728;execute&#x4E2D;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5E76;&#x5B8C;&#x6210;&#x5BF9;server&#x7684;&#x8C03;&#x7528;&#x3002;</p>
+<p>ps&#xFF1A;&#x5728;9.1 &#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x4E2D;Service&#x5C42;&#x8BBE;&#x8BA1;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x5BF9;&#x4E8E;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x5176;&#x5B9E;&#x662F;&#x901A;&#x8FC7; preConnectedListener+net.Pipe &#x6765;&#x6A21;&#x62DF;&#x771F;&#x5B9E;&#x4E86;&#x7F51;&#x7EDC;&#x8FDE;&#x63A5;&#x901A;&#x4FE1;&#x8FC7;&#x7A0B;&#x3002;&#x672C;&#x8D28;&#x4E0A;&#x8FD8;&#x662F;&#x6309;&#x7167;C/S&#x67B6;&#x6784;&#x8FDB;&#x884C;&#x8BF7;&#x6C42;&#x3001;&#x5904;&#x7406;&#x7684;&#x3002;</p>
+<h4 id="&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x53D1;&#x9001;-json-rpc&#x8BF7;&#x6C42;&#x7ED9;&#x540E;&#x7AEF;">&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x53D1;&#x9001; json-rpc&#x8BF7;&#x6C42;&#x7ED9;&#x540E;&#x7AEF;</h4>
+<p>&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x524D;&#x7AEF;&#x8FD9;&#x91CC;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;execute&#x65B9;&#x6CD5;&#x5305;&#x542B;&#x4E86;&#x5BA2;&#x6237;&#x7AEF;&#x3001;&#x670D;&#x52A1;&#x7AEF;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5148;&#x77E5;&#x5173;&#x6CE8;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x6838;&#x5FC3;&#x903B;&#x8F91;&#xFF1A;</p>
+<p>see: path-to/tinydbg/cmds/cmd_root.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> execute(attachPid <span class="hljs-keyword">int</span>, processArgs []<span class="hljs-keyword">string</span>, conf *config.Config, coreFile <span class="hljs-keyword">string</span>, kind debugger.ExecuteKind, dlvArgs []<span class="hljs-keyword">string</span>, buildFlags <span class="hljs-keyword">string</span>) <span class="hljs-keyword">int</span> {
+  ...
+
+  <span class="hljs-comment">// Setup the debugger backend listener </span>
+    <span class="hljs-keyword">var</span> listener net.Listener
+
+  <span class="hljs-comment">// Setup the debugger frontend client</span>
+    <span class="hljs-keyword">var</span> clientConn net.Conn
+
+    <span class="hljs-comment">// Make a TCP listener for debugger backend</span>
+    <span class="hljs-keyword">if</span> headless {
+        listener, err = netListen(addr)               <span class="hljs-comment">// remote debug mode via TCP network</span>
+    } <span class="hljs-keyword">else</span> {
+        listener, clientConn = service.ListenerPipe() <span class="hljs-comment">// local debug mode via net.Pipe</span>
+    }
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Printf(<span class="hljs-string">&quot;couldn&apos;t start listener: %s\n&quot;</span>, err)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    }
+    <span class="hljs-keyword">defer</span> listener.Close()
+
+  ...
+
+    <span class="hljs-comment">// Create and start a debugger server</span>
+    server := rpccommon.NewServer(&amp;service.Config{
+        Listener:       listener,
+        ProcessArgs:    processArgs,
+        AcceptMulti:    acceptMulti,
+        DisconnectChan: disconnectChan,
+        Debugger: debugger.Config{
+            AttachPid:             attachPid,
+            WorkingDir:            workingDir,
+            CoreFile:              coreFile,
+            Foreground:            headless &amp;&amp; tty == <span class="hljs-string">&quot;&quot;</span>,
+            Packages:              dlvArgs,
+            BuildFlags:            buildFlags,
+            ExecuteKind:           kind,
+            TTY:                   tty,
+            Stdin:                 redirects[<span class="hljs-number">0</span>],
+            Stdout:                proc.OutputRedirect{Path: redirects[<span class="hljs-number">1</span>]},
+            Stderr:                proc.OutputRedirect{Path: redirects[<span class="hljs-number">2</span>]},
+            DisableASLR:           disableASLR,
+            AttachWaitFor:         attachWaitFor,
+            AttachWaitForInterval: attachWaitForInterval,
+            AttachWaitForDuration: attachWaitForDuration,
+        },
+    })
+
+    <span class="hljs-keyword">if</span> err := server.Run(); err != <span class="hljs-literal">nil</span> {
+    ...
+        fmt.Fprintln(os.Stderr, err)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    }
+
+  ...
+
+
+    <span class="hljs-keyword">return</span> connect(listener.Addr().String(), clientConn, conf)
+}
+</code></pre>
+<p>&#x8BBE;&#x7F6E;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#xFF0C;&#x8FDE;&#x63A5;&#x5230;&#x670D;&#x52A1;&#x5668;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x4E8E;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x63D0;&#x4F9B;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x76D1;&#x542C;&#x5730;&#x5740;</li>
+<li>&#x5BF9;&#x4E8E;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#xFF0C;&#x8FD9;&#x91CC;connect&#x53EA;&#x4F7F;&#x7528;clientConn&#x6765;&#x8BFB;&#x5199;&#x6570;&#x636E;&#xFF0C;
+&#x8FD9;&#x91CC;&#x7684;clientConn&#x662F;net.Pipe&#x4E24;&#x4E2A;&#x7AEF;&#x70B9;&#x4E2D;&#x7684;&#x4E00;&#x4E2A;&#x3002;</li>
+</ul>
+<p>Well&#xFF0C;&#x5F53;&#x8FDE;&#x63A5;net.Conn&#x5EFA;&#x7ACB;&#x597D;&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x7136;&#x540E;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x5728;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x8F93;&#x5165;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5E76;&#x53D1;&#x9001;&#x7ED9;&#x540E;&#x7AEF;&#x5904;&#x7406;&#x4E86;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> connect(addr <span class="hljs-keyword">string</span>, clientConn net.Conn, conf *config.Config) <span class="hljs-keyword">int</span> {
+    <span class="hljs-comment">// Create and start a terminal - attach to running instance</span>
+    <span class="hljs-keyword">var</span> client *rpc2.RPCClient
+    <span class="hljs-keyword">if</span> clientConn == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">if</span> clientConn = netDial(addr); clientConn == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> <span class="hljs-comment">// already logged</span>
+        }
+    }
+    client = rpc2.NewClientFromConn(clientConn)
+  ...
+  <span class="hljs-comment">// create a debug session for interactive debugging</span>
+    session := debug.New(client, conf)
+    session.InitFile = initFile
+    status, err := session.Run()
+  ...
+    <span class="hljs-keyword">return</span> status
+}
+</code></pre>
+<p>&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x521A;&#x624D;&#x7684; attach &#x64CD;&#x4F5C;&#x7684;RPC&#x8BF7;&#x6C42;&#x662F;&#x5982;&#x4F55;&#x901A;&#x8FC7;JSON-RPC&#x53D1;&#x9001;&#x7684;&#x5462;&#xFF1F;</p>
+<h4 id="&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x521D;&#x59CB;&#x5316;&#x5E76;&#x63A5;&#x53D7;&#x8BF7;&#x6C42;">&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x521D;&#x59CB;&#x5316;&#x5E76;&#x63A5;&#x53D7;&#x8BF7;&#x6C42;</h4>
+<p>&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x542F;&#x52A8;&#x6709;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;
+1&#x3001;&#x4E00;&#x79CD;&#x662F;&#x901A;&#x8FC7;--headless&#x6A21;&#x5F0F;&#x542F;&#x52A8;&#xFF0C;net.Listen&#x521B;&#x5EFA;&#x4E00;&#x4E2A;TCP Listenr&#xFF0C;&#x7136;&#x540E;&#x7B49;&#x5F85;&#x5165;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#xFF1B;
+2&#x3001;&#x4E00;&#x79CD;&#x662F;&#x672C;&#x5730;&#x6A21;&#x5F0F;&#x542F;&#x52A8;&#xFF0C;&#x901A;&#x8FC7;preConnectedListener+net.Pipe&#xFF0C;&#x6765;&#x6A21;&#x62DF;&#x7F51;&#x7EDC;&#x76D1;&#x542C;&#x3001;&#x8FDE;&#x63A5;&#x64CD;&#x4F5C;&#xFF1B;</p>
+<p>see: path-to/tinydbg/cmds/cmd_root.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> execute(attachPid <span class="hljs-keyword">int</span>, processArgs []<span class="hljs-keyword">string</span>, conf *config.Config, coreFile <span class="hljs-keyword">string</span>, kind debugger.ExecuteKind, dlvArgs []<span class="hljs-keyword">string</span>, buildFlags <span class="hljs-keyword">string</span>) <span class="hljs-keyword">int</span> {
+  ...
+
+  <span class="hljs-comment">// Setup the debugger backend listener </span>
+    <span class="hljs-keyword">var</span> listener net.Listener
+
+    <span class="hljs-comment">// Make a TCP listener for debugger backend</span>
+    <span class="hljs-keyword">if</span> headless {
+        listener, err = netListen(addr)               <span class="hljs-comment">// remote debug mode via TCP network</span>
+    } <span class="hljs-keyword">else</span> {
+        listener, clientConn = service.ListenerPipe() <span class="hljs-comment">// local debug mode via net.Pipe</span>
+    }
+  ...
+    <span class="hljs-keyword">defer</span> listener.Close()
+
+  ...
+
+    <span class="hljs-comment">// Create and start a debugger server</span>
+    server := rpccommon.NewServer(&amp;service.Config{
+        Listener:       listener,
+        ProcessArgs:    processArgs,
+        AcceptMulti:    acceptMulti,
+        DisconnectChan: disconnectChan,
+        Debugger: debugger.Config{
+            AttachPid:             attachPid,
+            WorkingDir:            workingDir,
+            CoreFile:              coreFile,
+            Foreground:            headless &amp;&amp; tty == <span class="hljs-string">&quot;&quot;</span>,
+            Packages:              dlvArgs,
+            BuildFlags:            buildFlags,
+            ExecuteKind:           kind,
+            TTY:                   tty,
+            Stdin:                 redirects[<span class="hljs-number">0</span>],
+            Stdout:                proc.OutputRedirect{Path: redirects[<span class="hljs-number">1</span>]},
+            Stderr:                proc.OutputRedirect{Path: redirects[<span class="hljs-number">2</span>]},
+            DisableASLR:           disableASLR,
+            AttachWaitFor:         attachWaitFor,
+            AttachWaitForInterval: attachWaitForInterval,
+            AttachWaitForDuration: attachWaitForDuration,
+        },
+    })
+
+    <span class="hljs-keyword">if</span> err := server.Run(); err != <span class="hljs-literal">nil</span> {
+    ...
+        <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>
+    }
+  ...
+}
+
+<span class="hljs-comment">// Run starts a debugger and exposes it with an JSON-RPC server. The debugger</span>
+<span class="hljs-comment">// itself can be stopped with the `detach` API.</span>
+<span class="hljs-keyword">func</span> (s *ServerImpl) Run() error {
+    <span class="hljs-keyword">var</span> err error
+
+    <span class="hljs-comment">// Create and start the debugger</span>
+    config := s.config.Debugger
+    <span class="hljs-keyword">if</span> s.debugger, err = debugger.New(&amp;config, s.config.ProcessArgs); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> err
+    }
+
+    s.s2 = rpc2.NewServer(s.config, s.debugger)
+    s.methodMap = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]*methodType)
+
+    registerMethods(s.s2, s.methodMap)
+
+    <span class="hljs-keyword">go</span> <span class="hljs-keyword">func</span>() {
+        <span class="hljs-keyword">defer</span> s.listener.Close()
+        <span class="hljs-keyword">for</span> {
+            c, err := s.listener.Accept()
+      ...
+            <span class="hljs-keyword">go</span> s.serveConnection(c)
+            <span class="hljs-keyword">if</span> !s.config.AcceptMulti {
+                <span class="hljs-keyword">break</span>
+            }
+        }
+    }()
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x4E0D;&#x7BA1;&#x90A3;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x6536;&#x5230;&#x5165;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#x540E;&#xFF0C;&#x5C31;&#x5F00;&#x59CB;&#x5BF9;&#x8FDE;&#x63A5;&#x4E0A;&#x7684;&#x4EA4;&#x4E92;&#x5F0F;&#x8C03;&#x8BD5;&#x8BF7;&#x6C42;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;<code>s.serveConnection(c)</code>&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#xFF0C;attach&#x64CD;&#x4F5C;&#x662F;&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x6267;&#x884C;&#x7684;&#x5462;&#xFF1F;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x4E0D;&#x662F;&#x5E94;&#x8BE5;&#x53D1;&#x9001;&#x4E00;&#x4E2A;attach&#x8BF7;&#x6C42;&#x7ED9;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x53F0;&#x5417;&#xFF1F;&#x7406;&#x8BBA;&#x4E0A;&#x786E;&#x5B9E;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x5E72;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x6CA1;&#x5FC5;&#x8981;&#x518D;&#x591A;&#x4E00;&#x8F6E;RPC&#x4E86;&#xFF0C;&#x8BD5;&#x60F3;&#xFF1A;
+1&#x3001;&#x5982;&#x679C;&#x662F;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;--headless&#x542F;&#x52A8;server&#x65F6;&#x6211;&#x80AF;&#x5B9A;&#x77E5;&#x9053;&#x8981;attach&#x54EA;&#x4E2A;tracee&#x4E86;&#xFF0C;&#x54EA;&#x8FD8;&#x9700;&#x8981;&#x5BA2;&#x6237;&#x7AEF;&#x663E;&#x793A;&#x53D1;RPC&#x8BF7;&#x6C42;&#xFF1B;
+2&#x3001;&#x5982;&#x679C;&#x662F;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#xFF0C;pid&#x53C2;&#x6570;&#x4E5F;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;&#x547D;&#x4EE4;&#x884C;&#x9009;&#x9879;&#x4F20;&#x9012;&#x7ED9;&#x8FDB;&#x7A0B;&#x4E86;&#xFF0C;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x4E2D;&#x76F4;&#x63A5;&#x5F15;&#x7528;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#x503C;&#x5373;&#x53EF;&#xFF0C;&#x6CA1;&#x5FC5;&#x8981;&#x518D;&#x8D70;&#x4E00;&#x904D;RPC&#xFF1B;</p>
+<p>&#x786E;&#x5B9E;&#x5982;&#x6B64;&#xFF0C;&#x6240;&#x4EE5;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x4E3B;&#x52A8;Attach&#x7684;RPC&#x7684;&#xFF0C;&#x4E0D;&#x4FE1;&#x4F60;&#x53EF;&#x4EE5;&#x770B;&#x770B;rpc2.Client&#x7684;&#x63A5;&#x53E3;&#x5B9A;&#x4E49;&#x3002;</p>
+<p>see: path-to/tinydbg/service/rpc2c/client.go</p>
+<h4 id="&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;attach&#x5230;&#x8FDB;&#x7A0B;">&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;attach&#x5230;&#x8FDB;&#x7A0B;</h4>
+<p>OK&#xFF0C;&#x90A3;&#x7D27;&#x63A5;&#x524D;&#x9762;&#x5185;&#x5BB9;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x9664;&#x4E86;&#x7F51;&#x7EDC;&#xFF08;listener&#x3001;accept&#x3001;serve&#xFF09;&#x76F8;&#x5173;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x8FD8;&#x6D89;&#x53CA;&#x5230;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x771F;&#x6B63;&#x7684;&#x8C03;&#x8BD5;&#x5668;tracer&#x6765;&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;tracee&#x8FDB;&#x884C;&#x63A7;&#x5236;&#x3002;&#x5176;&#x5B9E;attach&#x64CD;&#x4F5C;&#x5C31;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x5B8C;&#x6210;&#x7684;&#x3002;</p>
+<p>see: path-to/tinydbg/service/debugger/debugger.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> debugger
+
+<span class="hljs-comment">// New creates a new Debugger. ProcessArgs specify the commandline arguments for the</span>
+<span class="hljs-comment">// new process.</span>
+<span class="hljs-keyword">func</span> New(config *Config, processArgs []<span class="hljs-keyword">string</span>) (*Debugger, error) {
+  ...
+    d := &amp;Debugger{
+        config:      config,
+        processArgs: processArgs,
+        log:         logger,
+    }
+
+    <span class="hljs-comment">// Create the process by either attaching or launching.</span>
+    <span class="hljs-keyword">switch</span> {
+    <span class="hljs-keyword">case</span> d.config.AttachPid &gt; <span class="hljs-number">0</span> || d.config.AttachWaitFor != <span class="hljs-string">&quot;&quot;</span>:
+        d.log.Infof(<span class="hljs-string">&quot;attaching to pid %d&quot;</span>, d.config.AttachPid)
+
+        path := <span class="hljs-string">&quot;&quot;</span>
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(d.processArgs) &gt; <span class="hljs-number">0</span> {
+            path = d.processArgs[<span class="hljs-number">0</span>]
+        }
+
+        <span class="hljs-keyword">var</span> waitFor *proc.WaitFor
+        <span class="hljs-keyword">if</span> d.config.AttachWaitFor != <span class="hljs-string">&quot;&quot;</span> {
+            waitFor = &amp;proc.WaitFor{
+                Name:     d.config.AttachWaitFor,
+                Interval: time.Duration(d.config.AttachWaitForInterval * <span class="hljs-keyword">float64</span>(time.Millisecond)),
+                Duration: time.Duration(d.config.AttachWaitForDuration * <span class="hljs-keyword">float64</span>(time.Millisecond)),
+            }
+        }
+
+    <span class="hljs-comment">// attach the target tracee</span>
+        <span class="hljs-keyword">var</span> err error
+        d.target, err = d.Attach(d.config.AttachPid, path, waitFor)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            err = go11DecodeErrorCheck(err)
+            err = noDebugErrorWarning(err)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, attachErrorMessage(d.config.AttachPid, err)
+        }
+
+    <span class="hljs-keyword">case</span> d.config.CoreFile != <span class="hljs-string">&quot;&quot;</span>:
+    ...
+  <span class="hljs-keyword">default</span>:
+    ...
+    }
+
+    <span class="hljs-keyword">return</span> d, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// Attach will attach to the process specified by &apos;pid&apos;.</span>
+<span class="hljs-keyword">func</span> (d *Debugger) Attach(pid <span class="hljs-keyword">int</span>, path <span class="hljs-keyword">string</span>, waitFor *proc.WaitFor) (*proc.TargetGroup, error) {
+    <span class="hljs-keyword">return</span> native.Attach(pid, waitFor)
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x7684;debugger backend&#x53EA;&#x6709;native&#x4E00;&#x79CD;&#x5B9E;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x53BB;&#x6389;&#x4E86;gdb&#x3001;lldb&#x3001;mozilla rr&#xFF0C;&#x4F60;&#x5E94;&#x8BE5;&#x652F;&#x6301;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x6269;&#x5C55;&#x5E94;&#x8BE5;&#x5728;&#x8FD9;&#x91CC;&#x505A;&#x505A;&#x6587;&#x7AE0;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Attach to an existing process with the given PID. Once attached, if</span>
+<span class="hljs-comment">// the DWARF information cannot be found in the binary, Delve will look</span>
+<span class="hljs-comment">// for external debug files in the directories passed in.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// note: we remove the support of reading separate dwarfdata.</span>
+<span class="hljs-keyword">func</span> Attach(pid <span class="hljs-keyword">int</span>, waitFor *proc.WaitFor) (*proc.TargetGroup, error) {
+  <span class="hljs-comment">// &#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;waitfor&#x7684;&#x65B9;&#x5F0F;attach&#xFF0C;&#x9700;&#x8981;&#x5148;&#x7B49;&#x8FDB;&#x7A0B;&#x8D77;&#x6765;&#x83B7;&#x53D6;&#x5230;pid</span>
+    <span class="hljs-keyword">if</span> waitFor.Valid() {
+        pid, err = WaitFor(waitFor)
+    ...
+    }
+
+    dbp := newProcess(pid)
+
+  <span class="hljs-comment">// &#x6267;&#x884C;&#x5B9E;&#x9645;&#x7684;ptrace attach&#x64CD;&#x4F5C;</span>
+    <span class="hljs-keyword">var</span> err error
+    dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = ptraceAttach(dbp.pid) })
+  ...
+
+  <span class="hljs-comment">// &#x6267;&#x884C;wait&#x64CD;&#x4F5C;&#x83B7;&#x53D6;tracee&#x505C;&#x6B62;&#x72B6;&#x6001;</span>
+    _, _, err = dbp.wait(dbp.pid, <span class="hljs-number">0</span>)
+    ...
+
+  <span class="hljs-comment">// tracee&#x505C;&#x4E0B;&#x6765;&#x540E;&#xFF0C;&#x8FD9;&#x91CC;&#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;tracee&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x5E76;&#x5B8C;&#x6210;&#x5FC5;&#x8981;&#x8BBE;&#x7F6E;</span>
+    tgt, err := dbp.initialize(findExecutable(<span class="hljs-string">&quot;&quot;</span>, dbp.pid))
+  ...
+
+    <span class="hljs-comment">// ElfUpdateSharedObjects can only be done after we initialize because it</span>
+    <span class="hljs-comment">// needs an initialized BinaryInfo object to work.</span>
+    err = linutil.ElfUpdateSharedObjects(dbp)
+    ...
+    <span class="hljs-keyword">return</span> tgt, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x5230;&#x8FD9;&#x91CC;&#x4E3A;&#x6B62;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x5C31;&#x5DF2;&#x7ECF;&#x4E0E;tracee&#x6B63;&#x786E;&#x5EFA;&#x7ACB;&#x4E86;ptrace link&#x5173;&#x7CFB;&#x4E86;&#xFF0C;&#x540E;&#x7EED;&#x524D;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;debug.Session&#x53D1;&#x9001;&#x4EA4;&#x4E92;&#x5F0F;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;debug.Session&#x5185;&#x90E8;&#x5C06;&#x5176;&#x8F6C;&#x6362;&#x4E3A;&#x5BF9;RPC&#x8C03;&#x7528;debug.Session.client.Call(...)&#x3002;</p>
+<p>&#x7136;&#x540E;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x5C31;&#x901A;&#x8FC7;net.Conn&#x4E0D;&#x65AD;&#x63A5;&#x53D7;&#x8BF7;&#x6C42;&#xFF0C;&#x5E76;&#x6309;&#x7167;JSON-RPC&#x8FDB;&#x884C;&#x89E3;&#x7801;&#xFF0C;&#x6839;&#x636E;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#xFF0C;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x670D;&#x52A1;&#x7AEF;&#x63A5;&#x53E3;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x63A5;&#x53E3;&#x5185;&#x90E8;&#x53C8;&#x4F1A;&#x8C03;&#x7528;debugger native&#x4E2D;&#x7684;&#x5404;&#x79CD;&#x64CD;&#x4F5C;&#x6765;&#x5B8C;&#x6210;&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x5B9E;&#x9645;&#x63A7;&#x5236;&#xFF0C;&#x5E76;&#x9010;&#x7EA7;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#xFF0C;&#x6700;&#x7EC8;&#x7ED9;&#x5230;&#x524D;&#x7AEF;&#x5C55;&#x793A;&#x3002;</p>
+<h4 id="&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;attach&#x5230;&#x8FDB;&#x7A0B;&#x540E;&#x5E72;&#x4E86;&#x4EC0;&#x4E48;">&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;attach&#x5230;&#x8FDB;&#x7A0B;&#x540E;&#x5E72;&#x4E86;&#x4EC0;&#x4E48;</h4>
+<p>see path-to/tinydbg/pkg/proc/native/proc.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// initialize will ensure that all relevant information is loaded</span>
+<span class="hljs-comment">// so the process is ready to be debugged.</span>
+<span class="hljs-keyword">func</span> (dbp *nativeProcess) initialize(path <span class="hljs-keyword">string</span>) (*proc.TargetGroup, error) {
+    cmdline, err := dbp.initializeBasic()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    stopReason := proc.StopLaunched
+    <span class="hljs-keyword">if</span> !dbp.childProcess {
+        stopReason = proc.StopAttached
+    }
+
+    procgrp := &amp;processGroup{}
+    grp, addTarget := proc.NewGroup(procgrp, proc.NewTargetGroupConfig{
+        DisableAsyncPreempt: <span class="hljs-literal">false</span>,
+        StopReason: stopReason,
+        CanDump:    <span class="hljs-literal">true</span>,
+    })
+    procgrp.addTarget = addTarget
+    tgt, err := procgrp.add(dbp, dbp.pid, dbp.memthread, path, stopReason, cmdline)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+    <span class="hljs-keyword">return</span> grp, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-keyword">func</span> (dbp *nativeProcess) initializeBasic() (<span class="hljs-keyword">string</span>, error) {
+    cmdline, err := initialize(dbp)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, err
+    }
+    <span class="hljs-keyword">if</span> err := dbp.updateThreadList(); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, err
+    }
+    <span class="hljs-keyword">return</span> cmdline, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>see path-to/tinydbg/pkg/proc/native/proc_linux.go</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> initialize(dbp *nativeProcess) (<span class="hljs-keyword">string</span>, error) {
+    comm, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/comm&quot;</span>, dbp.pid))
+    <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> {
+        <span class="hljs-comment">// removes newline character</span>
+        comm = bytes.TrimSuffix(comm, []<span class="hljs-keyword">byte</span>(<span class="hljs-string">&quot;\n&quot;</span>))
+    }
+
+    <span class="hljs-keyword">if</span> comm == <span class="hljs-literal">nil</span> || <span class="hljs-built_in">len</span>(comm) &lt;= <span class="hljs-number">0</span> {
+        stat, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/stat&quot;</span>, dbp.pid))
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;could not read proc stat: %v&quot;</span>, err)
+        }
+        expr := fmt.Sprintf(<span class="hljs-string">&quot;%d\\s*\\((.*)\\)&quot;</span>, dbp.pid)
+        rexp, err := regexp.Compile(expr)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;regexp compile error: %v&quot;</span>, err)
+        }
+        match := rexp.FindSubmatch(stat)
+        <span class="hljs-keyword">if</span> match == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;no match found using regexp &apos;%s&apos; in /proc/%d/stat&quot;</span>, expr, dbp.pid)
+        }
+        comm = match[<span class="hljs-number">1</span>]
+    }
+    dbp.os.comm = strings.ReplaceAll(<span class="hljs-keyword">string</span>(comm), <span class="hljs-string">&quot;%&quot;</span>, <span class="hljs-string">&quot;%%&quot;</span>)
+
+    <span class="hljs-keyword">return</span> getCmdLine(dbp.pid), <span class="hljs-literal">nil</span>  ...
+}
+
+<span class="hljs-keyword">func</span> (dbp *nativeProcess) updateThreadList() error {
+    tids, _ := filepath.Glob(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/task/*&quot;</span>, dbp.pid))
+    <span class="hljs-keyword">for</span> _, tidpath := <span class="hljs-keyword">range</span> tids {
+        tidstr := filepath.Base(tidpath)
+        tid, err := strconv.Atoi(tidstr)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+        <span class="hljs-keyword">if</span> _, err := dbp.addThread(tid, tid != dbp.pid); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+    }
+    <span class="hljs-keyword">return</span> linutil.ElfUpdateSharedObjects(dbp)
+}
+</code></pre>
+<p>&#x770B;&#x4E0A;&#x53BB;attach&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x540E;&#xFF0C;&#x5C31;&#x5F00;&#x59CB;&#x8BFB;&#x53D6;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x5305;&#x62EC;pid&#x3001;cmdline&#x3001;exec&#x3001;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x8FDB;&#x7A0B;&#x5185;&#x53EF;&#x80FD;&#x5DF2;&#x6709;&#x591A;&#x7EBF;&#x7A0B;&#x88AB;&#x521B;&#x5EFA;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x5C06;&#x6765;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;&#x3002;&#x5BF9;&#x4E8E;&#x66F4;&#x53CB;&#x597D;&#x5730;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x8981;&#x88AB;&#x7BA1;&#x63A7;&#x8D77;&#x6765;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">const</span> (
+    ptraceOptionsNormal     = syscall.PTRACE_O_TRACECLONE
+    ptraceOptionsFollowExec = syscall.PTRACE_O_TRACECLONE | syscall.PTRACE_O_TRACEVFORK | syscall.PTRACE_O_TRACEEXEC
+)
+
+<span class="hljs-comment">// Attach to a newly created thread, and store that thread in our list of</span>
+<span class="hljs-comment">// known threads.</span>
+<span class="hljs-keyword">func</span> (dbp *nativeProcess) addThread(tid <span class="hljs-keyword">int</span>, attach <span class="hljs-keyword">bool</span>) (*nativeThread, error) {
+    <span class="hljs-keyword">if</span> thread, ok := dbp.threads[tid]; ok {
+        <span class="hljs-keyword">return</span> thread, <span class="hljs-literal">nil</span>
+    }
+
+    ptraceOptions := ptraceOptionsNormal
+    <span class="hljs-keyword">if</span> dbp.followExec {
+        ptraceOptions = ptraceOptionsFollowExec
+    }
+
+    <span class="hljs-keyword">var</span> err error
+    <span class="hljs-keyword">if</span> attach {
+        dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = sys.PtraceAttach(tid) })
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> &amp;&amp; err != sys.EPERM {
+            <span class="hljs-comment">// Do not return err if err == EPERM,</span>
+            <span class="hljs-comment">// we may already be tracing this thread due to</span>
+            <span class="hljs-comment">// PTRACE_O_TRACECLONE. We will surely blow up later</span>
+            <span class="hljs-comment">// if we truly don&apos;t have permissions.</span>
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;could not attach to new thread %d %s&quot;</span>, tid, err)
+        }
+        pid, status, err := dbp.waitFast(tid)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+        }
+        <span class="hljs-keyword">if</span> status.Exited() {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;thread already exited %d&quot;</span>, pid)
+        }
+    }
+
+    dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = syscall.PtraceSetOptions(tid, ptraceOptions) })
+    <span class="hljs-keyword">if</span> err == syscall.ESRCH {
+        <span class="hljs-keyword">if</span> _, _, err = dbp.waitFast(tid); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;error while waiting after adding thread: %d %s&quot;</span>, tid, err)
+        }
+        dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = syscall.PtraceSetOptions(tid, ptraceOptions) })
+        <span class="hljs-keyword">if</span> err == syscall.ESRCH {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+        }
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;could not set options for new traced thread %d %s&quot;</span>, tid, err)
+        }
+    }
+
+    dbp.threads[tid] = &amp;nativeThread{
+        ID:  tid,
+        dbp: dbp,
+        os:  <span class="hljs-built_in">new</span>(osSpecificDetails),
+    }
+    <span class="hljs-keyword">if</span> dbp.memthread == <span class="hljs-literal">nil</span> {
+        dbp.memthread = dbp.threads[tid]
+    }
+    <span class="hljs-keyword">for</span> _, bp := <span class="hljs-keyword">range</span> dbp.Breakpoints().M {
+        <span class="hljs-keyword">if</span> bp.WatchType != <span class="hljs-number">0</span> {
+            err := dbp.threads[tid].writeHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex)
+            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> dbp.threads[tid], <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x6837;&#x5C31;&#x628A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4E2D;&#x5F53;&#x524D;&#x5DF2;&#x6709;&#x3001;&#x5C06;&#x6765;&#x53EF;&#x80FD;&#x4F1A;&#x6709;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x5168;&#x90E8;&#x7EB3;&#x5165;&#x5230;&#x8C03;&#x8BD5;&#x5668;&#x7BA1;&#x63A7;&#x903B;&#x8F91;&#x4E2D;&#x6765;&#x4E86;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x53EF;&#x4EE5;&#x5C06;&#x5B83;&#x4EEC;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x7EC4;&#xFF0C;&#x63A7;&#x5236;&#x5B83;&#x4EEC;&#x5168;&#x90E8;&#x6267;&#x884C;&#x6216;&#x8005;&#x6682;&#x505C;&#x3002;</p>
+<h4 id="&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x7ED9;&#x524D;&#x7AEF;">&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;&#x7ED9;&#x524D;&#x7AEF;</h4>
+<p>&#x5BF9;&#x4E8E;attach&#x64CD;&#x4F5C;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x4E00;&#x542F;&#x52A8;&#x7684;&#x65F6;&#x5019;&#x5C31;attach&#x4E86;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x52A8;&#x4F5C;&#x662F;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x5EFA;&#x7ACB;&#x670D;&#x52A1;&#x5C42;&#x901A;&#x4FE1;&#x4E4B;&#x524D;&#x5C31;&#x5DF2;&#x7ECF;&#x5B8C;&#x6210;&#x4E86;&#x2026;&#x2026;&#x6240;&#x4EE5;&#x662F;&#x4E0D;&#x9700;&#x8981;&#x901A;&#x77E5;&#x5BA2;&#x6237;&#x7AEF;&#x7ED3;&#x679C;&#x7684;&#x3002;</p>
+<p>&#x8981;&#x4E48;&#x4E00;&#x5F00;&#x59CB;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x5C31;&#x5931;&#x8D25;&#x4E86;&#xFF0C;&#x8981;&#x4E48;&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x6210;&#x529F;&#x4E86;&#xFF0C;&#x7B49;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x670D;&#x52A1;&#x5C42;&#x901A;&#x4FE1;ready&#x540E;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x5C31;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x4E86;&#x3002;</p>
+<h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
+<p>TODO:</p>
+<ol>
+<li>&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;</li>
+<li>&#x4E00;&#x5F00;&#x59CB;&#x5C31;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;</li>
+<li>&#x6267;&#x884C;&#x671F;&#x95F4;&#x521B;&#x5EFA;&#x51FA;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;</li>
+</ol>
+<p>&#x8981;&#x89C2;&#x5BDF;&#x4ED6;&#x4EEC;&#x662F;&#x4E0D;&#x662F;&#x90FD;attach&#x4F4F;&#x4E86;&#xFF0C;&#x5176;&#x4E2D;1&#x3001;2&#x90FD;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#xFF0C;3&#x4E0D;&#x884C;&#xFF0C;&#x56E0;&#x4E3A;attach&#x540E;&#x5168;&#x90E8;&#x5DF2;&#x6709;&#x7EBF;&#x7A0B;&#x90FD;&#x6682;&#x505C;&#x6267;&#x884C;&#x4E86;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x529E;&#x6CD5;&#x9A8C;&#x8BC1;3&#x3001;&#x8FD9;&#x70B9;&#xFF0C;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x5B9E;&#x73B0;continue&#x3001;disconnect&#x7B49;&#x64CD;&#x4F5C;&#x6765;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</p>
+<h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
+<p>&#x672C;&#x6587;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x4E86;tinydbg&#x7684;attach&#x547D;&#x4EE4;&#x5B9E;&#x73B0;&#xFF0C;&#x4E3B;&#x8981;&#x5305;&#x62EC;&#x4EE5;&#x4E0B;&#x51E0;&#x4E2A;&#x65B9;&#x9762;&#xFF1A;</p>
+<ol>
+<li><p>attach&#x547D;&#x4EE4;&#x7684;&#x9009;&#x9879;&#x8BBE;&#x8BA1;&#xFF0C;&#x5305;&#x62EC;&#x57FA;&#x672C;&#x7684;pid&#x9644;&#x52A0;&#x3001;waitfor&#x7B49;&#x5F85;&#x8FDB;&#x7A0B;&#x3001;&#x591A;&#x5BA2;&#x6237;&#x7AEF;&#x652F;&#x6301;&#x7B49;&#x9AD8;&#x7EA7;&#x7279;&#x6027;&#xFF1B;</p>
+</li>
+<li><p>attach&#x7684;&#x57FA;&#x7840;&#x539F;&#x7406;&#xFF0C;&#x901A;&#x8FC7;&#x65F6;&#x5E8F;&#x56FE;&#x5C55;&#x793A;&#x4E86;&#x4ECE;&#x7528;&#x6237;&#x8F93;&#x5165;&#x547D;&#x4EE4;&#x5230;&#x6700;&#x7EC8;&#x5B8C;&#x6210;&#x8FDB;&#x7A0B;&#x9644;&#x52A0;&#x7684;&#x6574;&#x4E2A;&#x6D41;&#x7A0B;&#xFF1B;</p>
+</li>
+<li><p>&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#xFF1A;</p>
+<ul>
+<li>&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x5982;&#x4F55;&#x89E3;&#x6790;&#x548C;&#x5904;&#x7406;attach&#x547D;&#x4EE4;</li>
+<li>&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x9644;&#x52A0;</li>
+<li>&#x5982;&#x4F55;&#x5904;&#x7406;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x60C5;&#x51B5;</li>
+<li>&#x5982;&#x4F55;&#x7EF4;&#x62A4;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x548C;&#x786C;&#x4EF6;&#x65AD;&#x70B9;</li>
+</ul>
+</li>
+<li><p>&#x6D4B;&#x8BD5;&#x573A;&#x666F;&#x8BBE;&#x8BA1;&#xFF0C;&#x5305;&#x62EC;&#x5355;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x4EE5;&#x53CA;&#x8FD0;&#x884C;&#x65F6;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;&#x7684;attach&#x6D4B;&#x8BD5;&#x3002;</p>
+</li>
+</ol>
+<p>&#x901A;&#x8FC7;&#x672C;&#x6587;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x8BFB;&#x8005;&#x5E94;&#x8BE5;&#x80FD;&#x591F;&#x7406;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x8FDB;&#x7A0B;&#x9644;&#x52A0;&#x529F;&#x80FD;&#x7684;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x8003;&#x8651;&#x7684;&#x5404;&#x79CD;&#x7EC6;&#x8282;&#x95EE;&#x9898;&#x3002;&#x540E;&#x7EED;&#x7AE0;&#x8282;&#x5C06;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x7EE7;&#x7EED;&#x4ECB;&#x7ECD;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="01-debug-session.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.01 打开调试会话">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="12-tinydbg_attach_waitfor.html" class="navigation navigation-next " aria-label="Next page: 9.2.12 tinydbg attach+waitfor">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"9.2.11 tinydbg attach","level":"1.9.2.3","depth":3,"next":{"title":"9.2.12 tinydbg attach+waitfor","level":"1.9.2.4","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.md","articles":[]},"previous":{"title":"9.2.01 打开调试会话","level":"1.9.2.2","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","mtime":"2025-06-10T06:07:09.767Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-12T05:15:02.651Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

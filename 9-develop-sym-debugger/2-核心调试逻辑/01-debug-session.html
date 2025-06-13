@@ -1957,31 +1957,38 @@ Global Flags:
             \--&gt; attachCommand.Run()
                     \--&gt; attachCmd(...)
                             \--&gt; execute(pid, args, conf, <span class="hljs-string">&quot;&quot;</span>, debugger.ExecutingOther, args, buildFlags)
-                                    \--&gt; client/server communicate via preConnectedListener+net.Pipe
 </code></pre>
-<p>&#x5982;&#x679C;&#x54B1;&#x4EEC;&#x662F;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x662F;debug&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
+<p>&#x5728;execute&#x51FD;&#x6570;&#x4E2D;&#xFF0C;&#x4F1A;&#x6839;&#x636E;&#x662F;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x8FD8;&#x662F;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x6765;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x65B9;&#x6CD5;&#x521D;&#x59CB;&#x5316;RPC&#x670D;&#x52A1;&#x5C42;&#xFF1A;</p>
+<ul>
+<li>&#x672C;&#x5730;&#x8C03;&#x8BD5;(&#x672A;&#x6307;&#x5B9A;--headless)&#xFF1A;setup client/server communicate via preConnectedListener+net.Pipe</li>
+<li>&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;(&#x6307;&#x5B9A;&#x4E86;--headless): setup client/server communicate via net.TCPListener+net.TCPConn or net.UnixListener+net.UnixConn</li>
+</ul>
+<p>&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;exec&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-bash">main.go:main.main
+    \--&gt; cmds.New(<span class="hljs-literal">false</span>).Execute()
+            \--&gt; <span class="hljs-built_in">exec</span>Command.Run()
+                    \--&gt; execute(0, args, conf, <span class="hljs-string">&quot;&quot;</span>, debugger.ExecutingExistingFile, args, buildFlags)
+</code></pre>
+<p>&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;debug&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
 <pre><code class="lang-bash">main.go:main.main
     \--&gt; cmds.New(<span class="hljs-literal">false</span>).Execute()
             \--&gt; debugCommand.Run()
                     \--&gt; debugCmd(...)
                             \--&gt; execute(0, processArgs, conf, <span class="hljs-string">&quot;&quot;</span>, debugger.ExecutingGeneratedFile, dlvArgs, buildFlags)
-                                    \--&gt; client/server communicate via preConnectedListener+net.Pipe
 </code></pre>
-<p>&#x5982;&#x679C;&#x54B1;&#x4EEC;&#x662F;&#x662F;&#x672C;&#x5730;&#x8C03;&#x8BD5;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x662F;core&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
+<p>&#x5982;&#x679C;&#x6267;&#x884C;&#x7684;&#x662F;core&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
 <pre><code class="lang-bash">main.go:main.main
     \--&gt; cmds.New(<span class="hljs-literal">false</span>).Execute()
             \--&gt; coreCommand.Run()
                     \--&gt; coreCmd(...)
                             \--&gt; execute(0, []string{args[0]}, conf, args[1], debugger.ExecutingOther, args, buildFlags)
-                                    \--&gt; client/server communicate via preConnectedListener+net.Pipe
 </code></pre>
-<p>&#x5982;&#x679C;&#x54B1;&#x4EEC;&#x662F;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x662F;connect&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
+<p>&#x5982;&#x679C;&#x54B1;&#x4EEC;&#x5F88;&#x660E;&#x786E;&#x5C31;&#x662F;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x6267;&#x884C;&#x7684;&#x662F;connect&#x547D;&#x4EE4;&#xFF0C;&#x90A3;&#x4E48;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
 <pre><code class="lang-bash">main.go:main.main
     \--&gt; cmds.New(<span class="hljs-literal">false</span>).Execute()
             \--&gt; connectCommand.Run()
                     \--&gt; connectCmd(...)
                             \--&gt; connect(addr, nil, conf)
-                                    \--&gt; client/server communicate via net.TCPListener+net.TCPConn or net.UnixListener+net.UnixConn
 </code></pre>
 <p>&#x8FD9;&#x91CC;&#x8BB2;&#x7684;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x540E;&#x7AEF;&#x5982;&#x4F55;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x770B;&#x770B;&#x8C03;&#x8BD5;&#x524D;&#x7AEF;&#x5982;&#x4F55;&#x8F93;&#x51FA; &quot;godbg&gt; &quot; &#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x89E3;&#x6790;&#x547D;&#x4EE4;&#x3001;&#x89E3;&#x6790;&#x4E3A;&#x672C;&#x5730;client&#x65B9;&#x6CD5;&#x8C03;&#x7528;&#x3002;</p>
 <p>&#x672C;&#x5730;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;execute&#x65B9;&#x6CD5;&#xFF0C;&#x548C;&#x8FD9;&#x91CC;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x4E2D;&#x7684;connect&#x65B9;&#x6CD5;&#xFF0C;&#x90FD;&#x6D89;&#x53CA;&#x5230;&#x521D;&#x59CB;&#x5316;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x52A8;&#x4F5C;&#x3002;</p>
@@ -2548,7 +2555,7 @@ func (c *RPCClient) ListPackageVariables(filter string, cfg api.LoadConfig) ([]a
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.01 打开调试会话","level":"1.9.2.2","depth":3,"next":{"title":"9.2.11 tinydbg attach","level":"1.9.2.3","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","articles":[]},"previous":{"title":"9.2.00 核心调试命令","level":"1.9.2.1","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.md","mtime":"2025-06-12T05:26:46.634Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-12T06:06:40.280Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.01 打开调试会话","level":"1.9.2.2","depth":3,"next":{"title":"9.2.11 tinydbg attach","level":"1.9.2.3","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","articles":[]},"previous":{"title":"9.2.00 核心调试命令","level":"1.9.2.1","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.md","mtime":"2025-06-13T01:18:42.118Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-13T01:51:33.480Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

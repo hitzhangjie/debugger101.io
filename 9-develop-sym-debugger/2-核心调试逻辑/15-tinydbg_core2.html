@@ -1,0 +1,2636 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>9.2.15 tinydbg core - part2 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="16-tinydbg_connect.html" />
+    
+    
+    <link rel="prev" href="15-tinydbg_core1.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+            
+                <a href="../../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../7-headto-sym-debugger/">
+            
+                <a href="../../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                <a href="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../7-headto-sym-debugger/2-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../7-headto-sym-debugger/3-syms.html">
+            
+                <a href="../../7-headto-sym-debugger/3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                <a href="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                    
+                    7.7.2 如何破解那些细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../8-dwarf/">
+            
+                <a href="../../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../8-dwarf/1-history.html">
+            
+                <a href="../../8-dwarf/1-history.html">
+            
+                    
+                    8.1 DWARF发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../8-dwarf/2-overview.html">
+            
+                <a href="../../8-dwarf/2-overview.html">
+            
+                    
+                    8.2 DWARF内容概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../8-dwarf/3-dwarfdata.html">
+            
+                <a href="../../8-dwarf/3-dwarfdata.html">
+            
+                    
+                    8.3 DWARF数据分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../8-dwarf/4-die/">
+            
+                <a href="../../8-dwarf/4-die/">
+            
+                    
+                    8.4 DIE详细介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                <a href="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                    
+                    8.4.1 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                <a href="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                    
+                    8.4.2 位置数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../8-dwarf/4-die/3-desc-code.html">
+            
+                <a href="../../8-dwarf/4-die/3-desc-code.html">
+            
+                    
+                    8.4.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../../8-dwarf/4-die/4-encoding.html">
+            
+                <a href="../../8-dwarf/4-die/4-encoding.html">
+            
+                    
+                    8.4.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../8-dwarf/5-other/">
+            
+                <a href="../../8-dwarf/5-other/">
+            
+                    
+                    8.5 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                <a href="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                    
+                    8.5.1 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                <a href="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                    
+                    8.5.2 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                <a href="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                    
+                    8.5.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../../8-dwarf/5-other/4-macro-info.html">
+            
+                <a href="../../8-dwarf/5-other/4-macro-info.html">
+            
+                    
+                    8.5.4 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                <a href="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                    
+                    8.5.5 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                <a href="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                    
+                    8.5.6 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                <a href="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                    
+                    8.5.7 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-practices.html">
+            
+                <a href="../../8-dwarf/6-practices.html">
+            
+                    
+                    8.6 DWARF解析及应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-summary.html">
+            
+                <a href="../../8-dwarf/7-summary.html">
+            
+                    
+                    8.7 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../1-架构设计/">
+            
+                <a href="../1-架构设计/">
+            
+                    
+                    9.1 架构设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../1-架构设计/1-现代调试器架构.html">
+            
+                <a href="../1-架构设计/1-现代调试器架构.html">
+            
+                    
+                    9.1.1 现代调试器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../1-架构设计/2-前端UI层设计.html">
+            
+                <a href="../1-架构设计/2-前端UI层设计.html">
+            
+                    
+                    9.1.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../1-架构设计/3-Service层设计.html">
+            
+                <a href="../1-架构设计/3-Service层设计.html">
+            
+                    
+                    9.1.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../1-架构设计/4-后端符号层设计.html">
+            
+                <a href="../1-架构设计/4-后端符号层设计.html">
+            
+                    
+                    9.1.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../1-架构设计/5-后端目标层设计.html">
+            
+                <a href="../1-架构设计/5-后端目标层设计.html">
+            
+                    
+                    9.1.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../1-架构设计/6-日志系统设计.html">
+            
+                <a href="../1-架构设计/6-日志系统设计.html">
+            
+                    
+                    9.1.6 日志系统设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    9.2 核心调试逻辑
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="00-cmds.html">
+            
+                <a href="00-cmds.html">
+            
+                    
+                    9.2.00 核心调试命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="01-debug-session.html">
+            
+                <a href="01-debug-session.html">
+            
+                    
+                    9.2.01 打开调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="11-tinydbg_attach.html">
+            
+                <a href="11-tinydbg_attach.html">
+            
+                    
+                    9.2.11 tinydbg attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="12-tinydbg_attach_waitfor.html">
+            
+                <a href="12-tinydbg_attach_waitfor.html">
+            
+                    
+                    9.2.12 tinydbg attach+waitfor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="13-tinydbg_exec.html">
+            
+                <a href="13-tinydbg_exec.html">
+            
+                    
+                    9.2.13 tinydbg exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" data-path="14-tinydbg_debug.html">
+            
+                <a href="14-tinydbg_debug.html">
+            
+                    
+                    9.2.14 tinydbg debug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7" data-path="15-tinydbg_core1.html">
+            
+                <a href="15-tinydbg_core1.html">
+            
+                    
+                    9.2.15 tinydbg core - part1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2.8" data-path="15-tinydbg_core2.html">
+            
+                <a href="15-tinydbg_core2.html">
+            
+                    
+                    9.2.15 tinydbg core - part2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.9" data-path="16-tinydbg_connect.html">
+            
+                <a href="16-tinydbg_connect.html">
+            
+                    
+                    9.2.16 tinydbg connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.10" data-path="17-tinydbg_trace.html">
+            
+                <a href="17-tinydbg_trace.html">
+            
+                    
+                    9.2.17 tinydbg trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.11" data-path="21-disassemble.html">
+            
+                <a href="21-disassemble.html">
+            
+                    
+                    9.2.21 tinydbg> disass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.12" data-path="22-breakpoint.html">
+            
+                <a href="22-breakpoint.html">
+            
+                    
+                    9.2.22 tinydbg> breakpoint
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.13" data-path="23-breakpoints.html">
+            
+                <a href="23-breakpoints.html">
+            
+                    
+                    9.2.23 tinydbg> breakpoints
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.14" data-path="24-clear.html">
+            
+                <a href="24-clear.html">
+            
+                    
+                    9.2.24 tinydbg> clear | toggle
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.15" data-path="25-clearall.html">
+            
+                <a href="25-clearall.html">
+            
+                    
+                    9.2.25 tinydbg> clearall
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.16" data-path="26-step.html">
+            
+                <a href="26-step.html">
+            
+                    
+                    9.2.26 tinydbg> next | step | stepi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.17" data-path="27-continue.html">
+            
+                <a href="27-continue.html">
+            
+                    
+                    9.2.27 继续执行
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.18" data-path="28-pmem.html">
+            
+                <a href="28-pmem.html">
+            
+                    
+                    9.2.28 查看内存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.19" data-path="29-regs.html">
+            
+                <a href="29-regs.html">
+            
+                    
+                    9.2.29 查看寄存器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.20" data-path="30-call-frame.html">
+            
+                <a href="30-call-frame.html">
+            
+                    
+                    9.2.30 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.21" data-path="31-vars.html">
+            
+                <a href="31-vars.html">
+            
+                    
+                    9.2.31 变量&类型系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.22" data-path="32-how_listfunctions_work.html">
+            
+                <a href="32-how_listfunctions_work.html">
+            
+                    
+                    9.2.32 how ListFunctions work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.23" data-path="32-funcs.html">
+            
+                <a href="32-funcs.html">
+            
+                    
+                    9.2.32 funcs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.24" data-path="33-goroutines.html">
+            
+                <a href="33-goroutines.html">
+            
+                    
+                    9.2.33 协程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.25" data-path="34-multi-threads.html">
+            
+                <a href="34-multi-threads.html">
+            
+                    
+                    9.2.34 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../3-高级功能扩展/">
+            
+                <a href="../3-高级功能扩展/">
+            
+                    
+                    9.3 高级功能扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                <a href="../3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                    
+                    9.3.100 集成starlark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                <a href="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                    
+                    9.3.101 基于eBPF跟踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                <a href="../3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                    
+                    9.3.102 实现语法高亮
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../3-高级功能扩展/103-howto_paging_output.html">
+            
+                <a href="../3-高级功能扩展/103-howto_paging_output.html">
+            
+                    
+                    9.3.103 实现分页输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                <a href="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                    
+                    9.3.104 读取分离存储的DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                <a href="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                    
+                    9.3.105 自动推测源文件路径映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                <a href="../3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                    
+                    9.3.106 实现目标进程IO重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                <a href="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                    
+                    9.3.107 支持用户偏好配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                <a href="../3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                    
+                    9.3.108 支持多客户端调试模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                <a href="../3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                    
+                    9.3.109 支持调试活动记录本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/80-go-tool-compile.html">
+            
+                <a href="../../12-appendix/80-go-tool-compile.html">
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/81-go-tool-asm.html">
+            
+                <a href="../../12-appendix/81-go-tool-asm.html">
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/82-go-tool-link.html">
+            
+                <a href="../../12-appendix/82-go-tool-link.html">
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/90-why-buildid-loaded.html">
+            
+                <a href="../../12-appendix/90-why-buildid-loaded.html">
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                <a href="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >9.2.15 tinydbg core - part2</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="core-part2-&#x751F;&#x6210;core&#x8C03;&#x8BD5;core">Core (Part2): &#x751F;&#x6210;Core+&#x8C03;&#x8BD5;Core</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;-tinydbg-core-corefile">&#x5B9E;&#x73B0;&#x76EE;&#x6807;: <code>tinydbg core [corefile]</code></h3>
+<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x6839;&#x636E;core&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x8C03;&#x8BD5; <code>tinydbg core [corefile]</code>&#xFF0C;&#x901A;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;core&#x6587;&#x4EF6;&#x662F;&#x7A0B;&#x5E8F;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;&#x6216;&#x5D29;&#x6E83;&#x65F6;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4E3A;&#x5176;&#x751F;&#x6210;&#x7684;&#x4E00;&#x4E2A;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x6587;&#x4EF6;&#x3002;&#x5B83;&#x5305;&#x542B;&#x4E86;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x65F6;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5229;&#x7528;&#x5B83;&#x53EF;&#x4EE5;&#x91CD;&#x5EFA;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x65F6;&#x7684;&#x6267;&#x884C;&#x73B0;&#x573A;&#xFF0C;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x5229;&#x7528;core&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x95EE;&#x9898;&#x5B9A;&#x4F4D;&#x7684;&#x4E00;&#x4E2A;&#x6700;&#x5E38;&#x89C1;&#x64CD;&#x4F5C;&#xFF0C;&#x5C31;&#x662F;&#x6267;&#x884C;&#x547D;&#x4EE4; <code>bt</code>&#xFF0C;&#x53EF;&#x4EE5;&#x5B9A;&#x4F4D;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x65F6;&#x7684;&#x5806;&#x6808;&#xFF0C;&#x5BF9;&#x4E8E;SIGMENTATION FAULT&#x5F88;&#x5BB9;&#x6613;&#x5B9A;&#x4F4D;&#x3002;&#x73B0;&#x5728;&#x4E3B;&#x6D41;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x5728;&#x7A0B;&#x5E8F;&#x51FA;&#x73B0;&#x5F02;&#x5E38;&#x6216;&#x8005;&#x4E25;&#x91CD;&#x9519;&#x8BEF;&#x65F6;&#xFF0C;&#x90FD;&#x63D0;&#x4F9B;&#x4E86;&#x6808;&#x56DE;&#x6EAF;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x65B9;&#x4FBF;&#x5F00;&#x53D1;&#x8005;&#x67E5;&#x770B;&#x95EE;&#x9898;&#x5806;&#x6808;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#xFF1A;</p>
+<ol>
+<li>Go&#x8BED;&#x8A00;&#x652F;&#x6301;&#x5BF9;panic&#x8FDB;&#x884C;recover&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;debug.Stack()&#x6765;&#x83B7;&#x53D6;&#x5E76;&#x6253;&#x5370;&#x534F;&#x7A0B;&#x5806;&#x6808;&#x4FE1;&#x606F;&#xFF1B;&#x800C;&#x73AF;&#x5883;&#x53D8;&#x91CF;GOTRACKBACK=crash&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x5D29;&#x6E83;&#x65F6;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#xFF1B;</li>
+<li>Java&#x8BED;&#x8A00;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;Thread.dumpStack()&#x6216;&#x8005;Throwable.printStackTrace()&#x6253;&#x5370;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x5806;&#x6808;&#x4FE1;&#x606F;&#xFF1B;JVM&#x5D29;&#x6E83;&#x65F6;&#x4F1A;&#x751F;&#x6210;hs_err_pid*.log&#x6587;&#x4EF6;&#x8BB0;&#x5F55;&#x5D29;&#x6E83;&#x4FE1;&#x606F;&#xFF1B;</li>
+<li>C++&#x53EF;&#x4EE5;&#x901A;&#x8FC7;backtrace()&#x3001;backtrace_symbols()&#x7B49;&#x51FD;&#x6570;&#x83B7;&#x53D6;&#x5806;&#x6808;&#x4FE1;&#x606F;&#xFF1B;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;ulimit -c unlimited&#x5F00;&#x542F;core dump&#xFF0C;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x65F6;&#x4F1A;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#xFF1B;</li>
+</ol>
+<p>Core&#x6587;&#x4EF6;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x8FDB;&#x7A0B;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x7684;&#x5FEB;&#x7167;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x5D29;&#x6E83;&#x65F6;&#x624D;&#x751F;&#x6210;&#xFF0C;&#x6BD4;&#x5982; <code>gcore &lt;pid&gt;</code> &#x53EF;&#x4EE5;&#x4E0D;&#x6302;&#x6389;&#x8FDB;&#x7A0B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#xFF0C;&#x5F53;&#x7136;&#x80AF;&#x5B9A;&#x662F;&#x60F3;&#x5B9A;&#x4F4D;&#x8FDB;&#x7A0B;&#x7684;&#x4E00;&#x4E9B;&#x95EE;&#x9898;&#x65F6;&#x624D;&#x4F1A;&#x8FD9;&#x4E48;&#x505A;&#xFF0C;&#x5BF9;&#x4E8E;&#x7EBF;&#x4E0A;&#x670D;&#x52A1;&#x8981;&#x8E22;&#x6389;&#x6D41;&#x91CF;&#x540E;&#x624D;&#x80FD;&#x8FD9;&#x4E48;&#x5E72;&#xFF0C;&#x56E0;&#x4E3A;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x7A0B;&#x662F;&#x6682;&#x505C;&#x6267;&#x884C;&#x7684;&#x3002;</p>
+<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<h4 id="core&#x5305;&#x542B;&#x54EA;&#x4E9B;&#x4FE1;&#x606F;">core&#x5305;&#x542B;&#x54EA;&#x4E9B;&#x4FE1;&#x606F;</h4>
+<p>part1&#x90E8;&#x5206;&#x5BF9;core&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x4E86;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#xFF0C;&#x8FD9;&#x91CC;&#x8FD8;&#x662F;&#x7B80;&#x5355;&#x56DE;&#x987E;&#x4E0B;&#x3002;core&#x6587;&#x4EF6;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x4E00;&#x4E2A;&#x5185;&#x5B58;&#x5FEB;&#x7167;&#x6587;&#x4EF6;&#xFF0C;&#x5B83;&#x5305;&#x542B;&#x4E86;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x65F6;&#x7684;&#x5185;&#x5B58;&#x5185;&#x5BB9;&#x548C;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x4E3B;&#x8981;&#x6709;&#x5982;&#x4E0B;&#x51E0;&#x90E8;&#x5206;&#xFF1A;</p>
+<ol>
+<li>ELF&#x5934;&#x4FE1;&#x606F;&#xFF1A;&#x6807;&#x8BC6;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;core&#x6587;&#x4EF6;&#xFF0C;&#x5305;&#x542B;&#x6587;&#x4EF6;&#x7C7B;&#x578B;&#x3001;&#x673A;&#x5668;&#x67B6;&#x6784;&#x7B49;&#x57FA;&#x672C;&#x4FE1;&#x606F;</li>
+<li>&#x7A0B;&#x5E8F;&#x5934;&#x8868;&#xFF1A;&#x63CF;&#x8FF0;&#x4E86;core&#x6587;&#x4EF6;&#x4E2D;&#x5404;&#x4E2A;&#x6BB5;&#x7684;&#x4F4D;&#x7F6E;&#x548C;&#x5C5E;&#x6027;</li>
+<li>&#x5185;&#x5B58;&#x6620;&#x5C04;&#x6BB5;&#xFF1A;<ul>
+<li>&#x5305;&#x542B;&#x7A0B;&#x5E8F;&#x7684;&#x4EE3;&#x7801;&#x6BB5;&#x3001;&#x6570;&#x636E;&#x6BB5;&#x3001;&#x5806;&#x3001;&#x6808;&#x7B49;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x7684;&#x5185;&#x5BB9;</li>
+<li>&#x6BCF;&#x4E2A;&#x6BB5;&#x90FD;&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x865A;&#x62DF;&#x5730;&#x5740;&#x548C;&#x8BBF;&#x95EE;&#x6743;&#x9650;&#x4FE1;&#x606F;   </li>
+</ul>
+</li>
+<li>&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#xFF1A;<ul>
+<li>&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x901A;&#x7528;&#x5BC4;&#x5B58;&#x5668;&#x503C;</li>
+<li>&#x6D6E;&#x70B9;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;</li>
+<li>&#x7279;&#x6B8A;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;</li>
+</ul>
+</li>
+<li>&#x5176;&#x4ED6;&#x4FE1;&#x606F;&#xFF1A;<ul>
+<li>&#x8FDB;&#x7A0B;ID&#x3001;&#x7528;&#x6237;ID&#x7B49;&#x8FDB;&#x7A0B;&#x4FE1;&#x606F;</li>
+<li>&#x5BFC;&#x81F4;&#x5D29;&#x6E83;&#x7684;&#x4FE1;&#x53F7;&#x4FE1;&#x606F;</li>
+<li>&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#x548C;&#x73AF;&#x5883;&#x53D8;&#x91CF;</li>
+<li>&#x6253;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#x63CF;&#x8FF0;&#x7B26;&#x4FE1;&#x606F;</li>
+</ul>
+</li>
+</ol>
+<p>&#x8C03;&#x8BD5;&#x5668;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;core&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x4E0A;&#x8FF0;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x5EFA;&#x7A0B;&#x5E8F;&#x5D29;&#x6E83;&#x65F6;&#x7684;&#x6267;&#x884C;&#x73B0;&#x573A;&#xFF0C;&#x5E2E;&#x52A9;&#x5F00;&#x53D1;&#x8005;&#x8FDB;&#x884C;&#x4E8B;&#x540E;&#x8C03;&#x8BD5;&#x5206;&#x6790;&#x3001;&#x95EE;&#x9898;&#x590D;&#x76D8;&#x3002;</p>
+<h4 id="core&#x6587;&#x4EF6;&#x5982;&#x4F55;&#x751F;&#x6210;">core&#x6587;&#x4EF6;&#x5982;&#x4F55;&#x751F;&#x6210;</h4>
+<h3 id="linux&#x4E0B;core&#x6587;&#x4EF6;&#x751F;&#x6210;">Linux&#x4E0B;Core&#x6587;&#x4EF6;&#x751F;&#x6210;</h3>
+<h4 id="linux&#x5185;&#x6838;&#x6765;&#x751F;&#x6210;">Linux&#x5185;&#x6838;&#x6765;&#x751F;&#x6210;</h4>
+<p>&#x5F53;&#x7A0B;&#x5E8F;&#x6536;&#x5230;&#x67D0;&#x4E9B;&#x7279;&#x5B9A;&#x4FE1;&#x53F7;(&#x5982;SIGSEGV&#x3001;SIGABRT&#x7B49;)&#x65F6;,&#x5982;&#x679C;&#x7CFB;&#x7EDF;&#x5F00;&#x542F;&#x4E86;core dump&#x529F;&#x80FD;,&#x5185;&#x6838;&#x4F1A;&#x5E2E;&#x52A9;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#x3002;&#x5177;&#x4F53;&#x6D41;&#x7A0B;&#x5982;&#x4E0B;:</p>
+<ol>
+<li><p>&#x89E6;&#x53D1;core dump&#x7684;&#x5E38;&#x89C1;&#x4FE1;&#x53F7;:</p>
+<ul>
+<li>SIGSEGV: &#x6BB5;&#x9519;&#x8BEF;,&#x975E;&#x6CD5;&#x5185;&#x5B58;&#x8BBF;&#x95EE;</li>
+<li>SIGABRT: &#x8C03;&#x7528;abort()&#x51FD;&#x6570;</li>
+<li>SIGFPE: &#x6D6E;&#x70B9;&#x5F02;&#x5E38;</li>
+<li>SIGILL: &#x975E;&#x6CD5;&#x6307;&#x4EE4;</li>
+<li>SIGBUS: &#x603B;&#x7EBF;&#x9519;&#x8BEF;</li>
+<li>SIGQUIT: &#x7528;&#x6237;&#x53D1;&#x9001;quit&#x4FE1;&#x53F7;</li>
+</ul>
+</li>
+<li><p>&#x7CFB;&#x7EDF;&#x914D;&#x7F6E;:</p>
+<pre><code class="lang-bash"><span class="hljs-comment"># &#x68C0;&#x67E5;&#x662F;&#x5426;&#x5F00;&#x542F;core dump</span>
+<span class="hljs-built_in">ulimit</span> -c
+
+<span class="hljs-comment"># &#x8BBE;&#x7F6E;core&#x6587;&#x4EF6;&#x5927;&#x5C0F;&#x9650;&#x5236;(unlimited&#x8868;&#x793A;&#x4E0D;&#x9650;&#x5236;)</span>
+<span class="hljs-built_in">ulimit</span> -c unlimited
+
+<span class="hljs-comment"># &#x914D;&#x7F6E;core&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x683C;&#x5F0F;</span>
+<span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;/tmp/core-%e-%p-%t&quot;</span> &gt; /proc/sys/kernel/core_pattern
+</code></pre>
+</li>
+<li><p>&#x5185;&#x6838;&#x5904;&#x7406;&#x6D41;&#x7A0B;:</p>
+<ol>
+<li>&#x8FDB;&#x7A0B;&#x6536;&#x5230;&#x4E0A;&#x8FF0;&#x4FE1;&#x53F7;&#x540E;,&#x5185;&#x6838;&#x4ECB;&#x5165;&#x5904;&#x7406;</li>
+<li>&#x68C0;&#x67E5;&#x7CFB;&#x7EDF;core dump&#x914D;&#x7F6E;&#x662F;&#x5426;&#x5141;&#x8BB8;&#x751F;&#x6210;core&#x6587;&#x4EF6;</li>
+<li>&#x5185;&#x6838;&#x6682;&#x505C;&#x8FDB;&#x7A0B;&#x6240;&#x6709;&#x7EBF;&#x7A0B;</li>
+<li>&#x6536;&#x96C6;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x3001;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#x7B49;&#x4FE1;&#x606F;</li>
+<li>&#x5C06;&#x4FE1;&#x606F;&#x5199;&#x5165;core&#x6587;&#x4EF6;</li>
+<li>&#x7EC8;&#x6B62;&#x8FDB;&#x7A0B;</li>
+</ol>
+</li>
+<li><p>core&#x6587;&#x4EF6;&#x547D;&#x540D;&#x89C4;&#x5219;(/proc/sys/kernel/core_pattern):</p>
+<ul>
+<li>%p - &#x8FDB;&#x7A0B;ID </li>
+<li>%u - &#x7528;&#x6237;ID</li>
+<li>%g - &#x7EC4;ID</li>
+<li>%s - &#x5BFC;&#x81F4;core dump&#x7684;&#x4FE1;&#x53F7;&#x53F7;</li>
+<li>%t - core dump&#x7684;&#x65F6;&#x95F4;(UNIX&#x65F6;&#x95F4;&#x6233;)</li>
+<li>%h - &#x4E3B;&#x673A;&#x540D;</li>
+<li>%e - &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x540D;</li>
+</ul>
+</li>
+</ol>
+<p>&#x6240;&#x4EE5;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#x4E0D;&#x9700;&#x8981;&#x8C03;&#x8BD5;&#x5668;&#x53C2;&#x4E0E;,&#x8FD9;&#x662F;&#x7531;Linux&#x5185;&#x6838;&#x63D0;&#x4F9B;&#x7684;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7279;&#x6027;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x4E8B;&#x540E;&#x5206;&#x6790;&#x8FD9;&#x4E2A;core&#x6587;&#x4EF6;,&#x91CD;&#x5EFA;&#x5D29;&#x6E83;&#x73B0;&#x573A;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
+<h4 id="&#x81EA;&#x5B9A;&#x4E49;&#x5DE5;&#x5177;&#x6765;&#x751F;&#x6210;">&#x81EA;&#x5B9A;&#x4E49;&#x5DE5;&#x5177;&#x6765;&#x751F;&#x6210;</h4>
+<p>&#x9664;&#x4E86;&#x4E0A;&#x8FF0;&#x63D0;&#x5230;&#x7684;&#x54EA;&#x4E9B;&#x7ED9;&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4FE1;&#x53F7;&#x3001;&#x5229;&#x7528;&#x5185;&#x6838;&#x7684;&#x80FD;&#x529B;&#x6765;&#x81EA;&#x52A8;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#x4EE5;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x81EA;&#x5B9A;&#x4E49;&#x8C03;&#x8BD5;&#x5DE5;&#x5177;&#x4E5F;&#x53EF;&#x4EE5;&#x81EA;&#x5DF1;&#x5B9E;&#x73B0;&#x8FD9;&#x91CC;&#x7684;core&#x6587;&#x4EF6;&#x8F6C;&#x50A8;&#x7684;&#x80FD;&#x529B;&#x3002;</p>
+<p>&#x6BD4;&#x5982;gdb&#x8F6F;&#x4EF6;&#x5305;&#x4E2D;&#x7684;gcore&#xFF0C;&#x5B83;&#x4E5F;&#x53EF;&#x4EE5;&#x751F;&#x6210;&#x8FDB;&#x7A0B;&#x7684;core&#x6587;&#x4EF6;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x771F;&#x7684;&#x8BA9;&#x8FDB;&#x7A0B;&#x6302;&#x6389;&#x3002;&#x5C3D;&#x7BA1;&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x7EBF;&#x4E0A;&#x670D;&#x52A1;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#x662F;&#x56E0;&#x4E3A;&#x9047;&#x5230;&#x4E86;&#x4E25;&#x91CD;&#x9519;&#x8BEF;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4E0D;&#x5E72;&#x6389;&#x8FDB;&#x7A0B;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x751F;&#x6210;&#x5B83;&#x7684;core&#x6587;&#x4EF6;&#xFF0C;&#x5B9E;&#x73B0;&#x5176;&#x5B9E;&#x4E5F;&#x4E0D;&#x590D;&#x6742;&#x3002;</p>
+<p>&#x6BD4;&#x5982;&#x6211;&#x4EEC;&#x73B0;&#x5728;&#x8981;&#x751F;&#x6210;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;core&#x6587;&#x4EF6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x505A;&#xFF1A;</p>
+<ul>
+<li>&#x4F7F;&#x7528; <code>ptrace</code> &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x9644;&#x52A0;&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF1B;</li>
+<li>&#x8BFB;&#x53D6; <code>/proc/&lt;pid&gt;/maps</code> &#x6765;&#x4E86;&#x89E3;&#x5185;&#x5B58;&#x5E03;&#x5C40;&#xFF1B;</li>
+<li>&#x4F7F;&#x7528; <code>process_vm_readv()</code> &#x6216;&#x901A;&#x8FC7; <code>ptrace(PTRACE_PEEKDATA, ...)</code> &#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x533A;&#x57DF;&#xFF1B;</li>
+<li>&#x4F7F;&#x7528; <code>ptrace(PTRACE_GETREGS, ...)</code> &#x6355;&#x83B7;&#x5BC4;&#x5B58;&#x5668;&#x72B6;&#x6001;&#xFF1B;</li>
+<li>&#x83B7;&#x53D6;&#x6253;&#x5F00;&#x7684;&#x6587;&#x4EF6;&#x3001;&#x7EBF;&#x7A0B;&#x4FE1;&#x606F;&#x7B49;&#xFF1B;</li>
+<li>&#x83B7;&#x53D6;&#x542F;&#x52A8;&#x65F6;&#x7684;&#x73AF;&#x5883;&#x53D8;&#x91CF;&#x3001;&#x542F;&#x52A8;&#x53C2;&#x6570;&#x3001;&#x6784;&#x5EFA;&#x53C2;&#x6570;&#x7B49;&#xFF1B;</li>
+<li>...</li>
+<li>&#x5C06;&#x4E0A;&#x8FF0;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x4FE1;&#x606F;&#xFF0C;&#x6309;&#x683C;&#x5F0F;&#x7EC4;&#x7EC7;&#x597D;&#x540E;&#x5199;&#x5165;core&#x6587;&#x4EF6;&#x3002;</li>
+</ul>
+<p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x770B;&#x770B; tinydbg &#x4E2D;&#x662F;&#x5982;&#x4F55;&#x751F;&#x6210;core&#x6587;&#x4EF6;&#xFF0C;&#x5E76;&#x52A0;&#x8F7D;core&#x6587;&#x4EF6;&#x7684;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>core&#x6587;&#x4EF6;&#x751F;&#x6210;&#x5176;&#x5B9E;&#x662F;&#x6709;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4; <code>tinydbg&gt; dump &lt;corefile&gt;</code> &#x6765;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x800C;&#x52A0;&#x8F7D;core&#x6587;&#x4EF6;&#x5E76;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x662F; <code>tinydbg core &lt;exectable&gt; &lt;corefile&gt;</code> &#x6765;&#x5B9E;&#x73B0;&#x7684;&#x3002;&#x6309;&#x7167;&#x6211;&#x4EEC;&#x7684;&#x76EE;&#x5F55;&#x5B89;&#x6392;&#xFF0C;&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x8981;&#x5148;&#x4ECB;&#x7ECD;core&#x547D;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x547D;&#x4EE4;&#x90E8;&#x5206;&#xFF0C;&#x518D;&#x4ECB;&#x7ECD;dump&#x547D;&#x4EE4;&#x3002;&#x4F46;&#x662F;core&#x6587;&#x4EF6;&#x4E2D;&#x6570;&#x636E;&#x7684;&#x751F;&#x4EA7;&#x3001;&#x6D88;&#x8D39;&#x662F;&#x7D27;&#x5BC6;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x751F;&#x4EA7;&#x3001;&#x6D88;&#x8D39;&#x5728;&#x7AE0;&#x8282;&#x5B89;&#x6392;&#x4E0A;&#x9694;&#x7684;&#x5F88;&#x8FDC;&#xFF0C;&#x8DF3;&#x8DC3;&#x6027;&#x592A;&#x5927;&#x3001;&#x4E0D;&#x6613;&#x4E8E;&#x8BFB;&#x8005;&#x7406;&#x89E3;&#x5B66;&#x4E60;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5148;&#x4ECB;&#x7ECD;dump&#x547D;&#x4EE4;&#x5982;&#x4F55;&#x5B9E;&#x73B0;core&#x6587;&#x4EF6;&#x7684;&#x751F;&#x6210;&#xFF0C;&#x518D;&#x4ECB;&#x7ECD;core&#x6587;&#x4EF6;&#x7684;&#x6D88;&#x8D39;&#x3002;</p>
+<h4 id="tinydbg&#x751F;&#x6210;core&#x6587;&#x4EF6;">tinydbg&#x751F;&#x6210;core&#x6587;&#x4EF6;</h4>
+<pre><code class="lang-bash">$ (tinydbg) <span class="hljs-built_in">help</span> dump
+Creates a core dump from the current process state
+
+        dump &lt;output file&gt;
+
+The core dump is always written <span class="hljs-keyword">in</span> ELF, even on systems (windows, macOS) <span class="hljs-built_in">where</span> this is not customary. For environments other than linux/amd64 threads and registers are dumped <span class="hljs-keyword">in</span> a format that only Delve can <span class="hljs-built_in">read</span> back.
+</code></pre>
+<p>&#x751F;&#x6210;core&#x6587;&#x4EF6;&#x7684;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#xFF1A;</p>
+<pre><code class="lang-bash">debug_other.go:debugCmd.cmdFn(...)
+    \--&gt; dump(s *Session, ctx callContext, args string)
+            \--&gt; dumpState, err := t.client.CoreDumpStart(args)
+                    \--&gt; c.call(<span class="hljs-string">&quot;DumpStart&quot;</span>, DumpStartIn{Destination: dest}, out)
+            \--&gt; forloop
+                    \--&gt; <span class="hljs-built_in">print</span> dumping progress
+                    \--&gt; <span class="hljs-keyword">if</span> !dumpState.Dumping { <span class="hljs-built_in">break</span> }
+                    \--&gt; <span class="hljs-keyword">else</span> { 
+                            dumpState = t.client.CoreDumpWait(1000)}
+                                \--&gt; c.call(<span class="hljs-string">&quot;DumpWait&quot;</span>, DumpWaitIn{Wait: msec}, out)
+                         }
+</code></pre>
+<p>&#x5BF9;&#x4E8E;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x6765;&#x8BF4;&#x5F88;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#xFF1A;</p>
+<pre><code class="lang-bash">tinydbg/service/rpc2.(*RPCServer).DumpStart(arg DumpStartIn, out *DumpStartOut)
+    \--&gt; s.debugger.DumpStart(arg.Destination)
+            \--&gt; (d *Debugger) DumpStart(dest string) error {
+                    \--&gt; (t *Target) Dump(out elfwriter.WriteCloserSeeker, flags DumpFlags, state *DumpState) 
+                            \--&gt; 1. dump os/machine/abi... info as file header
+                            \--&gt; 2. t.dumpMemory(state, w, mme): write mapped memory data
+                                    \--&gt; upadte DumpState.MemoryDone, DumpState.MemoryTotal
+                            \--&gt; 3. prepare notes of dlv header, process, threads and other info
+                                    \--&gt; prepare note of dlv headerr: ... 
+                                    \--&gt; prepare note of process: t.proc.DumpProcessNotes(notes, state.threadDone)
+                                    \--&gt; <span class="hljs-keyword">for</span> each thread:
+                                            \--&gt; t.dumpThreadNotes(notes, state, th)
+                                            \--&gt; update DumpState.ThreadsDone, DumpState.ThreadsTotal
+                            \--&gt; 4. w.WriteNotes(notes): dump dlv header, process info, threads info, and others as 
+                                    a new PT_NOTE <span class="hljs-built_in">type</span> entry of ProgHeader table 
+    \--&gt; out.State = *api.ConvertDumpState(s.debugger.DumpWait(0))
+    \--&gt; <span class="hljs-built_in">return</span> DumpState to rpc2.Client
+</code></pre>
+<p>&#x770B;&#x4E0B;&#x5177;&#x4F53;&#x7684;&#x6E90;&#x7801;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x53EF;&#x4EE5;&#x660E;&#x786E;&#x7684;&#x662F;&#x8FDB;&#x7A0B;&#x8F6C;&#x50A8;&#x7684;&#x8FC7;&#x7A0B;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x82B1;&#x70B9;&#x65F6;&#x95F4;&#x7684;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x7ACB;&#x9A6C;&#x5C31;&#x5B8C;&#x6210;&#xFF0C;&#x6240;&#x4EE5;&#x5BA2;&#x6237;&#x7AEF;&#x8BF7;&#x6C42;DumpStart&#x540E;&#x670D;&#x52A1;&#x5668;&#x6267;&#x884C;&#x540E;&#x4F1A;&#x5148;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;DumpState&#xFF0C;&#x8FD9;&#x4E2A;&#x72B6;&#x6001;&#x662F;&#x5F53;&#x524D;&#x7684;&#x72B6;&#x6001;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x5F7B;&#x5E95;&#x5B8C;&#x6210;&#x4E86;&#x3002;&#x5982;&#x679C;&#x6CA1;&#x5B8C;&#x6210;&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8FD8;&#x4F1A;&#x6BCF;&#x9694;1s&#x518D;&#x8BF7;&#x6C42;&#x4E00;&#x6B21; <code>dumpState := t.client.CoreDumpWait(...)</code> &#x91CD;&#x65B0;&#x83B7;&#x53D6;&#x4E00;&#x6B21;&#x8F6C;&#x50A8;&#x8FDB;&#x5EA6;&#x3002;</p>
+<p>&#x770B;&#x5B8C;&#x4E0B;&#x9762;Dump&#x7684;&#x5B9E;&#x73B0;&#x5927;&#x5BB6;&#x4E5F;&#x4F1A;&#x660E;&#x767D;&#x8FD9;&#x91CC;&#x7684;&#x8F6C;&#x50A8;&#x8FDB;&#x5EA6;&#x662F;&#x600E;&#x4E48;&#x7B97;&#x7684;&#xFF0C;&#x5C31;&#x4E24;&#x4E2A;&#x6307;&#x6807;&#xFF0C;threads&#x4FE1;&#x606F;&#x662F;&#x5426;&#x90FD;&#x8F6C;&#x50A8;&#x5B8C;&#x4E86;&#xFF0C;&#x5185;&#x5B58;&#x4FE1;&#x606F;&#x662F;&#x5426;&#x90FD;&#x8F6C;&#x50A8;&#x5B8C;&#x4E86;&#xFF0C;&#x5C31;&#x8FD9;&#x4E24;&#x90E8;&#x5206;&#x53EF;&#x80FD;&#x4F1A;&#x968F;&#x8FDB;&#x7A0B;&#x5DE5;&#x4F5C;&#x8D1F;&#x8F7D;&#x60C5;&#x51B5;&#x8017;&#x65F6;&#x4F1A;&#x4E45;&#x4E9B;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// DumpStart starts a core dump to arg.Destination.</span>
+<span class="hljs-keyword">func</span> (s *RPCServer) DumpStart(arg DumpStartIn, out *DumpStartOut) error {
+    err := s.debugger.DumpStart(arg.Destination)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> err
+    }
+    out.State = *api.ConvertDumpState(s.debugger.DumpWait(<span class="hljs-number">0</span>))
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// ConvertDumpState converts proc.DumpState to api.DumpState.</span>
+<span class="hljs-keyword">func</span> ConvertDumpState(dumpState *proc.DumpState) *DumpState {
+    ...
+    <span class="hljs-keyword">return</span> &amp;DumpState{
+        Dumping:      dumpState.Dumping,
+        AllDone:      dumpState.AllDone,
+        ThreadsDone:  dumpState.ThreadsDone,
+        ThreadsTotal: dumpState.ThreadsTotal,
+        MemDone:      dumpState.MemDone,
+        MemTotal:     dumpState.MemTotal,
+    }
+}
+
+<span class="hljs-comment">// DumpStart starts a core dump to dest.</span>
+<span class="hljs-keyword">func</span> (d *Debugger) DumpStart(dest <span class="hljs-keyword">string</span>) error {
+    ...
+    fh, err := os.Create(dest)
+    ...
+    d.dumpState.Dumping = <span class="hljs-literal">true</span>
+    d.dumpState.AllDone = <span class="hljs-literal">false</span>
+    d.dumpState.Canceled = <span class="hljs-literal">false</span>
+    d.dumpState.DoneChan = <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{})
+    d.dumpState.ThreadsDone = <span class="hljs-number">0</span>
+    d.dumpState.ThreadsTotal = <span class="hljs-number">0</span>
+    d.dumpState.MemDone = <span class="hljs-number">0</span>
+    d.dumpState.MemTotal = <span class="hljs-number">0</span>
+    d.dumpState.Err = <span class="hljs-literal">nil</span>
+
+    <span class="hljs-keyword">go</span> d.target.Selected.Dump(fh, <span class="hljs-number">0</span>, &amp;d.dumpState)
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x7684;selected&#x5B9E;&#x9645;&#x4E0A;&#x662F;TargetGroup&#x4E2D;&#x7684;&#x67D0;&#x4E2A;Target&#xFF0C;&#x800C;Target&#x6307;&#x7684;&#x662F;&#x8FDB;&#x7A0B;&#x7EF4;&#x5EA6;&#x3002;&#x5982;&#x679C;&#x662F;&#x5355;&#x8FDB;&#x7A0B;&#x7A0B;&#x5E8F;TargetGroup&#x4E2D;Target&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x591A;&#x8FDB;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x5E76;&#x4E14;&#x8C03;&#x8BD5;&#x65F6; <code>tinydbg&gt; target follow-exec [-on [regex]] [-off]</code> &#x6253;&#x5F00;&#x4E86;follow-exec&#x6A21;&#x5F0F;&#x3002;&#x90A3;&#x4E48;&#x5F53;&#x521B;&#x5EFA;&#x5B50;&#x8FDB;&#x7A0B;&#x65F6;&#x5982;&#x679C;&#x5B50;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#x547D;&#x4E2D;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x5C06;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x8FDB;&#x7A0B;&#x4E5F;&#x7ED9;&#x7BA1;&#x7406;&#x8D77;&#x6765;&#x3002;&#x6B64;&#x65F6;TargetGroup&#x5C31;&#x6709;&#x4E0D;&#x6B62;&#x4E00;&#x4E2A;Target&#x3002;&#x5F53;&#x7136;&#x8FD9;&#x91CC;&#x7684;Target&#x5C42;&#x63A7;&#x5236;backend&#x5B9E;&#x73B0;&#x5FC5;&#x987B;&#x652F;&#x6301;&#x5BF9;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#xFF0C;backend=native&#x652F;&#x6301;&#xFF0C;&#x5BF9;&#x4E8E;gdb&#x8C03;&#x8BD5;&#x5668;&#x4E5F;&#x652F;&#x6301; <code>set follow-fork-mode child</code>&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#xFF0C;&#x53C8;&#x5E0C;&#x671B;&#x5BF9;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x6682;&#x505C;&#x6267;&#x884C;&#x3001;&#x6062;&#x590D;&#x6267;&#x884C;&#x7684;&#x60C5;&#x51B5;&#xFF0C;&#x8FD9;&#x91CC;TargetGroup&#x7EDF;&#x4E00;&#x8FDB;&#x884C;&#x7BA1;&#x7406;&#x8D77;&#x6765;&#xFF0C;&#x5C31;&#x65B9;&#x4FBF;&#x8FDB;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x6682;&#x505C;&#x3001;&#x6062;&#x590D;&#x64CD;&#x4F5C;&#x4E86;&#x3002;</p>
+<p>ps&#xFF1A;&#x5173;&#x4E8E;backend&#x53EF;&#x6269;&#x5C55;&#x53EF;&#x66FF;&#x6362;&#x7684;&#x95EE;&#x9898;&#xFF1A;&#x5728;&#x6211;&#x4EEC;&#x7684;demo tinydbg&#x4E2D;&#xFF0C;&#x4EC5;&#x4FDD;&#x7559;&#x4E86;dlv&#x81EA;&#x5DF1;&#x7684;&#x5B9E;&#x73B0;native debugger&#xFF0C;&#x6211;&#x4EEC;&#x79FB;&#x9664;&#x4E86;&#x652F;&#x6301;gdb&#x3001;lldb&#x3001;mozilla rr&#x7B49;debugger backend&#x7684;&#x5B9E;&#x73B0;&#x903B;&#x8F91;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x672F;&#x8BED;backend&#x6307;&#x7684;&#x4E0D;&#x662F;&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x5F0F;&#x67B6;&#x6784;&#x4E2D;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x670D;&#x52A1;&#x5668;&#xFF0C;&#x800C;&#x662F;&#x6307;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x670D;&#x52A1;&#x5668;&#x4E2D;&#x7684;&#x5BF9;&#x4E8E;Target&#x5C42;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#x7684;&#x90E8;&#x5206;&#x3002;&#x4E2D;&#x82F1;&#x6587;&#x6DF7;&#x7528;&#x65F6;&#xFF0C;&#x8BF7;&#x8BFB;&#x8005;&#x6CE8;&#x610F;&#x5206;&#x8FA8;&#x672F;&#x8BED;&#x5177;&#x4F53;&#x7684;&#x542B;&#x4E49;&#x3002;</p>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x770B; Target.Dump(...) &#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Dump writes a core dump to out. State is updated as the core dump is written.</span>
+<span class="hljs-keyword">func</span> (t *Target) Dump(out elfwriter.WriteCloserSeeker, flags DumpFlags, state *DumpState) {
+    <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
+        state.Dumping = <span class="hljs-literal">false</span>
+        <span class="hljs-built_in">close</span>(state.DoneChan)
+        ...
+    }()
+
+    bi := t.BinInfo()
+
+    <span class="hljs-comment">// 1. write the ELF corefile header</span>
+    <span class="hljs-keyword">var</span> fhdr elf.FileHeader
+    fhdr.Class = elf.ELFCLASS64
+    fhdr.Data = elf.ELFDATA2LSB
+    fhdr.Version = elf.EV_CURRENT
+    fhdr.OSABI = elf.ELFOSABI_LINUX
+    fhdr.Type = elf.ET_CORE
+    fhdr.Machine = elf.EM_X86_64
+    fhdr.Entry = <span class="hljs-number">0</span>
+    w := elfwriter.New(out, &amp;fhdr) 
+    ...
+
+    <span class="hljs-comment">// prepare notes of dlv header, process, threads and others</span>
+    notes := []elfwriter.Note{}
+    <span class="hljs-comment">// - note of dlv header</span>
+    entryPoint, _ := t.EntryPoint()
+    notes = <span class="hljs-built_in">append</span>(notes, elfwriter.Note{
+        Type: elfwriter.DelveHeaderNoteType,
+        Name: <span class="hljs-string">&quot;Delve Header&quot;</span>,
+        Data: []<span class="hljs-keyword">byte</span>(fmt.Sprintf(<span class="hljs-string">&quot;%s/%s\n%s\n%s%d\n%s%#x\n&quot;</span>, bi.GOOS, bi.Arch.Name, version.DelveVersion.String(), elfwriter.DelveHeaderTargetPidPrefix, t.pid, elfwriter.DelveHeaderEntryPointPrefix, entryPoint)),
+    })
+
+    <span class="hljs-comment">// - notes of threads</span>
+    state.setThreadsTotal(<span class="hljs-built_in">len</span>(threads))
+
+    <span class="hljs-comment">// note of process</span>
+    <span class="hljs-keyword">var</span> threadsDone <span class="hljs-keyword">bool</span>
+    <span class="hljs-keyword">if</span> flags&amp;DumpPlatformIndependent == <span class="hljs-number">0</span> {
+        threadsDone, notes, _ = t.proc.DumpProcessNotes(notes, state.threadDone)
+    }
+    <span class="hljs-comment">// notes of threads</span>
+    threads := t.ThreadList()
+    <span class="hljs-keyword">if</span> !threadsDone {
+        <span class="hljs-keyword">for</span> _, th := <span class="hljs-keyword">range</span> threads {
+            notes = t.dumpThreadNotes(notes, state, th)
+            state.threadDone()
+        }
+    }
+
+    <span class="hljs-comment">// 2. write mapped memory data into corefile</span>
+    memmap, _ := t.proc.MemoryMap()
+    memmapFilter := <span class="hljs-built_in">make</span>([]MemoryMapEntry, <span class="hljs-number">0</span>, <span class="hljs-built_in">len</span>(memmap))
+    memtot := <span class="hljs-keyword">uint64</span>(<span class="hljs-number">0</span>)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> memmap {
+        <span class="hljs-keyword">if</span> mme := &amp;memmap[i]; t.shouldDumpMemory(mme) {
+            memmapFilter = <span class="hljs-built_in">append</span>(memmapFilter, *mme)
+            memtot += mme.Size
+        }
+    }
+    state.setMemTotal(memtot)
+    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> memmapFilter {
+        mme := &amp;memmapFilter[i]
+        t.dumpMemory(state, w, mme)
+    }
+
+    <span class="hljs-comment">// 3. write these notes into corefile as a new entry of </span>
+    <span class="hljs-comment">// ProgHeader table, with type `PT_NOTE`.</span>
+    notesProg := w.WriteNotes(notes)
+    w.Progs = <span class="hljs-built_in">append</span>(w.Progs, notesProg)
+    w.WriteProgramHeaders()
+    <span class="hljs-keyword">if</span> w.Err != <span class="hljs-literal">nil</span> {
+        state.setErr(fmt.Errorf(<span class="hljs-string">&quot;error writing to output file: %v&quot;</span>, w.Err))
+    }
+    state.Mutex.Lock()
+    state.AllDone = <span class="hljs-literal">true</span>
+    state.Mutex.Unlock()
+}
+</code></pre>
+<h4 id="tinydbg&#x52A0;&#x8F7D;core&#x6587;&#x4EF6;">tinydbg&#x52A0;&#x8F7D;core&#x6587;&#x4EF6;</h4>
+<p>&#x52A0;&#x8F7D;Core&#x6587;&#x4EF6;&#x7684;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#xFF1A;</p>
+<pre><code class="lang-bash">main.go:main.main
+    \--&gt; cmds.New(<span class="hljs-literal">false</span>).Execute()
+            \--&gt; coreCommand.Run()
+                    \--&gt; coreCmd(...)
+                            \--&gt; execute(0, []string{args[0]}, conf, args[1], debugger.ExecutingOther, args, buildFlags)
+                                    \--&gt; server := rpccommon.NewServer(...)
+                                    \--&gt; server.Run()
+                                            \--&gt; debugger, _ := debugger.New(...)
+                                                <span class="hljs-keyword">if</span> attach &#x542F;&#x52A8;&#x65B9;&#x5F0F;: debugger.Attach(...)
+                                                <span class="hljs-keyword">elif</span> core &#x542F;&#x52A8;&#x65B9;&#x5F0F;&#xFF1A;core.OpenCore(...)
+                                                <span class="hljs-keyword">else</span> &#x5176;&#x4ED6; debuger.Launch(...)
+</code></pre>
+<p>&#x5BF9;&#x4E8E;tinydbg core&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;core.OpenCore(...)&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// OpenCore will open the core file and return a *proc.TargetGroup.</span>
+<span class="hljs-comment">// If the DWARF information cannot be found in the binary, Delve will look</span>
+<span class="hljs-comment">// for external debug files in the directories passed in.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// note: we remove the support of reading seprate dwarfdata.</span>
+<span class="hljs-keyword">func</span> OpenCore(corePath, exePath <span class="hljs-keyword">string</span>) (*proc.TargetGroup, error) {
+    p, currentThread, err := readLinuxOrPlatformIndependentCore(corePath, exePath)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    <span class="hljs-keyword">if</span> currentThread == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, ErrNoThreads
+    }
+
+    grp, addTarget := proc.NewGroup(p, proc.NewTargetGroupConfig{
+        DisableAsyncPreempt: <span class="hljs-literal">false</span>,
+        CanDump:             <span class="hljs-literal">false</span>,
+    })
+    _, err = addTarget(p, p.pid, currentThread, exePath, proc.StopAttached, <span class="hljs-string">&quot;&quot;</span>)
+    <span class="hljs-keyword">return</span> grp, err
+}
+</code></pre>
+<p>&#x90A3;&#x8BFB;&#x53D6;core&#x91CD;&#x5EFA;&#x95EE;&#x9898;&#x73B0;&#x573A;&#x7684;&#x6838;&#x5FC3;&#x903B;&#x8F91;&#xFF0C;&#x5C31;&#x5728;&#x8FD9;&#x91CC;&#x4E86;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// readLinuxOrPlatformIndependentCore reads a core file from corePath</span>
+<span class="hljs-comment">// corresponding to the executable at exePath. For details on the Linux ELF</span>
+<span class="hljs-comment">// core format, see:</span>
+<span class="hljs-comment">// https://www.gabriel.urdhr.fr/2015/05/29/core-file/,</span>
+<span class="hljs-comment">// https://uhlo.blogspot.com/2012/05/brief-look-into-core-dumps.html,</span>
+<span class="hljs-comment">// elf_core_dump in https://elixir.bootlin.com/linux/v4.20.17/source/fs/binfmt_elf.c,</span>
+<span class="hljs-comment">// and, if absolutely desperate, readelf.c from the binutils source.</span>
+<span class="hljs-keyword">func</span> readLinuxOrPlatformIndependentCore(corePath, exePath <span class="hljs-keyword">string</span>) (*process, proc.Thread, error) {
+
+    <span class="hljs-comment">// read notes</span>
+    coreFile, _ := elf.Open(corePath)
+    machineType := coreFile.Machine
+    notes, platformIndependentDelveCore, err := readNotes(coreFile, machineType)
+    ...
+
+    <span class="hljs-comment">// read executable</span>
+    exe, _ := os.Open(exePath)
+    exeELF, _ := elf.NewFile(exe)
+    ...
+
+    <span class="hljs-comment">// 1. build memory</span>
+    memory := buildMemory(coreFile, exeELF, exe, notes)
+
+    <span class="hljs-comment">// 2. build process</span>
+    bi := proc.NewBinaryInfo(<span class="hljs-string">&quot;linux&quot;</span>, <span class="hljs-string">&quot;amd64&quot;</span>)
+    entryPoint := findEntryPoint(notes, bi.Arch.PtrSize()) <span class="hljs-comment">// saved in dlv header in PT_NOTE segment</span>
+
+    p := &amp;process{
+        mem:         memory,
+        Threads:     <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]*thread{},
+        entryPoint:  entryPoint,
+        bi:          bi,
+        breakpoints: proc.NewBreakpointMap(),
+    }
+
+    <span class="hljs-keyword">if</span> platformIndependentDelveCore {
+        currentThread, err := threadsFromDelveNotes(p, notes)
+        <span class="hljs-keyword">return</span> p, currentThread, err
+    }
+
+    currentThread := linuxThreadsFromNotes(p, notes, machineType)
+    <span class="hljs-keyword">return</span> p, currentThread, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x9762;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x4E24;&#x6B65;&#x5C31;&#x662F;&#x5EFA;&#x7ACB;&#x8D77;&#x5185;&#x5B58;&#x73B0;&#x573A;&#x3001;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x73B0;&#x573A;&#x3002;</p>
+<p>&#x524D;&#x9762;&#x6CA1;&#x6709;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;note&#x7684;&#x7C7B;&#x578B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Note is a note from the PT_NOTE prog.</span>
+<span class="hljs-comment">// Relevant types:</span>
+<span class="hljs-comment">// - NT_FILE: File mapping information, e.g. program text mappings. Desc is a LinuxNTFile.</span>
+<span class="hljs-comment">// - NT_PRPSINFO: Information about a process, including PID and signal. Desc is a LinuxPrPsInfo.</span>
+<span class="hljs-comment">// - NT_PRSTATUS: Information about a thread, including base registers, state, etc. Desc is a LinuxPrStatus.</span>
+<span class="hljs-comment">// - NT_FPREGSET (Not implemented): x87 floating point registers.</span>
+<span class="hljs-comment">// - NT_X86_XSTATE: Other registers, including AVX and such.</span>
+<span class="hljs-keyword">type</span> note <span class="hljs-keyword">struct</span> {
+    Type elf.NType
+    Name <span class="hljs-keyword">string</span>
+    Desc <span class="hljs-keyword">interface</span>{} <span class="hljs-comment">// Decoded Desc from the</span>
+}
+</code></pre>
+<p>ok&#x7EE7;&#x7EED;&#x770B;&#x770B;buildMemory&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x4E3B;&#x8981;&#x5206;&#x4E24;&#x6B65;&#xFF0C;&#x5BF9;&#x4E8E;PT_NOTE&#x3001;PT_LOAD&#x7C7B;&#x578B;&#x7684;&#x5206;&#x522B;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF1A;
+1&#xFF09;PT_NOTE&#x7C7B;&#x578B;&#x7684;&#x7A0B;&#x5E8F;&#x5934;&#xFF0C;&#x5176;&#x4E2D;&#x7C7B;&#x578B;&#x4E3A;note.Type=_NT_FILE&#x7684;note&#x8868;&#x793A;&#x975E;&#x533F;&#x540D;VMA&#x533A;&#x57DF;&#x6620;&#x5C04;&#x7684;&#x4E00;&#x4E9B;&#x6587;&#x4EF6;&#xFF1B;
+   Linux&#x6765;&#x751F;&#x6210;Core&#x6587;&#x4EF6;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x4F1A;&#x5305;&#x542B;&#x8FD9;&#x4E9B;&#xFF1B;tinydbg &#x5185;&#x5B58;&#x533A;&#x5168;&#x90E8;&#x662F;PT_LOAD&#x8F6C;&#x50A8;&#x51FA;&#x53BB;&#x7684;&#x3002;
+2&#xFF09;PT_LOAD&#x7C7B;&#x578B;&#x7684;&#x7A0B;&#x5E8F;&#x5934;&#xFF0C;&#x8BFB;&#x53D6;&#x7684;&#x4E3B;&#x8981;&#x662F;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x6570;&#x636E;&#xFF1B;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> buildMemory(core, exeELF *elf.File, exe io.ReaderAt, notes []*note) proc.MemoryReader {
+    memory := &amp;SplicedMemory{}
+
+    <span class="hljs-comment">// tinydbg&#x6CA1;&#x6709;&#x751F;&#x6210;note.Type=NT_FILE&#x7684;notes&#x4FE1;&#x606F;&#xFF0C;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// - &#x5BF9;&#x4E8E;go&#x7A0B;&#x5E8F;&#x800C;&#x8A00;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x5185;&#x6838;&#x751F;&#x6210;&#x7684;core&#x6587;&#x4EF6;&#xFF0C;&#x5219;&#x4F1A;&#x5305;&#x542B;&#x8FD9;&#x4E2A;&#xFF0C;&#x8BE6;&#x89C1;linux `fill_files_notes`</span>
+    <span class="hljs-comment">// - &#x5BF9;&#x4E8E;tinydbg&gt; debug my.core &#x800C;&#x8A00;&#xFF0C;&#x4E0D;&#x4F1A;&#x751F;&#x6210;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x5047;&#x5B9A;&#x6240;&#x6709;&#x7684;&#x6587;&#x4EF6;&#x6620;&#x5C04;&#x90FD;&#x6765;&#x81EA;exe&#xFF0C;&#x663E;&#x7136;&#x662F;&#x4E0D;&#x5BF9;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x5171;&#x4EAB;&#x5E93;&#x6587;&#x4EF6;&#x3001;&#x5916;&#x90E8;&#x5176;&#x4ED6;&#x6587;&#x4EF6;&#x5C31;&#x4E0D;&#x662F;&#x561B;</span>
+    <span class="hljs-comment">// - 1) &#x5982;&#x679C;&#x662F;&#x53EA;&#x8BFB;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x5E38;&#x4E0D;&#x4F1A;&#x5B58;&#x50A8;&#x5230;core&#x6587;&#x4EF6;&#x4E2D;&#xFF08;&#x8282;&#x7701;&#x7A7A;&#x95F4;&#xFF09;&#xFF0C;&#x6B64;&#x65F6;&#x9700;&#x8981;&#x4ECE;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x8BFB; </span>
+    <span class="hljs-comment">//      &#x8FD9;&#x91CC;&#x652F;&#x6301;&#x7684;&#x4E0D;&#x591F;!!! </span>
+    <span class="hljs-comment">//      &#x56E0;&#x4E3A;readNote&#x51FD;&#x6570;&#x91CC;&#x9762;&#x53EA;&#x8BFB;&#x53D6;&#x4E86;VMA.start/end/offsetByPage,&#x540E;&#x9762;&#x771F;&#x6B63;&#x6620;&#x5C04;&#x7684;&#x6587;&#x4EF6;&#x540D;&#x6CA1;&#x6709;&#x8BFB;&#x53D6;!</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// - 2) &#x5982;&#x679C;&#x662F;&#x53EF;&#x8BFB;&#x5199;&#x6587;&#x4EF6;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x5185;&#x6838;&#x8F6C;&#x50A8;&#x65F6;&#x8F6C;&#x50A8;&#x8FD9;&#x90E8;&#x5206;&#x6570;&#x636E;&#xFF0C;&#x5E94;&#x8BE5;&#x4EE5;core&#x6587;&#x4EF6;&#x6570;&#x636E;&#x4E3A;&#x4E3B;&#xFF0C;</span>
+    <span class="hljs-comment">//      &#x907F;&#x514D;&#x76F2;&#x76EE;&#x8BFB;&#x53D6;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x6570;&#x636E;&#x9020;&#x6210;&#x8986;&#x76D6;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// For now, assume all file mappings are to the exe.</span>
+    <span class="hljs-keyword">for</span> _, note := <span class="hljs-keyword">range</span> notes {
+
+        <span class="hljs-keyword">if</span> note.Type == _NT_FILE {
+            fileNote := note.Desc.(*linuxNTFile)
+            <span class="hljs-keyword">for</span> _, entry := <span class="hljs-keyword">range</span> fileNote.entries {
+                r := &amp;offsetReaderAt{
+                    <span class="hljs-comment">// why? &#x56E0;&#x4E3A;&#x5B83;&#x5047;&#x5B9A;&#x4E86;go&#x5927;&#x591A;&#x6570;&#x65F6;&#x5019;&#x662F;&#x9759;&#x6001;&#x7F16;&#x8BD1;&#xFF0C;&#x4E0D;&#x4F7F;&#x7528;&#x5171;&#x4EAB;&#x5E93;&#xFF0C;&#x4E5F;&#x4E0D;&#x6D89;&#x53CA;&#x5230;mmap&#x6587;&#x4EF6;&#xFF0C;</span>
+                    <span class="hljs-comment">// &#x90A3;&#x4E48;&#x5185;&#x6838;&#x751F;&#x6210;coredump&#x65F6;&#x57FA;&#x672C;&#x5C31;&#x662F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x3002;&#x8FD9;&#x91CC;&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x4F18;&#x5316;</span>
+                    reader: exe, 
+                    offset: entry.Start - (entry.FileOfs * fileNote.PageSize),
+                }
+                memory.Add(r, entry.Start, entry.End-entry.Start)
+            }
+        }
+    }
+
+    <span class="hljs-comment">// Load memory segments from exe and then from the core file,</span>
+    <span class="hljs-comment">// allowing the corefile to overwrite previously loaded segments</span>
+    <span class="hljs-keyword">for</span> _, elfFile := <span class="hljs-keyword">range</span> []*elf.File{exeELF, core} {
+        <span class="hljs-keyword">if</span> elfFile == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">continue</span>
+        }
+        <span class="hljs-keyword">for</span> _, prog := <span class="hljs-keyword">range</span> elfFile.Progs {
+            <span class="hljs-keyword">if</span> prog.Type == elf.PT_LOAD {
+                <span class="hljs-keyword">if</span> prog.Filesz == <span class="hljs-number">0</span> {
+                    <span class="hljs-keyword">continue</span>
+                }
+                r := &amp;offsetReaderAt{
+                    reader: prog.ReaderAt,
+                    offset: prog.Vaddr,
+                }
+                memory.Add(r, prog.Vaddr, prog.Filesz)
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> memory
+}
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x5BF9;&#x4E8E;NT_FILE&#x7C7B;&#x578B;&#x7684;note&#xFF0C;&#x8FD9;&#x79CD;&#x662F;&#x5185;&#x6838;&#x521B;&#x5EFA;Core&#x6587;&#x4EF6;&#x65F6;&#x751F;&#x6210;&#x7684;&#xFF0C;tinydbg&#x4E2D;dump&#x751F;&#x6210;Core&#x6587;&#x4EF6;&#x751F;&#x6210;&#x7684;&#x90FD;&#x662F;PT_LOAD&#x7C7B;&#x578B;&#x7684;&#xFF0C;&#x4E00;&#x80A1;&#x8111;&#x7684;&#x5C06;&#x6620;&#x5C04;&#x7684;&#x5185;&#x5B58;&#x5168;&#x90E8;&#x4EE5;PT_LOAD&#x7684;&#x5F62;&#x5F0F;&#x8F6C;&#x50A8;&#x51FA;&#x6765;&#xFF0C;&#x7701;&#x4E8B;&#x3002;&#x5185;&#x6838;&#x521B;&#x5EFA;&#x65F6;&#x4F1A;&#x5C06;&#x975E;&#x533F;&#x540D;&#x6620;&#x5C04;VMA&#x7684;&#x5173;&#x8054;&#x6587;&#x4EF6;&#x4FE1;&#x606F;&#x4EE5;PT_NOTE&#x7684;&#x5F62;&#x5F0F;&#x8F6C;&#x50A8;&#xFF0C;&#x5E76;&#x4E14;&#x91CC;&#x9762;&#x7684;note.Type=NT_FILE&#x3002;&#x867D;&#x7136;&#xFF0C;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x4E2D;&#x5047;&#x5B9A;&#x6240;&#x6709;&#x7684;mapped files&#x90FD;&#x6765;&#x81EA;executable&#x662F;&#x4E0D;&#x5B8C;&#x5168;&#x5BF9;&#xFF0C;&#x4F46;&#x662F;&#x5373;&#x4FBF;&#x5982;&#x6B64;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x8C03;&#x8BD5;&#x51C6;&#x786E;&#x6027;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD9;&#x7C7B;note&#x53EA;&#x662F;&#x8BB0;&#x5F55;VMA&#x4E0E;&#x6587;&#x4EF6;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF0C;&#x5E76;&#x4E0D;&#x771F;&#x7684;&#x5305;&#x542B;&#x6570;&#x636E;&#xFF0C;&#x6570;&#x636E;&#x8FD8;&#x662F;&#x8981;&#x770B;&#x8FD9;&#x4E2A;PT_LOAD&#x7C7B;&#x578B;&#x7684;&#x90E8;&#x5206;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x5DF2;&#x7ECF;&#x8BFB;&#x53D6;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x65E9;&#x5C31;&#x5728;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x4E2D;&#x4E86;&#xFF0C;&#x5185;&#x6838;&#x751F;&#x6210;Core&#x6587;&#x4EF6;&#x65F6;&#x8BB0;&#x5F55;&#x4E86;&#x5DF2;&#x6620;&#x5C04;&#x6570;&#x636E;&#x5728;Core&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x6240;&#x4EE5;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x5DF2;&#x7ECF;&#x6620;&#x5C04;&#x7684;&#x6587;&#x4EF6;&#x5185;&#x5BB9; &#x2026;&#x2026; &#x6240;&#x4EE5;&#x4E0A;&#x9762; <code>offsetReaderAt{reade.exe, ...}</code> &#x867D;&#x7136;&#x5199;&#x7684;&#x770B;&#x4E0A;&#x53BB;&#x4E0D;&#x592A;&#x5BF9;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x90FD;&#x5DF2;&#x7ECF;&#x901A;&#x8FC7;PT_LOAD segments dump&#x51FA;&#x6765;&#x4E4B;&#x540E;&#x4E5F;&#x5C31;&#x6CA1;&#x95EE;&#x9898;&#x4E86;&#xFF0C;&#x8BFB;&#x6570;&#x636E;&#x65F6;&#x662F;&#x53EF;&#x4EE5;&#x8BFB;&#x5230;&#x7684;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x6709;&#x6587;&#x7AE0;&#x63D0;&#x5230;&#xFF0C;&#x8BF4;&#x5BF9;&#x4E8E;&#x53EA;&#x8BFB;&#x7684;PT_LOAD&#xFF0C;&#x5176;FileSZ==0 &amp;&amp; MemSZ != 0&#xFF0C;&#x5E76;&#x4E14;&#x8FD8;&#x662F;Non-Anonymous VMA&#x533A;&#x57DF;&#xFF0C;&#x8FD9;&#x65F6;&#x60F3;&#x62FF;&#x5230;&#x6570;&#x636E;&#x5C31;&#x5F97;&#x6839;&#x636E;PT_NOTE&#x8868;&#x4E2D;&#x7684;mapped file&#x7684;filename&#x6765;&#x4ECE;&#x5916;&#x90E8;&#x5B58;&#x50A8;&#x8BFB;&#x53D6;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;readNote&#x5904;&#x7406;&#x65F6;&#x663E;&#x793A;&#x5FFD;&#x7565;&#x4E86;&#x8FD9;&#x4E9B;filenames&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x8BA4;&#x4E3A;&#x5728;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;tinydbg&#x7684;&#x8C03;&#x8BD5;&#x4F1A;&#x9047;&#x5230;&#x95EE;&#x9898;&#x3002;&#x4E0D;&#x8FC7;&#x8FD9;&#x4E0D;&#x662F;&#x672C;&#x5C0F;&#x8282;&#x60F3;&#x4E00;&#x63FD;&#x5B50;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5927;&#x5BB6;&#x7406;&#x89E3;&#x5373;&#x53EF;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// readNote reads a single note from r, decoding the descriptor if possible.</span>
+<span class="hljs-keyword">func</span> readNote(r io.ReadSeeker, machineType elf.Machine) (*note, error) {
+    <span class="hljs-comment">// Notes are laid out as described in the SysV ABI:</span>
+    <span class="hljs-comment">// https://www.sco.com/developers/gabi/latest/ch5.pheader.html#note_section</span>
+    note := &amp;note{}
+    hdr := &amp;elfNotesHdr{}
+
+    err := binary.Read(r, binary.LittleEndian, hdr)
+    note.Type = elf.NType(hdr.Type)
+
+    name := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, hdr.Namesz)
+    note.Name = <span class="hljs-keyword">string</span>(name)
+    desc := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, hdr.Descsz)
+
+    descReader := bytes.NewReader(desc)
+    <span class="hljs-keyword">switch</span> note.Type {
+    <span class="hljs-keyword">case</span> elf.NT_PRSTATUS:
+        note.Desc = &amp;linuxPrStatusAMD64{}
+    <span class="hljs-keyword">case</span> elf.NT_PRPSINFO:
+        note.Desc = &amp;linuxPrPsInfo{}
+        binary.Read(descReader, binary.LittleEndian, note.Desc)
+    <span class="hljs-keyword">case</span> _NT_FILE:
+        <span class="hljs-comment">// No good documentation reference, but the structure is</span>
+        <span class="hljs-comment">// simply a header, including entry count, followed by that</span>
+        <span class="hljs-comment">// many entries, and then the file name of each entry,</span>
+        <span class="hljs-comment">// null-delimited. Not reading the names here.</span>
+        data := &amp;linuxNTFile{}
+        binary.Read(descReader, binary.LittleEndian, &amp;data.linuxNTFileHdr)
+        <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; i &lt; <span class="hljs-keyword">int</span>(data.Count); i++ {
+            entry := &amp;linuxNTFileEntry{}
+            binary.Read(descReader, binary.LittleEndian, entry)
+            data.entries = <span class="hljs-built_in">append</span>(data.entries, entry)
+        }
+        note.Desc = data
+    <span class="hljs-keyword">case</span> _NT_X86_XSTATE:
+        <span class="hljs-keyword">if</span> machineType == _EM_X86_64 {
+            <span class="hljs-keyword">var</span> fpregs amd64util.AMD64Xstate
+            amd64util.AMD64XstateRead(desc, <span class="hljs-literal">true</span>, &amp;fpregs, <span class="hljs-number">0</span>)
+            note.Desc = &amp;fpregs
+        }
+    <span class="hljs-keyword">case</span> _NT_AUXV, elfwriter.DelveHeaderNoteType, elfwriter.DelveThreadNodeType:
+        note.Desc = desc
+    }
+    skipPadding(r, <span class="hljs-number">4</span>)
+    <span class="hljs-keyword">return</span> note, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x53E6;&#x5916;&#xFF0C;&#x53C2;&#x8003;&#x5185;&#x6838;&#x6E90;&#x7801;&#x4E2D; <code>fill_files_note(struct memelfnote *note)</code> &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x5C55;&#x793A;&#x4E86;NT_FILE note&#x7684;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x77E5;&#x9053;long start, long end, long file_ofs&#x90FD;&#x662F;VMA&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;mapped files&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x6240;&#x4EE5;&#x524D;&#x9762;&#x4E5F;&#x8BF4;&#x53EA;&#x8981;mapped files&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x9664;&#x4E86;&#x5728;PT_NOTE&#x4E2D;&#x7684;&#x6620;&#x5C04;&#x5173;&#x7CFB;&#xFF0C;&#x5373;&#x4F7F;&#x6211;&#x4EEC;&#x4E0D;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x53EA;&#x8981;&#x8FD9;&#x4E9B;&#x6570;&#x636E;&#x88AB;dump&#x5230;&#x4E86;core&#x6587;&#x4EF6;PT_LOAD segments&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x4ECE;core&#x6587;&#x4EF6;buildMemory&#x540E;&#xFF0C;&#x5EFA;&#x7ACB;&#x4E86;SplicedMemory&#xFF0C;&#x8FD9;&#x91CC;&#x9762;&#x5305;&#x542B;&#x4E86;&#x8FDB;&#x7A0B;coredump&#x65F6;&#x6240;&#x6709;&#x7684;VMA&#x533A;&#x57DF;&#xFF0C;&#x53EA;&#x8981;&#x8FD9;&#x4E9B;mapped files&#x7684;&#x6570;&#x636E;&#x88AB;&#x8BB0;&#x5F55;&#x5230;&#x4E86;core&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x540E;&#x7EED;&#x8BFB;&#x5185;&#x5B58;&#x65F6;&#x5B9E;&#x9645;&#x4E0A;&#x5C31;&#x662F;&#x4ECE;&#x8FD9;&#x4E2A;SplicedMemory&#x4E2D;&#x8BFB;&#x53D6;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x5230;&#x7684;&#xFF0C;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x8BFB;&#x53D6;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x3002;&#x4F46;&#x662F;&#x524D;&#x63D0;&#x662F;&#xFF0C;&#x8F6C;&#x50A8;&#x51FA;&#x6765;&#x4E86;&#xFF08;FileSZ != 0)&#x3002;</p>
+<p>&#x5B9E;&#x9645;&#x4E0A;&#xFF0C;&#x5C3D;&#x7BA1;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#x53EF;&#x80FD;mapped file&#x5BF9;&#x5E94;&#x7684;VMA&#x662F;&#x53EA;&#x8BFB;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x4E0A;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#xFF0C;&#x8FD8;&#x662F;&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x4FEE;&#x6539;&#xFF0C;&#x90A3;&#x8C03;&#x8BD5;&#x65F6;&#x4ECE;&#x5916;&#x90E8;&#x6587;&#x4EF6;&#x8BFB;&#x53D6;&#x4E0D;&#x5C31;&#x5B8C;&#x86CB;&#x4E86;&#x5417;&#x3002;&#x6240;&#x4EE5;&#x6211;&#x8BA4;&#x4E3A;&#xFF0C;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#xFF0C;&#x8FD8;&#x662F;&#x5E94;&#x8BE5;&#x628A;&#x8FD9;&#x90E8;&#x5206;&#x6570;&#x636E;&#x8F6C;&#x50A8;&#x5230;core&#x4E2D;&#x6765;&#xFF0C;&#x867D;&#x7136;core&#x6587;&#x4EF6;&#x4F1A;&#x5927;&#x70B9;&#x3002;&#x4F46;&#x662F;&#x5E94;&#x8BE5;&#x4E5F;&#x4E0D;&#x90A3;&#x4E48;&#x5728;&#x4E4E;&#x8FD9;&#x70B9;&#x78C1;&#x76D8;&#x5360;&#x7528;&#x628A;</p>
+<blockquote>
+<p>ps: &#x8FDB;&#x7A0B;&#x7684;&#x5B8C;&#x6574;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x6240;&#x6709;&#x7684;&#x8FD9;&#x4E9B;VMAs&#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x8F6C;&#x50A8;&#x5230;core&#x6587;&#x4EF6;&#x4E2D;&#x3002;&#x4F46;&#x662F;&#x6709;&#x4E9B;VMAs&#x662F;&#x6CA1;&#x6709;&#x5EFA;&#x7ACB;&#x7269;&#x7406;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x7684;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5728;&#x8BB0;&#x5F55;&#x5230;core&#x6587;&#x4EF6;&#x4E2D;&#x65F6;&#x53EA;&#x4F1A;&#x8BB0;&#x5F55;&#x4E00;&#x4E9B;&#x5FC5;&#x8981;&#x4FE1;&#x606F;&#xFF0C;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x6570;&#x636E;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x5199;0&#x503C;&#xFF0C;&#x4F46;&#x662F;&#x6587;&#x4EF6;&#x4E2D;&#x786E;&#x5B9E;&#x7559;&#x4E0B;&#x4E86;&#x4E00;&#x4E9B;&#x7A7A;&#x6D1E;&#x3002;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B; <code>ls -h</code> &#x4F1A;&#x663E;&#x793A;&#x6587;&#x4EF6;&#x504F;&#x5927;&#xFF0C;&#x4F46;&#x662F; <code>du -hs</code> &#x4F1A;&#x663E;&#x793A;&#x66F4;&#x5C0F;&#x4E9B;&#x3002;&#x6211;&#x5728;&#x505A;&#x6E38;&#x620F;&#x670D;&#x52A1;&#x5668;&#x5F00;&#x53D1;&#x65F6;&#xFF0C;&#x89C2;&#x5BDF;&#x5230;&#x6218;&#x6597;&#x670D;&#x8FDB;&#x7A0B;Core&#x6587;&#x4EF6;&#x5C3A;&#x5BF8; <code>ls</code> &#x663E;&#x793A;&#x9AD8;&#x8FBE;80GB&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x4E0A;<code>du</code>&#x663E;&#x793A;&#x53EA;&#x6709;800MB+&#x5DE6;&#x53F3;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-c"><span class="hljs-comment">/*
+ * Format of NT_FILE note:
+ *
+ * long count     -- how many files are mapped
+ * long page_size -- units for file_ofs
+ * array of [COUNT] elements of
+ *   long start
+ *   long end
+ *   long file_ofs
+ * followed by COUNT filenames in ASCII: &quot;FILE1&quot; NUL &quot;FILE2&quot; NUL...
+ */</span>
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">fill_files_note</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> memelfnote *note)</span>
+</span>{
+    <span class="hljs-keyword">struct</span> vm_area_struct *vma;
+    <span class="hljs-keyword">unsigned</span> count, size, names_ofs, remaining, n;
+    <span class="hljs-keyword">user_long_t</span> *data;
+    <span class="hljs-keyword">user_long_t</span> *start_end_ofs;
+    <span class="hljs-keyword">char</span> *name_base, *name_curpos;
+
+    <span class="hljs-comment">/* *Estimated* file count and total data size needed */</span>
+    count = current-&gt;mm-&gt;map_count;
+    size = count * <span class="hljs-number">64</span>;
+
+    names_ofs = (<span class="hljs-number">2</span> + <span class="hljs-number">3</span> * count) * <span class="hljs-keyword">sizeof</span>(data[<span class="hljs-number">0</span>]);
+ alloc:
+    size = round_up(size, PAGE_SIZE);
+    data = kvmalloc(size, GFP_KERNEL);
+
+    start_end_ofs = data + <span class="hljs-number">2</span>;
+    name_base = name_curpos = ((<span class="hljs-keyword">char</span> *)data) + names_ofs;
+    remaining = size - names_ofs;
+    count = <span class="hljs-number">0</span>;
+    <span class="hljs-keyword">for</span> (vma = current-&gt;mm-&gt;mmap; vma != <span class="hljs-literal">NULL</span>; vma = vma-&gt;vm_next) {
+        <span class="hljs-keyword">struct</span> file *file;
+        <span class="hljs-keyword">const</span> <span class="hljs-keyword">char</span> *filename;
+
+        file = vma-&gt;vm_file;
+        filename = file_path(file, name_curpos, remaining);
+
+        <span class="hljs-comment">/* file_path() fills at the end, move name down */</span>
+        <span class="hljs-comment">/* n = strlen(filename) + 1: */</span>
+        n = (name_curpos + remaining) - filename;
+        remaining = filename - name_curpos;
+        memmove(name_curpos, filename, n);
+        name_curpos += n;
+
+        *start_end_ofs++ = vma-&gt;vm_start;
+        *start_end_ofs++ = vma-&gt;vm_end;
+        *start_end_ofs++ = vma-&gt;vm_pgoff;
+        count++;
+    }
+
+    <span class="hljs-comment">/* Now we know exact count of files, can store it */</span>
+    data[<span class="hljs-number">0</span>] = count;
+    data[<span class="hljs-number">1</span>] = PAGE_SIZE;
+    ...
+
+    size = name_curpos - (<span class="hljs-keyword">char</span> *)data;
+    fill_note(note, <span class="hljs-string">&quot;CORE&quot;</span>, NT_FILE, size, data);
+    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
+}
+</code></pre>
+<h4 id="&#x540E;&#x7EED;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x64CD;&#x4F5C;">&#x540E;&#x7EED;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x64CD;&#x4F5C;</h4>
+<p>&#x6CE8;&#x610F;&#x5230;&#x4ECE;core&#x6587;&#x4EF6;buildMemory&#x8FC7;&#x7A0B;&#x4E2D;&#x8FFD;&#x8E2A;&#x8FDB;&#x7A0B;coredump&#x65F6;&#x7684;&#x5185;&#x5B58;&#x6620;&#x5C04;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> SplicedMemory <span class="hljs-keyword">struct</span> {
+    readers []readerEntry
+}
+
+<span class="hljs-keyword">func</span> buildMemory(core, exeELF *elf.File, exe io.ReaderAt, notes []*note) proc.MemoryReader {
+    memory := &amp;SplicedMemory{}
+
+    <span class="hljs-comment">// For now, assume all file mappings are to the exe.</span>
+    <span class="hljs-keyword">for</span> _, note := <span class="hljs-keyword">range</span> notes {
+        <span class="hljs-keyword">if</span> note.Type == _NT_FILE {
+            fileNote := note.Desc.(*linuxNTFile)
+            <span class="hljs-keyword">for</span> _, entry := <span class="hljs-keyword">range</span> fileNote.entries {
+                r := &amp;offsetReaderAt{
+                    reader: exe,
+                    offset: entry.Start - (entry.FileOfs * fileNote.PageSize),
+                }
+                memory.Add(r, entry.Start, entry.End-entry.Start)
+            }
+        }
+    }
+
+    <span class="hljs-comment">// Load memory segments from exe and then from the core file,</span>
+    <span class="hljs-comment">// allowing the corefile to overwrite previously loaded segments</span>
+    <span class="hljs-keyword">for</span> _, elfFile := <span class="hljs-keyword">range</span> []*elf.File{exeELF, core} {
+        <span class="hljs-keyword">if</span> elfFile == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">continue</span>
+        }
+        <span class="hljs-keyword">for</span> _, prog := <span class="hljs-keyword">range</span> elfFile.Progs {
+            <span class="hljs-keyword">if</span> prog.Type == elf.PT_LOAD {
+                <span class="hljs-keyword">if</span> prog.Filesz == <span class="hljs-number">0</span> {
+                    <span class="hljs-keyword">continue</span>
+                }
+                r := &amp;offsetReaderAt{
+                    reader: prog.ReaderAt,
+                    offset: prog.Vaddr,
+                }
+                memory.Add(r, prog.Vaddr, prog.Filesz)
+            }
+        }
+    }
+    <span class="hljs-keyword">return</span> memory
+}
+</code></pre>
+<p>&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x5173;&#x6CE8;&#x4E0B;&#x534A;&#x90E8;&#x5206;&#x7684;readers&#x6784;&#x5EFA;&#x60C5;&#x51B5;&#xFF1A;</p>
+<pre><code>        for _, prog := range elfFile.Progs {
+            if prog.Type == elf.PT_LOAD {
+                if prog.Filesz == 0 {
+                    continue
+                }
+                r := &amp;offsetReaderAt{
+                    reader: prog.ReaderAt,
+                    offset: prog.Vaddr,
+                }
+                memory.Add(r, prog.Vaddr, prog.Filesz)
+            }
+        }
+</code></pre><p>&#x6211;&#x4EEC;&#x53EA;&#x5904;&#x7406;&#x6709;&#x6620;&#x5C04;&#xFF0C;&#x5E76;&#x4E14;FileSZ !=0 &#x7684;&#x90E8;&#x5206;&#xFF0C;&#x5982;&#x679C;FileSZ==0&#xFF0C;&#x7D22;&#x6027;&#x76F4;&#x63A5;&#x4E0D;&#x5904;&#x7406;&#x4E86;&#xFF08;&#x8054;&#x60F3;&#x4E0B;&#x6211;&#x4EEC;readNote&#x65F6;&#x4E5F;&#x6CA1;&#x6709;&#x8BB0;&#x5F55;&#x4E0B;&#x6587;&#x4EF6;&#x540D;&#xFF0C;&#x4E5F;&#x6CA1;&#x6CD5;&#x8BFB;&#x53D6;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8BFB;&#x53D6;&#x4E86;&#xFF0C;&#x7531;&#x4E8E;&#x8FD9;&#x4E9B;&#x6587;&#x4EF6;&#x672C;&#x8EAB;&#x53EF;&#x80FD;&#x5185;&#x5BB9;&#x53D8;&#x4E86;&#xFF0C;&#x5BF9;&#x6211;&#x4EEC;&#x4E5F;&#x6CA1;&#x4EC0;&#x4E48;&#x7528;&#xFF09;&#x3002;&#x7136;&#x540E;&#x5C31;&#x5C06;&#x8FD9;&#x4E9B;&#x6709;&#x6570;&#x636E;&#x7684;&#x5185;&#x5B58;&#x7ED9;&#x653E;&#x5230;&#x54B1;&#x4EEC;&#x7684;SplicedMemory&#x4E2D;&#xFF0C;&#x6BCF;&#x4E2A;VMA&#x90FD;&#x5BF9;&#x5E94;&#x7740;&#x8FD9;&#x6837;&#x7684;&#x4E00;&#x4E2A;reader&#xFF1A;</p>
+<pre><code class="lang-go">                r := &amp;offsetReaderAt{
+                    reader: prog.ReaderAt,
+                    offset: prog.Vaddr,
+                }
+</code></pre>
+<p>&#x540E;&#x7EED;&#x5F53;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x65F6;&#xFF0C;&#x5C31;&#x4E0D;&#x662F;&#x50CF;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x90A3;&#x6837;&#x901A;&#x8FC7;ptrace(PTRACE_PEEKTEXT/PEEKDATA, ...)&#x90A3;&#x6837;&#x8BFB;&#x53D6;&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x4ECE;&#x8FD9;&#x91CC;&#x7684;SplicedMemory&#x4E2D;&#x7684;readers&#x4E2D;&#x8BFB;&#x53D6;&#xFF1A;
+1&#x3001;&#x5148;&#x6839;&#x636E;&#x8981;&#x8BFB;&#x53D6;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x3001;&#x6570;&#x636E;&#x91CF;&#x786E;&#x5B9A;&#x5927;&#x7EA6;&#x5728;&#x54EA;&#x4E9B;VMAs&#x5BF9;&#x5E94;&#x7684;readers&#x4E2D;&#xFF1B;
+2&#x3001;&#x7136;&#x540E;&#x4ECE;&#x8FD9;&#x4E9B;readers&#x4E2D;&#x8BFB;&#x53D6;&#xFF1B;
+3&#x3001;&#x8FD9;&#x91CC;&#x7684;&#x6BCF;&#x4E2A;reader&#x8981;&#x8BFB;&#x53D6;&#x7684;&#x6570;&#x636E;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x90FD;&#x5DF2;&#x7ECF;&#x8BB0;&#x5F55;&#x597D;&#x4E86;&#xFF0C;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x8D77;&#x59CB;&#x5C31;&#x662F;Core&#x6587;&#x4EF6;&#x4E2D;&#x6BCF;&#x4E2A;PT_LOAD&#x7C7B;&#x578B;&#x7684;VirtSize&#x3002;
+   ps: part1&#x90E8;&#x5206;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x5728;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;VirtSize&#x8868;&#x793A;PT_LOAD&#x7C7B;&#x578B;&#x5728;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x4E2D;&#x7684;&#x52A0;&#x8F7D;&#x5730;&#x5740;&#xFF0C;&#x4F46;&#x662F;&#x5728;Core&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5B83;&#x8868;&#x793A;&#x5728;Core&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x504F;&#x79FB;&#x91CF;&#x3002;</p>
+<h4 id="&#x540E;&#x7EED;&#x8BFB;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x64CD;&#x4F5C;">&#x540E;&#x7EED;&#x8BFB;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x64CD;&#x4F5C;</h4>
+<p>&#x8FD9;&#x4E2A;&#x81EA;&#x7136;&#x5C31;&#x66F4;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#x90FD;&#x8BB0;&#x5F55;&#x5728;&#x4E86;PT_NOTE&#x5BF9;&#x4E00;&#x4E2A;&#x7684;segment&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x8BFB;&#x53D6;&#x65F6;&#x5C31;&#x5DF2;&#x7ECF;&#x89E3;&#x6790;&#x597D;&#x4E86;&#xFF0C;&#x5E76;&#x653E;&#x7F6E;&#x5230;&#x4E86;&#x5408;&#x9002;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x91CC;&#xFF0C;&#x81EA;&#x7136;&#x4E0D;&#x662F;&#x4EC0;&#x4E48;&#x95EE;&#x9898;&#x3002;</p>
+<h4 id="&#x552F;&#x4E00;&#x7F8E;&#x4E2D;&#x4E0D;&#x8DB3;&#x7684;&#x662F;">&#x552F;&#x4E00;&#x7F8E;&#x4E2D;&#x4E0D;&#x8DB3;&#x7684;&#x662F;</h4>
+<p>&#x552F;&#x4E00;&#x7F8E;&#x4E2D;&#x4E0D;&#x8DB3;&#x7684;&#x662F;&#xFF0C;&#x6709;&#x4E9B;FileSZ==0&#x7684;&#x975E;&#x533F;&#x540D;mapped file&#x5BF9;&#x5E94;&#x7684;VMA&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x5185;&#x6838;&#x6CA1;&#x6709;&#x5199;&#x51FA;&#xFF0C;&#x800C;&#x8FD9;&#x4E9B;mapped file&#x5728;&#x4E8B;&#x540E;&#x53C8;&#x88AB;&#x4FEE;&#x6539;&#x4E86;&#x3002;&#x5373;&#x4F7F;&#x6211;&#x4EEC;&#x8BFB;&#x53D6;&#x56DE;&#x6765;&#x4E5F;&#x548C;&#x5F53;&#x65F6;&#x95EE;&#x9898;&#x73B0;&#x573A;&#x4E0D;&#x4E00;&#x81F4;&#x3002;&#x8FD9;&#x4E2A;&#x662F;&#x4E2A;&#x73B0;&#x5B9E;&#x95EE;&#x9898;&#x3002;</p>
+<p>tinydbg&#xFF0C;&#x6CA1;&#x6709;&#x5904;&#x7406;&#x8FD9;&#x4E9B;mapped file&#x7684;&#x8BFB;&#x53D6;&#xFF0C;&#x800C;&#x662F;&#x76F4;&#x63A5;&#x9009;&#x62E9;&#x6027;&#x5FFD;&#x7565;&#x4E86;&#x3002;&#x56E0;&#x4E3A;&#x5373;&#x4F7F;&#x5B83;&#x652F;&#x6301;&#x8BFB;&#x53D6;&#xFF0C;&#x5176;&#x5B9E;&#x4E5F;&#x6CA1;&#x6CD5;&#x5584;&#x540E;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x771F;&#x5B9E;&#x5B58;&#x5728;&#x7684;&#x95EE;&#x9898;&#x3002;
+tinydbg&#x505A;&#x5230;&#x73B0;&#x5728;&#x8FD9;&#x6837;&#xFF0C;&#x53CA;&#x5F88;&#x597D;&#x4E86;&#xFF0C;see discussion here: <a href="https://github.com/go-delve/delve/discussions/4031&#x3002;" target="_blank">https://github.com/go-delve/delve/discussions/4031&#x3002;</a></p>
+<h4 id="&#x540E;&#x7EED;&#x521D;&#x59CB;&#x5316;&#x53CA;&#x8C03;&#x8BD5;">&#x540E;&#x7EED;&#x521D;&#x59CB;&#x5316;&#x53CA;&#x8C03;&#x8BD5;</h4>
+<p>&#x4E4B;&#x540E;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x7EE7;&#x7EED;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x3001;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x90E8;&#x5206;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;core&#x6587;&#x4EF6;&#x67E5;&#x770B;&#x95EE;&#x9898;&#x73B0;&#x573A;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;&#x4E86;&#x3002;</p>
+<h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
+<p>&#x5373;&#x4F7F;&#x6253;&#x5F00;&#x4E86;core&#x6587;&#x4EF6;&#xFF0C;&#x4E5F;&#x53EA;&#x662F;&#x8BFB;&#x4E86;&#x4E00;&#x4EFD;&#x5FEB;&#x7167;&#xFF0C;&#x867D;&#x7136;&#x91CD;&#x5EFA;&#x4E86;&#x95EE;&#x9898;&#x73B0;&#x573A;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x662F;&#x91CD;&#x5EFA;&#x4E86;&#x8FDB;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x7684;&#x6D89;&#x53CA;&#x5230;&#x6267;&#x884C;&#x7C7B;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x90FD;&#x662F;&#x6CA1;&#x6CD5;&#x6267;&#x884C;&#x7684;&#x3002;core&#x6587;&#x4EF6;&#x8C03;&#x8BD5;&#xFF0C;&#x901A;&#x5E38;&#x4F7F;&#x7528;bt&#x89C2;&#x5BDF;&#x5806;&#x6808;&#x3001;frame&#x9009;&#x62E9;&#x6808;&#x5E27;&#x5E76;&#x901A;&#x8FC7;locals&#x3001;args&#x6765;&#x67E5;&#x770B;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x3001;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x6D4B;&#x8BD5;&#x793A;&#x4F8B;&#xFF0C;&#x7565;&#x3002;</p>
+<h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="15-tinydbg_core1.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.15 tinydbg core - part1">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="16-tinydbg_connect.html" class="navigation navigation-next " aria-label="Next page: 9.2.16 tinydbg connect">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"9.2.15 tinydbg core - part2","level":"1.9.2.8","depth":3,"next":{"title":"9.2.16 tinydbg connect","level":"1.9.2.9","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.md","articles":[]},"previous":{"title":"9.2.15 tinydbg core - part1","level":"1.9.2.7","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc"],"pluginsConfig":{"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","mtime":"2025-06-15T04:29:11.909Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-15T04:34:12.486Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>9.2.16 tinydbg connect · GitBook</title>
+        <title>9.2.24 locspec解析与地址转换 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="17-tinydbg_trace.html" />
+    <link rel="next" href="25-xxx.html" />
     
     
-    <link rel="prev" href="15-tinydbg_core2.html" />
+    <link rel="prev" href="23-debug_condition.html" />
     
 
     </head>
@@ -1221,7 +1221,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.9" data-path="16-tinydbg_connect.html">
+        <li class="chapter " data-level="1.9.2.9" data-path="16-tinydbg_connect.html">
             
                 <a href="16-tinydbg_connect.html">
             
@@ -1286,7 +1286,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.14" data-path="24-how_locspec_works.html">
+        <li class="chapter active" data-level="1.9.2.14" data-path="24-how_locspec_works.html">
             
                 <a href="24-how_locspec_works.html">
             
@@ -1903,7 +1903,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >9.2.16 tinydbg connect</a>
+        <a href="../.." >9.2.24 locspec解析与地址转换</a>
     </h1>
 </div>
 
@@ -1918,72 +1918,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="connect">Connect</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;-tinydbg-connect-addr">&#x5B9E;&#x73B0;&#x76EE;&#x6807;: <code>tinydbg connect &lt;addr&gt;</code></h3>
-<p>&#x5728;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;connect&#x547D;&#x4EE4;&#x7528;&#x6765;&#x8FDE;&#x63A5;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#xFF0C;&#x5B8C;&#x6210;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x5C42;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x524D;&#x7AEF;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x5F00;&#x53D1;&#x8005;&#x5373;&#x53EF;&#x4EA4;&#x4E92;&#x5F0F;&#x5730;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x4E86;&#x3002;</p>
-<pre><code class="lang-bash">$ tinydbg <span class="hljs-built_in">help</span> connect
-Connect to a running headless debug server with a terminal client. Prefix with <span class="hljs-string">&apos;unix:&apos;</span> to use a unix domain socket.
-
-Usage:
-  tinydbg connect &lt;addr&gt; [flags]
-
-Flags:
-  -h, --help   <span class="hljs-built_in">help</span> <span class="hljs-keyword">for</span> connect
-
-Global Flags:
-      --init string         Init file, executed by the terminal client.
-      --log                 Enable debugging server logging.
-      --log-dest string     Writes logs to the specified file or file descriptor (see <span class="hljs-string">&apos;dlv help log&apos;</span>).
-      --log-output string   Comma separated list of components that should produce debug output (see <span class="hljs-string">&apos;dlv help log&apos;</span>)
-</code></pre>
-<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
-<p>&#x76F8;&#x6BD4;attach&#x3001;exec&#x3001;debug (or test)&#x3001;core&#x8FD9;&#x51E0;&#x4E2A;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;connect&#x662F;&#x5F7B;&#x5F7B;&#x5E95;&#x5E95;&#x7684;&#x4E3A;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x51C6;&#x5907;&#x7684;&#x3002;&#x65E2;&#x7136;&#x662F;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x3001;&#x540E;&#x7AEF;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x3002;</p>
-<p>&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x8FD0;&#x884C;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;attach&#x3001;exec&#x3001;debug&#xFF08;or test&#xFF09;&#x3001;core&#xFF0C;&#x5E76;&#x914D;&#x5408;&#x53C2;&#x6570; <code>--headless</code> &#x53C2;&#x6570;&#x5C31;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#xFF0C;&#x5B83;&#x7B49;&#x5F85;&#x8C03;&#x8BD5;&#x524D;&#x7AEF;&#x901A;&#x8FC7;TCPConn&#x6216;UnixConn&#x4EE5;JSON RPC&#x6216;&#x8005;DAP RPC&#x7684;&#x5F62;&#x5F0F;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;&#x5728;&#x6211;&#x4EEC;&#x7684;demo tinydbg&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x53EA;&#x652F;&#x6301;JSON-RPC&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#x3002;&#x5173;&#x4E8E;DAP (Debugger Adapater Protocol)&#xFF0C;&#x6211;&#x4EEC;&#x5728; &quot;3-&#x9AD8;&#x7EA7;&#x529F;&#x80FD;&#x6269;&#x5C55;&quot; &#x5C0F;&#x8282;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
-<p>&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x5141;&#x8BB8;&#x901A;&#x8FC7;&#x53C2;&#x6570; <code>-l | --listen</code> &#x6765;&#x6307;&#x5B9A;&#x4E00;&#x4E2A;&#x76D1;&#x542C;&#x5730;&#x5740;&#xFF1A;</p>
-<pre><code class="lang-bash"><span class="hljs-_">-l</span>, --listen string                    Debugging server listen address. Prefix with <span class="hljs-string">&apos;unix:&apos;</span> to use a unix domain socket. (default <span class="hljs-string">&quot;127.0.0.1:0&quot;</span>)
-</code></pre>
-<ul>
-<li>default&#xFF1A;127.0.0.1:0&#xFF0C;port&#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x5206;&#x914D;&#x4E00;&#x4E2A;port&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x8FDB;&#x7A0B;&#x4F1A;&#x6253;&#x5370;&#x51FA;&#x76D1;&#x542C;&#x5730;&#x5740;&#xFF0C;&#x4EE5;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x8FDE;&#x63A5;&#xFF1B;
-&#x4E0E;VSCode&#x96C6;&#x6210;&#x540E;&#x4E3A;&#x4E86;&#x66F4;&#x65B9;&#x4FBF;&#x5730;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x524D;&#x540E;&#x7AEF;&#x80FD;&#x591F;&#x5C31;&#x76D1;&#x542C;&#x5730;&#x5740;&#x8FBE;&#x6210;&#x4E00;&#x81F4;&#xFF0C;&#x4EE5;&#x65B9;&#x4FBF;VSCode&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x8FDE;&#x63A5;&#xFF1B;</li>
-<li>&#x6307;&#x5B9A;&#x5177;&#x4F53;&#x7684; IP:PORT&#xFF0C;&#x5982;&#x679C;&#x63D0;&#x524D;&#x89C4;&#x5212;&#x597D;&#x4E86;&#x4F7F;&#x7528;&#x67D0;&#x4E2A;IP:PORT&#x7528;&#x4E8E;RPC&#x901A;&#x4FE1;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6307;&#x5B9A;IP:PORT&#xFF1B;</li>
-<li>&#x6307;&#x5B9A; unix:/path-to/socket&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;Unix Domain Socket&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF1B;</li>
-</ul>
-<p>&#x5982;&#x679C;&#x8003;&#x8651;&#x5230;VSCode&#x8FDC;&#x7A0B;&#x5F00;&#x53D1;&#x3001;&#x5BB9;&#x5668;&#x5F00;&#x53D1;&#x4EE5;&#x53CA;WebIDE&#x8FDC;&#x7A0B;&#x5F00;&#x53D1;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x8FD8;&#x5F97;&#x63B0;&#x626F;&#x63B0;&#x626F;VSCode&#x7684;C/S&#x5206;&#x79BB;&#x5F0F;&#x67B6;&#x6784;&#xFF0C;&#x4EE5;&#x53CA;&#x63D2;&#x4EF6;&#x8FD0;&#x884C;&#x65B9;&#x5F0F;&#xFF08;extensionKind&#xFF0C;&#x5728;UI/Local Extension Host&#x3001;Remote/Workspace Extension Host&#x3001;&#x6216;&#x4E8C;&#x8005;&#x5747;&#x53EF;&#xFF09;&#x3002;&#x5982;&#x679C;&#x54B1;&#x4EEC;&#x6709;&#x65F6;&#x95F4;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x5206;&#x4EAB;&#x4E0B;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#xFF0C;&#x4EE5;&#x53CA;VSCode&#xFF08;C/S&#xFF09;&#x3001;VSCode&#x8C03;&#x8BD5;&#x5668;&#x63D2;&#x4EF6;&#xFF08;local/remote extension host&#xFF09;&#x3001;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x540E;&#x7AEF;&#xFF08;C/S&#xFF09;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x662F;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x4EA4;&#x4E92;&#x7684;&#x3002;</p>
-<p>OK&#xFF0C;&#x5148;&#x8A00;&#x5F52;&#x6B63;&#x4F20;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x4ECB;&#x7ECD;&#x4E0B;connect&#x547D;&#x4EE4;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x3002;</p>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x524D;&#x9762;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x8BDD;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x8FC7;connect&#x7684;&#x5927;&#x81F4;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x8FD9;&#x91CC;&#x518D;&#x7B80;&#x5355;&#x56DE;&#x987E;&#x4E00;&#x904D;&#x5427;&#xFF0C;&#x5EFA;&#x7ACB;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x662F;&#xFF1A;</p>
-<pre><code class="lang-bash">main.go:main.main
-    \--&gt; cmds.New(<span class="hljs-literal">false</span>).Execute()
-            \--&gt; connectCommand.Run()
-                    \--&gt; connectCmd(...)
-                            \--&gt; connect(addr, nil, conf)
-                                    \--&gt; conn := netDial(addr)
-                                            \--&gt; <span class="hljs-keyword">if</span> isTCPAddress, conn, _ := net.Dial(<span class="hljs-string">&quot;tcp&quot;</span>, addr) 
-                                            \--&gt; <span class="hljs-keyword">if</span> isUnixAddress, conn, _ := net.Dial(<span class="hljs-string">&quot;unix&quot;</span>, addr)
-                                    \--&gt; client := rpc2.NewClientFromConn(conn)
-                                    \--&gt; session := debug.New(client, conf)
-                                    \--&gt; session.Run()
-                                            \--&gt; forloop
-                                                    \--&gt; <span class="hljs-built_in">read</span> input
-                                                    \--&gt; parse debugcmd flags args
-                                                    \--&gt; session.client.Call(<span class="hljs-string">&apos;RPCServer.&apos;</span>+method, req, rsp)
-                                                            \--&gt; json-rpc over tcpconn or unixconn
-                                                    \--&gt; update UI based on rsp
-</code></pre>
-<p>&#x6267;&#x884C;connect&#x547D;&#x4EE4;&#xFF0C;&#x5927;&#x81F4;&#x4F1A;&#x7ECF;&#x5386;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#xFF0C;connect&#x4F1A;&#x6839;&#x636E;&#x4F20;&#x9012;&#x7684;&#x53C2;&#x6570;addr&#x6765;&#x786E;&#x5B9A;&#x662F;&#x4E00;&#x4E2A;tcp&#x76D1;&#x542C;&#x5730;&#x5740;&#xFF0C;&#x8FD8;&#x662F;&#x4E00;&#x4E2A;unix domain socket&#xFF0C;&#x7136;&#x540E;&#x5EFA;&#x7ACB;&#x5BF9;&#x5E94;&#x7684;&#x8FDE;&#x63A5;&#x3002;&#x4E00;&#x65E6;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x4E86;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x521D;&#x59CB;&#x5316;rpcclient&#x3002;&#x7136;&#x540E;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#x540E;&#x5C31;&#x662F;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;repl&#x7684;forloop&#xFF0C;&#x8BFB;&#x53D6;&#x8F93;&#x5165;&#xFF0C;&#x89E3;&#x6790;&#x547D;&#x4EE4;&#x3001;&#x53C2;&#x6570;&#x3001;&#x9009;&#x9879;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x3002;&#x53EA;&#x4E0D;&#x8FC7;&#x8FD9;&#x91CC;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x9700;&#x8981;&#x4E0E;&#x8C03;&#x8BD5;&#x5668;&#x670D;&#x52A1;&#x5668;&#x4EA4;&#x4E92;&#xFF0C;&#x800C;&#x4E14;&#x51E0;&#x4E4E;&#x6240;&#x6709;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x90FD;&#x5982;&#x6B64;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x8BDD;&#x4E0E;&#x8C03;&#x8BD5;&#x5668;&#x670D;&#x52A1;&#x5668;&#x4E4B;&#x95F4;&#x901A;&#x8FC7;&#x5EFA;&#x7ACB;&#x7684;&#x901A;&#x4FE1;&#x94FE;&#x8DEF;&#x5B8C;&#x6210;&#x8BF7;&#x6C42;&#x53D1;&#x9001;&#x3001;&#x54CD;&#x5E94;&#x63A5;&#x53D7;&#x3002;&#x7136;&#x540E;&#x6839;&#x636E;&#x54CD;&#x5E94;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x66F4;&#x65B0;&#x663E;&#x793A;&#xFF0C;&#x5982;&#x663E;&#x793A;&#x53D8;&#x91CF;&#x503C;&#x3001;&#x6307;&#x4EE4;&#x5217;&#x8868;&#x3001;&#x6253;&#x5370;&#x7C7B;&#x578B;&#x8BE6;&#x60C5;&#x3001;&#x663E;&#x793A;&#x5F53;&#x524D;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x53CA;&#x6E90;&#x7801;&#x4F4D;&#x7F6E;&#xFF0C;&#x7B49;&#x7B49;&#x3002;</p>
-<p>&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x8BDD;&#x521D;&#x59CB;&#x5316;&#x3001;&#x7F51;&#x7EDC;&#x901A;&#x4FE1;&#x5C42;&#x7684;&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x7A0B;&#xFF0C;&#x4EE5;&#x53CA;&#x540E;&#x7EED;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x4E0E;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x7684;&#x8BE6;&#x7EC6;&#x4EA4;&#x4E92;&#x8FC7;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;&#x90FD;&#x5DF2;&#x7ECF;&#x5728;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C0F;&#x8282;&#x5DF2;&#x7ECF;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x4E86;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x4E86;&#x3002;</p>
-<p>&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x65F6;&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86; <code>--accept-multiclient</code> &#x90A3;&#x4E48;&#x624D;&#x5141;&#x8BB8;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x6267;&#x884C;&#x671F;&#x95F4;&#x63A5;&#x53D7;&#x591A;&#x4E2A;&#x5165;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x8BF7;&#x6C42;&#xFF1A;</p>
-<ul>
-<li>&#x5BA2;&#x6237;&#x7AEF;1&#x6B63;&#x5728;&#x8C03;&#x8BD5;&#xFF0C;&#x6B64;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;2&#x6765;&#x8FDE;&#x63A5;&#xFF1B;</li>
-<li>&#x5BA2;&#x6237;&#x7AEF;2&#x5DF2;&#x7ECF;&#x7ED3;&#x675F;&#x8C03;&#x8BD5;&#xFF0C;&#x5E76;&#x4E14;&#x5DF2;&#x7ECF;&#x4E0E;&#x8C03;&#x8BD5;&#x670D;&#x52A1;&#x5668;&#x5206;&#x79BB;&#xFF0C;&#x4F46;&#x662F;&#x6CA1;&#x6709;&#x6740;&#x6B7B;&#x8FDB;&#x7A0B;&#x5B9E;&#x4F8B;&#xFF0C;&#x6B64;&#x65F6;&#x5BA2;&#x6237;&#x7AEF;&#x6765;&#x8FDE;&#x63A5;&#xFF1B;</li>
-</ul>
-<p>&#x8FD9;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x5141;&#x8BB8;&#x5BA2;&#x6237;&#x7AEF;2&#x6765;&#x8FDE;&#x63A5;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x5728;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x65F6;&#x663E;&#x793A;&#x6307;&#x5B9A;&#x4E0A;&#x8FF0;&#x9009;&#x9879; <code>--accept-multiclient</code>&#x3002;&#x90A3;&#x4E48;&#x4E3A;&#x4EC0;&#x4E48;&#x4E0D;&#x9ED8;&#x8BA4;&#x542F;&#x7528;&#x9009;&#x9879; <code>--accept-multiclient</code> &#x5462;&#xFF1F;</p>
-<p>&#x5BF9;&#x4E8E;&#x5E38;&#x89C1;&#x7684; <code>tinydbg debug ...</code> &#x64CD;&#x4F5C;&#x6765;&#x8BF4;&#xFF0C;&#x56E0;&#x4E3A;&#x7A0B;&#x5E8F;&#x662F;&#x6211;&#x4EEC;&#x81EA;&#x52A8;&#x6784;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#xFF0C;&#x4E5F;&#x662F;&#x81EA;&#x5DF1;&#x542F;&#x52A8;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x8C03;&#x8BD5;&#x5B8C;&#x540E;&#x9ED8;&#x8BA4;&#x9884;&#x671F;&#x662F;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x88AB;&#x8C03;&#x8BD5;&#x5229;&#x7528;&#x5B8C;&#x4E86;&#xFF0C;&#x6CA1;&#x6709;&#x7EE7;&#x7EED;&#x5B58;&#x5728;&#x7684;&#x5FC5;&#x8981;&#x4E86;&#xFF0C;&#x6240;&#x4EE5;&#x4F1A;&#x63D0;&#x793A;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x662F;&#x5426;&#x9700;&#x8981;&#x81EA;&#x52A8;kill&#x8BE5;&#x8FDB;&#x7A0B;&#xFF0C;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5927;&#x5BB6;&#x4F1A;&#x70B9;&#x201C;&#x662F;&#x201D;&#x3002;&#x8FD9;&#x624D;&#x662F;&#x7EDD;&#x5927;&#x591A;&#x6570;&#x60C5;&#x51B5;&#x3002;&#x800C;&#x5BF9;&#x4E8E;&#x524D;&#x4E00;&#x6B21;&#x8C03;&#x8BD5;&#x5B8C;&#x4E86;&#xFF0C;&#x540E;&#x9762;&#x53C8;&#x53D1;&#x8D77;&#x4E00;&#x6B21;&#x8C03;&#x8BD5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8BF4;&#x660E;&#x4E00;&#x65F6;&#x534A;&#x4F1A;&#x786E;&#x5B9A;&#x4E0D;&#x4E86;&#x95EE;&#x9898;&#xFF0C;&#x9700;&#x8981;&#x591A;&#x6B21;&#x8C03;&#x8BD5;&#x8DDF;&#x8E2A;&#xFF0C;&#x6B64;&#x65F6;&#x5728;&#x6709;&#x660E;&#x786E;&#x8BC9;&#x6C42;&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x76F4;&#x63A5;&#x52A0;&#x9009;&#x9879; <code>--accept-multicilent</code> &#x540E;&#x542F;&#x52A8;&#x5373;&#x53EF;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x52A0;&#x4E86;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x8C03;&#x8BD5;&#x671F;&#x95F4;&#xFF0C;&#x5982;&#x679C;&#x771F;&#x7684;&#x6709;&#x4EBA;&#x8FDE;&#x63A5;&#x8FDB;&#x6765;&#x4E86;&#xFF0C;&#x5B83;&#x6267;&#x884C;&#x7684;&#x4E00;&#x4E9B;&#x8C03;&#x8BD5;&#x52A8;&#x4F5C;&#x53EF;&#x80FD;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x6211;&#x4EEC;&#x3002;&#x4F46;&#x662F;&#xFF0C;&#x5141;&#x8BB8;&#x591A;&#x4E2A;&#x5BA2;&#x6237;&#x7AEF;&#x540C;&#x65F6;&#x767B;&#x5F55;&#x4E5F;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x7075;&#x6D3B;&#x6027;&#xFF0C;&#x5982;&#x8FD9;&#x6837;&#x53EF;&#x80FD;&#x5141;&#x8BB8;&#x591A;&#x4EBA;&#x8054;&#x5408;&#x8C03;&#x8BD5;&#x3001;&#x8054;&#x5408;&#x5B9A;&#x4F4D;&#x5F02;&#x5E38;&#x3002;</p>
-<h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
-<p>&#x7565;</p>
-<h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x4E86;connect&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5B83;&#x5141;&#x8BB8;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x8FDE;&#x63A5;&#x5230;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x8FDB;&#x7A0B;&#x3002;&#x6211;&#x4EEC;&#x8BE6;&#x7EC6;&#x8BB2;&#x89E3;&#x4E86;&#x8FDE;&#x63A5;&#x5EFA;&#x7ACB;&#x7684;&#x8FC7;&#x7A0B;&#x3001;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x4EE5;&#x53CA;&#x591A;&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;&#x652F;&#x6301;&#x7684;&#x76F8;&#x5173;&#x8003;&#x8651;&#x3002;&#x8FD9;&#x4E3A;&#x7406;&#x89E3;&#x5206;&#x5E03;&#x5F0F;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x4E0B;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5DE5;&#x4F5C;&#x65B9;&#x5F0F;&#x63D0;&#x4F9B;&#x4E86;&#x57FA;&#x7840;&#x3002;</p>
-
+                                
                                 
                                 </section>
                             
@@ -2010,12 +1945,12 @@ Global Flags:
 
             
                 
-                <a href="15-tinydbg_core2.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.15 tinydbg core - part2">
+                <a href="23-debug_condition.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.23 tinydbg> condition">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="17-tinydbg_trace.html" class="navigation navigation-next " aria-label="Next page: 9.2.17 tinydbg trace">
+                <a href="25-xxx.html" class="navigation navigation-next " aria-label="Next page: 9.2.25 ???????????????????">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2026,7 +1961,7 @@ Global Flags:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.16 tinydbg connect","level":"1.9.2.9","depth":3,"next":{"title":"9.2.17 tinydbg trace","level":"1.9.2.10","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.md","articles":[]},"previous":{"title":"9.2.15 tinydbg core - part2","level":"1.9.2.8","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.md","mtime":"2025-06-16T05:11:59.370Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-20T11:56:45.738Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.24 locspec解析与地址转换","level":"1.9.2.14","depth":3,"next":{"title":"9.2.25 ???????????????????","level":"1.9.2.15","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/25-xxx.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/25-xxx.md","articles":[]},"previous":{"title":"9.2.23 tinydbg> condition","level":"1.9.2.13","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_condition.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_condition.md","articles":[]},"dir":"neutral"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/24-how_locspec_works.md","mtime":"2025-06-20T10:34:31.896Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-20T11:56:45.738Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

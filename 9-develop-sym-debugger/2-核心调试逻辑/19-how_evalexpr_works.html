@@ -1,0 +1,2562 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>9.2.19 evalexpr表达式计算引擎 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="20-how_locspec_works.html" />
+    
+    
+    <link rel="prev" href="17-tinydbg_trace.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 调试器概貌
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+            
+                    
+                    5.2 调试器示例
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+            
+                <a href="../../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+            
+                <a href="../../6-develop-inst-debugger/1-process_start.html">
+            
+                    
+                    6.1 进程启动
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+            
+                    
+                    6.2 进程attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+            
+                    
+                    6.3 启动&attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+            
+                    
+                    6.4 调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+            
+                <a href="../../6-develop-inst-debugger/8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+            
+                <a href="../../6-develop-inst-debugger/9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+            
+                <a href="../../6-develop-inst-debugger/10-step.html">
+            
+                    
+                    6.10 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/11-continue.html">
+            
+                    
+                    6.11 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+            
+                <a href="../../6-develop-inst-debugger/12-pmem.html">
+            
+                    
+                    6.12 打印内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+            
+                <a href="../../6-develop-inst-debugger/13-pregs.html">
+            
+                    
+                    6.13 打印寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+            
+                    
+                    6.14 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+            
+                    
+                    6.15 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+            
+                    
+                    6.20 跟踪多线程程序1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+            
+                    
+                    6.21 跟踪多线程程序2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+            
+                <a href="../../6-develop-inst-debugger/80-aslr.html">
+            
+                    
+                    6.80 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+            
+                <a href="../../6-develop-inst-debugger/99-more.html">
+            
+                    
+                    6.99 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../7-headto-sym-debugger/">
+            
+                <a href="../../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                <a href="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../7-headto-sym-debugger/2-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../7-headto-sym-debugger/3-syms.html">
+            
+                <a href="../../7-headto-sym-debugger/3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                <a href="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                    
+                    7.7.2 如何破解那些细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../8-dwarf/">
+            
+                <a href="../../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../8-dwarf/1-history.html">
+            
+                <a href="../../8-dwarf/1-history.html">
+            
+                    
+                    8.1 DWARF发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../8-dwarf/2-overview.html">
+            
+                <a href="../../8-dwarf/2-overview.html">
+            
+                    
+                    8.2 DWARF内容概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../8-dwarf/3-dwarfdata.html">
+            
+                <a href="../../8-dwarf/3-dwarfdata.html">
+            
+                    
+                    8.3 DWARF数据分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../8-dwarf/4-die/">
+            
+                <a href="../../8-dwarf/4-die/">
+            
+                    
+                    8.4 DIE详细介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                <a href="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                    
+                    8.4.1 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                <a href="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                    
+                    8.4.2 位置数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../8-dwarf/4-die/3-desc-code.html">
+            
+                <a href="../../8-dwarf/4-die/3-desc-code.html">
+            
+                    
+                    8.4.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../../8-dwarf/4-die/4-encoding.html">
+            
+                <a href="../../8-dwarf/4-die/4-encoding.html">
+            
+                    
+                    8.4.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../8-dwarf/5-other/">
+            
+                <a href="../../8-dwarf/5-other/">
+            
+                    
+                    8.5 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                <a href="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                    
+                    8.5.1 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                <a href="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                    
+                    8.5.2 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                <a href="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                    
+                    8.5.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../../8-dwarf/5-other/4-macro-info.html">
+            
+                <a href="../../8-dwarf/5-other/4-macro-info.html">
+            
+                    
+                    8.5.4 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                <a href="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                    
+                    8.5.5 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                <a href="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                    
+                    8.5.6 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                <a href="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                    
+                    8.5.7 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-practices.html">
+            
+                <a href="../../8-dwarf/6-practices.html">
+            
+                    
+                    8.6 DWARF解析及应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-summary.html">
+            
+                <a href="../../8-dwarf/7-summary.html">
+            
+                    
+                    8.7 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../1-架构设计/">
+            
+                <a href="../1-架构设计/">
+            
+                    
+                    9.1 架构设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../1-架构设计/1-现代调试器架构.html">
+            
+                <a href="../1-架构设计/1-现代调试器架构.html">
+            
+                    
+                    9.1.1 现代调试器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../1-架构设计/2-前端UI层设计.html">
+            
+                <a href="../1-架构设计/2-前端UI层设计.html">
+            
+                    
+                    9.1.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../1-架构设计/3-Service层设计.html">
+            
+                <a href="../1-架构设计/3-Service层设计.html">
+            
+                    
+                    9.1.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../1-架构设计/4-后端符号层设计.html">
+            
+                <a href="../1-架构设计/4-后端符号层设计.html">
+            
+                    
+                    9.1.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../1-架构设计/5-后端目标层设计.html">
+            
+                <a href="../1-架构设计/5-后端目标层设计.html">
+            
+                    
+                    9.1.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../1-架构设计/6-日志系统设计.html">
+            
+                <a href="../1-架构设计/6-日志系统设计.html">
+            
+                    
+                    9.1.6 日志系统设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    9.2 核心调试逻辑
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="00-cmds.html">
+            
+                <a href="00-cmds.html">
+            
+                    
+                    9.2.00 核心调试命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="01-debug-session.html">
+            
+                <a href="01-debug-session.html">
+            
+                    
+                    9.2.01 打开调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="11-tinydbg_attach.html">
+            
+                <a href="11-tinydbg_attach.html">
+            
+                    
+                    9.2.11 tinydbg attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="12-tinydbg_attach_waitfor.html">
+            
+                <a href="12-tinydbg_attach_waitfor.html">
+            
+                    
+                    9.2.12 tinydbg attach+waitfor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="13-tinydbg_exec.html">
+            
+                <a href="13-tinydbg_exec.html">
+            
+                    
+                    9.2.13 tinydbg exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" data-path="14-tinydbg_debug.html">
+            
+                <a href="14-tinydbg_debug.html">
+            
+                    
+                    9.2.14 tinydbg debug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7" data-path="15-tinydbg_core1.html">
+            
+                <a href="15-tinydbg_core1.html">
+            
+                    
+                    9.2.15 tinydbg core - part1
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.8" data-path="15-tinydbg_core2.html">
+            
+                <a href="15-tinydbg_core2.html">
+            
+                    
+                    9.2.15 tinydbg core - part2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.9" data-path="16-tinydbg_connect.html">
+            
+                <a href="16-tinydbg_connect.html">
+            
+                    
+                    9.2.16 tinydbg connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.10" data-path="17-tinydbg_trace.html">
+            
+                <a href="17-tinydbg_trace.html">
+            
+                    
+                    9.2.17 tinydbg trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2.11" data-path="19-how_evalexpr_works.html">
+            
+                <a href="19-how_evalexpr_works.html">
+            
+                    
+                    9.2.19 evalexpr表达式计算引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.12" data-path="20-how_locspec_works.html">
+            
+                <a href="20-how_locspec_works.html">
+            
+                    
+                    9.2.20 locspec解析与地址转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.13" data-path="21-debug_disassemble.html">
+            
+                <a href="21-debug_disassemble.html">
+            
+                    
+                    9.2.21 tinydbg> disass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.14" data-path="22-debug_breakpoint.html">
+            
+                <a href="22-debug_breakpoint.html">
+            
+                    
+                    9.2.22 tinydbg> breakpoint
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.15" data-path="23-debug_condition.html">
+            
+                <a href="23-debug_condition.html">
+            
+                    
+                    9.2.23 tinydbg> condition
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.16" data-path="25-xxx.html">
+            
+                <a href="25-xxx.html">
+            
+                    
+                    9.2.25 ???????????????????
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.17" data-path="26-debug_step.html">
+            
+                <a href="26-debug_step.html">
+            
+                    
+                    9.2.26 tinydbg> next | step | stepi
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.18" data-path="27-debug_continue.html">
+            
+                <a href="27-debug_continue.html">
+            
+                    
+                    9.2.27 tinydbg> continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.19" data-path="28-debug_pmem.html">
+            
+                <a href="28-debug_pmem.html">
+            
+                    
+                    9.2.28 tinydbg> pmem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.20" data-path="29-debug_regs.html">
+            
+                <a href="29-debug_regs.html">
+            
+                    
+                    9.2.29 tinydbg> regs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.21" data-path="30-debug_bt.html">
+            
+                <a href="30-debug_bt.html">
+            
+                    
+                    9.2.30 tinydbg> bt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.22" data-path="31-debug_vars.html">
+            
+                <a href="31-debug_vars.html">
+            
+                    
+                    9.2.31 tinydbg> vars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.23" data-path="32-how_listfunctions_work.html">
+            
+                <a href="32-how_listfunctions_work.html">
+            
+                    
+                    9.2.32 how ListFunctions work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.24" data-path="32-debug_funcs.html">
+            
+                <a href="32-debug_funcs.html">
+            
+                    
+                    9.2.32 tinydbg> funcs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.25" data-path="33-debug_goroutines.html">
+            
+                <a href="33-debug_goroutines.html">
+            
+                    
+                    9.2.33 tinydbg> goroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.26" data-path="34-multi-threads.html">
+            
+                <a href="34-multi-threads.html">
+            
+                    
+                    9.2.34 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../3-高级功能扩展/">
+            
+                <a href="../3-高级功能扩展/">
+            
+                    
+                    9.3 高级功能扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                <a href="../3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                    
+                    9.3.100 集成starlark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                <a href="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                    
+                    9.3.101 基于eBPF跟踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                <a href="../3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                    
+                    9.3.102 实现语法高亮
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../3-高级功能扩展/103-howto_paging_output.html">
+            
+                <a href="../3-高级功能扩展/103-howto_paging_output.html">
+            
+                    
+                    9.3.103 实现分页输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                <a href="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                    
+                    9.3.104 读取分离存储的DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                <a href="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                    
+                    9.3.105 自动推测源文件路径映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                <a href="../3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                    
+                    9.3.106 实现目标进程IO重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                <a href="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                    
+                    9.3.107 支持用户偏好配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                <a href="../3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                    
+                    9.3.108 支持多客户端调试模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                <a href="../3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                    
+                    9.3.109 支持调试活动记录本
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/80-go-tool-compile.html">
+            
+                <a href="../../12-appendix/80-go-tool-compile.html">
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/81-go-tool-asm.html">
+            
+                <a href="../../12-appendix/81-go-tool-asm.html">
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/82-go-tool-link.html">
+            
+                <a href="../../12-appendix/82-go-tool-link.html">
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/90-why-buildid-loaded.html">
+            
+                <a href="../../12-appendix/90-why-buildid-loaded.html">
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                <a href="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >9.2.19 evalexpr表达式计算引擎</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="&#x652F;&#x6301;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;">&#x652F;&#x6301;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x7406;&#x89E3;&#x5E76;&#x5B9E;&#x73B0;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;-evalexpr">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x7406;&#x89E3;&#x5E76;&#x5B9E;&#x73B0;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97; evalexpr</h3>
+<p>&#x8C03;&#x8BD5;&#x5668;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x7ECF;&#x5E38;&#x4F1A;&#x8F93;&#x5165;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x6709;&#x4E9B;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5141;&#x8BB8;&#x8F93;&#x5165;&#x4E00;&#x4E9B;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6BD4;&#x5982; <code>print 1+2</code>&#xFF0C; <code>print a+b</code>&#xFF0C;<code>break 20</code>&#xFF0C;<code>break *&lt;addr&gt;</code>&#xFF0C;<code>whatis a.b.c</code> &#x7B49;&#x7B49;&#x3002;&#x652F;&#x6301;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x80FD;&#x591F;&#x8BA9;&#x6211;&#x4EEC;&#x7684;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x66F4;&#x52A0;&#x4FBF;&#x5229;&#xFF0C;&#x8FD9;&#x4E2A;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x5C31;&#x6765;&#x4ECB;&#x7ECD;&#x4E0B;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x3002;</p>
+<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<p>&#x5176;&#x5B9E;&#x5927;&#x5BB6;&#x5BF9;&#x4E8E;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x5E76;&#x4E0D;&#x964C;&#x751F;&#xFF0C;&#x6211;&#x4E3E;&#x51E0;&#x4E2A;&#x4F60;&#x53EF;&#x80FD;&#x201C;&#x5E76;&#x4E0D;&#x964C;&#x751F;&#x201D;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5E2E;&#x4F60;&#x68B3;&#x7406;&#x4E0B;&#x66FE;&#x7ECF;&#x7684;&#x77E5;&#x8BC6;&#x70B9;&#xFF1A;</p>
+<ul>
+<li>&#x8BFB;&#x8005;&#x5B66;&#x4E60;&#x300A;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E0E;&#x7B97;&#x6CD5;&#x300B;&#x65F6;&#xFF0C;&#x5B66;&#x4E60;&#x8FC7;&#x4E2D;&#x7F00;&#x8868;&#x8FBE;&#x5F0F;&#x8F6C;&#x540E;&#x7F00;&#x8868;&#x8FBE;&#x5F0F;&#x5427;&#xFF1F;&#x8FD8;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x6808;&#xFF08;&#x8FD0;&#x7B97;&#x7B26;&#x6808;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#xFF09;&#x7684;&#x65B9;&#x5F0F;&#x7B97;&#x51FA;&#x7ED3;&#x679C;&#x3002;</li>
+<li>&#x8BFB;&#x8005;&#x5B66;&#x4E60;&#x300A;&#x7F16;&#x8BD1;&#x539F;&#x7406;&#x300B;&#x65F6;&#xFF0C;&#x5B66;&#x4E60;&#x8FC7;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x8BED;&#x4E49;&#x5206;&#x6790;&#x5427;&#xFF0C;&#x5BF9;&#x62BD;&#x8C61;&#x8BED;&#x6CD5;&#x6811;AST&#x6709;&#x4E86;&#x89E3;&#x5427;&#xFF0C;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5F88;&#x591A;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x6784;&#x9020;&#xFF1B;</li>
+</ul>
+<p>&#x6211;&#x4EEC;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x4E0B;&#x652F;&#x6301;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x4F7F;&#x7528;Go&#x8BED;&#x8A00;&#x53EF;&#x4EE5;&#x5199;&#x51FA;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF08;&#x8868;&#x8FBE;&#x5F0F;&#x5E76;&#x4E0D;&#x662F;&#x8BED;&#x53E5;&#xFF09;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x4EE5;&#x6700;&#x5C0F;&#x7684;&#x8BB0;&#x5FC6;&#x6210;&#x672C;&#x5C31;&#x53EF;&#x4EE5;&#x5199;&#x51FA;&#x60F3;&#x8981;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x8868;&#x8FBE;&#x5F0F;&#x64CD;&#x4F5C;&#x6570;&#x53EF;&#x4EE5;&#x662F;&#x5E38;&#x91CF;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x6307;&#x9488;&#x7B49;&#xFF0C;&#x8FD0;&#x7B97;&#x7B26;&#x4E0D;&#x4EC5;&#x5305;&#x62EC; <code>+-*/()</code>&#xFF0C;&#x8FD8;&#x5305;&#x62EC;&#x7D22;&#x5F15;&#x64CD;&#x4F5C; <code>[idx]</code>&#xFF0C;slice&#x64CD;&#x4F5C; <code>[low:high]</code>&#xFF0C;&#x5305;&#x62EC;&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x8BBF;&#x95EE;&#x64CD;&#x4F5C; <code>.</code>&#x7B49;&#x3002;</p>
+<ol>
+<li>eval(expr)&#xFF0C;&#x9700;&#x8981;&#x5148;&#x89E3;&#x6790;&#x7406;&#x89E3;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x8FD9;&#x4E00;&#x6B65;&#x5C31;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x6B64;&#x6CD5;&#x5206;&#x6790;&#x3001;&#x8BED;&#x6CD5;&#x89E3;&#x6790;&#x5F97;&#x5230;&#x8FD9;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x7684;AST&#x3002;</li>
+<li>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x9700;&#x8981;walk&#x8FD9;&#x4E2A;AST&#xFF0C;&#x51C6;&#x5907;&#x597D;&#x8FD0;&#x7B97;&#x7B26;&#x6BCF;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x503C;&#xFF1A;<ul>
+<li>&#x5982;&#x679C;&#x64CD;&#x4F5C;&#x6570;&#x662F;&#x5B57;&#x9762;&#x91CF;true/false&#xFF0C;&#x8FD9;&#x79CD;&#x64CD;&#x4F5C;&#x6570;&#x4E00;&#x822C;&#x8981;&#x5904;&#x7406;&#x4E3A;bool&#x7C7B;&#x578B;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x53C2;&#x4E0E;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x64CD;&#x4F5C;&#x6570;&#x662F;&#x5B57;&#x9762;&#x91CF;nil&#xFF0C;&#x5728;Go&#x8868;&#x8FBE;&#x5F0F;&#x91CC;&#x9762;&#x901A;&#x5E38;&#x662F;&#x8868;&#x793A;&#x4E00;&#x4E2A;nil&#x6307;&#x9488;&#x6216;&#x8005;&#x65E0;&#x7C7B;&#x578B;&#x63A5;&#x53E3;&#x53D8;&#x91CF;&#x503C;&#xFF1B;</li>
+<li>&#x5176;&#x4ED6;&#x7B26;&#x53F7;&#x540D;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x5728;DWARF DIEs&#x4E2D;&#x641C;&#x7D22;&#x8BE5;&#x7B26;&#x53F7;&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x5B9A;&#x4E49;&#xFF0C;&#x4ECE;&#x800C;&#x5F97;&#x77E5;&#x5176;&#x5177;&#x4F53;&#x7C7B;&#x578B;&#x4FE1;&#x606F; <code>DIE.DW_AT_type</code>&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;  <code>DIE.DW_AT_location</code>&#x3002;</li>
+</ul>
+</li>
+<li>&#x6700;&#x540E;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x5904;&#x7406;&#x4E0D;&#x540C;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;&#x5982;&#x5C06;AST&#x8F6C;&#x4E3A;&#x540E;&#x7F00;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x4F7F;&#x7528;&#x57FA;&#x4E8E;&#x6808;&#x7684;&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x8FD0;&#x7B97;&#xFF0C;&#x8FD0;&#x7B97;&#x7B26;&#x6808;&#x7A7A;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x6808;&#x9876;&#x5C31;&#x662F;&#x7ED3;&#x679C;&#x3002;</li>
+</ol>
+<p><strong>&#x6CE8;&#x610F;&#xFF1A;&#x5173;&#x4E8E;&#x5728;DWARF DIEs&#x4E2D;&#x641C;&#x7D22;&#x7B26;&#x53F7;&#x5B9A;&#x4E49;&#xFF0C;&#x4E0D;&#x5F97;&#x4E0D;&#x5F3A;&#x8C03;&#x4E0B;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x95EE;&#x9898;&#x3002;</strong> &#x53D8;&#x91CF;&#x3001;&#x5E38;&#x91CF;&#x7684;&#x5B9A;&#x4E49;&#x662F;&#x8981;&#x6CE8;&#x610F;&#x533A;&#x5206;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x81EA;&#x7136;&#x90FD;&#x660E;&#x767D;&#x3002;&#x5728;DWARF DIEs&#x4E2D;&#x901A;&#x8FC7;&#x64CD;&#x4F5C;&#x6570;&#x540D;&#x5B57;&#x641C;&#x7D22;&#x5B83;&#x7684;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x9664;&#x4E86;&#x68C0;&#x67E5;DIE&#x7684; <code>DW_AT_name</code> &#x662F;&#x5426;&#x4E0E;&#x540D;&#x5B57;&#x76F8;&#x540C;&#x5916;&#xFF0C;&#x8FD8;&#x8981;&#x6CE8;&#x610F;&#x5305;&#x542B;&#x8BE5;DIE&#x5B9A;&#x4E49;&#x7684;&#x5F53;&#x524D;PC&#x662F;&#x5426;&#x4F4D;&#x4E8E; <code>DW_TAG_lexical_block[DW_AT_low_pc,DW_AT_high_pc]</code> &#x4F5C;&#x7528;&#x57DF;&#x8303;&#x56F4;&#x5185;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x6CE8;&#x610F;&#x68C0;&#x67E5;&#x4F5C;&#x7528;&#x57DF;&#x76F8;&#x5173;&#x7684;DIE&#xFF0C;&#x60A8;&#x53EF;&#x80FD;&#x6700;&#x540E;&#x4F7F;&#x7528;&#x4E86;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x540C;&#x540D;&#x53D8;&#x91CF;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x5C31;&#x9519;&#x4E86;&#x3002;</p>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x8FD9;&#x90E8;&#x5206;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>&#x622A;&#x6B62;&#x5230;&#x73B0;&#x5728;&#xFF0C;tinydbg&#x652F;&#x6301;Go&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x5982;&#x4E0B;&#x8868;&#x8FBE;&#x5F0F;&#x5199;&#x6CD5;&#xFF1A;</p>
+<ul>
+<li>&#x9664;&#x4E86; &lt;-, ++ &#x548C; -- &#x4E4B;&#x5916;&#x7684;&#x6240;&#x6709;&#x57FA;&#x672C;&#x7C7B;&#x578B;&#x4E0A;&#x7684;&#x4E8C;&#x5143;&#x548C;&#x4E00;&#x5143;&#x8FD0;&#x7B97;&#x7B26;</li>
+<li>&#x4EFB;&#x610F;&#x7C7B;&#x578B;&#x4E0A;&#x7684;&#x6BD4;&#x8F83;&#x8FD0;&#x7B97;&#x7B26;</li>
+<li>&#x6570;&#x503C;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;&#x7684;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</li>
+<li>&#x6574;&#x578B;&#x5E38;&#x91CF;&#x4E0E;&#x4EFB;&#x610F;&#x6307;&#x9488;&#x7C7B;&#x578B;&#x4E4B;&#x95F4;&#x7684;&#x76F8;&#x4E92;&#x8F6C;&#x6362;</li>
+<li>string&#x3001;[]byte &#x548C; []rune &#x4E4B;&#x95F4;&#x7684;&#x7C7B;&#x578B;&#x8F6C;&#x6362;</li>
+<li>&#x7ED3;&#x6784;&#x4F53;&#x6210;&#x5458;&#x8BBF;&#x95EE;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;somevar.memberfield&#xFF09;</li>
+<li>&#x6570;&#x7EC4;&#x3001;&#x5207;&#x7247;&#x548C;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x5207;&#x7247;&#x548C;&#x7D22;&#x5F15;&#x8FD0;&#x7B97;&#x7B26;</li>
+<li>Map&#x8BBF;&#x95EE;</li>
+<li>&#x6307;&#x9488;&#x89E3;&#x5F15;&#x7528;</li>
+<li>&#x5185;&#x7F6E;&#x51FD;&#x6570;&#x8C03;&#x7528;&#xFF1A;cap&#x3001;len&#x3001;complex&#x3001;imag &#x548C; real</li>
+<li>&#x63A5;&#x53E3;&#x53D8;&#x91CF;&#x7684;&#x7C7B;&#x578B;&#x65AD;&#x8A00;&#xFF08;&#x4F8B;&#x5982;&#xFF1A;somevar.(concretetype)&#xFF09;</li>
+</ul>
+<h4 id="expr&#x7C7B;&#x578B;">Expr&#x7C7B;&#x578B;</h4>
+<p>Go&#x6807;&#x51C6;&#x5E93; <code>go/src/go/parser.ParseExpr(string)</code> &#x652F;&#x6301;&#x8868;&#x8FBE;&#x5F0F;&#x89E3;&#x6790;&#x5E76;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ast.Expr&#x5B9E;&#x4F8B;&#xFF0C;ast.Expr&#x662F;&#x4E2A;&#x63A5;&#x53E3;&#x7C7B;&#x578B;&#xFF0C;Go&#x8BED;&#x8A00;&#x4E2D;&#x7684;&#x4E0D;&#x540C;&#x8868;&#x8FBE;&#x5F0F;&#x90FD;&#x8981;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x63A5;&#x53E3;&#x3002;</p>
+<p>see: go/src/go/ast/ast.go, ast.Expr</p>
+<pre><code class="lang-go"><span class="hljs-comment">// All expression nodes implement the Expr interface.</span>
+<span class="hljs-keyword">type</span> Expr <span class="hljs-keyword">interface</span> {
+    Node
+
+    <span class="hljs-comment">// &#x8FD9;&#x91CC;&#x989D;&#x5916;&#x5B9A;&#x4E49;&#x4E86;&#x4E00;&#x4E2A;&#x975E;&#x5BFC;&#x51FA;&#x65B9;&#x6CD5;&#xFF0C;&#x8FD9;&#x6837;&#x7528;&#x6237;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#x7C7B;&#x578B;&#x5C31;&#x65E0;&#x6CD5;&#x8D4B;&#x503C;&#x7ED9;ast.Expr&#x7C7B;&#x578B;&#x7684;&#x63A5;&#x91CF;&#xFF0C;</span>
+    <span class="hljs-comment">// &#x56E0;&#x4E3A;&#x53EA;&#x6709;go&#x6807;&#x51C6;&#x5E93;&#x5185;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x7C7B;&#x578B;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x63A5;&#x53E3;Expr&#x3002;</span>
+    exprNode()
+}
+
+<span class="hljs-comment">// All AST node types implement the Node interface.</span>
+<span class="hljs-keyword">type</span> Node <span class="hljs-keyword">interface</span> {
+    Pos() token.Pos <span class="hljs-comment">// position of first character belonging to the node</span>
+    End() token.Pos <span class="hljs-comment">// position of first character immediately after the node</span>
+}
+</code></pre>
+<p>&#x5B9E;&#x73B0;&#x4E86;ast.Expr&#x63A5;&#x53E3;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5206;&#x4E3A;&#x5982;&#x4E0B;&#x4E24;&#x7C7B;&#xFF1A;</p>
+<ul>
+<li>Value Expression, &#x5305;&#x62EC; BadExpr, Ident, Ellipsis, BasicLit, FuncLit, CompositeLit, ParenExpr, SelectorExpr, IndexExpr, IndexListExpr, SliceExpr, TypeAssertExpr, CallExpr, StarExpr, UnaryExpr, BinaryExpr, KeyValueExpr&#xFF1B;</li>
+<li>Type Expressions, &#x5305;&#x62EC; ArrayType, StructType, FuncType, InterfaceType, MapType, ChanType&#xFF1B;</li>
+</ul>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x7406;&#x8BBA;&#x4E0A;&#x6240;&#x6709;&#x53EF;&#x4EE5;&#x652F;&#x6301;&#x7684;Go&#x8868;&#x8FBE;&#x5F0F;&#x7C7B;&#x578B;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;tinydbg&#x652F;&#x6301;&#x4E86;&#x5176;&#x4E2D;&#x7684;&#x7EDD;&#x5927;&#x90E8;&#x5206;&#x64CD;&#x4F5C;&#xFF0C;&#x672C;&#x6587;&#x524D;&#x9762;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x53EA;&#x6709;&#x6781;&#x5C11;&#x6570;&#x8868;&#x8FBE;&#x5F0F;&#x64CD;&#x4F5C;&#x4E0D;&#x652F;&#x6301;&#x3002;</p>
+<h4 id="step1&#xFF1A;ast&#x89E3;&#x6790;">step1&#xFF1A;AST&#x89E3;&#x6790;</h4>
+<p>OK, &#x5F53;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x5B57;&#x7B26;&#x4E32;&#x540E;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x8981;&#x5148;&#x8C03;&#x7528; <code>parser.ParseExpr(...)</code> &#x5B9E;&#x73B0;AST&#x89E3;&#x6790;&#xFF0C;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;ast.Expr&#x3002;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x662F;&#x901A;&#x8FC7;go&#x6807;&#x51C6;&#x5E93;&#x51FD;&#x6570; <code>go/parser.ParseExpr(x string)</code> &#x6765;&#x5B8C;&#x6210;&#x7684;&#x3002;</p>
+<p>see: go/src/go/parser/interface.go</p>
+<pre><code class="lang-go"><span class="hljs-comment">// ParseExpr is a convenience function for obtaining the AST of an expression x.</span>
+<span class="hljs-comment">// The position information recorded in the AST is undefined. The filename used</span>
+<span class="hljs-comment">// in error messages is the empty string.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// If syntax errors were found, the result is a partial AST (with [ast.Bad]* nodes</span>
+<span class="hljs-comment">// representing the fragments of erroneous source code). Multiple errors are</span>
+<span class="hljs-comment">// returned via a scanner.ErrorList which is sorted by source position.</span>
+<span class="hljs-keyword">func</span> ParseExpr(x <span class="hljs-keyword">string</span>) (ast.Expr, error) {
+    <span class="hljs-keyword">return</span> ParseExprFrom(token.NewFileSet(), <span class="hljs-string">&quot;&quot;</span>, []<span class="hljs-keyword">byte</span>(x), <span class="hljs-number">0</span>)
+}
+
+<span class="hljs-keyword">func</span> ParseExprFrom(fset *token.FileSet, filename <span class="hljs-keyword">string</span>, src any, mode Mode) (expr ast.Expr, err error) {
+    <span class="hljs-comment">// get source from filename or use src directly</span>
+    text, _ := readSource(filename, src)
+
+    <span class="hljs-comment">// parse expr</span>
+    <span class="hljs-keyword">var</span> p parser
+    file := fset.AddFile(filename, <span class="hljs-number">-1</span>, <span class="hljs-built_in">len</span>(text))
+    p.init(file, text, mode)
+    expr = p.parseRhs()
+    ...
+
+    <span class="hljs-keyword">return</span>
+}
+</code></pre>
+<p>&#x56E0;&#x4E3A;&#x662F;Go&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x4E0D;&#x6D6A;&#x8D39;&#x592A;&#x591A;&#x7BC7;&#x5E45;&#x5C55;&#x793A;&#x76F8;&#x5173;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x4E86;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x67E5;&#x770B;&#x6E90;&#x7801;&#x3002;&#x6BD5;&#x7ADF;&#x5927;&#x5BB6;&#x6709;&#x7F16;&#x8BD1;&#x539F;&#x7406;&#x57FA;&#x7840;&#xFF0C;&#x7ED3;&#x5408; <a href="https://go.dev/ref/spec" target="_blank">Go&#x8BED;&#x8A00;&#x6587;&#x6CD5;</a> &#x624B;&#x5199;&#x4E00;&#x4E2A;&#x8BCD;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x3001;&#x8BED;&#x6CD5;&#x5206;&#x6790;&#x5668;&#x4E5F;&#x4E0D;&#x56F0;&#x96BE;&#x3002;</p>
+<blockquote>
+<p>&#x53EF;&#x80FD;&#x6709;&#x4E9B;&#x8BFB;&#x8005;&#x6BD5;&#x4E1A;&#x4E4B;&#x540E;&#x518D;&#x4E5F;&#x6CA1;&#x6709;&#x63A5;&#x89E6;&#x8FC7;&#x7F16;&#x8BD1;&#x76F8;&#x5173;&#x7684;&#x5B9E;&#x8DF5;&#xFF0C;OK&#xFF0C;&#x90A3;&#x8FD9;&#x91CC;&#x63D0;&#x4F9B;&#x4E2A;&#x53EF;&#x89C6;&#x5316;&#x5DE5;&#x5177;&#xFF0C;&#x4F9B;&#x5927;&#x5BB6;&#x4E86;&#x89E3;&#x4E0B;&#xFF0C;<a href="https://astexplorer.net/" target="_blank">AST Explorer</a>&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x5728;&#x9875;&#x9762;&#x4E0A;&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#xFF0C;&#x53F3;&#x4FA7;&#x5C31;&#x53EF;&#x4EE5;&#x53CA;&#x65F6;&#x8F93;&#x51FA;&#x89E3;&#x6790;&#x540E;&#x7684;AST&#x3002;&#x5982;&#x679C;&#x4F60;&#x5BF9;&#x4E0A;&#x8FF0;&#x63D0;&#x53CA;&#x7684;ast.Expr&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x7C7B;&#x578B;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x4E00;&#x70B9;&#x611F;&#x89C9;&#xFF0C;&#x4E0D;&#x4EE3;&#x8868;&#x4F60;&#x770B;&#x4E0D;&#x61C2;&#xFF0C;&#x53EA;&#x662F;&#x4F60;&#x5F88;&#x5C11;&#x6D89;&#x730E;&#x8FD9;&#x65B9;&#x9762;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6240;&#x4EE5;&#x770B;&#x4E86;&#x540E;&#x5F88;&#x964C;&#x751F;&#x3002;</p>
+<p>&#x4E3E;&#x51E0;&#x4E2A;&#x7B80;&#x5355;&#x4F8B;&#x5B50;&#x5427;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x50CF;&#x8FD9;&#x6837;&#x5199;&#x4E00;&#x4E9B;&#x5E76;&#x4E0D;&#x7528;&#x5341;&#x5206;&#x5B8C;&#x6574;&#x7684;Go&#x4EE3;&#x7801;&#xFF0C;&#x770B;&#x4E0B;&#x89E3;&#x6790;&#x51FA;&#x6765;&#x7684;AST&#x7ED3;&#x6784;&#xFF0C;&#x6BD4;&#x5982;&#x8FD9;&#x91CC;&#x7684;&#x8868;&#x8FBE;&#x5F0F;IndexExpr&#x3001;SliceExpr&#x3001;BinaryExpr&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x5C31;&#x77E5;&#x9053;&#x4E86;&#x6211;&#x4EEC;&#x8F93;&#x5165;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x6700;&#x7EC8;&#x89E3;&#x6790;&#x5B8C;&#x540E;&#x5927;&#x7EA6;&#x957F;&#x4EC0;&#x4E48;&#x6837;&#x5B50;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// ast.File.Name.(*Ident).Name=&quot;main&quot;</span>
+<span class="hljs-keyword">package</span> main
+
+<span class="hljs-comment">// GenDecl.Tok=&quot;import&quot;</span>
+<span class="hljs-comment">// GenDecl.Specs[0].(*ImportSpec).Path.(*BasicLit).Value=&quot;\&quot;fmt\&quot;&quot;</span>
+<span class="hljs-comment">// GenDecl.Specs[0].(*ImportSpec).Path.(*BasicLit).Kind=&quot;STRING&quot;</span>
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-comment">// main.main&#x5BF9;&#x5E94;FuncDecl&#xFF0C;FuncDecl.Body.Statements&#x8868;&#x793A;&#x51FD;&#x6570;&#x4F53;&#x4E2D;&#x7684;&#x6BCF;&#x4E00;&#x884C;&#x8BED;&#x53E5;</span>
+<span class="hljs-keyword">func</span> main() {  
+  <span class="hljs-keyword">var</span> nums []<span class="hljs-keyword">int</span>  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Tok=&quot;nums&quot;, </span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Type=ArrayType, </span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Elt.(*Ident).Name=&quot;int&quot;</span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Values=[]</span>
+
+  nums[<span class="hljs-number">1</span>]         <span class="hljs-comment">// ExprStmt.X.(*IndexExpr).X.(*Ident).name=&quot;nums&quot;</span>
+                  <span class="hljs-comment">// ExprStmt.X.(*IndexExpr).Index.(*BasicLit).Value=1</span>
+                  <span class="hljs-comment">// ExprStmt.X.(*IndexExpr).Index.(*BasicLit).Kind=INT</span>
+
+  nums[<span class="hljs-number">1</span>:<span class="hljs-number">2</span>]       <span class="hljs-comment">// ExprStmt.X.(*SliceExpr).X.(*Ident).Name=&quot;nums&quot;</span>
+                  <span class="hljs-comment">// ExprStmt.X.(*SliceExpr).Low.(*BasicLit).Value=&quot;1&quot;</span>
+                  <span class="hljs-comment">// ExprStmt.X.(*SliceExpr).Low.(*BasicLit).Kind=&quot;INT&quot;</span>
+                  <span class="hljs-comment">// ExprStmt.X.(*SliceExpr).High.(*BasicLit).Value=&quot;2&quot;</span>
+                  <span class="hljs-comment">// ExprStmt.X.(*SliceExpr).High.(*BasicLit).Kind=&quot;INT&quot;</span>
+
+  <span class="hljs-keyword">var</span> a <span class="hljs-keyword">int</span>       <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Tok=&quot;var&quot;</span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Type.(*Ident).Name=&quot;int&quot;</span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Names[0].(*Ident).Name=&quot;a&quot;</span>
+  <span class="hljs-keyword">var</span> b <span class="hljs-keyword">int</span>
+  <span class="hljs-keyword">var</span> c <span class="hljs-keyword">int</span>
+
+  <span class="hljs-keyword">var</span> d = a + b*c <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Tok=&quot;var&quot;</span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Names[0] = &amp;Ident{Name:&quot;d&quot;}</span>
+                  <span class="hljs-comment">// DeclStmt.Decl.(*GenDecl).Specs[0].(*ValueSpec).Values[0] =</span>
+                  <span class="hljs-comment">//   &amp;BinaryExpr{Op:&quot;+&quot;, X:&amp;Ident{Name:&quot;a&quot;}, Y:&amp;BinaryExpr{Op:&quot;*&quot;, X:&amp;Ident{Name:&quot;b&quot;}, Y:&amp;Ident{Name:&quot;c&quot;}}}</span>
+}
+</code></pre>
+</blockquote>
+<h4 id="step2-evalscope">step2: EvalScope</h4>
+<p>OK&#xFF0C;&#x73B0;&#x5728;&#x4ECE;&#x8F93;&#x5165;&#x7684;&#x8868;&#x8FBE;&#x5565;&#x5B57;&#x7B26;&#x4E32;&#x5F97;&#x5230;&#x4E86;ast.Expr&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#x5462;&#xFF1F;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x628A;&#x7B26;&#x53F7;&#x66FF;&#x6362;&#x6210;&#x5BF9;&#x5E94;&#x7684;&#x771F;&#x5B9E;&#x503C;&#xFF08;&#x6BD4;&#x5982;&#x53D8;&#x91CF;&#x540D;a,b,c&#x5BF9;&#x5E94;&#x7684;&#x6570;&#x503C;&#xFF09;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7ED3;&#x5408;&#x8FD0;&#x7B97;&#x8868;&#x8FBE;&#x5F0F;&#x8FDB;&#x884C;&#x8BA1;&#x7B97;&#xFF0C;&#x4E0D;&#x5C31;&#x5F97;&#x5230;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x4E86;&#x5417;&#xFF1F;&#x786E;&#x5B9E;&#x5982;&#x6B64;&#x3002;</p>
+<p>&#x4F46;&#x662F;&#x8981;&#x901A;&#x8FC7;&#x7B26;&#x53F7;&#x540D;&#xFF0C;&#x77E5;&#x9053;&#x5B83;&#x5230;&#x5E95;&#x662F;&#x4E2A;int&#x8FD8;&#x662F;&#x4E2A;string&#xFF0C;&#x8FD8;&#x662F;&#x4E2A;slice&#x6216;&#x8005;&#x5176;&#x4ED6;&#x7C7B;&#x578B;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x77E5;&#x9053;&#x5B83;&#x7684;&#x786E;&#x5207;&#x5B9A;&#x4E49;&#x4FE1;&#x606F;&#x3002;&#x540C;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x540D;&#xFF0C;&#x5728;&#x6E90;&#x7801;&#x4E0D;&#x540C;&#x4F5C;&#x7528;&#x57DF;&#x4E0B;&#x53EF;&#x80FD;&#x4F1A;&#x88AB;&#x591A;&#x6B21;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x5F88;&#x5E38;&#x89C1;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x5FC5;&#x987B;&#x63D0;&#x4F9B;&#x6267;&#x884C;&#x6B64;&#x8868;&#x8FBE;&#x5F0F;&#x65F6;&#x7684;&#x786C;&#x4EF6;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;(PC)&#xFF0C;&#x8FDB;&#x800C;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x6240;&#x5904;&#x7684;&#x6E90;&#x7801;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x8BE5;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x641C;&#x7D22;&#x5BF9;&#x5E94;&#x7684;&#x7B26;&#x53F7;&#x5B9A;&#x4E49;&#xFF0C;&#x5982;&#x679C;&#x627E;&#x4E0D;&#x5230;&#x518D;&#x7EE7;&#x7EED;&#x641C;&#x7D22;&#x4E0A;&#x4E00;&#x5C42;&#x4F5C;&#x7528;&#x57DF;&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x4E3E;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<pre><code class="lang-go">$ cat main.<span class="hljs-keyword">go</span>
+<span class="hljs-number">1</span>  <span class="hljs-keyword">package</span> main
+<span class="hljs-number">2</span>  
+<span class="hljs-number">3</span>  <span class="hljs-keyword">func</span> main() {
+<span class="hljs-number">4</span>          <span class="hljs-keyword">var</span> a <span class="hljs-keyword">string</span> = <span class="hljs-string">&quot;helloworld&quot;</span>
+<span class="hljs-number">5</span>          <span class="hljs-keyword">var</span> b <span class="hljs-keyword">int</span> = <span class="hljs-number">100</span>
+<span class="hljs-number">6</span>          _ = a
+<span class="hljs-number">7</span>          _ = b
+<span class="hljs-number">8</span>          {
+<span class="hljs-number">9</span>                  <span class="hljs-keyword">var</span> a <span class="hljs-keyword">int</span> = <span class="hljs-number">200</span>
+<span class="hljs-number">10</span>                 _ = a
+<span class="hljs-number">11</span>         }
+<span class="hljs-number">12</span> }
+</code></pre>
+<p>&#x5047;&#x8BBE;&#x5F53;&#x524D;&#x6267;&#x884C;&#x5230;main.go:6&#xFF0C;&#x6B64;&#x4E8B;&#x53D8;&#x91CF;a&#x662F;&#x4E00;&#x4E2A;&#x503C;&#x4E3A;&quot;helloworld&quot;&#x7684;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F46;&#x662F;&#x5F53;&#x6267;&#x884C;&#x5230;main.go:10&#x65F6;&#xFF0C;&#x53D8;&#x91CF;a&#x53D8;&#x6210;&#x4E86;&#x503C;&#x4E3A;&quot;200&quot;&#x7684;int&#x7C7B;&#x578B;&#x53D8;&#x91CF;&#x3002;</p>
+<p><img alt="how DWARF desc lexcial block" src="assets/dwarf_lexicalblock.png" width="720px"></p>
+<p>&#x8BFB;&#x8005;&#x4E00;&#x770B;&#x5C31;&#x660E;&#x767D;&#x4E86;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x4FE1;&#x606F;&#x5F88;&#x5173;&#x952E;&#xFF0C;&#x5BF9;&#xFF0C;&#x90A3;&#x4F5C;&#x7528;&#x57DF;&#x4FE1;&#x606F;&#x4ECE;&#x4F55;&#x5F97;&#x5230;&#x5462;&#xFF1F;&#x5C31;&#x662F;&#x8981;&#x6839;&#x636E;&#x5F53;&#x524D;&#x8C03;&#x8BD5;&#x5668;&#x6267;&#x884C;&#x5230;&#x7684;&#x6307;&#x4EE4;PC&#xFF0C;&#x7ED3;&#x5408;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E2D;DW_TAG_subprogram&#x3001;DW_TAG_lexical_block&#x7684;&#x4F5C;&#x7528;&#x57DF;&#x8303;&#x56F4; <code>[DW_AT_low_pc,DW_AT_high_pc]</code>&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x641C;&#x7D22;&#x7B26;&#x53F7;&#x7684;&#x5B9A;&#x4E49;&#x65F6;&#xFF0C;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x4ECE;&#x54EA;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x5F00;&#x59CB;&#x641C;&#x7D22;&#x3002;&#x6BD4;&#x5982;&#x4E0A;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#xFF0C;&#x5982;&#x679C;&#x5F53;&#x524D;PC&#x4F4D;&#x4E8E;main.go:10&#x8FD9;&#x884C;&#xFF0C;&#x5982;&#x679C;&#x67E5;&#x627E;a&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x90A3;&#x6211;&#x4EEC;&#x5C31;&#x5E94;&#x8BE5;&#x4F18;&#x5148;&#x5728;&#x8FD9;&#x4E2A;block&#x5185;&#x641C;&#x7D22;&#x5230;<code>var a int = 200</code>&#xFF0C;&#x800C;&#x5982;&#x679C;&#x662F;&#x641C;&#x7D22;b&#xFF0C;&#x4E5F;&#x8981;&#x5148;&#x641C;&#x7D22;&#x5F53;&#x524D;block&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;block&#x6CA1;&#x6709;&#x5B9A;&#x4E49;&#xFF0C;&#x6B64;&#x65F6;&#x5E94;&#x8BE5;&#x67E5;&#x627E;&#x66F4;&#x4E0A;&#x4E00;&#x5C42;block&#xFF0C;&#x5373;&#x641C;&#x7D22;main.main&#x8FD9;&#x4E2A;block&#xFF0C;&#x8FDB;&#x800C;&#x641C;&#x7D22;&#x5230; <code>var b int = 100</code>&#x3002;</p>
+<p>&#x81F3;&#x6B64;&#xFF0C;&#x5927;&#x5BB6;&#x5E94;&#x8BE5;&#x4E86;&#x89E3;&#x4E86;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x77E5;&#x9053;&#x4E86;&#x5F53;&#x524D;&#x786C;&#x4EF6;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#xFF08;PC&#xFF09;&#xFF0C;&#x7ED3;&#x5408;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x5149;&#x53EF;&#x4EE5;&#x63A8;&#x65AD;&#x51FA;&#x5F53;&#x524D;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;&#x7684;&#x6808;&#x5E27;&#x3001;&#x51FD;&#x6570;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x662F;&#x9760;&#x641C;&#x7D22;FDEs&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x641C;&#x7D22;DIEs&#x627E;&#x5230;&#x5F53;&#x524D;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x4EFB;&#x610F;&#x7ED9;&#x51FA;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x540D;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x51C6;&#x786E;&#x627E;&#x5230;&#x7B26;&#x53F7;&#x5B9A;&#x4E49;&#x76F8;&#x5173;&#x4FE1;&#x606F;&#xFF0C;DWARF&#x4E0D;&#x4EC5;&#x63CF;&#x8FF0;&#x4E86;&#x4F5C;&#x7528;&#x57DF;&#x4FE1;&#x606F;&#xFF0C;&#x4E5F;&#x63CF;&#x8FF0;&#x4E86;&#x67D0;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x4E2D;&#x5B9A;&#x4E49;&#x4E86;&#x90A3;&#x4E9B;&#x53D8;&#x91CF;&#xFF0C;&#x5305;&#x62EC;&#x53D8;&#x91CF;&#x503C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x4EE5;&#x53CA;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x3002;</p>
+<p>OK&#xFF0C;proc.EvalScope&#x4E2D;&#x5C31;&#x8BB0;&#x5F55;&#x4E86;&#x4E00;&#x4E9B;&#x5F53;&#x524D;&#x7684;&#x786C;&#x4EF6;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#xFF0C;&#x6BD4;&#x5982;proc.EvalScope.Regs&#x3002;&#x5F53;&#x501F;&#x52A9;DWARF&#x786E;&#x5B9A;&#x4E86;&#x53D8;&#x91CF;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x4F4D;&#x7F6E;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;proc.EvalScope.target&#x53BB;&#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF08;&#x5B9E;&#x9645;&#x4E0A;&#x5C01;&#x88C5;&#x4E86;<code>ptrace(PTRACE_PEEKDATA,...)</code>&#xFF0C;&#x7136;&#x540E;&#x518D;&#x6839;&#x636E;DWARF&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#xFF0C;&#x501F;&#x52A9;Go reflection&#x7CBE;&#x51C6;&#x6784;&#x9020;&#x51FA;&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x5B9E;&#x4F8B;&#x3002;&#x6700;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x5B9E;&#x4F8B;&#x4E0A;&#x6267;&#x884C;&#x76F8;&#x5E94;&#x7684;&#x8FD0;&#x7B97;&#x7B26;&#x5BF9;&#x5E94;&#x7684;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#x3002;</p>
+<p>see: tinydbg/pkg/proc/eval.go: proc.EvalScope</p>
+<pre><code class="lang-go"><span class="hljs-comment">// EvalScope is the scope for variable evaluation. Contains the thread,</span>
+<span class="hljs-comment">// current location (PC), and canonical frame address.</span>
+<span class="hljs-keyword">type</span> EvalScope <span class="hljs-keyword">struct</span> {
+    Location
+    Regs     op.DwarfRegisters
+    Mem      MemoryReadWriter <span class="hljs-comment">// Target&apos;s memory</span>
+    g        *G
+    threadID <span class="hljs-keyword">int</span>
+    BinInfo  *BinaryInfo
+    target   *Target
+    loadCfg  *LoadConfig
+
+    frameOffset <span class="hljs-keyword">int64</span>
+
+    <span class="hljs-comment">// When the following pointer is not nil this EvalScope was created</span>
+    <span class="hljs-comment">// by EvalExpressionWithCalls and function call injection are allowed.</span>
+    <span class="hljs-comment">// See the top comment in fncall.go for a description of how the call</span>
+    <span class="hljs-comment">// injection protocol is handled.</span>
+    callCtx *callContext
+
+    dictAddr <span class="hljs-keyword">uint64</span> <span class="hljs-comment">// dictionary address for instantiated generic functions</span>
+
+    enclosingRangeScopes []*EvalScope
+    rangeFrames          []Stackframe
+}
+</code></pre>
+<p>ps&#xFF1A;proc.EvalScope&#x8FD8;&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E9B;&#x5176;&#x4ED6;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x4E0D;&#x4ECB;&#x7ECD;&#x3002;&#x503C;&#x5F97;&#x4E00;&#x63D0;&#x7684;&#x662F;&#xFF0C;proc.EvalScope&#x4E0D;&#x540C;&#x4E8E;api.EvalScope&#xFF0C;&#x540E;&#x8005;&#x662F;&#x4E3A;&#x4E86;&#x8BC6;&#x522B;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x547D;&#x4EE4;&#x662F;&#x5728;&#x54EA;&#x4E2A;goroutine&#x3001;&#x54EA;&#x4E2A;&#x6808;&#x5E27;&#x3001;&#x54EA;&#x4E2A;defer&#x51FD;&#x6570;&#x4E2D;&#x6267;&#x884C;&#x6765;&#x5B9A;&#x4E49;&#x7684;&#x3002;&#x800C;proc.EvalScope&#x662F;&#x4E3A;&#x4E86;&#x652F;&#x6301;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x800C;&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+<h4 id="step3-&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;">step3: &#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;</h4>
+<p>OK&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x4E86;&#x89E3;&#x4E86;&#x5982;&#x4F55;&#x5C06;&#x8F93;&#x5165;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x89E3;&#x6790;&#x4E3A;AST&#xFF08;ast.Expr&#xFF09;&#xFF0C;&#x5E76;&#x4E14;&#x4E86;&#x89E3;&#x4E86;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x5728;&#x6E90;&#x7801;&#x4E2D;&#x7684;&#x5B9A;&#x4E49;&#xFF08;&#x4F5C;&#x7528;&#x57DF;&#x3001;&#x7C7B;&#x578B;&#x3001;&#x5185;&#x5B58;&#x5730;&#x5740;&#xFF09;&#xFF0C;&#x7B80;&#x5355;&#x63D0;&#x4E86;&#x4E0B;&#x5185;&#x5B58;&#x6570;&#x636E;&#x8BFB;&#x53D6;&#x3001;&#x501F;&#x52A9;DWARF&#x7C7B;&#x578B;&#x63CF;&#x8FF0;&#x4EE5;&#x53CA;Go&#x53CD;&#x5C04;&#x673A;&#x5236;&#x53EF;&#x4EE5;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x7B26;&#x53F7;&#x7528;&#x5BF9;&#x5E94;&#x7684;&#x53D8;&#x91CF;&#x5B9E;&#x4F8B;&#x7CBE;&#x51C6;&#x66FF;&#x6362;&#x3002;&#x6709;&#x4E86;&#x8FD9;&#x4E9B;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x89E3;&#x4E0D;&#x540C;&#x7684;ast.Expr&#x652F;&#x6301;&#x54EA;&#x4E9B;&#x8FD0;&#x7B97;&#x7B26;&#xFF0C;&#x7136;&#x540E;&#x53BB;&#x5B9E;&#x73B0;&#x8FD9;&#x4E9B;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x6BCF;&#x4E00;&#x79CD;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5B83;&#x5BF9;&#x5E94;&#x7684;&#x7C7B;&#x578B;&#x3001;&#x8FD0;&#x7B97;&#x7B26;&#x4E5F;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x6BD4;&#x5982;SliceExpr&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;slice&#x3001;string&#x3001;array&#x7684;subslice&#xFF0C;&#x800C;IndexExpr&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x83B7;&#x53D6;&#x4E00;&#x4E2A;slice&#x3001;string&#x3001;array&#x7279;&#x5B9A;&#x4E0B;&#x6807;&#x4F4D;&#x7F6E;&#x7684;&#x5143;&#x7D20;&#x2026;&#x2026;OK&#xFF0C;&#x7B3C;&#x7EDF;&#x6765;&#x8BF4;&#xFF0C;&#x5269;&#x4F59;&#x7684;&#x5C31;&#x662F;&#x9488;&#x5BF9;&#x6BCF;&#x79CD;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> expr ast.Expr
+expr, _ := parser.ParseExpr(s <span class="hljs-keyword">string</span>)
+
+<span class="hljs-keyword">switch</span> vv := expr.(<span class="hljs-keyword">type</span>) {
+    <span class="hljs-keyword">case</span> ast.Ident:
+    evalIdent(...)
+    <span class="hljs-keyword">case</span> ast.Ellipsis:
+    evalEllipssis(...)
+    <span class="hljs-keyword">case</span> ast.SliceExpr
+    evalSliceExpr(...)
+    <span class="hljs-keyword">case</span> ast.StarExpr
+    evalStarExpr(...)
+    <span class="hljs-keyword">case</span> ast.UnaryExpr
+    evalUnaryExpr(...)
+    <span class="hljs-keyword">case</span> ast.BinaryExpr
+    evalBinaryExpr(...)
+    ...
+}
+</code></pre>
+<p>OK&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x6211;&#x8FD9;&#x6837;&#x7684;&#x63CF;&#x8FF0;&#x6765;&#x7406;&#x89E3;&#x8868;&#x8FBE;&#x5F0F;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x8BA1;&#x7B97;&#x7684;&#xFF0C;&#x5B8C;&#x5168;&#x6CA1;&#x95EE;&#x9898;&#xFF0C;2015&#x5E74;aarzilli&#x63D0;&#x4EA4;&#x4E86;dlv<a href="https://github.com/go-delve/delve/pull/285/commits/43b64ec39e8188cd5b215d15ec0175868c548a8b" target="_blank">&#x7B2C;&#x4E00;&#x7248;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x5B9E;&#x73B0;</a>&#xFF0C;&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x5927;&#x81F4;&#x5B9E;&#x73B0;&#x903B;&#x8F91;&#x5C31;&#x662F;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x7684;&#x8FD9;&#x6837;&#x3002;2023&#x5E74;aarzilli&#x63D0;&#x4EA4;&#x4E86;dlv<a href="https://github.com/go-delve/delve/commit/2c700230de0db2f84c537f00b388b183d35645ac" target="_blank">&#x7B2C;&#x4E8C;&#x7248;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x5B9E;&#x73B0;&#xFF1A;&#x57FA;&#x4E8E;&#x6808;&#x673A;&#x5668;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;</a>&#x3002;&#x6309;aarzilli&#x7684;&#x8BF4;&#x6CD5;&#x662F;&#xFF0C;&#x8FD9;&#x4E48;&#x505A;&#x6709;&#x8BF8;&#x591A;&#x597D;&#x5904;&#x3002;</p>
+<blockquote>
+<p>&#x4E4B;&#x524D; Delve &#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x662F;&#x9012;&#x5F52;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x6D89;&#x53CA; goroutine &#x548C; channel &#x901A;&#x4FE1;&#xFF0C;&#x7ED3;&#x6784;&#x590D;&#x6742;&#x4E14;&#x96BE;&#x4EE5;&#x7EF4;&#x62A4;&#x3002;&#x65B0;&#x65B9;&#x6848;&#x5C06;&#x8868;&#x8FBE;&#x5F0F;&#x201C;&#x7F16;&#x8BD1;&#x201D;&#x4E3A;&#x4E00;&#x7EC4;&#x6307;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x7528;&#x6808;&#x673A;&#x5668;&#x987A;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x6837;&#x7ED3;&#x6784;&#x66F4;&#x6E05;&#x6670;&#xFF0C;&#x6613;&#x4E8E;&#x7EF4;&#x62A4;&#x548C;&#x6269;&#x5C55;&#x3002;&#x8FD9;&#x6837;&#x53EF;&#x4EE5;&#x66F4;&#x597D;&#x5730;&#x652F;&#x6301;&#x8FD0;&#x884C;&#x65F6;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x6CE8;&#x5165;&#x3001;&#x53D8;&#x91CF;&#x72B6;&#x6001;&#x540C;&#x6B65;&#x4EE5;&#x53CA;&#x672A;&#x6765;&#x7684;&#x65B0;&#x7279;&#x6027;&#x5B9E;&#x73B0;&#xFF0C;&#x6BD4;&#x5982;&#x5229;&#x7528; Go 1.20 &#x7684; runtime.Pin &#x4F18;&#x5316;&#x3002;
+&#x6574;&#x4F53;&#x63D0;&#x9AD8;&#x4E86;&#x53EF;&#x6269;&#x5C55;&#x6027;&#x548C;&#x517C;&#x5BB9;&#x6027;&#xFF0C;&#x5E76;&#x7B80;&#x5316;&#x4E86;&#x8FD0;&#x884C;&#x65F6;&#x72B6;&#x6001;&#x540C;&#x6B65;&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+</blockquote>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x4E86;&#x89E3;&#x4E0B;&#x5F53;&#x524D;&#x8FD9;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x5C06;&#x8868;&#x8FBE;&#x5F0F;&#x89E3;&#x6790;&#x4E3A;ast.Expr&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x7F16;&#x8BD1;&#x4E3A;&#x4E00;&#x7EC4;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF0C;&#x7136;&#x540E;&#x57FA;&#x4E8E;&#x6808;&#x673A;&#x5668;&#x6267;&#x884C;&#x8FD9;&#x7EC4;&#x6307;&#x4EE4;&#xFF0C;&#x6700;&#x540E;&#x8BA1;&#x7B97;&#x5B8C;&#x6210;&#x5F97;&#x5230;&#x7ED3;&#x679C;&#x3002;</p>
+<h4 id="put-it-together">Put It Together</h4>
+<h5 id="&#x6574;&#x4F53;&#x6D41;&#x7A0B;">&#x6574;&#x4F53;&#x6D41;&#x7A0B;</h5>
+<p><code>proc.(*EvalScope).EvalExpression(expr string, cfg LoadConfig) (*Variable, error)</code> &#x6267;&#x884C;&#x4E86;&#x4E0A;&#x8FF0;&#x63D0;&#x53CA;&#x7684;&#x6240;&#x6709;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<ol>
+<li>&#x5BF9;&#x8F93;&#x5165;&#x8868;&#x8FBE;&#x5F0F; <code>expr string</code> &#x7684;AST&#x89E3;&#x6790;&#xFF0C;&#x5F97;&#x5230;&#x8868;&#x8FBE;&#x5F0F;ast.Expr&#x5B9E;&#x4F8B;&#xFF1B;</li>
+<li>&#x7136;&#x540E;&#x7ED3;&#x5408;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x786E;&#x5B9A;&#x5F53;&#x524D;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x5404;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x57DF;&#xFF0C;&#x8FDB;&#x800C;&#x786E;&#x5B9A;&#x5177;&#x4F53;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x503C;&#xFF0C;</li>
+<li>&#x6700;&#x7EC8;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x8BA1;&#x7B97;&#x89C4;&#x5219;&#xFF0C;&#x5B8C;&#x6210;&#x6700;&#x7EC8;&#x7ED3;&#x679C;&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;Variable&#x3002;
+ps&#xFF1A;&#x8FD9;&#x91CC;&#x7684;&#x8BA1;&#x7B97;&#xFF0C;tinydbg&#x91C7;&#x7528;&#x4E86;&#x4E00;&#x79CD;&#x5DE7;&#x5999;&#x7684;&#x529E;&#x6CD5;&#xFF0C;&#x5B83;&#x5C06;&#x4E0D;&#x540C;ast.Expr&#x5BF9;&#x5E94;&#x7684;&#x5904;&#x7406;&#x64CD;&#x4F5C;&#x7F16;&#x8BD1;&#x6210;&#x4E86;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#x3002;&#x7136;&#x540E;&#x6267;&#x884C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF0C;&#x6700;&#x7EC8;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;</li>
+</ol>
+<pre><code class="lang-go"><span class="hljs-comment">// EvalExpression returns the value of the given expression.</span>
+<span class="hljs-keyword">func</span> (scope *EvalScope) EvalExpression(expr <span class="hljs-keyword">string</span>, cfg LoadConfig) (*Variable, error) {
+    <span class="hljs-comment">// &#x89E3;&#x6790;ast.Expr&#xFF0C;&#x7F16;&#x8BD1;&#x4E3A;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;</span>
+    ops, _ := evalop.Compile(scopeToEvalLookup{scope}, expr, scope.evalopFlags())
+
+    <span class="hljs-comment">// &#x6267;&#x884C;&#x6307;&#x4EE4;&#xFF0C;&#x6700;&#x7EC8;&#x5F97;&#x5230;&#x7ED3;&#x679C;</span>
+    stack := &amp;evalStack{}
+    scope.loadCfg = &amp;cfg
+    stack.eval(scope, ops)
+
+    <span class="hljs-comment">// &#x6267;&#x884C;&#x7ED3;&#x675F;&#xFF0C;&#x83B7;&#x53D6;&#x6267;&#x884C;&#x7ED3;&#x679C;</span>
+    ev, _ := stack.result(&amp;cfg)
+
+    <span class="hljs-comment">// &#x5BF9;&#x4E8E;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x7684;&#x53D8;&#x91CF;&#xFF0C;&#x67E5;&#x8BE2;DWARF&#x5F97;&#x5230;&#x4E86;&#x5176;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x3001;&#x5185;&#x5B58;&#x5730;&#x5740;&#x4FE1;&#x606F;&#xFF0C;&#x4F1A;&#x4E3A;&#x5176;&#x6784;&#x9020;&#x7C7B;&#x578B;&#x540D;&#x4E3A;Variable&#x7684;&#x53D8;&#x91CF;&#x52A0;&#x4EE5;&#x8868;&#x793A;&#x3002;</span>
+    <span class="hljs-comment">// &#x5F53;&#x5C06;&#x8FD9;&#x4E9B;&#x53D8;&#x91CF;&#x5165;&#x6808;&#x65F6;&#xFF08;stack.stack&#x53C2;&#x6570;&#x6808;&#xFF09;&#xFF0C;&#x624D;&#x4F1A;&#x52A0;&#x8F7D;&#x5185;&#x5B58;&#x4E2D;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E14;&#x8FD8;&#x4F1A;cache&#xFF0C;&#x56E0;&#x4E3A;&#x540C;&#x4E00;&#x4E2A;&#x53D8;&#x91CF;&#x53EF;&#x80FD;&#x51FA;&#x73B0;&#x591A;&#x6B21;&#x3002;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// &#x4F46;&#x662F;&#x5BF9;&#x4E8E;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#xFF0C;`Variable.Addr==0 &amp;&amp; Variable.Base==0`&#xFF0C;&#x4E0D;&#x7528;&#x4ECE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x3002;</span>
+    ev.loadValue(cfg)
+    <span class="hljs-keyword">if</span> ev.Name == <span class="hljs-string">&quot;&quot;</span> {
+        ev.Name = expr
+    }
+    <span class="hljs-keyword">return</span> ev, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>see: tinydbg/pkg/proc/evalcompile.go, evalop.Compile</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Compile compiles the expression expr into a list of instructions.</span>
+<span class="hljs-comment">// If canSet is true expressions like &quot;x = y&quot; are also accepted.</span>
+<span class="hljs-keyword">func</span> Compile(lookup evalLookup, expr <span class="hljs-keyword">string</span>, flags Flags) ([]Op, error) {
+    <span class="hljs-comment">// &#x5148;&#x89E3;&#x6790;&#x4E3A;ast.Expr</span>
+    t, err := parser.ParseExpr(expr)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        ...
+    }
+    <span class="hljs-comment">// &#x5C06;&#x4E0D;&#x540C;&#x7684;ast.Expr&#x7F16;&#x8BD1;&#x4E3A;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#x5E8F;&#x5217;&#xFF0C;</span>
+    <span class="hljs-comment">// &#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x6709;&#x5165;&#x6808;&#x3001;&#x51FA;&#x6808;&#x3001;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#x76F8;&#x5173;&#x7684;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF1A;</span>
+    <span class="hljs-comment">// - &#x6BD4;&#x5982;pushIndent&#x53EA;&#x6D89;&#x53CA;&#x5230;&#x5165;&#x6808;&#xFF0C;&#x4E00;&#x822C;&#x662F;&#x5165;&#x6808;&#x64CD;&#x4F5C;&#x6570;&#x53D8;&#x91CF;&#xFF0C;&#x6BD4;&#x5982;a+b&#x6D89;&#x53CA;&#x5230;&#x4E24;&#x6761;&#x6307;&#x4EE4;pushIdent(a), pushIdent(b)</span>
+    <span class="hljs-comment">// - &#x6BD4;&#x5982;pushBinary&#x6D89;&#x53CA;&#x5230;&#x51FA;&#x6808;&#x3001;&#x8BA1;&#x7B97;&#x3001;&#x5165;&#x6808;&#xFF0C;&#x6BD4;&#x5982;&#x4ECE;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x51FA;&#x6808;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x6570;Variable(a), Variable(b)&#xFF0C;</span>
+    <span class="hljs-comment">//   &#x7136;&#x540E;&#x6267;&#x884C;&#x8BA1;&#x7B97;&#x903B;&#x8F91; Variable(c) = Variable(a)+Variable(b)&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x5165;&#x6808;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// &#x4E0D;&#x540C;&#x7684;&#x6307;&#x4EE4;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#xFF0C;OK!</span>
+    <span class="hljs-keyword">return</span> CompileAST(lookup, t, flags)
+}
+
+<span class="hljs-comment">// CompileAST compiles the expression t into a list of instructions.</span>
+<span class="hljs-keyword">func</span> CompileAST(lookup evalLookup, t ast.Expr, flags Flags) ([]Op, error) {
+    <span class="hljs-comment">// &#x7F16;&#x8BD1;&#x4E3A;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;</span>
+    ctx := &amp;compileCtx{evalLookup: lookup, allowCalls: <span class="hljs-literal">true</span>, flags: flags}
+    _ := ctx.compileAST(t, <span class="hljs-literal">true</span>)
+    ...
+
+    <span class="hljs-comment">// &#x6808;&#x6DF1;&#x5EA6;&#x6821;&#x9A8C;</span>
+    _ = ctx.depthCheck(<span class="hljs-number">1</span>)
+    <span class="hljs-keyword">return</span> ctx.ops, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<h5 id="&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7EC6;&#x81F4;&#x638C;&#x63E1;">&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7EC6;&#x81F4;&#x638C;&#x63E1;</h5>
+<p>&#x5982;&#x679C;&#x4F60;&#x60F3;&#x7EC6;&#x81F4;&#x638C;&#x63E1;&#x6BCF;&#x4E00;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x7C7B;&#x578B;&#x7684;&#x8BE6;&#x7EC6;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x9605;&#x8BFB;&#x6E90;&#x7801;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;dlv&#x8C03;&#x8BD5;&#x5668;&#x8C03;&#x8BD5;tinydbg&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x7136;&#x540E;&#x5728;tinydbg&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x8F93;&#x5165;&#x7B80;&#x5355;&#x7684;&#x8868;&#x8FBE;&#x5F0F;<code>whatis &lt;expr&gt;</code>&#x6765;&#x89E6;&#x53D1;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#xFF0C;&#x8FD9;&#x6837;&#x4F60;&#x53EF;&#x4EE5;&#x5355;&#x6B65;&#x6267;&#x884C;&#x7684;&#x65B9;&#x5F0F;&#x8DDF;&#x8E2A;&#x6BCF;&#x4E00;&#x4E2A;&#x7EC6;&#x8282;&#xFF0C;&#x4E0D;&#x81F3;&#x4E8E;&#x6DF9;&#x6CA1;&#x5728;&#x5DE8;&#x91CF;&#x7684;&#x5206;&#x652F;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x4E2D;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x5982;&#x679C;&#x6BCF;&#x4E2A;&#x8868;&#x8FBE;&#x5F0F;&#x7C7B;&#x578B;&#x6211;&#x4EEC;&#x90FD;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x7684;&#x8BDD;&#xFF0C;&#x7BC7;&#x5E45;&#x4F1A;&#x975E;&#x5E38;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x5927;&#x53EF;&#x80FD;&#x5728;&#x6709;&#x9650;&#x7684;&#x7BC7;&#x5E45;&#x5185;&#x5168;&#x76D8;&#x4ECB;&#x7ECD;&#x3002;&#x6240;&#x4EE5;&#x5982;&#x679C;&#x4F60;&#x662F;&#x548C;&#x4F5C;&#x8005;&#x4E00;&#x6837;&#x559C;&#x6B22;&#x5228;&#x6839;&#x95EE;&#x5E95;&#x3001;&#x5E0C;&#x671B;&#x5BF9;&#x6BCF;&#x4E2A;&#x7EC6;&#x8282;&#x4E86;&#x5982;&#x6307;&#x638C;&#xFF0C;&#x90A3;&#x4F60;&#x53EF;&#x4EE5;&#x8FD9;&#x4E48;&#x505A;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x771F;&#x7684;&#x51C6;&#x5907;&#x8FD9;&#x4E48;&#x5E72;&#xFF0C;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x4E0B;&#x5217;&#x6B65;&#x9AA4;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5185;&#x90E8;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#xFF1A;</p>
+<p>&#x9996;&#x5148;&#x51C6;&#x5907;&#x4E00;&#x4E2A;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F; main.go&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-number">1</span>  <span class="hljs-keyword">package</span> main
+<span class="hljs-number">2</span>  
+<span class="hljs-number">3</span>  <span class="hljs-keyword">func</span> main() {
+<span class="hljs-number">4</span>          <span class="hljs-keyword">var</span> a <span class="hljs-keyword">string</span> = <span class="hljs-string">&quot;helloworld&quot;</span>
+<span class="hljs-number">5</span>          <span class="hljs-keyword">var</span> b <span class="hljs-keyword">int</span> = <span class="hljs-number">100</span>
+<span class="hljs-number">6</span>          _ = a
+<span class="hljs-number">7</span>          _ = b
+<span class="hljs-number">8</span>          {
+<span class="hljs-number">9</span>                  <span class="hljs-keyword">var</span> a <span class="hljs-keyword">int</span> = <span class="hljs-number">200</span>
+<span class="hljs-number">10</span>                 _ = a
+<span class="hljs-number">11</span>                 <span class="hljs-built_in">println</span>(a+b)      <span class="hljs-comment">// &lt;= &#x6211;&#x4EEC;&#x5C06;&#x6267;&#x884C; `break main.go:11`</span>
+<span class="hljs-number">12</span>         }
+<span class="hljs-number">13</span> }
+</code></pre>
+<p>&#x7136;&#x540E;&#x5B89;&#x88C5;&#x8C03;&#x8BD5;&#x5668;tinydbg&#xFF0C;&#x6CE8;&#x610F;&#x8981;&#x7981;&#x7528;&#x4F18;&#x5316;&#x5E76;&#x751F;&#x6210;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF1A;</p>
+<pre><code class="lang-bash">$ go install -v -gcflags <span class="hljs-string">&apos;all=-N -l&apos;</span> github.com/hitzhangjie/tinydbg
+</code></pre>
+<p>&#x7136;&#x540E;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x5668;tinydbg&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF1A;</p>
+<pre><code class="lang-bash">$ tinydbg debug main.go
+(tinydbg) <span class="hljs-built_in">break</span> main.go:11
+...
+(tinydbg) <span class="hljs-built_in">continue</span>
+(tinydbg) whatis a+b                // &lt;= whatis&#x4F1A;&#x89E6;&#x53D1;&#x8C03;&#x8BD5;&#x5668;&#x8868;&#x8FBE;&#x5F0F;Eval&#x64CD;&#x4F5C;
+                                    // &#x6CE8;&#x610F;&#xFF0C;&#x6B64;&#x65F6;&#x5148;&#x4E0D;&#x8981;&#x597D;&#x6572;&#x56DE;&#x8F66;&#x952E;&#xFF0C;
+                                    // &#x6211;&#x4EEC;&#x8981;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#x8C03;&#x8BD5;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5F97;&#x7ED9;&#x8C03;&#x8BD5;&#x5668;tinydbg&#x52A0;&#x65AD;&#x70B9;
+</code></pre>
+<p>OK&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7528;&#x53E6;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;dlv&#x6765;&#x8C03;&#x8BD5;&#x4E0A;&#x8FF0;tinydbg&#x8FDB;&#x7A0B;&#xFF1A;</p>
+<pre><code class="lang-bash">dlv attach `pidof tinydbg`
+(dlv) <span class="hljs-built_in">break</span> EvalExpression
+(dlv) <span class="hljs-built_in">continue</span>
+
+(dlv) &#x5F53;whatis&#x6267;&#x884C;&#x540E;&#xFF0C;dlv&#x4F1A;&#x505C;&#x5728;tinydbg&#x7684;proc.EvalExpression&#x51FD;&#x6570;&#x4F4D;&#x7F6E;&#xFF0C;&#x7B49;&#x5F85;&#x8C03;&#x8BD5;
+</code></pre>
+<p>&#x65AD;&#x70B9;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x56DE;&#x5230;tinydbg&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#xFF0C;&#x6572;&#x51FB;&#x201C;&#x56DE;&#x8F66;&#x952E;&#x201D;&#xFF0C;&#x89E6;&#x53D1;<code>whatis</code>&#x547D;&#x4EE4;&#x6267;&#x884C;&#xFF0C;&#x6B64;&#x65F6;&#x8C03;&#x8BD5;&#x5668;tinydbg&#x540E;&#x7AEF;&#x903B;&#x8F91;&#x4F1A;&#x6267;&#x884C;<code>proc.EvalExpression(s)</code>&#x64CD;&#x4F5C;&#xFF0C;dlv&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x4F1A;&#x505C;&#x5728;&#x8BE5;&#x51FD;&#x6570;&#x65AD;&#x70B9;&#x5904;&#xFF0C;&#x6B64;&#x65F6;&#x4F60;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5355;&#x6B65;&#x6267;&#x884C;&#xFF0C;&#x6765;&#x4E86;&#x89E3;&#x8BE6;&#x7EC6;&#x7684;EvalExpression&#x8FC7;&#x7A0B;&#x4E86;&#x3002;</p>
+<h5 id="&#x4EE5;-ab-&#x8FDB;&#x884C;&#x8BF4;&#x660E;">&#x4EE5; <code>a+b</code> &#x8FDB;&#x884C;&#x8BF4;&#x660E;</h5>
+<p>&#x5C3D;&#x7BA1;&#x6211;&#x4EEC;&#x4E0D;&#x80FD;&#x517C;&#x987E;&#x6BCF;&#x4E2A;&#x7EC6;&#x8282;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x5E0C;&#x671B;&#x80FD;&#x5BF9;&#x5173;&#x952E;&#x5904;&#x7406;&#x8DEF;&#x5F84;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#xFF0C;&#x8FD9;&#x6837;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x4EEC;&#x624D;&#x4E0D;&#x4F1A;&#x89C9;&#x5F97;&#xFF0C;&#x201C;&#x55EF;&#xFF0C;&#x53C8;&#x662F;&#x4E00;&#x672C;&#x90E8;&#x5934;&#x5F88;&#x5927;&#x4F46;&#x662F;&#x5565;&#x4E5F;&#x6CA1;&#x8BB2;&#x6E05;&#x695A;&#x7684;&#x4E66;&#x2026;&#x2026;&#x5931;&#x671B;&#x201D;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x6211;&#x4EEC;&#x6309;&#x7167;&#x4E0A;&#x9762;&#x7684;main.go&#x793A;&#x4F8B;&#xFF0C;&#x89E3;&#x91CA;&#x4E0B;&#x6267;&#x884C; <code>whatis a+b</code> &#x65F6;&#xFF0C;EvalExpression&#x903B;&#x8F91;&#x662F;&#x5982;&#x4F55;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x5F53;&#x8BFB;&#x8005;&#x8DDF;&#x968F;&#x8FD9;&#x91CC;&#x7684;&#x63CF;&#x8FF0;&#x8FC7;&#x5B8C;&#x8FD9;&#x4E00;&#x904D;&#x7684;&#x6D41;&#x7A0B;&#x4E4B;&#x540E;&#xFF0C;&#x4F60;&#x5C06;&#x5F7B;&#x5E95;&#x660E;&#x767D;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x662F;&#x5982;&#x4F55;&#x5DE5;&#x4F5C;&#x7684;&#xFF0C;&#x4EE5;&#x53CA;&#x6709;&#x80FD;&#x529B;&#x53BB;&#x6DF1;&#x5165;&#x63A2;&#x7D22;&#x5176;&#x4ED6;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x903B;&#x8F91;&#x662F;&#x5982;&#x4F55;&#x6267;&#x884C;&#x7684;&#x3002;</p>
+<p>&#x8FD8;&#x662F;&#x8001;&#x4E60;&#x60EF;&#xFF0C;&#x5148;&#x5217;&#x4E0B;&#x5927;&#x81F4;&#x7684;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x3002;</p>
+<p><strong>client</strong>: client&#x7AEF;&#x4EE3;&#x7801;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5927;&#x81F4;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;</p>
+<pre><code class="lang-bash">whatisCmd.cmdFn
+    \--&gt; whatisCommand(t *Session, ctx callContext, args string) error
+            \--&gt; val, err := t.client.EvalVariable(ctx.Scope, args, ShortLoadConfig)
+                    \--&gt; (c *RPCClient) EvalVariable(scope api.EvalScope, expr string, cfg api.LoadConfig) (*api.Variable, error)
+                            \--&gt; err := c.call(<span class="hljs-string">&quot;Eval&quot;</span>, EvalIn{scope, expr, &amp;cfg}, &amp;out)
+            \--&gt; <span class="hljs-built_in">print</span> the variable info
+</code></pre>
+<p><strong>server</strong>: server&#x7AEF;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x4EE3;&#x7801;&#x91CF;&#x975E;&#x5E38;&#x5927;&#xFF0C;&#x6211;&#x5206;3&#x4E2A;&#x5173;&#x952E;&#x6B65;&#x9AA4;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>&#x52A0;&#x8F7D;&#x914D;&#x7F6E;&#xFF0C;&#x5E76;&#x53D1;&#x8D77;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#xFF1A;</p>
+<pre><code class="lang-bash">tinydbg/service/rpc2(*RPCServer).Eval(arg EvalIn, out *EvalOut) error
+    \--&gt; cfg = &amp;api.LoadConfig{FollowPointers: <span class="hljs-literal">true</span>, ...)
+    |       \--&gt; pcfg := *api.LoadConfigToProc(cfg)
+    \--&gt; v, _ := s.debugger.EvalVariableInScope(arg.Scope.GoroutineID, arg.Scope.Frame, arg.Scope.DeferredCall, arg.Expr, pcfg)
+    |       \--&gt; s, err := proc.ConvertEvalScope(d.target.Selected, goid, frame, deferredCall)
+    |       \--&gt; <span class="hljs-built_in">return</span> s.EvalExpression(expr, cfg)
+</code></pre>
+<p>&#x7F16;&#x8BD1;&#x9636;&#x6BB5;&#xFF0C;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x5B57;&#x7B26;&#x4E32;&#x8FDB;&#x884C;AST&#x89E3;&#x6790;&#xFF0C;&#x5E76;&#x5BF9;ast.Expr&#x7F16;&#x8BD1;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;ops&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x6307;&#x4EE4;&#x5E76;&#x4E0D;&#x662F;&#x673A;&#x5668;&#x6307;&#x4EE4; :)</p>
+<blockquote>
+<p>&#x6267;&#x884C;&#x5B8C;&#x7F16;&#x8BD1;&#x4E4B;&#x540E;&#xFF0C;ctx.ops&#x5C06;&#x5305;&#x542B;3&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x5165;&#x6808;ident{a}&#xFF0C;&#x5165;&#x6808;ident{b}&#xFF0C;&#x6267;&#x884C;+&#x8BA1;&#x7B97;&#xFF0C;&#x6D3B;&#x8131;&#x8131;&#x4E00;&#x4E2A;&#x540E;&#x7F00;&#x8868;&#x8FBE;&#x5F0F;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x7684;ctx.ops&#x5E76;&#x4E0D;&#x662F;&#x6700;&#x7EC8;&#x8981;&#x6267;&#x884C;&#x7684;&#x6267;&#x884C;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-bash"><span class="hljs-built_in">return</span> s.EvalExpression(expr, cfg)
+   // step1: &#x8FDB;&#x884C;AST&#x89E3;&#x6790;&#xFF0C;&#x5E76;&#x5C06;&#x5176;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x64CD;&#x4F5C;&#x7F16;&#x8BD1;&#x4E3A;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;
+   \--&gt; ops, err := evalop.Compile(scopeToEvalLookup{scope}, expr, scope.evalopFlags())
+   |       // ast&#x5206;&#x6790;&#x5F97;&#x5230;ast.Expr
+   |       \--&gt; t, err := parser.ParseExpr(expr)
+   |       // &#x5BF9;ast.Expr&#x8FDB;&#x884C;&#x7F16;&#x8BD1;
+   |       \--&gt; <span class="hljs-built_in">return</span> CompileAST(lookup, t, flags)
+   |               \--&gt; err := ctx.compileAST(t, <span class="hljs-literal">true</span>)
+   |                       \--&gt; `a+b` operator `+`: <span class="hljs-keyword">case</span> *ast.BinaryExpr: err := ctx.compileBinary(node.X, node.Y, sop, &amp;Binary{node})
+   |                               \--&gt; operand `a`: err := ctx.compileAST(a, <span class="hljs-literal">false</span>)
+   |                                       \--&gt; ctx.pushOp(&amp;PushIdent{node.Name})
+   |                                           \--&gt; ctx.ops = append(ctx.ops, op)
+   |                               \--&gt; operand `b`: err := ctx.compileAST(b, <span class="hljs-literal">false</span>)
+   |                                       \--&gt; ctx.pushOp(&amp;PushIdent{node.Name})
+   |                                           \--&gt; ctx.ops = append(ctx.ops, op)
+   |                                           \--&gt; ctx.ops = append(ctx.ops, op)
+   |                               \--&gt; operator `+`: ctx.pushOp(op) // `op` is `&amp;Binary{node}`
+   |               // `ctx.pushOp(op OP)`&#x653E;&#x5230;ctx.ops&#x91CC;&#x7684;&#x6BCF;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x90FD;&#x662F;OP&#x63A5;&#x53E3;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;
+   |               // OP&#x63A5;&#x53E3;&#x8981;&#x6C42;&#x5404;&#x4E2A;&#x64CD;&#x4F5C;&#x6C47;&#x62A5;&#x5404;&#x81EA;&#x7684;popstack&#x3001;pushstack&#x7684;&#x6B21;&#x6570;&#xFF0C;
+   |               // &#x5982;&#xFF1A;
+   |               // - pushIdent&#x5206;&#x522B;popstack 0&#x6B21;&#xFF0C;pushstack 1&#x6B21;&#xFF0C;&#x56E0;&#x4E3A;&#x4EC5;&#x9700;&#x8981;&#x5165;&#x6808;1&#x4E2A;&#x53C2;&#x6570;&#xFF1B;
+   |               // - Binary&#x5219;&#x662F;popstack 2&#x6B21;&#xFF0C;pushstack 1&#x6B21;&#xFF0C;&#x56E0;&#x4E3A;&#x4E8C;&#x5143;&#x8FD0;&#x7B97;&#x7B26;&#x8981;&#x901A;&#x8FC7;2&#x6B21;popstack&#x5F97;&#x5230;2&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x7ED3;&#x679C;&#x518D;&#x5165;&#x6808;1&#x6B21;&#xFF1B;
+   |               // &#x8FD9;&#x91CC;&#x7684;&#x6808;&#x6DF1;&#x5EA6;&#x68C0;&#x67E5;&#xFF0C;&#x5373;&#x6821;&#x9A8C;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x76EE;&#x6807;&#x6808;&#x6DF1;&#x5EA6;&#x662F;&#x5426;&#x7B26;&#x5408;&#x9884;&#x671F;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x7B26;&#x5408;&#x9884;&#x671F;&#x90A3;&#x8BBE;&#x8BA1;&#x7684;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#x6709;&#x95EE;&#x9898;&#x3002;
+   |               \--&gt; err = ctx.depthCheck(1)
+   |               \--&gt; <span class="hljs-built_in">return</span> ctx.ops
+   // step2: <span class="hljs-built_in">eval</span>Stack&#x6267;&#x884C;&#x6307;&#x4EE4;&#x9636;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x7684;&#x8FC7;&#x7A0B;
+   // step3: &#x4ECE;<span class="hljs-built_in">eval</span>Stack&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x6808;&#x9876;&#x83B7;&#x53D6;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;
+   ...
+</code></pre>
+<p>&#x6307;&#x4EE4;&#x6267;&#x884C;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x4E00;&#x4E2A;evalStack&#xFF08;&#x6808;&#x673A;&#x5668;&#xFF09;&#xFF0C;&#x5B83;&#x4F1A;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x524D;&#x9762;&#x7F16;&#x8BD1;expr&#x751F;&#x6210;&#x7684;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#xFF1A;</p>
+<pre><code class="lang-bash">// step2: <span class="hljs-built_in">eval</span>Stack&#x6267;&#x884C;&#x6307;&#x4EE4;&#x9636;&#x6BB5;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FC7;&#x7A0B;&#x5C31;&#x662F;&#x5BF9;&#x8868;&#x8FBE;&#x5F0F;&#x6C42;&#x503C;&#x7684;&#x8FC7;&#x7A0B;
+stack := &amp;<span class="hljs-built_in">eval</span>Stack{}
+stack.eval(scope, ops)
+    \--&gt; stack.ops = ops
+    \--&gt; stack.scope = scope
+    \--&gt; stack.spoff = ... / stack.bpoff = ... / stack.fboff = ... / stack.curthread = ...
+    \--&gt; stack.run()
+</code></pre>
+<p>OK, &#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x8FD9;&#x4E2A;&#x6808;&#x673A;&#x5668;&#x662F;&#x5982;&#x4F55;&#x6267;&#x884C;&#x6211;&#x4EEC;&#x7F16;&#x8BD1;&#x540E;&#x7684;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#x7684;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x7684;&#x4F8B;&#x5B50;&#x4E2D;&#xFF0C;stack.ops &#x5305;&#x542B;3&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x524D;&#x4E24;&#x4E2A;&#x64CD;&#x4F5C;&#x662F;&#x4E3A;&#x6700;&#x540E;&#x4E00;&#x4E2A;&#x64CD;&#x4F5C;&#x51C6;&#x5907;&#x64CD;&#x4F5C;&#x6570;&#x7684;&#x3002;</p>
+<ol>
+<li>&#x7B2C;1&#x4E2A;&#x64CD;&#x4F5C;&#x3001;&#x7B2C;2&#x4E2A;&#x64CD;&#x4F5C;&#x5206;&#x522B;&#x662F; pushIdent{a} &#x548C; pushIdent{b}, &#x5B83;&#x4EEC;&#x4F1A;&#x5728;&#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x4E2D;&#x7684;&#x5206;&#x652F; <code>case *evalop.PushIdent</code> &#x4E2D;&#x5904;&#x7406;&#x3002;
+&#x4ECE;&#x7ED3;&#x679C;&#x6765;&#x770B;&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x4E0D;&#x540C;&#x4E4B;&#x5904;&#x5728;&#x4E8E;&#xFF1A;<ul>
+<li>&#x53D8;&#x91CF; <code>a</code> &#x627E;&#x5230;2&#x4E2A;&#x5B9A;&#x4E49;, 1) block 8~12, line 9&#xFF1B; 2) main.main 3~13, line 4&#xFF0C;&#x6700;&#x7EC8;&#x786E;&#x5B9A;&#x5176;&#x5B9A;&#x4E49;&#x5E94;&#x4E3A;block 8~12, line 9&#x5904;&#x7684;&#x5B9A;&#x4E49;&#xFF1B;</li>
+<li>&#x53D8;&#x91CF; <code>b</code> &#x627E;&#x5230;1&#x4E2A;&#x5B9A;&#x4E49;, main.main 3~13, line 5&#xFF1B;</li>
+</ul>
+</li>
+<li>&#x7B2C;3&#x4E2A;&#x64CD;&#x4F5C;&#x662F; pushBinary{+}, &#x4E0B;&#x9762;&#x4EE3;&#x7801;&#x5206;&#x652F;&#x4E2D; <code>case *evalop.Binary</code> &#x4E2D;&#x5904;&#x7406;&#x3002;</li>
+</ol>
+<pre><code class="lang-bash">stack.run():
+    \--&gt; foreach op <span class="hljs-keyword">in</span> stack.ops:
+    |    <span class="hljs-keyword">for</span> stack.opidx &lt; len(stack.ops) &amp;&amp; stack.err == nil,
+    |       \--&gt; stack.executeOp()
+    |               \--&gt; switch op := ops[stack.opidx].(<span class="hljs-built_in">type</span>)
+                            <span class="hljs-keyword">case</span> *evalop.PushIdent: ... // pushIdent{a}, pushIdent{b}
+                            <span class="hljs-keyword">case</span> *evalop.Binary: ...    // pushBinary{+}
+</code></pre>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x6765;&#x770B;&#x770B;pushIdent{a}, pushIdent{b}&#x8FD9;&#x4E2A;&#x5904;&#x7406;&#x5206;&#x652F;&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7684;&#xFF1A;&#x4F18;&#x5148;&#x641C;&#x7D22;&#x51FD;&#x6570;&#x4F5C;&#x7528;&#x57DF;&#x4EE5;&#x53CA;&#x5185;&#x90E8;&#x4F5C;&#x7528;&#x57DF;&#x6709;&#x6CA1;&#x6709;&#x540C;&#x540D;&#x53D8;&#x91CF;&#x5B9A;&#x4E49;&#xFF0C;&#x627E;&#x4E0D;&#x5230;&#x518D;&#x4ECE;&#x5305;&#x7EA7;&#x522B;&#x4F5C;&#x7528;&#x57DF;&#x67E5;&#x627E;&#x3002;</p>
+<pre><code class="lang-bash">op = stack.ops[stack.opidx]
+switch op := ops[stack.opidx].(<span class="hljs-built_in">type</span>)
+...
+<span class="hljs-keyword">case</span> *evalop.PushIdent: 
+    stack.pushIdent(scope, op.Name)
+    |   \--&gt; step1: search `name` from <span class="hljs-keyword">function</span> scopes and inner blocks
+    |   |    found = stack.pushLocal(scope, name, 0)
+    |   |       \--&gt; vars, _ = scope.Locals(0, name)
+    |   |       |       \--&gt; vars0, _ := scope.simpleLocals(flags|rangeBodyFlags, wantedName)
+    |   |       |       |       \--&gt; dwarfTree, _ := scope.image().getDwarfTree(scope.Fn.offset)
+    |   |       |       |       \--&gt; varEntries := reader.Variables(dwarfTree, scope.PC, scope.Line, variablesFlags)
+    |   |       |       |       |       \--&gt; variablesInternal(nil, root, 0, pc, line, flags, <span class="hljs-literal">true</span>)
+    |   |       |       |       |       |        // search main.main scope and inner blocks
+    |   |       |       |       |       |        <span class="hljs-keyword">case</span> dwarf.TagLexDwarfBlock, dwarf.TagSubprogram:
+    |   |       |       |       |       |            \--&gt; <span class="hljs-keyword">if</span> (... || root.ContainsPC(pc) <span class="hljs-keyword">then</span>
+    |   |       |       |       |       |                 check each children of root.Children: 
+    |   |       |       |       |       |                 v = variablesInternal(v, child, depth+1, pc, line, flags, <span class="hljs-literal">false</span>)
+    |   |       |       |       |       \--&gt; <span class="hljs-built_in">return</span> varEntries
+    |   |       |       |       \--&gt; vars := make([]*Variable, 0, len(varEntries))vars []
+    |   |       |       |       \--&gt; foreach var <span class="hljs-keyword">in</span> varEntries
+    |   |       |       |       |       var, := extractVarInfoFromEntry(scope.target, scope.B<span class="hljs-keyword">in</span>Info, scope.image(), ......)
+    |   |       |       |       |       |    \--&gt; &#x7531;DIE.DW_ATTR_<span class="hljs-built_in">type</span>&#x8BFB;&#x53D6;&#x7C7B;&#x578B;&#x4FE1;&#x606F;, &#x7531;DIE.DW_ATTR_location&#x8BA1;&#x7B97;&#x5730;&#x5740;&#xFF08;DWARF&#x5B9A;&#x4E49;&#x7684;&#x6808;&#x5B57;&#x8282;&#x7801;&#x6307;&#x4EE4;&#xFF09;
+    |   |       |       |       |       |    |    n, t, _ := <span class="hljs-built_in">read</span>VarEntry(entry, image)
+    |   |       |       |       |       |    |    addr, _, _, := bi.Location(entry, dwarf.AttrLocation, regs.PC(), regs, mem)
+    |   |       |       |       |       |    \--&gt; &#x521B;&#x5EFA;&#x65B0;&#x53D8;&#x91CF;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x7C7B;&#x578B;&#x4FE1;&#x606F;&#x3001;&#x6570;&#x636E;&#x5730;&#x5740;
+    |   |       |       |       |       |    |    v := newVariable(n, uint64(addr), t, bi, mem)
+    |   |       |       |       |       |    |    <span class="hljs-built_in">return</span> v
+    |   |       |       |       |       vars = append(vars, var)
+    |   |       |       |       \--&gt; &#x6309;&#x5B9A;&#x4E49;&#x4F4D;&#x7F6E;&#xFF08;&#x6E90;&#x7801;&#x4E0A;&#xFF09;&#x8FDB;&#x884C;&#x6392;&#x5E8F;&#x3001;&#x5D4C;&#x5957;&#x6DF1;&#x5EA6;&#x8FDB;&#x884C;&#x6392;&#x5E8F;
+    |   |       |       |       |    sort.Stable(&amp;variablesByDepthAndDeclLine{vars, depths})
+    |   |       |       |       \--&gt; &#x5C06;&#x88AB;shadow&#x7684;&#x5916;&#x90E8;&#x4F5C;&#x7528;&#x57DF;&#x7684;&#x53D8;&#x91CF;&#x6807;&#x8BC6;&#x4E0B;
+    |   |       |       |       |    mark vars `flags|=VariableShadowed` <span class="hljs-keyword">if</span> shadowed
+    |   |       |       |       \--&gt; <span class="hljs-built_in">return</span> vars
+    |   |       |       \--&gt; only keep the lastseen one <span class="hljs-keyword">in</span> vars0
+    |   |       |       |    that<span class="hljs-string">&apos;s the one defined in expected scope,
+    |   |       \--&gt; foreach var in vars
+    |   |       |       found := varflags&amp;VariableShadowed == 0
+    |   |       |        if found then 
+    |   |       |           stack.push(vars[i]) 
+    |   |       |               \--&gt; stack.stack = append(stack.stack, v)
+    |   |       |           break
+    |   |       \--&gt; return found
+    |   |      
+    |   \--&gt; step2: if `found`, then return vars
+    |   |            
+    |   \--&gt; step3: if `!found`, then find in globals
+    |            v, err := scope.findGlobal(scope.Fn.PackageName(), name)
+    |                \--&gt; search pacakge.variable, if found then return
+    |                \--&gt; search package.functions, if found then returns
+    |                \--&gt; search package.constants, if found then returns
+</span></code></pre>
+<p>&#x7B2C;1&#x3001;2&#x4E2A;&#x64CD;&#x4F5C;&#x6267;&#x884C;&#x5B8C;&#x540E;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x64CD;&#x4F5C;&#x6570;&#x6808;stack.stack&#x7684;&#x5165;&#x6808;&#x64CD;&#x4F5C;&#xFF0C;&#x5165;&#x6808;&#x65F6;&#x7684;&#x53D8;&#x91CF;Variable.Type+Variable.Location&#x90FD;&#x5DF2;&#x7ECF;&#x6839;&#x636E;DWARF&#x4FE1;&#x606F;&#x521D;&#x59CB;&#x5316;&#x8FC7;&#x4E86;&#xFF0C;&#x53EA;&#x662F;Variable.Value&#x8FD8;&#x6CA1;&#x6709;&#x52A0;&#x8F7D;&#x3002;&#x5728;evalStack&#x8FD9;&#x4E2A;&#x6808;&#x673A;&#x5668;&#x53D6;&#x51FA;&#x4E8C;&#x5143;&#x8FD0;&#x7B97;&#x7B26;&#x201C;Binary{+}&quot;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x5C1D;&#x8BD5;&#x4ECE;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x83B7;&#x53D6;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x8FD9;&#x4E2A;&#x9636;&#x6BB5;&#xFF0C;&#x4F1A;&#x4ECE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x4E2D;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x5230;Variable.Value&#xFF0C;&#x7136;&#x540E;&#x518D;&#x8FDB;&#x884C;&#x57FA;&#x4E8E;&#x8FD0;&#x7B97;&#x7B26;&#x903B;&#x8F91;&#x7684;&#x52A0;&#x6CD5;&#x8BA1;&#x7B97;&#x3002;</p>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x4E0B;Binary{+}&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF1A;</p>
+<pre><code class="lang-bash">op = stack.ops[stack.opidx]
+switch op := ops[stack.opidx].(<span class="hljs-built_in">type</span>)
+...
+<span class="hljs-keyword">case</span> *evalop.Binary:
+    scope.evalBinary(op, stack)
+    \--&gt; step1: &#x4ECE;&#x64CD;&#x4F5C;&#x6570;&#x6808;stack.stack&#x83B7;&#x53D6;&#x8FD0;&#x7B97;&#x7B26;&#x7684;&#x5DE6;&#x53F3;&#x64CD;&#x4F5C;&#x6570;
+    |    yv := stack.pop(); 
+    |    |  \--&gt; v := s.stack[len(s.stack)-1]
+    |    |  \--&gt; s.stack = s.stack[:len(s.stack)-1]
+    |    |  \--&gt; <span class="hljs-built_in">return</span> v
+    |    xv := stack.pop(): &#x7565;
+    \--&gt; step2: &#x6839;&#x636E;Variable&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x5730;&#x5740;&#x4FE1;&#xFF0C;&#x52A0;&#x8F7D;&#x5176;&#x5728;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x6570;&#x636E;
+    |    xv.loadValue(...); 
+    |    |  \--&gt; v.loadValueInternal(0, cfg)
+    |    |          \--&gt; <span class="hljs-keyword">if</span> v.Kind == reflect.Int, ..., reflect.Int64 <span class="hljs-keyword">then</span>
+    |    |          |    var val int64
+    |    |          |    val, v.Unreadable = <span class="hljs-built_in">read</span>IntRaw(v.mem, v.Addr, v.RealType.(*godwarf.IntType).ByteSize)
+    |    |          |       \--&gt; val := make([]byte, int(size))
+    |    |          |       \--&gt; _, err := mem.ReadMemory(val, addr)
+    |    |          |       |       \--&gt; n, _ = processVmRead(t.ID, uintptr(addr), data)
+    |    |          |       |            uses syscall SYS_PROCESS_VM_READV, maybe failed
+    |    |          |       |       \-- <span class="hljs-keyword">if</span> n == 0 <span class="hljs-keyword">then</span> use syscall ptrace(PTRACE_PEEKDATA, ...)
+    |    |          |       |            t.dbp.execPtraceFunc(<span class="hljs-function"><span class="hljs-title">func</span></span>() { n, err = sys.PtracePeekData(t.ID, uintptr(addr), data) })
+    |    |          |       \--&gt; n = int64(binary.LittleEndian.Uint64(val))
+    |    |          |       \--&gt; <span class="hljs-built_in">return</span> n
+    |    |          |    v.Value = constant.MakeInt64(val)
+    |    yv.loadValue(...): &#x7565;
+    \--&gt; step3: &#x6821;&#x9A8C;&#x8FD0;&#x7B97;&#x7B26;&#x5DE6;&#x53F3;&#x64CD;&#x4F5C;&#x6570;&#x7C7B;&#x578B;&#x662F;&#x5426;&#x4E00;&#x81F4;
+         typ, err := negotiateType(node.Op, xv, yv)
+    \--&gt; step4: &#x6784;&#x9020;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;
+    |    rc, err := constantBinaryOp(op, xv.Value, yv.Value)
+    |    |  \--&gt; <span class="hljs-keyword">if</span> op isn<span class="hljs-string">&apos;t token.SHL, token.SHR then
+    |    |   |   r = constant.BinaryOp(x, op, y)
+    |    |   |      \--&gt; a := int64(x), b := int64(y)
+    |    |   |      \--&gt; if op == token.Add then c = a+b
+    |    |   |      \--&gt; return int64Val(c)
+    |    |  \--&gt; return r
+    \--&gt; step5:&#x7ED3;&#x679C;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x5E94;&#x8BE5;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#x76F8;&#x540C;&#xFF0C;&#x6784;&#x9020;&#x4E00;&#x4E2A;&#x65B0;&#x7ED3;&#x679C;&#x53D8;&#x91CF;
+    |    r := xv.newVariable(&quot;&quot;, 0, typ, scope.Mem)
+    |    r.Value = rc
+    \--&gt; step6: &#x786E;&#x4FDD;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x7B26;&#x5408;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#x7684;&#x9650;&#x5236;, see: convertInt&#x4E2D;&#x7B26;&#x53F7;&#x4F4D;&#x6269;&#x5C55;&#x3001;&#x622A;&#x65AD;&#x5904;&#x7406;&#x903B;&#x8F91;
+    |     switch r.Kind
+    |        case reflect.Int, reflect.Int8, reflect.Int16, reflect.Int32, reflect.Int64:
+    |            \--&gt; n, _ := constant.Int64Val(r.Value)
+    |             \--&gt; r.Value = constant.MakeInt64(int64(convertInt(uint64(n), true, typ.Size())))
+    \--&gt; step7: &#x6700;&#x540E;&#xFF0C;&#x5C06;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x653E;&#x5165;&#x64CD;&#x4F5C;&#x6570;&#x6808;
+         stack.push(r)
+            \--&gt; s.stack = append(s.stack, v)
+</span></code></pre>
+<p>&#x5DF2;&#x7ECF;&#x8BA1;&#x7B97;&#x5B8C;&#x6210;&#xFF0C;&#x4E14;&#x5DF2;&#x7ECF;&#x5C06;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x53D8;&#x91CF;&#x5165;&#x6808;&#xFF0C;&#x6B64;&#x7ED3;&#x679C;&#x53D8;&#x91CF;&#x7684;Variable.Value&#x5DF2;&#x7ECF;&#x6709;&#x53EA;&#x503C;&#x4E86;&#xFF0C;&#x4E14;&#x7ED3;&#x679C;&#x53D8;&#x91CF; <code>Variable.Addr==0 &amp;&amp; Variable.Base==0</code> &#x3002;OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x8BFB;&#x53D6;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;</p>
+<pre><code class="lang-bash">step1: &#x6808;&#x673A;&#x5668;&#x7684;&#x64CD;&#x4F5C;&#x6570;&#x6808;&#x6808;&#x9876;&#x5C31;&#x662F;&#x6700;&#x7EC8;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#xFF0C;&#x53D6;&#x51FA;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#xFF0C;&#x8FD9;&#x4E2A;&#x53D8;&#x91CF;&#x662F;&#x4E2A;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#xFF0C;ev.loaded=<span class="hljs-literal">true</span>&#xFF0C;&#x4E0D;&#x7528;&#x8BFB;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x8FDB;&#x884C;&#x52A0;&#x8F7D;
+ev, err := stack.result(&amp;cfg)
+    \--&gt; r = stack.peek()
+    \--&gt; r.loadValue(*cfg)
+    |       \--&gt; v.loadValueInternal(0, cfg)
+    |               // r&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x53D8;&#x91CF;&#xFF0C;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x8FDB;&#x7A0B;&#x6784;&#x9020;&#x51FA;&#x6765;&#x7684;&#xFF0C;r&#x7684;&#x7ED3;&#x679C;&#x4E0D;&#x5B58;&#x50A8;&#x5728;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x4E2D;,
+    |               // &#x6240;&#x4EE5;&#x8FD9;&#x91CC; `v.Addr == 0 &amp;&amp; v.Base == 0` &#x6210;&#x7ACB;&#xFF0C;&#x65E0;&#x9700;&#x4ECE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x4E2D;&#x52A0;&#x8F7D;&#xFF0C;&#x76F4;&#x63A5;&#x8FD4;&#x56DE; 
+    |               \--&gt; <span class="hljs-keyword">if</span> v.Unreadable != nil || v.loaded || (v.Addr == 0 &amp;&amp; v.Base == 0) <span class="hljs-keyword">then</span> <span class="hljs-built_in">return</span>
+    \--&gt; <span class="hljs-built_in">return</span> r
+step2: &#x8FD9;&#x6B21;loadValue&#x5BF9;&#x8FD9;&#x91CC;&#x7684;&#x573A;&#x666F;&#x6765;&#x8BF4;&#xFF0C;&#x6709;&#x70B9;&#x591A;&#x4F59;&#xFF0C;&#x524D;&#x9762;stack.peek()&#x8FC7;&#x7A0B;&#x5DF2;&#x7ECF;loadValue&#x8FC7;&#x4E86;&#x3002;
+ev.loadValue(cfg)
+</code></pre>
+<p>&#x6700;&#x540E;&#xFF0C;&#x7531;&#x4E8E;&#x662F;&#x524D;&#x540E;&#x7AEF;&#x5206;&#x79BB;&#x5F0F;&#x67B6;&#x6784;&#xFF0C;&#x53EA;&#x6709;&#x8C03;&#x8BD5;&#x5668;&#x540E;&#x7AEF;&#x6240;&#x5728;&#x8FDB;&#x7A0B;&#x4E0A;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#xFF0C;&#x9700;&#x8981;&#x544A;&#x77E5;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#xFF0C;&#x524D;&#x7AEF;&#x624D;&#x80FD;&#x6B63;&#x5E38;&#x5C55;&#x793A;&#x3002;</p>
+<pre><code class="lang-bash">func (s *RPCServer) Eval(arg EvalIn, out *EvalOut) error
+    \--&gt; v, err := s.debugger.EvalVariableInScope(arg.Scope.GoroutineID, arg.Scope.Frame, arg.Scope.DeferredCall, arg.Expr, pcfg)
+    \--&gt; &#x5C06;Eval&#x7684;&#x7ED3;&#x679C;proc.Variable&#x8F6C;&#x6362;&#x6210;&#x5BA2;&#x6237;&#x7AEF;&#x53EF;&#x8BFB;&#x7684;&#x4FE1;&#x606F;api.Variable
+    |    out.Variable = api.ConvertVar(v)
+    |       \--&gt; r := Variable{Addr, Name, Kind, Len, Cap, ...}
+    |       \--&gt; r.Type = PrettyTypeName(v.DwarfType)
+    |                     \--&gt; godwarf.Type.String(), &#x8FD9;&#x91CC;&#x5C31;&#x662F;int
+    |       \--&gt; r.Value = VariableValueAsString(v), &#x8FD9;&#x91CC;&#x5C31;&#x662F;a+b&#x7684;&#x7ED3;&#x679C;&#x5B57;&#x7B26;&#x4E32;<span class="hljs-string">&quot;300&quot;</span>
+    |       \--&gt; <span class="hljs-built_in">return</span> &amp;r
+</code></pre>
+<p>&#x5BA2;&#x6237;&#x7AEF;&#x6536;&#x5230;&#x54CD;&#x5E94;&#x540E;&#xFF0C;&#x5F97;&#x77E5;&#x8FD9;&#x4E2A;&#x7ED3;&#x679C;&#x7C7B;&#x578B;&#x662F;int&#xFF0C;&#x5E76;&#x4E14;&#x5F53;&#x524D;&#x7ED3;&#x679C;&#x503C;&#x662F;&quot;300&quot;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x7ED3;&#x679C;&#x8F6C;&#x6362;&#x540E;&#xFF0C;&#x8F93;&#x51FA;&#x5230;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7A97;&#x53E3;&#x4E86;&#x3002;</p>
+<h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
+<p>&#x7565;</p>
+<h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
+<p>&#x81F3;&#x6B64;&#x6574;&#x4E2A; <code>whatis</code> &#x7B49;&#x547D;&#x4EE4;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#x8BA1;&#x7B97;&#x8FC7;&#x7A0B;&#x5C31;&#x6267;&#x884C;&#x7ED3;&#x675F;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x53EA;&#x4ECB;&#x7ECD;&#x4E86; <code>a+b</code> &#x8FD9;&#x4E48;&#x7B80;&#x5355;&#x7684;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x5C31;&#x82B1;&#x53BB;&#x4E86;&#x5927;&#x91CF;&#x7684;&#x7BC7;&#x5E45;&#xFF0C;&#x4F46;&#x662F;&#x597D;&#x7684;&#x4E00;&#x70B9;&#x662F;&#xFF0C;&#x6211;&#x4EEC;&#x628A;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x4E2D;&#x6240;&#x6709;&#x91CD;&#x8981;&#x7684;&#x7EC6;&#x8282;&#x90FD;&#x7ED9;&#x5927;&#x5BB6;&#x4ECB;&#x7ECD;&#x5230;&#x4E86;&#x3002;&#x5305;&#x62EC;AST&#x89E3;&#x6790;&#xFF0C;&#x7F16;&#x8BD1;ast.Expr&#x4E3A;&#x4E00;&#x7CFB;&#x5217;&#x64CD;&#x4F5C;&#x5E8F;&#x5217;&#xFF0C;&#x4EE5;&#x53CA;evalStack&#x8FD9;&#x4E2A;&#x6808;&#x673A;&#x5668;&#x5982;&#x4F55;&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x5E8F;&#x5217;&#xFF0C;&#x5E76;&#x5F97;&#x5230;&#x8BA1;&#x7B97;&#x7ED3;&#x679C;&#x3002;&#x6700;&#x540E;&#x6211;&#x4EEC;&#x8FD8;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x5C06;&#x76EE;&#x6807;&#x5E73;&#x53F0;&#x6570;&#x636E;&#x7ED3;&#x6784;&#xFF0C;&#x8F6C;&#x6362;&#x4E3A;&#x8C03;&#x8BD5;&#x5668;&#x524D;&#x7AEF;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x7684;&#x7ED3;&#x6784;&#x6837;&#x5F0F;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60A8;&#x5BF9;&#x5176;&#x4ED6;&#x8868;&#x8FBE;&#x5F0F;&#x7C7B;&#x578B;&#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x7684;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x53BB;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#xFF0C;&#x6216;&#x8005;&#x6839;&#x636E;&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x7684;&#x6E90;&#x4EE3;&#x7801;&#x5173;&#x952E;&#x8DEF;&#x5F84;&#xFF0C;&#x53BB;&#x9605;&#x8BFB;&#x76F8;&#x5173;&#x6E90;&#x7801;&#x3002;OK&#xFF0C;&#x672C;&#x6587;&#x5C31;&#x5230;&#x8FD9;&#x91CC;&#x4E86;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
+<ol>
+<li>&#x540E;&#x7F00;&#x8868;&#x8FBE;&#x5F0F;, <a href="https://en.wikipedia.org/wiki/Reverse_Polish_notation" target="_blank">https://en.wikipedia.org/wiki/Reverse_Polish_notation</a></li>
+<li>Go&#x8BED;&#x8A00;&#x6587;&#x6CD5;, <a href="https://go.dev/ref/spec" target="_blank">https://go.dev/ref/spec</a></li>
+<li>AST Explorer, <a href="https://astexplorer.net/" target="_blank">https://astexplorer.net/</a></li>
+<li>dwarfviewer, <a href="https://github.com/hitzhangjie/dwarfviewer" target="_blank">https://github.com/hitzhangjie/dwarfviewer</a></li>
+</ol>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="17-tinydbg_trace.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.17 tinydbg trace">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="20-how_locspec_works.html" class="navigation navigation-next " aria-label="Next page: 9.2.20 locspec解析与地址转换">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"9.2.19 evalexpr表达式计算引擎","level":"1.9.2.11","depth":3,"next":{"title":"9.2.20 locspec解析与地址转换","level":"1.9.2.12","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/20-how_locspec_works.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/20-how_locspec_works.md","articles":[]},"previous":{"title":"9.2.17 tinydbg trace","level":"1.9.2.10","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/19-how_evalexpr_works.md","mtime":"2025-06-22T17:12:54.351Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-22T17:16:14.862Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

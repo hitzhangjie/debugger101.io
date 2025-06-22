@@ -64,7 +64,7 @@
     <link rel="next" href="22-debug_breakpoint.html" />
     
     
-    <link rel="prev" href="17-tinydbg_trace.html" />
+    <link rel="prev" href="20-how_locspec_works.html" />
     
 
     </head>
@@ -1247,7 +1247,20 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.11" data-path="21-debug_disassemble.html">
+        <li class="chapter " data-level="1.9.2.11" data-path="20-how_locspec_works.html">
+            
+                <a href="20-how_locspec_works.html">
+            
+                    
+                    9.2.20 locspec解析与地址转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.9.2.12" data-path="21-debug_disassemble.html">
             
                 <a href="21-debug_disassemble.html">
             
@@ -1260,7 +1273,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.12" data-path="22-debug_breakpoint.html">
+        <li class="chapter " data-level="1.9.2.13" data-path="22-debug_breakpoint.html">
             
                 <a href="22-debug_breakpoint.html">
             
@@ -1273,25 +1286,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.13" data-path="23-debug_condition.html">
+        <li class="chapter " data-level="1.9.2.14" data-path="23-debug_condition.html">
             
                 <a href="23-debug_condition.html">
             
                     
                     9.2.23 tinydbg> condition
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2.14" data-path="24-how_locspec_works.html">
-            
-                <a href="24-how_locspec_works.html">
-            
-                    
-                    9.2.24 locspec解析与地址转换
             
                 </a>
             
@@ -2041,7 +2041,7 @@ If no argument is specified the <span class="hljs-keyword">function</span> being
 <li>&#x518D;&#x6BD4;&#x5982;&#x5982;&#x679C;&#x662F; <code>FuncLocationSpec</code> &#x5C31;&#x9700;&#x8981;&#x6839;&#x636E;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E2D;&#x7684;FDE&#x4FE1;&#x606F;&#xFF0C;&#x518D;&#x627E;&#x5230;&#x8BE5;&#x51FD;&#x6570;&#x6240;&#x5305;&#x542B;&#x6307;&#x4EE4;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;</li>
 <li>...</li>
 </ul>
-<p>&#x6240;&#x4EE5;&#x4F60;&#x770B;&#xFF0C;&#x4E0D;&#x540C;&#x7684;locspec LocationSpec&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x5404;&#x81EA;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8F6C;&#x6362;&#x6210;&#x5185;&#x5B58;&#x5730;&#x5740;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x5C0F;&#x8282; <a href="24-how_locspec_works.html">24-locspec&#x89E3;&#x6790;&#x4E0E;&#x5730;&#x5740;&#x8F6C;&#x6362;</a> &#x4ECB;&#x7ECD;&#x4E0D;&#x540C;locspec&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5411;&#x5185;&#x5B58;&#x5730;&#x5740;&#x8F6C;&#x6362;&#x7684;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x8FD8;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x4E86;&#x5F88;&#x591A;&#x6838;&#x5FC3;DWARF&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x4F60;&#x770B;&#xFF0C;&#x4E0D;&#x540C;&#x7684;locspec LocationSpec&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x5404;&#x81EA;&#x6709;&#x4E0D;&#x540C;&#x7684;&#x8F6C;&#x6362;&#x6210;&#x5185;&#x5B58;&#x5730;&#x5740;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x5C0F;&#x8282; <a href="20-how_locspec_works.html">20-locspec&#x89E3;&#x6790;&#x4E0E;&#x5730;&#x5740;&#x8F6C;&#x6362;</a> &#x4ECB;&#x7ECD;&#x4E0D;&#x540C;locspec&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5411;&#x5185;&#x5B58;&#x5730;&#x5740;&#x8F6C;&#x6362;&#x7684;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x8FD8;&#x662F;&#x5F88;&#x91CD;&#x8981;&#x7684;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x4E86;&#x5F88;&#x591A;&#x6838;&#x5FC3;DWARF&#x6570;&#x636E;&#x7ED3;&#x6784;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
 <p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x4E0B;&#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
 <h4 id="client&#x7AEF;&#x5B9E;&#x73B0;">client&#x7AEF;&#x5B9E;&#x73B0;</h4>
@@ -2175,6 +2175,7 @@ DisassembleRange(scope api.EvalScope, startPC, endPC <span class="hljs-keyword">
 <li><code>print &lt;expr&gt;</code>&#xFF0C;&#x6253;&#x5370;&#x8868;&#x8FBE;&#x5F0F;&#x7684;&#x503C;&#xFF0C;&#x8868;&#x8FBE;&#x5F0F;&#x4E2D;&#x53EF;&#x80FD;&#x5305;&#x542B;&#x53D8;&#x91CF;&#x540D;&#xFF0C;&#x76F8;&#x540C;&#x53D8;&#x91CF;&#x540D;&#x53EF;&#x80FD;&#x5728;&#x4E0D;&#x540C;&#x51FD;&#x6570;&#x4E2D;&#x3001;&#x5168;&#x5C40;&#x51FD;&#x6570;&#x4E2D;&#x5B9A;&#x4E49;&#xFF0C;&#x81EA;&#x7136;&#x9700;&#x8981;&#x77E5;&#x9053;&#x662F;&#x54EA;&#x4E2A;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x8FD9;&#x4E2A;&#x4F5C;&#x7528;&#x57DF;&#x6765;&#x8FDB;&#x4E00;&#x6B65;&#x786E;&#x5B9A;&#x5B9A;&#x4E49;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x8FDB;&#x800C;&#x786E;&#x5B9A;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x3001;&#x5B58;&#x50A8;&#x4F4D;&#x7F6E;&#xFF1B;</li>
 <li>etc.</li>
 </ul>
+<p>see: tinydbg/service/api/types.go: api.EvalScope</p>
 <pre><code class="lang-go"><span class="hljs-comment">// EvalScope is the scope a command should</span>
 <span class="hljs-comment">// be evaluated in. Describes the goroutine and frame number.</span>
 <span class="hljs-keyword">type</span> EvalScope <span class="hljs-keyword">struct</span> {
@@ -2254,7 +2255,7 @@ DisassembleRange(scope api.EvalScope, startPC, endPC <span class="hljs-keyword">
 <p>OK&#xFF0C;&#x5BA2;&#x6237;&#x7AEF;&#x8C03;&#x7528;&#x7684;RPC&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x5B8C;&#x4E86;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4ECB;&#x7ECD;&#x4E0B;&#x670D;&#x52A1;&#x5668;&#x4FA7;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x4E0A;&#x8FF0;RPC&#x64CD;&#x4F5C;&#x7684;&#x3002;</p>
 <h4 id="server&#x7AEF;&#x5B9E;&#x73B0;">server&#x7AEF;&#x5B9E;&#x73B0;</h4>
 <p><strong>FindLocation</strong>:</p>
-<p>server&#x7AEF;&#x7684;FindLocation&#x5B9E;&#x73B0;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x524D;&#x9762;&#x54B1;&#x4EEC;&#x4ECB;&#x7ECD;&#x8FC7;&#x7684;locspec&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x8F93;&#x5165;&#x7684;locspec&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x89E3;&#x6790;&#x6210;&#x5177;&#x4F53;&#x7684;LocationSpec&#x5B9E;&#x73B0;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x7528;&#x5B83;&#x6765;&#x6267;&#x884C;&#x67E5;&#x627E; <code>LocationSpec.Find(....)</code>&#xFF0C;&#x62FF;&#x5230;&#x627E;&#x5230;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x4FE1;&#x606F;[]*api.Location&#x3002;locspec&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x4E5F;&#x4E3E;&#x4E86;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;LocationSpec&#x5B9E;&#x73B0;&#x662F;&#x5982;&#x4F55;&#x6765;&#x67E5;&#x627E;&#x5BF9;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x7684;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x6211;&#x4EEC;&#x5C06;&#x5728; <a href="24-how_locspec_works.html">24-locspec&#x89E3;&#x6790;&#x4E0E;&#x5730;&#x5740;&#x8F6C;&#x6362;</a> &#x8FDB;&#x884C;&#x60F3;&#x4ECB;&#x7ECD;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8BDD;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5148;&#x7779;&#x4E3A;&#x5FEB;&#x3002;</p>
+<p>server&#x7AEF;&#x7684;FindLocation&#x5B9E;&#x73B0;&#xFF0C;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x524D;&#x9762;&#x54B1;&#x4EEC;&#x4ECB;&#x7ECD;&#x8FC7;&#x7684;locspec&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x5BA2;&#x6237;&#x7AEF;&#x8F93;&#x5165;&#x7684;locspec&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x89E3;&#x6790;&#x6210;&#x5177;&#x4F53;&#x7684;LocationSpec&#x5B9E;&#x73B0;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x7528;&#x5B83;&#x6765;&#x6267;&#x884C;&#x67E5;&#x627E; <code>LocationSpec.Find(....)</code>&#xFF0C;&#x62FF;&#x5230;&#x627E;&#x5230;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x4FE1;&#x606F;[]*api.Location&#x3002;locspec&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x4E5F;&#x4E3E;&#x4E86;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;LocationSpec&#x5B9E;&#x73B0;&#x662F;&#x5982;&#x4F55;&#x6765;&#x67E5;&#x627E;&#x5BF9;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x7684;&#x3002;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x6211;&#x4EEC;&#x5C06;&#x5728; <a href="20-how_locspec_works.html">20-locspec&#x89E3;&#x6790;&#x4E0E;&#x5730;&#x5740;&#x8F6C;&#x6362;</a> &#x8FDB;&#x884C;&#x60F3;&#x4ECB;&#x7ECD;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8BDD;&#xFF0C;&#x4F60;&#x4E5F;&#x53EF;&#x4EE5;&#x5148;&#x7779;&#x4E3A;&#x5FEB;&#x3002;</p>
 <pre><code class="lang-go"><span class="hljs-comment">// FindLocation returns concrete location information described by a location expression.</span>
 <span class="hljs-comment">//</span>
 <span class="hljs-comment">//    loc ::= &lt;filename&gt;:&lt;line&gt; | &lt;function&gt;[:&lt;line&gt;] | /&lt;regex&gt;/ | (+|-)&lt;offset&gt; | &lt;line&gt; | *&lt;address&gt;</span>
@@ -2629,7 +2630,7 @@ DisassembleRange(scope api.EvalScope, startPC, endPC <span class="hljs-keyword">
 
             
                 
-                <a href="17-tinydbg_trace.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.17 tinydbg trace">
+                <a href="20-how_locspec_works.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.20 locspec解析与地址转换">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2645,7 +2646,7 @@ DisassembleRange(scope api.EvalScope, startPC, endPC <span class="hljs-keyword">
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.21 tinydbg> disass","level":"1.9.2.11","depth":3,"next":{"title":"9.2.22 tinydbg> breakpoint","level":"1.9.2.12","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint.md","articles":[]},"previous":{"title":"9.2.17 tinydbg trace","level":"1.9.2.10","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/21-debug_disassemble.md","mtime":"2025-06-20T11:54:15.537Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-20T11:56:45.738Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.21 tinydbg> disass","level":"1.9.2.12","depth":3,"next":{"title":"9.2.22 tinydbg> breakpoint","level":"1.9.2.13","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint.md","articles":[]},"previous":{"title":"9.2.20 locspec解析与地址转换","level":"1.9.2.11","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/20-how_locspec_works.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/20-how_locspec_works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/21-debug_disassemble.md","mtime":"2025-06-22T17:11:57.005Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-06-22T17:13:08.198Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

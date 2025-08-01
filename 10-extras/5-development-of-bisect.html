@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
                 
@@ -25,11 +25,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -1948,7 +1948,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="hash-based-bisect-debugging-in-compilers-and-runtimes">Hash-Based Bisect Debugging in Compilers and Runtimes</h2>
+                                <p><style>
+body {
+  counter-reset: h1 116;
+}
+</style></p>
+<h2 id="hash-based-bisect-debugging-in-compilers-and-runtimes">Hash-Based Bisect Debugging in Compilers and Runtimes</h2>
 <p>&#x3010;&#x6CE8;&#x3011;&#x672C;&#x6587;&#x7FFB;&#x8BD1;&#x81EA; Russ Cox &#x4E8E;2024-07-18 &#x53D1;&#x8868;&#x7684;&#x4E00;&#x7BC7;&#x6587;&#x7AE0;<a href="https://research.swtch.com/bisect" target="_blank">&#x300A;Hash-Based Bisect Debugging in Compilers and Runtimes&#x300B;</a>&#x3002;&#x4E3A;&#x4E86;&#x672C;&#x7AE0;bisect reduce&#x8C03;&#x8BD5;&#x6280;&#x672F;&#x7684;&#x5185;&#x5BB9;&#x5B8C;&#x6574;&#x6027;&#xFF0C;&#x7279;&#x522B;&#x5F15;&#x7528;&#x5E76;&#x7FFB;&#x8BD1;&#x8BE5;&#x6587;&#x7AE0;&#x6765;&#x4ECB;&#x7ECD;&#x4E0B;bisect reduce&#x7684;&#x7B97;&#x6CD5;&#x903B;&#x8F91;&#x3002;</p>
 <h3 id="setting-the-stage"><a href="https://research.swtch.com/bisect#setting_the_stage" target="_blank">Setting the Stage</a></h3>
 <p>Does this sound familar? You make a change to a library to optimize its performance or clean up technical debt or fix a bug, only to get a bug report: some very large, incomprehensibly opaque test is now failing. Or you add a new compiler optimization with a similar result. Now you have a major debugging job in an unfamiliar code base.</p>
@@ -2443,7 +2448,7 @@ exit 1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"10.5 Bisect发展历程","level":"1.10.5","depth":2,"next":{"title":"10.6 eBPF发展历程","level":"1.10.6","depth":2,"path":"10-extras/6-development-of-ebpf.md","ref":"10-extras/6-development-of-ebpf.md","articles":[]},"previous":{"title":"10.4 跟踪系统发展历程","level":"1.10.4","depth":2,"path":"10-extras/4-development-of-tracing.md","ref":"10-extras/4-development-of-tracing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github","splitter"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/5-development-of-bisect.md","mtime":"2025-08-01T14:04:31.501Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T14:05:01.365Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10.5 Bisect发展历程","level":"1.10.5","depth":2,"next":{"title":"10.6 eBPF发展历程","level":"1.10.6","depth":2,"path":"10-extras/6-development-of-ebpf.md","ref":"10-extras/6-development-of-ebpf.md","articles":[]},"previous":{"title":"10.4 跟踪系统发展历程","level":"1.10.4","depth":2,"path":"10-extras/4-development-of-tracing.md","ref":"10-extras/4-development-of-tracing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/5-development-of-bisect.md","mtime":"2025-08-01T17:09:49.412Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T17:10:21.119Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2453,19 +2458,19 @@ exit 1
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
-        
-    
-        
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
         
     
         
@@ -2473,19 +2478,11 @@ exit 1
         
     
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
         
     
         

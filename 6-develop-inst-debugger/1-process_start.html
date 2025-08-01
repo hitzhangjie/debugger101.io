@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-md-toc/style.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
                 
@@ -25,11 +25,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -1948,7 +1948,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x542F;&#x52A8;&#x8FDB;&#x7A0B;">&#x542F;&#x52A8;&#x8FDB;&#x7A0B;</h2>
+                                <p><style>
+body {
+  counter-reset: h1 10;
+}
+</style></p>
+<h2 id="&#x542F;&#x52A8;&#x8FDB;&#x7A0B;">&#x542F;&#x52A8;&#x8FDB;&#x7A0B;</h2>
 <h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-exec-prog">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg exec &lt;prog&gt;</code></h3>
 <p>&#x8C03;&#x8BD5;&#x5668;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x9996;&#x5148;&#x5F97;&#x786E;&#x5B9A;&#x8981;&#x8C03;&#x8BD5;&#x7684;&#x76EE;&#x6807;&#x3002;&#x5B83;&#x53EF;&#x80FD;&#x662F;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5B9E;&#x4F8B;&#xFF0C;&#x6216;&#x8005;&#x662F;&#x4E00;&#x4E2A;core&#x6587;&#x4EF6;&#x3002;&#x4E3A;&#x4E86;&#x4FBF;&#x5229;&#x6027;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4E5F;&#x53EF;&#x4EE5;&#x4EE3;&#x4E3A;&#x6267;&#x884C;&#x7F16;&#x8BD1;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;dlv debug&#x7684;&#x76EE;&#x6807;&#x53EF;&#x4EE5;&#x662F;&#x4E00;&#x4E2A;go main module&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x5148;&#x5173;&#x6CE8;&#x5982;&#x4F55;&#x8C03;&#x8BD5;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;core&#x6587;&#x4EF6;&#x53EA;&#x662F;&#x8FDB;&#x7A0B;&#x7684;&#x4E00;&#x4E2A;&#x5185;&#x6838;&#x8F6C;&#x50A8;&#x6587;&#x4EF6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x53EA;&#x80FD;&#x67E5;&#x770B;&#x5F53;&#x65F6;&#x7684;&#x6808;&#x5E27;&#x60C5;&#x51B5;&#x3002;&#x5BF9;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x65B9;&#x65B9;&#x9762;&#x9762;&#x57FA;&#x672C;&#x8986;&#x76D6;&#x4E86;&#x5BF9;core&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5148;&#x5C06;&#x91CD;&#x70B9;&#x653E;&#x5728;&#x5BF9;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x4E0A;&#x3002;</p>
@@ -2118,7 +2123,7 @@ README.md
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.1 进程启动","level":"1.6.1","depth":2,"next":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},"previous":{"title":"6 开发go指令级调试器","level":"1.6","depth":1,"path":"6-develop-inst-debugger/README.md","ref":"6-develop-inst-debugger/README.md","articles":[{"title":"6.1 进程启动","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},{"title":"6.10 步进操作","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-step.md","ref":"6-develop-inst-debugger/10-step.md","articles":[]},{"title":"6.11 运行到断点","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-continue.md","ref":"6-develop-inst-debugger/11-continue.md","articles":[]},{"title":"6.12 打印内存数据","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-pmem.md","ref":"6-develop-inst-debugger/12-pmem.md","articles":[]},{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pregs.md","ref":"6-develop-inst-debugger/13-pregs.md","articles":[]},{"title":"6.14 修改内存数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-set-mem.md","ref":"6-develop-inst-debugger/14-set-mem.md","articles":[]},{"title":"6.15 修改寄存器数据","level":"1.6.15","depth":2,"path":"6-develop-inst-debugger/15-set-regs.md","ref":"6-develop-inst-debugger/15-set-regs.md","articles":[]},{"title":"6.20 跟踪多线程程序1","level":"1.6.16","depth":2,"path":"6-develop-inst-debugger/20-trace_new_threads.md","ref":"6-develop-inst-debugger/20-trace_new_threads.md","articles":[]},{"title":"6.21 跟踪多线程程序2","level":"1.6.17","depth":2,"path":"6-develop-inst-debugger/21-trace_old_threads.md","ref":"6-develop-inst-debugger/21-trace_old_threads.md","articles":[]},{"title":"6.80 认识ASLR","level":"1.6.18","depth":2,"path":"6-develop-inst-debugger/80-aslr.md","ref":"6-develop-inst-debugger/80-aslr.md","articles":[]},{"title":"6.99 More...","level":"1.6.19","depth":2,"path":"6-develop-inst-debugger/99-more.md","ref":"6-develop-inst-debugger/99-more.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github","splitter"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/1-process_start.md","mtime":"2025-08-01T14:04:31.505Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T14:05:01.365Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.1 进程启动","level":"1.6.1","depth":2,"next":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},"previous":{"title":"6 开发go指令级调试器","level":"1.6","depth":1,"path":"6-develop-inst-debugger/README.md","ref":"6-develop-inst-debugger/README.md","articles":[{"title":"6.1 进程启动","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},{"title":"6.10 步进操作","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-step.md","ref":"6-develop-inst-debugger/10-step.md","articles":[]},{"title":"6.11 运行到断点","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-continue.md","ref":"6-develop-inst-debugger/11-continue.md","articles":[]},{"title":"6.12 打印内存数据","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-pmem.md","ref":"6-develop-inst-debugger/12-pmem.md","articles":[]},{"title":"6.13 打印寄存器数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pregs.md","ref":"6-develop-inst-debugger/13-pregs.md","articles":[]},{"title":"6.14 修改内存数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-set-mem.md","ref":"6-develop-inst-debugger/14-set-mem.md","articles":[]},{"title":"6.15 修改寄存器数据","level":"1.6.15","depth":2,"path":"6-develop-inst-debugger/15-set-regs.md","ref":"6-develop-inst-debugger/15-set-regs.md","articles":[]},{"title":"6.20 跟踪多线程程序1","level":"1.6.16","depth":2,"path":"6-develop-inst-debugger/20-trace_new_threads.md","ref":"6-develop-inst-debugger/20-trace_new_threads.md","articles":[]},{"title":"6.21 跟踪多线程程序2","level":"1.6.17","depth":2,"path":"6-develop-inst-debugger/21-trace_old_threads.md","ref":"6-develop-inst-debugger/21-trace_old_threads.md","articles":[]},{"title":"6.80 认识ASLR","level":"1.6.18","depth":2,"path":"6-develop-inst-debugger/80-aslr.md","ref":"6-develop-inst-debugger/80-aslr.md","articles":[]},{"title":"6.99 More...","level":"1.6.19","depth":2,"path":"6-develop-inst-debugger/99-more.md","ref":"6-develop-inst-debugger/99-more.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/1-process_start.md","mtime":"2025-08-01T17:09:49.416Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T17:10:21.119Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2128,19 +2133,19 @@ README.md
     <script src="../gitbook/theme.js"></script>
     
         
-        <script src="../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
-        
-    
-        
         <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
         
     
         
@@ -2148,19 +2153,11 @@ README.md
         
     
         
-        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
         
     
         
-        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
         
     
         

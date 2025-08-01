@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
                 
@@ -25,11 +25,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -1948,7 +1948,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="pkg-debugdwarf-&#x5E94;&#x7528;">pkg debug/dwarf &#x5E94;&#x7528;</h2>
+                                <p><style>
+body {
+  counter-reset: h1 38;
+}
+</style></p>
+<h2 id="pkg-debugdwarf-&#x5E94;&#x7528;">pkg debug/dwarf &#x5E94;&#x7528;</h2>
 <h3 id="dwarf&#x6570;&#x636E;&#x5B58;&#x50A8;">DWARF&#x6570;&#x636E;&#x5B58;&#x50A8;</h3>
 <p>&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x4E86;package <code>debug/dwarf</code> &#x6765;&#x8BFB;&#x53D6;go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x751F;&#x6210;&#x7684;DWARF&#x6570;&#x636E;&#xFF0C;&#x6BD4;&#x5982;.debug_info&#x3001;.debug_line&#x7B49;&#x3002;</p>
 <p>go&#x751F;&#x6210;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x65F6;&#xFF0C;&#x4F1A;&#x5BF9;DWARF&#x4FE1;&#x606F;&#x8FDB;&#x884C;&#x538B;&#x7F29;&#x518D;&#x5B58;&#x50A8;&#x5230;&#x4E0D;&#x540C;&#x7684;section&#x4E2D;&#x3002;&#x6BD4;&#x5982;&#x63CF;&#x8FF0;types&#x3001;variables&#x3001;function&#x5B9A;&#x4E49;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5F00;&#x542F;&#x538B;&#x7F29;&#x524D;&#x662F;&#x5B58;&#x50A8;&#x5728;.debug<em>info&#x4E2D;&#xFF0C;&#x5F00;&#x542F;&#x538B;&#x7F29;&#x540E;&#x5219;&#x88AB;&#x5B58;&#x50A8;&#x5230;.zdebug_info&#x4E2D;&#xFF0C;&#x901A;&#x5E38;&#x91C7;&#x7528;&#x7684;&#x662F;zlib&#x538B;&#x7F29;&#x7B97;&#x6CD5;&#x3002;&#x5728;&#x65E9;&#x671F;&#x7248;&#x672C;&#x7684; <code>go-delve/delve</code> &#x5B9E;&#x73B0;&#x4E2D;&#x5C31;&#x662F;&#x8FD9;&#x4E48;&#x505A;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x662F;&#xFF0C;ELF section&#x4E2D;&#x6709;&#x4E2A;&#x6807;&#x8BC6;&#x5B57;&#x6BB5; <code>Compressed</code> &#x6765;&#x8868;&#x793A;Section&#x4E2D;&#x7684;&#x6570;&#x636E;&#x662F;&#x5426;&#x5F00;&#x542F;&#x4E86;&#x538B;&#x7F29;&#xFF0C;&#x5728;go&#x65B0;&#x7248;&#x672C;&#x4E2D;&#xFF0C;&#x538B;&#x7F29;&#x540E;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E5F;&#x4E0D;&#x4F1A;&#x518D;&#x5199;&#x5230; .zdebug</em> &#x76F8;&#x5173;sections&#x4E86;&#xFF0C;&#x800C;&#x662F;&#x7EDF;&#x4E00;&#x5199;&#x5165; .debug_ sections&#x4E2D;&#xFF0C;&#x540C;&#x65F6;&#x8BBE;&#x7F6E;&#x6807;&#x8BC6;&#x4F4D; <code>Compressed=true</code>&#x3002;</p>
@@ -2400,7 +2405,7 @@ found pc: 0x4b85af
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.6.3 debug/dwarf","level":"1.7.6.3","depth":3,"next":{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.4 链接器生成DWARF数据","level":"1.7.7.4","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","articles":[]},{"title":"7.7.5 可以了解DWARF了","level":"1.7.7.5","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","articles":[]}]},"previous":{"title":"7.6.2 debug/gosym","level":"1.7.6.2","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","ref":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github","splitter"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","mtime":"2025-08-01T14:04:31.511Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T14:05:01.365Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.6.3 debug/dwarf","level":"1.7.6.3","depth":3,"next":{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.4 链接器生成DWARF数据","level":"1.7.7.4","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","articles":[]},{"title":"7.7.5 可以了解DWARF了","level":"1.7.7.5","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","articles":[]}]},"previous":{"title":"7.6.2 debug/gosym","level":"1.7.6.2","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","ref":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","mtime":"2025-08-01T17:09:49.422Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T17:10:21.119Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2410,19 +2415,19 @@ found pc: 0x4b85af
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
-        
-    
-        
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
         
     
         
@@ -2430,19 +2435,11 @@ found pc: 0x4b85af
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
         
     
         

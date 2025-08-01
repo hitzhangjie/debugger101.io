@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
                 
@@ -25,11 +25,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -1948,7 +1948,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x8C03;&#x7528;&#x5E27;&#x4FE1;&#x606F;&#x8868;&#xFF08;call-frame-information&#xFF09;">&#x8C03;&#x7528;&#x5E27;&#x4FE1;&#x606F;&#x8868;&#xFF08;Call Frame Information&#xFF09;</h2>
+                                <p><style>
+body {
+  counter-reset: h1 57;
+}
+</style></p>
+<h2 id="&#x8C03;&#x7528;&#x5E27;&#x4FE1;&#x606F;&#x8868;&#xFF08;call-frame-information&#xFF09;">&#x8C03;&#x7528;&#x5E27;&#x4FE1;&#x606F;&#x8868;&#xFF08;Call Frame Information&#xFF09;</h2>
 <h3 id="&#x529F;&#x80FD;&#x4ECB;&#x7ECD;">&#x529F;&#x80FD;&#x4ECB;&#x7ECD;</h3>
 <p>DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x4E2D;&#x7684;<strong>&#x8C03;&#x7528;&#x5E27;&#x4FE1;&#x606F;&#x8868;&#xFF08;CFI, Call Frame Information&#xFF09;</strong>&#x662F;&#x4E00;&#x4E2A;&#x91CD;&#x8981;&#x7EC4;&#x6210;&#x90E8;&#x5206;&#xFF0C;&#x5B83;&#x4E3A;&#x8C03;&#x8BD5;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x76F8;&#x5173;&#x7684;&#x5173;&#x952E;&#x4FE1;&#x606F;&#x3002;&#x5B83;&#x8BB0;&#x5F55;&#x4E86;&#x968F;&#x7740;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x3001;&#x51FD;&#x6570;&#x6267;&#x884C;&#x671F;&#x95F4;PC&#x53D8;&#x5316;&#x65F6;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#x5982;&#x4F55;&#x88AB;&#x4FEE;&#x6539;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x6709;&#x4E86;&#x8FD9;&#x4E2A;&#x8868;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x77E5;&#x9053;&#x5F53;&#x524D;&#x51FD;&#x6570;&#x7684;&#x57FA;&#x5730;&#x5740;&#xFF08;CFA&#xFF09;&#x3001;&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x3001;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x8FDB;&#x800C;&#x627E;&#x5230;Caller&#x7684;&#x6808;&#x5E27;&#xFF0C;&#x56E0;&#x4E3A;&#x8FD8;&#x6709;&#x5404;&#x4E2A;&#x5BC4;&#x5B58;&#x5668;&#x7684;unwinding rules&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x865A;&#x62DF;&#x5C55;&#x5F00;&#x8C03;&#x7528;&#x6808;&#x5230;&#x6307;&#x5B9A;&#x7684;&#x67D0;&#x4E2A;&#x51FD;&#x6570;&#x6808;&#x5E27;&#x3002;</p>
 <h3 id="&#x8C03;&#x7528;&#x6808;&#x5C55;&#x5F00;">&#x8C03;&#x7528;&#x6808;&#x5C55;&#x5F00;</h3>
@@ -2274,7 +2279,7 @@ R7&#xFF1A;&#x4FDD;&#x5B58;&#x6808;&#x6307;&#x9488;&#x503C;&#xFF1B;</li>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8.5.3 调用栈帧信息","level":"1.8.5.3","depth":3,"next":{"title":"8.5.4 宏信息","level":"1.8.5.4","depth":3,"path":"8-dwarf/5-other/4-macro-info.md","ref":"8-dwarf/5-other/4-macro-info.md","articles":[]},"previous":{"title":"8.5.2 行号表信息","level":"1.8.5.2","depth":3,"path":"8-dwarf/5-other/2-lineno-table.md","ref":"8-dwarf/5-other/2-lineno-table.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github","splitter"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/5-other/3-callframe-info.md","mtime":"2025-08-01T14:04:31.535Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T14:05:01.365Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.5.3 调用栈帧信息","level":"1.8.5.3","depth":3,"next":{"title":"8.5.4 宏信息","level":"1.8.5.4","depth":3,"path":"8-dwarf/5-other/4-macro-info.md","ref":"8-dwarf/5-other/4-macro-info.md","articles":[]},"previous":{"title":"8.5.2 行号表信息","level":"1.8.5.2","depth":3,"path":"8-dwarf/5-other/2-lineno-table.md","ref":"8-dwarf/5-other/2-lineno-table.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/5-other/3-callframe-info.md","mtime":"2025-08-01T17:09:49.446Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T17:10:21.119Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2284,19 +2289,19 @@ R7&#xFF1A;&#x4FDD;&#x5B58;&#x6808;&#x6307;&#x9488;&#x503C;&#xFF1B;</li>
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
-        
-    
-        
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
         
     
         
@@ -2304,19 +2309,11 @@ R7&#xFF1A;&#x4FDD;&#x5B58;&#x6808;&#x6307;&#x9488;&#x503C;&#xFF1B;</li>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
         
     
         

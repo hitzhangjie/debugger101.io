@@ -17,7 +17,7 @@
     
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-md-toc/style.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
                 
             
                 
@@ -25,11 +25,11 @@
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
                 
             
                 
-                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
                 
             
                 
@@ -1948,7 +1948,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="core-part1-elf&#x6838;&#x5FC3;&#x8F6C;&#x50A8;&#x6587;&#x4EF6;&#x5256;&#x6790;">Core (Part1): ELF&#x6838;&#x5FC3;&#x8F6C;&#x50A8;&#x6587;&#x4EF6;&#x5256;&#x6790;</h2>
+                                <p><style>
+body {
+  counter-reset: h1 79;
+}
+</style></p>
+<h2 id="core-part1-elf&#x6838;&#x5FC3;&#x8F6C;&#x50A8;&#x6587;&#x4EF6;&#x5256;&#x6790;">Core (Part1): ELF&#x6838;&#x5FC3;&#x8F6C;&#x50A8;&#x6587;&#x4EF6;&#x5256;&#x6790;</h2>
 <p>&#x53EF;&#x6267;&#x884C;&#x4E0E;&#x53EF;&#x94FE;&#x63A5;&#x683C;&#x5F0F;(ELF) &#x1F9DD; &#x7528;&#x4E8E;&#x7F16;&#x8BD1;&#x8F93;&#x51FA;(<code>.o</code>&#x6587;&#x4EF6;)&#x3001;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x3001;&#x5171;&#x4EAB;&#x5E93;&#x548C;&#x6838;&#x5FC3;&#x8F6C;&#x50A8;&#x6587;&#x4EF6;&#x3002;&#x524D;&#x51E0;&#x79CD;&#x7528;&#x9014;&#x5728;<a href="http://www.sco.com/developers/devspecs/gabi41.pdf" target="_blank">System V ABI&#x89C4;&#x8303;</a>&#x548C;<a href="http://refspecs.linuxbase.org/elf/elf.pdf" target="_blank">&#x5DE5;&#x5177;&#x63A5;&#x53E3;&#x6807;&#x51C6;(TIS) ELF&#x89C4;&#x8303;</a>&#x4E2D;&#x90FD;&#x6709;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#xFF0C;&#x4F46;&#x5173;&#x4E8E;ELF&#x683C;&#x5F0F;&#x5728;&#x6838;&#x5FC3;&#x8F6C;&#x50A8;&#x4E2D;&#x7684;&#x4F7F;&#x7528;&#x4F3C;&#x4E4E;&#x6CA1;&#x6709;&#x592A;&#x591A;&#x6587;&#x6863;&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x4ECB;&#x7ECD; <code>tinydbg core [executable] [corefile]</code> &#x5BF9;core&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x5728;&#x8FD9;&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x5148;&#x4E86;&#x89E3;&#x4E0B;Core&#x6587;&#x4EF6;&#x7684;&#x4E8B;&#x5B9E;&#x4E0A;&#x7684;&#x89C4;&#x8303;&#xFF0C;&#x8981;&#x8BB0;&#x5F55;&#x4E9B;&#x4EC0;&#x4E48;&#xFF0C;&#x6309;&#x4EC0;&#x4E48;&#x683C;&#x5F0F;&#x8BB0;&#x5F55;&#xFF0C;&#x5982;&#x4F55;&#x517C;&#x5BB9;&#x4E0D;&#x540C;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x3002;&#x7406;&#x89E3;&#x4E86;Core&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x5982;&#x4F55;&#x751F;&#x6210;&#xFF0C;&#x4E5F;&#x5C31;&#x7406;&#x89E3;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x8BFB;&#x53D6;Core&#x6587;&#x4EF6;&#x65F6;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x8BFB;&#x53D6;&#xFF0C;&#x624D;&#x80FD;&#x91CD;&#x5EFA;&#x95EE;&#x9898;&#x73B0;&#x573A;&#x3002;</p>
 <p>&#x8FD9;&#x7BC7;&#x6587;&#x7AE0; <a href="https://www.gabriel.urdhr.fr/2015/05/29/core-file/" target="_blank">Anatomy of an ELF core file</a> &#x4E2D;&#x5BF9;Core&#x6587;&#x4EF6;&#x7684;&#x4E8B;&#x5B9E;&#x4E0A;&#x7684;&#x89C4;&#x8303;&#x8FDB;&#x884C;&#x4E86;&#x68B3;&#x7406;&#x3001;&#x603B;&#x7ED3;&#xFF0C;&#x4EE5;&#x4E0B;&#x662F;&#x6458;&#x5F55;&#x5728;&#x8FD9;&#x7BC7;&#x6587;&#x7AE0;&#x4E2D;&#x7684;&#x4E00;&#x4E9B;&#x5173;&#x4E8E;Core&#x6587;&#x4EF6;&#x7684;&#x8BF4;&#x660E;&#x3002;</p>
@@ -2329,7 +2334,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.15 tinydbg core - part1","level":"1.9.2.7","depth":3,"next":{"title":"9.2.15 tinydbg core - part2","level":"1.9.2.8","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","articles":[]},"previous":{"title":"9.2.14 tinydbg debug","level":"1.9.2.6","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["md-toc","github","splitter"],"pluginsConfig":{"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true,"label":{"en":"In This Article","zh":"本文目录"}},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"md-toc":{"label":"In this article","selector":".markdown-section h2","visible":true},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core1.md","mtime":"2025-08-01T14:04:31.577Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T14:05:01.365Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.15 tinydbg core - part1","level":"1.9.2.7","depth":3,"next":{"title":"9.2.15 tinydbg core - part2","level":"1.9.2.8","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.md","articles":[]},"previous":{"title":"9.2.14 tinydbg debug","level":"1.9.2.6","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core1.md","mtime":"2025-08-01T17:09:49.487Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T17:10:21.119Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
@@ -2339,19 +2344,19 @@
     <script src="../../gitbook/theme.js"></script>
     
         
-        <script src="../../gitbook/gitbook-plugin-md-toc/anchor.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-md-toc/gumshoe.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-md-toc/plugin.js"></script>
-        
-    
-        
         <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
         
     
         
@@ -2359,19 +2364,11 @@
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
         
     
         
-        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
-        
-    
-        
-        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
         
     
         

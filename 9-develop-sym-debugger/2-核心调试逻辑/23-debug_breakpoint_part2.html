@@ -2340,6 +2340,41 @@ bpcfg.ExprString = locExpr
                                     \-&gt; if _, err := dbp.addThread(tid, tid != dbp.pid); err != nil {
                                             \-&gt; sys.PtraceAttach(tid)
 </code></pre><p>&#x5047;&#x5B9A;&#x6211;&#x4EEC;Attach&#x4E86;&#x4E4B;&#x540E;&#x518D;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x4E86;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6267;&#x884C;continue&#x64CD;&#x4F5C;&#xFF0C;&#x4E0B;&#x9762;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;tinydbg&#x5982;&#x4F55;&#x5904;&#x7406;continue&#x547D;&#x4EE4;&#x3002;</p>
+<p>clientside:</p>
+<pre><code class="lang-go">continueCmd.cmdFn()
+    \-&gt; c.cont(t *Session, ctx callContext, args <span class="hljs-keyword">string</span>)
+            \-&gt; stateChan := t.client.Continue()
+                    \-&gt; <span class="hljs-keyword">for</span> {
+                    \-&gt;    out := <span class="hljs-built_in">new</span>(CommandOut)
+                    \-&gt;    err := c.call(<span class="hljs-string">&quot;Command&quot;</span>, &amp;api.DebuggerCommand{Name: api.Continue, ReturnInfoLoadConfig: c.retValLoadCfg}, &amp;out)
+                    \-&gt;
+                    \-&gt;    <span class="hljs-comment">// record current state</span>
+                    \-&gt;    state := out.State
+                    \-&gt;    ch &lt;- &amp;state
+                    \-&gt;      
+                    \-&gt;    <span class="hljs-comment">// breakpoint (including normal breakpoint and bp-based tracepoint)</span>
+                    \-&gt;    isbreakpoint := <span class="hljs-literal">false</span>
+                    \-&gt;    <span class="hljs-comment">// tracepoint (bp-based tracepoints, exclude normal breakpoint)</span>
+                    \-&gt;    istracepoint := <span class="hljs-literal">true</span>
+                    \-&gt;    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> state.Threads {
+                    \-&gt;       <span class="hljs-keyword">if</span> state.Threads[i].Breakpoint != <span class="hljs-literal">nil</span> {
+                    \-&gt;           isbreakpoint = <span class="hljs-literal">true</span>
+                    \-&gt;           istracepoint = istracepoint &amp;&amp; (state.Threads[i].Breakpoint.Tracepoint || state.Threads[i].Breakpoint.TraceReturn)
+                    \-&gt;      }
+                    \-&gt;    }
+                    \-&gt;
+                    \-&gt;    <span class="hljs-comment">// return if:</span>
+                    \-&gt;    <span class="hljs-comment">// - !isbreakpoint: doesn&apos;t encounter any breakpoint, i.e, target exit or other cases</span>
+                    \-&gt;    <span class="hljs-comment">// - !isbreakpoint || !istracepoint: encounter one normal breakpoint, not tracepoint</span>
+                    \-&gt;    <span class="hljs-keyword">if</span> !isbreakpoint || !istracepoint {
+                    \-&gt;        <span class="hljs-built_in">close</span>(ch)
+                    \-&gt;        <span class="hljs-keyword">return</span>
+                    \-&gt;    }
+                    \-&gt; }
+            \-&gt; <span class="hljs-keyword">for</span> state := <span class="hljs-keyword">range</span> stateChan { printcontext(t, state); }
+            \-&gt; printPos(t, state.CurrentThread, printPosShowArrow)
+</code></pre>
+<p>serverside:</p>
 <h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
 <p>&#x7565;&#x3002;</p>
 <h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
@@ -2387,7 +2422,7 @@ bpcfg.ExprString = locExpr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点","level":"1.9.2.15","depth":3,"next":{"title":"9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点","level":"1.9.2.16","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","articles":[]},"previous":{"title":"9.2.22 tinydbg> breakpoint - part1: 断点精细化管理","level":"1.9.2.14","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.md","mtime":"2025-08-10T17:40:56.804Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-10T17:41:29.002Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点","level":"1.9.2.15","depth":3,"next":{"title":"9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点","level":"1.9.2.16","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","articles":[]},"previous":{"title":"9.2.22 tinydbg> breakpoint - part1: 断点精细化管理","level":"1.9.2.14","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.md","mtime":"2025-08-12T01:20:01.287Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-12T01:20:33.515Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

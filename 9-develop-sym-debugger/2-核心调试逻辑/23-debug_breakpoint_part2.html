@@ -2326,7 +2326,7 @@ bpcfg.ExprString = locExpr
   <span class="hljs-comment">// ...</span>
 }
 </code></pre>
-<h4 id="serverside-&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x5904;&#x7406;">serverside &#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x5904;&#x7406;</h4>
+<h4 id="serverside-&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;">serverside &#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;</h4>
 <p>&#x5F53;&#x6210;&#x529F;&#x6DFB;&#x52A0;&#x5B8C;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;clientside&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x7EE7;&#x7EED;&#x6267;&#x884C;continue&#x547D;&#x4EE4;&#xFF0C;serverside&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#x4F1A;&#x6062;&#x590D;TargetGroup&#x7684;&#x6267;&#x884C;&#xFF0C;TargetGroup&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7EC4;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x800C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x53C8;&#x5305;&#x62EC;&#x4E86;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x90A3;&#x8FD9;&#x91CC;&#x7684;continue&#x662F;&#x6062;&#x590D;&#x6240;&#x6709;&#x7684;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x5417;&#xFF1F;&#x5F53;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x4E2A;&#x522B;&#x7EBF;&#x7A0B;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x505C;&#x6B62;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x3001;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x53C8;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5462;&#xFF1F;&#x524D;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x65AD;&#x70B9;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#x65F6;&#x63D0;&#x5230;&#x4E86;Stop Mode&#x5206;&#x4E3A;All-stop Mode&#x548C;None-stop Mode&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x8D77;&#x6765;&#x770B;&#x4E0B;tinydbg&#x4E2D;&#x5B9E;&#x73B0;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
 <p>All-stop Mode, &#x9996;&#x5148;&#x8054;&#x60F3;&#x4E0B; <a href="11-tinydbg-atach.md">tinydbg attach</a> &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;attach&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x4F1A;&#x5C1D;&#x8BD5;&#x8DDF;&#x8E2A;&#x8DDF;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x3002;</p>
 <pre><code>func Attach(pid int, waitFor *proc.WaitFor) (*proc.TargetGroup, error) {
@@ -2375,6 +2375,93 @@ bpcfg.ExprString = locExpr
             \-&gt; printPos(t, state.CurrentThread, printPosShowArrow)
 </code></pre>
 <p>serverside:</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (d *Debugger) Command(command *api.DebuggerCommand, resumeNotify <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}, clientStatusCh <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}) (state *api.DebuggerState, err error) {
+    ...
+    <span class="hljs-keyword">switch</span> command.Name {
+    <span class="hljs-keyword">case</span> api.Continue:
+        err = d.target.Continue()
+    ...
+    }
+    ...
+}
+</code></pre>
+<p>&#x800C; d.target.Continue() &#x5177;&#x4F53;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x5904;&#x7406;&#x5462;&#xFF1F;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (grp *TargetGroup) Continue() error
+    ...
+    \-&gt; trapthread, stopReason, contOnceErr := grp.procgrp.ContinueOnce(grp.cctx)
+            \-&gt; <span class="hljs-keyword">for</span> {
+            |       err := procgrp.resume()
+            |       |    \-&gt; foreach dbp in procgrop.procs
+            |       |    |       \-&gt; foreach thread in dbp.threads
+            |       |    |       |       \-&gt; procgrp.stepInstruction(thread)
+            |       |    |       |       |       \-&gt; <span class="hljs-keyword">if</span> bp := t.CurrentBreakpoint.Breakpoint; bp is a hardware bp {
+            |       |    |       |       |       |       t.clearHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex)
+            |       |    |       |       |       |       <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() { err = t.writeHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex); }()
+            |       |    |       |       |       |   }
+            |       |    |       |       |       \-&gt; <span class="hljs-keyword">if</span> bp, ok := t.dbp.FindBreakpoint(pc, <span class="hljs-literal">false</span>); ok means bp is software breakpoint {
+            |       |    |       |       |       |       err = t.clearSoftwareBreakpoint(bp)
+            |       |    |       |       |       |       <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() { err = t.dbp.writeSoftwareBreakpoint(t, bp.Addr); }
+            |       |    |       |       |       |   }
+            |       |    |       |       |       \-&gt; err = procgrp.singleStep(t)
+            |       |    |       |       |       |      <span class="hljs-keyword">for</span> {
+            |       |    |       |       |       |          t.dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = ptraceSingleStep(t.ID, sig) })
+            |       |    |       |       |       |          wpid, status, err := t.dbp.waitFast(t.ID)
+            |       |    |       |       |       |              \-&gt; wpid, err := sys.Wait4(pid, &amp;s, sys.WALL, <span class="hljs-literal">nil</span>)
+            |       |    |       |       |       |                  ps: Since Linux <span class="hljs-number">4.7</span>, the __WALL flag is automatically implied <span class="hljs-keyword">if</span> the child is being ptraced,
+            |       |    |       |       |       |                      so debugger can know the all children (created by clone or non-clone) state changed.
+            |       |    |       |       |       |          <span class="hljs-keyword">if</span> t.ID== wpid { <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span> }
+            |       |    |       |       |       |      }
+            |       |    \-&gt; foreach dbp in procgrop.procs
+            |       |    |       \-&gt; foreach thread in dbp.threads
+            |       |    |       |       \-&gt; thread.resume()
+            |       |    |       |       |       \-&gt; sig := t.os.delayedSignal
+            |       |    |       |       |       \-&gt; <span class="hljs-keyword">return</span> t.resumeWithSig(sig)
+            |       |    |       |       |       |       \-&gt; t.os.running = <span class="hljs-literal">true</span>
+            |       |    |       |       |       |       \-&gt; t.dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = ptraceCont(t.ID, sig) })
+            |   }
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;clientside&#x6BCF;&#x6267;&#x884C;&#x4E00;&#x6B21;continue&#x547D;&#x4EE4;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x786E;&#x5B9E;&#x4F1A;&#x8BA9;&#x8DDF;&#x8E2A;&#x7684;&#x6240;&#x6709;&#x6682;&#x505C;&#x7684;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x5168;&#x90E8;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;&#x65E2;&#x7136;&#x5DF2;&#x7ECF;&#x6062;&#x590D;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#xFF08;&#x53EF;&#x80FD;&#x662F;&#x786C;&#x4EF6;&#x65AD;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x8F6F;&#x4EF6;&#x65AD;&#x70B9;&#xFF09;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x4E0D;&#x7981;&#x8981;&#x95EE;&#xFF0C;&#x5F53;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x540E;&#xFF0C;debugger&#x662F;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x5462;&#xFF1F;</p>
+<h4 id="serverside-&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x5904;&#x7406;">serverside &#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x5904;&#x7406;</h4>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (grp *TargetGroup) Continue() error
+    ...
+    \-&gt; trapthread, stopReason, contOnceErr := grp.procgrp.ContinueOnce(grp.cctx)
+            \-&gt; <span class="hljs-keyword">for</span> {
+            *       err := procgrp.resume()
+            |       ps: so far, all targets have been resumed to running
+            |
+            *       trapthread, err := trapWait(procgrp, <span class="hljs-number">-1</span>)
+            |           \-&gt; <span class="hljs-keyword">return</span> trapWaitInternal(procgrp, pid, <span class="hljs-number">0</span>)
+            |       <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> { <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, proc.StopUnknown, err }
+            |       ps: handles many events like child exit, cloned, non-cloned, 
+            |           and processing delayed signals including SIGTRAP, etc.
+            |
+            *       trapthread, err = procgrp.stop(cctx, trapthread)
+            |           \-&gt; <span class="hljs-keyword">for</span> dbp in procgrp.procs {
+            |           |       <span class="hljs-keyword">for</span> thread in dbp.threads {
+            |           |           <span class="hljs-keyword">if</span> thread running {
+            |           |               thread.stop()
+            |           |                   \-&gt; err = sys.Tgkill(t.dbp.pid, t.ID, sys.SIGSTOP)
+            |           |                       ps: SIGSTOP will causes target thread stop, which can be resumed by sending SIGCONT. 
+            |           |                           And SIGSTOP cannot be caught.
+            |           |           }
+            |           |       }    
+            |           |   }
+            |       <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> { <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, proc.StopUnknown, err }
+            |       ps: All-stop mode, <span class="hljs-keyword">if</span> we found one thread hit the breakpoint (or traced after thread cloned, non-cloned, etc),
+            |           we stop all running threads.
+            |
+            *       dbp := procgrp.procForThread(trapthread.ID)
+            |       dbp.memthread = trapthreads
+            |       ps: here refresh other processes<span class="hljs-string">&apos; threads&apos;</span> memthread to the one, which is the <span class="hljs-number">1s</span>t thread.os.setbp == <span class="hljs-literal">true</span>.
+            |           When reading memory, we uses this memthread pid as ptrace(PTRACE_PEEK/POKE_DATA/TEXT, ...) operations.
+            |
+            |       <span class="hljs-keyword">return</span> trapthread, proc.StopUnknown, <span class="hljs-literal">nil</span>
+            |   }
+    \-&gt; TODO check the states ...
+</code></pre>
+<p>&#x622A;&#x6B62;&#x5230;&#x8FD9;&#x91CC;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x77E5;&#x9053;&#x4E86;continue&#x64CD;&#x4F5C;&#x4F1A;&#x5148;&#x5168;&#x90E8;&#x6062;&#x590D;&#x6267;&#x884C;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x5F53;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5C31;&#x4F1A;&#x5C1D;&#x8BD5;stop&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;memthread&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x7136;&#x540E;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x662F;&#x56E0;&#x4E3A;SIGTRAP&#x7B49;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x3001;&#x5BC4;&#x5B58;&#x5668;&#x7B49;&#x72B6;&#x6001;&#x3002;</p>
+<p>TODO here&#xFF01;</p>
 <h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
 <p>&#x7565;&#x3002;</p>
 <h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
@@ -2422,7 +2509,7 @@ bpcfg.ExprString = locExpr
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点","level":"1.9.2.15","depth":3,"next":{"title":"9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点","level":"1.9.2.16","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","articles":[]},"previous":{"title":"9.2.22 tinydbg> breakpoint - part1: 断点精细化管理","level":"1.9.2.14","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.md","mtime":"2025-08-12T01:20:01.287Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-12T01:20:33.515Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点","level":"1.9.2.15","depth":3,"next":{"title":"9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点","level":"1.9.2.16","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","articles":[]},"previous":{"title":"9.2.22 tinydbg> breakpoint - part1: 断点精细化管理","level":"1.9.2.14","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.md","mtime":"2025-08-12T18:42:25.179Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-12T18:42:58.118Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

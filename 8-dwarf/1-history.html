@@ -213,7 +213,7 @@
                 <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
             
                     
-                    5.1 调试器概貌
+                    5.1 调试器雏形 - 功能分析
             
                 </a>
             
@@ -221,12 +221,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_demo.html">
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
             
-                <a href="../5-debugger-skeleton/2-debugger_demo.html">
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
             
                     
-                    5.2 调试器示例
+                    5.2 调试器雏形 - 技术方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.3 调试器雏形 - 落地方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../5-debugger-skeleton/4-debugger_demo.html">
+            
+                <a href="../5-debugger-skeleton/4-debugger_demo.html">
+            
+                    
+                    5.4 调试器雏形 - demos
             
                 </a>
             
@@ -1989,7 +2015,7 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 46;
+  counter-reset: h1 48;
 }
 </style></p>
 <h2 id="&#x53D1;&#x5C55;&#x5386;&#x53F2;">&#x53D1;&#x5C55;&#x5386;&#x53F2;</h2>
@@ -2070,7 +2096,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8.1 DWARF发展历史","level":"1.8.1","depth":2,"next":{"title":"8.2 DWARF内容概览","level":"1.8.2","depth":2,"path":"8-dwarf/2-overview.md","ref":"8-dwarf/2-overview.md","articles":[]},"previous":{"title":"8 调试信息标准: DWARF","level":"1.8","depth":1,"path":"8-dwarf/README.md","ref":"8-dwarf/README.md","articles":[{"title":"8.1 DWARF发展历史","level":"1.8.1","depth":2,"path":"8-dwarf/1-history.md","ref":"8-dwarf/1-history.md","articles":[]},{"title":"8.2 DWARF内容概览","level":"1.8.2","depth":2,"path":"8-dwarf/2-overview.md","ref":"8-dwarf/2-overview.md","articles":[]},{"title":"8.3 DWARF数据分类","level":"1.8.3","depth":2,"path":"8-dwarf/3-dwarfdata.md","ref":"8-dwarf/3-dwarfdata.md","articles":[]},{"title":"8.4 DIE详细介绍","level":"1.8.4","depth":2,"path":"8-dwarf/4-die/README.md","ref":"8-dwarf/4-die/README.md","articles":[{"title":"8.4.1 DIE描述数据和类型","level":"1.8.4.1","depth":3,"path":"8-dwarf/4-die/1-desc-data-type.md","ref":"8-dwarf/4-die/1-desc-data-type.md","articles":[]},{"title":"8.4.2 位置数据","level":"1.8.4.2","depth":3,"path":"8-dwarf/4-die/2-desc-locations.md","ref":"8-dwarf/4-die/2-desc-locations.md","articles":[]},{"title":"8.4.3 DIE描述可执行代码","level":"1.8.4.3","depth":3,"path":"8-dwarf/4-die/3-desc-code.md","ref":"8-dwarf/4-die/3-desc-code.md","articles":[]},{"title":"8.4.4 DIE数据编码","level":"1.8.4.4","depth":3,"path":"8-dwarf/4-die/4-encoding.md","ref":"8-dwarf/4-die/4-encoding.md","articles":[]}]},{"title":"8.5 其他调试数据","level":"1.8.5","depth":2,"path":"8-dwarf/5-other/README.md","ref":"8-dwarf/5-other/README.md","articles":[{"title":"8.5.1 加速访问","level":"1.8.5.1","depth":3,"path":"8-dwarf/5-other/1-accelerated-access.md","ref":"8-dwarf/5-other/1-accelerated-access.md","articles":[]},{"title":"8.5.2 行号表信息","level":"1.8.5.2","depth":3,"path":"8-dwarf/5-other/2-lineno-table.md","ref":"8-dwarf/5-other/2-lineno-table.md","articles":[]},{"title":"8.5.3 调用栈帧信息","level":"1.8.5.3","depth":3,"path":"8-dwarf/5-other/3-callframe-info.md","ref":"8-dwarf/5-other/3-callframe-info.md","articles":[]},{"title":"8.5.4 宏信息","level":"1.8.5.4","depth":3,"path":"8-dwarf/5-other/4-macro-info.md","ref":"8-dwarf/5-other/4-macro-info.md","articles":[]},{"title":"8.5.5 变长数据","level":"1.8.5.5","depth":3,"path":"8-dwarf/5-other/5-varlen-data.md","ref":"8-dwarf/5-other/5-varlen-data.md","articles":[]},{"title":"8.5.6 压缩DWARF数据","level":"1.8.5.6","depth":3,"path":"8-dwarf/5-other/6-shrink-data.md","ref":"8-dwarf/5-other/6-shrink-data.md","articles":[]},{"title":"8.5.7 ELF Sections","level":"1.8.5.7","depth":3,"path":"8-dwarf/5-other/7-elf-sections.md","ref":"8-dwarf/5-other/7-elf-sections.md","articles":[]}]},{"title":"8.6 DWARF解析及应用","level":"1.8.6","depth":2,"path":"8-dwarf/6-practices.md","ref":"8-dwarf/6-practices.md","articles":[]},{"title":"8.7 本章总结","level":"1.8.7","depth":2,"path":"8-dwarf/7-summary.md","ref":"8-dwarf/7-summary.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/1-history.md","mtime":"2025-08-15T08:47:08.693Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-15T08:47:38.424Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.1 DWARF发展历史","level":"1.8.1","depth":2,"next":{"title":"8.2 DWARF内容概览","level":"1.8.2","depth":2,"path":"8-dwarf/2-overview.md","ref":"8-dwarf/2-overview.md","articles":[]},"previous":{"title":"8 调试信息标准: DWARF","level":"1.8","depth":1,"path":"8-dwarf/README.md","ref":"8-dwarf/README.md","articles":[{"title":"8.1 DWARF发展历史","level":"1.8.1","depth":2,"path":"8-dwarf/1-history.md","ref":"8-dwarf/1-history.md","articles":[]},{"title":"8.2 DWARF内容概览","level":"1.8.2","depth":2,"path":"8-dwarf/2-overview.md","ref":"8-dwarf/2-overview.md","articles":[]},{"title":"8.3 DWARF数据分类","level":"1.8.3","depth":2,"path":"8-dwarf/3-dwarfdata.md","ref":"8-dwarf/3-dwarfdata.md","articles":[]},{"title":"8.4 DIE详细介绍","level":"1.8.4","depth":2,"path":"8-dwarf/4-die/README.md","ref":"8-dwarf/4-die/README.md","articles":[{"title":"8.4.1 DIE描述数据和类型","level":"1.8.4.1","depth":3,"path":"8-dwarf/4-die/1-desc-data-type.md","ref":"8-dwarf/4-die/1-desc-data-type.md","articles":[]},{"title":"8.4.2 位置数据","level":"1.8.4.2","depth":3,"path":"8-dwarf/4-die/2-desc-locations.md","ref":"8-dwarf/4-die/2-desc-locations.md","articles":[]},{"title":"8.4.3 DIE描述可执行代码","level":"1.8.4.3","depth":3,"path":"8-dwarf/4-die/3-desc-code.md","ref":"8-dwarf/4-die/3-desc-code.md","articles":[]},{"title":"8.4.4 DIE数据编码","level":"1.8.4.4","depth":3,"path":"8-dwarf/4-die/4-encoding.md","ref":"8-dwarf/4-die/4-encoding.md","articles":[]}]},{"title":"8.5 其他调试数据","level":"1.8.5","depth":2,"path":"8-dwarf/5-other/README.md","ref":"8-dwarf/5-other/README.md","articles":[{"title":"8.5.1 加速访问","level":"1.8.5.1","depth":3,"path":"8-dwarf/5-other/1-accelerated-access.md","ref":"8-dwarf/5-other/1-accelerated-access.md","articles":[]},{"title":"8.5.2 行号表信息","level":"1.8.5.2","depth":3,"path":"8-dwarf/5-other/2-lineno-table.md","ref":"8-dwarf/5-other/2-lineno-table.md","articles":[]},{"title":"8.5.3 调用栈帧信息","level":"1.8.5.3","depth":3,"path":"8-dwarf/5-other/3-callframe-info.md","ref":"8-dwarf/5-other/3-callframe-info.md","articles":[]},{"title":"8.5.4 宏信息","level":"1.8.5.4","depth":3,"path":"8-dwarf/5-other/4-macro-info.md","ref":"8-dwarf/5-other/4-macro-info.md","articles":[]},{"title":"8.5.5 变长数据","level":"1.8.5.5","depth":3,"path":"8-dwarf/5-other/5-varlen-data.md","ref":"8-dwarf/5-other/5-varlen-data.md","articles":[]},{"title":"8.5.6 压缩DWARF数据","level":"1.8.5.6","depth":3,"path":"8-dwarf/5-other/6-shrink-data.md","ref":"8-dwarf/5-other/6-shrink-data.md","articles":[]},{"title":"8.5.7 ELF Sections","level":"1.8.5.7","depth":3,"path":"8-dwarf/5-other/7-elf-sections.md","ref":"8-dwarf/5-other/7-elf-sections.md","articles":[]}]},{"title":"8.6 DWARF解析及应用","level":"1.8.6","depth":2,"path":"8-dwarf/6-practices.md","ref":"8-dwarf/6-practices.md","articles":[]},{"title":"8.7 本章总结","level":"1.8.7","depth":2,"path":"8-dwarf/7-summary.md","ref":"8-dwarf/7-summary.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/1-history.md","mtime":"2025-08-15T09:48:22.321Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-15T09:48:55.015Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

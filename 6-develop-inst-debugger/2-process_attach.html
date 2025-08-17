@@ -2019,29 +2019,82 @@ body {
 }
 </style></p>
 <h2 id="attach&#x8FDB;&#x7A0B;">Attach&#x8FDB;&#x7A0B;</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-attach--p-pid">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg attach -p &lt;pid&gt;</code></h3>
-<p>&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x5728;&#x8FD0;&#x884C;&#x4E86;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x5C06;&#x8FDB;&#x7A0B;&#x6302;&#x4F4F;(attach)&#xFF0C;&#x8BA9;&#x5176;&#x505C;&#x4E0B;&#x6765;&#x7B49;&#x5F85;&#x8C03;&#x8BD5;&#x5668;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#x3002;</p>
-<p>&#x5E38;&#x89C1;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5982;dlv&#x3001;gdb&#x7B49;&#x90FD;&#x652F;&#x6301;&#x901A;&#x8FC7;&#x53C2;&#x6570; <code>-p pid</code> &#x7684;&#x5F62;&#x5F0F;&#x6765;&#x4F20;&#x9012;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x53F7;&#x6765;&#x5BF9;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x5C06;&#x5B9E;&#x73B0;&#x7A0B;&#x5E8F;godbg&#xFF0C;&#x5B83;&#x652F;&#x6301;&#x5B50;&#x547D;&#x4EE4; <code>attach -p &lt;pid&gt;</code>&#xFF0C;&#x5982;&#x679C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5B58;&#x5728;&#xFF0C;godbg&#x5C06;attach&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x6B64;&#x65F6;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#x3002;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x8BA9;godbg&#x4F11;&#x7720;&#x51E0;&#x79D2;&#x949F;&#xFF0C;&#x518D;detach&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4F1A;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</p>
-<blockquote>
-<p>ps: &#x8FD9;&#x91CC;&#x4F11;&#x7720;&#x7684;&#x51E0;&#x79D2;&#x949F;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5148;&#x5C06;&#x5176;&#x5047;&#x60F3;&#x6210;&#x4E00;&#x7CFB;&#x5217;&#x7684;&#x8C03;&#x8BD5;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x3001;&#x68C0;&#x67E5;&#x8FDB;&#x7A0B;&#x5BC4;&#x5B58;&#x5668;&#x3001;&#x68C0;&#x67E5;&#x5185;&#x5B58;&#x7B49;&#x7B49;&#xFF0C;&#x540E;&#x9762;&#x5C0F;&#x8282;&#x4E2D;&#x6211;&#x4EEC;&#x5C06;&#x652F;&#x6301;&#x8FD9;&#x4E9B;&#x80FD;&#x529B;&#x3002;</p>
-</blockquote>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-attach-pid">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg attach &lt;pid&gt;</code></h3>
+<p>&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x5728;&#x8FD0;&#x884C;&#x4E86;&#xFF0C;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x5148;&#x901A;&#x8FC7;attach&#x64CD;&#x4F5C;&#x8DDF;&#x8E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F85;&#x5176;&#x505C;&#x6B62;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x3001;&#x63A7;&#x5236;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5E38;&#x89C1;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5982;dlv&#x3001;gdb&#x7B49;&#x90FD;&#x652F;&#x6301;&#x4F20;&#x9012;pid&#x53C2;&#x6570;&#x6765;&#x5BF9;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x5B9E;&#x73B0;&#x7A0B;&#x5E8F; <code>godbg attach &lt;pid&gt;</code> &#x5B50;&#x547D;&#x4EE4;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#xFF0C;godbg&#x5C06;attach&#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x6B64;&#x65F6;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#x3002;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x8BA9;godbg&#x4F11;&#x7720;&#x51E0;&#x79D2;&#x949F;&#xFF08;&#x6211;&#x4EEC;&#x5047;&#x5B9A;&#x8FD9;&#x51E0;&#x79D2;&#x949F;&#x5185;&#x6267;&#x884C;&#x4E86;&#x4E00;&#x4E9B;&#x8C03;&#x8BD5;&#x52A8;&#x4F5C;&#xFF0C;&#x5982;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3001;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x3001;&#x67E5;&#x770B;&#x53D8;&#x91CF;&#x7B49;&#xFF0C;&#x7136;&#x540E;&#x8C03;&#x8BD5;&#x5B8C;&#x540E;&#x7ED3;&#x675F;&#x8C03;&#x8BD5;&#xFF09;&#xFF0C;&#x518D;detach&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4F1A;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</p>
 <h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
 <h4 id="tracee">tracee</h4>
 <p>&#x9996;&#x5148;&#x8981;&#x8FDB;&#x4E00;&#x6B65;&#x660E;&#x786E;tracee&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x867D;&#x7136;&#x6211;&#x4EEC;&#x770B;&#x4E0A;&#x53BB;&#x662F;&#x5BF9;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x8C03;&#x8BD5;&#x5668;&#x5185;&#x90E8;&#x5DE5;&#x4F5C;&#x65F6;&#xFF0C;&#x662F;&#x5BF9;&#x4E00;&#x4E2A;&#x4E00;&#x4E2A;&#x7684;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
 <p>tracee&#xFF0C;&#x6307;&#x7684;&#x662F;&#x88AB;&#x8C03;&#x8BD5;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x8FDB;&#x7A0B;&#x3002;&#x5BF9;&#x4E8E;&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x800C;&#x8A00;&#xFF0C;&#x53EF;&#x80FD;&#x8981;&#x8DDF;&#x8E2A;&#xFF08;trace&#xFF09;&#x90E8;&#x5206;&#x6216;&#x8005;&#x5168;&#x90E8;&#x7684;&#x7EBF;&#x7A0B;&#x4EE5;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#xFF0C;&#x6CA1;&#x6709;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x7EBF;&#x7A0B;&#x5C06;&#x4F1A;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x800C;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x7EBF;&#x7A0B;&#x5219;&#x53D7;&#x8C03;&#x8BD5;&#x5668;&#x63A7;&#x5236;&#x3002;&#x751A;&#x81F3;&#x540C;&#x4E00;&#x4E2A;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x7531;&#x4E0D;&#x540C;&#x7684;tracer&#x6765;&#x63A7;&#x5236;&#x3002;</p>
+<p>&#x6CE8;&#xFF1A;</p>
+<ul>
+<li><p>&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EA;&#x5141;&#x8BB8;&#x88AB;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#xFF0C;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x542F;&#x52A8;&#x591A;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x4F8B;&#x5BF9;&#x76EE;&#x6807;&#x7EBF;&#x7A0B;&#x8FDB;&#x884C;&#x8DDF;&#x8E2A;&#xFF0C;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4F1A;&#x68C0;&#x6D4B;&#x5230;&#x8BE5;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x88AB;&#x67D0;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x8FDB;&#x7A0B;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#x4E2D;&#xFF0C;&#x4F1A;&#x62D2;&#x7EDD;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x4F8B;&#x7684;ptrace&#x8BF7;&#x6C42;&#x3002;</p>
+</li>
+<li><p>&#x5728;&#x5206;&#x79BB;&#x5F0F;&#x8C03;&#x8BD5;&#x5668;&#x67B6;&#x6784;&#x4E0B;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x8BF4;&#x53EA;&#x5141;&#x8BB8;1&#x4E2A;debugger backend&#x5B9E;&#x4F8B;attach&#x88AB;&#x8C03;&#x8BD5;&#x7EBF;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x542F;&#x52A8;&#x591A;&#x4E2A;debugger frontend&#x6765;&#x540C;&#x65F6;&#x8FDB;&#x884C;&#x5E76;&#x53D1;&#x8C03;&#x8BD5;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5728;&#x7B2C;9&#x7AE0;&#x5141;&#x8BB8;multiclient&#x8BBF;&#x95EE;debugger backend&#x65F6;&#x6709;&#x4ECB;&#x7ECD;&#x3002;</p>
+</li>
+</ul>
 <h4 id="tracer">tracer</h4>
 <p>tracer&#xFF0C;&#x6307;&#x7684;&#x662F;&#x5411;tracee&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x63A7;&#x5236;&#x547D;&#x4EE4;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x8FDB;&#x7A0B;&#xFF0C;&#x51C6;&#x786E;&#x5730;&#x8BF4;&#xFF0C;&#x4E5F;&#x662F;&#x7EBF;&#x7A0B;&#x3002;</p>
-<p>&#x4E00;&#x65E6;tracer&#x548C;tracee&#x5EFA;&#x7ACB;&#x4E86;&#x8054;&#x7CFB;&#x4E4B;&#x540E;&#xFF0C;tracer&#x5C31;&#x53EF;&#x4EE5;&#x7ED9;tracee&#x53D1;&#x9001;&#x5404;&#x79CD;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x3002;</p>
-<h4 id="ptrace">ptrace</h4>
+<p>&#x6709;&#x65F6;&#x4F1A;&#x4F7F;&#x7528;&#x672F;&#x8BED;ptrace link&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x6307;tracer&#x901A;&#x8FC7;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF08;&#x5982;PTRACE_ATTACH&#xFF09;&#x6210;&#x529F;&#x8DDF;&#x8E2A;&#x4E86;tracee&#xFF0C;&#x6B64;&#x540E;tracer&#x5C31;&#x53EF;&#x4EE5;&#x5411;tracee&#x53D1;&#x9001;&#x5404;&#x79CD;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x3002;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5EFA;&#x7ACB;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#x540E;&#xFF0C;tracee&#x671F;&#x671B;&#x540E;&#x7EED;&#x6240;&#x6709;&#x7684;ptrace&#x8BF7;&#x6C42;&#x90FD;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x4E2A;tracer&#x7EBF;&#x7A0B;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x88AB;&#x5185;&#x6838;&#x62D2;&#x7EDD;&#x6216;&#x884C;&#x4E3A;&#x672A;&#x5B9A;&#x4E49;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#xFF08;debugger backend&#xFF09;&#x5B9E;&#x73B0;&#x65F6;&#x8981;&#x6CE8;&#x610F;&#xFF0C;attach&#x540E;&#x540E;&#x7EED;&#x5BF9;&#x8BE5;tracee&#x7684;&#x6240;&#x6709;ptrace&#x64CD;&#x4F5C;&#x90FD;&#x8981;&#x5728;&#x8BE5;ptrace link&#x5BF9;&#x5E94;&#x7684;tracer&#x7EBF;&#x7A0B;&#x53D1;&#x8D77;&#x3002;</p>
+<p>&#x8FD9;&#x4E5F;&#x610F;&#x5473;&#x7740;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EA;&#x5141;&#x8BB8;&#x88AB;&#x540C;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#xFF08;debugger backend&#xFF09;&#x5B9E;&#x4F8B;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x5982;&#x4E0B;&#x64CD;&#x4F5C;&#x5BF9;&#x6B64;&#x8FDB;&#x884C;&#x9A8C;&#x8BC1;&#x3002;</p>
+<h4 id="ptrace-link">ptrace link</h4>
+<p>&#x5B9E;&#x9645;&#x4E0A;ptrace_link&#x662F;&#x4E00;&#x4E2A;linux&#x5185;&#x6838;&#x51FD;&#x6570;&#xFF0C;&#x987E;&#x540D;&#x601D;&#x4E49;&#xFF0C;&#x5B83;&#x6307;&#x7684;&#x5C31;&#x662F;tracer attach&#x5230;tracee&#x540E;&#x5EFA;&#x7ACB;&#x4E86;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#x3002;ptrace link&#x4E00;&#x65E6;&#x5EFA;&#x7ACB;&#x540E;&#xFF0C;tracee&#x5C31;&#x53EA;&#x5141;&#x8BB8;&#x63A5;&#x6536;&#x6765;&#x81EA;link&#x53E6;&#x4E00;&#x7AEF;&#x7684;tracer&#x7684;ptrace&#x8BF7;&#x6C42;&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9A8C;&#x8BC1;&#x4E0B;&#x3002;</p>
+<p><strong>1&#xFF09;&#x9A8C;&#x8BC1;1&#xFF1A;&#x591A;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x4F8B;attach&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;</strong></p>
+<p>shell 1&#x4E2D;&#x5148;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x9884;&#x5148;&#x5199;&#x597D;&#x7684;go&#x7A0B;&#x5E8F;&#xFF0C;&#x5B83;&#x6267;&#x884C;for&#x5FAA;&#x73AF;&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./goforloop
+</code></pre>
+<p>shell 2&#x4E2D;&#x901A;&#x8FC7;godbg attach&#x5230;&#x8BE5;goforloop&#x8FDB;&#x7A0B;&#xFF0C;attach&#x6210;&#x529F;&#xFF1A;</p>
+<pre><code class="lang-bash">$ godbg attach `pidof goforloop`
+</code></pre>
+<p>shell 3&#x4E2D;&#x901A;&#x8FC7;godbg&#x518D;&#x6B21;attach&#x5230;&#x8BE5;goforloop&#x8FDB;&#x7A0B;&#xFF0C;attach&#x62A5;&#x6743;&#x9650;&#x5931;&#x8D25;&#xFF1A;</p>
+<pre><code class="lang-bash">$ godbg attach `pidof goforloop`
+Error: process 31060 attached error: operation not permitted
+</code></pre>
+<p><strong>2) &#x9A8C;&#x8BC1;2&#xFF1A;attach&#x6210;&#x529F;&#x540E;&#x901A;&#x8FC7;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x53D1;&#x9001;ptrace&#x8BF7;&#x6C42;</strong></p>
+<p>&#x8FD9;&#x6837;&#x4E5F;&#x662F;&#x4E0D;&#x88AB;&#x5141;&#x8BB8;&#x7684;&#xFF0C;&#x8BFB;&#x8005;&#x5982;&#x679C;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x6CE8;&#x91CA;&#x6389;godbg&#x4E2D;&#x7684; <code>runtime.LockOSThread()</code> &#x8C03;&#x7528;&#xFF0C;&#x7136;&#x540E;&#x91CD;&#x7F16;godbg&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x6D3B;&#x52A8;&#xFF0C;&#x6267;&#x884C;&#x671F;&#x95F4;&#x5C31;&#x4F1A;&#x6536;&#x5230;&#x76F8;&#x5173;&#x7684;&#x6743;&#x9650;&#x62A5;&#x9519;&#x4FE1;&#x606F; No Such Process&#x3002;</p>
+<p><strong>3&#xFF09;&#x5185;&#x6838;&#x4E2D;&#x6267;&#x884C;ptrace&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x8FDB;&#x884C;&#x8FD9;&#x6837;&#x7684;&#x6821;&#x9A8C;</strong></p>
+<p>file: ./kernel/ptrace.c</p>
+<pre><code class="lang-c">SYSCALL_DEFINE4(ptrace, <span class="hljs-keyword">long</span>, request, <span class="hljs-keyword">long</span>, pid, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>, addr,
+        <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span>, data)
+{
+    ...
+    ret = ptrace_check_attach(child, request == PTRACE_KILL ||
+                  request == PTRACE_INTERRUPT);
+    <span class="hljs-keyword">if</span> (ret &lt; <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">goto</span> out_put_task_struct;
+    ...
+out_put_task_struct:
+    put_task_struct(child);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ptrace_check_attach</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> task_struct *child, <span class="hljs-keyword">bool</span> ignore_state)</span>
+</span>{
+    <span class="hljs-keyword">int</span> ret = -ESRCH;   <span class="hljs-comment">// no such process</span>
+    ...
+    <span class="hljs-keyword">if</span> (child-&gt;ptrace &amp;&amp; child-&gt;parent == current) {
+        WARN_ON(child-&gt;state == __TASK_TRACED);
+        <span class="hljs-comment">/*
+         * child-&gt;sighand can&apos;t be NULL, release_task()
+         * does ptrace_unlink() before __exit_signal().
+         */</span>
+        <span class="hljs-keyword">if</span> (ignore_state || ptrace_freeze_traced(child))
+            ret = <span class="hljs-number">0</span>;
+    }
+    ...
+    <span class="hljs-keyword">return</span> ret
+}
+</code></pre>
+<p>&#x5982;&#x679C;&#x540E;&#x7EED;ptrace&#x8BF7;&#x6C42;&#x6765;&#x81EA;&#x975E;ptrace link&#x5EFA;&#x7ACB;&#x65F6;&#x7684;tracer&#xFF0C;&#x90A3;&#x4E48;ptrace_check_attach&#x64CD;&#x4F5C;&#x5C31;&#x4F1A;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#x7801; <code>-ESRCH</code>&#x3002;</p>
+<h4 id="syscall-ptrace">syscall <code>ptrace</code></h4>
 <p>&#x6211;&#x4EEC;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x793A;&#x4F8B;&#x662F;&#x57FA;&#x4E8E;Linux&#x5E73;&#x53F0;&#x7F16;&#x5199;&#x7684;&#xFF0C;&#x8C03;&#x8BD5;&#x80FD;&#x529B;&#x4F9D;&#x8D56;&#x4E8E;Linux ptrace&#x3002;</p>
 <p>&#x901A;&#x5E38;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x8BD5;&#x5668;&#x4E5F;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x5C31;&#x8981;&#x6CE8;&#x610F;ptrace&#x7684;&#x7EA6;&#x675F;&#xFF0C;&#x5F53;tracer&#x3001;tracee&#x5EFA;&#x7ACB;&#x4E86;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#x540E;&#xFF0C;tracee&#xFF08;&#x88AB;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#xFF09;&#x540E;&#x7EED;&#x63A5;&#x6536;&#x5230;&#x7684;&#x591A;&#x4E2A;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5E94;&#x8BE5;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x4E2A;tracer&#xFF08;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#xFF09;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#x65F6;&#x8981;&#x5C06;&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x7ED9;tracee&#x7684;task&#x7ED1;&#x5B9A;&#x5230;&#x7279;&#x5B9A;&#x7EBF;&#x7A0B;&#x4E0A;&#x3002;&#x66F4;&#x5177;&#x4F53;&#x5730;&#x8BB2;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;task&#x53EF;&#x4EE5;&#x662F;goroutine&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x53C2;&#x8003;dlv&#x7B49;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x65F6;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x7684;goroutine&#x901A;&#x5E38;&#x4F1A;&#x8C03;&#x7528; <code>runtime.LockOSThread()</code>&#x6765;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x5411;attached tracee&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x6307;&#x4EE4;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x5404;&#x79CD;ptrace&#x64CD;&#x4F5C;&#xFF09;&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x53C2;&#x8003;dlv&#x7B49;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x65F6;&#x4F1A;&#x53D1;&#x73B0;&#xFF0C;&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x7684;goroutine&#x901A;&#x5E38;&#x4F1A;&#x8C03;&#x7528; <code>runtime.LockOSThread()</code> &#x6765;&#x7ED1;&#x5B9A;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x5411;attached tracee&#x53D1;&#x9001;&#x8C03;&#x8BD5;&#x6307;&#x4EE4;&#xFF08;&#x4E5F;&#x5C31;&#x662F;&#x5404;&#x79CD;ptrace&#x64CD;&#x4F5C;&#xFF09;&#x3002;</p>
 <blockquote>
 <p>runtime.LockOSThread()&#xFF0C;&#x8BE5;&#x51FD;&#x6570;&#x7684;&#x4F5C;&#x7528;&#x662F;&#x5C06;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x7684;goroutine&#x7ED1;&#x5B9A;&#x5230;&#x8BE5;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x8BE5;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#x53EA;&#x4F1A;&#x7528;&#x6765;&#x6267;&#x884C;&#x8BE5;goroutine&#x4E0A;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x9664;&#x975E;&#x8BE5;goroutine&#x8C03;&#x7528;&#x4E86;runtime.UnLockOSThread()&#x89E3;&#x9664;&#x8FD9;&#x79CD;&#x7ED1;&#x5B9A;&#x5173;&#x7CFB;&#xFF0C;&#x5426;&#x5219;&#x8BE5;&#x7EBF;&#x7A0B;&#x4E0D;&#x4F1A;&#x7528;&#x6765;&#x8C03;&#x5EA6;&#x5176;&#x4ED6;goroutine&#x3002;&#x8C03;&#x7528;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x7684;goroutine&#x4E5F;&#x53EA;&#x80FD;&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E0A;&#x6267;&#x884C;&#xFF0C;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x5EA6;&#x5668;&#x8FC1;&#x79FB;&#x5230;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x3002;see:</p>
-<pre><code>package runtime // import &quot;runtime&quot;
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> runtime <span class="hljs-comment">// import &quot;runtime&quot;</span>
 
-func LockOSThread()
+<span class="hljs-keyword">func</span> LockOSThread()
     LockOSThread wires the calling goroutine to its current operating system
     thread. The calling goroutine will always execute in that thread, and no
     other goroutine will execute in it, until the calling goroutine has made as
@@ -2053,26 +2106,23 @@ func LockOSThread()
 
     A goroutine should call LockOSThread before calling OS services or non-Go
     library functions that depend on per-thread state.
-</code></pre><p>&#x8C03;&#x7528;&#x4E86;&#x8BE5;&#x51FD;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;tracee&#x5BF9;tracer&#x7684;&#x8981;&#x6C42;&#xFF1A;&#x4E00;&#x65E6;tracer&#x901A;&#x8FC7;ptrace_attach&#x4E86;&#x67D0;&#x4E2A;tracee&#xFF0C;&#x540E;&#x7EED;&#x53D1;&#x9001;&#x5230;&#x8BE5;tracee&#x7684;ptrace&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x4E2A;tracer&#xFF0C;tracee&#x3001;tracer&#x5177;&#x4F53;&#x6307;&#x7684;&#x90FD;&#x662F;&#x7EBF;&#x7A0B;&#x3002;</p>
+</code></pre>
+<p>&#x8C03;&#x7528;&#x4E86;&#x8BE5;&#x51FD;&#x6570;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x6EE1;&#x8DB3;tracee&#x5BF9;tracer&#x7684;&#x8981;&#x6C42;&#xFF1A;&#x4E00;&#x65E6;tracer&#x901A;&#x8FC7;ptrace_attach&#x4E86;&#x67D0;&#x4E2A;tracee&#xFF0C;&#x540E;&#x7EED;&#x53D1;&#x9001;&#x5230;&#x8BE5;tracee&#x7684;ptrace&#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x4E2A;tracer&#xFF0C;tracee&#x3001;tracer&#x5177;&#x4F53;&#x6307;&#x7684;&#x90FD;&#x662F;&#x7EBF;&#x7A0B;&#x3002;</p>
 </blockquote>
 <p>&#x5F53;&#x6211;&#x4EEC;&#x8C03;&#x7528;&#x4E86;attach&#x4E4B;&#x540E;&#xFF0C;attach&#x8FD4;&#x56DE;&#x65F6;&#xFF0C;tracee&#x6709;&#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x6709;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x8FD9;&#x4E2A;&#x65F6;&#x5019;&#x9700;&#x8981;&#x901A;&#x8FC7;wait&#x65B9;&#x6CD5;&#x6765;&#x7B49;&#x5F85;tracee&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x5E76;&#x83B7;&#x53D6;tracee&#x7684;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x3002;&#x5F53;&#x7ED3;&#x675F;&#x8C03;&#x8BD5;&#x65F6;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;detach&#x64CD;&#x4F5C;&#xFF0C;&#x8BA9;tracee&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</p>
 <blockquote>
 <p>&#x4E0B;&#x9762;&#x662F;man&#x624B;&#x518C;&#x5173;&#x4E8E;ptrace&#x64CD;&#x4F5C;attach&#x3001;detach&#x7684;&#x8BF4;&#x660E;&#xFF0C;&#x4E0B;&#x9762;&#x8981;&#x7528;&#x5230;&#xFF1A;</p>
+<p><strong>PTRACE_ATTACH</strong><br>Attach to the process specified in pid, making it a tracee of
+the calling process.  The tracee is sent a SIGSTOP, but will
+not necessarily have stopped by the completion of this call;</p>
+<p>use waitpid(2) to wait for the tracee to stop.  See the &quot;At&#x2010;
+taching and detaching&quot; subsection for additional information.</p>
+<p><strong>PTRACE_DETACH</strong><br>Restart the stopped tracee as for PTRACE_CONT, but first de&#x2010;
+tach from it.  Under Linux, a tracee can be detached in this
+way regardless of which method was used to initiate tracing.</p>
 </blockquote>
-<pre><code>**PTRACE_ATTACH**
-*Attach to the process specified in pid, making it a tracee of*
-*the calling process.  The tracee is sent a SIGSTOP, but will*
-*not necessarily have stopped by the completion of this call;*
-</code></pre><blockquote>
-<p><em>use waitpid(2) to wait for the tracee to stop.  See the &quot;At&#x2010;</em>
-<em>taching and detaching&quot; subsection for additional information.</em></p>
-</blockquote>
-<pre><code>**PTRACE_DETACH**
-*Restart the stopped tracee as for PTRACE_CONT, but first de&#x2010;*
-*tach from it.  Under Linux, a tracee can be detached in this*
-*way regardless of which method was used to initiate tracing.*
-</code></pre><h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p><strong>src&#x8BE6;&#x89C1;&#xFF1A;golang-debugger-lessons/2_process_attach</strong></p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>src&#x8BE6;&#x89C1;&#xFF1A;golang-debugger-lessons/2_process_attach&#x3002;</p>
 <p>file: main.go</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> main
 
@@ -2196,18 +2246,18 @@ func LockOSThread()
 }
 </code></pre>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x4E5F;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF1A;</p>
-<ul>
-<li>&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x68C0;&#x67E5;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF0C;<ul>
+<ol>
+<li>&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x9996;&#x5148;&#x68C0;&#x67E5;&#x547D;&#x4EE4;&#x884C;&#x53C2;&#x6570;&#xFF0C;  <ul>
 <li><code>godbg attach &lt;pid&gt;</code>&#xFF0C;&#x81F3;&#x5C11;&#x6709;3&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x53C2;&#x6570;&#x6570;&#x91CF;&#x4E0D;&#x5BF9;&#xFF0C;&#x76F4;&#x63A5;&#x62A5;&#x9519;&#x9000;&#x51FA;&#xFF1B;</li>
 <li>&#x63A5;&#x4E0B;&#x6765;&#x6821;&#x9A8C;&#x7B2C;2&#x4E2A;&#x53C2;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x65E0;&#x6548;&#x7684;subcmd&#xFF0C;&#x4E5F;&#x76F4;&#x63A5;&#x62A5;&#x9519;&#x9000;&#x51FA;&#xFF1B;</li>
 <li>&#x5982;&#x679C;&#x662F;attach&#xFF0C;&#x90A3;&#x4E48;pid&#x53C2;&#x6570;&#x5E94;&#x8BE5;&#x662F;&#x4E2A;&#x6574;&#x6570;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x662F;&#x4E5F;&#x76F4;&#x63A5;&#x9000;&#x51FA;&#xFF1B;</li>
 </ul>
 </li>
-<li>&#x53C2;&#x6570;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F00;&#x59CB;&#x5C1D;&#x8BD5;attach&#x5230;tracee&#xFF1B;</li>
+<li>&#x53C2;&#x6570;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5F00;&#x59CB;&#x6821;&#x9A8C;pid&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x5B58;&#x5728;&#xFF0C;&#x5B58;&#x5728;&#x5219;&#x5F00;&#x59CB;&#x5C1D;&#x8BD5;attach&#x5230;tracee&#xFF0C;&#x5EFA;&#x7ACB;ptrace link&#xFF1B;</li>
 <li>attach&#x4E4B;&#x540E;&#xFF0C;tracee&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x7ACB;&#x5373;&#x5C31;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x9700;&#x8981;wait&#x6765;&#x83B7;&#x53D6;&#x5176;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#xFF1B;</li>
-<li>&#x7B49;tracee&#x505C;&#x4E0B;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F11;&#x7720;10s&#x949F;&#xFF0C;&#x4EFF;&#x4F5B;&#x81EA;&#x5DF1;&#x6B63;&#x5728;&#x5E72;&#x4E9B;&#x8C03;&#x8BD5;&#x64CD;&#x4F5C;&#x4E00;&#x6837;&#xFF1B;</li>
-<li>10s&#x949F;&#x4E4B;&#x540E;&#xFF0C;tracer&#x5C1D;&#x8BD5;detach tracee&#xFF0C;&#x8BA9;tracee&#x7EE7;&#x7EED;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</li>
-</ul>
+<li>&#x7B49;tracee&#x505C;&#x4E0B;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x4F11;&#x7720;10s&#x949F;&#xFF0C;&#x5047;&#x5B9A;&#x6B64;&#x65F6;&#x81EA;&#x5DF1;&#x6B63;&#x5728;&#x5E72;&#x4E9B;&#x8C03;&#x8BD5;&#x64CD;&#x4F5C;&#x4E00;&#x6837;&#xFF1B;</li>
+<li>10s&#x949F;&#x4E4B;&#x540E;&#xFF0C;tracer&#x5C1D;&#x8BD5;detach tracee&#xFF0C;&#x89E3;&#x9664;ptrace link&#xFF0C;&#x8BA9;tracee&#x7EE7;&#x7EED;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;</li>
+</ol>
 <p>&#x6211;&#x4EEC;&#x5728;Linux&#x5E73;&#x53F0;&#x4E0A;&#x5B9E;&#x73B0;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x8003;&#x8651;Linux&#x5E73;&#x53F0;&#x672C;&#x8EAB;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5177;&#x4F53;&#x5305;&#x62EC;&#xFF1A;</p>
 <ul>
 <li>&#x68C0;&#x67E5;pid&#x662F;&#x5426;&#x5BF9;&#x5E94;&#x7740;&#x4E00;&#x4E2A;&#x6709;&#x6548;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;&#x901A;&#x8FC7; <code>exec.FindProcess(pid)</code>&#x6765;&#x68C0;&#x67E5;&#xFF0C;&#x4F46;&#x662F;&#x5728;Unix&#x5E73;&#x53F0;&#x4E0B;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x603B;&#x662F;&#x8FD4;&#x56DE;OK&#xFF0C;&#x6240;&#x4EE5;&#x662F;&#x884C;&#x4E0D;&#x901A;&#x7684;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x501F;&#x52A9;&#x4E86; <code>kill -s 0 pid</code>&#x8FD9;&#x4E00;&#x6BD4;&#x8F83;&#x7ECF;&#x5178;&#x7684;&#x505A;&#x6CD5;&#x6765;&#x68C0;&#x67E5;pid&#x5408;&#x6CD5;&#x6027;&#x3002;</li>
@@ -2270,10 +2320,39 @@ we<span class="hljs-string">&apos;re doing some debugging...
 process 1311 detach succ
 </span></code></pre>
 <h3 id="&#x95EE;&#x9898;&#x63A2;&#x8BA8;">&#x95EE;&#x9898;&#x63A2;&#x8BA8;</h3>
-<p>&#x4E3A;&#x4E86;&#x8BA9;&#x8BFB;&#x8005;&#x80FD;&#x5FEB;&#x901F;&#x638C;&#x63E1;&#x6838;&#x5FC3;&#x8C03;&#x8BD5;&#x539F;&#x7406;&#xFF0C;&#x793A;&#x4F8B;&#x91CC;&#x6211;&#x4EEC;&#x6709;&#x610F;&#x7B80;&#x5316;&#x4E86;&#x793A;&#x4F8B;&#xFF0C;&#x5982;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x7ED3;&#x679C;&#x4F1A;&#x4E0D;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#x5462;&#xFF1F;&#x4F1A;&#xFF0C;&#x800C;&#x4E14;&#x6211;&#x4EEC;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x5904;&#x7406;&#x3002;&#x6211;&#x4EEC;&#x5728;&#x8FD9;&#x91CC;&#x8FDB;&#x4E00;&#x6B65;&#x8BA8;&#x8BBA;&#x4E0B;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8BA9;&#x8BFB;&#x8005;&#x80FD;&#x5FEB;&#x901F;&#x638C;&#x63E1;&#x6838;&#x5FC3;&#x8C03;&#x8BD5;&#x539F;&#x7406;&#xFF0C;&#x793A;&#x4F8B;&#x91CC;&#x6211;&#x4EEC;&#x6709;&#x610F;&#x7B80;&#x5316;&#x4E86;&#x793A;&#x4F8B;&#xFF0C;&#x5982;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x662F;&#x4E00;&#x4E2A;&#x5355;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x5982;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x7ED3;&#x679C;&#x4F1A;&#x4E0D;&#x4F1A;&#x4E0D;&#x4E00;&#x6837;&#x5462;&#xFF1F;&#x4F1A;!</p>
+<h4 id="&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7ED1;&#x5B9A;goroutine&#x4E0E;thread&#xFF1F;">&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x7ED1;&#x5B9A;goroutine&#x4E0E;thread&#xFF1F;</h4>
+<p>&#x53D1;&#x9001;ptrace attach&#x8BF7;&#x6C42;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E0E;&#x88AB;&#x8C03;&#x8BD5;&#x7EBF;&#x7A0B;&#x4E8C;&#x8005;&#x4E4B;&#x95F4;&#x5EFA;&#x7ACB;&#x4E86;ptrace link&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x89D2;&#x8272;&#x5206;&#x522B;&#x4E3A;tracer&#x3001;tracee&#xFF0C;&#x540E;&#x7EED;tracee&#x671F;&#x671B;&#x6536;&#x5230;&#x7684;&#x6240;&#x6709;ptrace&#x8BF7;&#x6C42;&#x90FD;&#x6765;&#x81EA;&#x8FD9;&#x4E2A;tracer&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x5929;&#x7136;&#x5C31;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7684;go&#x7A0B;&#x5E8F;&#x5C31;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#xFF0C;&#x540E;&#x7EED;&#x53D1;&#x9001;ptrace&#x8BF7;&#x6C42;&#x7684;goroutine&#x5FC5;&#x987B;&#x59CB;&#x7EC8;&#x5982;&#x4E00;&#x6267;&#x884C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0A;&#x3002;</p>
+<p><code>runtime.LockOSThread()</code> &#x5C31;&#x662F;&#x4E3A;&#x4E86;&#x5411;go&#x8FD0;&#x884C;&#x65F6;&#x4F20;&#x8FBE;&#x8FD9;&#x79CD;&#x9650;&#x5236;&#xFF0C;&#x7ED9;&#x6211;&#x628A;&#x5F53;&#x524D;goroutine&#x56FA;&#x5B9A;&#x5728;&#x5F53;&#x524D;thread&#x4E0A;&#x8C03;&#x5EA6;:</p>
+<pre><code class="lang-go"><span class="hljs-comment">// LockOSThread wires the calling goroutine to its current operating system thread.</span>
+<span class="hljs-comment">// The calling goroutine will always execute in that thread,</span>
+<span class="hljs-comment">// and no other goroutine will execute in it,</span>
+<span class="hljs-comment">// until the calling goroutine has made as many calls to</span>
+<span class="hljs-comment">// [UnlockOSThread] as to LockOSThread.</span>
+<span class="hljs-comment">// If the calling goroutine exits without unlocking the thread,</span>
+<span class="hljs-comment">// the thread will be terminated.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// All init functions are run on the startup thread. Calling LockOSThread</span>
+<span class="hljs-comment">// from an init function will cause the main function to be invoked on</span>
+<span class="hljs-comment">// that thread.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// A goroutine should call LockOSThread before calling OS services or</span>
+<span class="hljs-comment">// non-Go library functions that depend on per-thread state.</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//go:nosplit</span>
+<span class="hljs-keyword">func</span> LockOSThread() {
+    ...
+}
+</code></pre>
+<p>&#x5F53;goroutine&#x4E2D;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x540E;&#xFF1A;</p>
+<ol>
+<li>&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x7684;goroutine&#x53EA;&#x80FD;&#x88AB;go&#x8FD0;&#x884C;&#x65F6;&#x8C03;&#x5EA6;&#x6267;&#x884C;&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x56DB;&#x5927;&#x884C;&#xFF1B;</li>
+<li>&#x4E14;&#x4E0D;&#x5141;&#x8BB8;&#x8FDB;&#x5176;&#x4ED6;goroutine&#x88AB;&#x8C03;&#x5EA6;&#x5728;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF1B;</li>
+<li>&#x5F53;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#x7684;goroutine&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x5B58;&#x5728;&#x8C03;&#x5EA6;&#x7ED1;&#x5B9A;&#x5173;&#x7CFB;&#x7684;&#x7EBF;&#x7A0B;&#x4E5F;&#x4F1A;&#x88AB;&#x9500;&#x6BC1;&#x3002;</li>
+</ol>
+<p>&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x5FC5;&#x987B;&#x8C03;&#x7528;&#x8BE5;&#x51FD;&#x6570;&#xFF0C;&#x624D;&#x80FD;&#x7B26;&#x5408;linux&#x5185;&#x6838;&#x5BF9;ptrace&#x8BF7;&#x6C42;&#x7684;&#x5408;&#x6CD5;&#x6027;&#x6821;&#x9A8C;&#xFF0C;&#x5426;&#x5219;&#x4F1A;&#x9047;&#x5230;&#x9519;&#x8BEF; <code>-ESRCH (No Such Process)</code>&#x3002;</p>
 <h4 id="&#x95EE;&#x9898;&#xFF1A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;attach&#x540E;&#x4ECD;&#x5728;&#x8FD0;&#x884C;&#xFF1F;">&#x95EE;&#x9898;&#xFF1A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;attach&#x540E;&#x4ECD;&#x5728;&#x8FD0;&#x884C;&#xFF1F;</h4>
-<p>&#x6709;&#x8BFB;&#x8005;&#x53EF;&#x80FD;&#x4F1A;&#x81EA;&#x5DF1;&#x5F00;&#x53D1;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#x4F5C;&#x4E3A;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x671F;&#x95F4;&#x53EF;&#x80FD;&#x4F1A;&#x9047;&#x5230;&#x591A;&#x7EBF;&#x7A0B;&#x7ED9;&#x8C03;&#x8BD5;&#x5E26;&#x6765;&#x7684;&#x4E00;&#x4E9B;&#x56F0;&#x60D1;&#xFF0C;&#x8FD9;&#x91CC;&#x4E5F;&#x63D0;&#x4E00;&#x4E0B;&#x3002;</p>
-<p>&#x5047;&#x5982;&#x6211;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;go&#x7A0B;&#x5E8F;&#x505A;&#x4E3A;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF1A;</p>
+<p>&#x5047;&#x5982;&#x6211;&#x4F7F;&#x7528;&#x4E0B;&#x9762;&#x7684;go&#x7A0B;&#x5E8F;&#x505A;&#x4E3A;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x7ED3;&#x679C;&#x53D1;&#x73B0;&#x6267;&#x884C;&#x4E86; <code>godbg attach &lt;pid&gt;</code>&#x4E4B;&#x540E;&#x7A0B;&#x5E8F;&#x8FD8;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
     <span class="hljs-string">&quot;time&quot;</span>
@@ -2286,32 +2365,41 @@ process 1311 detach succ
     }
 }
 </code></pre>
-<p>&#x7ED3;&#x679C;&#x53D1;&#x73B0;&#x6267;&#x884C;&#x4E86; <code>godbg attach &lt;pid&gt;</code>&#x4E4B;&#x540E;&#x7A0B;&#x5E8F;&#x8FD8;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
 <p>&#x56E0;&#x4E3A;go&#x7A0B;&#x5E8F;&#x5929;&#x7136;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;sysmon&#x3001;gc&#x7B49;&#x7B49;&#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x7528;&#x5230;&#x72EC;&#x7ACB;&#x7EBF;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;attach&#x65F6;&#x53EA;&#x662F;&#x7B80;&#x5355;&#x7684;attach&#x4E86;pid&#x5BF9;&#x5E94;&#x8FDB;&#x7A0B;&#x7684;&#x67D0;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x5176;&#x4ED6;&#x7684;&#x7EBF;&#x7A0B;&#x4ECD;&#x7136;&#x662F;&#x6CA1;&#x6709;&#x88AB;&#x8C03;&#x8BD5;&#x8DDF;&#x8E2A;&#x7684;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x7684;&#x3002;</p>
 <p>&#x90A3;&#x6211;&#x4EEC;ptrace&#x65F6;&#x6307;&#x5B9A;&#x4E86;pid&#x5230;&#x5E95;attach&#x4E86;&#x54EA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5462;&#xFF1F;<strong>&#x8FD9;&#x4E2A;pid&#x5BF9;&#x5E94;&#x7684;&#x7EBF;&#x7A0B;&#x96BE;&#x9053;&#x4E0D;&#x662F;&#x6267;&#x884C;main.main&#x7684;&#x7EBF;&#x7A0B;&#x5417;&#xFF1F;&#x5148;&#x56DE;&#x7B54;&#x8BFB;&#x8005;&#x95EE;&#x9898;&#xFF1A;&#x6CA1;&#x9519;&#xFF0C;&#x8FD8;&#x771F;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#xFF01;</strong></p>
-<p><strong>go&#x7A0B;&#x5E8F;&#x4E2D;&#x51FD;&#x6570;main.main&#x662F;&#x7531;main goroutine&#x6765;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4F46;&#x662F;main goroutine&#x5E76;&#x6CA1;&#x6709;&#x548C;main thread&#x5B58;&#x5728;&#x4EFB;&#x4F55;&#x9ED8;&#x8BA4;&#x7684;&#x7ED1;&#x5B9A;&#x5173;&#x7CFB;</strong>&#x3002;&#x6240;&#x4EE5;&#x8BA4;&#x4E3A;main.main&#x4E00;&#x5B9A;&#x8FD0;&#x884C;&#x5728;pid&#x5BF9;&#x5E94;&#x7684;&#x7EBF;&#x7A0B;&#x4E4B;&#x4E0A;&#x662F;&#x9519;&#x8BEF;&#x7684;&#xFF01;</p>
-<blockquote>
-<p>ps&#xFF1A;&#x9644;&#x5F55;&#x300A;go runtime: go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x300B;&#x4E2D;&#x5BF9;go&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x505A;&#x4E86;&#x5206;&#x6790;&#xFF0C;&#x53EF;&#x4EE5;&#x5E2E;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x6253;&#x6D88;&#x8FD9;&#x91CC;main.main&#x3001;main goroutine&#x3001;main thread&#x7684;&#x4E00;&#x4E9B;&#x7591;&#x8651;&#x3002;</p>
-</blockquote>
-<p>&#x5728;Linux&#x4E0B;&#xFF0C;&#x7EBF;&#x7A0B;&#x5176;&#x5B9E;&#x662F;&#x901A;&#x8FC7;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#xFF08;LWP&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;ptrace&#x53C2;&#x6570;pid&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;LWP&#x7684;&#x8FDB;&#x7A0B;id&#x3002;&#x53EA;&#x5BF9;&#x8FDB;&#x7A0B;pid&#x8FDB;&#x884C;ptrace attach&#x64CD;&#x4F5C;&#xFF0C;&#x7ED3;&#x679C;&#x662F;&#x5C06;&#x53EA;&#x6709;&#x8FD9;&#x4E2A;&#x8FDB;&#x7A0B;pid&#x5BF9;&#x5E94;&#x7684;&#x7EBF;&#x7A0B;&#x4F1A;&#x88AB;&#x8C03;&#x8BD5;&#x8DDF;&#x8E2A;&#x3002;</p>
-<p><strong>&#x5728;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x4E2D;&#xFF0C;tracee&#x6307;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x800C;&#x975E;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5305;&#x542B;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;</strong>&#xFF0C;&#x5C3D;&#x7BA1;&#x6211;&#x4EEC;&#x6709;&#x65F6;&#x5019;&#x4E3A;&#x4E86;&#x63CF;&#x8FF0;&#x65B9;&#x4FBF;&#xFF0C;&#x5728;&#x672F;&#x8BED;&#x4E0A;&#x4F1A;&#x9009;&#x62E9;&#x503E;&#x5411;&#x4E8E;&#x4F7F;&#x7528;&#x8FDB;&#x7A0B;&#x3002;</p>
-<blockquote>
-<p>&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x53EF;&#x4EE5;&#x7406;&#x89E3;&#x6210;&#x4E00;&#x4E2A;&#x5305;&#x542B;&#x4E86;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x7EC4;&#xFF0C;&#x7EBF;&#x7A0B;&#x7EC4;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5728;&#x521B;&#x5EFA;&#x7684;&#x65F6;&#x5019;&#x90FD;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;clone+&#x53C2;&#x6570;CLONE_THREAD&#x6765;&#x521B;&#x5EFA;&#xFF0C;&#x6765;&#x4FDD;&#x8BC1;&#x6240;&#x6709;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#x62E5;&#x6709;&#x76F8;&#x540C;&#x7684;pid&#xFF0C;&#x7C7B;&#x4F3C;clone+CLONE_PARENT&#x4F7F;&#x5F97;&#x514B;&#x9686;&#x51FA;&#x7684;&#x6240;&#x6709;&#x5B50;&#x8FDB;&#x7A0B;&#x90FD;&#x6709;&#x76F8;&#x540C;&#x7684;&#x7236;&#x8FDB;&#x7A0B;id&#x4E00;&#x6837;&#x3002;</p>
-<p>golang&#x91CC;&#x9762;&#x901A;&#x8FC7;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4EE5;&#x53CA;&#x5982;&#x4E0B;&#x9009;&#x9879;&#x6765;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF1A;</p>
-<pre><code class="lang-go">
-cloneFlags = _CLONE_VM | <span class="hljs-comment">/* share memory */</span>
-    _CLONE_FS | <span class="hljs-comment">/* share cwd, etc */</span>
-    _CLONE_FILES | <span class="hljs-comment">/* share fd table */</span>
-    _CLONE_SIGHAND | <span class="hljs-comment">/* share sig handler table */</span>
-    _CLONE_SYSVSEM | <span class="hljs-comment">/* share SysV semaphore undo lists (see issue #20763) */</span>
-    _CLONE_THREAD <span class="hljs-comment">/* revisit - okay for now */</span>
-</code></pre>
-<p>&#x5173;&#x4E8E;clone&#x9009;&#x9879;&#x7684;&#x66F4;&#x591A;&#x4F5C;&#x7528;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x770B;man&#x624B;&#x518C; <code>man 2 clone</code>&#x6765;&#x4E86;&#x89E3;&#x3002;</p>
-</blockquote>
-<p>pid&#x6807;&#x8BC6;&#x7684;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;LWP&#xFF09;&#x4E0E;&#x53D1;&#x9001;ptrace&#x8BF7;&#x6C42;&#x7684;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;LWP&#xFF09;&#x4E8C;&#x8005;&#x4E4B;&#x95F4;&#x5EFA;&#x7ACB;ptrace link&#xFF0C;&#x5B83;&#x4EEC;&#x7684;&#x89D2;&#x8272;&#x5206;&#x522B;&#x4E3A;tracee&#x3001;tracer&#xFF0C;&#x540E;&#x7EED;tracee&#x671F;&#x671B;&#x6536;&#x5230;&#x7684;&#x6240;&#x6709;ptrace&#x8BF7;&#x6C42;&#x90FD;&#x6765;&#x81EA;&#x8FD9;&#x4E2A;tracer&#x3002;&#x56E0;&#x4E3A;&#x8FD9;&#x4E2A;&#x539F;&#x56E0;&#xFF0C;&#x5929;&#x7136;&#x5C31;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7684;go&#x7A0B;&#x5E8F;&#x5C31;&#x9700;&#x8981;&#x4FDD;&#x8BC1;&#x5B9E;&#x9645;&#x53D1;&#x9001;ptrace&#x8BF7;&#x6C42;&#x7684;goroutine&#x5FC5;&#x987B;&#x6267;&#x884C;&#x5728;&#x540C;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0A;&#x3002;</p>
+<p>&#x9644;&#x5F55;&#x300A;go runtime: go&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x300B;&#x4E2D;&#x5BF9;go&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#x505A;&#x4E86;&#x5206;&#x6790;&#xFF0C;&#x53EF;&#x4EE5;&#x5E2E;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x6253;&#x6D88;&#x8FD9;&#x91CC;runtime.main&#x3001;main.main &#x5728; main goroutine&#x3001;main thread &#x4E2D;&#x6267;&#x884C;&#x7EC6;&#x8282;&#x7684;&#x4E00;&#x4E9B;&#x7591;&#x8651;&#x3002;<strong>go&#x7A0B;&#x5E8F;&#x4E2D;&#x51FD;&#x6570;main.main&#x662F;&#x7531;main goroutine&#x6765;&#x6267;&#x884C;&#x7684;&#xFF0C;&#x4F46;&#x662F;main goroutine&#x5E76;&#x6CA1;&#x6709;&#x548C;main thread&#x5B58;&#x5728;&#x4EFB;&#x4F55;&#x9ED8;&#x8BA4;&#x7684;&#x7ED1;&#x5B9A;&#x5173;&#x7CFB; (main)</strong>&#x3002;&#x6240;&#x4EE5;&#x8BA4;&#x4E3A;main.main&#x4E00;&#x5B9A;&#x8FD0;&#x884C;&#x5728;&#x53C2;&#x6570;pid&#x5BF9;&#x5E94;&#x7684;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#x662F;&#x9519;&#x8BEF;&#x7684; &#xFF08;&#x6CA1;&#x6709;&#x4E0A;&#x8FF0;&#x63D0;&#x53CA;&#x7684;runtime.LockOSThread()&#x7684;&#x7ED1;&#x5B9A;&#x64CD;&#x4F5C;&#xFF09;&#xFF01;</p>
+<p>&#x5728;Linux&#x4E0B;&#xFF0C;&#x7EBF;&#x7A0B;&#x5176;&#x5B9E;&#x662F;&#x901A;&#x8FC7;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#xFF08;LWP&#xFF09;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;ptrace&#x53C2;&#x6570;pid&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;LWP&#x7684;&#x8FDB;&#x7A0B;id&#x3002;&#x53EA;&#x5BF9;&#x8FDB;&#x7A0B;pid&#x8FDB;&#x884C;ptrace attach&#x64CD;&#x4F5C;&#xFF0C;&#x4F5C;&#x7528;&#x662F;&#xFF0C;&#x8FD9;&#x4E2A;pid&#x5BF9;&#x5E94;&#x7684;&#x7EBF;&#x7A0B;&#x4F1A;&#x88AB;&#x8C03;&#x8BD5;&#x8DDF;&#x8E2A;&#xFF0C;&#x5BF9;&#x4E8E;&#x5929;&#x7136;&#x5C31;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7684;go&#x8FDB;&#x7A0B;&#x800C;&#x8A00;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5E76;&#x6CA1;&#x6709;&#x88AB;&#x5904;&#x7406;&#xFF0C;&#x5B83;&#x4EEC;&#x53EF;&#x80FD;&#x6B63;&#x5728;&#x6267;&#x884C;&#xFF0C;&#x6216;&#x8005;&#x88AB;&#x5176;&#x4ED6;&#x7684;tracers&#x8DDF;&#x8E2A;&#xFF0C;&#x90FD;&#x662F;&#x6709;&#x53EF;&#x80FD;&#x7684;&#x3002;</p>
 <p>&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x4E2D;&#x5982;&#x679C;&#x6709;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#xFF0C;&#x4ECD;&#x7136;&#x662F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x7684;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x4E3A;&#x4EC0;&#x4E48;&#x6211;&#x4EEC;&#x67D0;&#x4E9B;&#x8BFB;&#x8005;&#x53D1;&#x73B0;&#x6709;&#x65F6;&#x5019;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x4ECD;&#x7136;&#x5728;&#x4E0D;&#x505C;&#x8F93;&#x51FA;&#xFF0C;&#x56E0;&#x4E3A;tracer&#x5E76;&#x6CA1;&#x6709;&#x5728;main.main&#x5185;&#x90E8;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#xFF0C;&#x6267;&#x884C;&#x8BE5;&#x51FD;&#x6570;&#x7684;main goroutine&#x53EF;&#x80FD;&#x7531;&#x5176;&#x4ED6;&#x672A;&#x88AB;trace&#x7684;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x6240;&#x4EE5;&#x4ECD;&#x7136;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x7A0B;&#x5E8F;&#x4E0D;&#x505C;&#x8F93;&#x51FA;&#x3002;</p>
+<h4 id="&#x95EE;&#x9898;&#xFF1A;go&#x8FDB;&#x7A0B;&#x4E2D;&#x7EBF;&#x7A0B;&#x662F;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#xFF1F;">&#x95EE;&#x9898;&#xFF1A;go&#x8FDB;&#x7A0B;&#x4E2D;&#x7EBF;&#x7A0B;&#x662F;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#xFF1F;</h4>
+<p>&#x4E00;&#x4E2A;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x7A0B;&#x5E8F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x6267;&#x884C; &#x201C;<strong>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;clone+&#x9009;&#x9879;CLONE_THREAD</strong>&#x201D; &#x6765;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;pid <code>os.Getpid()</code> &#x548C; &#x4ECE;&#x5C5E;&#x7684;&#x8FDB;&#x7A0B;&#x62E5;&#x6709;&#x76F8;&#x540C;&#x7684;pid&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;go&#x8BED;&#x8A00;&#xFF0C;go&#x8FD0;&#x884C;&#x65F6;&#x5728;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x3001;&#x540E;&#x7EED;&#x6267;&#x884C;&#x671F;&#x95F4;&#x9700;&#x8981;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7; <code>runtime.newosproc</code> -&gt; <code>clone+cloneFlags</code> &#x6765;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF1A;</p>
+<pre><code class="lang-go">cloneFlags = _CLONE_VM | <span class="hljs-comment">/* share memory */</span>
+  _CLONE_FS | <span class="hljs-comment">/* share cwd, etc */</span>
+  _CLONE_FILES | <span class="hljs-comment">/* share fd table */</span>
+  _CLONE_SIGHAND | <span class="hljs-comment">/* share sig handler table */</span>
+  _CLONE_SYSVSEM | <span class="hljs-comment">/* share SysV semaphore undo lists (see issue #20763) */</span>
+  _CLONE_THREAD <span class="hljs-comment">/* revisit - okay for now */</span>
+
+<span class="hljs-keyword">func</span> newosproc(mp *m) {
+    stk := unsafe.Pointer(mp.g0.stack.hi)
+    ...
+    ret := retryOnEAGAIN(<span class="hljs-keyword">func</span>() <span class="hljs-keyword">int32</span> {
+        r := clone(cloneFlags, stk, unsafe.Pointer(mp), unsafe.Pointer(mp.g0), unsafe.Pointer(abi.FuncPCABI0(mstart)))
+        <span class="hljs-comment">// clone returns positive TID, negative errno.</span>
+        <span class="hljs-comment">// We don&apos;t care about the TID.</span>
+        <span class="hljs-keyword">if</span> r &gt;= <span class="hljs-number">0</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>
+        }
+        <span class="hljs-keyword">return</span> -r
+    })
+    ...
+}
+</code></pre>
+<blockquote>
+<p>ps: &#x5173;&#x4E8E;clone&#x9009;&#x9879;&#x7684;&#x66F4;&#x591A;&#x4F5C;&#x7528;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x67E5;&#x770B;man&#x624B;&#x518C; <code>man 2 clone</code>&#x6765;&#x4E86;&#x89E3;&#x3002;</p>
+</blockquote>
 <h4 id="&#x95EE;&#x9898;&#xFF1A;&#x60F3;&#x8BA9;&#x6267;&#x884C;mainmain&#x7684;&#x7EBF;&#x7A0B;&#x505C;&#x4E0B;&#x6765;&#xFF1F;">&#x95EE;&#x9898;&#xFF1A;&#x60F3;&#x8BA9;&#x6267;&#x884C;main.main&#x7684;&#x7EBF;&#x7A0B;&#x505C;&#x4E0B;&#x6765;&#xFF1F;</h4>
-<p>&#x5982;&#x679C;&#x60F3;&#x8BA9;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x6267;&#x884C;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x9700;&#x8981;&#x679A;&#x4E3E;&#x8FDB;&#x7A0B;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x7EBF;&#x7A0B;&#x5E76;&#x5BF9;&#x5B83;&#x4EEC;&#x9010;&#x4E00;&#x8FDB;&#x884C;ptrace attach&#x64CD;&#x4F5C;&#x3002;&#x5177;&#x4F53;&#x5230;Linux&#xFF0C;&#x53EF;&#x4EE5;&#x5217;&#x51FA; <code>/proc/&lt;pid&gt;/task</code>&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;LWP&#xFF09;&#x7684;pid&#xFF0C;&#x9010;&#x4E2A;&#x6267;&#x884C;ptrace attach&#x3002;</p>
+<p>&#x5982;&#x679C;&#x60F3;&#x8BA9;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x6267;&#x884C;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x9700;&#x8981;&#x679A;&#x4E3E;&#x8FDB;&#x7A0B;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x7EBF;&#x7A0B;&#x5E76;&#x5BF9;&#x5B83;&#x4EEC;&#x9010;&#x4E00;&#x8FDB;&#x884C;ptrace attach&#x64CD;&#x4F5C;&#x3002;&#x5177;&#x4F53;&#x5230;Linux&#xFF0C;&#x53EF;&#x4EE5;&#x5217;&#x51FA; <code>/proc/&lt;pid&gt;/task</code>&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;pid (LWP&#x7684;pid&#xFF0C;&#x800C;&#x975E;&#x8FDB;&#x7A0B;&#x5185;&#x7EBF;&#x7A0B;&#x7F16;&#x53F7;tid)&#xFF0C;&#x7136;&#x540E;&#x9010;&#x4E2A;&#x6267;&#x884C;ptrace attach&#x3002;</p>
 <p>&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x540E;&#x7EED;&#x8FC7;&#x7A0B;&#x4E2D;&#x8FDB;&#x4E00;&#x6B65;&#x5B8C;&#x5584;attach&#x547D;&#x4EE4;&#xFF0C;&#x4F7F;&#x5176;&#x4E5F;&#x80FD;&#x80DC;&#x4EFB;&#x591A;&#x7EBF;&#x7A0B;&#x73AF;&#x5883;&#x4E0B;&#x7684;&#x8C03;&#x8BD5;&#x5DE5;&#x4F5C;&#x3002;</p>
 <h4 id="&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF1F;">&#x95EE;&#x9898;&#xFF1A;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF1F;</h4>
 <p>&#x5982;&#x4F55;&#x5224;&#x65AD;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x5462;&#xFF1F;&#x6709;&#x4E24;&#x79CD;&#x7B80;&#x5355;&#x7684;&#x529E;&#x6CD5;&#x5E2E;&#x52A9;&#x5224;&#x65AD;&#x3002;</p>
@@ -2399,6 +2487,8 @@ the options argument, as described below.</p>
 <li>... blabla</li>
 </ul>
 </blockquote>
+<h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
+<p>attach&#x64CD;&#x4F5C;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#x64CD;&#x4F5C;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x9664;&#x4E86;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;attach&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD8;&#x8BE6;&#x7EC6;&#x89E3;&#x91CA;&#x4E86;ptrace link&#x7684;&#x6982;&#x5FF5;&#x4EE5;&#x53CA;&#x9650;&#x5236;&#xFF0C;&#x5E76;&#x4ECE;&#x5185;&#x6838;&#x5C42;&#x9762;&#x89E3;&#x91CA;&#x4E86;&#x8FD9;&#x79CD;&#x9650;&#x5236;&#xFF0C;&#x4EE5;&#x53CA;&#x6211;&#x4EEC;&#x4F7F;&#x7528;go&#x8BED;&#x8A00;&#x8FD9;&#x79CD;&#x539F;&#x751F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x60C5;&#x51B5;&#x4E0B;&#x5982;&#x4F55;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x7ED3;&#x5408;go&#x8BED;&#x8A00;&#x542F;&#x52A8;&#x6D41;&#x7A0B;&#xFF0C;&#x89E3;&#x91CA;&#x4E86;&#x4E00;&#x4E9B;go&#x5F00;&#x53D1;&#x8005;&#x4E0D;&#x592A;&#x4E86;&#x89E3;&#x7684;GMP&#x8C03;&#x5EA6;&#x95EE;&#x9898;&#xFF08;&#x6BD4;&#x5982;main.main&#x4E0D;&#x4E00;&#x5B9A;&#x8FD0;&#x884C;&#x5728;main thread&#xFF09;&#xFF0C;&#x5E76;&#x8FDB;&#x4E00;&#x6B65;&#x8BF4;&#x660E;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;attach go&#x8FDB;&#x7A0B;&#x540E;main.main&#x4E2D;&#x7684;&#x5FAA;&#x73AF;&#x4ECD;&#x7136;&#x5728;&#x6267;&#x884C;&#x3002;&#x6B64;&#x5916;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x5224;&#x65AD;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x679A;&#x4E3E;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;LWP pid&#x7B49;&#x64CD;&#x4F5C;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x89E3;&#x91CA;&#x4E86;&#x4E00;&#x4E9B;&#x975E;&#x5E38;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x57FA;&#x7840;&#x95EE;&#x9898;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x548C;&#x539F;&#x7406;&#x6253;&#x4E0B;&#x4E86;&#x575A;&#x5B9E;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
 
                                 
                                 </section>
@@ -2442,7 +2532,7 @@ the options argument, as described below.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"next":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},"previous":{"title":"6.1 进程启动","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/2-process_attach.md","mtime":"2025-08-17T09:26:50.649Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-17T09:27:21.130Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"next":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},"previous":{"title":"6.1 进程启动","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/2-process_attach.md","mtime":"2025-08-17T16:33:22.517Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-17T16:33:53.003Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.2 调试器雏形 - 技术方案 · GitBook</title>
+        <title>5.2 调试器开发 - 架构设计和技术方案 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -213,7 +213,7 @@
                 <a href="1-debugger_skeleton.html">
             
                     
-                    5.1 调试器雏形 - 功能分析
+                    5.1 调试器开发 - 需求分析
             
                 </a>
             
@@ -226,7 +226,7 @@
                 <a href="2-debugger_solution.html">
             
                     
-                    5.2 调试器雏形 - 技术方案
+                    5.2 调试器开发 - 架构设计和技术方案
             
                 </a>
             
@@ -239,7 +239,7 @@
                 <a href="3-debugger_solution_final.html">
             
                     
-                    5.3 调试器雏形 - 落地方案
+                    5.3 调试器开发 - 具体的实现方案选择
             
                 </a>
             
@@ -252,7 +252,7 @@
                 <a href="4-debugger_demos.html">
             
                     
-                    5.4 调试器雏形 - demos
+                    5.4 调试器开发 - 功能演示和实现效果
             
                 </a>
             
@@ -1998,7 +1998,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.2 调试器雏形 - 技术方案</a>
+        <a href=".." >5.2 调试器开发 - 架构设计和技术方案</a>
     </h1>
 </div>
 
@@ -2018,7 +2018,7 @@ body {
   counter-reset: h1 8;
 }
 </style></p>
-<h2 id="&#x8C03;&#x8BD5;&#x5668;&#x96CF;&#x5F62;&#xFF1A;&#x6280;&#x672F;&#x65B9;&#x6848;">&#x8C03;&#x8BD5;&#x5668;&#x96CF;&#x5F62;&#xFF1A;&#x6280;&#x672F;&#x65B9;&#x6848;</h2>
+<h2 id="&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x65B9;&#x6848;&#x9009;&#x62E9;">&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x65B9;&#x6848;&#x9009;&#x62E9;</h2>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x6280;&#x672F;&#x65B9;&#x6848;&#xFF0C;&#x6682;&#x65F6;&#x5148;&#x4E3B;&#x8981;&#x805A;&#x7126;&#x5728;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x70B9;&#x3002;</p>
 <h3 id="&#x6269;&#x5C55;&#x6027;&#x8BBE;&#x8BA1;">&#x6269;&#x5C55;&#x6027;&#x8BBE;&#x8BA1;</h3>
 <p>&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x5177;&#x5907;&#x826F;&#x597D;&#x7684;&#x6269;&#x5C55;&#x6027;&#x8BBE;&#x8BA1;&#xFF0C;&#x4EE5;&#x652F;&#x6301;&#x5728;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x4EA4;&#x4E92;&#xFF0C;&#x5982;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x8C03;&#x8BD5;&#x3001;&#x5728;IDE&#x4E2D;&#x8C03;&#x8BD5;&#x3001;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x3002;</p>
@@ -2113,12 +2113,12 @@ frame : frame &lt;n&gt;&#xFF0C;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x6808;&
 
             
                 
-                <a href="1-debugger_skeleton.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 调试器雏形 - 功能分析">
+                <a href="1-debugger_skeleton.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 调试器开发 - 需求分析">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="3-debugger_solution_final.html" class="navigation navigation-next " aria-label="Next page: 5.3 调试器雏形 - 落地方案">
+                <a href="3-debugger_solution_final.html" class="navigation navigation-next " aria-label="Next page: 5.3 调试器开发 - 具体的实现方案选择">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2129,7 +2129,7 @@ frame : frame &lt;n&gt;&#xFF0C;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x6808;&
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.2 调试器雏形 - 技术方案","level":"1.5.2","depth":2,"next":{"title":"5.3 调试器雏形 - 落地方案","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},"previous":{"title":"5.1 调试器雏形 - 功能分析","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/2-debugger_solution.md","mtime":"2025-08-15T10:17:29.476Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-15T10:18:02.659Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"next":{"title":"5.3 调试器开发 - 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},"previous":{"title":"5.1 调试器开发 - 需求分析","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/2-debugger_solution.md","mtime":"2025-08-17T05:15:26.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-17T05:15:57.712Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

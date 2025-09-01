@@ -2154,7 +2154,7 @@ SYSCALL_DEFINE4(ptrace, <span class="hljs-keyword">long</span>, request, <span c
     <span class="hljs-keyword">return</span> ret;
 }
 </code></pre>
-<p>&#x8FD9;&#x91CC; <code>exec_binprm(bprm)</code>&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86; <code>ptrace_event(PTRACE_EVENT_EXEC, message)</code>&#xFF0C;&#x540E;&#x8005;&#x5C06;&#x5BF9;&#x8FDB;&#x7A0B;ptrace&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#xFF0C;&#x4E00;&#x65E6;&#x53D1;&#x73B0;&#x8FDB;&#x7A0B;ptrace&#x6807;&#x8BB0;&#x4F4D;&#x8BBE;&#x7F6E;&#x4E86;PT_PTRACED&#xFF0C;&#x5185;&#x6838;&#x5C06;&#x7ED9;&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4E00;&#x4E2A;SIGTRAP&#x4FE1;&#x53F7;&#xFF0C;&#x7531;&#x6B64;&#x8F6C;&#x5165;SIGTRAP&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x8FD9;&#x91CC; <code>exec_binprm(bprm)</code>&#x5185;&#x90E8;&#x8C03;&#x7528;&#x4E86; <code>ptrace_event(PTRACE_EVENT_EXEC, message)</code>&#xFF0C;&#x540E;&#x8005;&#x5C06;&#x5BF9;&#x8FDB;&#x7A0B;ptrace&#x72B6;&#x6001;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#xFF0C;&#x4E00;&#x65E6;&#x53D1;&#x73B0;&#x8FDB;&#x7A0B;ptrace&#x6807;&#x8BB0;&#x4F4D;&#x8BBE;&#x7F6E;&#x4E86;PT_PTRACED&#xFF0C;&#x5185;&#x6838;&#x5C06;&#x7ED9;&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4E00;&#x4E2A;SIGTRAP&#x4FE1;&#x53F7;&#xFF0C;&#x7531;&#x6B64;&#x8F6C;&#x5165;SIGTRAP&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;&#x6216;&#x8005;&#x5982;&#x679C;&#x53D1;&#x73B0;&#x5F53;&#x524D;tracee&#x4E0A;&#x88AB;tracer&#x8BBE;&#x7F6E;&#x4E86;&#x6807;&#x8BB0; <code>current-&gt;ptrace &amp; PTRACE_EVENT_FLAG(PTRACE_EVENT_EXEC) == TRUE</code>&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x6267;&#x884C; <code>ptrace_notify((event&lt;&lt;8)|SIGTRAP)</code> &#x6765;&#x7ED9;tracee&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7;SIGTRAP&#x3002;</p>
 <p><strong>file: include/linux/ptrace.h</strong></p>
 <pre><code class="lang-c"><span class="hljs-comment">/**
  * ptrace_event - possibly stop for a ptrace event notification
@@ -2178,96 +2178,84 @@ SYSCALL_DEFINE4(ptrace, <span class="hljs-keyword">long</span>, request, <span c
     }
 }
 </code></pre>
-<p>&#x5728;Linux&#x4E0B;&#x9762;&#xFF0C;SIGTRAP&#x4FE1;&#x53F7;&#x5C06;&#x4F7F;&#x5F97;&#x8FDB;&#x7A0B;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x5411;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x77E5;&#x81EA;&#x8EAB;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x5316;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x8FC7;wait&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x5B50;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x7684;&#x53D8;&#x5316;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x5728;Linux&#x4E0B;&#x9762;&#xFF0C;SIGTRAP&#x4FE1;&#x53F7;&#x5C06;&#x4F7F;&#x5F97;&#x8FDB;&#x7A0B;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x5411;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x77E5;&#x81EA;&#x8EAB;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x5316;&#xFF0C;&#x7136;&#x540E;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x8FC7;wait&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6765;&#x83B7;&#x53D6;&#x5B50;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x7684;&#x53D8;&#x5316;&#x4FE1;&#x606F;&#x3002;ptrace_event&#x4E2D;&#x8FD9;&#x4E24;&#x4E2A;&#x5206;&#x652F;&#x90FD;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x5BF9;tracee&#x901A;&#x77E5;SIGTRAP&#x7684;&#x76EE;&#x7684;&#xFF0C;&#x90A3;&#x4E48;&#x7ED3;&#x5408;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x6765;&#x770B;&#xFF0C;&#x6211;&#x4EEC;&#x662F;&#x901A;&#x8FC7;&#x5B50;&#x8FDB;&#x7A0B;&#x6267;&#x884C;<code>ptrace(PTRACE_TRACEME, ...)</code>&#x64CD;&#x4F5C;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x7A76;&#x7ADF;&#x662F;&#x6267;&#x884C;&#x7684;&#x54EA;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#x5462;&#xFF1F;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x7B2C;2&#x4E2A;&#x5206;&#x652F;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x5148;&#x5C55;&#x5F00;&#x7B2C;1&#x4E2A;&#x5206;&#x652F;&#x6765;&#x770B;&#x770B;&#xFF1A;</p>
+<ul>
+<li>&#x7B2C;1&#x4E2A;&#x5206;&#x652F;&#x770B;&#x4E0A;&#x53BB;&#x662F;&#x5185;&#x6838;&#x66F4;&#x63A8;&#x5D07;&#x7684;&#x4E00;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5373;tracer&#x4E3B;&#x52A8;&#x8C03;&#x7528; <code>ptrace(PTRACE_SETOPTIONS&#xFF0C;...)</code> &#x6765;&#x8BBE;&#x7F6E;PTRACE_EVENT_EXEC&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x524D;&#x3001;&#x542F;&#x52A8;&#x540E;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#xFF1B;</li>
+<li>&#x7B2C;2&#x4E2A;&#x5206;&#x652F;&#x8FD9;&#x662F;&#x5BF9;&#x7ECF;&#x5178;ptraceme&#x64CD;&#x4F5C;&#x7684;&#x517C;&#x5BB9;&#xFF0C;&#x5373;&#x5B50;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x540E;&#x5728;exec&#x66FF;&#x6362;&#x6389;&#x4EE3;&#x7801;&#x6BB5;&#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x81EA;&#x5DF1;&#x6267;&#x884C; <code>ptrace(PTRACE_TRACEME, ...)</code> &#x6765;&#x8BBE;&#x7F6E;current-&gt;ptrace = PT_TRACED&#xFF0C;&#x5E76;&#x4E14;&#x6B64;&#x65F6;tracer&#x6B64;&#x65F6;&#x6CA1;&#x6709;&#x901A;&#x8FC7;1&#xFF09;&#x4E2D;&#x64CD;&#x4F5C;&#x5BF9;&#x540E;&#x7EED;tracee exec&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x8DDF;&#x8E2A;&#x7684;&#x8BDD;&#xFF0C;&#x90A3;&#x4E48;&#x5C31;&#x4F1A;&#x8FDB;&#x5165;&#x7B2C;2&#x4E2A;&#x5206;&#x652F;&#xFF1B;</li>
+</ul>
+<p>ps: &#x603B;&#x7ED3;&#x4E0B;&#x6765;&#x5176;&#x5B9E;&#x5C31;&#x662F;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x8C03;&#x8BD5;&#x5668;&#x5E0C;&#x671B;&#x8DDF;&#x8E2A;tracee&#x4E2D;&#x540E;&#x7EED;&#x7684;exec&#x65CF;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x624D;&#x9700;&#x8981;<code>ptrace(PTRACE_SETOPTIONS&#xFF0C;...)</code>&#x663E;&#x793A;&#x8BBE;&#x7F6E;&#x4E0B;PTRACE_EVENT_EXEC&#x3002;&#x5BF9;&#x4E8E;&#x5E0C;&#x671B;&#x542F;&#x52A8;&#x540E;&#x5C31;&#x7ACB;&#x5373;&#x8DDF;&#x8E2A;&#x8FD9;&#x79CD;&#x573A;&#x666F;&#x800C;&#x8A00;&#xFF0C;&#x90FD;&#x662F;&#x9700;&#x8981;&#x8C03;&#x8BD5;&#x5668;&#x542F;&#x52A8;&#x5B50;&#x8FDB;&#x7A0B;&#x65F6;&#x7ED9;&#x4E2A;&#x9009;&#x9879;ptrace=true&#xFF0C;&#x7136;&#x540E;fork&#x51FA;&#x5B50;&#x8FDB;&#x7A0B;&#x540E;&#xFF0C;&#x68C0;&#x67E5;&#x6709;&#x6CA1;&#x6709;&#x8BE5;&#x9009;&#x9879;&#xFF0C;&#x6709;&#x7684;&#x8BDD;&#x5C31;&#x6267;&#x884C;ptraceme&#x64CD;&#x4F5C;&#x3002;&#x524D;&#x8005;&#x4F1A;&#x8FDB;&#x5165;&#x7B2C;&#x4E00;&#x4E2A;&#x5206;&#x652F;&#x5904;&#x7406;&#xFF0C;&#x800C;&#x540E;&#x8005;&#x5FC5;&#x7136;&#x8FDB;&#x5165;&#x7B2C;2&#x4E2A;&#x5206;&#x652F;&#x5904;&#x7406;&#x3002;&#x5176;&#x5B9E;&#x770B;&#x5230;&#x6700;&#x540E;&#xFF0C;&#x6B8A;&#x9014;&#x540C;&#x5F52;&#xFF0C;&#x90FD;&#x662F;&#x901A;&#x8FC7;&#x4FE1;&#x53F7;SIGTRAP&#x53BB;&#x901A;&#x77E5;tracee&#xFF0C;&#x8FDB;&#x800C;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF08;SIGTRAP&#x7279;&#x6B8A;&#x7531;&#x5185;&#x6838;&#x5904;&#x7406;&#xFF09;&#x4E2D;&#x5524;&#x9192;tracer&#x3002;</p>
+<p>OK&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x7C97;&#x7565;&#x626B;&#x4E00;&#x773C;&#x5206;&#x652F;1&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x7136;&#x540E;&#x5728;&#x770B;&#x4E0B;&#x5206;&#x652F;2&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;</p>
+<h5 id="&#x5206;&#x652F;1&#xFF1A;ptraceeventenabledtask-ptraceeventexec">&#x5206;&#x652F;1&#xFF1A;ptrace_event_enabled(task, PTRACE_EVENT_EXEC)</h5>
 <pre><code class="lang-bash">|-&gt; ptrace_notify
-    |-&gt; ptrace_<span class="hljs-keyword">do</span>_notify
-        |-&gt; ptrace_stop
-            |-&gt; <span class="hljs-keyword">do</span>_notify_parent_cldstop
+|   |-&gt; ptrace_<span class="hljs-keyword">do</span>_notify
+|   |   |-&gt; ptrace_stop
+|   |   |   |   // &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x8C03;&#x5EA6;&#x72B6;&#x6001;
+|   |   |   |-&gt; <span class="hljs-built_in">set</span>_special_state(TASK_TRACED);
+|   |   |   |   // &#x901A;&#x77E5;tracer
+|   |   |   |-&gt; <span class="hljs-keyword">do</span>_notify_parent_cldstop(current, <span class="hljs-literal">true</span>, why)
+|   |   |   |      kernel_siginfo, info.si_signo=SIGCHLD, info.si_code = CLD_STOPPED 
+|   |   |   |      __group_send_sig_info(SIGCHLD, &amp;info, parent);
+|   |   |   |      __wake_up_parent(tsk, parent);
+|   |   |   |   // &#x7981;&#x7528;&#x62A2;&#x5360;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x88AB;&#x8C03;&#x5EA6;
+|   |   |   |-&gt; freezable_schedule()
 </code></pre>
-<p>&#x8BA9;&#x6211;&#x4EEC;&#x6700;&#x540E;&#x770B;&#x4E00;&#x773C;&#x8FD9;&#x91CC;&#x7684;&#x901A;&#x77E5;tracer&#x6216;&#x5176;&#x771F;&#x6B63;&#x7684;&#x7236;&#x8FDB;&#x7A0B;&#x7684;&#x51FD;&#x6570; ptrace_stop -&gt; do_notify_parent_cldstop() &#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#xFF1A;</p>
-<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">int</span> <span class="hljs-title">ptrace_stop</span><span class="hljs-params">(<span class="hljs-keyword">int</span> exit_code, <span class="hljs-keyword">int</span> why, <span class="hljs-keyword">unsigned</span> <span class="hljs-keyword">long</span> message,
-               kernel_siginfo_t *info)</span>
-    __<span class="hljs-title">releases</span><span class="hljs-params">(&amp;current-&gt;sighand-&gt;siglock)</span>
-    __<span class="hljs-title">acquires</span><span class="hljs-params">(&amp;current-&gt;sighand-&gt;siglock)</span>
-</span>{
-    ...
-
-    <span class="hljs-comment">/*
-     * Notify parents of the stop.
-     *
-     * While ptraced, there are two parents - the ptracer and
-     * the real_parent of the group_leader.  The ptracer should
-     * know about every stop while the real parent is only
-     * interested in the completion of group stop.  The states
-     * for the two don&apos;t interact with each other.  Notify
-     * separately unless they&apos;re gonna be duplicates.
-     */</span>
-    <span class="hljs-keyword">if</span> (current-&gt;ptrace)
-        do_notify_parent_cldstop(current, <span class="hljs-literal">true</span>, why);
-    <span class="hljs-keyword">if</span> (gstop_done &amp;&amp; (!current-&gt;ptrace || ptrace_reparented(current)))
-        do_notify_parent_cldstop(current, <span class="hljs-literal">false</span>, why);
-    ...
-}
-
-<span class="hljs-comment">/**
- * do_notify_parent_cldstop - notify parent of stopped/continued state change
- * @tsk: task reporting the state change
- * @for_ptracer: the notification is for ptracer
- * @why: CLD_{CONTINUED|STOPPED|TRAPPED} to report
- *
- * Notify @tsk&apos;s parent that the stopped/continued state has changed.  If
- * @for_ptracer is %false, @tsk&apos;s group leader notifies to its real parent.
- * If %true, @tsk reports to @tsk-&gt;parent which should be the ptracer.
- *
- * CONTEXT:
- * Must be called with tasklist_lock at least read locked.
- */</span>
-<span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">do_notify_parent_cldstop</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> task_struct *tsk,
-                     <span class="hljs-keyword">bool</span> for_ptracer, <span class="hljs-keyword">int</span> why)</span>
-</span>{
-    ...
-    <span class="hljs-keyword">if</span> (for_ptracer) {
-        parent = tsk-&gt;parent;
-    } <span class="hljs-keyword">else</span> {
-        tsk = tsk-&gt;group_leader;
-        parent = tsk-&gt;real_parent;
-    }
-
-    clear_siginfo(&amp;info);
-    info.si_signo = SIGCHLD;
-    info.si_errno = <span class="hljs-number">0</span>;
-    info.si_pid = task_pid_nr_ns(tsk, task_active_pid_ns(parent));
-    info.si_uid = from_kuid_munged(task_cred_xxx(parent, user_ns), task_uid(tsk));
-    info.si_utime = <span class="hljs-keyword">nsec_to_clock_t</span>(utime);
-    info.si_stime = <span class="hljs-keyword">nsec_to_clock_t</span>(stime);
-
-    info.si_code = why;
-    <span class="hljs-keyword">switch</span> (why) {
-    <span class="hljs-keyword">case</span> CLD_CONTINUED:
-        info.si_status = SIGCONT;
-        <span class="hljs-keyword">break</span>;
-    <span class="hljs-keyword">case</span> CLD_STOPPED:
-        info.si_status = tsk-&gt;signal-&gt;group_exit_code &amp; <span class="hljs-number">0x7f</span>;
-        <span class="hljs-keyword">break</span>;
-    <span class="hljs-keyword">case</span> CLD_TRAPPED:
-        info.si_status = tsk-&gt;exit_code &amp; <span class="hljs-number">0x7f</span>;
-        <span class="hljs-keyword">break</span>;
-    <span class="hljs-keyword">default</span>:
-        BUG();
-    }
-
-    sighand = parent-&gt;sighand;
-    <span class="hljs-keyword">if</span> (sighand-&gt;action[SIGCHLD<span class="hljs-number">-1</span>].sa.sa_handler != SIG_IGN &amp;&amp;
-        !(sighand-&gt;action[SIGCHLD<span class="hljs-number">-1</span>].sa.sa_flags &amp; SA_NOCLDSTOP))
-        send_signal_locked(SIGCHLD, &amp;info, parent, PIDTYPE_TGID);
-    <span class="hljs-comment">/*
-     * Even if SIGCHLD is not generated, we must wake up wait4 calls.
-     */</span>
-    __wake_up_parent(tsk, parent);
-    ...
-}
+<p>ptrace_do_notify -&gt; ptrace_stop -&gt; do_notify_parent_cldstop()&#xFF0C;&#x8FD9;&#x91CC;&#x7684;tracee&#x901A;&#x77E5;tracer&#xFF08;&#x6216;&#x8005;&#x7236;&#x8FDB;&#x7A0B;&#xFF09;&#x6211;&#x5DF2;&#x7ECF;&#x505C;&#x4E0B;&#x6765;&#x4E86;&#xFF0C;&#x4F1A;&#x53D1;&#x9001;&#x4FE1;&#x53F7; SIGCHLD &#x7684;&#x65B9;&#x5F0F;&#x6765;&#x901A;&#x77E5;tracer&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x7684;SIGCHLD&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x751F;&#x6210;&#xFF0C;&#x6BD4;&#x5982;tracer&#x5B9E;&#x73B0;&#x4E2D;&#x6545;&#x610F;&#x5C4F;&#x853D;SIGCHLD&#x4FE1;&#x53F7;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5185;&#x6838;&#x8FD8;&#x6709;&#x66F4;&#x4FDD;&#x9669;&#x7684;&#x4E00;&#x4E2A;&#x505A;&#x6CD5;&#xFF0C;<code>__wake_up_parent(task, parent</code>&#xFF0C;&#x5728;ptrace link&#x5173;&#x7CFB;&#x4E2D;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;tsk&#x5C31;&#x662F;tracee&#xFF0C;parent&#x5C31;&#x662F;tracer&#x3002;</p>
+<h5 id="&#x5206;&#x652F;2&#xFF1A;event--ptraceeventexec">&#x5206;&#x652F;2&#xFF1A;event == PTRACE_EVENT_EXEC</h5>
+<p>&#x5206;&#x652F;2&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x8981;&#x5148;send_sig&#x53D1;&#x9001;&#x4FE1;&#x53F7;SIGTRAP&#x7ED9;tracee&#xFF0C;&#x7136;&#x540E;&#x5185;&#x6838;&#x4E2D;&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x903B;&#x8F91;&#x6267;&#x884C;&#xFF0C;&#x4E13;&#x95E8;&#x5BF9;ptraced&#x72B6;&#x6001;&#x7684;&#x8FDB;&#x7A0B;&#x7684;&#x4FE1;&#x53F7;&#x6267;&#x884C;&#x7279;&#x6B8A;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;&#x6682;&#x505C;tracee&#x6267;&#x884C;&#x5E76;&#x901A;&#x77E5;&#x5524;&#x9192;tracer&#x3002;&#x4E0B;&#x9762;&#x6765;&#x770B;&#x770B;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x7EC6;&#x8282;&#xFF0C;&#x8FD9;&#x4E2A;&#x5728;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x4E5F;&#x662F;&#x8FD1;&#x4F3C;&#x7684;&#x3002;</p>
+<pre><code class="lang-bash">|-&gt; send_sig(SIGTRAP, current, 0)
+    |-&gt; send_sig_info(sig, __si_special(priv), p) 
+        |-&gt; <span class="hljs-keyword">do</span>_send_sig_info(sig, info, p, PIDTYPE_PID)
+            |-&gt; send_signal(sig, info, p, <span class="hljs-built_in">type</span>)
+                |-&gt; __send_signal(sig, info, t, <span class="hljs-built_in">type</span>, force)
+                    |-&gt; signalfd_notify(t, sig) // linux&#x5185;&#x6838;&#x5141;&#x8BB8;&#x901A;&#x8FC7;fd&#x6765;&#x6536;&#x4FE1;&#x53F7;
+                    |-&gt; sigaddset(&amp;pending-&gt;signal, sig)
+                    |-&gt; complete_signal(sig, t, <span class="hljs-built_in">type</span>);
 </code></pre>
-<p>&#x8FD9;&#x91CC;&#x7684;tracee&#x901A;&#x77E5;tracer&#xFF08;&#x6216;&#x8005;&#x7236;&#x8FDB;&#x7A0B;&#xFF09;&#x6211;&#x5DF2;&#x7ECF;&#x505C;&#x4E0B;&#x6765;&#x4E86;&#xFF0C;&#x4F1A;&#x53D1;&#x9001;&#x4FE1;&#x53F7; SIGCHLD &#x7684;&#x65B9;&#x5F0F;&#x6765;&#x901A;&#x77E5;tracer&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x91CC;&#x7684;SIGCHLD&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x751F;&#x6210;&#xFF0C;&#x6BD4;&#x5982;tracer&#x5B9E;&#x73B0;&#x4E2D;&#x6545;&#x610F;&#x5C4F;&#x853D;SIGCHLD&#x4FE1;&#x53F7;&#x3002;&#x6240;&#x4EE5;&#xFF0C;&#x5185;&#x6838;&#x8FD8;&#x6709;&#x66F4;&#x4FDD;&#x9669;&#x7684;&#x4E00;&#x4E2A;&#x505A;&#x6CD5;&#xFF0C;<code>__wake_up_parent(task, parent</code>&#xFF0C;&#x5728;ptrace link&#x5173;&#x7CFB;&#x4E2D;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;tsk&#x5C31;&#x662F;tracee&#xFF0C;parent&#x5C31;&#x662F;tracer&#x3002;</p>
+<p>Linux&#x4E2D;&#x4FE1;&#x53F7;&#x5206;&#x4E3A;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#x548C;&#x5F02;&#x6B65;&#x4FE1;&#x53F7;&#xFF1A;</p>
+<ul>
+<li>&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#x662F;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x65F6;&#x5C31;&#x540C;&#x6B65;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x8868;&#x793A;&#x53D1;&#x751F;&#x4E86;&#x4E25;&#x91CD;&#x4E8B;&#x4EF6;&#xFF0C;&#x901A;&#x5E38;&#x662F;&#x4E0D;&#x80FD;&#x803D;&#x6401;&#x5904;&#x7406;&#x7684;&#xFF0C;&#x4E5F;&#x4E0D;&#x5EFA;&#x8BAE;&#x6355;&#x83B7;&#x540E;&#x81EA;&#x5B9A;&#x4E49;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x51FD;&#x6570;&#xFF0C;&#x6BD4;&#x5982;SIGSEGV&#x3001;SIGTRAP&#x7B49;&#xFF0C;&#x56E0;&#x4E3A;&#x5904;&#x7406;&#x4E0D;&#x5F53;&#x53EF;&#x80FD;&#x95EE;&#x9898;&#x66F4;&#x5927;&#x3002;
+ps:  &#x4F46;&#x662F;go&#x8FD0;&#x884C;&#x65F6;&#x6709;&#x6355;&#x83B7;&#x90E8;&#x5206;SIGSEGV&#x5C06;&#x5176;&#x8F6C;&#x4E3A;panic&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</li>
+<li>&#x5F02;&#x6B65;&#x4FE1;&#x53F7;&#xFF0C;&#x8FD9;&#x4E2A;&#x662F;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x671F;&#x95F4;&#x7531;&#x5916;&#x90E8;&#x64CD;&#x4F5C;&#x751F;&#x6210;&#x7684;&#xFF0C;&#x5982;Ctrl+C&#x751F;&#x6210;&#x7684;SIGINT&#x3001;SIGTERM&#x3001;SIGQUIT&#x7B49;&#xFF0C;&#x8FD9;&#x7C7B;&#x4FE1;&#x53F7;&#x7684;&#x5904;&#x7406;&#x7B49;&#x5230;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x6001;&#x524D;&#x5904;&#x7406;&#x5373;&#x53EF;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x6355;&#x83B7;&#x5E76;&#x81EA;&#x5B9A;&#x4E49;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7684;&#xFF1B;</li>
+</ul>
+<p>Linux&#x5B9A;&#x4E49;&#x7684;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#x4E3B;&#x8981;&#x6709;&#x4E0B;&#x9762;&#x51E0;&#x4E2A;&#xFF0C;&#x5176;&#x4E2D;&#x5C31;&#x6709;&#x6211;&#x4EEC;&#x5173;&#x5FC3;&#x7684;SIGTRAP&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-meta">#<span class="hljs-meta-keyword">define</span> SYNCHRONOUS_MASK                                     \
+    (sigmask(SIGSEGV) | sigmask(SIGBUS) | sigmask(SIGILL) |  \
+     sigmask(SIGTRAP) | sigmask(SIGFPE) | sigmask(SIGSYS))</span>
+</code></pre>
+<p>&#x5F53;&#x524D;tracee&#x7EBF;&#x7A0B;&#x662F;&#x5728;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;execve&#x54E6;&#xFF0C;&#x6267;&#x884C;&#x671F;&#x95F4;&#x53D1;&#x73B0;&#x6709;task_struct-&gt;ptraced=true&#x6807;&#x8BC6;&#xFF0C;&#x7136;&#x540E;&#x5185;&#x6838;&#x4E3A;&#x5176;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;SIGTRAP&#x4FE1;&#x53F7;&#xFF0C;&#x5F53;tracee&#x7EBF;&#x7A0B;&#x4ECE;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x7A0B;&#x5E8F;&#x4E4B;&#x524D;&#xFF0C;&#x4F1A;&#x6709;&#x4E00;&#x4E2A;&#x5951;&#x673A;&#x6267;&#x884C;&#x4E00;&#x904D;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x3002;&#x5176;&#x5B9E;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x4E2A;get_signal&#x3001;handle_signal&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x5BF9;&#x4E8E;SIGTRAP&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5B83;&#x662F;&#x540C;&#x6B65;&#x4FE1;&#x53F7;&#xFF0C;&#x4F1A;&#x88AB;&#x4F18;&#x5148;&#x51FA;&#x961F;&#x5E76;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x5E76;&#x4E14;&#x4F1A;&#x505C;&#x6B62;&#x5F53;&#x524D;tracee&#x8C03;&#x5EA6;&#xFF0C;&#x5E76;&#x901A;&#x77E5;&#x5524;&#x9192;tracer&#x3002;</p>
+<pre><code class="lang-bash">arch_<span class="hljs-keyword">do</span>_signal_or_restart(struct pt_regs *regs, bool has_signal)
+|-&gt; get_signal
+|   |   // &#x540C;&#x6B65;&#x4FE1;&#x53F7;&#x4F18;&#x5148;&#x51FA;&#x961F;&#x8FDB;&#x884C;&#x5904;&#x7406;&#xFF0C;&#x6BD4;&#x5982;SIGTRAP
+|   |-&gt; signr = dequeue_synchronous_signal(&amp;ksig-&gt;info);
+|   |
+|   |   // &#x5982;&#x679C;&#x662F;ptrace SIGTRAP&#xFF0C;&#x90A3;&#x4E48;&#x7ACB;&#x5373;&#x53BB;&#x6267;&#x884C;&#x5904;&#x7406;&#xFF0C;
+|   |   // - &#x5148;&#x6682;&#x505C;tracee&#x6267;&#x884C;&#xFF0C;
+|   |   // - &#x518D;&#x901A;&#x77E5;tracer
+|   |-&gt; <span class="hljs-keyword">if</span> (unlikely(current-&gt;ptrace) &amp;&amp; signr != SIGKILL)
+|   |     signr = ptrace_signal(signr, &amp;ksig-&gt;info);
+|   |     |-&gt; ptrace_stop(signr, CLD_TRAPPED, 0, info);
+|   |     |   |   // &#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x4E0D;&#x53EF;&#x8C03;&#x5EA6;&#x72B6;&#x6001;
+|   |     |   |-&gt; <span class="hljs-built_in">set</span>_special_state(TASK_TRACED);
+|   |     |   |   // &#x901A;&#x77E5;tracer
+|   |     |   |-&gt; <span class="hljs-keyword">do</span>_notify_parent_cldstop(current, <span class="hljs-literal">true</span>, why)
+|   |     |   |      kernel_siginfo, info.si_signo=SIGCHLD, info.si_code = CLD_STOPPED 
+|   |     |   |      __group_send_sig_info(SIGCHLD, &amp;info, parent);
+|   |     |   |      __wake_up_parent(tsk, parent);
+|   |     |   |   // &#x7981;&#x7528;&#x62A2;&#x5360;&#xFF0C;&#x4E0D;&#x5141;&#x8BB8;&#x88AB;&#x8C03;&#x5EA6;
+|   |     |   |-&gt; freezable_schedule()
+|   |-&gt; // &#x5982;&#x679C;&#x662F;&#x5176;&#x4ED6;&#x4FE1;&#x53F7;&#x7C7B;&#x578B;&#xFF0C;&#x4E14;sig_handler != IGN&#xFF0C;&#x5219;&#x8F6C;handle_signal&#x6267;&#x884C;
+|
+|-&gt; handle_signal(struct ksignal *ksig, struct pt_regs *regs)
+|   |   // &#x8BBE;&#x7F6E;signal handler&#x6267;&#x884C;&#x9700;&#x8981;&#x7684;&#x6808;&#x5E27;
+|   |-&gt; failed = setup_rt_frame(ksig, oldset, regs)
+|   |   // &#x5207;&#x6362;&#x4E0A;&#x4E0B;&#x6587;&#xFF0C;&#x6267;&#x884C;&#x5BF9;&#x5E94;&#x7684;signal handler
+|   |-&gt; fpu__clear_user_states(fpu) // enter signal handler
+|   |   // &#x6267;&#x884C;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x51FD;&#x6570;&#x7ED3;&#x675F;
+|   |-&gt; signal_setup_<span class="hljs-keyword">done</span>(failed, ksig, stepping);
+</code></pre>
+<p>OK&#xFF0C;&#x5927;&#x81F4;&#x5C31;&#x662F;&#x8FD9;&#x6837;&#x4E00;&#x4E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x5927;&#x5BB6;&#x80FD;&#x6D88;&#x5316;&#x7684;&#x4E86;&#x6700;&#x597D;&#xFF0C;&#x6D88;&#x5316;&#x4E0D;&#x4E86;&#x77E5;&#x9053;&#x4E2A;&#x5927;&#x6982;&#x4E5F;&#x4E0D;&#x5F71;&#x54CD;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x672C;&#x8282;&#x5185;&#x5BB9;&#x3002;</p>
+<h5 id="tracer&#x4ECE;wait4&#x4E2D;&#x88AB;&#x5524;&#x9192;">tracer&#x4ECE;wait4&#x4E2D;&#x88AB;&#x5524;&#x9192;</h5>
 <p>&#x90A3;&#x4E48;tracer&#xFF08;&#x6216;&#x8005;&#x7236;&#x8FDB;&#x7A0B;&#xFF09;wait4 &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x662F;&#x600E;&#x4E48;&#x5B9E;&#x73B0;&#x7684;&#x5462;? &#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x4E5F;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x7CBE;&#x7B80;&#x7248;&#x7684;&#x603B;&#x7ED3;&#xFF1A;</p>
 <ol>
 <li>&#x7B80;&#x5355;&#x6765;&#x8BF4;&#xFF0C;&#x5C31;&#x662F;tracer&#x6216;&#x8005;&#x7236;&#x8FDB;&#x7A0B;&#x5C06;&#x81EA;&#x5DF1;&#x52A0;&#x5165;&#x4E00;&#x4E2A;&#x7B49;&#x5F85;&#x5B50;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x6539;&#x53D8;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x81EA;&#x5DF1;&#x8BBE;&#x7F6E;&#x4E3A;&#x53EF;&#x4E2D;&#x65AD;&#x7B49;&#x5F85;&#x72B6;&#x6001;&#x201C;INTERRUPTIBLE&#x201D;&#xFF0C;&#x610F;&#x601D;&#x5C31;&#x662F;&#x53EF;&#x4EE5;&#x88AB;&#x4FE1;&#x53F7;&#x5524;&#x9192;&#xFF0C;&#x5982;SIGCHILD&#x4FE1;&#x53F7;&#x3002;</li>
@@ -2325,8 +2313,8 @@ static long do_wait(struct wait_opts *wo)
 <p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x7ED3;&#x5408;&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#xFF0C;&#x518D;&#x6765;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x3001;&#x7406;&#x987A;&#x4E00;&#x4E0B;&#x3002;</p>
 <p>&#x9996;&#x5148;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;fork&#x3001;&#x5B50;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x6210;&#x529F;&#x4E4B;&#x540E;&#x662F;&#x5904;&#x4E8E;&#x5C31;&#x7EEA;&#x6001;&#x7684;&#xFF0C;&#x662F;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x7684;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x5148;&#x6267;&#x884C; <code>ptrace(PTRACE_TRACEME, ...)</code>&#x544A;&#x8BC9;&#x5185;&#x6838;&#x201C;<strong>&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x5E0C;&#x671B;&#x5728;&#x540E;&#x7EED;execve&#x6267;&#x884C;&#x65B0;&#x7A0B;&#x5E8F;&#x65F6;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7B49;&#x5F85;&#x7236;&#x8FDB;&#x7A0B;&#x7684;ptrace&#x64CD;&#x4F5C;&#xFF0C;&#x6240;&#x4EE5;&#x8BF7;&#x901A;&#x77E5;&#x6211;&#x5728;&#x5408;&#x9002;&#x7684;&#x65F6;&#x5019;&#x505C;&#x4E0B;&#x6765;</strong>&#x201D;&#x3002;&#x5B50;&#x8FDB;&#x7A0B;&#x518D;&#x6267;&#x884C;execve&#x52A0;&#x8F7D;&#x65B0;&#x7A0B;&#x5E8F;&#xFF0C;&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x6240;&#x9700;&#x8981;&#x7684;&#x4EE3;&#x7801;&#x6BB5;&#x3001;&#x6570;&#x636E;&#x6BB5;&#x7B49;&#x7B49;&#x3002;</p>
 <p>&#x91CD;&#x65B0;&#x521D;&#x59CB;&#x5316;&#x5B8C;&#x6210;&#x4E4B;&#x524D;&#x5185;&#x6838;&#x4F1A;&#x5C06;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x8C03;&#x6574;&#x4E3A;&#x201C;<strong>UnInterruptible Wait</strong>&#x201D;&#x963B;&#x6B62;&#x5176;&#x88AB;&#x8C03;&#x5EA6;&#x3001;&#x54CD;&#x5E94;&#x5916;&#x90E8;&#x4FE1;&#x53F7;&#xFF0C;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x5C06;&#x5176;&#x8C03;&#x6574;&#x4E3A;&#x201C;<strong>Interruptible Wait</strong>&#x201D;&#xFF0C;&#x5373;&#x53EF;&#x4EE5;&#x88AB;&#x4FE1;&#x53F7;&#x5524;&#x9192;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x5982;&#x679C;&#x6709;&#x4FE1;&#x53F7;&#x5230;&#x8FBE;&#xFF0C;&#x5219;&#x5141;&#x8BB8;&#x8FDB;&#x7A0B;&#x5BF9;&#x4FE1;&#x53F7;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x3002;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x8FDB;&#x7A0B;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x7684;ptrace&#x6807;&#x8BB0;&#x4F4D;&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x5C06;&#x88AB;&#x66F4;&#x65B0;&#x4E3A;&#x53EF;&#x8FD0;&#x884C;&#x7B49;&#x5F85;&#x4E0B;&#x6B21;&#x8C03;&#x5EA6;&#x3002;&#x5F53;&#x5185;&#x6838;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;ptrace&#x6807;&#x8BB0;&#x4F4D;&#x4E3A;PT_PTRACED&#x65F6;&#xFF0C;&#x5219;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x6837;&#x7684;&#x903B;&#x8F91;&#xFF1A;&#x5185;&#x6838;&#x7ED9;&#x8FD9;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A;<strong>SIGTRAP</strong>&#x4FE1;&#x53F7;&#xFF0C;&#x8BE5;&#x4FE1;&#x53F7;&#x5C06;&#x88AB;&#x8FFD;&#x52A0;&#x5230;&#x8FDB;&#x7A0B;&#x7684;pending&#x4FE1;&#x53F7;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x5524;&#x9192;&#x8BE5;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F53;&#x5185;&#x6838;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x5668;&#x8C03;&#x5EA6;&#x5230;&#x8BE5;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x53D1;&#x73B0;&#x5176;&#x6709;pending&#x4FE1;&#x53F7;&#x5230;&#x8FBE;&#xFF0C;&#x5C06;&#x6267;&#x884C;SIGTRAP&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;SIGTRAP&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x662F;&#x5185;&#x6838;&#x4EE3;&#x4E3A;&#x5904;&#x7406;&#x3002;</p>
-<p><strong>SIGTRAP&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x5177;&#x4F53;&#x505A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</strong>&#x5B83;&#x4F1A;&#x6682;&#x505C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;SIGCHLD&#x4FE1;&#x53F7;&#x5411;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x77E5;&#x81EA;&#x5DF1;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;&#x5B8C; <code>ptrace(PTRACE_ATTACH, ...)</code> &#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5E76;&#x4E0D;&#x4F1A;&#x7B49;&#x5F85;&#x5230;tracee&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;wait&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x6B64;&#x65F6;tracee&#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x505C;&#x4E0B;&#x6765;&#x3002;tracer&#x8C03;&#x7528;wait&#x4F1A;&#x5C06;tracer&#x72B6;&#x6001;&#x53D8;&#x4E3A; &#x201C;<strong>Interruptible Wait</strong>&#x201D;&#xFF0C;&#x5F53;&#x524D;tracer&#x4F1A;&#x88AB;&#x52A0;&#x5165;tracee&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x91CC;&#x3002;&#x76F4;&#x5230;&#x524D;&#x9762;&#x8BB2;&#x7684;&#x5185;&#x6838;&#x5904;&#x7406;tracee&#x7684;SIGTRAP&#x4FE1;&#x53F7;&#x540E;&#x5C06;&#x5176;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001;SIGCHLD&#x4FE1;&#x53F7;&#x901A;&#x77E5;tracer&#x5C06;tracer&#x5524;&#x9192;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x5982;&#x679C;&#x8BE5;&#x8FDB;&#x7A0B;&#x6CA1;&#x6709;&#x7279;&#x6B8A;&#x7684;ptrace&#x6807;&#x8BB0;&#x4F4D;&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x5C06;&#x88AB;&#x66F4;&#x65B0;&#x4E3A;&#x53EF;&#x8FD0;&#x884C;&#x7B49;&#x5F85;&#x4E0B;&#x6B21;&#x8C03;&#x5EA6;&#x3002;&#x5F53;&#x5185;&#x6838;&#x53D1;&#x73B0;&#x8FD9;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;ptrace&#x6807;&#x8BB0;&#x4F4D;&#x4E3A;PT_PTRACED&#x65F6;&#xFF0C;&#x5219;&#x4F1A;&#x6267;&#x884C;&#x8FD9;&#x6837;&#x7684;&#x903B;&#x8F91;&#xFF1A;&#x5185;&#x6838;&#x7ED9;&#x8FD9;&#x4E2A;&#x5B50;&#x8FDB;&#x7A0B;&#x53D1;&#x9001;&#x4E86;&#x4E00;&#x4E2A;<strong>SIGTRAP</strong>&#x4FE1;&#x53F7;&#xFF0C;&#x8BE5;&#x4FE1;&#x53F7;&#x5C06;&#x88AB;&#x8FFD;&#x52A0;&#x5230;&#x8FDB;&#x7A0B;&#x7684;pending&#x4FE1;&#x53F7;&#x961F;&#x5217;&#x4E2D;&#xFF0C;&#x5E76;&#x5C1D;&#x8BD5;&#x5524;&#x9192;&#x8BE5;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F53;&#x5185;&#x6838;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x5668;&#x8C03;&#x5EA6;&#x5230;&#x8BE5;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x6216;&#x8005;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x7528;&#x6237;&#x6001;&#x4E4B;&#x524D;&#xFF0C;&#x53D1;&#x73B0;&#x5176;&#x6709;pending&#x4FE1;&#x53F7;&#x5230;&#x8FBE;&#xFF0C;&#x5C06;&#x6267;&#x884C;SIGTRAP&#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;SIGTRAP&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#x662F;&#x5185;&#x6838;&#x4EE3;&#x4E3A;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>SIGTRAP&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x5177;&#x4F53;&#x505A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</strong>&#x5B83;&#x4F1A;&#x6682;&#x505C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;SIGCHLD&#x4FE1;&#x53F7;&#x5411;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x77E5;&#x81EA;&#x5DF1;&#x7684;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;&#x6CE8;&#x610F;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x8C03;&#x7528;&#x5B8C; <code>ptrace(PTRACE_ATTACH, ...)</code> &#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x5E76;&#x4E0D;&#x4F1A;&#x7B49;&#x5F85;&#x5230;tracee&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x901A;&#x8FC7;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;wait&#x5C1D;&#x8BD5;&#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x6B64;&#x65F6;tracee&#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x505C;&#x4E0B;&#x6765;&#x3002;tracer&#x8C03;&#x7528;wait&#x4F1A;&#x5C06;tracer&#x72B6;&#x6001;&#x53D8;&#x4E3A; &#x201C;<strong>Interruptible Wait</strong>&#x201D;&#xFF0C;&#x5F53;&#x524D;tracer&#x4F1A;&#x88AB;&#x52A0;&#x5165;tracee&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x91CC;&#x3002;&#x76F4;&#x5230;&#x524D;&#x9762;&#x8BB2;&#x7684;&#x5185;&#x6838;&#x5904;&#x7406;tracee&#x7684;SIGTRAP&#x4FE1;&#x53F7;&#x540E;&#x5C06;&#x5176;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x7136;&#x540E;&#x53D1;&#x9001;SIGCHLD&#x4FE1;&#x53F7;&#x901A;&#x77E5;tracer&#x5C06;tracer&#x5524;&#x9192;&#x3002;&#x4F46;&#x662F;&#x53D1;&#x9001;SIGCHLD&#x4FE1;&#x53F7;&#x7684;&#x65B9;&#x5F0F;&#x4E0D;&#x53EF;&#x9760;&#xFF0C;&#x56E0;&#x4E3A;tracer&#x8FDB;&#x7A0B;&#x6709;&#x53EF;&#x80FD;&#x5C4F;&#x853D;&#x8BE5;&#x4FE1;&#x53F7;&#xFF0C;&#x66F4;&#x53EF;&#x9760;&#x7684;&#x505A;&#x6CD5;&#x8FD8;&#x662F;__wait_up_parent(...)&#x65B9;&#x6CD5;&#x76F4;&#x63A5;&#x5C06;tracer&#x5524;&#x9192;&#x3002;</p>
 <p>&#x6B64;&#x65F6;&#xFF0C;tracer&#x88AB;&#x5524;&#x9192;&#xFF0C;wait&#x5C31;&#x53EF;&#x4EE5;&#x8FD4;&#x56DE;&#x5B50;&#x8FDB;&#x7A0B;tracee&#x7684;&#x72B6;&#x6001;&#x53D8;&#x5316;&#x60C5;&#x51B5;&#x3002;tracer&#x53D1;&#x73B0;&#x5B50;&#x8FDB;&#x7A0B;tracee&#x5DF2;&#x7ECF;&#x505C;&#x4E0B;&#x6765;&#xFF08;&#x5E76;&#x4E14;&#x662F;&#x56E0;&#x4E3A;SIGTRAP&#x505C;&#x4E0B;&#x6765;&#xFF09;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x53D1;&#x8D77;&#x540E;&#x7EED;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5BF9;&#x5E94;&#x7684;ptrace&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x8BFB;&#x5199;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
 <p>src&#x8BE6;&#x89C1;&#xFF1A;golang-debugger-lessons/3_process_startattach&#x3002;</p>
@@ -2407,6 +2395,31 @@ static long do_wait(struct wait_opts *wo)
     }
 }
 </code></pre>
+<p>&#x5176;&#x5B9E;&#x8FD9;&#x91CC;&#x901A;&#x8FC7;&#x8BBE;&#x7F6E;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x9009;&#x9879;ptrace=true&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x5230;&#x4E86;&#x6807;&#x51C6;&#x5E93;&#x4EE3;&#x7801;&#x540E;&#xFF0C;&#x542F;&#x52A8;&#x65F6;&#x4E5F;&#x662F;&#x7C7B;&#x4F3C;&#x6211;&#x4EEC;c&#x4E2D;&#x5904;&#x7406;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x6700;&#x7EC8;&#x4E5F;&#x4F1A;&#x8FDB;&#x5165;&#x53D1;&#x9001;&#x4FE1;&#x53F7;send_sig&#x5206;&#x652F;&#x53D1;&#x9001;SIGTRAP&#x7ED9;tracee&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> forkAndExecInChild1(argv0 *<span class="hljs-keyword">byte</span>, argv, envv []*<span class="hljs-keyword">byte</span>, chroot, dir *<span class="hljs-keyword">byte</span>, attr *ProcAttr, sys *SysProcAttr, pipe <span class="hljs-keyword">int</span>) (pid <span class="hljs-keyword">uintptr</span>, pidfd <span class="hljs-keyword">int32</span>, err1 Errno, mapPipe [<span class="hljs-number">2</span>]<span class="hljs-keyword">int</span>, locked <span class="hljs-keyword">bool</span>) {
+    <span class="hljs-comment">// set clone flags</span>
+    flags = sys.Cloneflags
+    <span class="hljs-keyword">if</span> sys.Cloneflags&amp;CLONE_NEWUSER == <span class="hljs-number">0</span> &amp;&amp; sys.Unshareflags&amp;CLONE_NEWUSER == <span class="hljs-number">0</span> {
+        flags |= CLONE_VFORK | CLONE_VM
+    }
+    ...
+
+    <span class="hljs-comment">// clone child process</span>
+    <span class="hljs-keyword">if</span> clone3 != <span class="hljs-literal">nil</span> {
+        pid, err1 = rawVforkSyscall(_SYS_clone3, <span class="hljs-keyword">uintptr</span>(unsafe.Pointer(clone3)), unsafe.Sizeof(*clone3), <span class="hljs-number">0</span>)
+    } <span class="hljs-keyword">else</span> {
+        pid, err1 = rawVforkSyscall(SYS_CLONE, flags, <span class="hljs-number">0</span>, <span class="hljs-keyword">uintptr</span>(unsafe.Pointer(&amp;pidfd)))
+    }
+    ...
+
+    <span class="hljs-comment">// Enable tracing if requested.</span>
+    <span class="hljs-comment">// Do this right before exec so that we don&apos;t unnecessarily trace the runtime</span>
+    <span class="hljs-comment">// setting up after the fork. See issue #21428.</span>
+    <span class="hljs-keyword">if</span> sys.Ptrace {
+        _, _, err1 = RawSyscall(SYS_PTRACE, <span class="hljs-keyword">uintptr</span>(PTRACE_TRACEME), <span class="hljs-number">0</span>, <span class="hljs-number">0</span>)
+        ...
+    }
+</code></pre>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
 <p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x9488;&#x5BF9;&#x8C03;&#x6574;&#x540E;&#x7684;&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6D4B;&#x8BD5;&#xFF1A;</p>
 <pre><code class="lang-bash">$ <span class="hljs-built_in">cd</span> golang-debugger/lessons/0_godbg/godbg &amp;&amp; go install -v
@@ -2429,7 +2442,7 @@ cmd  go.mod  go.sum  LICENSE  main.go  syms  target
 <p>&#x5F53;&#x6211;&#x4EEC;&#x9000;&#x51FA;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x65F6;&#xFF0C;&#x4F1A;&#x901A;&#x8FC7; <code>ptrace(PTRACE_COND,...)</code> &#x64CD;&#x4F5C;&#x6765;&#x6062;&#x590D;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;ls&#x6B63;&#x5E38;&#x6267;&#x884C;&#x5217;&#x51FA;&#x76EE;&#x5F55;&#x4E0B;&#x6587;&#x4EF6;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x770B;&#x5230;&#x4E86;&#x5B83;&#x8F93;&#x51FA;&#x4E86;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x4E0B;&#x7684;&#x6587;&#x4EF6;&#x4FE1;&#x606F; <code>cmd go.mod go.sum LICENSE main.go syms target</code>&#x3002;</p>
 <p><code>godbg exec &lt;prog&gt;</code> &#x547D;&#x4EE4;&#x73B0;&#x5728;&#x4E00;&#x5207;&#x6B63;&#x5E38;&#x4E86;&#xFF01;</p>
 <blockquote>
-<p>NOTE: &#x793A;&#x4F8B;&#x4E2D;&#x7A0B;&#x5E8F;&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x663E;&#x793A;&#x8C03;&#x7528; <code>ptrace(PTRACE_COND,...)</code> &#x6765;&#x6062;&#x590D;tracee&#x7684;&#x6267;&#x884C;&#x3002;&#x5176;&#x5B9E;tracer&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x5982;&#x679C;traced tracee&#x8FD8;&#x5728;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x81EA;&#x52A8;&#x89E3;&#x9664;tracee&#x7684;&#x8DDF;&#x8E2A;&#x72B6;&#x6001;&#x3002;</p>
+<p>NOTE: &#x793A;&#x4F8B;&#x4E2D;&#x7A0B;&#x5E8F;&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x6CA1;&#x6709;&#x663E;&#x793A;&#x8C03;&#x7528; <code>ptrace(PTRACE_COND,...)</code> &#x6765;&#x6062;&#x590D;tracee&#x7684;&#x6267;&#x884C;&#x3002;&#x5176;&#x5B9E;tracer&#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x76EE;&#x6807;&#x7EBF;&#x7A0B;&#x8FD8;&#x5904;&#x4E8E;&#x88AB;&#x8DDF;&#x8E2A;&#x72B6;&#x6001;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x81EA;&#x52A8;&#x89E3;&#x9664;tracee&#x7684;&#x8DDF;&#x8E2A;&#x72B6;&#x6001;&#xFF0C;&#x8FD8;&#x5B83;&#x81EA;&#x7531;&#x3002;</p>
 <p>&#x5982;&#x679C;tracee&#x662F;&#x6211;&#x4EEC;&#x4E3B;&#x52A8;&#x542F;&#x52A8;&#x7684;&#xFF08;&#x4E0D;&#x662F;attach&#x7684;&#xFF09;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x65F6;&#x5E94;&#x8BE5;kill&#x6389;&#x8BE5;&#x8FDB;&#x7A0B;&#xFF08;&#x6216;&#x8005;&#x5141;&#x8BB8;&#x9009;&#x62E9;kill&#x8FDB;&#x7A0B;&#x6216;&#x8BA9;&#x5176;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF09;&#xFF0C;&#x800C;&#x4E0D;&#x5E94;&#x8BE5;&#x9ED8;&#x8BA4;&#x8BA9;&#x5176;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</p>
 </blockquote>
 <p>&#x518D;&#x6B21;&#x601D;&#x8003;&#x4E0B;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;exec&#x6267;&#x884C;&#x7684;&#x662F;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#xFF0C;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5462;&#xFF1F;</p>
@@ -2453,8 +2466,9 @@ syscall.PtraceSetOptions(pid, syscall.PTRACE_O_TRACECLONE)
 </code></pre>
 </blockquote>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x7B2C;1&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x5982;&#x4F55;&#x542F;&#x52A8;&#x7A0B;&#x5E8F;&#x770B;&#xFF0C;&#x7B2C;2&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;attach&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x662F;&#x5982;&#x4F55;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x7ACB;&#x5373;&#x53D1;&#x8D77;&#x8DDF;&#x8E2A;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x8DDF;&#x8E2A;&#x540E;&#x7EED;&#x65B0;&#x5EFA;&#x7EBF;&#x7A0B;&#x3002;</p>
-<p>&#x53E6;&#x5916;&#x5BF9;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x65B0;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x7EBF;&#x7A0B;&#x81EA;&#x52A8;&#x88AB;trace&#xFF0C;&#x9700;&#x8981;tracer&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>syscall.PtraceSetOptions(traceePID, syscall.PTRACE_O_TRACECLONE)</code> &#x6765;&#x5B8C;&#x6210;&#x5BF9;tracee&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x6837;&#x5F53;tracee&#x5185;&#x90E8;&#x65B0;&#x5EFA;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x8BA9;&#x5176;&#x505C;&#x4E0B;&#x6765;&#x5E76;&#x901A;&#x77E5;tracer&#x3002;&#x53E6;&#x5916;&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x5730;&#x8C03;&#x8BD5;&#xFF0C;&#x4E00;&#x822C;&#x662F;tracer launch tracee&#x4E4B;&#x540E;&#x7ACB;&#x5373;attach tracee&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7ACB;&#x5373;&#x5BF9;tracee&#x8BBE;&#x7F6E;PTRACE_O_TRACECLONE&#x9009;&#x9879;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E07;&#x65E0;&#x4E00;&#x5931;&#x4E86;&#xFF0C;tracee&#x4EE5;&#x53CA;&#x5176;&#x542F;&#x52A8;&#x540E;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x4F1A;&#x88AB;&#x7EB3;&#x5165;tracer&#x8DDF;&#x8E2A;&#x4E4B;&#x4E0B;&#x3002;</p>
+<p>&#x7B2C;1&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x5982;&#x4F55;&#x542F;&#x52A8;&#x7A0B;&#x5E8F;&#x770B;&#xFF0C;&#x7B2C;2&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;attach&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x672C;&#x8282;&#x4ECB;&#x7ECD;&#x7684;&#x662F;&#x5982;&#x4F55;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x7ACB;&#x5373;&#x53D1;&#x8D77;&#x8DDF;&#x8E2A;&#xFF0C;&#x4EE5;&#x53CA;&#x5982;&#x4F55;&#x7EE7;&#x7EED;&#x8DDF;&#x8E2A;&#x672A;&#x6765;&#x8FDB;&#x7A0B;&#x65B0;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#xFF0C;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x65B0;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x7EBF;&#x7A0B;&#x81EA;&#x52A8;&#x88AB;trace&#xFF0C;&#x9700;&#x8981;tracer&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>syscall.PtraceSetOptions(traceePID, syscall.PTRACE_O_TRACECLONE)</code> &#x6765;&#x5B8C;&#x6210;&#x5BF9;tracee&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x8FD9;&#x6837;&#x5F53;tracee&#x5185;&#x90E8;&#x65B0;&#x5EFA;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x81EA;&#x52A8;&#x5904;&#x7406;&#x8BA9;&#x5176;&#x505C;&#x4E0B;&#x6765;&#x5E76;&#x901A;&#x77E5;tracer&#x3002;&#x53E6;&#x5916;&#x4E3A;&#x4E86;&#x66F4;&#x597D;&#x5730;&#x8C03;&#x8BD5;&#xFF0C;&#x4E00;&#x822C;&#x662F;tracer launch tracee&#x4E4B;&#x540E;&#x7ACB;&#x5373;attach tracee&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7ACB;&#x5373;&#x5BF9;tracee&#x8BBE;&#x7F6E;PTRACE_O_TRACECLONE&#x9009;&#x9879;&#xFF0C;&#x8FD9;&#x6837;&#x5C31;&#x4E07;&#x65E0;&#x4E00;&#x5931;&#x4E86;&#xFF0C;tracee&#x4EE5;&#x53CA;&#x5176;&#x542F;&#x52A8;&#x540E;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x4F1A;&#x88AB;&#x7EB3;&#x5165;tracer&#x8DDF;&#x8E2A;&#x4E4B;&#x4E0B;&#x3002;</p>
+<p>&#x8BFB;&#x5B8C;&#x672C;&#x8282;&#x5185;&#x5BB9;&#x4E4B;&#x540E;&#xFF0C;&#x76F8;&#x4FE1;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x53C8;&#x4E86;&#x89E3;&#x4E86;&#x4E9B;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x3001;Linux&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x65B9;&#x9762;&#x7684;&#x5B9D;&#x8D35;&#x7ECF;&#x9A8C;&#x3001;&#x6559;&#x8BAD;&#x3002;&#x4E0B;&#x8282;&#x5185;&#x5BB9;&#x518D;&#x89C1;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x5185;&#x5BB9;">&#x53C2;&#x8003;&#x5185;&#x5BB9;</h3>
 <ul>
 <li>Playing with ptrace, Part I, Pradeep Padala, <a href="https://www.linuxjournal.com/article/6100" target="_blank">https://www.linuxjournal.com/article/6100</a></li>
@@ -2504,7 +2518,7 @@ syscall.PtraceSetOptions(pid, syscall.PTRACE_O_TRACECLONE)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"next":{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},"previous":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/3-process_start_attach.md","mtime":"2025-09-01T10:38:25.334Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-01T10:38:54.646Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"next":{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},"previous":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/3-process_start_attach.md","mtime":"2025-09-01T18:02:16.863Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-01T18:02:48.729Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

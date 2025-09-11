@@ -396,12 +396,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.10" data-path="../6-develop-inst-debugger/10-step.html">
+        <li class="chapter " data-level="1.6.10" data-path="../6-develop-inst-debugger/10-clearall-atexit.html">
             
-                <a href="../6-develop-inst-debugger/10-step.html">
+                <a href="../6-develop-inst-debugger/10-clearall-atexit.html">
             
                     
-                    6.10 步进操作
+                    6.10 调试器退出前的断点清理机制
             
                 </a>
             
@@ -409,12 +409,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.11" data-path="../6-develop-inst-debugger/11-continue.html">
+        <li class="chapter " data-level="1.6.11" data-path="../6-develop-inst-debugger/11-step.html">
             
-                <a href="../6-develop-inst-debugger/11-continue.html">
+                <a href="../6-develop-inst-debugger/11-step.html">
             
                     
-                    6.11 运行到断点
+                    6.11 步进操作
             
                 </a>
             
@@ -422,12 +422,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.12" data-path="../6-develop-inst-debugger/12-pmem.html">
+        <li class="chapter " data-level="1.6.12" data-path="../6-develop-inst-debugger/12-continue.html">
             
-                <a href="../6-develop-inst-debugger/12-pmem.html">
+                <a href="../6-develop-inst-debugger/12-continue.html">
             
                     
-                    6.12 打印内存数据
+                    6.12 运行到断点
             
                 </a>
             
@@ -435,12 +435,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.13" data-path="../6-develop-inst-debugger/13-pregs.html">
+        <li class="chapter " data-level="1.6.13" data-path="../6-develop-inst-debugger/13-pmem.html">
             
-                <a href="../6-develop-inst-debugger/13-pregs.html">
+                <a href="../6-develop-inst-debugger/13-pmem.html">
             
                     
-                    6.13 打印寄存器数据
+                    6.13 打印内存数据
             
                 </a>
             
@@ -448,12 +448,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.14" data-path="../6-develop-inst-debugger/14-set-mem.html">
+        <li class="chapter " data-level="1.6.14" data-path="../6-develop-inst-debugger/14-pregs.html">
             
-                <a href="../6-develop-inst-debugger/14-set-mem.html">
+                <a href="../6-develop-inst-debugger/14-pregs.html">
             
                     
-                    6.14 修改内存数据
+                    6.14 打印寄存器数据
             
                 </a>
             
@@ -461,12 +461,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.15" data-path="../6-develop-inst-debugger/15-set-regs.html">
+        <li class="chapter " data-level="1.6.15" data-path="../6-develop-inst-debugger/15-set-mem.html">
             
-                <a href="../6-develop-inst-debugger/15-set-regs.html">
+                <a href="../6-develop-inst-debugger/15-set-mem.html">
             
                     
-                    6.15 修改寄存器数据
+                    6.15 修改内存数据
             
                 </a>
             
@@ -474,7 +474,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.16" data-path="../6-develop-inst-debugger/20-trace_new_threads.html">
+        <li class="chapter " data-level="1.6.16" data-path="../6-develop-inst-debugger/16-set-regs.html">
+            
+                <a href="../6-develop-inst-debugger/16-set-regs.html">
+            
+                    
+                    6.16 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/20-trace_new_threads.html">
             
                 <a href="../6-develop-inst-debugger/20-trace_new_threads.html">
             
@@ -487,7 +500,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/21-trace_old_threads.html">
+        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/21-trace_old_threads.html">
             
                 <a href="../6-develop-inst-debugger/21-trace_old_threads.html">
             
@@ -500,7 +513,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/80-aslr.html">
+        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/80-aslr.html">
             
                 <a href="../6-develop-inst-debugger/80-aslr.html">
             
@@ -513,7 +526,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/99-more.html">
+        <li class="chapter " data-level="1.6.20" data-path="../6-develop-inst-debugger/99-more.html">
             
                 <a href="../6-develop-inst-debugger/99-more.html">
             
@@ -2028,7 +2041,7 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 32;
+  counter-reset: h1 33;
 }
 </style></p>
 <h2 id="how-go-build-works">How &quot;go build&quot; works</h2>
@@ -2241,7 +2254,7 @@ mv <span class="hljs-variable">$WORK</span>/b001/exe/a.out xx
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"next":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},"previous":{"title":"7 挺进符号级调试器","level":"1.7","depth":1,"path":"7-headto-sym-debugger/README.md","ref":"7-headto-sym-debugger/README.md","articles":[{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},{"title":"7.5 加载","level":"1.7.5","depth":2,"path":"7-headto-sym-debugger/5-loading.md","ref":"7-headto-sym-debugger/5-loading.md","articles":[]},{"title":"7.6 go标准库debug/*","level":"1.7.6","depth":2,"path":"7-headto-sym-debugger/6-gopkg-debug/README.md","ref":"7-headto-sym-debugger/6-gopkg-debug/README.md","articles":[{"title":"7.6.1 debug/elf","level":"1.7.6.1","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","articles":[]},{"title":"7.6.2 debug/gosym","level":"1.7.6.2","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","ref":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","articles":[]},{"title":"7.6.3 debug/dwarf","level":"1.7.6.3","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","articles":[]}]},{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.4 链接器生成DWARF数据","level":"1.7.7.4","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","articles":[]},{"title":"7.7.5 可以了解DWARF了","level":"1.7.7.5","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/1-how-go-build-works.md","mtime":"2025-09-10T09:02:38.328Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-10T09:03:08.363Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"next":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},"previous":{"title":"7 挺进符号级调试器","level":"1.7","depth":1,"path":"7-headto-sym-debugger/README.md","ref":"7-headto-sym-debugger/README.md","articles":[{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},{"title":"7.5 加载","level":"1.7.5","depth":2,"path":"7-headto-sym-debugger/5-loading.md","ref":"7-headto-sym-debugger/5-loading.md","articles":[]},{"title":"7.6 go标准库debug/*","level":"1.7.6","depth":2,"path":"7-headto-sym-debugger/6-gopkg-debug/README.md","ref":"7-headto-sym-debugger/6-gopkg-debug/README.md","articles":[{"title":"7.6.1 debug/elf","level":"1.7.6.1","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","articles":[]},{"title":"7.6.2 debug/gosym","level":"1.7.6.2","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","ref":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","articles":[]},{"title":"7.6.3 debug/dwarf","level":"1.7.6.3","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","articles":[]}]},{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.4 链接器生成DWARF数据","level":"1.7.7.4","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","articles":[]},{"title":"7.7.5 可以了解DWARF了","level":"1.7.7.5","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/1-how-go-build-works.md","mtime":"2025-09-11T00:44:50.202Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-11T00:45:23.227Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

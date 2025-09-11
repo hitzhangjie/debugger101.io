@@ -2332,21 +2332,49 @@ long kernel_wait4(pid_t upid, int __user *stat_addr, int options,
 static long do_wait(struct wait_opts *wo)
 {
     ...
-    init_waitqueue_func_entry(&amp;wo-&gt;child_wait, child_wait_callback);
-    wo-&gt;child_wait.private = current;
-    add_wait_queue(&amp;current-&gt;signal-&gt;wait_chldexit, &amp;wo-&gt;child_wait);
+
+    // &#x5C06;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x52A0;&#x5165;&#x5230;&#x8FDB;&#x7A0B;&#x5171;&#x4EAB;&#x7684;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x4E2D; (&#x6CE8;&#x610F;&#x8FD9;&#x4E2A;current-&gt;signal&#x662F;&#x8FDB;&#x7A0B;&#x4E13;&#x5C5E;&#x5B57;&#x6BB5;&#xFF0C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;)
+    add_wait_queue(&amp;current-&gt;signal-&gt;wait_chldexit, &amp;wo-&gt;child_wait);   
 
     do {
+        // &#x5C06;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8BBE;&#x7F6E;&#x4E3A;&#x53EF;&#x4E2D;&#x65AD;&#x7B49;&#x5F85;&#x72B6;&#x6001;
         set_current_state(TASK_INTERRUPTIBLE);
         ...
+        // &#x6267;&#x884C;&#x4E00;&#x8F6E;&#x8C03;&#x5EA6;&#xFF0C;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x8BA9;&#x51FA;CPU&#x8FDB;&#x5165;&#x7B49;&#x5F85;
         schedule();
     } while (1);
 
+    // &#x7B49;&#x5230;&#x88AB;&#x5524;&#x9192;&#x5E76;&#x91CD;&#x65B0;&#x8C03;&#x5EA6;
     __set_current_state(TASK_RUNNING);
     remove_wait_queue(&amp;current-&gt;signal-&gt;wait_chldexit, &amp;wo-&gt;child_wait);
     return retval;
 }
 </code></pre>
+<p>&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x88AB;&#x5524;&#x9192;&#x5462;&#xFF1F;&#x5F53;tracee&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#x65F6;&#x663E;&#x793A;&#x901A;&#x8FC7; do_notify_parent_cldstop &#x901A;&#x77E5;&#x65F6;&#xFF1A;</p>
+<pre><code class="lang-c"><span class="hljs-function"><span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title">do_notify_parent_cldstop</span><span class="hljs-params">(<span class="hljs-keyword">struct</span> task_struct *tsk, <span class="hljs-keyword">bool</span> for_ptracer, <span class="hljs-keyword">int</span> why)</span>
+</span>{
+    ...
+    <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x5176;&#x5B9E;&#x662F;&#x53D1;&#x9001;&#x7ED9;ptracer&#x6240;&#x5C5E;&#x8FDB;&#x7A0B;&#x7684;&#xFF0C;&#x8FDB;&#x7A0B;&#x4E2D;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x5747;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#xFF1A;</span>
+    <span class="hljs-comment">// - &#x5982;&#x679C;&#x662F;untraced&#x7EBF;&#x7A0B;&#xFF0C;&#x53EF;&#x4EE5;&#x5904;&#x7406;&#x4FE1;&#x53F7;&#xFF1B;</span>
+    <span class="hljs-comment">// - &#x5982;&#x679C;&#x662F;traced&#x7EBF;&#x7A0B;&#xFF0C;&#x4F1A;&#x8FDB;&#x5165;signal-deliver-sigstop&#xFF0C;&#x6682;&#x505C;tracee&#x6267;&#x884C;&#xFF0C;</span>
+    <span class="hljs-comment">//   ptracer&#x53EF;&#x4EE5;&#x901A;&#x8FC7;PTRACE_RESTART&#x64CD;&#x4F5C;&#x7684;&#x540C;&#x65F6;inject signal&#x7ED9;tracee&#xFF08;&#x6B64;&#x65F6;&#x53EF;&#x4EE5;&#x66F4;&#x6362;&#x6210;&#x522B;&#x7684;&#x4FE1;&#x53F7;&#xFF09;;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// &#x8FD9;&#x4E2A;&#x4FE1;&#x53F7;&#x4E0D;&#x4E00;&#x5B9A;&#x603B;&#x662F;&#x751F;&#x6210;&#xFF0C;&#x4E0D;&#x4E00;&#x5B9A;&#x80FD;&#x591F;&#x5524;&#x9192;ptracer&#x8FDB;&#x7A0B;&#x4E0A;wait4&#x963B;&#x585E;&#x8C03;&#x7528;&#xFF01;</span>
+    __group_send_sig_info(SIGCHLD, &amp;info, parent); 
+
+    <span class="hljs-comment">// &#x5524;&#x9192;ptracer&#x8FDB;&#x7A0B;&#x4E0A;wait4&#x963B;&#x585E;&#x8C03;&#x7528;&#xFF0C;&#x8FD9;&#x4E2A;&#x51FD;&#x6570;&#x662F;&#x6700;&#x9760;&#x8C31;&#x7684;&#xFF0C;&#x5B83;&#x76F4;&#x63A5;&#x5524;&#x9192;parent&#x4E0A;&#x7B49;&#x5F85;tsk&#x72B6;&#x6001;&#x53D8;&#x5316;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;</span>
+    __wake_up_parent(tsk, parent);
+}
+
+<span class="hljs-keyword">void</span> __wake_up_parent(<span class="hljs-keyword">struct</span> task_struct *p, <span class="hljs-keyword">struct</span> task_struct *parent)
+{
+    <span class="hljs-comment">// &#x5524;&#x9192;ptracer&#x6240;&#x5C5E;&#x8FDB;&#x7A0B;&#x4E0A;&#x6B63;&#x5728;&#x901A;&#x8FC7;wait4&#x7B49;&#x5F85;&#x5F53;&#x524D;tracee&#x72B6;&#x6001;&#x6539;&#x53D8;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;</span>
+    <span class="hljs-comment">// parent-&gt;signal&#x65F6;&#x662F;&#x8FDB;&#x7A0B;&#x4E13;&#x5C5E;&#x5B57;&#x6BB5;&#xFF0C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;</span>
+    __wake_up_sync_key(&amp;parent-&gt;signal-&gt;wait_chldexit,
+               TASK_INTERRUPTIBLE, p);
+}
+</code></pre>
+<p>OK&#xFF0C;&#x4EE5;&#x4E0A;&#x63D0;&#x4E86;&#x4E0B;&#x963B;&#x585E;&#x548C;&#x5524;&#x9192;&#x7684;&#x5185;&#x6838;&#x4E2D;&#x7684;&#x4EA4;&#x4E92;&#x5F0F;&#x8FC7;&#x7A0B;&#x3002;</p>
 <p>&#x7236;&#x8FDB;&#x7A0B;&#x4E5F;&#x53EF;&#x901A;&#x8FC7; <code>ptrace(PTRACE_COND, pid, ...)</code> &#x64CD;&#x4F5C;&#x6765;&#x6062;&#x590D;&#x5B50;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x4F7F;&#x5176;&#x7EE7;&#x7EED;&#x6267;&#x884C;execve&#x52A0;&#x8F7D;&#x7684;&#x65B0;&#x7A0B;&#x5E8F;&#x3002;</p>
 <h4 id="put-it-together">Put it Together</h4>
 <p>&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x7ED3;&#x5408;&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#xFF0C;&#x518D;&#x6765;&#x56DE;&#x987E;&#x4E00;&#x4E0B;&#x6574;&#x4E2A;&#x8FC7;&#x7A0B;&#x3001;&#x7406;&#x987A;&#x4E00;&#x4E0B;&#x3002;</p>
@@ -2625,7 +2653,7 @@ syscall.PtraceSetOptions(pid, syscall.PTRACE_O_TRACECLONE)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"next":{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},"previous":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/3-process_start_attach.md","mtime":"2025-09-11T19:09:53.595Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-11T19:10:25.971Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.3 启动&attach","level":"1.6.3","depth":2,"next":{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},"previous":{"title":"6.2 进程attach","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/3-process_start_attach.md","mtime":"2025-09-11T19:38:09.227Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-11T19:38:41.941Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

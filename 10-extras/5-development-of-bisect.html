@@ -1911,7 +1911,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.4" data-path="../12-appendix/80-go-tool-compile.html">
+        <li class="chapter " data-level="1.12.4" data-path="../12-appendix/4-vscode-extension-bisect.html">
+            
+                <a href="../12-appendix/4-vscode-extension-bisect.html">
+            
+                    
+                    12.4 vscode extension bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../12-appendix/80-go-tool-compile.html">
             
                 <a href="../12-appendix/80-go-tool-compile.html">
             
@@ -1924,7 +1937,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.5" data-path="../12-appendix/81-go-tool-asm.html">
+        <li class="chapter " data-level="1.12.6" data-path="../12-appendix/81-go-tool-asm.html">
             
                 <a href="../12-appendix/81-go-tool-asm.html">
             
@@ -1937,7 +1950,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.6" data-path="../12-appendix/82-go-tool-link.html">
+        <li class="chapter " data-level="1.12.7" data-path="../12-appendix/82-go-tool-link.html">
             
                 <a href="../12-appendix/82-go-tool-link.html">
             
@@ -1950,7 +1963,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.7" data-path="../12-appendix/90-why-buildid-loaded.html">
+        <li class="chapter " data-level="1.12.8" data-path="../12-appendix/90-why-buildid-loaded.html">
             
                 <a href="../12-appendix/90-why-buildid-loaded.html">
             
@@ -1963,7 +1976,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.8" data-path="../12-appendix/91-syntax-and-semantic-analysis.html">
+        <li class="chapter " data-level="1.12.9" data-path="../12-appendix/91-syntax-and-semantic-analysis.html">
             
                 <a href="../12-appendix/91-syntax-and-semantic-analysis.html">
             
@@ -1976,7 +1989,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.9" data-path="../12-appendix/92-why-gdb-uses-symtab.html">
+        <li class="chapter " data-level="1.12.10" data-path="../12-appendix/92-why-gdb-uses-symtab.html">
             
                 <a href="../12-appendix/92-why-gdb-uses-symtab.html">
             
@@ -2496,6 +2509,12 @@ exit 1
 </code></pre><p>where the leading <code>KEY=value</code> arguments set environment variables before invoking the command with the remaining arguments. <code>Bisect</code> expects to find the literal string <code>PATTERN</code> somewhere on its command line, and it replaces that string with a hash pattern each time it repeats the command.</p>
 <p>You can use <code>bisect</code> to debug problems in your own compilers or libraries by having them accept a hash pattern either in the environment or on the command line and then print specially formatted lines for <code>bisect</code> on standard output or standard error. The easiest way to do this is to use <a href="https://pkg.go.dev/golang.org/x/tools/internal/bisect" target="_blank">the bisect package</a>. That package is not available for direct import yet (there is a <a href="https://go.dev/issue/67140" target="_blank">pending proposal</a> to add it to the Go standard library), but the package is only a <a href="https://cs.opensource.google/go/x/tools/+/master:internal/bisect/bisect.go" target="_blank">single file with no imports</a>, so it is easily copied into new projects or even translated to other languages. The package documentation also documents the hash pattern syntax and required output format.</p>
 <p>If you work on compilers or libraries and ever need to debug why a seemingly correct change you made broke a complex program, give <code>bisect</code> a try. It never stops feeling like magic.</p>
+<h3 id="&#x53C2;&#x8003;&#x5185;&#x5BB9;">&#x53C2;&#x8003;&#x5185;&#x5BB9;</h3>
+<ol>
+<li>hash-based bisect debugging in compilers and runtimes, <a href="https://research.swtch.com/bisect" target="_blank">https://research.swtch.com/bisect</a></li>
+<li>vscode extension bisect, <a href="https://code.visualstudio.com/blogs/2021/02/16/extension-bisect" target="_blank">https://code.visualstudio.com/blogs/2021/02/16/extension-bisect</a></li>
+<li>git bisect, <a href="https://git-scm.com/docs/git-bisect" target="_blank">https://git-scm.com/docs/git-bisect</a></li>
+</ol>
 
                                 
                                 </section>
@@ -2539,7 +2558,7 @@ exit 1
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"10.5 Bisect发展历程","level":"1.10.5","depth":2,"next":{"title":"10.6 eBPF发展历程","level":"1.10.6","depth":2,"path":"10-extras/6-development-of-ebpf.md","ref":"10-extras/6-development-of-ebpf.md","articles":[]},"previous":{"title":"10.4 跟踪系统发展历程","level":"1.10.4","depth":2,"path":"10-extras/4-development-of-tracing.md","ref":"10-extras/4-development-of-tracing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/5-development-of-bisect.md","mtime":"2025-09-11T19:55:51.060Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-11T19:56:22.560Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10.5 Bisect发展历程","level":"1.10.5","depth":2,"next":{"title":"10.6 eBPF发展历程","level":"1.10.6","depth":2,"path":"10-extras/6-development-of-ebpf.md","ref":"10-extras/6-development-of-ebpf.md","articles":[]},"previous":{"title":"10.4 跟踪系统发展历程","level":"1.10.4","depth":2,"path":"10-extras/4-development-of-tracing.md","ref":"10-extras/4-development-of-tracing.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/5-development-of-bisect.md","mtime":"2025-09-12T01:46:44.027Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-12T01:47:15.728Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

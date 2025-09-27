@@ -2113,21 +2113,51 @@ body {
 <h4 id="3-&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x51FD;&#x6570;">3. &#x65AD;&#x70B9;&#x6E05;&#x7406;&#x51FD;&#x6570;</h4>
 <pre><code class="lang-go"><span class="hljs-comment">// Cleanup &#x6E05;&#x7406;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x7684;&#x51FD;&#x6570;</span>
 <span class="hljs-keyword">func</span> Cleanup() {
-    fmt.Println(<span class="hljs-string">&quot;&#x6B63;&#x5728;&#x6E05;&#x7406;&#x65AD;&#x70B9;...&quot;</span>)
+    <span class="hljs-keyword">var</span> (
+        dbp = target.DBPProcess
+        err error
+    )
 
-    <span class="hljs-keyword">for</span> _, brk := <span class="hljs-keyword">range</span> breakpoints {
-        n, err := syscall.PtracePokeData(TraceePID, brk.Addr, []<span class="hljs-keyword">byte</span>{brk.Orig})
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
-            fmt.Printf(<span class="hljs-string">&quot;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#x5931;&#x8D25;: %v\n&quot;</span>, err)
-            <span class="hljs-keyword">continue</span>
-        }
+    <span class="hljs-comment">// &#x5148;&#x6E05;&#x7406;&#x6389;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x65AD;&#x70B9;</span>
+    fmt.Printf(<span class="hljs-string">&quot;before detached, clearall created breakpoints.&quot;</span>)
+    <span class="hljs-keyword">if</span> err := target.DBPProcess.ClearAll(); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;clearall failed err: %v\n&quot;</span>, err)
     }
 
-    <span class="hljs-comment">// &#x6E05;&#x7A7A;&#x65AD;&#x70B9;&#x96C6;&#x5408;</span>
-    breakpoints = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">uintptr</span>]*target.Breakpoint{}
-    fmt.Println(<span class="hljs-string">&quot;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x5B8C;&#x6210;&quot;</span>)
+    <span class="hljs-comment">// &#x6839;&#x636E;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;debug&#x3001;exec or attach&#xFF0C;&#x6765;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x505A;&#x5584;&#x540E;&#x5904;&#x7406;</span>
+    <span class="hljs-comment">// - debug: kill traced process, delete generated binary</span>
+    <span class="hljs-comment">// - exec: kill traced process</span>
+    <span class="hljs-comment">// - attach: detach traced process</span>
+    <span class="hljs-keyword">if</span> err = dbp.Detach(); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;detach tracee: %d, err: %v\n&quot;</span>, dbp.Process.Pid, err)
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-keyword">switch</span> dbp.Kind {
+    <span class="hljs-keyword">case</span> target.DEBUG:
+        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee is is built and run by tracer, remove binary and kill it: %d\n&quot;</span>, dbp.Kind)
+
+        <span class="hljs-keyword">if</span> err = os.RemoveAll(dbp.Command); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;remove built binary %s, err: %v\n&quot;</span>, dbp.Command, err)
+            <span class="hljs-keyword">return</span>
+        }
+        <span class="hljs-keyword">if</span> err = syscall.Kill(dbp.Process.Pid, syscall.SIGKILL); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;kill tracee: %d, err: %v\n&quot;</span>, dbp.Process.Pid, err)
+            <span class="hljs-keyword">return</span>
+        }
+        <span class="hljs-keyword">fallthrough</span>
+    <span class="hljs-keyword">case</span> target.EXEC:
+        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee is is run by tracer, kill it: %d\n&quot;</span>, dbp.Kind)
+        <span class="hljs-keyword">if</span> err = syscall.Kill(dbp.Process.Pid, syscall.SIGKILL); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;kill tracee: %d, err: %v\n&quot;</span>, dbp.Process.Pid, err)
+            <span class="hljs-keyword">return</span>
+        }
+    <span class="hljs-keyword">default</span>:
+        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee is an attached process, leave it running&quot;</span>)
+    }
 }
 </code></pre>
+<p>&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>target.DBPProcess.ClearAll()</code> &#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x5149;&#x4F1A;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x5904;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x4F1A;rewind&#x6240;&#x6709;&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x7EBF;&#x7A0B;&#x7684;PC&#xFF0C;&#x4FDD;&#x8BC1;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x540E;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x3002;&#x540C;&#x65F6;&#x8003;&#x8651;&#x4E86;attach&#x3001;debug&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x4E0B;&#x5BF9;&#x4E8E;tracee&#x7684;&#x4E0D;&#x540C;&#x5904;&#x7406;&#xFF0C;&#x540E;&#x8005;&#x4F1A;&#x6740;&#x6B7B;&#xFF0C;&#x524D;&#x8005;&#x4F1A;&#x8BE2;&#x95EE;&#x662F;&#x5426;&#x8981;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</p>
 <h4 id="4-&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;">4. &#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;</h4>
 <pre><code class="lang-go"><span class="hljs-comment">// &#x521B;&#x5EFA;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5E76;&#x6CE8;&#x518C;&#x6E05;&#x7406;&#x51FD;&#x6570;</span>
 session := debug.NewDebugSession().AtExit(Cleanup)
@@ -2268,7 +2298,7 @@ Sun Sep  7 15:23:21 CST 2025 pid: 416728
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"next":{"title":"6.11 步进操作","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-step.md","ref":"6-develop-inst-debugger/11-step.md","articles":[]},"previous":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/10-clearall-atexit.md","mtime":"2025-09-27T11:37:24.555Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-27T11:37:54.965Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"next":{"title":"6.11 步进操作","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-step.md","ref":"6-develop-inst-debugger/11-step.md","articles":[]},"previous":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/10-clearall-atexit.md","mtime":"2025-09-27T11:43:20.270Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-27T11:43:52.185Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

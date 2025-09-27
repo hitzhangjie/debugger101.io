@@ -2096,6 +2096,9 @@ body {
         }
 
         breakpoints = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">uintptr</span>]*target.Breakpoint{}
+
+        ...
+
         fmt.Println(<span class="hljs-string">&quot;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;&#x6210;&#x529F;&quot;</span>)
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
     },
@@ -2134,6 +2137,59 @@ godbg&gt;
 </code></pre>
 <p>&#x73B0;&#x5728;&#x5DF2;&#x7ECF;&#x6CA1;&#x6709;&#x5269;&#x4F59;&#x65AD;&#x70B9;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6DFB;&#x52A0;&#x3001;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;&#x7684;&#x529F;&#x80FD;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x3002;</p>
 <p>OK &#xFF0C;&#x622A;&#x6B62;&#x5230;&#x73B0;&#x5728;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3001;&#x5217;&#x51FA;&#x65AD;&#x70B9;&#x3001;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#x3001;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x8FD8;&#x6CA1;&#x6709;&#x6F14;&#x793A;&#x8FC7;&#x65AD;&#x70B9;&#x7684;&#x6548;&#x679C;&#xFF08;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;&#x505C;&#x4E0B;&#x6765;&#xFF09;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C31;&#x5C06;&#x5B9E;&#x73B0;step&#xFF08;&#x6267;&#x884C;1&#x6761;&#x6307;&#x4EE4;&#xFF09;&#x3001;continue&#xFF08;&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;&#xFF09;&#x64CD;&#x4F5C;&#x3002;</p>
+<h3 id="&#x601D;&#x8003;&#xFF1A;&#x4EC5;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x5C31;&#x53EF;&#x4EE5;&#x5417;&#xFF1F;">&#x601D;&#x8003;&#xFF1A;&#x4EC5;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x5C31;&#x53EF;&#x4EE5;&#x5417;&#xFF1F;</h3>
+<p>&#x4E0E;clear&#x547D;&#x4EE4;&#x7C7B;&#x4F3C;&#xFF0C;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#x53EA;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x4EC5;&#x4EC5;&#x7B97;&#x5B8C;&#x6210;&#x4E86;&#x7B2C;&#x4E00;&#x6B65;&#xFF0C;&#x8FD8;&#x9700;&#x8981;&#x5C06;&#x505C;&#x5728;&#x8FD9;&#x4E9B;&#x65AD;&#x70B9;&#x5904;&#x7684;&#x7EBF;&#x7A0B;&#x7684;pc--&#x3002;clearall&#x7531;&#x4E8E;&#x662F;&#x79FB;&#x9664;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF0C;&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x91CF;&#x6BD4;clear&#x79FB;&#x9664;&#x5355;&#x4E2A;&#x65AD;&#x70B9;&#x5F71;&#x54CD;&#x7684;&#x7EBF;&#x7A0B;&#x6570;&#x91CF;&#x8981;&#x66F4;&#x591A;&#xFF0C;&#x6240;&#x4EE5;&#x66F4;&#x8981;&#x6CE8;&#x610F;&#x5904;&#x7406;&#x3002;&#x5426;&#x5219;&#x5F88;&#x53EF;&#x80FD;clearall&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;&#x540E;&#x7EED;&#x5C31;&#x6CA1;&#x6CD5;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#x7684;&#x673A;&#x5668;&#x6307;&#x4EE4;CPU&#x5DF2;&#x7ECF;&#x65E0;&#x6CD5;&#x6B63;&#x5E38;&#x8BD1;&#x7801;&#x4E86;&#x3002;</p>
+<p>godbg&#x4E2D;&#x4FEE;&#x6539;&#x540E;&#x7684;clearall&#x547D;&#x4EE4;&#x5B9E;&#x73B0;&#xFF0C;&#x5982;&#x4E0B;&#x6240;&#x793A;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x67E5;&#x770B; [hitzhangjie/godbg]&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> clearallCmd = &amp;cobra.Command{
+    Use:   <span class="hljs-string">&quot;clearall&quot;</span>,
+    Short: <span class="hljs-string">&quot;&#x6E05;&#x9664;&#x6240;&#x6709;&#x7684;&#x65AD;&#x70B9;&quot;</span>,
+    Long:  <span class="hljs-string">`&#x6E05;&#x9664;&#x6240;&#x6709;&#x7684;&#x65AD;&#x70B9;`</span>,
+    Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
+        cmdGroupAnnotation: cmdGroupBreakpoints,
+    },
+    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+        <span class="hljs-comment">//fmt.Println(&quot;clearall&quot;)</span>
+        <span class="hljs-keyword">if</span> err := target.DBPProcess.ClearAll(); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x6E05;&#x9664;&#x65AD;&#x70B9;&#x5931;&#x8D25;: %v&quot;</span>, err)
+        }
+
+        fmt.Println(<span class="hljs-string">&quot;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;&#x6210;&#x529F;&quot;</span>)
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    },
+}
+
+<span class="hljs-comment">// ClearAll &#x5220;&#x9664;&#x6240;&#x6709;&#x5DF2;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) ClearAll() error {
+    <span class="hljs-comment">// &#x9996;&#x5148;&#x68C0;&#x67E5;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;</span>
+    stopped, err := p.ThreadStoppedAtBreakpoint()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;check thread breakpoints error: %v&quot;</span>, err)
+    }
+
+    <span class="hljs-keyword">for</span> _, bp := <span class="hljs-keyword">range</span> p.Breakpoints {
+        <span class="hljs-keyword">if</span> _, err := p.RestoreInstruction(bp.Addr); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;clear breakpoint at %#x error: %v&quot;</span>, bp.Addr, err)
+        }
+    }
+
+    <span class="hljs-comment">// &#x5982;&#x679C;&#x6709;&#x7EBF;&#x7A0B;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x5904;&#x7406;&#x8FD9;&#x4E9B;&#x7EBF;&#x7A0B;</span>
+    <span class="hljs-comment">// &#x56DE;&#x9000;&#x6240;&#x6709;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#x7684;PC</span>
+    <span class="hljs-keyword">for</span> tid := <span class="hljs-keyword">range</span> stopped {
+        regs, err := p.ReadRegister(tid)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;read register for thread %d: %v&quot;</span>, tid, err)
+        }
+
+        <span class="hljs-comment">// &#x56DE;&#x9000;PC&#x5230;&#x65AD;&#x70B9;&#x6307;&#x4EE4;&#x4E4B;&#x524D;</span>
+        regs.SetPC(regs.PC() - <span class="hljs-number">1</span>)
+        <span class="hljs-keyword">if</span> err = p.WriteRegister(tid, regs); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;write register for thread %d: %v&quot;</span>, tid, err)
+        }
+    }
+
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
 <h3 id="&#x601D;&#x8003;&#xFF1A;&#x5982;&#x679C;tracer&#x9000;&#x51FA;&#x524D;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#xFF1F;">&#x601D;&#x8003;&#xFF1A;&#x5982;&#x679C;tracer&#x9000;&#x51FA;&#x524D;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#xFF1F;</h3>
 <p>&#x601D;&#x8003;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;tracer&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x90FD;&#x662F;&#x901A;&#x8FC7;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5BF9;&#x8FDB;&#x7A0B;&#x6307;&#x4EE4;&#x8FDB;&#x884C;patch&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;tracer&#x9000;&#x51FA;&#x524D;&#x4E0D;&#x4E3B;&#x52A8;&#x6E05;&#x9664;&#x8FC7;&#x53BB;&#x6DFB;&#x52A0;&#x8FC7;&#x7684;&#x65AD;&#x70B9;&#x4F1A;&#x600E;&#x6837;&#xFF1F;&#x6211;&#x4EEC;&#x5C06;&#x5728;<a href="10-clearall-atexit.html">&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x7684;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x673A;&#x5236;</a>&#x8FD9;&#x4E00;&#x8282;&#x4E2D;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
@@ -2187,7 +2243,7 @@ godbg&gt;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"next":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},"previous":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/9-clearall.md","mtime":"2025-09-27T10:59:54.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-27T11:00:25.301Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"next":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},"previous":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/9-clearall.md","mtime":"2025-09-27T11:37:24.556Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-27T11:37:54.965Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

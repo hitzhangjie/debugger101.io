@@ -284,7 +284,7 @@
                 <a href="1-process_start.html">
             
                     
-                    6.1 进程启动
+                    6.1 启动进程
             
                 </a>
             
@@ -297,7 +297,7 @@
                 <a href="2-process_attach.html">
             
                     
-                    6.2 进程attach
+                    6.2 跟踪进程
             
                 </a>
             
@@ -310,7 +310,7 @@
                 <a href="3-process_start_attach.html">
             
                     
-                    6.3 启动&attach
+                    6.3 启动&跟踪进程
             
                 </a>
             
@@ -440,7 +440,7 @@
                 <a href="13-pmem.html">
             
                     
-                    6.13 打印内存数据
+                    6.13 查看内存数据
             
                 </a>
             
@@ -453,7 +453,7 @@
                 <a href="14-pregs.html">
             
                     
-                    6.14 打印寄存器数据
+                    6.14 查看寄存器数据
             
                 </a>
             
@@ -2057,8 +2057,8 @@ body {
   counter-reset: h1 26;
 }
 </style></p>
-<h2 id="&#x4FEE;&#x6539;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;-&#x4FEE;&#x6539;&#x5185;&#x5B58;">&#x4FEE;&#x6539;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;: &#x4FEE;&#x6539;&#x5185;&#x5B58;</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;-&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;: &#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;</h3>
+<h2 id="&#x4FEE;&#x6539;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;-&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;">&#x4FEE;&#x6539;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;: &#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;-godbg-setmem-addr-val-&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;: <code>godbg&gt; setmem &lt;addr&gt; &lt;val&gt;</code> &#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;</h3>
 <p>&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x8FC7;&#x7A0B;&#x4E2D;&#x5176;&#x5B9E;&#x4E5F;&#x662F;&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x505A;&#x4FEE;&#x6539;&#xFF0C;&#x53EA;&#x4E0D;&#x8FC7;&#x65AD;&#x70B9;&#x64CD;&#x4F5C;&#x662F;&#x4FEE;&#x6539;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x6211;&#x4EEC;&#x8FD9;&#x91CC;&#x5F3A;&#x8C03;&#x7684;&#x662F;&#x5BF9;&#x6570;&#x636E;&#x505A;&#x4FEE;&#x6539;&#x3002;</p>
 <p>&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x505A;&#x4FEE;&#x6539;&#xFF0C;&#x5176;&#x5B9E;&#x6CA1;&#x6709;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x540D;&#x6765;&#x4FEE;&#x6539;&#x5BB9;&#x6613;&#xFF0C;&#x5BF9;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x7684;&#x8981;&#x6C42;&#x6BD4;&#x8F83;&#x9AD8;&#x3002;&#x56E0;&#x4E3A;&#x5982;&#x679C;&#x4E0D;&#x77E5;&#x9053;&#x4EC0;&#x4E48;&#x6570;&#x636E;&#x5728;&#x5185;&#x5B58;&#x4EC0;&#x4E48;&#x4F4D;&#x7F6E;&#xFF0C;&#x662F;&#x4EC0;&#x4E48;&#x7C7B;&#x578B;&#xFF0C;&#x5360;&#x591A;&#x5C11;&#x5B57;&#x8282;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x597D;&#x4FEE;&#x6539;&#x3002;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x5C31;&#x7B80;&#x5355;&#x591A;&#x4E86;&#xFF0C;&#x76F4;&#x63A5;&#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x540D;&#x6765;&#x4FEE;&#x6539;&#x5C31;&#x53EF;&#x4EE5;&#x3002;&#x672C;&#x8282;&#x6F14;&#x793A;&#x4E0B;&#x5BF9;&#x5185;&#x5B58;&#x6570;&#x636E;&#x533A;&#x6570;&#x636E;&#x505A;&#x4FEE;&#x6539;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x4ECB;&#x7ECD;&#x4E0B;&#x7528;&#x5230;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>ptrace(PTRACE_POKEDATA,...)</code> &#xFF0C;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x91CC;&#x901A;&#x8FC7;&#x53D8;&#x91CF;&#x540D;&#x6765;&#x4FEE;&#x6539;&#x503C;&#x65F6;&#x4E5F;&#x8981;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;</p>
 <p>OK&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x8FD8;&#x662F;&#x5148;&#x4ECB;&#x7ECD;&#x5982;&#x4F55;&#x4FEE;&#x6539;&#x4EFB;&#x610F;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5904;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#xFF0C;&#x7136;&#x540E;&#x4F1A;&#x5728; godbg &#x4E2D;&#x5B9E;&#x73B0;&#x6B64;set&#x547D;&#x4EE4;&#xFF1A;<code>set &lt;addr&gt; &lt;value&gt;</code> &#x3002;</p>
@@ -2314,7 +2314,7 @@ zhangjie&#x1F980;testdata(master) $
 
             
                 
-                <a href="14-pregs.html" class="navigation navigation-prev " aria-label="Previous page: 6.14 打印寄存器数据">
+                <a href="14-pregs.html" class="navigation navigation-prev " aria-label="Previous page: 6.14 查看寄存器数据">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2330,7 +2330,7 @@ zhangjie&#x1F980;testdata(master) $
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.15 修改内存数据","level":"1.6.15","depth":2,"next":{"title":"6.16 修改寄存器数据","level":"1.6.16","depth":2,"path":"6-develop-inst-debugger/16-set-regs.md","ref":"6-develop-inst-debugger/16-set-regs.md","articles":[]},"previous":{"title":"6.14 打印寄存器数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-pregs.md","ref":"6-develop-inst-debugger/14-pregs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/15-set-mem.md","mtime":"2025-09-29T07:56:06.506Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T07:56:38.550Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.15 修改内存数据","level":"1.6.15","depth":2,"next":{"title":"6.16 修改寄存器数据","level":"1.6.16","depth":2,"path":"6-develop-inst-debugger/16-set-regs.md","ref":"6-develop-inst-debugger/16-set-regs.md","articles":[]},"previous":{"title":"6.14 查看寄存器数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-pregs.md","ref":"6-develop-inst-debugger/14-pregs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/15-set-mem.md","mtime":"2025-09-29T23:57:40.326Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T23:58:11.722Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

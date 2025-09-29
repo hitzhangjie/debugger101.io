@@ -284,7 +284,7 @@
                 <a href="1-process_start.html">
             
                     
-                    6.1 进程启动
+                    6.1 启动进程
             
                 </a>
             
@@ -297,7 +297,7 @@
                 <a href="2-process_attach.html">
             
                     
-                    6.2 进程attach
+                    6.2 跟踪进程
             
                 </a>
             
@@ -310,7 +310,7 @@
                 <a href="3-process_start_attach.html">
             
                     
-                    6.3 启动&attach
+                    6.3 启动&跟踪进程
             
                 </a>
             
@@ -440,7 +440,7 @@
                 <a href="13-pmem.html">
             
                     
-                    6.13 打印内存数据
+                    6.13 查看内存数据
             
                 </a>
             
@@ -453,7 +453,7 @@
                 <a href="14-pregs.html">
             
                     
-                    6.14 打印寄存器数据
+                    6.14 查看寄存器数据
             
                 </a>
             
@@ -2057,8 +2057,8 @@ body {
   counter-reset: h1 20;
 }
 </style></p>
-<h2 id="&#x8F6F;&#x4EF6;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;clearall-&#x79FB;&#x9664;&#x5168;&#x90E8;&#x65AD;&#x70B9;">&#x8F6F;&#x4EF6;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;<code>clearall</code> &#x79FB;&#x9664;&#x5168;&#x90E8;&#x65AD;&#x70B9;</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;</h3>
+<h2 id="&#x8F6F;&#x4EF6;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;">&#x8F6F;&#x4EF6;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;&#x6E05;&#x7A7A;&#x65AD;&#x70B9;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-clearall-&#x6E05;&#x7A7A;&#x65AD;&#x70B9;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg&gt; clearall</code> &#x6E05;&#x7A7A;&#x65AD;&#x70B9;</h3>
 <p><code>clearall</code>&#x547D;&#x4EE4;&#x7684;&#x529F;&#x80FD;&#x662F;&#x4E3A;&#x4E86;&#x5FEB;&#x901F;&#x79FB;&#x9664;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF0C;&#x800C;&#x4E0D;&#x7528;&#x901A;&#x8FC7; <code>clear -n &lt;breakNo&gt;</code>&#x9010;&#x4E2A;&#x5220;&#x9664;&#x65AD;&#x70B9;&#xFF0C;&#x9002;&#x5408;&#x6DFB;&#x52A0;&#x4E86;&#x5F88;&#x591A;&#x65AD;&#x70B9;&#x60F3;&#x5FEB;&#x901F;&#x6E05;&#x7406;&#x7684;&#x573A;&#x666F;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
 <p><code>clearall</code>&#x7684;&#x5B9E;&#x73B0;&#x903B;&#x8F91;&#xFF0C;&#x548C; <code>clear</code>&#x903B;&#x8F91;&#x5DEE;&#x4E0D;&#x591A;&#xFF0C;&#x76F8;&#x6BD4;&#x8F83;&#x4E4B;&#x4E0B;&#x5904;&#x7406;&#x903B;&#x8F91;&#x66F4;&#x7B80;&#x5355;&#x70B9;&#x3002;</p>
@@ -2193,11 +2193,11 @@ godbg&gt;
 <h3 id="&#x601D;&#x8003;&#xFF1A;&#x5982;&#x679C;tracer&#x9000;&#x51FA;&#x524D;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#xFF1F;">&#x601D;&#x8003;&#xFF1A;&#x5982;&#x679C;tracer&#x9000;&#x51FA;&#x524D;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#xFF1F;</h3>
 <p>&#x601D;&#x8003;&#x4E00;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;tracer&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x90FD;&#x662F;&#x901A;&#x8FC7;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5BF9;&#x8FDB;&#x7A0B;&#x6307;&#x4EE4;&#x8FDB;&#x884C;patch&#xFF0C;&#x90A3;&#x4E48;&#x5982;&#x679C;tracer&#x9000;&#x51FA;&#x524D;&#x4E0D;&#x4E3B;&#x52A8;&#x6E05;&#x9664;&#x8FC7;&#x53BB;&#x6DFB;&#x52A0;&#x8FC7;&#x7684;&#x65AD;&#x70B9;&#x4F1A;&#x600E;&#x6837;&#xFF1F;&#x6211;&#x4EEC;&#x5C06;&#x5728;<a href="10-clearall-atexit.html">&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x7684;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x673A;&#x5236;</a>&#x8FD9;&#x4E00;&#x8282;&#x4E2D;&#x8FDB;&#x884C;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;<code>clearall</code>&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;<strong>&#x6279;&#x91CF;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x673A;&#x5236;</strong>&#xFF1B;<strong>ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x65AD;&#x70B9;&#x6062;&#x590D;&#x64CD;&#x4F5C;</strong>&#x3002;&#x672C;&#x8282;&#x5185;&#x5BB9;&#x4E3A;&#x8BFB;&#x8005;&#x5B66;&#x4E60;&#x540E;&#x7EED;&#x7684;&#x65AD;&#x70B9;&#x6267;&#x884C;&#x63A7;&#x5236;&#xFF08;step&#x3001;continue&#xFF09;&#x6253;&#x4E0B;&#x4E86;&#x57FA;&#x7840;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x4E2D; <code>clearall</code>&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;<strong>&#x6279;&#x91CF;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x673A;&#x5236;</strong>&#xFF1B;<strong>ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x65AD;&#x70B9;&#x6062;&#x590D;&#x64CD;&#x4F5C;</strong>&#x3002;&#x672C;&#x8282;&#x5185;&#x5BB9;&#x4E3A;&#x8BFB;&#x8005;&#x5B66;&#x4E60;&#x540E;&#x7EED;&#x7684;&#x65AD;&#x70B9;&#x6267;&#x884C;&#x63A7;&#x5236;&#xFF08;step&#x3001;continue&#xFF09;&#x6253;&#x4E0B;&#x4E86;&#x57FA;&#x7840;&#x3002;</p>
 <p>&#x672C;&#x8282;&#x6838;&#x5FC3;&#x8981;&#x70B9;&#x5305;&#x62EC;&#xFF1A;</p>
 <ul>
-<li><code>clearall</code>&#x547D;&#x4EE4;&#x901A;&#x8FC7;&#x904D;&#x5386;&#x5168;&#x5C40;&#x65AD;&#x70B9;&#x6620;&#x5C04;&#xFF0C;&#x4F7F;&#x7528;<code>PtracePokeData</code>&#x6062;&#x590D;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#xFF0C;&#x5B9E;&#x73B0;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x7684;&#x6279;&#x91CF;&#x6E05;&#x7406;</li>
-<li>&#x76F8;&#x6BD4;<code>clear</code>&#x547D;&#x4EE4;&#x7684;&#x5355;&#x4E2A;&#x5220;&#x9664;&#xFF0C;<code>clearall</code>&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x9AD8;&#x6548;&#x7684;&#x65AD;&#x70B9;&#x7BA1;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x9002;&#x5408;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x5FEB;&#x901F;&#x91CD;&#x7F6E;&#x65AD;&#x70B9;&#x72B6;&#x6001;&#x7684;&#x573A;&#x666F;</li>
+<li><code>clearall</code>&#x547D;&#x4EE4;&#x901A;&#x8FC7;&#x904D;&#x5386;&#x5168;&#x5C40;&#x65AD;&#x70B9;&#x6620;&#x5C04;&#xFF0C;&#x4F7F;&#x7528; <code>PtracePokeData</code>&#x6062;&#x590D;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#xFF0C;&#x5B9E;&#x73B0;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x7684;&#x6279;&#x91CF;&#x6E05;&#x7406;</li>
+<li>&#x76F8;&#x6BD4; <code>clear</code>&#x547D;&#x4EE4;&#x7684;&#x5355;&#x4E2A;&#x5220;&#x9664;&#xFF0C;<code>clearall</code>&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x9AD8;&#x6548;&#x7684;&#x65AD;&#x70B9;&#x7BA1;&#x7406;&#x65B9;&#x5F0F;&#xFF0C;&#x9002;&#x5408;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x9700;&#x8981;&#x5FEB;&#x901F;&#x91CD;&#x7F6E;&#x65AD;&#x70B9;&#x72B6;&#x6001;&#x7684;&#x573A;&#x666F;</li>
 </ul>
 <p>&#x638C;&#x63E1;&#x4E86;&#x65AD;&#x70B9;&#x7684;&#x6DFB;&#x52A0;&#x3001;&#x5220;&#x9664;&#x548C;&#x6E05;&#x7406;&#x540E;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x5B66;&#x4E60;&#x5982;&#x4F55;&#x8BA9;&#x7A0B;&#x5E8F;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x5B9E;&#x73B0;&#x771F;&#x6B63;&#x7684;&#x65AD;&#x70B9;&#x8C03;&#x8BD5;&#x529F;&#x80FD;&#x3002;</p>
 
@@ -2243,7 +2243,7 @@ godbg&gt;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"next":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},"previous":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/9-clearall.md","mtime":"2025-09-29T07:56:06.507Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T07:56:38.550Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"next":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},"previous":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/9-clearall.md","mtime":"2025-09-29T23:57:40.327Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T23:58:11.722Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

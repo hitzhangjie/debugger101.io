@@ -284,7 +284,7 @@
                 <a href="../6-develop-inst-debugger/1-process_start.html">
             
                     
-                    6.1 进程启动
+                    6.1 启动进程
             
                 </a>
             
@@ -297,7 +297,7 @@
                 <a href="../6-develop-inst-debugger/2-process_attach.html">
             
                     
-                    6.2 进程attach
+                    6.2 跟踪进程
             
                 </a>
             
@@ -310,7 +310,7 @@
                 <a href="../6-develop-inst-debugger/3-process_start_attach.html">
             
                     
-                    6.3 启动&attach
+                    6.3 启动&跟踪进程
             
                 </a>
             
@@ -440,7 +440,7 @@
                 <a href="../6-develop-inst-debugger/13-pmem.html">
             
                     
-                    6.13 打印内存数据
+                    6.13 查看内存数据
             
                 </a>
             
@@ -453,7 +453,7 @@
                 <a href="../6-develop-inst-debugger/14-pregs.html">
             
                     
-                    6.14 打印寄存器数据
+                    6.14 查看寄存器数据
             
                 </a>
             
@@ -2152,7 +2152,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.1 调试器开发 - 需求分析","level":"1.5.1","depth":2,"next":{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},"previous":{"title":"5 走进调试器开发","level":"1.5","depth":1,"path":"5-debugger-skeleton/README.md","ref":"5-debugger-skeleton/README.md","articles":[{"title":"5.1 调试器开发 - 需求分析","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},{"title":"5.3 调试器开发 - 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},{"title":"5.4 调试器开发 - 功能演示和实现效果","level":"1.5.4","depth":2,"path":"5-debugger-skeleton/4-debugger_demos.md","ref":"5-debugger-skeleton/4-debugger_demos.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/1-debugger_skeleton.md","mtime":"2025-09-29T07:56:06.505Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T07:56:38.550Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.1 调试器开发 - 需求分析","level":"1.5.1","depth":2,"next":{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},"previous":{"title":"5 走进调试器开发","level":"1.5","depth":1,"path":"5-debugger-skeleton/README.md","ref":"5-debugger-skeleton/README.md","articles":[{"title":"5.1 调试器开发 - 需求分析","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},{"title":"5.3 调试器开发 - 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},{"title":"5.4 调试器开发 - 功能演示和实现效果","level":"1.5.4","depth":2,"path":"5-debugger-skeleton/4-debugger_demos.md","ref":"5-debugger-skeleton/4-debugger_demos.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/1-debugger_skeleton.md","mtime":"2025-09-29T23:57:40.325Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T23:58:11.722Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

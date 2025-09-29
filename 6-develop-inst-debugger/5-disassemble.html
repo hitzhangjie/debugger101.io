@@ -284,7 +284,7 @@
                 <a href="1-process_start.html">
             
                     
-                    6.1 进程启动
+                    6.1 启动进程
             
                 </a>
             
@@ -297,7 +297,7 @@
                 <a href="2-process_attach.html">
             
                     
-                    6.2 进程attach
+                    6.2 跟踪进程
             
                 </a>
             
@@ -310,7 +310,7 @@
                 <a href="3-process_start_attach.html">
             
                     
-                    6.3 启动&attach
+                    6.3 启动&跟踪进程
             
                 </a>
             
@@ -440,7 +440,7 @@
                 <a href="13-pmem.html">
             
                     
-                    6.13 打印内存数据
+                    6.13 查看内存数据
             
                 </a>
             
@@ -453,7 +453,7 @@
                 <a href="14-pregs.html">
             
                     
-                    6.14 打印寄存器数据
+                    6.14 查看寄存器数据
             
                 </a>
             
@@ -2058,7 +2058,7 @@ body {
 }
 </style></p>
 <h2 id="&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;disass-&#x53CD;&#x6C47;&#x7F16;">&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;<code>disass</code> &#x53CD;&#x6C47;&#x7F16;</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;</h3>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-disass-address-&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg&gt; disass [address]</code> &#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;</h3>
 <p>&#x53CD;&#x6C47;&#x7F16;&#x662F;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x53EF;&#x7F3A;&#x5C11;&#x7684;&#x73AF;&#x8282;&#xFF0C;&#x5BF9;&#x4E8E;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x5C55;&#x793A;&#x6E90;&#x7801;&#x4FE1;&#x606F;&#xFF0C;&#x5BF9;&#x4E8E;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x800C;&#x8A00;&#x5C31;&#x662F;&#x8981;&#x5C55;&#x793A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E86;&#x3002;</p>
 <p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x662F;&#x548C;&#x786C;&#x4EF6;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E0D;&#x8FC7;&#x662F;&#x4E9B;&#x52A9;&#x8BB0;&#x7B26;&#xFF0C;&#x4E00;&#x6761;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x901A;&#x8FC7;&#x89C4;&#x5B9A;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;&#x4E0D;&#x540C;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x53EF;&#x80FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x64CD;&#x4F5C;&#x6570;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x4E5F;&#x53EF;&#x80FD;&#x76F8;&#x540C;&#x6216;&#x4E0D;&#x540C;&#x3002;</p>
 <p>&#x4E0D;&#x540C;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x3001;&#x6307;&#x4EE4;&#x96C6;&#x67B6;&#x6784;&#x3001;&#x8BF8;&#x591A;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4EE5;&#x53CA;&#x6307;&#x4EE4;&#x7684;&#x5B9A;&#x957F;&#x7F16;&#x7801;&#x3001;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x7B49;&#x7B49;&#x56E0;&#x7D20;&#x90FD;&#x7ED9;&#x53CD;&#x6C47;&#x7F16;&#x5E26;&#x6765;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x96BE;&#x5EA6;&#xFF0C;&#x8981;&#x60F3;&#x51ED;&#x4E00;&#x4EBA;&#x4E4B;&#x529B;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x8FD8;&#x771F;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x4EF6;&#x5BB9;&#x6613;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
@@ -2387,7 +2387,7 @@ size of text: 1024
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"next":{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},"previous":{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/5-disassemble.md","mtime":"2025-09-29T07:56:06.507Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T07:56:38.550Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"next":{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},"previous":{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/5-disassemble.md","mtime":"2025-09-29T23:57:40.327Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-09-29T23:58:11.722Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

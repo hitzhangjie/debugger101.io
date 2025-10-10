@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.2 调试器开发 - 架构设计和技术方案 · GitBook</title>
+        <title>5.2 架构设计和技术方案 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -213,7 +213,7 @@
                 <a href="1-debugger_skeleton.html">
             
                     
-                    5.1 调试器开发 - 需求分析
+                    5.1 设计一个调试器雏形
             
                 </a>
             
@@ -226,7 +226,7 @@
                 <a href="2-debugger_solution.html">
             
                     
-                    5.2 调试器开发 - 架构设计和技术方案
+                    5.2 架构设计和技术方案
             
                 </a>
             
@@ -239,7 +239,7 @@
                 <a href="3-debugger_solution_final.html">
             
                     
-                    5.3 调试器开发 - 具体的实现方案选择
+                    5.3 具体的实现方案选择
             
                 </a>
             
@@ -252,7 +252,7 @@
                 <a href="4-debugger_demos.html">
             
                     
-                    5.4 调试器开发 - 功能演示和实现效果
+                    5.4 功能演示和实现效果
             
                 </a>
             
@@ -2095,7 +2095,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.2 调试器开发 - 架构设计和技术方案</a>
+        <a href=".." >5.2 架构设计和技术方案</a>
     </h1>
 </div>
 
@@ -2115,7 +2115,7 @@ body {
   counter-reset: h1 8;
 }
 </style></p>
-<h2 id="&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x65B9;&#x6848;&#x9009;&#x62E9;">&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x65B9;&#x6848;&#x9009;&#x62E9;</h2>
+<h2 id="&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x65B9;&#x6848;&#x9009;&#x62E9;">&#x67B6;&#x6784;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x65B9;&#x6848;&#x9009;&#x62E9;</h2>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x6280;&#x672F;&#x65B9;&#x6848;&#xFF0C;&#x6682;&#x65F6;&#x5148;&#x4E3B;&#x8981;&#x805A;&#x7126;&#x5728;&#x5982;&#x4E0B;&#x51E0;&#x4E2A;&#x70B9;&#x3002;</p>
 <h3 id="&#x6574;&#x4F53;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;">&#x6574;&#x4F53;&#x67B6;&#x6784;&#x8BBE;&#x8BA1;</h3>
 <p>&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x5177;&#x5907;&#x826F;&#x597D;&#x7684;&#x6269;&#x5C55;&#x6027;&#x8BBE;&#x8BA1;&#xFF0C;&#x4EE5;&#x652F;&#x6301;&#x5728;&#x4E0D;&#x540C;&#x5E94;&#x7528;&#x573A;&#x666F;&#x4E2D;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5982;&#x5728;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x8C03;&#x8BD5;&#xFF0C;&#x4E0E;&#x4E0D;&#x540C;&#x7684;IDE VsCode&#x3001;Goland&#x8FDB;&#x884C;&#x96C6;&#x6210;&#xFF0C;&#x652F;&#x6301;&#x8FDC;&#x7A0B;&#x8C03;&#x8BD5;&#x90E8;&#x7F72;&#x5728;&#x670D;&#x52A1;&#x5668;&#x3001;Kubernetes&#x96C6;&#x7FA4;&#x3001;Container&#x5BB9;&#x5668;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x3002;&#x8FD9;&#x4E5F;&#x8981;&#x6C42;&#x8C03;&#x8BD5;&#x5668;&#x67B6;&#x6784;&#x5FC5;&#x987B;&#x5B9E;&#x73B0;&#x201C;<strong>frontend</strong>&#x201D;&#x548C;&#x201C;<strong>backend</strong>&#x201D;&#x5206;&#x79BB;&#x5F0F;&#x67B6;&#x6784;&#x3002;</p>
@@ -2205,8 +2205,8 @@ frame : frame &lt;n&gt;&#xFF0C;&#x9009;&#x62E9;&#x5BF9;&#x5E94;&#x7684;&#x6808;&
 <p>&#x5728;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6211;&#x4EEC;&#x5F88;&#x53EF;&#x80FD;&#x4F1A;&#x9057;&#x5FD8;&#x547D;&#x4EE4;&#x540D;&#x548C;&#x9009;&#x9879;&#x540D;&#xFF0C;&#x6216;&#x8005;&#x9700;&#x8981;&#x9AD8;&#x9891;&#x8F93;&#x5165;&#x5B83;&#x4EEC;&#xFF0C;&#x6216;&#x8005;&#x5F88;&#x5BB9;&#x6613;&#x8F93;&#x5165;&#x9519;&#x8BEF;&#xFF0C;&#x5BF9;&#x4E8E;&#x7279;&#x5B9A;&#x7C7B;&#x578B;&#x7684;&#x9009;&#x9879;&#x3001;&#x53C2;&#x6570;&#x7684;&#x503C;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x6BD4;&#x8F83;&#x96BE;&#x8F93;&#x5165;&#xFF0C;&#x6BD4;&#x5982;&#x8F93;&#x5165;&#x4E00;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#x7684;&#x4F4D;&#x7F6E;&#x3002;&#x6B64;&#x65F6;&#xFF0C;&#x5C31;&#x4F1A;&#x4E2D;&#x65AD;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F88;&#x4F4E;&#x6548;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x8BD5;&#x60F3;&#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x5F97;&#x4E0D;&#x6267;&#x884C;help&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#xFF0C;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#x5C06;&#x6C61;&#x67D3;&#x6211;&#x4EEC;&#x7684;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x4F7F;&#x5F97;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x529B;&#x88AB;&#x5206;&#x6563;&#x3002;&#x6240;&#x4EE5;&#x4F5C;&#x4E3A;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x4EA7;&#x54C1;&#x7684;&#x8BBE;&#x8BA1;&#x8005;&#x3001;&#x5F00;&#x53D1;&#x8005;&#xFF0C;&#x5E94;&#x8BE5;&#x5BF9;&#x201C;&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#x201D;&#x4FE1;&#x606F;&#x7684;&#x9700;&#x6C42;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x6316;&#x6398;&#x3002;</p>
 <p>&#x7528;&#x6237;&#x662F;&#x9700;&#x8981;&#x67E5;&#x770B;&#x5E2E;&#x52A9;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x5E76;&#x4E0D;&#x4E00;&#x5B9A;&#x662F;&#x901A;&#x8FC7;help&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x4ED6;&#x8F93;&#x5165;&#x547D;&#x4EE4;&#x7684;&#x540C;&#x65F6;&#x5C31;&#x7ED9;&#x4E88;&#x8F85;&#x52A9;&#x8F93;&#x5165;&#x7684;&#x63D0;&#x793A;&#x4FE1;&#x606F;&#xFF0C;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x5C31;&#x662F;&#x4E0D;&#x9519;&#x7684;&#x65B9;&#x6CD5;&#x3002;</p>
 <p>&#x81EA;&#x52A8;&#x8865;&#x5168;&#x5927;&#x5BB6;&#x5E76;&#x4E0D;&#x964C;&#x751F;&#xFF0C;&#x6211;&#x4EEC;&#x5728;shell&#x91CC;&#x9762;&#x4F7F;&#x7528;&#x7684;&#x5F88;&#x591A;&#x547D;&#x4EE4;&#x6709;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x5305;&#x62EC; spf13/cobra &#x5F00;&#x53D1;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5E94;&#x7528;&#x7A0B;&#x5E8F;&#x672C;&#x8EAB;&#x4E5F;&#x652F;&#x6301;&#x751F;&#x6210;shell&#x7684;&#x81EA;&#x52A8;&#x5B8C;&#x6210;&#x811A;&#x672C;&#xFF08;&#x5BFC;&#x5165;&#x5373;&#x53EF;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x529F;&#x80FD;&#xFF09;&#x3002;</p>
-<pre><code class="lang-bash">$ godbg completion bash &gt; ~/.bash_godbg
-$ <span class="hljs-built_in">source</span> ~/.bash_godbg
+<pre><code class="lang-bash">godbg completion bash &gt; ~/.bash_godbg
+<span class="hljs-built_in">source</span> ~/.bash_godbg
 </code></pre>
 <p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x5E76;&#x901A;&#x8FC7;TAB&#x6765;&#x89E6;&#x53D1;&#x81EA;&#x52A8;&#x8865;&#x5168;&#xFF0C;&#x5982; <code>godbg att&lt;TAB&gt;</code> &#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x4E3A; <code>godbg attach</code>&#x3002;</p>
 <h4 id="&#x8F93;&#x5165;&#x8865;&#x5168;&#xFF1A;&#x4F1A;&#x8BDD;&#x547D;&#x4EE4;&#x9009;&#x9879;">&#x8F93;&#x5165;&#x8865;&#x5168;&#xFF1A;&#x4F1A;&#x8BDD;&#x547D;&#x4EE4;&#x9009;&#x9879;</h4>
@@ -2268,12 +2268,12 @@ $ <span class="hljs-built_in">source</span> ~/.bash_godbg
 
             
                 
-                <a href="1-debugger_skeleton.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 调试器开发 - 需求分析">
+                <a href="1-debugger_skeleton.html" class="navigation navigation-prev " aria-label="Previous page: 5.1 设计一个调试器雏形">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="3-debugger_solution_final.html" class="navigation navigation-next " aria-label="Next page: 5.3 调试器开发 - 具体的实现方案选择">
+                <a href="3-debugger_solution_final.html" class="navigation navigation-next " aria-label="Next page: 5.3 具体的实现方案选择">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2284,7 +2284,7 @@ $ <span class="hljs-built_in">source</span> ~/.bash_godbg
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"next":{"title":"5.3 调试器开发 - 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},"previous":{"title":"5.1 调试器开发 - 需求分析","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/2-debugger_solution.md","mtime":"2025-10-10T01:12:09.754Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T01:12:40.758Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.2 架构设计和技术方案","level":"1.5.2","depth":2,"next":{"title":"5.3 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},"previous":{"title":"5.1 设计一个调试器雏形","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/2-debugger_solution.md","mtime":"2025-10-10T04:51:55.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T04:52:26.320Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

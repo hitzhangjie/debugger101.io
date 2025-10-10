@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.4 调试器开发 - 功能演示和实现效果 · GitBook</title>
+        <title>5.4 功能演示和实现效果 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -213,7 +213,7 @@
                 <a href="1-debugger_skeleton.html">
             
                     
-                    5.1 调试器开发 - 需求分析
+                    5.1 设计一个调试器雏形
             
                 </a>
             
@@ -226,7 +226,7 @@
                 <a href="2-debugger_solution.html">
             
                     
-                    5.2 调试器开发 - 架构设计和技术方案
+                    5.2 架构设计和技术方案
             
                 </a>
             
@@ -239,7 +239,7 @@
                 <a href="3-debugger_solution_final.html">
             
                     
-                    5.3 调试器开发 - 具体的实现方案选择
+                    5.3 具体的实现方案选择
             
                 </a>
             
@@ -252,7 +252,7 @@
                 <a href="4-debugger_demos.html">
             
                     
-                    5.4 调试器开发 - 功能演示和实现效果
+                    5.4 功能演示和实现效果
             
                 </a>
             
@@ -2095,7 +2095,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.4 调试器开发 - 功能演示和实现效果</a>
+        <a href=".." >5.4 功能演示和实现效果</a>
     </h1>
 </div>
 
@@ -2115,7 +2115,7 @@ body {
   counter-reset: h1 10;
 }
 </style></p>
-<h2 id="&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x529F;&#x80FD;&#x6F14;&#x793A;&#x548C;&#x5B9E;&#x73B0;&#x6548;&#x679C;">&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x529F;&#x80FD;&#x6F14;&#x793A;&#x548C;&#x5B9E;&#x73B0;&#x6548;&#x679C;</h2>
+<h2 id="&#x529F;&#x80FD;&#x6F14;&#x793A;&#x548C;&#x5B9E;&#x73B0;&#x6548;&#x679C;">&#x529F;&#x80FD;&#x6F14;&#x793A;&#x548C;&#x5B9E;&#x73B0;&#x6548;&#x679C;</h2>
 <p>&#x7ED3;&#x5408;&#x524D;&#x9762;&#x7684;&#x601D;&#x8003;&#xFF0C;&#x6211;&#x4EEC;&#x521D;&#x6B65;&#x5B9E;&#x73B0;&#x4E86;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x96CF;&#x5F62; <code>godbg</code>&#xFF0C;&#x5B83;&#x5927;&#x81F4;&#x5305;&#x542B;&#x4E86;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684;&#x4EA4;&#x4E92;&#x80FD;&#x529B;&#x3002;&#x540E;&#x9762;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x4E00;&#x6B65;&#x6B65;&#x5B9E;&#x73B0;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x3001;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x3002;</p>
 <p>&#x5148;&#x770B;&#x4E0B;godbg&#x7684;&#x6267;&#x884C;&#x6548;&#x679C;&#xFF0C;&#x7136;&#x540E;&#x5927;&#x81F4;&#x4ECB;&#x7ECD;&#x4E0B;&#x6E90;&#x7801;&#x7684;&#x7EC4;&#x7EC7;&#x65B9;&#x5F0F;&#xFF0C;&#x65B9;&#x4FBF;&#x8BFB;&#x8005;&#x4E86;&#x89E3;&#x8BB2;&#x89E3;&#x7684;&#x529F;&#x80FD;&#x70B9;&#x5BF9;&#x5E94;&#x4EE3;&#x7801;&#x7684;&#x54EA;&#x4E00;&#x90E8;&#x5206;&#xFF0C;&#x540E;&#x7EED;&#x65B0;&#x589E;&#x7AE0;&#x8282;&#x7684;&#x5185;&#x5BB9;&#x3001;&#x6E90;&#x7801;&#x5C31;&#x5F88;&#x5BB9;&#x6613;&#x5BF9;&#x5E94;&#x4E0A;&#x4E86;&#x3002;</p>
 <p>ps: &#x6700;&#x5F00;&#x59CB;&#x4F5C;&#x8005;&#x4E5F;&#x662F;&#x60F3;&#x5728;&#x6B64;godbg&#x57FA;&#x7840;&#x4E0A;&#x6F14;&#x5316;&#x6210;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x524D;&#x51E0;&#x8282;&#x4E5F;&#x63D0;&#x8FC7;&#x4E86;&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;demo&#x662F;&#x88C1;&#x526A;&#x7684;go-delve/delve&#xFF0C;&#x5C31;&#x4E0D;&#x518D;&#x8D58;&#x8FF0;&#x4E86;&#xFF0C;ok!</p>
@@ -2163,30 +2163,30 @@ Use <span class="hljs-string">&quot;godbg [command] --help&quot;</span> <span cl
 interactive debugging commands
 
 [breakpoint]
-<span class="hljs-built_in">break</span> &lt;locspec&gt; :    &#x5728;&#x6E90;&#x7801;&#x4E2D;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;
-clear &lt;n&gt;       :    &#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;
-clearall &lt;n&gt;    :    &#x6E05;&#x9664;&#x6240;&#x6709;&#x7684;&#x65AD;&#x70B9;
+<span class="hljs-built_in">break</span> &lt;locspec&gt; : &#x5728;&#x6E90;&#x7801;&#x4E2D;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;
+clear &lt;n&gt;       : &#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;
+clearall &lt;n&gt;    : &#x6E05;&#x9664;&#x6240;&#x6709;&#x7684;&#x65AD;&#x70B9;
 
 [code]
-disass &lt;locspec&gt;:    &#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;
-list &lt;linespec&gt; :    &#x67E5;&#x770B;&#x6E90;&#x7801;&#x4FE1;&#x606F;
+disass &lt;locspec&gt;: &#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;
+list &lt;linespec&gt; : &#x67E5;&#x770B;&#x6E90;&#x7801;&#x4FE1;&#x606F;
 
 [ctrlflow]
-finish          :    &#x9000;&#x51FA;&#x5F53;&#x524D;&#x51FD;&#x6570;
-next            :    &#x6267;&#x884C;&#x4E00;&#x6761;&#x8BED;&#x53E5;
-step            :    &#x6267;&#x884C;&#x4E00;&#x6761;&#x6307;&#x4EE4;
+finish          : &#x9000;&#x51FA;&#x5F53;&#x524D;&#x51FD;&#x6570;
+next            : &#x6267;&#x884C;&#x4E00;&#x6761;&#x8BED;&#x53E5;
+step            : &#x6267;&#x884C;&#x4E00;&#x6761;&#x6307;&#x4EE4;
 
 [information]
-bt              :    &#x6253;&#x5370;&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;
-display &lt;var|reg&gt;:    &#x59CB;&#x7EC8;&#x663E;&#x793A;&#x53D8;&#x91CF;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x503C;
-frame           :    &#x9009;&#x62E9;&#x8C03;&#x7528;&#x6808;&#x4E2D;&#x6808;&#x5E27;
-<span class="hljs-built_in">print</span> &lt;var|reg&gt; :    &#x6253;&#x5370;&#x53D8;&#x91CF;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x503C;
-ptypes &lt;variable&gt;:    &#x6253;&#x5370;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x4FE1;&#x606F;
-<span class="hljs-built_in">set</span> &lt;var|reg&gt;=&lt;value&gt;:    &#x8BBE;&#x7F6E;&#x53D8;&#x91CF;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x503C;
+bt              : &#x6253;&#x5370;&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;
+display &lt;var|reg&gt;: &#x59CB;&#x7EC8;&#x663E;&#x793A;&#x53D8;&#x91CF;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x503C;
+frame           : &#x9009;&#x62E9;&#x8C03;&#x7528;&#x6808;&#x4E2D;&#x6808;&#x5E27;
+<span class="hljs-built_in">print</span> &lt;var|reg&gt; : &#x6253;&#x5370;&#x53D8;&#x91CF;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x503C;
+ptypes &lt;variable&gt;: &#x6253;&#x5370;&#x53D8;&#x91CF;&#x7C7B;&#x578B;&#x4FE1;&#x606F;
+<span class="hljs-built_in">set</span> &lt;var|reg&gt;=&lt;value&gt;: &#x8BBE;&#x7F6E;&#x53D8;&#x91CF;&#x6216;&#x5BC4;&#x5B58;&#x5668;&#x503C;
 
 [other]
-<span class="hljs-built_in">exit</span>            :    &#x7ED3;&#x675F;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;
-<span class="hljs-built_in">help</span> [<span class="hljs-built_in">command</span>]  :    Help about any <span class="hljs-built_in">command</span>
+<span class="hljs-built_in">exit</span>            : &#x7ED3;&#x675F;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;
+<span class="hljs-built_in">help</span> [<span class="hljs-built_in">command</span>]  : Help about any <span class="hljs-built_in">command</span>
 </code></pre>
 <p>&#x5982;&#x679C;&#x60F3;&#x8BE6;&#x7EC6;&#x4E86;&#x89E3;&#x67D0;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#x201C;<strong>godbg&gt; help <code>cmd</code></strong>&#x201D;&#xFF0C;&#x5982;&#x60F3;&#x67E5;&#x770B;break&#x547D;&#x4EE4;&#x7684;&#x4F7F;&#x7528;&#x8FD0;&#x884C;&#x201C;<strong>godbg&gt; help break</strong>&#x201D;&#x3002;</p>
 <h4 id="&#x4F1A;&#x8BDD;&#x4E2D;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;">&#x4F1A;&#x8BDD;&#x4E2D;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;</h4>
@@ -2209,7 +2209,7 @@ godbg                         : &#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;
 &#x2502;   &#x251C;&#x2500;&#x2500; core.go
 &#x2502;   &#x251C;&#x2500;&#x2500; exec.go
 &#x2502;   &#x251C;&#x2500;&#x2500; debug                 &#xFF1A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x53EF;&#x4F7F;&#x7528;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;
-&#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; root_debug.go      : debugRootCmd&#x7ED1;&#x5B9A;&#x4E86;&#x4F17;&#x591A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;
+&#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; root_debug.go   : debugRootCmd&#x7ED1;&#x5B9A;&#x4E86;&#x4F17;&#x591A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; backtrace.go
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; break.go
 &#x2502;   &#x2502;   &#x251C;&#x2500;&#x2500; clear.go
@@ -2239,39 +2239,39 @@ godbg                         : &#x9879;&#x76EE;&#x6839;&#x76EE;&#x5F55;
 <span class="hljs-keyword">import</span> <span class="hljs-string">&quot;godbg/cmd&quot;</span>
 
 <span class="hljs-keyword">func</span> main() {
-    cmd.Execute()
+ cmd.Execute()
 }
 </code></pre>
 <p>godbg&#x4E0B;&#x5404;&#x4E2A;&#x5B50;&#x547D;&#x4EE4;exec&#x3001;debug&#x3001;core&#x5206;&#x522B;&#x5BF9;&#x5E94;cmd/exec.go&#x3001;cmd/debug.go&#x3001;cmd/core.go&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x662F;cmd/root.go&#x4E2D;&#x5B9A;&#x4E49;&#x7684;rootCmd&#x7684;&#x5B50;&#x547D;&#x4EE4;&#x3002;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">var</span> rootCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;godbg&quot;</span>,
-    Short: <span class="hljs-string">&quot;godbg&#x662F;&#x4E00;&#x4E2A;&#x9762;&#x5411;go&#x8BED;&#x8A00;&#x7684;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&quot;</span>,
-    Long: <span class="hljs-string">`
+ Use:   <span class="hljs-string">&quot;godbg&quot;</span>,
+ Short: <span class="hljs-string">&quot;godbg&#x662F;&#x4E00;&#x4E2A;&#x9762;&#x5411;go&#x8BED;&#x8A00;&#x7684;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&quot;</span>,
+ Long: <span class="hljs-string">`
 godbg&#x662F;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5B83;&#x662F;&#x4EE5;&#x5B66;&#x4E60;&#x4E3A;&#x76EE;&#x7684;&#x9A71;&#x52A8;&#x5F00;&#x53D1;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;
 &#x5E0C;&#x671B;&#x6211;&#x4EEC;&#x7684;&#x5DE5;&#x4F5C;&#x53EF;&#x4EE5;&#x4E3A;&#x66F4;&#x591A;&#x4EBA;&#x6253;&#x5F00;&#x4E00;&#x4E2A;&#x8BA4;&#x8BC6;&#x8BA1;&#x7B97;&#x673A;&#x4E16;&#x754C;&#x7684;&#x5927;&#x95E8;&#xFF0C;&#x4E0D;&#x8C22;&#xFF01;`</span>,
-    <span class="hljs-comment">// Uncomment the following line if your bare application</span>
-    <span class="hljs-comment">// has an action associated with it:</span>
-    Run: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
-        <span class="hljs-comment">// TODO comment out this, this should be enabled only in debugging phase</span>
-        debug.NewDebugShell().Run()
-    },
+ <span class="hljs-comment">// Uncomment the following line if your bare application</span>
+ <span class="hljs-comment">// has an action associated with it:</span>
+ Run: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
+  <span class="hljs-comment">// TODO comment out this, this should be enabled only in debugging phase</span>
+  debug.NewDebugShell().Run()
+ },
 }
 </code></pre>
 <p>&#x5F53;&#x6211;&#x4EEC;&#x6267;&#x884C;godbg&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x6267;&#x884C;&#x7684; <code>rootCmd.Run()</code>&#x903B;&#x8F91;&#xFF0C;&#x5F53;&#x6211;&#x4EEC;&#x6267;&#x884C; <code>godbg exec</code>&#x7684;&#x65F6;&#x5019;&#x6267;&#x884C;&#x7684;&#x5219;&#x662F; <code>execCmd.Run()</code>&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x4E2A;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x4E5F;&#x5F88;&#x5BB9;&#x6613;&#x4E0A;&#x624B;&#x3002;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">var</span> execCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;exec &lt;prog&gt;&quot;</span>,
-    Short: <span class="hljs-string">&quot;&#x8C03;&#x8BD5;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&quot;</span>,
-    Long:  <span class="hljs-string">`&#x8C03;&#x8BD5;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;`</span>,
-    Run: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
+ Use:   <span class="hljs-string">&quot;exec &lt;prog&gt;&quot;</span>,
+ Short: <span class="hljs-string">&quot;&#x8C03;&#x8BD5;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&quot;</span>,
+ Long:  <span class="hljs-string">`&#x8C03;&#x8BD5;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;`</span>,
+ Run: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
         <span class="hljs-comment">// TODO start process and attach</span>
-        fmt.Printf(<span class="hljs-string">&quot;exec %s\n&quot;</span>, strings.Join(args, <span class="hljs-string">&quot;&quot;</span>))
+  fmt.Printf(<span class="hljs-string">&quot;exec %s\n&quot;</span>, strings.Join(args, <span class="hljs-string">&quot;&quot;</span>))
 
-        debug.NewDebugShell().Run()
-    },
+  debug.NewDebugShell().Run()
+ },
 }
 
 <span class="hljs-keyword">func</span> init() {
-    rootCmd.AddCommand(execCmd)
+ rootCmd.AddCommand(execCmd)
 }
 </code></pre>
 <p>&#x4EE5;&#x4E0A;&#x662F; <code>godbg exec &lt;prog&gt;</code>&#x65F6;&#x8981;&#x6267;&#x884C;&#x7684;exec&#x547D;&#x4EE4;&#xFF0C;&#x5B83;&#x9996;&#x5148;&#x542F;&#x52A8;&#x8FDB;&#x7A0B;&#x5E76;attach&#x5230;&#x8FDB;&#x7A0B;&#xFF0C;&#x51C6;&#x5907;&#x5C31;&#x7EEA;&#x540E;&#xFF0C;&#x518D;&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x7EE7;&#x7EED;&#x8F93;&#x5165;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x6765;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
@@ -2281,34 +2281,34 @@ godbg&#x662F;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&
 <pre><code class="lang-go"><span class="hljs-comment">// NewDebugShell &#x521B;&#x5EFA;&#x4E00;&#x4E2A;debug&#x4E13;&#x7528;&#x7684;&#x4EA4;&#x4E92;&#x7BA1;&#x7406;&#x5668;</span>
 <span class="hljs-keyword">func</span> NewDebugShell() *cobraprompt.CobraPrompt {
 
-    fn := <span class="hljs-keyword">func</span>() <span class="hljs-keyword">func</span>(cmd *cobra.Command) error {
-        <span class="hljs-keyword">return</span> <span class="hljs-keyword">func</span>(cmd *cobra.Command) error {
-            usage := groupDebugCommands(cmd)
-            fmt.Println(usage)
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-        }
-    }
-    debugRootCmd.SetUsageFunc(fn())
+ fn := <span class="hljs-keyword">func</span>() <span class="hljs-keyword">func</span>(cmd *cobra.Command) error {
+  <span class="hljs-keyword">return</span> <span class="hljs-keyword">func</span>(cmd *cobra.Command) error {
+   usage := groupDebugCommands(cmd)
+   fmt.Println(usage)
+   <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+  }
+ }
+ debugRootCmd.SetUsageFunc(fn())
 
-    <span class="hljs-keyword">return</span> &amp;cobraprompt.CobraPrompt{
-        RootCmd:                debugRootCmd,
-        DynamicSuggestionsFunc: dynamicSuggestions,
-        ResetFlagsFlag:         <span class="hljs-literal">true</span>,
-        GoPromptOptions: []prompt.Option{
-            prompt.OptionTitle(description),
-            prompt.OptionPrefix(prefix),
-            prompt.OptionSuggestionBGColor(prompt.DarkBlue),
-            prompt.OptionDescriptionBGColor(prompt.DarkBlue),
-            prompt.OptionSelectedSuggestionBGColor(prompt.Red),
-            prompt.OptionSelectedDescriptionBGColor(prompt.Red),
-            <span class="hljs-comment">// here, hide prompt dropdown list</span>
-            <span class="hljs-comment">// TODO do we have a better way to show/hide the prompt dropdown list?</span>
-            prompt.OptionMaxSuggestion(<span class="hljs-number">10</span>),
-            prompt.OptionShowCompletionAtStart(),
-        },
-        EnableSilentPrompt: <span class="hljs-literal">true</span>,
-        EnableShowAtStart:  <span class="hljs-literal">true</span>,
-    }
+ <span class="hljs-keyword">return</span> &amp;cobraprompt.CobraPrompt{
+  RootCmd:                debugRootCmd,
+  DynamicSuggestionsFunc: dynamicSuggestions,
+  ResetFlagsFlag:         <span class="hljs-literal">true</span>,
+  GoPromptOptions: []prompt.Option{
+   prompt.OptionTitle(description),
+   prompt.OptionPrefix(prefix),
+   prompt.OptionSuggestionBGColor(prompt.DarkBlue),
+   prompt.OptionDescriptionBGColor(prompt.DarkBlue),
+   prompt.OptionSelectedSuggestionBGColor(prompt.Red),
+   prompt.OptionSelectedDescriptionBGColor(prompt.Red),
+   <span class="hljs-comment">// here, hide prompt dropdown list</span>
+   <span class="hljs-comment">// TODO do we have a better way to show/hide the prompt dropdown list?</span>
+   prompt.OptionMaxSuggestion(<span class="hljs-number">10</span>),
+   prompt.OptionShowCompletionAtStart(),
+  },
+  EnableSilentPrompt: <span class="hljs-literal">true</span>,
+  EnableShowAtStart:  <span class="hljs-literal">true</span>,
+ }
 }
 </code></pre>
 <p>&#x5173;&#x4E8E;&#x81EA;&#x5B9A;&#x4E49;&#x81EA;&#x52A8;&#x63D0;&#x793A;&#x4FE1;&#x606F;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x51FD;&#x6570;&#x5B9E;&#x73B0; <code>dynamicSuggestions(string, prompt.Document)</code>&#x3002;</p>
@@ -2323,10 +2323,10 @@ godbg&#x662F;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&
 
 <span class="hljs-comment">// list &#x8F93;&#x5165;list&#x65F6;&#x8FD4;&#x56DE;&#x5019;&#x9009;&#x6E90;&#x6587;&#x4EF6;&#x540D;&#x4F5C;&#x4E3A;&#x63D0;&#x793A;&#x8865;&#x5168;&#x4FE1;&#x606F;</span>
 <span class="hljs-keyword">func</span> GetSourceFiles() []prompt.Suggest {
-    <span class="hljs-keyword">return</span> []prompt.Suggest{
-        {Text: <span class="hljs-string">&quot;main.go&quot;</span>, Description: <span class="hljs-string">&quot;main.go&quot;</span>},
-        {Text: <span class="hljs-string">&quot;helloworld.go&quot;</span>, Description: <span class="hljs-string">&quot;helloworld.go&quot;</span>},
-    }
+ <span class="hljs-keyword">return</span> []prompt.Suggest{
+  {Text: <span class="hljs-string">&quot;main.go&quot;</span>, Description: <span class="hljs-string">&quot;main.go&quot;</span>},
+  {Text: <span class="hljs-string">&quot;helloworld.go&quot;</span>, Description: <span class="hljs-string">&quot;helloworld.go&quot;</span>},
+ }
 }
 </code></pre>
 <p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;cobra-prompt&#x89C4;&#x5B9A;&#x4E86;cobra command&#x53EA;&#x6709;&#x6DFB;&#x52A0;&#x4E86; <code>&lt;cobraprompt.CALLBACK_ANNOTATION,&quot;value&quot;&gt;</code>&#x7684;annotation&#x9879;&#x4E4B;&#x540E;&#x624D;&#x4F1A;&#x6FC0;&#x53D1;&#x547D;&#x4EE4;&#x53C2;&#x6570;&#x7684;&#x81EA;&#x52A8;&#x8865;&#x5168;&#x903B;&#x8F91;&#x3002;&#x4EE5;list&#x547D;&#x4EE4;&#x5C06;&#x6E90;&#x6587;&#x4EF6;&#x5217;&#x8868;&#x4F5C;&#x4E3A;&#x8865;&#x5168;&#x4FE1;&#x606F;&#x4E3A;&#x4F8B;&#xFF0C;list&#x547D;&#x4EE4;&#x5728;Annotations&#x8FD9;&#x4E2A;map&#x5B57;&#x6BB5;&#x4E2D;&#x6DFB;&#x52A0;&#x4E86;CALLBACK_ANNOTATION&#x7684;kvpair&#x3002;</p>
@@ -2382,7 +2382,7 @@ list codes <span class="hljs-keyword">in</span> file
 
             
                 
-                <a href="3-debugger_solution_final.html" class="navigation navigation-prev " aria-label="Previous page: 5.3 调试器开发 - 具体的实现方案选择">
+                <a href="3-debugger_solution_final.html" class="navigation navigation-prev " aria-label="Previous page: 5.3 具体的实现方案选择">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2398,7 +2398,7 @@ list codes <span class="hljs-keyword">in</span> file
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.4 调试器开发 - 功能演示和实现效果","level":"1.5.4","depth":2,"next":{"title":"6 开发go指令级调试器","level":"1.6","depth":1,"path":"6-develop-inst-debugger/README.md","ref":"6-develop-inst-debugger/README.md","articles":[{"title":"6.1 启动进程","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},{"title":"6.2 跟踪进程","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},{"title":"6.3 启动&跟踪进程","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},{"title":"6.11 步进操作","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-step.md","ref":"6-develop-inst-debugger/11-step.md","articles":[]},{"title":"6.12 运行到断点","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-continue.md","ref":"6-develop-inst-debugger/12-continue.md","articles":[]},{"title":"6.13 查看内存数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pmem.md","ref":"6-develop-inst-debugger/13-pmem.md","articles":[]},{"title":"6.14 查看寄存器数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-pregs.md","ref":"6-develop-inst-debugger/14-pregs.md","articles":[]},{"title":"6.15 修改内存数据","level":"1.6.15","depth":2,"path":"6-develop-inst-debugger/15-set-mem.md","ref":"6-develop-inst-debugger/15-set-mem.md","articles":[]},{"title":"6.16 修改寄存器数据","level":"1.6.16","depth":2,"path":"6-develop-inst-debugger/16-set-regs.md","ref":"6-develop-inst-debugger/16-set-regs.md","articles":[]},{"title":"6.20 调试多线程程序","level":"1.6.17","depth":2,"path":"6-develop-inst-debugger/multithread/README.md","ref":"6-develop-inst-debugger/multithread/README.md","articles":[{"title":"6.20.1 跟踪已创建线程","level":"1.6.17.1","depth":3,"path":"6-develop-inst-debugger/1-trace_old_threads.md","ref":"6-develop-inst-debugger/1-trace_old_threads.md","articles":[]},{"title":"6.20.2 跟踪新创建线程","level":"1.6.17.2","depth":3,"path":"6-develop-inst-debugger/2-trace_new_threads.md","ref":"6-develop-inst-debugger/2-trace_new_threads.md","articles":[]},{"title":"6.20.3 线程执行控制 - 挂起策略","level":"1.6.17.3","depth":3,"path":"6-develop-inst-debugger/3-suspend_policy.md","ref":"6-develop-inst-debugger/3-suspend_policy.md","articles":[]},{"title":"6.20.4 线程执行控制 - continue","level":"1.6.17.4","depth":3,"path":"6-develop-inst-debugger/4-continue.md","ref":"6-develop-inst-debugger/4-continue.md","articles":[]},{"title":"6.20.5 线程执行控制 - breakpoint","level":"1.6.17.5","depth":3,"path":"6-develop-inst-debugger/5-breakpoint.md","ref":"6-develop-inst-debugger/5-breakpoint.md","articles":[]}]},{"title":"6.80 认识ASLR","level":"1.6.18","depth":2,"path":"6-develop-inst-debugger/80-aslr.md","ref":"6-develop-inst-debugger/80-aslr.md","articles":[]},{"title":"6.99 More...","level":"1.6.19","depth":2,"path":"6-develop-inst-debugger/99-more.md","ref":"6-develop-inst-debugger/99-more.md","articles":[]}]},"previous":{"title":"5.3 调试器开发 - 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/4-debugger_demos.md","mtime":"2025-10-10T01:12:09.754Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T01:12:40.758Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.4 功能演示和实现效果","level":"1.5.4","depth":2,"next":{"title":"6 开发go指令级调试器","level":"1.6","depth":1,"path":"6-develop-inst-debugger/README.md","ref":"6-develop-inst-debugger/README.md","articles":[{"title":"6.1 启动进程","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-process_start.md","ref":"6-develop-inst-debugger/1-process_start.md","articles":[]},{"title":"6.2 跟踪进程","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-process_attach.md","ref":"6-develop-inst-debugger/2-process_attach.md","articles":[]},{"title":"6.3 启动&跟踪进程","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-process_start_attach.md","ref":"6-develop-inst-debugger/3-process_start_attach.md","articles":[]},{"title":"6.4 调试会话","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-debug-session.md","ref":"6-develop-inst-debugger/4-debug-session.md","articles":[]},{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},{"title":"6.8 移除断点","level":"1.6.8","depth":2,"path":"6-develop-inst-debugger/8-clear.md","ref":"6-develop-inst-debugger/8-clear.md","articles":[]},{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},{"title":"6.11 步进操作","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-step.md","ref":"6-develop-inst-debugger/11-step.md","articles":[]},{"title":"6.12 运行到断点","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-continue.md","ref":"6-develop-inst-debugger/12-continue.md","articles":[]},{"title":"6.13 查看内存数据","level":"1.6.13","depth":2,"path":"6-develop-inst-debugger/13-pmem.md","ref":"6-develop-inst-debugger/13-pmem.md","articles":[]},{"title":"6.14 查看寄存器数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-pregs.md","ref":"6-develop-inst-debugger/14-pregs.md","articles":[]},{"title":"6.15 修改内存数据","level":"1.6.15","depth":2,"path":"6-develop-inst-debugger/15-set-mem.md","ref":"6-develop-inst-debugger/15-set-mem.md","articles":[]},{"title":"6.16 修改寄存器数据","level":"1.6.16","depth":2,"path":"6-develop-inst-debugger/16-set-regs.md","ref":"6-develop-inst-debugger/16-set-regs.md","articles":[]},{"title":"6.20 调试多线程程序","level":"1.6.17","depth":2,"path":"6-develop-inst-debugger/multithread/README.md","ref":"6-develop-inst-debugger/multithread/README.md","articles":[{"title":"6.20.1 跟踪已创建线程","level":"1.6.17.1","depth":3,"path":"6-develop-inst-debugger/1-trace_old_threads.md","ref":"6-develop-inst-debugger/1-trace_old_threads.md","articles":[]},{"title":"6.20.2 跟踪新创建线程","level":"1.6.17.2","depth":3,"path":"6-develop-inst-debugger/2-trace_new_threads.md","ref":"6-develop-inst-debugger/2-trace_new_threads.md","articles":[]},{"title":"6.20.3 线程执行控制 - 挂起策略","level":"1.6.17.3","depth":3,"path":"6-develop-inst-debugger/3-suspend_policy.md","ref":"6-develop-inst-debugger/3-suspend_policy.md","articles":[]},{"title":"6.20.4 线程执行控制 - continue","level":"1.6.17.4","depth":3,"path":"6-develop-inst-debugger/4-continue.md","ref":"6-develop-inst-debugger/4-continue.md","articles":[]},{"title":"6.20.5 线程执行控制 - breakpoint","level":"1.6.17.5","depth":3,"path":"6-develop-inst-debugger/5-breakpoint.md","ref":"6-develop-inst-debugger/5-breakpoint.md","articles":[]}]},{"title":"6.80 认识ASLR","level":"1.6.18","depth":2,"path":"6-develop-inst-debugger/80-aslr.md","ref":"6-develop-inst-debugger/80-aslr.md","articles":[]},{"title":"6.99 More...","level":"1.6.19","depth":2,"path":"6-develop-inst-debugger/99-more.md","ref":"6-develop-inst-debugger/99-more.md","articles":[]}]},"previous":{"title":"5.3 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/4-debugger_demos.md","mtime":"2025-10-10T04:51:55.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T04:52:26.320Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

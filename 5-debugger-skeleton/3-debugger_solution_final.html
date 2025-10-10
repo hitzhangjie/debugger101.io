@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>5.3 调试器开发 - 具体的实现方案选择 · GitBook</title>
+        <title>5.3 具体的实现方案选择 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -213,7 +213,7 @@
                 <a href="1-debugger_skeleton.html">
             
                     
-                    5.1 调试器开发 - 需求分析
+                    5.1 设计一个调试器雏形
             
                 </a>
             
@@ -226,7 +226,7 @@
                 <a href="2-debugger_solution.html">
             
                     
-                    5.2 调试器开发 - 架构设计和技术方案
+                    5.2 架构设计和技术方案
             
                 </a>
             
@@ -239,7 +239,7 @@
                 <a href="3-debugger_solution_final.html">
             
                     
-                    5.3 调试器开发 - 具体的实现方案选择
+                    5.3 具体的实现方案选择
             
                 </a>
             
@@ -252,7 +252,7 @@
                 <a href="4-debugger_demos.html">
             
                     
-                    5.4 调试器开发 - 功能演示和实现效果
+                    5.4 功能演示和实现效果
             
                 </a>
             
@@ -2095,7 +2095,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >5.3 调试器开发 - 具体的实现方案选择</a>
+        <a href=".." >5.3 具体的实现方案选择</a>
     </h1>
 </div>
 
@@ -2115,7 +2115,7 @@ body {
   counter-reset: h1 9;
 }
 </style></p>
-<h2 id="&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x9009;&#x62E9;">&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#xFF1A;&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x9009;&#x62E9;</h2>
+<h2 id="&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x9009;&#x62E9;">&#x5177;&#x4F53;&#x7684;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x9009;&#x62E9;</h2>
 <h3 id="&#x786E;&#x5B9A;&#x65B9;&#x6848;">&#x786E;&#x5B9A;&#x65B9;&#x6848;</h3>
 <p>&#x5BF9;&#x4E8E;&#x4E1A;&#x754C;&#x4E3B;&#x6D41;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#xFF0C;&#x4E00;&#x822C;&#x90FD;&#x4F1A;&#x5C06;&#x5176;&#x5206;&#x4E3A;frontend&#x3001;backend&#xFF0C;&#x4E8C;&#x8005;&#x901A;&#x8FC7;service&#x5C42;&#x8FDB;&#x884C;&#x901A;&#x4FE1;&#xFF0C;gdb&#x3001;delve&#x7B49;&#x7B49;&#xFF0C;&#x65E0;&#x4E00;&#x4F8B;&#x5916;&#x3002;</p>
 <p>&#x672C;&#x4E66;&#x63D0;&#x4F9B;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#xFF0C;&#x662F;&#x4ECE;&#x666E;&#x53CA;&#x8C03;&#x8BD5;&#x5668;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x89D2;&#x5EA6;&#x51FA;&#x53D1;&#xFF0C;&#x6211;&#x4EEC;&#x5B9E;&#x9645;&#x4E0A;&#x63D0;&#x4F9B;&#x4E86;&#x4E24;&#x4E2A;&#x7248;&#x672C;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#x3002;</p>
@@ -2139,7 +2139,7 @@ body {
 <blockquote>
 <p>ps: shit! &#x8FD9;flag&#x90FD;&#x4E0D;&#x77E5;&#x7ACB;&#x4E86;&#x591A;&#x5C11;&#x6B21;&#x4E86;&#xFF0C;&#x4ECA;&#x5929;2025.2.18&#xFF0C;&#x8FC7;&#x53BB;1&#x5E74;&#x300A;&#x4E09;&#x89D2;&#x6D32;&#x884C;&#x52A8;&#x300B;&#x4E0A;&#x7EBF;&#x653B;&#x575A;&#xFF0C;&#x5B9E;&#x5728;&#x6CA1;&#x6709;&#x65F6;&#x95F4;&#x7EED;&#x66F4;&#xFF0C;&#x4ECA;&#x5E74;&#x4E0A;&#x534A;&#x5E74;&#x80FD;&#x5B8C;&#x6210;&#x5427;&#xFF01;
 ps&#xFF1A;&#x672C;&#x7535;&#x5B50;&#x4E66;&#x7684;&#x66F4;&#x65B0;&#x65AD;&#x65AD;&#x505C;&#x505C;&#xFF0C;&#x8FD9;&#x51E0;&#x5E74;&#x4E2D;&#x53D1;&#x751F;&#x4E86;&#x5F88;&#x591A;&#x4E8B;&#x60C5;&#xFF0C;2023.8.6&#x5F00;&#x59CB;&#x6062;&#x590D;&#x66F4;&#x65B0;&#x3002;&#x4ECA;&#x5E74;&#x5FC5;&#x987B;&#x5B8C;&#x6210;&#xFF0C;:muscle:
-    &#x6211;&#x51C6;&#x5907;&#x7528;AI&#x5E2E;&#x6211;&#x7FFB;&#x8BD1;&#x6210;&#x82F1;&#x6587;&#x7248;&#xFF0C;&#x4E5F;&#x8BB8;&#x53EF;&#x4EE5;&#x5438;&#x5F15;&#x5230;&#x4E00;&#x4E9B;&#x540C;&#x6837;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8D21;&#x732E;&#x8005;&#x3002;</p>
+&#x6211;&#x51C6;&#x5907;&#x7528;AI&#x5E2E;&#x6211;&#x7FFB;&#x8BD1;&#x6210;&#x82F1;&#x6587;&#x7248;&#xFF0C;&#x4E5F;&#x8BB8;&#x53EF;&#x4EE5;&#x5438;&#x5F15;&#x5230;&#x4E00;&#x4E9B;&#x540C;&#x6837;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x8D21;&#x732E;&#x8005;&#x3002;</p>
 </blockquote>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
 <p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5BF9;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#x65B9;&#x6848;&#x8FDB;&#x884C;&#x4E86;&#x68B3;&#x7406;&#x548C;&#x5206;&#x6790;&#xFF0C;&#x4ECB;&#x7ECD;&#x4E86;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x548C;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x4E24;&#x79CD;&#x5B9E;&#x73B0;&#x8DEF;&#x5F84;&#xFF0C;&#x5E76;&#x7ED3;&#x5408;&#x5B9E;&#x9645;&#x9879;&#x76EE;&#xFF08;&#x5982; godbg &#x548C;&#x88C1;&#x526A;&#x7248; delve&#xFF09;&#x8BA8;&#x8BBA;&#x4E86;&#x5404;&#x81EA;&#x7684;&#x8BBE;&#x8BA1;&#x601D;&#x8DEF;&#x3001;&#x9002;&#x7528;&#x573A;&#x666F;&#x53CA;&#x5F00;&#x53D1;&#x5DE5;&#x4F5C;&#x91CF;&#x3002;&#x901A;&#x8FC7;&#x5BF9;&#x6BD4;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x9002;&#x5408;&#x5165;&#x95E8;&#x548C;&#x7406;&#x89E3;&#x5E95;&#x5C42;&#x539F;&#x7406;&#xFF0C;&#x800C;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x5219;&#x66F4;&#x8D34;&#x8FD1;&#x5B9E;&#x9645;&#x5E94;&#x7528;&#x9700;&#x6C42;&#xFF0C;&#x80FD;&#x591F;&#x5E2E;&#x52A9;&#x8BFB;&#x8005;&#x5EFA;&#x7ACB;&#x8D77;&#x5F00;&#x53D1;&#x73B0;&#x4EE3;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x4FE1;&#x5FC3;&#x3002;</p>
@@ -2171,12 +2171,12 @@ ps&#xFF1A;&#x672C;&#x7535;&#x5B50;&#x4E66;&#x7684;&#x66F4;&#x65B0;&#x65AD;&#x65A
 
             
                 
-                <a href="2-debugger_solution.html" class="navigation navigation-prev " aria-label="Previous page: 5.2 调试器开发 - 架构设计和技术方案">
+                <a href="2-debugger_solution.html" class="navigation navigation-prev " aria-label="Previous page: 5.2 架构设计和技术方案">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="4-debugger_demos.html" class="navigation navigation-next " aria-label="Next page: 5.4 调试器开发 - 功能演示和实现效果">
+                <a href="4-debugger_demos.html" class="navigation navigation-next " aria-label="Next page: 5.4 功能演示和实现效果">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2187,7 +2187,7 @@ ps&#xFF1A;&#x672C;&#x7535;&#x5B50;&#x4E66;&#x7684;&#x66F4;&#x65B0;&#x65AD;&#x65A
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"5.3 调试器开发 - 具体的实现方案选择","level":"1.5.3","depth":2,"next":{"title":"5.4 调试器开发 - 功能演示和实现效果","level":"1.5.4","depth":2,"path":"5-debugger-skeleton/4-debugger_demos.md","ref":"5-debugger-skeleton/4-debugger_demos.md","articles":[]},"previous":{"title":"5.2 调试器开发 - 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/3-debugger_solution_final.md","mtime":"2025-10-10T01:12:09.754Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T01:12:40.758Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"5.3 具体的实现方案选择","level":"1.5.3","depth":2,"next":{"title":"5.4 功能演示和实现效果","level":"1.5.4","depth":2,"path":"5-debugger-skeleton/4-debugger_demos.md","ref":"5-debugger-skeleton/4-debugger_demos.md","articles":[]},"previous":{"title":"5.2 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"5-debugger-skeleton/3-debugger_solution_final.md","mtime":"2025-10-10T04:51:55.082Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T04:52:26.320Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

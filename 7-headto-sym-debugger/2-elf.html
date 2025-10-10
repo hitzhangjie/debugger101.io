@@ -487,12 +487,26 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/20-trace_new_threads.html">
+        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/multithread/README.md">
             
-                <a href="../6-develop-inst-debugger/20-trace_new_threads.html">
+                <span>
             
                     
-                    6.20 跟踪多线程程序1
+                    6.20 调试多线程程序
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.17.1" data-path="../6-develop-inst-debugger/1-trace_old_threads.md">
+            
+                <span>
+            
+                    
+                    6.20.1 跟踪已创建线程
             
                 </a>
             
@@ -500,12 +514,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/21-trace_old_threads.html">
+        <li class="chapter " data-level="1.6.17.2" data-path="../6-develop-inst-debugger/2-trace_new_threads.md">
             
-                <a href="../6-develop-inst-debugger/21-trace_old_threads.html">
+                <span>
             
                     
-                    6.21 跟踪多线程程序2
+                    6.20.2 跟踪新创建线程
             
                 </a>
             
@@ -513,7 +527,51 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/80-aslr.html">
+        <li class="chapter " data-level="1.6.17.3" data-path="../6-develop-inst-debugger/3-suspend_policy.md">
+            
+                <span>
+            
+                    
+                    6.20.3 线程执行控制 - 挂起策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.4" data-path="../6-develop-inst-debugger/4-continue.md">
+            
+                <span>
+            
+                    
+                    6.20.4 线程执行控制 - continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.5" data-path="../6-develop-inst-debugger/5-breakpoint.md">
+            
+                <span>
+            
+                    
+                    6.20.5 线程执行控制 - breakpoint
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/80-aslr.html">
             
                 <a href="../6-develop-inst-debugger/80-aslr.html">
             
@@ -526,7 +584,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.20" data-path="../6-develop-inst-debugger/99-more.html">
+        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/99-more.html">
             
                 <a href="../6-develop-inst-debugger/99-more.html">
             
@@ -2054,7 +2112,7 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 34;
+  counter-reset: h1 38;
 }
 </style></p>
 <h2 id="&#x8BA4;&#x8BC6;elf&#x6587;&#x4EF6;">&#x8BA4;&#x8BC6;ELF&#x6587;&#x4EF6;</h2>
@@ -2539,7 +2597,7 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2025-10-09T11:27:38.004Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-09T11:28:09.499Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2025-10-10T01:12:09.761Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-10T01:12:40.758Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点 · GitBook</title>
+        <title>6.20.3 线程执行控制 - 挂起策略 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="25-debug_breakpoint_part4.html" />
+    <link rel="next" href="4-continue.html" />
     
     
-    <link rel="prev" href="23-debug_breakpoint_part2.html" />
+    <link rel="prev" href="2-trace_new_threads.html" />
     
 
     </head>
@@ -265,9 +265,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6" data-path="../../6-develop-inst-debugger/">
+        <li class="chapter " data-level="1.6" data-path="../">
             
-                <a href="../../6-develop-inst-debugger/">
+                <a href="../">
             
                     
                     6 开发go指令级调试器
@@ -279,9 +279,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+        <li class="chapter " data-level="1.6.1" data-path="../1-process_start.html">
             
-                <a href="../../6-develop-inst-debugger/1-process_start.html">
+                <a href="../1-process_start.html">
             
                     
                     6.1 启动进程
@@ -292,9 +292,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+        <li class="chapter " data-level="1.6.2" data-path="../2-process_attach.html">
             
-                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+                <a href="../2-process_attach.html">
             
                     
                     6.2 跟踪进程
@@ -305,9 +305,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+        <li class="chapter " data-level="1.6.3" data-path="../3-process_start_attach.html">
             
-                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+                <a href="../3-process_start_attach.html">
             
                     
                     6.3 启动&跟踪进程
@@ -318,9 +318,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+        <li class="chapter " data-level="1.6.4" data-path="../4-debug-session.html">
             
-                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+                <a href="../4-debug-session.html">
             
                     
                     6.4 调试会话
@@ -331,9 +331,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.5" data-path="../../6-develop-inst-debugger/5-disassemble.html">
+        <li class="chapter " data-level="1.6.5" data-path="../5-disassemble.html">
             
-                <a href="../../6-develop-inst-debugger/5-disassemble.html">
+                <a href="../5-disassemble.html">
             
                     
                     6.5 反汇编
@@ -344,9 +344,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.6" data-path="../../6-develop-inst-debugger/6-breakpoint.html">
+        <li class="chapter " data-level="1.6.6" data-path="../6-breakpoint.html">
             
-                <a href="../../6-develop-inst-debugger/6-breakpoint.html">
+                <a href="../6-breakpoint.html">
             
                     
                     6.6 添加断点
@@ -357,9 +357,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.7" data-path="../../6-develop-inst-debugger/7-breakpoints.html">
+        <li class="chapter " data-level="1.6.7" data-path="../7-breakpoints.html">
             
-                <a href="../../6-develop-inst-debugger/7-breakpoints.html">
+                <a href="../7-breakpoints.html">
             
                     
                     6.7 列出断点
@@ -370,9 +370,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.8" data-path="../../6-develop-inst-debugger/8-clear.html">
+        <li class="chapter " data-level="1.6.8" data-path="../8-clear.html">
             
-                <a href="../../6-develop-inst-debugger/8-clear.html">
+                <a href="../8-clear.html">
             
                     
                     6.8 移除断点
@@ -383,9 +383,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.9" data-path="../../6-develop-inst-debugger/9-clearall.html">
+        <li class="chapter " data-level="1.6.9" data-path="../9-clearall.html">
             
-                <a href="../../6-develop-inst-debugger/9-clearall.html">
+                <a href="../9-clearall.html">
             
                     
                     6.9 清空断点
@@ -396,9 +396,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-clearall-atexit.html">
+        <li class="chapter " data-level="1.6.10" data-path="../10-clearall-atexit.html">
             
-                <a href="../../6-develop-inst-debugger/10-clearall-atexit.html">
+                <a href="../10-clearall-atexit.html">
             
                     
                     6.10 调试器退出前的断点清理机制
@@ -409,9 +409,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-step.html">
+        <li class="chapter " data-level="1.6.11" data-path="../11-step.html">
             
-                <a href="../../6-develop-inst-debugger/11-step.html">
+                <a href="../11-step.html">
             
                     
                     6.11 步进操作
@@ -422,9 +422,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-continue.html">
+        <li class="chapter " data-level="1.6.12" data-path="../12-continue.html">
             
-                <a href="../../6-develop-inst-debugger/12-continue.html">
+                <a href="../12-continue.html">
             
                     
                     6.12 运行到断点
@@ -435,9 +435,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pmem.html">
+        <li class="chapter " data-level="1.6.13" data-path="../13-pmem.html">
             
-                <a href="../../6-develop-inst-debugger/13-pmem.html">
+                <a href="../13-pmem.html">
             
                     
                     6.13 查看内存数据
@@ -448,9 +448,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-pregs.html">
+        <li class="chapter " data-level="1.6.14" data-path="../14-pregs.html">
             
-                <a href="../../6-develop-inst-debugger/14-pregs.html">
+                <a href="../14-pregs.html">
             
                     
                     6.14 查看寄存器数据
@@ -461,9 +461,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-mem.html">
+        <li class="chapter " data-level="1.6.15" data-path="../15-set-mem.html">
             
-                <a href="../../6-develop-inst-debugger/15-set-mem.html">
+                <a href="../15-set-mem.html">
             
                     
                     6.15 修改内存数据
@@ -474,9 +474,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/16-set-regs.html">
+        <li class="chapter " data-level="1.6.16" data-path="../16-set-regs.html">
             
-                <a href="../../6-develop-inst-debugger/16-set-regs.html">
+                <a href="../16-set-regs.html">
             
                     
                     6.16 修改寄存器数据
@@ -487,9 +487,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/20-multithread/">
+        <li class="chapter " data-level="1.6.17" data-path="./">
             
-                <a href="../../6-develop-inst-debugger/20-multithread/">
+                <a href="./">
             
                     
                     6.20 调试多线程程序
@@ -501,9 +501,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.17.1" data-path="../../6-develop-inst-debugger/20-multithread/1-trace_old_threads.html">
+        <li class="chapter " data-level="1.6.17.1" data-path="1-trace_old_threads.html">
             
-                <a href="../../6-develop-inst-debugger/20-multithread/1-trace_old_threads.html">
+                <a href="1-trace_old_threads.html">
             
                     
                     6.20.1 跟踪已创建线程
@@ -514,9 +514,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17.2" data-path="../../6-develop-inst-debugger/20-multithread/2-trace_new_threads.html">
+        <li class="chapter " data-level="1.6.17.2" data-path="2-trace_new_threads.html">
             
-                <a href="../../6-develop-inst-debugger/20-multithread/2-trace_new_threads.html">
+                <a href="2-trace_new_threads.html">
             
                     
                     6.20.2 跟踪新创建线程
@@ -527,9 +527,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17.3" data-path="../../6-develop-inst-debugger/20-multithread/3-suspend_policy.html">
+        <li class="chapter active" data-level="1.6.17.3" data-path="3-suspend_policy.html">
             
-                <a href="../../6-develop-inst-debugger/20-multithread/3-suspend_policy.html">
+                <a href="3-suspend_policy.html">
             
                     
                     6.20.3 线程执行控制 - 挂起策略
@@ -540,9 +540,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17.4" data-path="../../6-develop-inst-debugger/20-multithread/4-continue.html">
+        <li class="chapter " data-level="1.6.17.4" data-path="4-continue.html">
             
-                <a href="../../6-develop-inst-debugger/20-multithread/4-continue.html">
+                <a href="4-continue.html">
             
                     
                     6.20.4 线程执行控制 - continue
@@ -553,9 +553,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17.5" data-path="../../6-develop-inst-debugger/20-multithread/5-breakpoint.html">
+        <li class="chapter " data-level="1.6.17.5" data-path="5-breakpoint.html">
             
-                <a href="../../6-develop-inst-debugger/20-multithread/5-breakpoint.html">
+                <a href="5-breakpoint.html">
             
                     
                     6.20.5 线程执行控制 - breakpoint
@@ -571,9 +571,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+        <li class="chapter " data-level="1.6.18" data-path="../80-aslr.html">
             
-                <a href="../../6-develop-inst-debugger/80-aslr.html">
+                <a href="../80-aslr.html">
             
                     
                     6.80 认识ASLR
@@ -584,9 +584,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+        <li class="chapter " data-level="1.6.19" data-path="../99-more.html">
             
-                <a href="../../6-develop-inst-debugger/99-more.html">
+                <a href="../99-more.html">
             
                     
                     6.99 More...
@@ -1093,9 +1093,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9" data-path="../">
+        <li class="chapter " data-level="1.9" data-path="../../9-develop-sym-debugger/">
             
-                <a href="../">
+                <a href="../../9-develop-sym-debugger/">
             
                     
                     9 开发go符号级调试器
@@ -1107,9 +1107,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1" data-path="../1-架构设计/">
+        <li class="chapter " data-level="1.9.1" data-path="../../9-develop-sym-debugger/1-架构设计/">
             
-                <a href="../1-架构设计/">
+                <a href="../../9-develop-sym-debugger/1-架构设计/">
             
                     
                     9.1 架构设计
@@ -1121,9 +1121,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.1.1" data-path="../1-架构设计/1-现代调试器架构.html">
+        <li class="chapter " data-level="1.9.1.1" data-path="../../9-develop-sym-debugger/1-架构设计/1-现代调试器架构.html">
             
-                <a href="../1-架构设计/1-现代调试器架构.html">
+                <a href="../../9-develop-sym-debugger/1-架构设计/1-现代调试器架构.html">
             
                     
                     9.1.1 现代调试器架构
@@ -1134,9 +1134,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.2" data-path="../1-架构设计/2-前端UI层设计.html">
+        <li class="chapter " data-level="1.9.1.2" data-path="../../9-develop-sym-debugger/1-架构设计/2-前端UI层设计.html">
             
-                <a href="../1-架构设计/2-前端UI层设计.html">
+                <a href="../../9-develop-sym-debugger/1-架构设计/2-前端UI层设计.html">
             
                     
                     9.1.2 前端UI层设计
@@ -1147,9 +1147,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.3" data-path="../1-架构设计/3-Service层设计.html">
+        <li class="chapter " data-level="1.9.1.3" data-path="../../9-develop-sym-debugger/1-架构设计/3-Service层设计.html">
             
-                <a href="../1-架构设计/3-Service层设计.html">
+                <a href="../../9-develop-sym-debugger/1-架构设计/3-Service层设计.html">
             
                     
                     9.1.3 Service层设计
@@ -1160,9 +1160,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.4" data-path="../1-架构设计/4-后端符号层设计.html">
+        <li class="chapter " data-level="1.9.1.4" data-path="../../9-develop-sym-debugger/1-架构设计/4-后端符号层设计.html">
             
-                <a href="../1-架构设计/4-后端符号层设计.html">
+                <a href="../../9-develop-sym-debugger/1-架构设计/4-后端符号层设计.html">
             
                     
                     9.1.4 后端符号层设计
@@ -1173,9 +1173,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.5" data-path="../1-架构设计/5-后端目标层设计.html">
+        <li class="chapter " data-level="1.9.1.5" data-path="../../9-develop-sym-debugger/1-架构设计/5-后端目标层设计.html">
             
-                <a href="../1-架构设计/5-后端目标层设计.html">
+                <a href="../../9-develop-sym-debugger/1-架构设计/5-后端目标层设计.html">
             
                     
                     9.1.5 后端目标层设计
@@ -1186,9 +1186,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.1.6" data-path="../1-架构设计/6-日志系统设计.html">
+        <li class="chapter " data-level="1.9.1.6" data-path="../../9-develop-sym-debugger/1-架构设计/6-日志系统设计.html">
             
-                <a href="../1-架构设计/6-日志系统设计.html">
+                <a href="../../9-develop-sym-debugger/1-架构设计/6-日志系统设计.html">
             
                     
                     9.1.6 日志系统设计
@@ -1204,9 +1204,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2" data-path="./">
+        <li class="chapter " data-level="1.9.2" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/">
             
-                <a href="./">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/">
             
                     
                     9.2 核心调试逻辑
@@ -1218,9 +1218,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.2.1" data-path="00-cmds.html">
+        <li class="chapter " data-level="1.9.2.1" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/00-cmds.html">
             
-                <a href="00-cmds.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/00-cmds.html">
             
                     
                     9.2.00 核心调试命令
@@ -1231,9 +1231,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.2" data-path="01-debug-session.html">
+        <li class="chapter " data-level="1.9.2.2" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.html">
             
-                <a href="01-debug-session.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.html">
             
                     
                     9.2.01 打开调试会话
@@ -1244,9 +1244,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.3" data-path="11-tinydbg_attach.html">
+        <li class="chapter " data-level="1.9.2.3" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.html">
             
-                <a href="11-tinydbg_attach.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.html">
             
                     
                     9.2.11 tinydbg attach
@@ -1257,9 +1257,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.4" data-path="12-tinydbg_attach_waitfor.html">
+        <li class="chapter " data-level="1.9.2.4" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.html">
             
-                <a href="12-tinydbg_attach_waitfor.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.html">
             
                     
                     9.2.12 tinydbg attach+waitfor
@@ -1270,9 +1270,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.5" data-path="13-tinydbg_exec.html">
+        <li class="chapter " data-level="1.9.2.5" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/13-tinydbg_exec.html">
             
-                <a href="13-tinydbg_exec.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/13-tinydbg_exec.html">
             
                     
                     9.2.13 tinydbg exec
@@ -1283,9 +1283,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.6" data-path="14-tinydbg_debug.html">
+        <li class="chapter " data-level="1.9.2.6" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.html">
             
-                <a href="14-tinydbg_debug.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.html">
             
                     
                     9.2.14 tinydbg debug
@@ -1296,9 +1296,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.7" data-path="15-tinydbg_core1.html">
+        <li class="chapter " data-level="1.9.2.7" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core1.html">
             
-                <a href="15-tinydbg_core1.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core1.html">
             
                     
                     9.2.15 tinydbg core - part1
@@ -1309,9 +1309,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.8" data-path="15-tinydbg_core2.html">
+        <li class="chapter " data-level="1.9.2.8" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.html">
             
-                <a href="15-tinydbg_core2.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core2.html">
             
                     
                     9.2.15 tinydbg core - part2
@@ -1322,9 +1322,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.9" data-path="16-tinydbg_connect.html">
+        <li class="chapter " data-level="1.9.2.9" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.html">
             
-                <a href="16-tinydbg_connect.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.html">
             
                     
                     9.2.16 tinydbg connect
@@ -1335,9 +1335,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.10" data-path="17-tinydbg_trace.html">
+        <li class="chapter " data-level="1.9.2.10" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.html">
             
-                <a href="17-tinydbg_trace.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.html">
             
                     
                     9.2.17 tinydbg trace
@@ -1348,9 +1348,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.11" data-path="19-how_evalexpr_works.html">
+        <li class="chapter " data-level="1.9.2.11" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/19-how_evalexpr_works.html">
             
-                <a href="19-how_evalexpr_works.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/19-how_evalexpr_works.html">
             
                     
                     9.2.19 evalexpr表达式计算引擎
@@ -1361,9 +1361,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.12" data-path="20-how_locspec_works.html">
+        <li class="chapter " data-level="1.9.2.12" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/20-how_locspec_works.html">
             
-                <a href="20-how_locspec_works.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/20-how_locspec_works.html">
             
                     
                     9.2.20 locspec解析与地址转换
@@ -1374,9 +1374,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.13" data-path="21-debug_disassemble.html">
+        <li class="chapter " data-level="1.9.2.13" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/21-debug_disassemble.html">
             
-                <a href="21-debug_disassemble.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/21-debug_disassemble.html">
             
                     
                     9.2.21 tinydbg> disass
@@ -1387,9 +1387,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.14" data-path="22-debug_breakpoint_part1.html">
+        <li class="chapter " data-level="1.9.2.14" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.html">
             
-                <a href="22-debug_breakpoint_part1.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.html">
             
                     
                     9.2.22 tinydbg> breakpoint - part1: 断点精细化管理
@@ -1400,9 +1400,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.15" data-path="23-debug_breakpoint_part2.html">
+        <li class="chapter " data-level="1.9.2.15" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.html">
             
-                <a href="23-debug_breakpoint_part2.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.html">
             
                     
                     9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点
@@ -1413,9 +1413,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.16" data-path="24-debug_breakpoint_part3.html">
+        <li class="chapter " data-level="1.9.2.16" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.html">
             
-                <a href="24-debug_breakpoint_part3.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.html">
             
                     
                     9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点
@@ -1426,9 +1426,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.17" data-path="25-debug_breakpoint_part4.html">
+        <li class="chapter " data-level="1.9.2.17" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/25-debug_breakpoint_part4.html">
             
-                <a href="25-debug_breakpoint_part4.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/25-debug_breakpoint_part4.html">
             
                     
                     9.2.25 tinydbg> breakpoint - part4: 其他断点相关命令
@@ -1439,9 +1439,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.18" data-path="26-debug_trace.html">
+        <li class="chapter " data-level="1.9.2.18" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/26-debug_trace.html">
             
-                <a href="26-debug_trace.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/26-debug_trace.html">
             
                     
                     9.2.26 tinydbg> trace
@@ -1452,9 +1452,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.19" data-path="27-debug_watch.html">
+        <li class="chapter " data-level="1.9.2.19" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/27-debug_watch.html">
             
-                <a href="27-debug_watch.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/27-debug_watch.html">
             
                     
                     9.2.27 tinydbg> watch
@@ -1465,9 +1465,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.20" data-path="28-debug_continue.html">
+        <li class="chapter " data-level="1.9.2.20" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/28-debug_continue.html">
             
-                <a href="28-debug_continue.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/28-debug_continue.html">
             
                     
                     9.2.28 tinydbg> continue
@@ -1478,9 +1478,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.21" data-path="29-debug_next.html">
+        <li class="chapter " data-level="1.9.2.21" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/29-debug_next.html">
             
-                <a href="29-debug_next.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/29-debug_next.html">
             
                     
                     9.2.29 tinydbg> next
@@ -1491,9 +1491,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.22" data-path="30-debug_step.html">
+        <li class="chapter " data-level="1.9.2.22" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/30-debug_step.html">
             
-                <a href="30-debug_step.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/30-debug_step.html">
             
                     
                     9.2.30 tinydbg> step
@@ -1504,9 +1504,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.23" data-path="31-debug_pmem.html">
+        <li class="chapter " data-level="1.9.2.23" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/31-debug_pmem.html">
             
-                <a href="31-debug_pmem.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/31-debug_pmem.html">
             
                     
                     9.2.31 tinydbg> pmem
@@ -1517,9 +1517,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.24" data-path="32-debug_regs.html">
+        <li class="chapter " data-level="1.9.2.24" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/32-debug_regs.html">
             
-                <a href="32-debug_regs.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/32-debug_regs.html">
             
                     
                     9.2.32 tinydbg> regs
@@ -1530,9 +1530,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.25" data-path="33-debug_funcs.html">
+        <li class="chapter " data-level="1.9.2.25" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/33-debug_funcs.html">
             
-                <a href="33-debug_funcs.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/33-debug_funcs.html">
             
                     
                     9.2.33 tinydbg> funcs
@@ -1543,9 +1543,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.26" data-path="34-debug_vars.html">
+        <li class="chapter " data-level="1.9.2.26" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/34-debug_vars.html">
             
-                <a href="34-debug_vars.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/34-debug_vars.html">
             
                     
                     9.2.34 tinydbg> vars
@@ -1556,9 +1556,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.27" data-path="35-debug_bt.html">
+        <li class="chapter " data-level="1.9.2.27" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/35-debug_bt.html">
             
-                <a href="35-debug_bt.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/35-debug_bt.html">
             
                     
                     9.2.35 tinydbg> bt
@@ -1569,9 +1569,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.28" data-path="100-how_listfunctions_work.html">
+        <li class="chapter " data-level="1.9.2.28" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/100-how_listfunctions_work.html">
             
-                <a href="100-how_listfunctions_work.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/100-how_listfunctions_work.html">
             
                     
                     9.2.100 how ListFunctions work
@@ -1582,9 +1582,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.29" data-path="100-debug_goroutines.html">
+        <li class="chapter " data-level="1.9.2.29" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/100-debug_goroutines.html">
             
-                <a href="100-debug_goroutines.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/100-debug_goroutines.html">
             
                     
                     9.2.100 tinydbg> goroutines
@@ -1595,9 +1595,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.30" data-path="100-multi-threads.html">
+        <li class="chapter " data-level="1.9.2.30" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/100-multi-threads.html">
             
-                <a href="100-multi-threads.html">
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/100-multi-threads.html">
             
                     
                     9.2.100 跟踪多线程程序
@@ -1613,9 +1613,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3" data-path="../3-高级功能扩展/">
+        <li class="chapter " data-level="1.9.3" data-path="../../9-develop-sym-debugger/3-高级功能扩展/">
             
-                <a href="../3-高级功能扩展/">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/">
             
                     
                     9.3 高级功能扩展
@@ -1627,9 +1627,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.9.3.1" data-path="../3-高级功能扩展/100-howto_integrate_starlark.html">
+        <li class="chapter " data-level="1.9.3.1" data-path="../../9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.html">
             
-                <a href="../3-高级功能扩展/100-howto_integrate_starlark.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.html">
             
                     
                     9.3.100 集成starlark
@@ -1640,9 +1640,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.2" data-path="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+        <li class="chapter " data-level="1.9.3.2" data-path="../../9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.html">
             
-                <a href="../3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.html">
             
                     
                     9.3.101 基于eBPF跟踪
@@ -1653,9 +1653,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.3" data-path="../3-高级功能扩展/102-howto_syntax_highlight.html">
+        <li class="chapter " data-level="1.9.3.3" data-path="../../9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.html">
             
-                <a href="../3-高级功能扩展/102-howto_syntax_highlight.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.html">
             
                     
                     9.3.102 实现语法高亮
@@ -1666,9 +1666,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.4" data-path="../3-高级功能扩展/103-howto_paging_output.html">
+        <li class="chapter " data-level="1.9.3.4" data-path="../../9-develop-sym-debugger/3-高级功能扩展/103-howto_paging_output.html">
             
-                <a href="../3-高级功能扩展/103-howto_paging_output.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/103-howto_paging_output.html">
             
                     
                     9.3.103 实现分页输出
@@ -1679,9 +1679,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.5" data-path="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+        <li class="chapter " data-level="1.9.3.5" data-path="../../9-develop-sym-debugger/3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
             
-                <a href="../3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
             
                     
                     9.3.104 读取分离存储的DWARF数据
@@ -1692,9 +1692,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.6" data-path="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+        <li class="chapter " data-level="1.9.3.6" data-path="../../9-develop-sym-debugger/3-高级功能扩展/105-howto_guess_substitutepath.html">
             
-                <a href="../3-高级功能扩展/105-howto_guess_substitutepath.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/105-howto_guess_substitutepath.html">
             
                     
                     9.3.105 自动推测源文件路径映射
@@ -1705,9 +1705,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.7" data-path="../3-高级功能扩展/106-howto_redirect_target_io.html">
+        <li class="chapter " data-level="1.9.3.7" data-path="../../9-develop-sym-debugger/3-高级功能扩展/106-howto_redirect_target_io.html">
             
-                <a href="../3-高级功能扩展/106-howto_redirect_target_io.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/106-howto_redirect_target_io.html">
             
                     
                     9.3.106 实现目标进程IO重定向
@@ -1718,9 +1718,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.8" data-path="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+        <li class="chapter " data-level="1.9.3.8" data-path="../../9-develop-sym-debugger/3-高级功能扩展/107-howto_customize_tinydbg.html">
             
-                <a href="../3-高级功能扩展/107-howto_customize_tinydbg.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/107-howto_customize_tinydbg.html">
             
                     
                     9.3.107 支持用户偏好配置
@@ -1731,9 +1731,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.9" data-path="../3-高级功能扩展/108-howto_accept_multiclient.html">
+        <li class="chapter " data-level="1.9.3.9" data-path="../../9-develop-sym-debugger/3-高级功能扩展/108-howto_accept_multiclient.html">
             
-                <a href="../3-高级功能扩展/108-howto_accept_multiclient.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/108-howto_accept_multiclient.html">
             
                     
                     9.3.108 支持多客户端调试模式
@@ -1744,9 +1744,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.10" data-path="../3-高级功能扩展/109-howto_transcript_debugging.html">
+        <li class="chapter " data-level="1.9.3.10" data-path="../../9-develop-sym-debugger/3-高级功能扩展/109-howto_transcript_debugging.html">
             
-                <a href="../3-高级功能扩展/109-howto_transcript_debugging.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/109-howto_transcript_debugging.html">
             
                     
                     9.3.109 支持调试活动记录本
@@ -1757,9 +1757,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.3.11" data-path="../3-高级功能扩展/110-howto_debug_deterministically.html">
+        <li class="chapter " data-level="1.9.3.11" data-path="../../9-develop-sym-debugger/3-高级功能扩展/110-howto_debug_deterministically.html">
             
-                <a href="../3-高级功能扩展/110-howto_debug_deterministically.html">
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/110-howto_debug_deterministically.html">
             
                     
                     9.3.110 如何实现确定性调试
@@ -2095,7 +2095,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点</a>
+        <a href="../.." >6.20.3 线程执行控制 - 挂起策略</a>
     </h1>
 </div>
 
@@ -2112,15 +2112,124 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 95;
+  counter-reset: h1 31;
 }
 </style></p>
-<h2 id="condition">Condition</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;</h3>
-<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
+<h2 id="&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236;---&#x6302;&#x8D77;&#x7B56;&#x7565;">&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236; - &#x6302;&#x8D77;&#x7B56;&#x7565;</h2>
+<p>&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x901A;&#x8FC7;continue&#x3001;step&#x3001;breakpoint&#x7B49;&#x547D;&#x4EE4;&#x6765;&#x63A7;&#x5236;&#x8FDB;&#x7A0B;&#x5185;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x524D;&#x9762;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;&#x8FD9;&#x4E9B;&#x547D;&#x4EE4;&#x7684;&#x5E95;&#x5C42;&#x539F;&#x7406;&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x4E9B;&#x5BF9;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x6765;&#x8BF4;&#xFF0C;&#x8FD8;&#x8FDC;&#x8FDC;&#x4E0D;&#x591F;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x7684;&#x7279;&#x6B8A;&#x6027;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x3001;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x5BF9;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x7684;&#x89C2;&#x5BDF;&#x7B49;&#x7B49;&#xFF0C;&#x8FD9;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x7EBF;&#x7A0B;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x3002;</p>
+<p>&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;Suspend Policy&#xFF09;&#xFF0C;&#x6709;&#x65F6;&#x4E5F;&#x53EB; <strong>Stop&#x202F;Mode</strong> &#x6216;&#x8005; <strong>Suspend&#x202F;Mode</strong>&#x3002;&#x5B83;&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x89E6;&#x53D1;&#x65AD;&#x70B9;/&#x5F02;&#x5E38;/&#x505C;&#x6B62;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x6682;&#x505C;&#x54EA;&#x4E9B;&#x7EBF;&#x7A0B;&#xFF0C;&#x4EE5;&#x53CA;&#x540E;&#x7EED;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x5982;&#x4F55;&#x6062;&#x590D;&#x8FD9;&#x4E9B;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5C5E;&#x4E8E;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236;&#xFF08;Thread Execution Control&#xFF09;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x6765;&#x4E86;&#x89E3;&#x4E0B;&#x5728;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#xFF0C;&#x6709;&#x54EA;&#x4E9B;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x4EE5;&#x53CA;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<h3 id="&#x4F55;&#x4E3A;&#x6302;&#x8D77;&#x7B56;&#x7565;">&#x4F55;&#x4E3A;&#x6302;&#x8D77;&#x7B56;&#x7565;</h3>
+<p>&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#xFF0C;<strong>Suspend&#x202F;Policy</strong> &#x63CF;&#x8FF0;&#x4E86; <strong>&#x201C;&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x89E6;&#x53D1;&#x65AD;&#x70B9;/&#x5F02;&#x5E38;/&#x505C;&#x6B62;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x6682;&#x505C;&#x54EA;&#x4E9B;&#x7EBF;&#x7A0B;&#x201D;</strong> &#x7684;&#x884C;&#x4E3A;&#x3002;
+&#x5E38;&#x89C1;&#x7684;&#x4E24;&#x79CD;&#x7B56;&#x7565;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7B56;&#x7565;</th>
+<th>&#x610F;&#x4E49;</th>
+<th>&#x5BF9;&#x5E94;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x547D;&#x4EE4; / &#x9009;&#x9879;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>suspend-all</strong>&#xFF08;&#x5168;&#x6302;&#x8D77;&#xFF09;</td>
+<td>&#x5F53;&#x4EFB;&#x4E00;&#x7EBF;&#x7A0B; hit breakpoint&#xFF0C;<strong>&#x6240;&#x6709;</strong>&#x7EBF;&#x7A0B;&#x5168;&#x90E8;&#x6682;&#x505C;&#xFF1B;<code>continue</code> &#x65F6;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x628A; <em>&#x6240;&#x6709;</em> &#x7EBF;&#x7A0B;&#x4E00;&#x8D77;&#x6062;&#x590D;&#x3002;</td>
+</tr>
+<tr>
+<td>LLDB: <code>settings set target.suspend-policy all</code>  <br>GDB: <code>set scheduler-locking on</code>  <br>VS: &#x201C;Suspend execution&#x201D; &#x2192; &#x201C;All&#x201D;</td>
+</tr>
+<tr>
+<td></td>
+</tr>
+<tr>
+<td><strong>suspend-one</strong>&#xFF08;&#x5355;&#x6302;&#x8D77;&#xFF09;</td>
+<td>&#x53EA;&#x6709;<strong>&#x89E6;&#x53D1;&#x65AD;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;</strong>&#x88AB;&#x6682;&#x505C;&#xFF1B;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x3002;<code>continue</code> &#x65F6;&#x9ED8;&#x8BA4;&#x53EA;&#x6062;&#x590D;&#x89E6;&#x53D1;&#x65AD;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;&#x53EF;&#x7528;</td>
+</tr>
+</tbody>
+</table>
+<p><code>thread continue</code> &#x6307;&#x5B9A;&#x6062;&#x590D;&#x5355;&#x7EBF;&#x7A0B;&#xFF09;&#x3002; | LLDB: <code>settings set target.suspend-policy one</code> <br>GDB: <code>set scheduler-locking step</code> (&#x4EC5;&#x6B65;
+&#x8FDB;&#x65F6;&#x4F1A;&#x6682;&#x505C;&#x8BE5;&#x7EBF;&#x7A0B;) <br>VS: &#x201C;Suspend execution&#x201D; &#x2192; &#x201C;Just this thread&#x201D; |</p>
+<blockquote>
+<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4E0D;&#x540C;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0D;&#x540C;&#xFF0C;&#x4F46;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#x4E00;&#x81F4;&#x2014;&#x2014;<strong>Suspend&#x202F;Policy</strong>&#x3002;</p>
+</blockquote>
+<hr>
+<h3 id="&#x65AD;&#x70B9;&#x7684;&#x6302;&#x8D77;&#x5C5E;&#x6027;&#xFF08;breakpoint&#x2011;suspend-attribute&#xFF09;">&#x65AD;&#x70B9;&#x7684;&#x6302;&#x8D77;&#x5C5E;&#x6027;&#xFF08;Breakpoint&#x2011;Suspend Attribute&#xFF09;</h3>
+<p>&#x5728;&#x5F88;&#x591A;&#x8C03;&#x8BD5;&#x5668;&#x91CC;&#xFF0C;&#x5355;&#x4E2A;&#x65AD;&#x70B9;&#x672C;&#x8EAB;&#x4E5F;&#x53EF;&#x4EE5;&#x643A;&#x5E26;&#x6302;&#x8D77;&#x5C5E;&#x6027;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x65AD;&#x70B9;&#x5C5E;&#x6027;</th>
+<th>&#x8BF4;&#x660E;</th>
+<th>&#x4F8B;&#x5B50;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>suspend: true/false</code></td>
+<td>&#x662F;&#x5426;&#x5728;&#x8BE5;&#x65AD;&#x70B9;&#x5904;&#x6682;&#x505C;&#xFF08;&#x9ED8;&#x8BA4;&#x4E3A; true&#xFF09;</td>
+<td>GDB: <code>break *0x401000 suspend off</code></td>
+</tr>
+<tr>
+<td><code>suspend: all/one</code></td>
+<td>&#x89E6;&#x53D1;&#x65F6;&#x91C7;&#x7528;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;&#x8986;&#x76D6;&#x5168;&#x5C40;&#x7B56;&#x7565;&#xFF09;</td>
+<td>LLDB: <code>breakpoint set --file foo.c --line 42 --suspend one</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>&#x5168;&#x5C40;</strong> Suspend&#x202F;Policy &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x8BBE;&#x7F6E;&#xFF08;&#x5982; LLDB &#x7684; <code>target.suspend-policy</code>&#xFF09;&#x4E00;&#x6B21;&#x6027;&#x914D;&#x7F6E;&#xFF1B;<strong>&#x5C40;&#x90E8;</strong> &#x6302;&#x8D77;&#x5C5E;&#x6027;&#x5219;&#x5141;&#x8BB8;&#x5BF9;&#x5355;&#x4E2A;&#x65AD;&#x70B9;
+&#x505A;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#x3002;</p>
+</blockquote>
+<hr>
+<h3 id="&#x5168;&#x90E8;&#x6062;&#x590D;-vs-&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;">&#x201C;&#x5168;&#x90E8;&#x6062;&#x590D;&#x201D; vs &#x201C;&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;&#x201D;</h3>
+<ul>
+<li><strong>&#x5168;&#x90E8;&#x6062;&#x590D;</strong>&#xFF08;<code>continue</code>&#xFF09;&#xFF1A;&#x5728;&#x5168;&#x6302;&#x8D77;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;<code>continue</code> &#x4F1A;&#x4E00;&#x6B21;&#x6027;&#x6062;&#x590D;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#xFF1B;&#x5728;&#x5355;&#x6302;&#x8D77;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;<code>continue</code> &#x4ECD;&#x4F1A;&#x6062;&#x590D;<strong>&#x5F53;&#x524D;&#x88AB;&#x6682;&#x505C;&#x7684;
+&#x7EBF;&#x7A0B;</strong>&#xFF0C;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x5DF2;&#x5728;&#x65AD;&#x70B9;&#x524D;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;</li>
+<li><strong>&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;</strong>&#xFF08;<code>thread continue</code> &#x6216; <code>cont &lt;thread-id&gt;</code>&#xFF09;&#xFF1A;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x6062;&#x590D;&#x54EA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;&#x8BE5;&#x64CD;&#x4F5C;&#x4E0E; Suspend&#x202F;Policy &#x65E0;&#x5173;&#x2014;&#x2014;&#x4E0D;&#x7BA1;&#x662F;&#x5168;&#x6302;&#x8D77;
+&#x8FD8;&#x662F;&#x5355;&#x6302;&#x8D77;&#xFF0C;&#x53EA;&#x8981;&#x7EBF;&#x7A0B;&#x5DF2;&#x88AB;&#x6682;&#x505C;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BE5;&#x547D;&#x4EE4;&#x6062;&#x590D;&#x3002;</li>
+</ul>
+<hr>
+<h3 id="&#x8C03;&#x8BD5;&#x534F;&#x8BAE;&#x5C42;&#x9762;&#x7684;&#x8868;&#x8FF0;">&#x8C03;&#x8BD5;&#x534F;&#x8BAE;&#x5C42;&#x9762;&#x7684;&#x8868;&#x8FF0;</h3>
+<p>&#x5728; GDB &#x7684; Remote Serial Protocol&#xFF08;RSP&#xFF09;&#x548C; LLDB &#x7684; Debug Adapter Protocol&#xFF08;DAP&#xFF09;&#x91CC;&#xFF0C;&#x8FD9;&#x4E00;&#x6982;&#x5FF5;&#x88AB;&#x7F16;&#x7801;&#x4E3A; <strong><code>suspend-hint</code></strong> &#x6216;
+<strong><code>stop-mode</code></strong>&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x534F;&#x8BAE;</th>
+<th>&#x5B57;&#x6BB5; / &#x5173;&#x952E;&#x8BCD;</th>
+<th>&#x542B;&#x4E49;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>RSP</td>
+<td><code>stop-sig</code> / <code>sig</code></td>
+<td>&#x89E6;&#x53D1;&#x7684;&#x4FE1;&#x53F7;&#xFF08;&#x4E0E;&#x6682;&#x505C;&#x65E0;&#x5173;&#xFF09;</td>
+</tr>
+<tr>
+<td>DAP</td>
+<td><code>stopOnEntry</code>, <code>stopOnTermination</code>, <code>stopOnLoad</code>, <code>stopMode</code></td>
+<td>`stopMode: &quot;all&quot;</td>
+<td>&quot;single&quot;`</td>
+</tr>
+</tbody>
+</table>
+<p>&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x5728;&#x534F;&#x8BAE;&#x5C42;&#x9762;&#x5B8C;&#x6210;&#x4E86;&#x4E0E;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#x5C42;&#x9762;&#x7684;&#x6865;&#x63A5;&#x3002;</p>
+<hr>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
+<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;Suspend Policy&#xFF09;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<ul>
+<li><strong>&#x6838;&#x5FC3;&#x672F;&#x8BED;</strong>&#xFF1A;<strong>Suspend&#x202F;Policy&#xFF08;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF09;</strong> &#x6216; <strong>Stop&#x202F;Mode</strong>&#x3002;</li>
+<li><strong>&#x5178;&#x578B;&#x53D6;&#x503C;</strong>&#xFF1A;<code>all</code>&#xFF08;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x6302;&#x8D77;&#xFF09;&#x3001;<code>one</code>&#xFF08;&#x4EC5;&#x6302;&#x8D77;&#x89E6;&#x53D1;&#x7EBF;&#x7A0B;&#xFF09;&#x3002;</li>
+<li><strong>&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;</strong>&#xFF1A;<ul>
+<li>LLDB&#xFF1A;<code>settings set target.suspend-policy {all,one}</code></li>
+<li>GDB&#xFF1A;<code>set scheduler-locking {on,off,step}</code>&#xFF08;<code>on</code> &#x5BF9;&#x5E94;&#x5168;&#x6302;&#x8D77;&#xFF09;</li>
+<li>VS&#xFF1A;Breakpoints &#x5C5E;&#x6027; &#x2192; &#x201C;Suspend execution&#x201D; &#x2192; &#x201C;All&#x201D; / &#x201C;Just this thread&#x201D;</li>
+</ul>
+</li>
+</ul>
+<p>&#x5728;&#x8C03;&#x8BD5;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x4E86;&#x89E3;&#x5E76;&#x9002;&#x5F53;&#x914D;&#x7F6E; <strong>Suspend&#x202F;Policy</strong> &#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x5728;&#x65AD;&#x70B9;&#x505C;&#x4E0B;&#x65F6;&#x66F4;&#x7CBE;&#x786E;&#x5730;&#x638C;&#x63A7;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x65E2;&#x80FD;&#x4FDD;&#x6301;&#x5168;&#x5C40;&#x53EF;&#x89C6;&#x6027;&#xFF0C;&#x4E5F;&#x80FD;&#x5728;&#x9700;&#x8981;&#x65F6;&#x4FDD;&#x6301;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7684;&#x6D3B;&#x8DC3;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5728;godbg&#x4E2D;&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x800C;&#x4E14;&#x8003;&#x8651;go&#x8BED;&#x8A00;&#x7684;GMP&#x8C03;&#x5EA6;&#x6A21;&#x578B;&#xFF0C;&#x4EE5;&#x53CA;M&#x5728;&#x5176;&#x4E2D;&#x6240;&#x626E;&#x6F14;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
 
                                 
                                 </section>
@@ -2148,12 +2257,12 @@ body {
 
             
                 
-                <a href="23-debug_breakpoint_part2.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点">
+                <a href="2-trace_new_threads.html" class="navigation navigation-prev " aria-label="Previous page: 6.20.2 跟踪新创建线程">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="25-debug_breakpoint_part4.html" class="navigation navigation-next " aria-label="Next page: 9.2.25 tinydbg> breakpoint - part4: 其他断点相关命令">
+                <a href="4-continue.html" class="navigation navigation-next " aria-label="Next page: 6.20.4 线程执行控制 - continue">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2164,7 +2273,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.24 tinydbg> breakpoint - part3: 条件断点+执行到断点","level":"1.9.2.16","depth":3,"next":{"title":"9.2.25 tinydbg> breakpoint - part4: 其他断点相关命令","level":"1.9.2.17","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/25-debug_breakpoint_part4.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/25-debug_breakpoint_part4.md","articles":[]},"previous":{"title":"9.2.23 tinydbg> breakpoint - part2: 添加断点+执行到断点","level":"1.9.2.15","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part2.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part3.md","mtime":"2025-10-14T07:31:43.136Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-14T07:32:15.485Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.20.3 线程执行控制 - 挂起策略","level":"1.6.17.3","depth":3,"next":{"title":"6.20.4 线程执行控制 - continue","level":"1.6.17.4","depth":3,"path":"6-develop-inst-debugger/20-multithread/4-continue.md","ref":"6-develop-inst-debugger/20-multithread/4-continue.md","articles":[]},"previous":{"title":"6.20.2 跟踪新创建线程","level":"1.6.17.2","depth":3,"path":"6-develop-inst-debugger/20-multithread/2-trace_new_threads.md","ref":"6-develop-inst-debugger/20-multithread/2-trace_new_threads.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/20-multithread/3-suspend_policy.md","mtime":"2025-10-14T07:31:43.063Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-14T07:32:15.485Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

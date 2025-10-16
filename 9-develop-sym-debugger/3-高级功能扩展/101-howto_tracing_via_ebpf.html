@@ -571,7 +571,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/21-multiprocess/">
+            
+                <a href="../../6-develop-inst-debugger/21-multiprocess/">
+            
+                    
+                    6.21 调试多进程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/80-aslr.html">
             
                 <a href="../../6-develop-inst-debugger/80-aslr.html">
             
@@ -584,7 +597,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+        <li class="chapter " data-level="1.6.20" data-path="../../6-develop-inst-debugger/99-more.html">
             
                 <a href="../../6-develop-inst-debugger/99-more.html">
             
@@ -2112,7 +2125,7 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 112;
+  counter-reset: h1 113;
 }
 </style></p>
 <h2 id="&#x6269;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;breakpoint-based-vs-ebpf-based-tracing">&#x6269;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;breakpoint-based vs. eBPF-based tracing</h2>
@@ -2260,7 +2273,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.3.101 基于eBPF跟踪","level":"1.9.3.2","depth":3,"next":{"title":"9.3.102 实现语法高亮","level":"1.9.3.3","depth":3,"path":"9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.md","ref":"9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.md","articles":[]},"previous":{"title":"9.3.100 集成starlark","level":"1.9.3.1","depth":3,"path":"9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.md","ref":"9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.md","mtime":"2025-10-16T12:48:11.116Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-16T12:48:43.927Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.3.101 基于eBPF跟踪","level":"1.9.3.2","depth":3,"next":{"title":"9.3.102 实现语法高亮","level":"1.9.3.3","depth":3,"path":"9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.md","ref":"9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.md","articles":[]},"previous":{"title":"9.3.100 集成starlark","level":"1.9.3.1","depth":3,"path":"9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.md","ref":"9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.md","mtime":"2025-10-16T13:14:25.809Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-16T13:14:56.173Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

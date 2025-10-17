@@ -2132,117 +2132,141 @@ body {
 <p>&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x6307;&#x7684;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x901A;&#x8FC7;continue&#x3001;step&#x3001;breakpoint&#x7B49;&#x547D;&#x4EE4;&#x6765;&#x63A7;&#x5236;&#x8FDB;&#x7A0B;&#x5185;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x524D;&#x9762;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;&#x8FD9;&#x4E9B;&#x547D;&#x4EE4;&#x7684;&#x5E95;&#x5C42;&#x539F;&#x7406;&#x4EE5;&#x53CA;&#x5B9E;&#x73B0;&#x65B9;&#x5F0F;&#x3002;&#x4F46;&#x662F;&#x8FD9;&#x4E9B;&#x5BF9;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x6765;&#x8BF4;&#xFF0C;&#x8FD8;&#x8FDC;&#x8FDC;&#x4E0D;&#x591F;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x9700;&#x8981;&#x8003;&#x8651;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x7684;&#x7279;&#x6B8A;&#x6027;&#xFF0C;&#x7EBF;&#x7A0B;&#x4E0E;&#x7EBF;&#x7A0B;&#x4E4B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x3001;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x5BF9;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x7684;&#x89C2;&#x5BDF;&#x7B49;&#x7B49;&#xFF0C;&#x8FD9;&#x5C31;&#x6D89;&#x53CA;&#x5230;&#x7EBF;&#x7A0B;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x3002;</p>
 <p>&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;Suspend Policy&#xFF09;&#xFF0C;&#x6709;&#x65F6;&#x4E5F;&#x53EB; <strong>Stop&#x202F;Mode</strong> &#x6216;&#x8005; <strong>Suspend&#x202F;Mode</strong>&#x3002;&#x5B83;&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x89E6;&#x53D1;&#x65AD;&#x70B9;/&#x5F02;&#x5E38;/&#x505C;&#x6B62;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x6682;&#x505C;&#x54EA;&#x4E9B;&#x7EBF;&#x7A0B;&#xFF0C;&#x4EE5;&#x53CA;&#x540E;&#x7EED;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x65F6;&#xFF0C;&#x5982;&#x4F55;&#x6062;&#x590D;&#x8FD9;&#x4E9B;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5C5E;&#x4E8E;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236;&#xFF08;Thread Execution Control&#xFF09;&#x7684;&#x4E00;&#x90E8;&#x5206;&#x3002;</p>
 <p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x6765;&#x4E86;&#x89E3;&#x4E0B;&#x5728;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#xFF0C;&#x6709;&#x54EA;&#x4E9B;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x4EE5;&#x53CA;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
-<h3 id="&#x4F55;&#x4E3A;&#x6302;&#x8D77;&#x7B56;&#x7565;">&#x4F55;&#x4E3A;&#x6302;&#x8D77;&#x7B56;&#x7565;</h3>
-<p>&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#xFF0C;<strong>Suspend&#x202F;Policy</strong> &#x63CF;&#x8FF0;&#x4E86; <strong>&#x201C;&#x5F53;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x89E6;&#x53D1;&#x65AD;&#x70B9;/&#x5F02;&#x5E38;/&#x505C;&#x6B62;&#x8BF7;&#x6C42;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x6682;&#x505C;&#x54EA;&#x4E9B;&#x7EBF;&#x7A0B;&#x201D;</strong> &#x7684;&#x884C;&#x4E3A;&#x3002;
-&#x5E38;&#x89C1;&#x7684;&#x4E24;&#x79CD;&#x7B56;&#x7565;&#xFF1A;</p>
-<table>
-<thead>
-<tr>
-<th>&#x7B56;&#x7565;</th>
-<th>&#x610F;&#x4E49;</th>
-<th>&#x5BF9;&#x5E94;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x547D;&#x4EE4; / &#x9009;&#x9879;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>suspend-all</strong>&#xFF08;&#x5168;&#x6302;&#x8D77;&#xFF09;</td>
-<td>&#x5F53;&#x4EFB;&#x4E00;&#x7EBF;&#x7A0B; hit breakpoint&#xFF0C;<strong>&#x6240;&#x6709;</strong>&#x7EBF;&#x7A0B;&#x5168;&#x90E8;&#x6682;&#x505C;&#xFF1B;<code>continue</code> &#x65F6;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x5730;&#x628A; <em>&#x6240;&#x6709;</em> &#x7EBF;&#x7A0B;&#x4E00;&#x8D77;&#x6062;&#x590D;&#x3002;</td>
-</tr>
-<tr>
-<td>LLDB: <code>settings set target.suspend-policy all</code>  <br>GDB: <code>set scheduler-locking on</code>  <br>VS: &#x201C;Suspend execution&#x201D; &#x2192; &#x201C;All&#x201D;</td>
-</tr>
-<tr>
-<td></td>
-</tr>
-<tr>
-<td><strong>suspend-one</strong>&#xFF08;&#x5355;&#x6302;&#x8D77;&#xFF09;</td>
-<td>&#x53EA;&#x6709;<strong>&#x89E6;&#x53D1;&#x65AD;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;</strong>&#x88AB;&#x6682;&#x505C;&#xFF1B;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x3002;<code>continue</code> &#x65F6;&#x9ED8;&#x8BA4;&#x53EA;&#x6062;&#x590D;&#x89E6;&#x53D1;&#x65AD;&#x70B9;&#x7684;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;&#x53EF;&#x7528;</td>
-</tr>
-</tbody>
-</table>
-<p><code>thread continue</code> &#x6307;&#x5B9A;&#x6062;&#x590D;&#x5355;&#x7EBF;&#x7A0B;&#xFF09;&#x3002; | LLDB: <code>settings set target.suspend-policy one</code> <br>GDB: <code>set scheduler-locking step</code> (&#x4EC5;&#x6B65;
-&#x8FDB;&#x65F6;&#x4F1A;&#x6682;&#x505C;&#x8BE5;&#x7EBF;&#x7A0B;) <br>VS: &#x201C;Suspend execution&#x201D; &#x2192; &#x201C;Just this thread&#x201D; |</p>
-<blockquote>
-<p><strong>&#x6CE8;&#x610F;</strong>&#xFF1A;&#x4E0D;&#x540C;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x7EC6;&#x8282;&#x4E0D;&#x540C;&#xFF0C;&#x4F46;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#x4E00;&#x81F4;&#x2014;&#x2014;<strong>Suspend&#x202F;Policy</strong>&#x3002;</p>
-</blockquote>
-<hr>
-<h3 id="&#x65AD;&#x70B9;&#x7684;&#x6302;&#x8D77;&#x5C5E;&#x6027;&#xFF08;breakpoint&#x2011;suspend-attribute&#xFF09;">&#x65AD;&#x70B9;&#x7684;&#x6302;&#x8D77;&#x5C5E;&#x6027;&#xFF08;Breakpoint&#x2011;Suspend Attribute&#xFF09;</h3>
-<p>&#x5728;&#x5F88;&#x591A;&#x8C03;&#x8BD5;&#x5668;&#x91CC;&#xFF0C;&#x5355;&#x4E2A;&#x65AD;&#x70B9;&#x672C;&#x8EAB;&#x4E5F;&#x53EF;&#x4EE5;&#x643A;&#x5E26;&#x6302;&#x8D77;&#x5C5E;&#x6027;&#xFF1A;</p>
-<table>
-<thead>
-<tr>
-<th>&#x65AD;&#x70B9;&#x5C5E;&#x6027;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4F8B;&#x5B50;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>suspend: true/false</code></td>
-<td>&#x662F;&#x5426;&#x5728;&#x8BE5;&#x65AD;&#x70B9;&#x5904;&#x6682;&#x505C;&#xFF08;&#x9ED8;&#x8BA4;&#x4E3A; true&#xFF09;</td>
-<td>GDB: <code>break *0x401000 suspend off</code></td>
-</tr>
-<tr>
-<td><code>suspend: all/one</code></td>
-<td>&#x89E6;&#x53D1;&#x65F6;&#x91C7;&#x7528;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;&#x8986;&#x76D6;&#x5168;&#x5C40;&#x7B56;&#x7565;&#xFF09;</td>
-<td>LLDB: <code>breakpoint set --file foo.c --line 42 --suspend one</code></td>
-</tr>
-</tbody>
-</table>
-<blockquote>
-<p><strong>&#x5168;&#x5C40;</strong> Suspend&#x202F;Policy &#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x8BBE;&#x7F6E;&#xFF08;&#x5982; LLDB &#x7684; <code>target.suspend-policy</code>&#xFF09;&#x4E00;&#x6B21;&#x6027;&#x914D;&#x7F6E;&#xFF1B;<strong>&#x5C40;&#x90E8;</strong> &#x6302;&#x8D77;&#x5C5E;&#x6027;&#x5219;&#x5141;&#x8BB8;&#x5BF9;&#x5355;&#x4E2A;&#x65AD;&#x70B9;
-&#x505A;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#x3002;</p>
-</blockquote>
-<hr>
-<h3 id="&#x5168;&#x90E8;&#x6062;&#x590D;-vs-&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;">&#x201C;&#x5168;&#x90E8;&#x6062;&#x590D;&#x201D; vs &#x201C;&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;&#x201D;</h3>
+<h2 id="&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;---&#x6302;&#x8D77;&#x7B56;&#x7565;&#x53CA;&#x4E3B;&#x6D41;&#x5B9E;&#x73B0;">&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5; - &#x6302;&#x8D77;&#x7B56;&#x7565;&#x53CA;&#x4E3B;&#x6D41;&#x5B9E;&#x73B0;</h2>
+<h3 id="&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;">&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;</h3>
+<p>&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x6216;&#x591A;&#x8FDB;&#x7A0B;&#x7684;&#x7A0B;&#x5E8F;&#x8C03;&#x8BD5;&#x4E2D;&#xFF0C;&#x5F53;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x9047;&#x5230;&#x65AD;&#x70B9;(breakpoint)&#x3001;&#x89C2;&#x5BDF;&#x70B9;(watchpoint)&#x3001;&#x6355;&#x83B7;&#x5230;&#x4FE1;&#x53F7;(signal)&#x6216;&#x88AB;&#x7528;&#x6237;&#x624B;&#x52A8;&#x4E2D;&#x65AD;&#x65F6;(&#x5982;ctrl+c)&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x9700;&#x8981;&#x6682;&#x505C;&#xFF08;Suspend&#xFF09;&#x7A0B;&#x5E8F;&#x7684;&#x6267;&#x884C;&#x3002;<strong>&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;Suspend Policy&#xFF09;</strong> &#x5B9A;&#x4E49;&#x4E86;&#x5F53;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x88AB;&#x6682;&#x505C;&#x65F6;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x6216;&#x8FDB;&#x7A0B;&#x5E94;&#x8BE5;&#x5982;&#x4F55;&#x5904;&#x7406;&#x7684;&#x884C;&#x4E3A;&#x89C4;&#x5219;&#x3002;&#x662F;&#x53EA;&#x6682;&#x505C;&#x5F53;&#x524D;&#x53D1;&#x751F;&#x4E8B;&#x4EF6;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD8;&#x662F;&#x6682;&#x505C;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x3002;&#x800C;&#x5F53;&#x6062;&#x590D;&#x6267;&#x884C;(continue)&#x3001;&#x6B65;&#x8FDB;(step, next&#x7B49;)&#x65F6;&#xFF0C;&#x662F;&#x53EA;&#x6062;&#x590D;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD8;&#x662F;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x3002;&#x8FD9;&#x662F;&#x4E24;&#x4E2A;&#x7EF4;&#x5EA6;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x6682;&#x505C;&#x7684;&#x7EF4;&#x5EA6;&#xFF0C;&#x4E00;&#x4E2A;&#x662F;&#x6062;&#x590D;&#x7684;&#x7EF4;&#x5EA6;&#x3002;</p>
+<p>&#x524D;&#x9762;&#x63D0;&#x7684;&#x662F;&#x5355;&#x8FDB;&#x7A0B;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x7684;&#x8303;&#x7574;&#xFF0C;&#x6211;&#x4EEC;&#x8FD8;&#x53EF;&#x4EE5;&#x5EF6;&#x4F38;&#x5230;&#x591A;&#x8FDB;&#x7A0B;&#x7A0B;&#x5E8F;&#x8C03;&#x8BD5;&#x7684;&#x8303;&#x7574;&#xFF0C;&#x6BD4;&#x5982;&#x8C03;&#x8BD5;&#x5668;&#x5728;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;P1&#x65F6;&#xFF0C;&#x53D1;&#x73B0;&#x8FDB;&#x7A0B;P1&#x521B;&#x5EFA;&#x4E86;&#x5B50;&#x8FDB;&#x7A0B;P2&#xFF0C;&#x540E;&#x7EED;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x3001;&#x89C2;&#x5BDF;&#x70B9;&#x3001;&#x6355;&#x83B7;&#x5230;&#x4FE1;&#x53F7;&#x3001;&#x6536;&#x5230;&#x7528;&#x6237;&#x4E2D;&#x65AD;&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x6709;&#x80FD;&#x529B;&#x6309;&#x9700;&#x5730;&#x5BF9;&#x5355;&#x4E2A;&#x8FDB;&#x7A0B;&#x6216;&#x8005;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x6682;&#x505C;&#x6267;&#x884C;&#x7684;&#x80FD;&#x529B;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x540E;&#x7EED;&#x6536;&#x5230;continue&#x3001;step&#x3001;next&#x7B49;&#x6062;&#x590D;&#x6267;&#x884C;&#x7684;&#x547D;&#x4EE4;&#x65F6;&#x4E5F;&#x80FD;&#x6309;&#x9700;&#x5730;&#x63A7;&#x5236;&#x6062;&#x590D;&#x5355;&#x4E2A;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x7EBF;&#x7A0B;&#x6216;&#x8005;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x80FD;&#x529B;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x7B56;&#x7565;&#x81F3;&#x5173;&#x91CD;&#x8981;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x76F4;&#x63A5;&#x5F71;&#x54CD;&#x4E86;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x7A0B;&#x5E8F;&#x72B6;&#x6001;&#x53EF;&#x89C1;&#x6027;&#x3001;&#x53EF;&#x9884;&#x6D4B;&#x6027;&#x548C;&#x7528;&#x6237;&#x8C03;&#x8BD5;&#x4F53;&#x9A8C;&#x3002;</p>
+<p>&#x4E3B;&#x6D41;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x4E3B;&#x8981;&#x6709;&#x4E24;&#x79CD;&#xFF1A;</p>
+<ol>
+<li><strong>&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77; (All-Stop / Process-Stop)</strong>: &#x5F53;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;/&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x5C1D;&#x8BD5;&#x6682;&#x505C;&#x6574;&#x4E2A;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;/&#x8FDB;&#x7A0B;&#x3002;</li>
+<li><strong>&#x5355;&#x7EBF;&#x7A0B;&#x6302;&#x8D77; (One-Stop / Thread-Stop)</strong>: &#x5F53;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;&#x65F6;&#xFF0C;&#x53EA;&#x6709;&#x8BE5;&#x7EBF;&#x7A0B;&#x4F1A;&#x88AB;&#x6682;&#x505C;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x3002;
+&#x6216;&#x8005;&#x53EB;&#x505A; <strong>Non-Stop Mode</strong>&#xFF0C;&#x610F;&#x601D;&#x662F;&#x9664;&#x4E86;&#x5BF9;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7EBF;&#x7A0B;&#x3001;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x63A7;&#x5236;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x3001;&#x8FDB;&#x7A0B;&#x4E0D;&#x505A;&#x4EFB;&#x4F55;&#x63A7;&#x5236;&#xFF0C;&#x4EFB;&#x5176;&#x81EA;&#x7531;&#x6267;&#x884C;&#x3002;</li>
+</ol>
+<h3 id="&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;-lldbgdb-&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;">&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668; (LLDB/GDB) &#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;</h3>
+<h4 id="gdb-gnu-debugger">GDB (GNU Debugger)</h4>
+<p><strong>GDB</strong> &#x4F20;&#x7EDF;&#x4E0A;&#x91C7;&#x7528;&#x7684;&#x662F;<strong>&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77; (All-Stop)</strong> &#x7B56;&#x7565;&#x3002;</p>
 <ul>
-<li><strong>&#x5168;&#x90E8;&#x6062;&#x590D;</strong>&#xFF08;<code>continue</code>&#xFF09;&#xFF1A;&#x5728;&#x5168;&#x6302;&#x8D77;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;<code>continue</code> &#x4F1A;&#x4E00;&#x6B21;&#x6027;&#x6062;&#x590D;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#xFF1B;&#x5728;&#x5355;&#x6302;&#x8D77;&#x6A21;&#x5F0F;&#x4E0B;&#xFF0C;<code>continue</code> &#x4ECD;&#x4F1A;&#x6062;&#x590D;<strong>&#x5F53;&#x524D;&#x88AB;&#x6682;&#x505C;&#x7684;
-&#x7EBF;&#x7A0B;</strong>&#xFF0C;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x5DF2;&#x5728;&#x65AD;&#x70B9;&#x524D;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#x3002;</li>
-<li><strong>&#x5355;&#x7EBF;&#x7A0B;&#x6062;&#x590D;</strong>&#xFF08;<code>thread continue</code> &#x6216; <code>cont &lt;thread-id&gt;</code>&#xFF09;&#xFF1A;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x6062;&#x590D;&#x54EA;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x3002;&#x8BE5;&#x64CD;&#x4F5C;&#x4E0E; Suspend&#x202F;Policy &#x65E0;&#x5173;&#x2014;&#x2014;&#x4E0D;&#x7BA1;&#x662F;&#x5168;&#x6302;&#x8D77;
-&#x8FD8;&#x662F;&#x5355;&#x6302;&#x8D77;&#xFF0C;&#x53EA;&#x8981;&#x7EBF;&#x7A0B;&#x5DF2;&#x88AB;&#x6682;&#x505C;&#xFF0C;&#x90FD;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8BE5;&#x547D;&#x4EE4;&#x6062;&#x590D;&#x3002;</li>
+<li><strong>&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF1A;</strong> &#x5F53; GDB &#x8C03;&#x8BD5;&#x7684;&#x7A0B;&#x5E8F;&#x4E2D;&#x4EFB;&#x4F55;&#x4E00;&#x4E2A;&#x7EBF;&#x7A0B;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x6216;&#x63A5;&#x6536;&#x5230;&#x4FE1;&#x53F7;&#x65F6;&#xFF0C;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF08;&#x5305;&#x62EC;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#xFF09;&#x90FD;&#x4F1A;&#x88AB;&#x6682;&#x505C;&#x3002;</li>
+<li><strong>&#x4F18;&#x70B9;&#xFF1A;</strong> &#x72B6;&#x6001;&#x662F;&#x201C;&#x51BB;&#x7ED3;&#x201D;&#x7684;&#xFF0C;&#x8FD9;&#x4F7F;&#x5F97;&#x68C0;&#x67E5;&#x5168;&#x5C40;&#x53D8;&#x91CF;&#x3001;&#x5185;&#x5B58;&#x72B6;&#x6001;&#x548C;&#x7EBF;&#x7A0B;&#x95F4;&#x7684;&#x4EA4;&#x4E92;&#x66F4;&#x52A0;&#x5BB9;&#x6613;&#x548C;&#x7A33;&#x5B9A;&#xFF0C;&#x907F;&#x514D;&#x4E86;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x5728;&#x68C0;&#x67E5;&#x65F6;&#x4FEE;&#x6539;&#x6570;&#x636E;&#xFF0C;&#x4ECE;&#x800C;&#x7B80;&#x5316;&#x4E86;&#x8C03;&#x8BD5;&#x7684;&#x590D;&#x6742;&#x6027;&#x3002;</li>
+<li><strong>&#x7F3A;&#x70B9;&#xFF1A;</strong> &#x5728;&#x8C03;&#x8BD5;&#x9AD8;&#x5EA6;&#x5E76;&#x53D1;&#x6216;&#x6709;&#x4E25;&#x683C;&#x65F6;&#x5E8F;&#x8981;&#x6C42;&#x7684;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x6682;&#x505C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x4F1A;&#x6539;&#x53D8;&#x7A0B;&#x5E8F;&#x7684;&#x5B9E;&#x65F6;&#x884C;&#x4E3A;&#xFF0C;&#x751A;&#x81F3;&#x5BFC;&#x81F4;&#x6B7B;&#x9501;&#x6216;&#x5176;&#x4ED6;&#x4E0E;&#x201C;&#x6682;&#x505C;&#x201D;&#x76F8;&#x5173;&#x7684;&#x975E;&#x771F;&#x5B9E;&#x9519;&#x8BEF;&#x3002;</li>
 </ul>
-<hr>
-<h3 id="&#x8C03;&#x8BD5;&#x534F;&#x8BAE;&#x5C42;&#x9762;&#x7684;&#x8868;&#x8FF0;">&#x8C03;&#x8BD5;&#x534F;&#x8BAE;&#x5C42;&#x9762;&#x7684;&#x8868;&#x8FF0;</h3>
-<p>&#x5728; GDB &#x7684; Remote Serial Protocol&#xFF08;RSP&#xFF09;&#x548C; LLDB &#x7684; Debug Adapter Protocol&#xFF08;DAP&#xFF09;&#x91CC;&#xFF0C;&#x8FD9;&#x4E00;&#x6982;&#x5FF5;&#x88AB;&#x7F16;&#x7801;&#x4E3A; <strong><code>suspend-hint</code></strong> &#x6216;
-<strong><code>stop-mode</code></strong>&#xFF1A;</p>
-<table>
-<thead>
-<tr>
-<th>&#x534F;&#x8BAE;</th>
-<th>&#x5B57;&#x6BB5; / &#x5173;&#x952E;&#x8BCD;</th>
-<th>&#x542B;&#x4E49;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>RSP</td>
-<td><code>stop-sig</code> / <code>sig</code></td>
-<td>&#x89E6;&#x53D1;&#x7684;&#x4FE1;&#x53F7;&#xFF08;&#x4E0E;&#x6682;&#x505C;&#x65E0;&#x5173;&#xFF09;</td>
-</tr>
-<tr>
-<td>DAP</td>
-<td><code>stopOnEntry</code>, <code>stopOnTermination</code>, <code>stopOnLoad</code>, <code>stopMode</code></td>
-<td>`stopMode: &quot;all&quot;</td>
-<td>&quot;single&quot;`</td>
-</tr>
-</tbody>
-</table>
-<p>&#x8FD9;&#x4E9B;&#x5B57;&#x6BB5;&#x5728;&#x534F;&#x8BAE;&#x5C42;&#x9762;&#x5B8C;&#x6210;&#x4E86;&#x4E0E;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#x5C42;&#x9762;&#x7684;&#x6865;&#x63A5;&#x3002;</p>
-<hr>
+<p>&#x867D;&#x7136; GDB &#x9ED8;&#x8BA4;&#x662F;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#xFF0C;&#x4F46;&#x5B83;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x63A7;&#x5236;&#x5355;&#x4E2A;&#x6216;&#x90E8;&#x5206;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x7684;&#x80FD;&#x529B;&#xFF08;&#x4F8B;&#x5982;&#x4F7F;&#x7528; <code>thread apply all &lt;command&gt;</code> &#xFF0C;&#x5982;&#x6682;&#x505C;&#x540E;&#x5BF9;&#x7279;&#x5B9A;&#x7EBF;&#x7A0B;&#x4F7F;&#x7528; <code>continue</code> / <code>step</code> / <code>next</code>&#xFF09;&#x3002;</p>
+<p>OK&#xFF0C;&#x8FD9;&#x91CC;&#x4E0D;&#x59A8;&#x5C55;&#x5F00;&#x4ECB;&#x7ECD;&#x4E0B;GDB&#x4E2D;&#x4E0E;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x76F8;&#x5173;&#x7684;&#x51E0;&#x4E2A;&#x9009;&#x9879;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p><strong>&#x8BBE;&#x7F6E;1&#xFF1A;set non-stop on/off (&#x9ED8;&#x8BA4;&#x503C;off)</strong>&#xFF1A;&#x672C;&#x6587;&#x4E3B;&#x8981;&#x7684;&#x63A2;&#x8BA8;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#xFF0C;&#x662F;&#x5426;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x8981;&#x505C;&#x5168;&#x505C;&#xFF0C;&#x8981;&#x6062;&#x590D;&#x5168;&#x6062;&#x590D;&#x3002;</p>
+<ul>
+<li>off&#xFF1A;&#x4E5F;&#x5C31;&#x662F;all-stop mode&#xFF0C;&#x5982;&#x679C;&#x6709;&#x65AD;&#x70B9;&#x3001;watchpoint&#x3001;&#x6536;&#x5230;&#x4FE1;&#x53F7;&#x3001;&#x7528;&#x6237;&#x4E2D;&#x65AD;&#x7B49;&#x64CD;&#x4F5C;&#xFF0C;&#x6682;&#x505C;&#x8FDB;&#x7A0B;&#x5185;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x3002;&#x5F53;&#x6267;&#x884C;continue,next,stop&#x7B49;&#x64CD;&#x4F5C;&#x65F6;&#x6062;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x3002;</li>
+<li>on&#xFF1A;&#x6B64;&#x65F6;&#x5C31;&#x662F;non-stop mode&#xFF0C;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x3001;watchpoint&#x3001;&#x6536;&#x5230;&#x4FE1;&#x53F7;&#x3001;&#x7528;&#x6237;&#x4E2D;&#x65AD;&#x64CD;&#x4F5C;&#xFF0C;&#x4EC5;&#x6682;&#x505C;&#x53D1;&#x751F;&#x4E8B;&#x4EF6;&#x7684;&#x7EBF;&#x7A0B;&#x3002;&#x5F53;&#x6267;&#x884C;continue,next,step&#x64CD;&#x4F5C;&#x65F6;&#x4EC5;&#x6062;&#x590D;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7EBF;&#x7A0B;&#x3002;</li>
+</ul>
+<p><strong>&#x8BBE;&#x7F6E;2&#xFF1A;set schedule_multiple on/off (&#x9ED8;&#x8BA4;&#x503C;off)</strong>&#xFF1A;&#x5982;&#x679C;&#x662F;&#x591A;&#x8FDB;&#x7A0B;&#x7A0B;&#x5E8F;&#xFF0C;&#x662F;&#x5426;&#x6062;&#x590D;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x3002;</p>
+<ul>
+<li>off: &#x53EA;&#x6682;&#x505C;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7EBF;&#x7A0B;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</li>
+<li>on: &#x6682;&#x505C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#xFF0C;&#x5F53;&#x6267;&#x884C;continue,next,step&#x64CD;&#x4F5C;&#x65F6;&#x6062;&#x590D;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x3002;</li>
+</ul>
+<p><strong>&#x8BBE;&#x7F6E;3&#xFF1A;set scheduler_locking on/off/step/replay (&#x9ED8;&#x8BA4;&#x503C;off)</strong>&#xFF1A;&#x51B3;&#x5B9A;&#x5728;&#x7A0B;&#x5E8F;&#x8FD0;&#x884C;&#x3001;&#x5355;&#x6B65;&#x6216;&#x7EE7;&#x7EED;&#x65F6;&#xFF0C;GDB &#x662F;&#x5426;&#x4F1A;&#x628A;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x201C;&#x9501;&#x5B9A;&#x201D;&#xFF08;&#x5373;&#x6682;&#x505C;&#xFF09;&#xFF0C;&#x53EA;&#x8BA9;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x3002;&#x8FD9;&#x5BF9;&#x5B9A;&#x4F4D;&#x7EBF;&#x7A0B;&#x95F4;&#x4EA4;&#x4E92;&#x3001;&#x6392;&#x67E5;&#x7ADE;&#x4E89;&#x3001;&#x5B9E;&#x73B0;&#x786E;&#x5B9A;&#x6027;&#x91CD;&#x653E;&#x90FD;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x3002;</p>
+<ul>
+<li>on: <strong>&#x59CB;&#x7EC8;&#x9501;&#x5B9A;</strong>&#xFF1A;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x90FD;&#x88AB;&#x6682;&#x505C;&#xFF0C;&#x53EA;&#x6709;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x5728;&#x8FD0;&#x884C;&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x6C38;&#x8FDC;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#x6267;&#x884C;</li>
+<li>off: <strong>&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;</strong>&#xFF1A;&#x4E0D;&#x9501;&#x5B9A;&#xFF0C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x6309;&#x6B63;&#x5E38;&#x8C03;&#x5EA6;&#x5668;&#x8FD0;&#x884C;&#x3002;</li>
+<li>step: <strong>&#x4EC5;&#x5728;&#x5355;&#x6B65;&#xFF08;step/next &#x7B49;&#xFF09;&#x65F6;&#x9501;&#x5B9A;</strong>&#xFF1A;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x4E00;&#x6B65;&#x540E;&#xFF0C;&#x6682;&#x505C;&#x5176;&#x5B83;&#x7EBF;&#x7A0B;&#x3002;</li>
+<li>replay: <strong>&#x4E3A;&#x786E;&#x5B9A;&#x6027;&#x91CD;&#x653E;&#x505A;&#x51C6;&#x5907;</strong>&#xFF1A;GDB &#x8BB0;&#x5F55;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#xFF0C;&#x5E76;&#x5728; replay &#x65F6;&#x4E25;&#x683C;&#x590D;&#x73B0;&#x3002;</li>
+</ul>
+<p><strong>&#x4E3A;&#x4EC0;&#x4E48;&#x9700;&#x8981; scheduler_locking&#xFF1F;</strong>
+non-stop&#x3001;schedule_multiple&#x90FD;&#x5F88;&#x597D;&#x7406;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E0B;scheduler_locking&#x3002;&#x9ED8;&#x8BA4;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;GDB &#x53EA;&#x4F1A;&#x628A;&#x4F60;&#x6682;&#x505C;&#x7684;&#x7EBF;&#x7A0B;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4ECD;&#x7136;&#x6309;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8C03;&#x5EA6;&#x5668;&#x7684;&#x89C4;&#x5219;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x8FD9;&#x4F1A;&#x5BFC;&#x81F4;&#xFF1A;</p>
+<ul>
+<li>&#x5355;&#x6B65;&#x8C03;&#x8BD5;&#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x5207;&#x5230;&#x522B;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5BFC;&#x81F4;&#x4F60;&#x8D70;&#x4E86;&#x4F60;&#x4E0D;&#x60F3;&#x8D70;&#x7684;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#x3002;</li>
+<li>&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;&#x4EFB;&#x4F55;&#x7EBF;&#x7A0B;&#x90FD;&#x53EF;&#x80FD;&#x89E6;&#x53D1;&#xFF0C;&#x5BFC;&#x81F4;&#x201C;&#x5076;&#x53D1;&#x6027;&#x201D;&#x4E2D;&#x65AD;&#x3002;</li>
+<li>&#x6709;&#x4E9B;&#x7ADE;&#x6001;&#x6761;&#x4EF6;&#x5728;&#x4F60;&#x201C;&#x9501;&#x5B9A;&#x201D;&#x8C03;&#x8BD5;&#x65F6;&#x53EF;&#x80FD;&#x6839;&#x672C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x3002;</li>
+</ul>
+<p><code>scheduler-locking</code> &#x7ED9;&#x6211;&#x4EEC;&#x4E00;&#x4E2A;&#x53EF;&#x63A7;&#x7684;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x51B3;&#x5B9A; <strong>&#x662F;&#x5426;&#x9700;&#x8981;&#x628A;&#x8C03;&#x5EA6;&#x5668;&#x9501;&#x5B9A;</strong>&#xFF0C;&#x4ECE;&#x800C;&#x8BA9;&#x8C03;&#x8BD5;&#x884C;&#x4E3A;&#x66F4;&#x53EF;&#x9884;&#x6D4B;&#x3002;GDB record/replay&#x7279;&#x6027;&#x662F;&#x4E0D;&#x4F9D;&#x8D56;Mozilla rr&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x662F;&#x6307;&#x4EE4;&#x7EA7;&#x8BB0;&#x5F55;&#xFF0C;&#x6027;&#x80FD;&#x4E0A;&#x635F;&#x8017;&#x6BD4;&#x8F83;&#x5927;&#x3002;GDB&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;gdb serial&#x534F;&#x8BAE;&#x8BBF;&#x95EE;rr&#x6765;&#x8FDB;&#x884C;&#x5F55;&#x5236;&#x91CD;&#x653E;&#x3002;</p>
+<h4 id="lldb">LLDB</h4>
+<p><strong>LLDB</strong> &#x65E8;&#x5728;&#x63D0;&#x4F9B;&#x66F4;&#x73B0;&#x4EE3;&#x548C;&#x7075;&#x6D3B;&#x7684;&#x8C03;&#x8BD5;&#x4F53;&#x9A8C;&#xFF0C;&#x5176;&#x884C;&#x4E3A;&#x4E0E; GDB &#x7C7B;&#x4F3C;&#xFF0C;&#x4E5F;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;<strong>&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77; (All-Stop)</strong> &#x7B56;&#x7565;&#x3002;</p>
+<ul>
+<li><strong>&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#xFF1A;</strong> &#x7C7B;&#x4F3C;&#x4E8E; GDB&#xFF0C;&#x5F53;&#x7A0B;&#x5E8F;&#x56E0;&#x65AD;&#x70B9;&#x6216;&#x5176;&#x4ED6;&#x4E8B;&#x4EF6;&#x505C;&#x6B62;&#x65F6;&#xFF0C;<strong>&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;</strong>&#x4F1A;&#x88AB;&#x6682;&#x505C;&#x3002;</li>
+<li><strong>&#x7075;&#x6D3B;&#x6027;&#xFF1A;</strong> &#x5C3D;&#x7BA1;&#x9ED8;&#x8BA4;&#x662F;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#xFF0C;&#x4F46; LLDB &#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x7EC6;&#x81F4;&#x7684;&#x7EBF;&#x7A0B;&#x63A7;&#x5236;&#x3002;&#x4F8B;&#x5982;&#xFF0C;&#x5728;&#x8FDB;&#x7A0B;&#x505C;&#x6B62;&#x540E;&#xFF0C;&#x7406;&#x8BBA;&#x4E0A;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; LLDB &#x7684; API&#xFF08;&#x5982; Python &#x811A;&#x672C;&#xFF09;&#x6765;&#x63A7;&#x5236;&#x54EA;&#x4E9B;&#x7EBF;&#x7A0B;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x54EA;&#x4E9B;&#x4FDD;&#x6301;&#x6682;&#x505C;&#xFF08;&#x5982; <code>thread continue &lt;LIST OF THREADS TO CONTINUE&gt;</code>&#xFF0C;&#x5C3D;&#x7BA1;&#x547D;&#x4EE4;&#x884C;&#x4E2D;&#x4E0D;&#x5E38;&#x76F4;&#x63A5;&#x4F7F;&#x7528;&#xFF0C;&#x4F46;&#x5176;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#x5728;&#x4E8E;&#x5BF9;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x7684;&#x7CBE;&#x7EC6;&#x7BA1;&#x7406;&#xFF09;&#x3002;&#x8FD9;&#x79CD;&#x80FD;&#x529B;&#x5728;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x53EF;&#x4EE5;&#x6A21;&#x62DF;&#x51FA;&#x201C;&#x90E8;&#x5206;&#x6302;&#x8D77;&#x201D;&#x7684;&#x6548;&#x679C;&#x3002;</li>
+</ul>
+<p>&#x7B80;&#x800C;&#x8A00;&#x4E4B;&#xFF0C;&#x5BF9;&#x4E8E; GDB &#x548C; LLDB &#x800C;&#x8A00;&#xFF0C;&#x4E3A;&#x4E86;&#x7EF4;&#x62A4;&#x8C03;&#x8BD5;&#x65F6;&#x72B6;&#x6001;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x548C;&#x7B80;&#x4FBF;&#x6027;&#xFF0C;<strong>&#x9ED8;&#x8BA4;&#x548C;&#x4E3B;&#x6D41;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x90FD;&#x662F;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;</strong>&#x3002;</p>
+<h4 id="delve">Delve</h4>
+<p><strong>Delve</strong> &#x662F;&#x4E13;&#x95E8;&#x4E3A; Go &#x8BED;&#x8A00;&#x8BBE;&#x8BA1;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5B83;&#x8003;&#x8651;&#x4E86; Go &#x8BED;&#x8A00;&#x72EC;&#x7279;&#x7684;&#x5E76;&#x53D1;&#x6A21;&#x578B;&#xFF08;Goroutine&#xFF09;&#x3002;</p>
+<ul>
+<li><strong>&#x57FA;&#x4E8E;&#x8FDB;&#x7A0B;&#x6302;&#x8D77;&#xFF1A;</strong> Delve &#x5728;&#x5E95;&#x5C42;&#x64CD;&#x4F5C;&#x4E0A;&#xFF0C;&#x4E0E;&#x4F20;&#x7EDF;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x4E00;&#x6837;&#xFF0C;&#x5F53;&#x8FDB;&#x7A0B;&#x88AB;&#x8C03;&#x8BD5;&#x4E2D;&#x65AD;&#xFF08;&#x5982;&#x547D;&#x4E2D;&#x786C;&#x65AD;&#x70B9;&#xFF09;&#x65F6;&#xFF0C;<strong>&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;</strong>&#x4F1A;&#x88AB;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#x3002;&#x8FD9;&#x662F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7684;&#x9650;&#x5236;&#xFF0C;&#x4E5F;&#x662F;&#x6240;&#x6709;&#x8C03;&#x8BD5;&#x5668;&#x5728;&#x8FDB;&#x884C;&#x5E95;&#x5C42;&#x64CD;&#x4F5C;&#x65F6;&#x5FC5;&#x987B;&#x9762;&#x5BF9;&#x7684;&#x3002;</li>
+<li><strong>Goroutine &#x62BD;&#x8C61;&#x4E0E;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#xFF1A;</strong> &#x7531;&#x4E8E; Go &#x7684;&#x5E76;&#x53D1;&#x57FA;&#x4E8E; <strong>Goroutine</strong>&#xFF08;&#x8F7B;&#x91CF;&#x7EA7;&#x7528;&#x6237;&#x6001;&#x7EBF;&#x7A0B;&#xFF09;&#xFF0C;&#x800C;&#x975E;&#x91CD;&#x91CF;&#x7EA7;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x7EBF;&#x7A0B;&#xFF0C;Delve &#x5FC5;&#x987B;&#x5728; Go &#x8FD0;&#x884C;&#x65F6;&#xFF08;Runtime&#xFF09;&#x5C42;&#x9762;&#x8FDB;&#x884C;&#x534F;&#x8C03;&#x3002;&#x5F53;&#x4E00;&#x4E2A; Goroutine &#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;Delve &#x4F1A;&#x6682;&#x505C;&#x6574;&#x4E2A; Go &#x7A0B;&#x5E8F;&#xFF08;&#x5373;&#x8FDB;&#x7A0B;&#xFF09;&#xFF0C;&#x4ECE;&#x800C;&#x6682;&#x505C;&#x6240;&#x6709; Goroutine &#x7684;&#x6267;&#x884C;&#x3002;</li>
+<li><strong>&#x5173;&#x6CE8; Goroutine&#xFF1A;</strong> Delve &#x7684;&#x6838;&#x5FC3;&#x5728;&#x4E8E;&#x5BF9; Goroutine &#x7684;&#x62BD;&#x8C61;&#x548C;&#x7BA1;&#x7406;&#x3002;&#x5F53;&#x7A0B;&#x5E8F;&#x505C;&#x6B62;&#x65F6;&#xFF0C;&#x4F60;&#x53EF;&#x4EE5;&#x68C0;&#x67E5;&#x4EFB;&#x4F55; Goroutine &#x7684;&#x5806;&#x6808;&#x3001;&#x53D8;&#x91CF;&#x72B6;&#x6001;&#xFF0C;&#x5E76;&#x4E14;&#x53EF;&#x4EE5;&#x5207;&#x6362;&#x5230;&#x4E0D;&#x540C;&#x7684; Goroutine &#x4E0A;&#x4E0B;&#x6587;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</li>
+<li><strong>&#x8DDF;&#x8E2A;&#x884C;&#x4E3A;&#xFF1A;</strong> Delve &#x5728;&#x9644;&#x7740;&#xFF08;Attach&#xFF09;&#x5230;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684; Go &#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x901A;&#x5E38;&#x4F1A;<strong>&#x7ACB;&#x5373;&#x6682;&#x505C;</strong>&#x8BE5;&#x8FDB;&#x7A0B;&#xFF0C;&#x4EE5;&#x4FBF;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x6216;&#x8FDB;&#x884C;&#x521D;&#x59CB;&#x5316;&#x68C0;&#x67E5;&#x3002;&#x4F46; Delve &#x793E;&#x533A;&#x66FE;&#x8BA8;&#x8BBA;&#x5E76;&#x5B9E;&#x73B0;&#x4E86; <code>--continue</code> &#x6216;&#x7C7B;&#x4F3C;&#x9009;&#x9879;&#xFF0C;&#x5141;&#x8BB8;&#x5728;&#x9644;&#x7740;&#x540E;&#x7ACB;&#x5373;&#x6062;&#x590D;&#x6267;&#x884C;&#xFF0C;&#x4EE5;&#x907F;&#x514D;&#x957F;&#x65F6;&#x95F4;&#x6682;&#x505C;&#x751F;&#x4EA7;&#x73AF;&#x5883;&#x670D;&#x52A1;&#xFF0C;&#x4F7F;&#x5176;&#x66F4;&#x9002;&#x5408;&#x8BBE;&#x7F6E;<strong>&#x8DDF;&#x8E2A;&#x70B9;&#xFF08;Tracepoint&#xFF09;</strong> &#x800C;&#x975E;&#x786C;&#x65AD;&#x70B9;&#x3002;</li>
+</ul>
+<p>&#x56E0;&#x6B64;&#xFF0C;<strong>Delve &#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x5168;&#x8FDB;&#x7A0B;&#x6302;&#x8D77;</strong>&#xFF0C;&#x4F46;&#x5B83;&#x901A;&#x8FC7;&#x5BF9; Go &#x8FD0;&#x884C;&#x65F6;&#x548C; Goroutine &#x7684;&#x6DF1;&#x5EA6;&#x611F;&#x77E5;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x9762;&#x5411; Goroutine &#x7684;&#x8C03;&#x8BD5;&#x4F53;&#x9A8C;&#x3002;&#x4F46;&#x662F;Delve&#x5E76;&#x6CA1;&#x6709;&#x50CF;GDB scheduler_locking&#x90A3;&#x6837;&#x5BF9;&#x7EBF;&#x7A0B;&#x8C03;&#x5EA6;&#x8FDB;&#x884C;&#x5E72;&#x9884;&#x90A3;&#x6837;&#x5BF9;goroutine&#x8C03;&#x5EA6;&#x8FDB;&#x884C;&#x5E72;&#x9884;&#xFF0C;&#x5B83;&#x5C31;&#x662F;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x3001;&#x534F;&#x7A0B;&#x5168;&#x505C;&#x5168;&#x8D77;&#x7684;&#x4E00;&#x4E2A;&#x8DDF;&#x8E2A;&#x65B9;&#x5F0F;&#xFF0C;&#x7136;&#x540E;&#x5F53;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x3001;&#x4FE1;&#x53F7;&#x3001;&#x7528;&#x6237;&#x4E2D;&#x65AD;&#x7B49;&#x4E4B;&#x7C7B;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;&#x5B83;&#x4F1A;&#x663E;&#x793A;&#x5230;&#x5E95;&#x662F;&#x54EA;&#x4E2A;goroutine&#x547D;&#x4E2D;&#x4E86;&#x54EA;&#x4E2A;&#x65AD;&#x70B9;&#x5BFC;&#x81F4;&#x7684;&#x8FD9;&#x6B21;&#x6682;&#x505C;&#x3002;</p>
+<pre><code class="lang-bash">$ dlv debug main.go
+     ...
+     3:    import <span class="hljs-string">&quot;time&quot;</span>
+     4:
+=&gt;   5:    func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
+     6:        <span class="hljs-keyword">for</span> {
+     7:            go <span class="hljs-function"><span class="hljs-title">func</span></span>() {
+     8:                println(<span class="hljs-string">&quot;hello&quot;</span>)
+     9:                println(<span class="hljs-string">&quot;world&quot;</span>)
+    10:            }()
+**(dlv) b 8**
+Breakpoint 2 <span class="hljs-built_in">set</span> at 0x100df9ac8 <span class="hljs-keyword">for</span> main.main.func1() ./main.go:8
+**(dlv) b 9**
+Breakpoint 3 <span class="hljs-built_in">set</span> at 0x100df9ae0 <span class="hljs-keyword">for</span> main.main.func1() ./main.go:9
+**(dlv) b 11**
+Breakpoint 4 <span class="hljs-built_in">set</span> at 0x100df9a8c <span class="hljs-keyword">for</span> main.main() ./main.go:11
+
+**(dlv) c**
+&gt; [Breakpoint 4] main.main() ./main.go:11 **(hits goroutine(1)**:1 total:1) (PC: 0x100df9a8c)
+     6:        <span class="hljs-keyword">for</span> {
+     7:            go <span class="hljs-function"><span class="hljs-title">func</span></span>() {
+     8:                println(<span class="hljs-string">&quot;hello&quot;</span>)
+     9:                println(<span class="hljs-string">&quot;world&quot;</span>)
+    10:            }()
+=&gt;  11:            time.Sleep(time.Second)
+    12:        }
+    13:    }
+**(dlv) c**
+&gt; [Breakpoint 2] main.main.func1() ./main.go:8 **(hits goroutine(2)**:1 total:1) (PC: 0x100df9ac8)
+     3:    import <span class="hljs-string">&quot;time&quot;</span>
+     4:
+     5:    func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
+     6:        <span class="hljs-keyword">for</span> {
+     7:            go <span class="hljs-function"><span class="hljs-title">func</span></span>() {
+=&gt;   8:                println(<span class="hljs-string">&quot;hello&quot;</span>)
+     9:                println(<span class="hljs-string">&quot;world&quot;</span>)
+    10:            }()
+    11:            time.Sleep(time.Second)
+    12:        }
+    13:    }
+**(dlv) c**
+hello
+&gt; [Breakpoint 3] main.main.func1() ./main.go:9 **(hits goroutine(2)**:1 total:1) (PC: 0x100df9ae0)
+&gt; [Breakpoint 4] main.main() ./main.go:11 **(hits goroutine(1)**:2 total:2) (PC: 0x100df9a8c)
+     6:        <span class="hljs-keyword">for</span> {
+     7:            go <span class="hljs-function"><span class="hljs-title">func</span></span>() {
+     8:                println(<span class="hljs-string">&quot;hello&quot;</span>)
+     9:                println(<span class="hljs-string">&quot;world&quot;</span>)
+    10:            }()
+=&gt;  11:            time.Sleep(time.Second)
+    12:        }
+    13:    }
+**(dlv) c**
+world
+&gt; [Breakpoint 2] main.main.func1() ./main.go:8 **(hits goroutine(33):1 total:2) (PC: 0x100df9ac8)
+     3:    import <span class="hljs-string">&quot;time&quot;</span>
+     4:
+     5:    func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
+     6:        <span class="hljs-keyword">for</span> {
+     7:            go <span class="hljs-function"><span class="hljs-title">func</span></span>() {
+=&gt;   8:                println(<span class="hljs-string">&quot;hello&quot;</span>)
+     9:                println(<span class="hljs-string">&quot;world&quot;</span>)
+    10:            }()
+    11:            time.Sleep(time.Second)
+    12:        }
+    13:    }
+</code></pre>
+<p>&#x4ECE;&#x4E0A;&#x9762;&#x8C03;&#x8BD5;&#x793A;&#x4F8B;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#xFF0C;continue&#x540E;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x7684;goroutine&#x4F1A;&#x663E;&#x793A;&#x5668;goroutine&#x7F16;&#x53F7;&#xFF0C;&#x4EE5;&#x53CA;&#x547D;&#x4E2D;&#x7684;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#xFF0C;&#x5F53;&#x524D;PC&#x503C;&#x3002;&#x6307;&#x7684;&#x5173;&#x6CE8;&#x7684;&#x662F;&#xFF0C;&#x6709;&#x65F6;&#x5019;continue&#x540E;&#x6709;1&#x4E2A;goroutine&#x547D;&#x4E2D;&#x4E86;&#x65AD;&#x70B9;&#x5BFC;&#x81F4;&#x6240;&#x6709;goroutine&#x5168;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x6709;&#x65F6;&#x5019;&#x5219;&#x6709;&#x4E0D;&#x6B62;1&#x4E2A;goroutine&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x3002;&#x4F46;&#x5B9E;&#x9645;&#x4E0A;Delve&#x5728;&#x5904;&#x7406;1&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x4E8B;&#x4EF6;&#x65F6;&#xFF0C;&#x5F53;&#x6536;&#x5230;&#x4EFB;&#x610F;1&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x4E8B;&#x4EF6;&#x540E;&#xFF0C;&#x4F1A;&#x7ACB;&#x5373;&#x6682;&#x505C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF08;&#x901A;&#x8FC7;SIGSTOP&#x901A;&#x77E5;&#x8FD0;&#x884C;&#x4E2D;&#x7EBF;&#x7A0B;&#x505C;&#x4E0B;&#x6765;&#xFF09;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;Suspend Policy&#xFF09;&#x7684;&#x6982;&#x5FF5;&#xFF0C;&#x4EE5;&#x53CA;&#x5728;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
-<ul>
-<li><strong>&#x6838;&#x5FC3;&#x672F;&#x8BED;</strong>&#xFF1A;<strong>Suspend&#x202F;Policy&#xFF08;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF09;</strong> &#x6216; <strong>Stop&#x202F;Mode</strong>&#x3002;</li>
-<li><strong>&#x5178;&#x578B;&#x53D6;&#x503C;</strong>&#xFF1A;<code>all</code>&#xFF08;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x6302;&#x8D77;&#xFF09;&#x3001;<code>one</code>&#xFF08;&#x4EC5;&#x6302;&#x8D77;&#x89E6;&#x53D1;&#x7EBF;&#x7A0B;&#xFF09;&#x3002;</li>
-<li><strong>&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;</strong>&#xFF1A;<ul>
-<li>LLDB&#xFF1A;<code>settings set target.suspend-policy {all,one}</code></li>
-<li>GDB&#xFF1A;<code>set scheduler-locking {on,off,step}</code>&#xFF08;<code>on</code> &#x5BF9;&#x5E94;&#x5168;&#x6302;&#x8D77;&#xFF09;</li>
-<li>VS&#xFF1A;Breakpoints &#x5C5E;&#x6027; &#x2192; &#x201C;Suspend execution&#x201D; &#x2192; &#x201C;All&#x201D; / &#x201C;Just this thread&#x201D;</li>
-</ul>
-</li>
-</ul>
-<p>&#x5728;&#x8C03;&#x8BD5;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x4E86;&#x89E3;&#x5E76;&#x9002;&#x5F53;&#x914D;&#x7F6E; <strong>Suspend&#x202F;Policy</strong> &#x53EF;&#x4EE5;&#x8BA9;&#x4F60;&#x5728;&#x65AD;&#x70B9;&#x505C;&#x4E0B;&#x65F6;&#x66F4;&#x7CBE;&#x786E;&#x5730;&#x638C;&#x63A7;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x65E2;&#x80FD;&#x4FDD;&#x6301;&#x5168;&#x5C40;&#x53EF;&#x89C6;&#x6027;&#xFF0C;&#x4E5F;&#x80FD;&#x5728;&#x9700;&#x8981;&#x65F6;&#x4FDD;&#x6301;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x7684;&#x6D3B;&#x8DC3;&#x3002;</p>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5728;godbg&#x4E2D;&#xFF0C;&#x8BE5;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x800C;&#x4E14;&#x8003;&#x8651;go&#x8BED;&#x8A00;&#x7684;GMP&#x8C03;&#x5EA6;&#x6A21;&#x578B;&#xFF0C;&#x4EE5;&#x53CA;M&#x5728;&#x5176;&#x4E2D;&#x6240;&#x626E;&#x6F14;&#x7684;&#x89D2;&#x8272;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x4E2D;&#x7684;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF08;Suspend Policy&#xFF09;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;<strong>&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;</strong>&#x548C;<strong>&#x5355;&#x7EBF;&#x7A0B;&#x6302;&#x8D77;</strong>&#x4E24;&#x79CD;&#x4E3B;&#x6D41;&#x7B56;&#x7565;&#x3002;&#x6211;&#x4EEC;&#x8FD8;&#x4ECB;&#x7ECD;&#x4E86;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;GDB&#x3001;LLDB&#x3001;Delve&#x4E2D;&#x7684;&#x505A;&#x6CD5;&#x3002;GDB&#x901A;&#x8FC7;&#x9ED8;&#x8BA4;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#xFF0C;&#x4F46;&#x63D0;&#x4F9B;&#x4E86;<code>non-stop</code>&#x3001;<code>schedule_multiple</code>&#x3001;<code>scheduler_locking</code>&#x7B49;&#x9009;&#x9879;&#x63D0;&#x4F9B;&#x7EC6;&#x7C92;&#x5EA6;&#x63A7;&#x5236;&#xFF1B;LLDB&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#x4F46;&#x652F;&#x6301;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#xFF1B;Delve&#x4E5F;&#x662F;&#x9ED8;&#x8BA4;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#xFF0C;&#x4F46;&#x901A;&#x8FC7;&#x5176;&#x5BF9;Go&#x8BED;&#x8A00;GMP&#x8C03;&#x5EA6;&#x6A21;&#x578B;&#x7684;&#x6DF1;&#x5EA6;&#x7406;&#x89E3;&#x548C;&#x652F;&#x6301;&#xFF0C;&#x9002;&#x914D;&#x4E86;&#x9762;&#x5411;goroutine&#x7EA7;&#x522B;&#x5E76;&#x53D1;&#x7684;&#x8C03;&#x8BD5;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x81EA;&#x7531;&#x5728;&#x4E0D;&#x540C;goroutine&#x4E0A;&#x4E0B;&#x6587;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x5207;&#x6362;&#x3001;&#x67E5;&#x770B;&#x72B6;&#x6001;&#x3001;&#x6062;&#x590D;goroutine&#x6267;&#x884C;&#xFF0C;&#x65B9;&#x4FBF;Go&#x5F00;&#x53D1;&#x8005;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
+<p>&#x91CD;&#x70B9;&#x9700;&#x8981;&#x7406;&#x89E3;&#x7684;&#x662F;&#xFF0C;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x90FD;&#x9ED8;&#x8BA4;&#x91C7;&#x7528;&#x5168;&#x7CFB;&#x7EDF;&#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x8FD9;&#x786E;&#x4FDD;&#x4E86;&#x8C03;&#x8BD5;&#x65F6;&#x7A0B;&#x5E8F;&#x72B6;&#x6001;&#x7684;&#x7A33;&#x5B9A;&#x6027;&#x548C;&#x53EF;&#x9884;&#x6D4B;&#x6027;&#x3002;&#x5C3D;&#x7BA1;&#x8FD9;&#x79CD;&#x505A;&#x6CD5;&#x5E76;&#x4E0D;&#x5B8C;&#x7F8E;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x65F6;&#x5019;&#x90FD;&#x662F;&#x6211;&#x4EEC;&#x5E0C;&#x671B;&#x7684;&#xFF0C;&#x4F46;&#x5728;&#x67D0;&#x4E9B;&#x573A;&#x666F;&#x4E0B;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x6BD4;&#x5982;GDB&#x3001;LLDB&#x90A3;&#x6837;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x53D1;&#x5C55;&#x6F14;&#x8FDB;&#x4E5F;&#x9700;&#x8981;&#x65F6;&#x95F4;&#xFF0C;&#x6211;&#x4EEC;&#x671F;&#x5F85;&#x540E;&#x7EED;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x80FD;&#x591F;&#x63D0;&#x4F9B;&#x66F4;&#x7EC6;&#x7C92;&#x5EA6;&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x66F4;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x5185;&#x5BB9;&#x4E3A;&#x540E;&#x7EED;&#x5B66;&#x4E60;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x7684;&#x590D;&#x6742;&#x6027;&#x4EE5;&#x53CA;&#x540E;&#x7EED;&#x5B66;&#x4E60;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x7BA1;&#x7406;&#x3001;&#x65AD;&#x70B9;&#x5904;&#x7406;&#x7B49;&#x9AD8;&#x7EA7;&#x8C03;&#x8BD5;&#x6280;&#x672F;&#x5960;&#x5B9A;&#x4E86;&#x91CD;&#x8981;&#x57FA;&#x7840;&#x3002;</p>
 
                                 
                                 </section>
@@ -2286,7 +2310,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.20.3 线程执行控制 - 挂起策略","level":"1.6.17.3","depth":3,"next":{"title":"6.20.4 线程执行控制 - continue","level":"1.6.17.4","depth":3,"path":"6-develop-inst-debugger/20-multithread/4-continue.md","ref":"6-develop-inst-debugger/20-multithread/4-continue.md","articles":[]},"previous":{"title":"6.20.2 跟踪新创建线程","level":"1.6.17.2","depth":3,"path":"6-develop-inst-debugger/20-multithread/2-trace_new_threads.md","ref":"6-develop-inst-debugger/20-multithread/2-trace_new_threads.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/20-multithread/3-suspend_policy.md","mtime":"2025-10-17T09:03:55.505Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-17T09:04:29.024Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.20.3 线程执行控制 - 挂起策略","level":"1.6.17.3","depth":3,"next":{"title":"6.20.4 线程执行控制 - continue","level":"1.6.17.4","depth":3,"path":"6-develop-inst-debugger/20-multithread/4-continue.md","ref":"6-develop-inst-debugger/20-multithread/4-continue.md","articles":[]},"previous":{"title":"6.20.2 跟踪新创建线程","level":"1.6.17.2","depth":3,"path":"6-develop-inst-debugger/20-multithread/2-trace_new_threads.md","ref":"6-develop-inst-debugger/20-multithread/2-trace_new_threads.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/20-multithread/3-suspend_policy.md","mtime":"2025-10-17T12:41:02.355Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-10-17T12:41:32.102Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

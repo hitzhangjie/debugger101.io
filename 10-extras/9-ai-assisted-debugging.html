@@ -2568,7 +2568,7 @@ Command failed: could not find symbol value for i
 Command failed: could not find symbol value for i
 Command failed: could not find symbol value for i
 Command failed: could not find symbol value for i
-</code></pre><p><strong>&#x8BF4;&#x660E;</strong>&#xFF1A;&#x524D;&#x4E24;&#x6761;&#x9519;&#x8BEF;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x53D8;&#x91CF;&#x5B8C;&#x5168;&#x521D;&#x59CB;&#x5316;&#x524D;&#x5C1D;&#x8BD5;&#x6253;&#x5370;&#x3002;&#x540E;&#x7EED;&#x7684;&#x9519;&#x8BEF;&#x662F;&#x5728;&#x5FAA;&#x73AF;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x65F6;&#x5C1D;&#x8BD5;&#x6253;&#x5370;&#x5C1A;&#x672A;&#x8FDB;&#x5165;&#x5FAA;&#x73AF;&#x4F53;&#x7684; <code>i</code>&#x3002;</p>
+</code></pre><p><strong>&#x8BF4;&#x660E;</strong>&#xFF1A;&#x524D;&#x4E24;&#x6761;&#x9519;&#x8BEF;&#x662F;&#x56E0;&#x4E3A;&#x5728;&#x53D8;&#x91CF;&#x5B8C;&#x5168;&#x521D;&#x59CB;&#x5316;&#x524D;&#x5C1D;&#x8BD5;&#x6253;&#x5370;&#x3002;&#x540E;&#x7EED;&#x7684;&#x9519;&#x8BEF;&#x662F;&#x5728;&#x5FAA;&#x73AF;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x65F6;&#x5C1D;&#x8BD5;&#x6253;&#x5370;&#x5C1A;&#x672A;&#x8FDB;&#x5165;&#x5FAA;&#x73AF;&#x4F53;&#x7684; <code>i</code>&#x3002;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x611F;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x6A21;&#x62DF;&#x4E0B;&#x4E0A;&#x8FF0;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#xFF0C;&#x611F;&#x53D7;&#x4E0B;LLM+toolcall+&#x8C03;&#x8BD5;&#x5668;IO&#x91CD;&#x5B9A;&#x5411;&#x57FA;&#x7840;&#x4E0A;&#x7684;&#x81EA;&#x52A8;&#x5316;&#x8C03;&#x8BD5;&#x7684;&#x5A01;&#x529B;&#x3002;</p>
 <hr>
 <h3 id="ai-agent&#x7684;react&#x63A8;&#x7406;&#x6846;&#x67B6;">AI Agent&#x7684;ReAct&#x63A8;&#x7406;&#x6846;&#x67B6;</h3>
 <p>&#x5728;&#x5B9E;&#x9645;&#x7684;LLM&#x9A71;&#x52A8;&#x8C03;&#x8BD5;&#x4E2D;&#xFF0C;AI Agent&#x9700;&#x8981;&#x9075;&#x5FAA;ReAct&#xFF08;Reasoning + Acting&#xFF09;&#x6A21;&#x5F0F;&#xFF1A;</p>
@@ -2614,7 +2614,6 @@ A: &#x9700;&#x8981;&#x8BA9; a &#x5B8C;&#x6210;&#x8D4B;&#x503C;&#xFF0C;&#x7136;&#
 &#x6839;&#x672C;&#x539F;&#x56E0;: &#x5FAA;&#x73AF;&#x6761;&#x4EF6;&#x5E94;&#x4E3A; i &lt; len(a)
 </code></pre><hr>
 <h3 id="&#x5173;&#x952E;&#x6280;&#x672F;&#x8981;&#x70B9;">&#x5173;&#x952E;&#x6280;&#x672F;&#x8981;&#x70B9;</h3>
-<h4 id="1-&#x884C;&#x7F13;&#x51B2;&#x4E0E;&#x540C;&#x6B65;">1. &#x884C;&#x7F13;&#x51B2;&#x4E0E;&#x540C;&#x6B65;</h4>
 <p>&#x8C03;&#x8BD5;&#x5668;&#x7684;I/O&#x662F;&#x884C;&#x7F13;&#x51B2;&#x7684;&#xFF08;line-buffered&#xFF09;&#xFF0C;&#x8FD9;&#x610F;&#x5473;&#x7740;&#xFF1A;</p>
 <ul>
 <li>&#x8C03;&#x8BD5;&#x5668;&#x4ECE;stdin&#x8BFB;&#x53D6;&#x4E00;&#x884C;</li>
@@ -2622,23 +2621,7 @@ A: &#x9700;&#x8981;&#x8BA9; a &#x5B8C;&#x6210;&#x8D4B;&#x503C;&#xFF0C;&#x7136;&#
 <li>&#x5C06;&#x8F93;&#x51FA;&#x5199;&#x5165;stdout&#xFF08;&#x901A;&#x5E38;&#x5305;&#x542B;&#x591A;&#x884C;&#xFF09;</li>
 <li>&#x91CD;&#x590D;</li>
 </ul>
-<p>AI Agent&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x79CD;&#x7F13;&#x51B2;&#x7279;&#x6027;&#xFF0C;&#x4E0D;&#x80FD;&#x5047;&#x8BBE;&#x547D;&#x4EE4;&#x4E0E;&#x54CD;&#x5E94;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002;</p>
-<h4 id="2-&#x53D8;&#x91CF;&#x751F;&#x547D;&#x5468;&#x671F;">2. &#x53D8;&#x91CF;&#x751F;&#x547D;&#x5468;&#x671F;</h4>
-<p>&#x5728;&#x542F;&#x7528;&#x4E86;&#x4F18;&#x5316;&#x7684;Go&#x7A0B;&#x5E8F;&#x4E2D;&#xFF0C;&#x53D8;&#x91CF;&#x5728;&#x5176;&#x4F5C;&#x7528;&#x57DF;&#x4E4B;&#x5916;&#x53EF;&#x80FD;&#x4E0D;&#x5B58;&#x5728;&#x3002;&#x8FD9;&#x5BFC;&#x81F4;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
-    a := []<span class="hljs-keyword">int</span>{...}   <span class="hljs-comment">// &#x2190; a &#x5728;&#x8FD9;&#x91CC;&#x624D;&#x771F;&#x6B63;&#x5B58;&#x5728;</span>
-    <span class="hljs-comment">// &#x5373;&#x4F7F;&#x8C03;&#x8BD5;&#x5668;&#x505C;&#x5728;&#x51FD;&#x6570;&#x5165;&#x53E3;&#xFF0C;a &#x4E5F;&#x53EF;&#x80FD;&#x4E0D;&#x53EF;&#x8BBF;&#x95EE;</span>
-}
-</code></pre>
-<p>AI Agent&#x9700;&#x8981;&#x7406;&#x89E3;&#x8FD9;&#x4E00;&#x70B9;&#xFF0C;&#x4E0D;&#x80FD;&#x8FC7;&#x65E9;&#x5730;&#x67E5;&#x8BE2;&#x53D8;&#x91CF;&#x3002;</p>
-<h4 id="3-&#x65AD;&#x70B9;&#x4E0E;&#x5355;&#x6B65;&#x7684;&#x533A;&#x522B;">3. &#x65AD;&#x70B9;&#x4E0E;&#x5355;&#x6B65;&#x7684;&#x533A;&#x522B;</h4>
-<ul>
-<li><strong><code>continue</code></strong>&#xFF1A;&#x5728;&#x5F53;&#x524D;&#x70B9;&#x6062;&#x590D;&#x6267;&#x884C;&#xFF0C;&#x76F4;&#x5230;&#x9047;&#x5230;&#x4E0B;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#x6216;&#x5F02;&#x5E38;</li>
-<li><strong><code>step</code></strong>&#xFF1A;&#x6267;&#x884C;&#x5355;&#x6761;&#x8BED;&#x53E5;&#xFF0C;&#x7136;&#x540E;&#x505C;&#x4E0B;</li>
-<li><strong><code>stepin</code> vs <code>stepout</code></strong>&#xFF1A;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x65F6;&#x7684;&#x9009;&#x62E9;</li>
-</ul>
-<p>&#x4E0D;&#x540C;&#x7684;&#x7B56;&#x7565;&#x9002;&#x7528;&#x4E8E;&#x4E0D;&#x540C;&#x7684;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x3002;</p>
-<h4 id="4-&#x5F02;&#x5E38;&#x5904;&#x7406;">4. &#x5F02;&#x5E38;&#x5904;&#x7406;</h4>
+<p>AI Agent&#x9700;&#x8981;&#x8003;&#x8651;&#x8FD9;&#x79CD;&#x7F13;&#x51B2;&#x7279;&#x6027;&#xFF0C;&#x4E0D;&#x80FD;&#x5047;&#x8BBE;&#x547D;&#x4EE4;&#x4E0E;&#x54CD;&#x5E94;&#x662F;&#x539F;&#x5B50;&#x64CD;&#x4F5C;&#x3002;&#x8FD9;&#x6837;LLM&#x624D;&#x80FD;&#x591F;&#x4E0D;&#x65AD;&#x5730;&#x89C2;&#x5BDF;&#x3001;&#x8C03;&#x6574;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x6700;&#x7EC8;&#x627E;&#x5230;bug&#x3002;</p>
 <p>&#x5F53;&#x7A0B;&#x5E8F;&#x89E6;&#x53D1;panic&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x6355;&#x83B7;&#x8BE5;&#x5F02;&#x5E38;&#x70B9;&#xFF0C;&#x5E76;&#x8FDB;&#x5165;&quot;paused at panic&quot;&#x72B6;&#x6001;&#x3002;AI Agent&#x53EF;&#x4EE5;&#xFF1A;</p>
 <ul>
 <li>&#x68C0;&#x67E5;panic&#x4FE1;&#x606F;</li>
@@ -2646,103 +2629,13 @@ A: &#x9700;&#x8981;&#x8BA9; a &#x5B8C;&#x6210;&#x8D4B;&#x503C;&#xFF0C;&#x7136;&#
 <li>&#x5B9A;&#x4F4D;&#x89E6;&#x53D1;panic&#x7684;&#x786E;&#x5207;&#x4F4D;&#x7F6E;</li>
 </ul>
 <hr>
-<h3 id="&#x5B9E;&#x73B0;ai-agent&#x7684;&#x5EFA;&#x8BAE;">&#x5B9E;&#x73B0;AI Agent&#x7684;&#x5EFA;&#x8BAE;</h3>
-<h4 id="&#x4F2A;&#x4EE3;&#x7801;&#x6846;&#x67B6;">&#x4F2A;&#x4EE3;&#x7801;&#x6846;&#x67B6;</h4>
-<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AutoDebugger</span>:</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, program, llm_client)</span>:</span>
-        self.program = program
-        self.llm = llm_client
-        self.commands_history = []
-        self.outputs_history = []
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">run_debugging_session</span><span class="hljs-params">(self)</span>:</span>
-        <span class="hljs-comment"># 1. &#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x5668;&#x8FDB;&#x7A0B;</span>
-        self.start_debugger()
-
-        <span class="hljs-comment"># 2. &#x591A;&#x8F6E;&#x63A8;&#x7406;&#x4E0E;&#x884C;&#x52A8;</span>
-        <span class="hljs-keyword">for</span> round <span class="hljs-keyword">in</span> range(MAX_ITERATIONS):
-            <span class="hljs-comment"># 2.1 &#x6536;&#x96C6;&#x5F53;&#x524D;&#x8C03;&#x8BD5;&#x5668;&#x8F93;&#x51FA;</span>
-            current_output = self.read_latest_output()
-
-            <span class="hljs-comment"># 2.2 &#x8C03;&#x7528;LLM&#x8FDB;&#x884C;&#x63A8;&#x7406;</span>
-            reasoning = self.llm.reason(
-                program_code=self.get_source(),
-                debugging_output=current_output,
-                history=self.outputs_history,
-                objective=<span class="hljs-string">&quot;Locate the bug in this program&quot;</span>
-            )
-
-            <span class="hljs-comment"># 2.3 &#x4ECE;LLM&#x63A8;&#x7406;&#x7ED3;&#x679C;&#x63D0;&#x53D6;&#x4E0B;&#x4E00;&#x6B65;&#x547D;&#x4EE4;</span>
-            next_command = self.llm.extract_command(reasoning)
-
-            <span class="hljs-comment"># 2.4 &#x5982;&#x679C;LLM&#x5224;&#x5B9A;bug&#x5DF2;&#x627E;&#x5230;&#x6216;&#x5E94;&#x8BE5;&#x9000;&#x51FA;</span>
-            <span class="hljs-keyword">if</span> next_command == <span class="hljs-string">&quot;exit&quot;</span> <span class="hljs-keyword">or</span> self.llm.is_bug_found(reasoning):
-                self.send_command(<span class="hljs-string">&quot;exit&quot;</span>)
-                <span class="hljs-keyword">break</span>
-
-            <span class="hljs-comment"># 2.5 &#x53D1;&#x9001;&#x547D;&#x4EE4;&#x5230;&#x8C03;&#x8BD5;&#x5668;</span>
-            self.send_command(next_command)
-            self.commands_history.append(next_command)
-
-            <span class="hljs-comment"># 2.6 &#x7B49;&#x5F85;&#x54CD;&#x5E94;</span>
-            time.sleep(RESPONSE_DELAY)
-
-        <span class="hljs-comment"># 3. &#x6536;&#x96C6;&#x5B8C;&#x6574;&#x7684;&#x8C03;&#x8BD5;&#x8BB0;&#x5F55;</span>
-        self.save_session_records()
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">send_command</span><span class="hljs-params">(self, cmd)</span>:</span>
-        <span class="hljs-string">&quot;&quot;&quot;&#x8FFD;&#x52A0;&#x547D;&#x4EE4;&#x5230;stdin&quot;&quot;&quot;</span>
-        self.stdin_file.write(cmd + <span class="hljs-string">&quot;\n&quot;</span>)
-        self.stdin_file.flush()
-
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">read_latest_output</span><span class="hljs-params">(self)</span>:</span>
-        <span class="hljs-string">&quot;&quot;&quot;&#x8BFB;&#x53D6;&#x6700;&#x65B0;&#x7684;&#x8C03;&#x8BD5;&#x8F93;&#x51FA;&quot;&quot;&quot;</span>
-        <span class="hljs-keyword">return</span> self.read_file(<span class="hljs-string">&quot;stdout.txt&quot;</span>)
-</code></pre>
-<h4 id="llm-prompt&#x6A21;&#x677F;">LLM Prompt&#x6A21;&#x677F;</h4>
-<pre><code>You are an expert Go debugger. Given the following:
-- Program source code
-- Current debugger state (output)
-- Debugging history
-
-Analyze the program and the current debugging status. Then:
-
-1. Explain what you observe in the current state
-2. Identify what you still need to know to locate the bug
-3. Decide the next debugging action (step, continue, print, etc.)
-4. Provide the exact command to send to the debugger
-
-Format your response as JSON:
-{
-    &quot;observation&quot;: &quot;...&quot;,
-    &quot;reasoning&quot;: &quot;...&quot;,
-    &quot;next_command&quot;: &quot;step&quot; or &quot;continue&quot; or &quot;print &lt;var&gt;&quot; or &quot;break &lt;loc&gt;&quot;,
-    &quot;bug_found&quot;: true/false,
-    &quot;bug_description&quot;: &quot;...&quot;  # if bug_found is true
-}
-</code></pre><hr>
-<h3 id="&#x6027;&#x80FD;&#x4E0E;&#x4F18;&#x5316;">&#x6027;&#x80FD;&#x4E0E;&#x4F18;&#x5316;</h3>
-<h4 id="&#x4F18;&#x5316;&#x6307;&#x6807;">&#x4F18;&#x5316;&#x6307;&#x6807;</h4>
-<ol>
-<li><strong>&#x6536;&#x655B;&#x901F;&#x5EA6;</strong>&#xFF1A;&#x8FBE;&#x5230;bug&#x5B9A;&#x4F4D;&#x9700;&#x8981;&#x7684;&#x8F6E;&#x6B21;</li>
-<li><strong>&#x547D;&#x4EE4;&#x7CBE;&#x786E;&#x6027;</strong>&#xFF1A;AI&#x751F;&#x6210;&#x7684;&#x6709;&#x6548;&#x547D;&#x4EE4;&#x5360;&#x6BD4;</li>
-<li><strong>&#x8BEF;&#x5224;&#x7387;</strong>&#xFF1A;&#x9519;&#x8BEF;&#x7684;bug&#x5047;&#x8BBE;&#x5360;&#x6BD4;</li>
-</ol>
-<h4 id="&#x4F18;&#x5316;&#x7B56;&#x7565;">&#x4F18;&#x5316;&#x7B56;&#x7565;</h4>
-<ol>
-<li><strong>&#x667A;&#x80FD;&#x65AD;&#x70B9;</strong>&#xFF1A;&#x6839;&#x636E;&#x7A0B;&#x5E8F;&#x7ED3;&#x6784;&#x81EA;&#x52A8;&#x8BBE;&#x7F6E;&#x5173;&#x952E;&#x65AD;&#x70B9;&#xFF0C;&#x800C;&#x975E;&#x53EA;&#x7528; <code>main</code></li>
-<li><strong>&#x72B6;&#x6001;&#x7F13;&#x5B58;</strong>&#xFF1A;&#x7F13;&#x5B58;&#x5DF2;&#x68C0;&#x67E5;&#x8FC7;&#x7684;&#x7A0B;&#x5E8F;&#x72B6;&#x6001;&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x590D;&#x67E5;&#x8BE2;</li>
-<li><strong>&#x5E76;&#x884C;&#x63A2;&#x7D22;</strong>&#xFF1A;&#x7EF4;&#x62A4;&#x591A;&#x4E2A;&#x5047;&#x8BBE;&#xFF0C;&#x5E76;&#x5E76;&#x884C;&#x8C03;&#x8BD5;&#x9A8C;&#x8BC1;</li>
-<li><strong>&#x9886;&#x57DF;&#x7279;&#x5B9A;&#x77E5;&#x8BC6;</strong>&#xFF1A;&#x9488;&#x5BF9;&#x5E38;&#x89C1;bug&#x7C7B;&#x578B;&#xFF08;NPE&#x3001;OOB&#x3001;race condition&#x7B49;&#xFF09;&#x9884;&#x8BBE;&#x7B56;&#x7565;</li>
-</ol>
-<hr>
 <h3 id="&#x5C40;&#x9650;&#x6027;&#x548C;&#x672A;&#x6765;&#x65B9;&#x5411;">&#x5C40;&#x9650;&#x6027;&#x548C;&#x672A;&#x6765;&#x65B9;&#x5411;</h3>
 <h4 id="&#x5F53;&#x524D;&#x5C40;&#x9650;">&#x5F53;&#x524D;&#x5C40;&#x9650;</h4>
 <ol>
 <li><strong>&#x590D;&#x6742;&#x5E76;&#x53D1;&#x573A;&#x666F;</strong>&#xFF1A;&#x591A;goroutine&#x7684;race condition&#x4ECD;&#x96BE;&#x4EE5;&#x5B9A;&#x4F4D;</li>
 <li><strong>&#x975E;&#x786E;&#x5B9A;&#x6027;bug</strong>&#xFF1A;timing-dependent&#x7684;&#x95EE;&#x9898;&#x96BE;&#x4EE5;&#x7A33;&#x5B9A;&#x590D;&#x73B0;</li>
 <li><strong>&#x9ED1;&#x76D2;&#x5E93;&#x4EE3;&#x7801;</strong>&#xFF1A;&#x65E0;&#x6E90;&#x7801;&#x7684;&#x4F9D;&#x8D56;&#x5E93;&#x4E2D;&#x7684;bug&#x96BE;&#x4EE5;&#x8C03;&#x8BD5;</li>
-<li><strong>&#x5927;&#x89C4;&#x6A21;&#x7A0B;&#x5E8F;</strong>&#xFF1A;&#x7A0B;&#x5E8F;&#x8D85;&#x5927;&#x65F6;&#xFF0C;&#x72B6;&#x6001;&#x7A7A;&#x95F4;&#x7206;&#x70B8;</li>
+<li><strong>&#x5927;&#x89C4;&#x6A21;&#x7A0B;&#x5E8F;</strong>&#xFF1A;&#x7A0B;&#x5E8F;&#x8D85;&#x5927;&#x65F6;&#xFF0C;&#x72B6;&#x6001;&#x7A7A;&#x95F4;&#x7206;&#x70B8;&#xFF0C;&#x53EF;&#x80FD;&#x8D85;&#x8FC7;LLM&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#x957F;&#x5EA6;&#x6216;&#x8005;toolcall&#x8F6E;&#x6570;&#x9650;&#x5236;&#xFF0C;&#x4F46;&#x662F;&#x5982;&#x679C;AI Agent&#x53EF;&#x4EE5;&#x5B9A;&#x5236;&#x67D0;&#x4E9B;toolcall&#x6B21;&#x6570;&#xFF0C;&#x5E94;&#x8BE5;&#x53EF;&#x4EE5;&#x63D0;&#x9AD8;&#x89E3;&#x51B3;&#x95EE;&#x9898;&#x7684;&#x4E0A;&#x9650;&#x3002;</li>
 </ol>
 <h4 id="&#x672A;&#x6765;&#x65B9;&#x5411;">&#x672A;&#x6765;&#x65B9;&#x5411;</h4>
 <ol>
@@ -2814,7 +2707,7 @@ Format your response as JSON:
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"10.9 LLM+toolcall自动化调试","level":"1.10.9","depth":2,"next":{"title":"11 致谢","level":"1.11","depth":1,"path":"11-thanks/README.md","ref":"11-thanks/README.md","articles":[]},"previous":{"title":"10.8 分布式调试发展历程","level":"1.10.8","depth":2,"path":"10-extras/8-development-of-debug-dsys.md","ref":"10-extras/8-development-of-debug-dsys.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/9-ai-assisted-debugging.md","mtime":"2026-04-07T04:25:10.367Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-04-07T04:25:42.807Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"10.9 LLM+toolcall自动化调试","level":"1.10.9","depth":2,"next":{"title":"11 致谢","level":"1.11","depth":1,"path":"11-thanks/README.md","ref":"11-thanks/README.md","articles":[]},"previous":{"title":"10.8 分布式调试发展历程","level":"1.10.8","depth":2,"path":"10-extras/8-development-of-debug-dsys.md","ref":"10-extras/8-development-of-debug-dsys.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"10-extras/9-ai-assisted-debugging.md","mtime":"2026-04-07T04:46:47.266Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-04-07T04:47:18.374Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>9.2.22 tinydbg> breakpoint - part2 · GitBook</title>
+        <title>9.2.22 tinydbg> breakpoint - part2: 添加断点+执行到断点 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,10 +65,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="23-debug_condition.html" />
+    <link rel="next" href="23-debug_breakpoint_part3.html" />
     
     
-    <link rel="prev" href="22-debug_breakpoint_part1.html" />
+    <link rel="prev" href="21-debug_breakpoint_part1.html" />
     
 
     </head>
@@ -213,7 +213,7 @@
                 <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
             
                     
-                    5.1 调试器概貌
+                    5.1 设计一个调试器雏形
             
                 </a>
             
@@ -221,12 +221,38 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_demo.html">
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_solution.html">
             
-                <a href="../../5-debugger-skeleton/2-debugger_demo.html">
+                <a href="../../5-debugger-skeleton/2-debugger_solution.html">
             
                     
-                    5.2 调试器示例
+                    5.2 架构设计和技术方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../5-debugger-skeleton/3-debugger_solution_final.html">
+            
+                <a href="../../5-debugger-skeleton/3-debugger_solution_final.html">
+            
+                    
+                    5.3 具体的实现方案选择
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../5-debugger-skeleton/4-debugger_demos.html">
+            
+                <a href="../../5-debugger-skeleton/4-debugger_demos.html">
+            
+                    
+                    5.4 功能演示和实现效果
             
                 </a>
             
@@ -258,7 +284,7 @@
                 <a href="../../6-develop-inst-debugger/1-process_start.html">
             
                     
-                    6.1 进程启动
+                    6.1 启动进程
             
                 </a>
             
@@ -271,7 +297,7 @@
                 <a href="../../6-develop-inst-debugger/2-process_attach.html">
             
                     
-                    6.2 进程attach
+                    6.2 跟踪进程
             
                 </a>
             
@@ -284,7 +310,7 @@
                 <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
             
                     
-                    6.3 启动&attach
+                    6.3 启动&跟踪进程
             
                 </a>
             
@@ -370,12 +396,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-step.html">
+        <li class="chapter " data-level="1.6.10" data-path="../../6-develop-inst-debugger/10-clearall-atexit.html">
             
-                <a href="../../6-develop-inst-debugger/10-step.html">
+                <a href="../../6-develop-inst-debugger/10-clearall-atexit.html">
             
                     
-                    6.10 步进操作
+                    6.10 调试器退出前的断点清理机制
             
                 </a>
             
@@ -383,12 +409,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-continue.html">
+        <li class="chapter " data-level="1.6.11" data-path="../../6-develop-inst-debugger/11-step.html">
             
-                <a href="../../6-develop-inst-debugger/11-continue.html">
+                <a href="../../6-develop-inst-debugger/11-step.html">
             
                     
-                    6.11 运行到断点
+                    6.11 步进操作
             
                 </a>
             
@@ -396,12 +422,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-pmem.html">
+        <li class="chapter " data-level="1.6.12" data-path="../../6-develop-inst-debugger/12-continue.html">
             
-                <a href="../../6-develop-inst-debugger/12-pmem.html">
+                <a href="../../6-develop-inst-debugger/12-continue.html">
             
                     
-                    6.12 打印内存数据
+                    6.12 运行到断点
             
                 </a>
             
@@ -409,12 +435,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pregs.html">
+        <li class="chapter " data-level="1.6.13" data-path="../../6-develop-inst-debugger/13-pmem.html">
             
-                <a href="../../6-develop-inst-debugger/13-pregs.html">
+                <a href="../../6-develop-inst-debugger/13-pmem.html">
             
                     
-                    6.13 打印寄存器数据
+                    6.13 查看内存数据
             
                 </a>
             
@@ -422,12 +448,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-set-mem.html">
+        <li class="chapter " data-level="1.6.14" data-path="../../6-develop-inst-debugger/14-pregs.html">
             
-                <a href="../../6-develop-inst-debugger/14-set-mem.html">
+                <a href="../../6-develop-inst-debugger/14-pregs.html">
             
                     
-                    6.14 修改内存数据
+                    6.14 查看寄存器数据
             
                 </a>
             
@@ -435,12 +461,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-regs.html">
+        <li class="chapter " data-level="1.6.15" data-path="../../6-develop-inst-debugger/15-set-mem.html">
             
-                <a href="../../6-develop-inst-debugger/15-set-regs.html">
+                <a href="../../6-develop-inst-debugger/15-set-mem.html">
             
                     
-                    6.15 修改寄存器数据
+                    6.15 修改内存数据
             
                 </a>
             
@@ -448,12 +474,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/20-trace_new_threads.html">
+        <li class="chapter " data-level="1.6.16" data-path="../../6-develop-inst-debugger/16-set-regs.html">
             
-                <a href="../../6-develop-inst-debugger/20-trace_new_threads.html">
+                <a href="../../6-develop-inst-debugger/16-set-regs.html">
             
                     
-                    6.20 跟踪多线程程序1
+                    6.16 修改寄存器数据
             
                 </a>
             
@@ -461,12 +487,26 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/21-trace_old_threads.html">
+        <li class="chapter " data-level="1.6.17" data-path="../../6-develop-inst-debugger/20-multithread/">
             
-                <a href="../../6-develop-inst-debugger/21-trace_old_threads.html">
+                <a href="../../6-develop-inst-debugger/20-multithread/">
             
                     
-                    6.21 跟踪多线程程序2
+                    6.20 调试多线程程序
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.17.1" data-path="../../6-develop-inst-debugger/20-multithread/1-trace_old_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-multithread/1-trace_old_threads.html">
+            
+                    
+                    6.20.1 跟踪已创建线程
             
                 </a>
             
@@ -474,7 +514,77 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/80-aslr.html">
+        <li class="chapter " data-level="1.6.17.2" data-path="../../6-develop-inst-debugger/20-multithread/2-trace_new_threads.html">
+            
+                <a href="../../6-develop-inst-debugger/20-multithread/2-trace_new_threads.html">
+            
+                    
+                    6.20.2 跟踪新创建线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.3" data-path="../../6-develop-inst-debugger/20-multithread/3-suspend_policy.html">
+            
+                <a href="../../6-develop-inst-debugger/20-multithread/3-suspend_policy.html">
+            
+                    
+                    6.20.3 线程执行控制 - 挂起策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.4" data-path="../../6-develop-inst-debugger/20-multithread/4-continue.html">
+            
+                <a href="../../6-develop-inst-debugger/20-multithread/4-continue.html">
+            
+                    
+                    6.20.4 线程执行控制 - continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.5" data-path="../../6-develop-inst-debugger/20-multithread/5-breakpoint.html">
+            
+                <a href="../../6-develop-inst-debugger/20-multithread/5-breakpoint.html">
+            
+                    
+                    6.20.5 线程执行控制 - breakpoint
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../../6-develop-inst-debugger/21-multiprocess/">
+            
+                <a href="../../6-develop-inst-debugger/21-multiprocess/">
+            
+                    
+                    6.21 调试多进程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/80-aslr.html">
             
                 <a href="../../6-develop-inst-debugger/80-aslr.html">
             
@@ -487,7 +597,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.19" data-path="../../6-develop-inst-debugger/99-more.html">
+        <li class="chapter " data-level="1.6.20" data-path="../../6-develop-inst-debugger/99-more.html">
             
                 <a href="../../6-develop-inst-debugger/99-more.html">
             
@@ -1199,12 +1309,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.7" data-path="15-tinydbg_core1.html">
+        <li class="chapter " data-level="1.9.2.7" data-path="15-tinydbg_core.html">
             
-                <a href="15-tinydbg_core1.html">
+                <a href="15-tinydbg_core.html">
             
                     
-                    9.2.15 tinydbg core - part1
+                    9.2.15 tinydbg core
             
                 </a>
             
@@ -1212,20 +1322,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.8" data-path="15-tinydbg_core2.html">
-            
-                <a href="15-tinydbg_core2.html">
-            
-                    
-                    9.2.15 tinydbg core - part2
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2.9" data-path="16-tinydbg_connect.html">
+        <li class="chapter " data-level="1.9.2.8" data-path="16-tinydbg_connect.html">
             
                 <a href="16-tinydbg_connect.html">
             
@@ -1238,7 +1335,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.10" data-path="17-tinydbg_trace.html">
+        <li class="chapter " data-level="1.9.2.9" data-path="17-tinydbg_trace.html">
             
                 <a href="17-tinydbg_trace.html">
             
@@ -1251,12 +1348,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.11" data-path="19-how_evalexpr_works.html">
+        <li class="chapter " data-level="1.9.2.10" data-path="18-how_evalexpr_works.html">
             
-                <a href="19-how_evalexpr_works.html">
+                <a href="18-how_evalexpr_works.html">
             
                     
-                    9.2.19 evalexpr表达式计算引擎
+                    9.2.18 evalexpr表达式计算引擎
             
                 </a>
             
@@ -1264,12 +1361,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.12" data-path="20-how_locspec_works.html">
+        <li class="chapter " data-level="1.9.2.11" data-path="19-how_locspec_works.html">
             
-                <a href="20-how_locspec_works.html">
+                <a href="19-how_locspec_works.html">
             
                     
-                    9.2.20 locspec解析与地址转换
+                    9.2.19 locspec解析与地址转换
             
                 </a>
             
@@ -1277,12 +1374,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.13" data-path="21-debug_disassemble.html">
+        <li class="chapter " data-level="1.9.2.12" data-path="20-debug_disassemble.html">
             
-                <a href="21-debug_disassemble.html">
+                <a href="20-debug_disassemble.html">
             
                     
-                    9.2.21 tinydbg> disass
+                    9.2.20 tinydbg> disass
             
                 </a>
             
@@ -1290,12 +1387,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.14" data-path="22-debug_breakpoint_part1.html">
+        <li class="chapter " data-level="1.9.2.13" data-path="21-debug_breakpoint_part1.html">
             
-                <a href="22-debug_breakpoint_part1.html">
+                <a href="21-debug_breakpoint_part1.html">
             
                     
-                    9.2.22 tinydbg> breakpoint - part1
+                    9.2.21 tinydbg> breakpoint - part1: 断点精细化管理
             
                 </a>
             
@@ -1303,12 +1400,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.9.2.15" data-path="22-debug_breakpoint_part2.html">
+        <li class="chapter active" data-level="1.9.2.14" data-path="22-debug_breakpoint_part2.html">
             
                 <a href="22-debug_breakpoint_part2.html">
             
                     
-                    9.2.22 tinydbg> breakpoint - part2
+                    9.2.22 tinydbg> breakpoint - part2: 添加断点+执行到断点
             
                 </a>
             
@@ -1316,12 +1413,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.16" data-path="23-debug_condition.html">
+        <li class="chapter " data-level="1.9.2.15" data-path="23-debug_breakpoint_part3.html">
             
-                <a href="23-debug_condition.html">
+                <a href="23-debug_breakpoint_part3.html">
             
                     
-                    9.2.23 tinydbg> condition
+                    9.2.23 tinydbg> breakpoint - part3: 条件断点+执行到断点
             
                 </a>
             
@@ -1329,12 +1426,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.17" data-path="25-debug_watch.html">
+        <li class="chapter " data-level="1.9.2.16" data-path="24-debug_breakpoint_part4.html">
             
-                <a href="25-debug_watch.html">
+                <a href="24-debug_breakpoint_part4.html">
             
                     
-                    9.2.25 tinydbg> watch
+                    9.2.24 tinydbg> breakpoint - part4: 其他断点相关命令
             
                 </a>
             
@@ -1342,12 +1439,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.18" data-path="26-debug_step.html">
+        <li class="chapter " data-level="1.9.2.17" data-path="25-debug_trace.html">
             
-                <a href="26-debug_step.html">
+                <a href="25-debug_trace.html">
             
                     
-                    9.2.26 tinydbg> next | step | stepi
+                    9.2.25 tinydbg> trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.18" data-path="26-debug_watch.html">
+            
+                <a href="26-debug_watch.html">
+            
+                    
+                    9.2.26 tinydbg> watch
             
                 </a>
             
@@ -1368,12 +1478,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.20" data-path="28-debug_pmem.html">
+        <li class="chapter " data-level="1.9.2.20" data-path="28-debug_next.html">
             
-                <a href="28-debug_pmem.html">
+                <a href="28-debug_next.html">
             
                     
-                    9.2.28 tinydbg> pmem
+                    9.2.28 tinydbg> next
             
                 </a>
             
@@ -1381,12 +1491,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.21" data-path="29-debug_regs.html">
+        <li class="chapter " data-level="1.9.2.21" data-path="29-debug_step.html">
             
-                <a href="29-debug_regs.html">
+                <a href="29-debug_step.html">
             
                     
-                    9.2.29 tinydbg> regs
+                    9.2.29 tinydbg> step
             
                 </a>
             
@@ -1394,12 +1504,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.22" data-path="30-debug_bt.html">
+        <li class="chapter " data-level="1.9.2.22" data-path="30-debug_pmem.html">
             
-                <a href="30-debug_bt.html">
+                <a href="30-debug_pmem.html">
             
                     
-                    9.2.30 tinydbg> bt
+                    9.2.30 tinydbg> pmem
             
                 </a>
             
@@ -1407,12 +1517,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.23" data-path="31-debug_vars.html">
+        <li class="chapter " data-level="1.9.2.23" data-path="31-debug_regs.html">
             
-                <a href="31-debug_vars.html">
+                <a href="31-debug_regs.html">
             
                     
-                    9.2.31 tinydbg> vars
+                    9.2.31 tinydbg> regs
             
                 </a>
             
@@ -1420,20 +1530,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.24" data-path="32-how_listfunctions_work.html">
-            
-                <a href="32-how_listfunctions_work.html">
-            
-                    
-                    9.2.32 how ListFunctions work
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.9.2.25" data-path="32-debug_funcs.html">
+        <li class="chapter " data-level="1.9.2.24" data-path="32-debug_funcs.html">
             
                 <a href="32-debug_funcs.html">
             
@@ -1446,12 +1543,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.26" data-path="33-debug_goroutines.html">
+        <li class="chapter " data-level="1.9.2.25" data-path="33-debug_vars.html">
             
-                <a href="33-debug_goroutines.html">
+                <a href="33-debug_vars.html">
             
                     
-                    9.2.33 tinydbg> goroutines
+                    9.2.33 tinydbg> vars
             
                 </a>
             
@@ -1459,12 +1556,51 @@
             
         </li>
     
-        <li class="chapter " data-level="1.9.2.27" data-path="34-multi-threads.html">
+        <li class="chapter " data-level="1.9.2.26" data-path="34-debug_bt.html">
             
-                <a href="34-multi-threads.html">
+                <a href="34-debug_bt.html">
             
                     
-                    9.2.34 跟踪多线程程序
+                    9.2.34 tinydbg> bt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.27" data-path="100-how_listfunctions_work.html">
+            
+                <a href="100-how_listfunctions_work.html">
+            
+                    
+                    9.2.100 how ListFunctions work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.28" data-path="100-debug_goroutines.html">
+            
+                <a href="100-debug_goroutines.html">
+            
+                    
+                    9.2.100 tinydbg> goroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.29" data-path="100-multi-threads.html">
+            
+                <a href="100-multi-threads.html">
+            
+                    
+                    9.2.100 跟踪多线程程序
             
                 </a>
             
@@ -1621,6 +1757,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.9.3.11" data-path="../3-高级功能扩展/110-howto_debug_deterministically.html">
+            
+                <a href="../3-高级功能扩展/110-howto_debug_deterministically.html">
+            
+                    
+                    9.3.110 如何实现确定性调试
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1663,7 +1812,7 @@
                 <a href="../../10-extras/2-development-of-logging.html">
             
                     
-                    10.2 日志系统展历程
+                    10.2 日志系统发展历程
             
                 </a>
             
@@ -1749,6 +1898,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.10.9" data-path="../../10-extras/9-ai-assisted-debugging.html">
+            
+                <a href="../../10-extras/9-ai-assisted-debugging.html">
+            
+                    
+                    10.9 AI Agent自动化调试
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -1820,7 +1982,33 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/80-go-tool-compile.html">
+        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/4-vscode-extension-bisect.html">
+            
+                <a href="../../12-appendix/4-vscode-extension-bisect.html">
+            
+                    
+                    12.4 vscode extension bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/5-ptrace-attach-race.html">
+            
+                <a href="../../12-appendix/5-ptrace-attach-race.html">
+            
+                    
+                    12.5 ptrace attach的竞态问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/80-go-tool-compile.html">
             
                 <a href="../../12-appendix/80-go-tool-compile.html">
             
@@ -1833,7 +2021,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/81-go-tool-asm.html">
+        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/81-go-tool-asm.html">
             
                 <a href="../../12-appendix/81-go-tool-asm.html">
             
@@ -1846,7 +2034,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/82-go-tool-link.html">
+        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/82-go-tool-link.html">
             
                 <a href="../../12-appendix/82-go-tool-link.html">
             
@@ -1859,7 +2047,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/90-why-buildid-loaded.html">
+        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/90-why-buildid-loaded.html">
             
                 <a href="../../12-appendix/90-why-buildid-loaded.html">
             
@@ -1872,7 +2060,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
+        <li class="chapter " data-level="1.12.10" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
             
                 <a href="../../12-appendix/91-syntax-and-semantic-analysis.html">
             
@@ -1885,12 +2073,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
+        <li class="chapter " data-level="1.12.11" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
             
                 <a href="../../12-appendix/92-why-gdb-uses-symtab.html">
             
                     
                     12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../../12-appendix/93-anatomy-of-elf-core-file.html">
+            
+                <a href="../../12-appendix/93-anatomy-of-elf-core-file.html">
+            
+                    
+                    12.16 More: ELF core文件格式剖析
             
                 </a>
             
@@ -1933,7 +2134,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >9.2.22 tinydbg> breakpoint - part2</a>
+        <a href="../.." >9.2.22 tinydbg> breakpoint - part2: 添加断点+执行到断点</a>
     </h1>
 </div>
 
@@ -1950,37 +2151,31 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 87;
+  counter-reset: h1 94;
 }
 </style></p>
-<h2 id="breakpoint---part2-&#x65AD;&#x70B9;&#x76F8;&#x5173;&#x547D;&#x4EE4;&#x5B9E;&#x73B0;">Breakpoint - part2: &#x65AD;&#x70B9;&#x76F8;&#x5173;&#x547D;&#x4EE4;&#x5B9E;&#x73B0;</h2>
-<p>&#x524D;&#x4E00;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x6DF1;&#x5165;&#x4ECB;&#x7ECD;&#x4E86;&#x73B0;&#x4EE3;&#x8C03;&#x8BD5;&#x5668;&#x65AD;&#x70B9;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#x9762;&#x4E34;&#x7684;&#x6311;&#x6218;&#x4EE5;&#x53CA;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF0C;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x4ECE;&#x5B9E;&#x73B0;&#x89D2;&#x5EA6;&#x51FA;&#x53D1;&#xFF0C;&#x6765;&#x770B;&#x4E00;&#x770B;tinydbg&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5E38;&#x7528;&#x65AD;&#x70B9;&#x64CD;&#x4F5C;&#x7684;&#x3002;</p>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;-breakpoint-breakpoints-clear-clearall-toggle">&#x5B9E;&#x73B0;&#x76EE;&#x6807;: <code>breakpoint</code> <code>breakpoints</code> <code>clear</code> <code>clearall</code> <code>toggle</code></h3>
-<p>&#x672C;&#x8282;&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF0C;&#x91CD;&#x70B9;&#x662F;&#x4ECB;&#x7ECD;&#x65AD;&#x70B9;&#x7684;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#xFF0C;&#x4EE5;&#x53CA;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x547D;&#x4EE4; <code>breakpoint</code> &#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x3002;&#x7531;&#x4E8E;&#x91C7;&#x7528;&#x4E86;&#x65AD;&#x70B9;&#x7684;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#x63AA;&#x65BD;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x5FC5;&#x8981;&#x7684;&#x5C42;&#x6B21;&#x8BBE;&#x8BA1;&#x53CA;&#x62BD;&#x8C61;&#xFF0C;&#x4EE3;&#x7801;&#x590D;&#x6742;&#x5EA6;&#x3001;&#x7406;&#x89E3;&#x96BE;&#x5EA6;&#x4E5F;&#x968F;&#x4E4B;&#x589E;&#x52A0;&#x3002;&#x65AD;&#x70B9;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x4E3A;&#x4E86;&#x8BFB;&#x8005;&#x9605;&#x8BFB;&#x8D77;&#x6765;&#x66F4;&#x52A0;&#x53CB;&#x597D;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x4E00;&#x4E2A;&#x5C0F;&#x8282;&#x5C31;&#x4ECB;&#x7ECD;&#x5B8C;&#x6240;&#x6709;&#x4E0E;&#x65AD;&#x70B9;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x800C;&#x662F;&#x5148;&#x4ECB;&#x7ECD;&#x63D0;&#x53CA;&#x7684;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<h2 id="breakpoint---part2-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;">Breakpoint - part2: &#x6DFB;&#x52A0;&#x65AD;&#x70B9;+&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;</h2>
+<p>&#x524D;&#x4E00;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x6DF1;&#x5165;&#x4ECB;&#x7ECD;&#x4E86;&#x73B0;&#x4EE3;&#x8C03;&#x8BD5;&#x5668;&#x65AD;&#x70B9;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#x9762;&#x4E34;&#x7684;&#x6311;&#x6218;&#x4EE5;&#x53CA;&#x89E3;&#x51B3;&#x529E;&#x6CD5;&#xFF0C;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x4ECE;&#x5B9E;&#x73B0;&#x89D2;&#x5EA6;&#x51FA;&#x53D1;&#xFF0C;&#x6765;&#x770B;&#x4E00;&#x770B;tinydbg&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x5E38;&#x7528;&#x65AD;&#x70B9;&#x64CD;&#x4F5C;&#x7684;&#xFF0C;&#x4EE5;&#x53CA;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#x7684;&#x5904;&#x7406;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;-&#x6DFB;&#x52A0;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;: &#x6DFB;&#x52A0;+&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;</h3>
+<p>&#x672C;&#x8282;&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF0C;&#x91CD;&#x70B9;&#x662F;&#x4ECB;&#x7ECD;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x547D;&#x4EE4; <code>breakpoint</code> &#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#xFF0C;&#x4EE5;&#x53CA;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x540E;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x76F8;&#x5173;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;&#x524D;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x4E86;&#x73B0;&#x4EE3;&#x8C03;&#x8BD5;&#x5668;&#x65AD;&#x70B9;&#x7684;&#x5C42;&#x6B21;&#x5316;&#x3001;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x4E00;&#x4E9B;&#x5FC5;&#x8981;&#x7684;&#x8BBE;&#x8BA1;&#x53CA;&#x62BD;&#x8C61;&#xFF0C;&#x5B9E;&#x73B0;&#x4E5F;&#x4F1A;&#x76F8;&#x5BF9;&#x66F4;&#x590D;&#x6742;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x6709;&#x591A;&#x4E2A;&#x4E0E;&#x65AD;&#x70B9;&#x673A;&#x5236;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;&#x5185;&#x5BB9;&#x66F4;&#x805A;&#x7126;&#x3001;&#x66F4;&#x4FBF;&#x4E8E;&#x9605;&#x8BFB;&#x7406;&#x89E3;&#xFF0C;&#x672C;&#x8282;&#x4EC5;&#x4ECB;&#x7ECD;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x547D;&#x4EE4; <code>breakpoint</code> &#x4EE5;&#x53CA; &#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x540E;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x65AD;&#x70B9;&#x76F8;&#x5173;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x4E2D;&#x6700;&#x6838;&#x5FC3;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x7406;&#x89E3;&#x4E86;&#x8FD9;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x540E;&#xFF0C;&#x518D;&#x53BB;&#x7406;&#x89E3;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x5C31;&#x7B80;&#x5355;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x540E;&#x7EED;&#x5C0F;&#x8282;&#x4E2D;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>&#x65AD;&#x70B9;&#x4EE5;&#x53CA;&#x4E0E;&#x65AD;&#x70B9;&#x673A;&#x5236;&#x76F8;&#x5173;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x8BBE;&#x8BA1;&#x53CA;&#x5B9E;&#x73B0;&#xFF0C;&#x5185;&#x5BB9;&#x7EC4;&#x7EC7;&#x4E0A;&#x6211;&#x662F;&#x8FD9;&#x4E48;&#x89C4;&#x5212;&#x7684;&#xFF1A;</p>
 <ul>
-<li>breakpoint&#xFF0C;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3001;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#xFF1B;</li>
-<li>breakpoints&#xFF0C;&#x5217;&#x51FA;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF1B;</li>
-<li>clear&#xFF0C;&#x79FB;&#x9664;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#xFF1B;</li>
-<li>clearall&#xFF0C;&#x79FB;&#x9664;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF1B;</li>
-<li>toggle&#xFF0C;&#x6FC0;&#x6D3B;&#x3001;&#x5173;&#x95ED;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#xFF1B;</li>
+<li>part1&#xFF1A;&#x4ECB;&#x7ECD;&#x73B0;&#x4EE3;&#x8C03;&#x8BD5;&#x5668;&#x65AD;&#x70B9;&#x7684;&#x5C42;&#x6B21;&#x5316;&#x3001;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#xFF1B;</li>
+<li>part2&#xFF1A;breakpoint&#x547D;&#x4EE4;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF0C;&#x4EE5;&#x53CA;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x540E;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF1B;</li>
+<li>part3&#xFF1A;<code>breakpoint ... if expr</code> or <code>condition &lt;bpid&gt; expr</code> &#x6761;&#x4EF6;&#x65AD;&#x70B9;&#x7684;&#x521B;&#x5EFA;&#xFF0C;&#x53CA;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x540E;&#x7684;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF1B;</li>
+<li>part4&#xFF1A;<code>breakpoints</code> <code>clear</code> <code>clearall</code> <code>toggle</code>&#xFF0C;&#x8FD9;&#x51E0;&#x4E2A;&#x67E5;&#x770B;&#x3001;&#x6E05;&#x7406;&#x3001;&#x5173;&#x95ED;or&#x6FC0;&#x6D3B;&#x65AD;&#x70B9;&#x7684;&#x64CD;&#x4F5C;&#xFF1B;</li>
+<li>~part5~&#xFF1A;<code>trace</code> <code>watch</code> &#x8FD9;&#x4E24;&#x79CD;&#x7279;&#x6B8A;&#x7C7B;&#x578B;&#x7684;&#x65AD;&#x70B9;&#x4F1A;&#x5728; <a href="25-debug_trace.html">trace</a> &#x548C; <a href="26-debug_watch.html">watch</a> &#x4E2D;&#x5206;&#x522B;&#x8FDB;&#x884C;&#x4ECB;&#x7ECD;&#x3002;</li>
 </ul>
-<p>&#x53E6;&#x5916;&#x51E0;&#x4E2A;&#x65AD;&#x70B9;&#x76F8;&#x5173;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x540E;&#x7EED;&#x5C0F;&#x8282;&#x4E2D;&#x4ECB;&#x7ECD;&#xFF1A;</p>
-<ul>
-<li>condition&#xFF0C;&#x5C06;&#x5DF2;&#x6709;&#x65AD;&#x70B9;&#x8F6C;&#x5316;&#x4E3A;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#xFF1B;</li>
-<li>on&#xFF0C;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x65F6;&#x8981;&#x6267;&#x884C;&#x7684;&#x5177;&#x4F53;&#x52A8;&#x4F5C;&#xFF1B;</li>
-<li>trace&#xFF0C;&#x5728;&#x6307;&#x5B9A;&#x4F4D;&#x7F6E;&#x8BBE;&#x7F6E;tracepoint&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x8FD8;&#x662F;&#x65AD;&#x70B9;&#xFF0C;&#x547D;&#x4E2D;&#x540E;&#x5E76;&#x6253;&#x5370;&#x76F8;&#x5173;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x6062;&#x590D;&#x6267;&#x884C;&#xFF1B;</li>
-<li>watch&#xFF0C;&#x76D1;&#x89C6;&#x5BF9;&#x67D0;&#x4E2A;&#x53D8;&#x91CF;&#x6216;&#x8005;&#x5185;&#x5B58;&#x5730;&#x5740;&#x5904;&#x7684;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#xFF0C;&#x662F;&#x501F;&#x52A9;&#x786C;&#x4EF6;&#x65AD;&#x70B9;&#x5BF9;&#x7279;&#x5B9A;&#x5730;&#x5740;&#x7684;&#x6570;&#x636E;&#x8BFB;&#x5199;&#x3001;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF1B;</li>
-</ul>
-<p>ps&#xFF1A;&#x8BF4;&#x5B83;&#x4EEC;&#x76F8;&#x5173;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x8FD9;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x4E5F;&#x662F;&#x5728;&#x65AD;&#x70B9;&#x57FA;&#x7840;&#x4E0A;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;<code>condition</code> &#x4E3A;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x589E;&#x52A0;&#x6761;&#x4EF6;&#x9650;&#x5236;&#xFF0C;<code>on</code> &#x5728;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x65F6;&#x6267;&#x884C;&#x52A8;&#x4F5C;&#xFF0C;<code>trace</code> &#x5728;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x65F6;&#x6253;&#x5370;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C;<code>watch</code> &#x76F8;&#x5BF9;&#x7279;&#x6B8A;&#x4E00;&#x70B9;&#x4F7F;&#x7528;&#x786C;&#x4EF6;&#x65AD;&#x70B9;&#x6765;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>ps: <code>on &lt;bpid&gt; command</code> &#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x540E;&#x6267;&#x884C;&#x6307;&#x5B9A;&#x7684;&#x52A8;&#x4F5C;&#xFF0C;&#x8FD9;&#x4E2A;&#x4F1A;&#x5728;&#x4ECB;&#x7ECD;part2&#x3001;part3&#x8FC7;&#x7A0B;&#x4E2D;&#x4ECB;&#x7ECD;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;-breakpoint">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;: <code>breakpoint</code></h3>
 <p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x4E0B; <code>breakpoint</code> &#x547D;&#x4EE4;&#x5728;clientside&#x3001;serverside&#x5206;&#x522B;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
 <p>&#x5148;&#x6765;&#x770B;&#x770B;break&#x652F;&#x6301;&#x7684;&#x64CD;&#x4F5C;, <code>break [--name|-n=name] [locspec] [if &lt;condition&gt;]</code>:</p>
 <ul>
-<li>&#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#x540D;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x8BD5;&#x4EFB;&#x52A1;&#x6BD4;&#x8F83;&#x91CD;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x5927;&#x91CF;&#x65AD;&#x70B9;&#xFF0C;&#x80FD;&#x7ED9;&#x65AD;&#x70B9;&#x547D;&#x540D;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x5B83;&#x6BD4;id&#x66F4;&#x6613;&#x4E8E;&#x8FA8;&#x8BC6;&#x4F7F;&#x7528;&#xFF1B;</li>
-<li>&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x8FC7;&#x7684;&#x6240;&#x6709;&#x53D7;&#x652F;&#x6301;&#x7684; <code>locspec</code>&#x5199;&#x6CD5;&#xFF0C;<code>break</code> &#x547D;&#x4EE4;&#x90FD;&#x4E88;&#x4EE5;&#x4E86;&#x652F;&#x6301;&#xFF0C;&#x8FD9;&#x5C06;&#x4F7F;&#x5F97;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#xFF1B;</li>
-<li>&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x65F6;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#x6FC0;&#x6D3B;&#x6761;&#x4EF6; <code>if &lt;condition&gt;</code>&#xFF0C;&#x8FD9;&#x91CC;&#x7684;condition&#x662F;&#x4EFB;&#x610F;bool&#x7C7B;&#x578B;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</li>
+<li><code>--name|-n=name</code> &#x53EF;&#x4EE5;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#x540D;&#x5B57;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x8BD5;&#x4EFB;&#x52A1;&#x6BD4;&#x8F83;&#x91CD;&#xFF0C;&#x6D89;&#x53CA;&#x5230;&#x5927;&#x91CF;&#x65AD;&#x70B9;&#xFF0C;&#x80FD;&#x7ED9;&#x65AD;&#x70B9;&#x547D;&#x540D;&#x975E;&#x5E38;&#x6709;&#x7528;&#xFF0C;&#x5B83;&#x6BD4;id&#x3001;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x66F4;&#x6613;&#x4E8E;&#x8FA8;&#x8BC6;&#x4F7F;&#x7528;&#xFF1B;</li>
+<li><code>[locspec]</code> &#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x8FC7;&#x7684;&#x6240;&#x6709;&#x53D7;&#x652F;&#x6301;&#x7684; <code>locspec</code>&#x5199;&#x6CD5;&#xFF0C;<code>break</code> &#x547D;&#x4EE4;&#x90FD;&#x4E88;&#x4EE5;&#x4E86;&#x652F;&#x6301;&#xFF0C;&#x8FD9;&#x5C06;&#x4F7F;&#x5F97;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x975E;&#x5E38;&#x65B9;&#x4FBF;&#xFF1B;</li>
+<li><code>[if condition]</code> &#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x65F6;&#x8FD8;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x6307;&#x5B9A;&#x65AD;&#x70B9;&#x6FC0;&#x6D3B;&#x6761;&#x4EF6; <code>if &lt;condition&gt;</code>&#xFF0C;&#x8FD9;&#x91CC;&#x7684;condition&#x662F;&#x4EFB;&#x610F;bool&#x7C7B;&#x578B;&#x8868;&#x8FBE;&#x5F0F;&#x3002;</li>
 </ul>
-<p>ps&#xFF1A;&#x5982;&#x679C;&#x65AD;&#x70B9;&#x5DF2;&#x7ECF;&#x521B;&#x5EFA;&#xFF0C;&#x540E;&#x7EED;&#x8C03;&#x8BD5;&#x671F;&#x95F4;&#x5E0C;&#x671B;&#x7ED9;&#x8FD9;&#x4E2A;&#x65AD;&#x70B9;&#x52A0;&#x4E2A;&#x6FC0;&#x6D3B;&#x6761;&#x4EF6;&#xFF0C;&#x4E5F;&#x662F;&#x53EF;&#x4EE5;&#x7684;&#xFF0C;<code>condition &lt;breakpoint&gt; &lt;bool expr&gt;</code>&#xFF0C;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#x4E0A;&#x548C; <code>if condition</code> &#x662F;&#x76F8;&#x540C;&#x7684;&#x3002;</p>
+<p>ps&#xFF1A;&#x5982;&#x679C;&#x65AD;&#x70B9;&#x521B;&#x5EFA;&#x65F6;&#x672A;&#x6307;&#x5B9A;&#x6FC0;&#x6D3B;&#x6761;&#x4EF6;&#xFF0C;&#x540E;&#x7EED;&#x4E5F;&#x53EF;&#x4EE5;&#x4F7F;&#x7528; <code>condition &lt;breakpoint&gt; &lt;boolexpr&gt;</code> &#x4E3A;&#x5DF2;&#x6709;&#x65AD;&#x70B9;&#x6307;&#x5B9A;&#x6FC0;&#x6D3B;&#x6761;&#x4EF6;&#x3002;</p>
 <pre><code class="lang-bash">(tinydbg) <span class="hljs-built_in">help</span> <span class="hljs-built_in">break</span>
 Sets a breakpoint.
 
@@ -2002,9 +2197,9 @@ Finally, you can assign a condition to the newly created breakpoint by using the
 
 Alternatively you can <span class="hljs-built_in">set</span> a condition on a breakpoint after created by using the <span class="hljs-string">&apos;on&apos;</span> command.
 </code></pre>
-<p>ps&#xFF1A;&#x6211;&#x4EEC;&#x91CD;&#x5199;&#x4E86;tinydbg&#x7684;clientside&#x7684;&#x65AD;&#x70B9;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x76F8;&#x5BF9;&#x4F4E;&#x9891;&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;[name]&#x8C03;&#x6574;&#x4E3A;&#x4E86;&#x9009;&#x9879; <code>--name|-n=&lt;name&gt;</code>&#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x4F7F;&#x5F97;&#x7A0B;&#x5E8F;&#x4E2D;&#x89E3;&#x6790;&#x65AD;&#x70B9;name, locspec, condition&#x7684;&#x903B;&#x8F91;&#x5927;&#x5E45;&#x7B80;&#x5316;&#x3002;</p>
-<p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x65AD;&#x70B9;&#x547D;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x7EC6;&#x8282;&#x3002;</p>
-<h4 id="clientside-&#x5B9E;&#x73B0;">clientside &#x5B9E;&#x73B0;</h4>
+<p>ps&#xFF1A;tinydbg&#x91CD;&#x5199;&#x4E86;go-delve/delve&#x7684;clientside&#x7684;&#x65AD;&#x70B9;&#x64CD;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x76F8;&#x5BF9;&#x4F4E;&#x9891;&#x4F7F;&#x7528;&#x7684;&#x53C2;&#x6570;[name]&#x8C03;&#x6574;&#x4E3A;&#x4E86;&#x9009;&#x9879; <code>--name|-n=&lt;name&gt;</code> &#x7684;&#x5F62;&#x5F0F;&#xFF0C;&#x8FD9;&#x6837;&#x4E5F;&#x4F7F;&#x5F97;&#x7A0B;&#x5E8F;&#x4E2D;&#x89E3;&#x6790;&#x65AD;&#x70B9;name, locspec, condition&#x7684;&#x903B;&#x8F91;&#x5927;&#x5E45;&#x7B80;&#x5316;&#x3002;&#x539F;&#x6765;go-delve/delve&#x4E2D;&#x7684;breakpoint&#x547D;&#x4EE4;&#x7684;&#x53C2;&#x6570;&#x3001;&#x9009;&#x9879;&#x3001;&#x6761;&#x4EF6;&#x89E3;&#x6790;&#x903B;&#x8F91;&#xFF0C;&#x53EF;&#x8BFB;&#x6027;&#x6B20;&#x4F73;&#xFF0C;&#x4E0D;&#x592A;&#x9002;&#x5408;&#x4F5C;&#x4E3A;&#x6559;&#x7A0B;&#x793A;&#x4F8B;&#x7ED9;&#x5927;&#x5BB6;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x770B;tinydbg&#x4E2D;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;clientside&#x3001;serverside&#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x3002;</p>
+<h4 id="clientside-&#x6838;&#x5FC3;&#x4EE3;&#x7801;">clientside &#x6838;&#x5FC3;&#x4EE3;&#x7801;</h4>
 <pre><code class="lang-bash">debug_breakpoint.go:breakpointCmd.cmdFn(...), 
 i.e., breakpoint(...)
     \--&gt; _, err := <span class="hljs-built_in">set</span>Breakpoint(t, ctx, <span class="hljs-literal">false</span>, args)
@@ -2017,7 +2212,7 @@ i.e., breakpoint(...)
             \--&gt; <span class="hljs-keyword">if</span> findLocErr != nil &amp;&amp; shouldAskToSuspendBreakpoint(t)
             |    &#x5982;&#x679C;&#x6CA1;&#x627E;&#x5230;&#xFF0C;&#x8BE2;&#x95EE;&#x662F;&#x5426;&#x8981;&#x6DFB;&#x52A0;suspended&#x65AD;&#x70B9;&#xFF0C;&#x540E;&#x7EED;&#x4F1A;&#x6FC0;&#x6D3B;
             |       bp, err := t.client.CreateBreakpointWithExpr(requestedBp, spec, t.substitutePathRules(), <span class="hljs-literal">true</span>)
-            |       <span class="hljs-built_in">return</span> nil, nil
+            |       <span class="hljs-built_in">return</span> nil, err 
             |    <span class="hljs-keyword">if</span> findLocErr != nil 
             |       <span class="hljs-built_in">return</span> nil, findLocErr
             |
@@ -2026,6 +2221,9 @@ i.e., breakpoint(...)
             |
             \--&gt; foreach loc <span class="hljs-keyword">in</span> locs <span class="hljs-keyword">do</span>
             |    &#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x627E;&#x5230;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x521B;&#x5EFA;&#x65AD;&#x70B9;
+            |       requestBp.Addr = loc.PC; 
+            |       requestedBp.Addrs = loc.PCs;
+            |       requestedBp.AddrPid = loc.PCPids
             |       bp, err := t.client.CreateBreakpointWithExpr(requestedBp, spec, t.substitutePathRules(), <span class="hljs-literal">false</span>)
             |
             \--&gt; <span class="hljs-keyword">if</span> it is a tracepoint, <span class="hljs-built_in">set</span> breakpoints <span class="hljs-keyword">for</span> <span class="hljs-built_in">return</span> addresses, <span class="hljs-keyword">then</span>
@@ -2043,10 +2241,10 @@ i.e., breakpoint(...)
 <li>&#x89E3;&#x6790;&#x8F93;&#x5165;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x5F97;&#x5230;&#x65AD;&#x70B9;&#x540D;name&#x3001;&#x4F4D;&#x7F6E;&#x63CF;&#x8FF0;spec&#x3001;&#x6761;&#x4EF6;cond&#xFF1B;</li>
 <li>&#x7136;&#x540E;&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x4F4D;&#x7F6E;&#x63CF;&#x8FF0;spec&#x5BF9;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5217;&#x8868;&#xFF1B;</li>
 <li>&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x67E5;&#x627E;spec&#x5931;&#x8D25;&#xFF0C;&#x81F3;&#x5C11;&#x8BF4;&#x660E;spec&#x5BF9;&#x5E94;&#x7684;&#x4F4D;&#x7F6E;&#x5F53;&#x524D;&#x6CA1;&#x6709;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x3002;&#x6B64;&#x65F6;&#x8BE2;&#x95EE;&#x662F;&#x5426;&#x8981;&#x5C1D;&#x8BD5;&#x6DFB;&#x52A0;suspended&#x65AD;&#x70B9;&#xFF0C;&#x7B49;&#x540E;&#x7EED;&#x6307;&#x4EE4;&#x52A0;&#x8F7D;&#x540E;&#x6216;&#x8005;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x6FC0;&#x6D3B;&#x65AD;&#x70B9;&#xFF1B;&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x67E5;&#x627E;spec&#x5931;&#x8D25;&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x6DFB;&#x52A0;suspended&#x65AD;&#x70B9;&#xFF0C;&#x90A3;&#x4E48;&#x8FD4;&#x56DE;&#x5931;&#x8D25;&#x3002;</li>
-<li>&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x67E5;&#x627E;spec&#x5931;&#x8D25;&#xFF0C;&#x5219;&#x5C06;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x6BCF;&#x4E2A;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#x90FD;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF1B;</li>
+<li>&#x5982;&#x679C;&#x670D;&#x52A1;&#x5668;&#x67E5;&#x627E;spec&#x6210;&#x529F;&#xFF0C;&#x5219;&#x5C06;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x7684;&#x6BCF;&#x4E2A;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;([]api.Location)&#x90FD;&#x8BF7;&#x6C42;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF1B;</li>
 <li>&#x5982;&#x679C;&#x5F53;&#x524D;&#x6DFB;&#x52A0;&#x7684;&#x662F;tracepoint&#xFF0C;&#x5E76;&#x4E14;&#x89E3;&#x6790;&#x51FA;&#x7684;&#x4F4D;&#x7F6E;&#x63CF;&#x8FF0;spec&#x4E2D;&#x8FD8;&#x5339;&#x914D;&#x4E86;&#x4E00;&#x4E9B;&#x51FD;&#x6570;&#xFF0C;tracepoint&#x56E0;&#x4E3A;&#x8981;&#x89C2;&#x5BDF;func&#x7684;&#x8FDB;&#x5165;&#x3001;&#x9000;&#x51FA;&#x65F6;&#x72B6;&#x6001;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x8BF7;&#x6C42;&#x670D;&#x52A1;&#x5668;&#x8FD4;&#x56DE;&#x5339;&#x914D;&#x51FD;&#x6570;&#x7684;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#x5217;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#x5904;&#x4E5F;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3002;</li>
 </ol>
-<p>&#x901A;&#x8FC7;clientside&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7C97;&#x7565;&#x770B;&#x51FA;&#xFF0C;&#x8FD9;&#x91CC;&#x5904;&#x7406;&#x4E86;&#x666E;&#x901A;&#x65AD;&#x70B9;&#x3001;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#x3001;suspended&#x65AD;&#x70B9;&#x3001;tracepoints &#x3002;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x53EF;&#x4EE5;&#x5173;&#x6CE8;&#xFF0C;clientside&#x53D1;&#x8D77;&#x7684;RPC&#x64CD;&#x4F5C;&#x65F6;&#x4E0D;&#x540C;&#x65AD;&#x70B9;&#x60C5;&#x51B5;&#x4E0B;&#x7684;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
+<p>&#x901A;&#x8FC7;clientside&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x7C97;&#x7565;&#x770B;&#x51FA;&#xFF0C;&#x8FD9;&#x91CC;&#x5904;&#x7406;&#x4E86;&#x666E;&#x901A;&#x65AD;&#x70B9;&#x3001;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#x3001;suspended&#x65AD;&#x70B9;&#x3001;tracepoints &#x3002;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x53EF;&#x4EE5;&#x5173;&#x6CE8;&#xFF0C;clientside&#x6DFB;&#x52A0;&#x4E0D;&#x540C;&#x7C7B;&#x578B;&#x65AD;&#x70B9;&#x65F6;&#x7528;&#x5230;&#x7684;RPC&#x4EE5;&#x53CA;RPC&#x53C2;&#x6570;&#x8BBE;&#x7F6E;&#x7684;&#x5DEE;&#x5F02;&#x3002;</p>
 <blockquote>
 <p>ps:  &#x521B;&#x5EFA;&#x65AD;&#x70B9;&#x76F8;&#x5173;&#x7684;&#x51E0;&#x4E2A;RPC&#x534F;&#x8BAE;&#x8BBE;&#x8BA1;&#xFF0C;&#x7ED9;&#x4EBA;&#x611F;&#x89C9;&#x975E;&#x5E38;&#x7E41;&#x7410;&#x3001;&#x5197;&#x4F59;&#x3001;&#x4E0D;&#x7CBE;&#x70BC;&#x3002;</p>
 <pre><code>type Client interface {
@@ -2061,44 +2259,49 @@ i.e., breakpoint(...)
 </code></pre><p>&#x5B9E;&#x9645;&#x4E0A;api.Breakpoint&#x63CF;&#x8FF0;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#x5728;clientside&#x5E0C;&#x671B;&#x80FD;&#x770B;&#x5230;&#x7684;&#x5B8C;&#x6574;&#x4FE1;&#x606F;&#xFF0C;&#x4F46;&#x662F;&#x5C06;&#x5176;&#x7528;&#x4E8E;&#x521B;&#x5EFA;&#x65AD;&#x70B9;&#x8BF7;&#x6C42;&#xFF0C;&#x8BA9;&#x4EBA;&#x611F;&#x89C9;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x975E;&#x5E38;&#x4E0D;&#x65B9;&#x4FBF;&#xFF0C;&#x8FD9;&#x4E2A;&#x7C7B;&#x578B;&#x6709;29&#x4E2A;&#x5B57;&#x6BB5;&#xFF0C;&#x8BBE;&#x7F6E;&#x662F;&#x54EA;&#x4E9B;&#x5B57;&#x6BB5;&#x624D;&#x662F;&#x6709;&#x6548;&#x8BF7;&#x6C42;&#x5462;&#xFF1F;&#x518D;&#x6BD4;&#x5982;CreateBreakpointWithExpr&#xFF0C;&#x7B2C;2&#x3001;3&#x4E2A;&#x53C2;&#x6570;&#x5206;&#x522B;&#x662F;locspec&#x4EE5;&#x53CA;&#x662F;&#x5426;&#x662F;suspended bp&#xFF0C;&#x8FD9;&#x4FE9;&#x5B57;&#x6BB5;&#x672C;&#x6765;&#x5C31;&#x53EF;&#x4EE5;&#x5305;&#x542B;&#x5728;api.Breakpoint&#x5185;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x53C8;&#x8981;&#x591A;&#x6B64;&#x4E00;&#x4E3E;&#x653E;&#x5916;&#x9762;&#xFF1F;&#x603B;&#x4E4B;&#x5C31;&#x611F;&#x89C9;&#x8FD9;&#x91CC;&#x7684;API&#x8BBE;&#x8BA1;&#x6709;&#x70B9;&#x96BE;&#x53D7;&#x3002;</p>
 </blockquote>
 <p>&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x770B;&#x770B;&#x670D;&#x52A1;&#x5668;&#x6536;&#x5230;serverside&#x7684;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x8BF7;&#x6C42;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x3002;</p>
-<h4 id="serverside-&#x5B9E;&#x73B0;">serverside &#x5B9E;&#x73B0;</h4>
-<p>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x63CF;&#x8FF0;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x590D;&#x6742;&#xFF0C;&#x5982;&#x524D;&#x9762;&#x6240;&#x5C5E;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4FA7;&#x4E3A;&#x4E86;&#x5E94;&#x5BF9;&#x5404;&#x79CD;&#x8C03;&#x6574;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x591A;&#x79CD;&#x5C42;&#x6B21;&#x7684;&#x62BD;&#x8C61;&#x548C;&#x4E0D;&#x540C;&#x5B9E;&#x73B0;&#x3002;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x4E86;&#x65AD;&#x70B9;&#x5C42;&#x6B21;&#x5316;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#x5BF9;&#x4E8E;&#x7406;&#x89E3;serverside&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x3002;</p>
+<h4 id="serverside-&#x6838;&#x5FC3;&#x4EE3;&#x7801;">serverside &#x6838;&#x5FC3;&#x4EE3;&#x7801;</h4>
+<p>&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x63CF;&#x8FF0;&#x8D77;&#x6765;&#x53EF;&#x80FD;&#x6709;&#x70B9;&#x590D;&#x6742;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x4FA7;&#x4E3A;&#x4E86;&#x5E94;&#x5BF9;&#x5404;&#x79CD;&#x8C03;&#x6574;&#xFF0C;&#x5F15;&#x5165;&#x4E86;&#x591A;&#x79CD;&#x5C42;&#x6B21;&#x7684;&#x62BD;&#x8C61;&#x548C;&#x4E0D;&#x540C;&#x5B9E;&#x73B0;&#x3002;&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x4E86;&#x65AD;&#x70B9;&#x5C42;&#x6B21;&#x5316;&#x7BA1;&#x7406;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x4FE1;&#x606F;&#x5BF9;&#x4E8E;&#x7406;&#x89E3;serverside&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x975E;&#x5E38;&#x91CD;&#x8981;&#x3002;</p>
 <p>OK&#xFF0C;&#x5047;&#x5B9A;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x4EEC;&#x5DF2;&#x7ECF;&#x7406;&#x89E3;&#x4E86;&#x4E0A;&#x8FF0;&#x5185;&#x5BB9;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6574;&#x4F53;&#x4ECB;&#x7ECD;&#x4E0B;serverside&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7684;&#x5904;&#x7406;&#x6D41;&#x7A0B;&#x3002;</p>
 <pre><code class="lang-bash">rpc2/server.go:CreateBreakpoint
 func (s *RPCServer) CreateBreakpoint(arg CreateBreakpointIn, out *CreateBreakpointOut) error {
     \--&gt; err := api.ValidBreakpointName(arg.Breakpoint.Name)
     \--&gt; createdbp, err := s.debugger.CreateBreakpoint(&amp;arg.Breakpoint, arg.LocExpr, arg.SubstitutePathRules, arg.Suspended)
     |       \--&gt; checking: <span class="hljs-keyword">if</span> breakpoints with the same name as requestBp.Name created before
-    |            d.findBreakpointByName(requestedBp.Name)
+    |       |              <span class="hljs-keyword">if</span> created before, <span class="hljs-built_in">return</span> error
+    |       |    d.findBreakpointByName(requestedBp.Name)
     |       \--&gt; checking: <span class="hljs-keyword">if</span> breakpoints with the same requestBp.ID created before
-    |            lbp := d.target.LogicalBreakpoints[requestedBp.ID]
+    |       |              <span class="hljs-keyword">if</span> created before, <span class="hljs-built_in">return</span> error
+    |       |    lbp := d.target.LogicalBreakpoints[requestedBp.ID]
     |       \--&gt; breakpoint config, initialized based on following order
     |       |    \--&gt; <span class="hljs-keyword">case</span> requestedBp.TraceReturn, 
-    |       |         setbp.PidAddrs = []proc.PidAddr{{Pid: d.target.Selected.Pid(), Addr: requestedBp.Addr}}
+    |       |    |    bpcfg.PidAddrs = []proc.PidAddr{{Pid: d.target.Selected.Pid(), Addr: requestedBp.Addr}}
     |       |    \--&gt; <span class="hljs-keyword">case</span> requestedBp.File != <span class="hljs-string">&quot;&quot;</span>,
-    |       |         setbp.File = requestBp.File
-    |       |         setbp.Line = requestBp.Line
+    |       |    |    bpcfg.File = requestBp.File
+    |       |    |    bpcfg.Line = requestBp.Line
     |       |    \--&gt; requestedBp.FunctionName != <span class="hljs-string">&quot;&quot;</span>,
-    |       |         setbp.FunctionName = requestedBp.FunctionName
-    |       |         setbp.Line = requestedBp.Line
+    |       |    |    bpcfg.FunctionName = requestedBp.FunctionName
+    |       |    |    bpcfg.Line = requestedBp.Line
     |       |    \--&gt; len(requestedBp.Addrs) &gt; 0, 
-    |       |         setbp.PidAddrs = make([]proc.PidAddr, len(requestedBp.Addrs))
-    |       |         <span class="hljs-keyword">then</span>, fill the setbp.PidAddrs with slice of PidAddr{pid,addr}
-    |       |    \--&gt; default, setbp.Addr = requestBp.Addr
+    |       |    |    bpcfg.PidAddrs = make([]proc.PidAddr, len(requestedBp.Addrs))
+    |       |    |    <span class="hljs-keyword">then</span>, fill the bpcfg.PidAddrs with slice of PidAddr{pid,addr}
+    |       |    \--&gt; default, bpcfg.Addr = requestBp.Addr
     |       \--&gt; <span class="hljs-keyword">if</span> locexpr != <span class="hljs-string">&quot;&quot;</span>, 
-    |            \--&gt; setbp.Expr = func(t *proc.Target) []uint64 {...}
-    |            \--&gt; setbp.ExprString = locExpr
+    |       |    \--&gt; bpcfg.Expr = func(t *proc.Target) []uint64 {...}
+    |       |    \--&gt; bpcfg.ExprString = locExpr
     |       \--&gt; create the logical breakpoint
     |       |    \--&gt; `id`, allocate a logical breakpoint ID
     |       |    \--&gt; lbp := &amp;proc.LogicalBreakpoint{LogicalID: id, HitCount: make(map[int64]uint64)}
+    |       |    \--&gt; d.copyLogicalBreakpointInfo(lbp, requestedBp)
+    |       |    |    copy requestedBp.X to lbp.X
+    |       |    |    d.target.ChangeBreakpointCondition(lbp, requested.Cond, requested.HitCond, requested.HitCondPerG)
     |       |    \--&gt; err = d.target.SetBreakpointEnabled(lbp, <span class="hljs-literal">true</span>)
     |       |    |    \--&gt; <span class="hljs-keyword">if</span> lbp.enabled &amp;&amp; !enabled, <span class="hljs-keyword">then</span> 
-    |       |    |         lbp.enabled = <span class="hljs-literal">false</span>
-    |       |    |         err = grp.disableBreakpoint(lbp)
+    |       |    |    |    lbp.enabled = <span class="hljs-literal">false</span>
+    |       |    |    |    err = grp.disableBreakpoint(lbp)
     |       |    |    \--&gt; <span class="hljs-keyword">if</span> !lbp.enabled &amp;&amp; enabled, <span class="hljs-keyword">then</span> 
-    |       |    |         lbp.enabled = <span class="hljs-literal">true</span>
-    |       |    |         lbp.condSatisfiable = breakpointConditionSatisfiable(grp.LogicalBreakpoints, lbp)
-    |       |    |         err = grp.enableBreakpoint(lbp)
+    |       |    |    |    lbp.enabled = <span class="hljs-literal">true</span>
+    |       |    |    |    lbp.condSatisfiable = breakpointConditionSatisfiable(grp.LogicalBreakpoints, lbp)
+    |       |    |    |    err = grp.enableBreakpoint(lbp)
     |       |    \--&gt; <span class="hljs-built_in">return</span> d.convertBreakpoint(lbp)   
     \--&gt; out.Breakpoint = *createdbp
 </code></pre>
@@ -2111,92 +2314,78 @@ func (s *RPCServer) CreateBreakpoint(arg CreateBreakpointIn, out *CreateBreakpoi
 <li>&#x5982;&#x679C;&#x6307;&#x5B9A;&#x4E86;&#x903B;&#x8F91;&#x65AD;&#x70B9;ID&#xFF0C;&#x5219;&#x68C0;&#x67E5;&#x8BE5;ID&#x662F;&#x5426;&#x5DF2;&#x7ECF;&#x88AB;&#x5176;&#x4ED6;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x4F7F;&#x7528;&#x4E86;&#x3002;
 ID&#x88AB;&#x4F7F;&#x7528;&#x5219;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF0C;&#x9519;&#x8BEF;&#x4E2D;&#x8BF4;&#x660E;&#x4E86;&#x4F7F;&#x7528;&#x8BE5;ID&#x7684;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x4FE1;&#x606F;&#xFF0C; <code>proc.BreakpointExistsError{File: lbp.File, Line: lbp.Line}</code>&#x3002;</li>
 <li>&#x6839;&#x636E;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x4E2D;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;&#x521B;&#x5EFA;&#x65AD;&#x70B9;&#xFF1A;<ul>
-<li>&#x5982;&#x679C;requestBp.TraceReturn=true&#xFF0C;&#x8BF4;&#x660E;&#x662F;tracepoint&#x8BF7;&#x6C42;&#x4E2D;&#x8FD8;&#x9700;&#x6307;&#x5B9A;&#x5730;&#x5740;requestBp.Addr&#xFF08;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF09;<pre><code>setbp.PidAddrs = []proc.PidAddr{ {Pid: d.target.Selected.Pid(), Addr: requestedBp.Addr} }
+<li>&#x5982;&#x679C;requestBp.TraceReturn=true&#xFF0C;&#x8BF4;&#x660E;&#x662F;tracepoint&#x8BF7;&#x6C42;&#x4E2D;&#x8FD8;&#x9700;&#x6307;&#x5B9A;&#x5730;&#x5740;requestBp.Addr&#xFF08;&#x51FD;&#x6570;&#x8C03;&#x7528;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF09;<pre><code>bpcfg.PidAddrs = []proc.PidAddr{ {Pid: d.target.Selected.Pid(), Addr: requestedBp.Addr} }
 </code></pre></li>
-<li>&#x5982;&#x679C;requestBp.File != &quot;&quot;, &#x5219;&#x4F7F;&#x7528;requestBp.File:requestBp.Line&#x6765;&#x521B;&#x5EFA;&#x65AD;&#x70B9;<pre><code>setbp.File = requestBp.File, setbp.Line = requestBp.Line
+<li>&#x5982;&#x679C;requestBp.File != &quot;&quot;, &#x5219;&#x4F7F;&#x7528;requestBp.File:requestBp.Line&#x6765;&#x521B;&#x5EFA;&#x65AD;&#x70B9;<pre><code>bpcfg.File = requestBp.File, bpcfg.Line = requestBp.Line
 </code></pre></li>
-<li>&#x5982;&#x679C;requestedBp.FunctionName != &quot;&quot;&#xFF0C;&#x5219;&#x4F7F;&#x7528;requestBp.FunctionName:requestBp.Line&#x6765;&#x521B;&#x5EFA;&#x65AD;&#x70B9;<pre><code>setbp.FunctionName = requestBp.FunctionName, setbp.Line = requestBp.Line
+<li>&#x5982;&#x679C;requestedBp.FunctionName != &quot;&quot;&#xFF0C;&#x5219;&#x4F7F;&#x7528;requestBp.FunctionName:requestBp.Line&#x6765;&#x521B;&#x5EFA;&#x65AD;&#x70B9;<pre><code>bpcfg.FunctionName = requestBp.FunctionName, bpcfg.Line = requestBp.Line
 </code></pre></li>
-<li>&#x5982;&#x679C; len(requestedBp.Addrs) != 0&#xFF0C;&#x5219;&#x5728;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x8FD9;&#x4E9B;&#x5730;&#x5740;&#x5904;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;<pre><code>setbp.PidAddrs = []proc.PidAddr{.....}
+<li>&#x5982;&#x679C; len(requestedBp.Addrs) != 0&#xFF0C;&#x5219;&#x5728;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x8FD9;&#x4E9B;&#x5730;&#x5740;&#x5904;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;<pre><code>bpcfg.PidAddrs = []proc.PidAddr{.....}
 </code></pre></li>
-<li>&#x5176;&#x4ED6;&#x60C5;&#x51B5;&#xFF0C;&#x4F7F;&#x7528;requestBp.Addr&#x6765;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;<pre><code>setbp.PidAddr = []proc.PidAddr{ {Pid: d.target.Selected.Pid(), Addr: requestedBp.Addr} }
+<li>&#x5176;&#x4ED6;&#x60C5;&#x51B5;&#xFF0C;&#x4F7F;&#x7528;requestBp.Addr&#x6765;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;<pre><code>bpcfg.PidAddr = []proc.PidAddr{ {Pid: d.target.Selected.Pid(), Addr: requestedBp.Addr} }
 </code></pre></li>
 </ul>
 </li>
-<li>&#x5982;&#x679C;locExpr != &quot;&quot;&#xFF0C;&#x5219;&#x89E3;&#x6790;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x5F97;&#x5230;LocationSpec&#xFF0C;setbp.Expr&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x6267;&#x884C;&#x540E;&#x8FD4;&#x56DE;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x67E5;&#x627E;&#x5230;&#x7684;&#x5730;&#x5740;&#x5217;&#x8868;<pre><code>setbp.Expr = func(t *proc.Target) []uint64 {...}
-setbp.ExprString = locExpr
+<li>&#x5982;&#x679C;locExpr != &quot;&quot;&#xFF0C;&#x5219;&#x89E3;&#x6790;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x5F97;&#x5230;LocationSpec&#xFF0C;bpcfg.Expr&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x4E2A;&#x51FD;&#x6570;&#xFF0C;&#x6267;&#x884C;&#x540E;&#x8FD4;&#x56DE;&#x4F4D;&#x7F6E;&#x8868;&#x8FBE;&#x5F0F;&#x67E5;&#x627E;&#x5230;&#x7684;&#x5730;&#x5740;&#x5217;&#x8868;<pre><code>bpcfg.Expr = func(t *proc.Target) []uint64 {...}
+bpcfg.ExprString = locExpr
 </code></pre></li>
 <li>&#x66F4;&#x65B0;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7684;id&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x65AD;&#x70B9;proc.LogicalBreakpoint{LogicalID: id, ...,Set: setbp, ...,File:...,Line:...,FunctionName:...,}</li>
+<li>&#x8BBE;&#x7F6E;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7684;&#x5B57;&#x6BB5;&#x503C;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x5176;&#x65AD;&#x70B9;&#x6761;&#x4EF6;&#xFF0C;copyLogicalBreakpointInfo-&gt;ChangeBreakpointCondition</li>
 <li>&#x8BBE;&#x7F6E;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x7269;&#x7406;&#x65AD;&#x70B9;&#xFF1A;err = d.target.SetBreakpointEnabled(lbp, true)</li>
 <li>&#x5C06;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x4FE1;&#x606F;&#x8F6C;&#x6362;&#x4E3A;api.Breakpoint&#x4FE1;&#x606F;&#x8FD4;&#x8FD8;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x5C55;&#x793A;</li>
 </ol>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E0B; <code>d.target.SetBreakpointEnabled(lbp, true)</code>&#xFF0C;&#x8BBE;&#x7F6E;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5173;&#x8054;&#x7684;&#x7269;&#x7406;&#x65AD;&#x70B9;&#x4FE1;&#x606F;&#x7684;&#x6D41;&#x7A0B;&#x3002;</p>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x770B;&#x4E0B; <code>d.target.SetBreakpointEnabled(lbp, true)</code>&#xFF0C;&#x8BBE;&#x7F6E;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7684;&#x6D41;&#x7A0B;&#xFF0C;&#x4ECE;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5230;&#x7269;&#x7406;&#x65AD;&#x70B9;&#x3001;breaklets&#xFF0C;&#x4E00;&#x8D77;&#x770B;&#x770B;&#xFF1A;</p>
 <pre><code class="lang-bash">err = d.target.SetBreakpointEnabled(lbp, <span class="hljs-literal">true</span>)
     \--&gt;  err = grp.enableBreakpoint(lbp)
             \--&gt; <span class="hljs-keyword">for</span> target <span class="hljs-keyword">in</span> grp.targets, <span class="hljs-keyword">do</span>: 
                     err := <span class="hljs-built_in">enable</span>BreakpointOnTarget(target, lbp)
                     |   \--&gt; addrs, err = FindFileLocation(t, lbp.Set.File, lbp.Set.Line), or 
-                    |        addrs, err = FindFunctionLocation(t, lbp.Set.FunctionName, lbp.Set.Line), or 
-                    |        filter the lbp.Set.PidAddrs <span class="hljs-keyword">if</span> lbp.Set.PidAddrs[i].Pid == t.Pid(), or
-                    |        runs lbp.Set.Expr() to find the address list
+                    |   |    addrs, err = FindFunctionLocation(t, lbp.Set.FunctionName, lbp.Set.Line), or 
+                    |   |    filter the lbp.Set.PidAddrs <span class="hljs-keyword">if</span> lbp.Set.PidAddrs[i].Pid == t.Pid(), or
+                    |   |    runs lbp.Set.Expr() to find the address list
                     |   \--&gt; foreach addr <span class="hljs-keyword">in</span> addrs, <span class="hljs-keyword">do</span>:
                     |           p.SetBreakpoint(lbp.LogicalID, addr, UserBreakpoint, nil)
                     |           |    \--&gt; t.setBreakpointInternal(logicalID, addr, kind, 0, cond)
                     |           |    |       \--&gt; newBreaklet := &amp;Breaklet{LogicalID: logicalID, Kind: kind, Cond: cond}
-                    |           |    |
+                    |           |    |       |
                     |           |    |       \--&gt; <span class="hljs-keyword">if</span> breakpoint existed at `addr`, <span class="hljs-keyword">then</span>
-                    |           |    |               check this newBreaklet can overlap:
-                    |           |    |               1) <span class="hljs-keyword">if</span> no, <span class="hljs-built_in">return</span> BreakpointExistsError{bp.File, bp.Line, bp.Addr}; 
-                    |           |    |               2)<span class="hljs-keyword">if</span> yes, bp.Breaklets = append(bp.Breaklets, newBreaklet), 
-                    |           |    |               3) <span class="hljs-keyword">then</span> `<span class="hljs-built_in">set</span>LogicalBreakpoint(bp)`, and <span class="hljs-built_in">return</span>
-                    |           |    |       \--&gt; <span class="hljs-keyword">else</span> breakpoint not existed at `addr`, create a new breakpoint, so go on
-                    |           |    |
+                    |           |    |       |       check this newBreaklet can overlap:
+                    |           |    |       |       1) <span class="hljs-keyword">if</span> no, <span class="hljs-built_in">return</span> BreakpointExistsError{bp.File, bp.Line, bp.Addr}; 
+                    |           |    |       |       2) <span class="hljs-keyword">if</span> yes, bp.Breaklets = append(bp.Breaklets, newBreaklet), 
+                    |           |    |       |       3) <span class="hljs-keyword">then</span> `<span class="hljs-built_in">set</span>LogicalBreakpoint(bp)`, and <span class="hljs-built_in">return</span>
+                    |           |    |       \--&gt; <span class="hljs-keyword">else</span> breakpoint not existed at `addr`, 
+                    |           |    |       |       create a new breakpoint, so go on
+                    |           |    |       |
                     |           |    |       \--&gt; f, l, fn := t.B<span class="hljs-keyword">in</span>Info().PCToLine(addr)
-                    |           |    |   
-                    |           |    |       \--&gt; <span class="hljs-keyword">if</span> it<span class="hljs-string">&apos;s watchtype: set hardware debug registers
-                    |           |    |       ...
+                    |           |    |       |
+                    |           |    |       \--&gt; <span class="hljs-keyword">if</span> it is watchtype: <span class="hljs-built_in">set</span> hardware debug registers
+                    |           |    |       |    ...
                     |           |    |       \--&gt; newBreakpoint := &amp;Breakpoint{funcName, watchType, hwidx, file, line, addr}
                     |           |    |       \--&gt; newBreakpoint.Breaklets = append(newBreakpoint.Breaklets, newBreaklet)
                     |           |    |       \--&gt; err := t.proc.WriteBreakpoint(newBreakpoint)
-                    |           |    |       |       \--&gt; if bp.WatchType != 0, then
-                    |           |    |       |               for each thread in dbp.threads, do
-                    |           |    |       |                    err := thread.writeHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex)
-                    |           |    |       |               return nil
+                    |           |    |       |       \--&gt; <span class="hljs-keyword">if</span> bp.WatchType != 0, <span class="hljs-keyword">then</span>
+                    |           |    |       |       |       watchtype&#x8981;&#x8BBE;&#x7F6E;&#x786C;&#x4EF6;&#x65AD;&#x70B9;&#xFF0C;&#x4F7F;&#x7528;&#x5904;&#x7406;&#x5668;&#x81EA;&#x8EAB;&#x8C03;&#x8BD5;&#x5668;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x8BDD;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x5148;&#x4E0D;&#x52A8;
+                    |           |    |       |       |       <span class="hljs-keyword">for</span> each thread <span class="hljs-keyword">in</span> dbp.threads, <span class="hljs-keyword">do</span>
+                    |           |    |       |       |            err := thread.writeHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex)
+                    |           |    |       |       |       <span class="hljs-built_in">return</span> nil
                     |           |    |       |       \--&gt; _, err := dbp.memthread.ReadMemory(bp.OriginalData, bp.Addr)
-                    |           |    |       |       \--&gt; return dbp.writeSoftwareBreakpoint(dbp.memthread, bp.Addr)
-                    |           |    |       |               \--&gt; _, err := thread.WriteMemory(addr, dbp.bi.Arch.BreakpointInstruction())
-                    |           |    |       |                       \--&gt; t.dbp.execPtraceFunc(func() { written, err = sys.PtracePokeData(t.ID, uintptr(addr), data) })
+                    |           |    |       |       |       &#x5176;&#x4ED6;&#x65AD;&#x70B9;&#x7C7B;&#x578B;&#xFF0C;&#x5C31;&#x8981;&#x901A;&#x8FC7;0xCC&#x8FD9;&#x79CD;&#x8C03;&#x8BD5;&#x6307;&#x4EE4;&#x6765;&#x5B8C;&#x6210;
+                    |           |    |       |       |    <span class="hljs-built_in">return</span> dbp.writeSoftwareBreakpoint(dbp.memthread, bp.Addr)
+                    |           |    |       |       |       \--&gt; _, err := thread.WriteMemory(addr, dbp.bi.Arch.BreakpointInstruction())
+                    |           |    |       |       |               \--&gt; t.dbp.execPtraceFunc(<span class="hljs-function"><span class="hljs-title">func</span></span>() { written, err = sys.PtracePokeData(t.ID, uintptr(addr), data) })
                     |           |    |       \--&gt; newBreakpoint.Breaklets = append(newBreakpoint.Breaklets, newBreaklet)
-                    |           |    |       \--&gt; setLogicalBreakpoint(newBreakpoint)
-</span></code></pre>
-<p>&#x90A3;&#x4E48; <code>setLogicalBreakpoint(newBreakpoint)</code>&#x53C8;&#x5177;&#x4F53;&#x505A;&#x4E86;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
-<pre><code class="lang-go">setLogicalBreakpoint(newBreakpoint)
-    \--&gt; <span class="hljs-keyword">if</span> bp.WatchType != <span class="hljs-number">0</span>, then
-            \--&gt; foreach thead in dbp.threads, do
-                    err := thread.writeHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex)
-                    <span class="hljs-keyword">return</span> err
-    \--&gt; <span class="hljs-keyword">return</span> dbp.writeSoftwareBreakpoint(dbp.memthread, bp.Addr)
-            \--&gt; _, err := thread.WriteMemory(addr, dbp.bi.Arch.BreakpointInstruction())
-                    \--&gt; t.dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { written, err = sys.PtracePokeData(t.ID, <span class="hljs-keyword">uintptr</span>(addr), data) })
+                    |           |    |       \--&gt; <span class="hljs-built_in">set</span>LogicalBreakpoint(newBreakpoint)
+                    |           |    |            &#x66F4;&#x65B0;&#x903B;&#x8F91;&#x65AD;&#x70B9;/&#x7269;&#x7406;&#x65AD;&#x70B9;&#x4E2D;&#x4E2A;&#x522B;&#x76F8;&#x5173;&#x7684;&#x5B57;&#x6BB5;
 </code></pre>
-<p>&#x662F;&#x4E0D;&#x662F;&#x611F;&#x89C9;&#x6709;&#x70B9;&#x6DF7;&#x4E71;&#xFF1F;&#x662F;&#xFF01;</p>
-<p>&#x4E3B;&#x8981;&#x662F;&#x660E;&#x786E;&#x8FD9;&#x51E0;&#x70B9;&#xFF1A;</p>
+<p>&#x770B;&#x5B8C;clientside&#x5B9E;&#x73B0;&#x3001;serverside&#x5B9E;&#x73B0;&#x7684;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x8DEF;&#x5F84;&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x903B;&#x8F91;&#x8FD8;&#x662F;&#x6BD4;&#x8F83;&#x6E05;&#x6670;&#x7684;&#x5427;&#x3002;&#x4E3B;&#x8981;&#x662F;&#x660E;&#x786E;&#x8FD9;&#x51E0;&#x70B9;&#xFF1A;</p>
 <ul>
-<li>&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5BF9;&#x8FDB;&#x7A0B;&#x7EC4;grp&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x90FD;&#x751F;&#x6548; <code>grp.enableBreakpoint(lbp) -&gt; enableBreakpointOnTarget(target, lbp)</code>&#xFF1B;</li>
+<li>&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5BF9;&#x8FDB;&#x7A0B;&#x7EC4;grp&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x90FD;&#x751F;&#x6548; <code>grp.enableBreakpoint(lbp) -&gt; for target in grp.targets -&gt; enableBreakpointOnTarget(target, lbp)</code>&#xFF1B;</li>
 <li>&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#xFF0C;&#x53EF;&#x80FD;&#x5BF9;&#x5E94;&#x7740;&#x591A;&#x4E2A;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;<code>FindFileLocation(...), or FindFunctionLocation, or filter from lbp.Set.PidAddrs, or runs lbp.Set.Expr() to find address</code></li>
 <li>&#x6BCF;&#x4E2A;&#x627E;&#x5230;&#x7684;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#x90FD;&#x9700;&#x8981;&#x6DFB;&#x52A0;&#x7269;&#x7406;&#x65AD;&#x70B9; <code>p.SetBreakpoint(lbp.LogicalID, addr, UserBreakpoint, nil) -&gt; t.setBreakpointInternal(logicalID, addr, kind, 0, cond)</code></li>
-<li>&#x7269;&#x7406;&#x65AD;&#x70B9;</li>
 </ul>
-<h4 id="&#x5173;&#x952E;&#x62C6;&#x89E3;">&#x5173;&#x952E;&#x62C6;&#x89E3;</h4>
-<ul>
-<li><p><strong>&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5168;&#x5C40;&#x5171;&#x4EAB;&#xFF0C;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;</strong>&#xFF1A;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x90FD;&#x662F;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#xFF0C;&#x5728; TargetGroup &#x7EA7;&#x522B;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#xFF0C;&#x907F;&#x514D;&#x91CD;&#x590D;&#x8BBE;&#x7F6E;</p>
-<pre><code class="lang-go"><span class="hljs-comment">// &#x5728; TargetGroup &#x4E2D;</span>
-LogicalBreakpoints <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]*LogicalBreakpoint
-</code></pre>
-<p>&#x5F53;&#x5728;&#x8FDB;&#x7A0B;P1&#x7684;&#x7EBF;&#x7A0B;T1&#x4E0A;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;&#x521B;&#x5EFA;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x3002;&#x8FD9;&#x4E2A;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x5E94;&#x7528;&#x5230;&#x6240;&#x6709;&#x76F8;&#x5173;&#x7684;&#x8FDB;&#x7A0B;&#x548C;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x79BB;&#x4E0D;&#x5F00;&#x4E0B;&#x9762;&#x7684;&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x673A;&#x5236;&#x3002;</p>
-</li>
-<li><p><strong>&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x673A;&#x5236;&#xFF0C;&#x8C03;&#x8BD5;&#x4FBF;&#x5229;</strong>&#xFF1A;&#x65B0;&#x8FDB;&#x7A0B;&#x3001;&#x65B0;&#x7EBF;&#x7A0B;&#x81EA;&#x52A8;&#x7EE7;&#x627F;&#x73B0;&#x6709;&#x7684;&#x65AD;&#x70B9;</p>
-<p>&#x5F53;&#x65B0;&#x8FDB;&#x7A0B;&#x6216;&#x7EBF;&#x7A0B;&#x52A0;&#x5165;&#x8C03;&#x8BD5;&#x7EC4;&#x65F6;&#xFF0C;&#x65AD;&#x70B9;&#x4F1A;&#x81EA;&#x52A8;&#x4F20;&#x64AD;&#xFF1A;</p>
+<h4 id="serverside-&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x673A;&#x5236;">serverside &#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x673A;&#x5236;</h4>
+<p>&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x4E0B;&#x201C;&#x65AD;&#x70B9;&#x201D;&#x901A;&#x5E38;&#x6307;&#x7684;&#x662F;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#xFF0C;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x5728;TargetGroup&#x5C42;&#x6B21;&#x8FDB;&#x884C;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#xFF0C;&#x5F53;&#x6709;&#x65B0;&#x8FDB;&#x7A0B;&#x3001;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#xFF0C;&#x52A0;&#x5165;TargetGroup&#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x7EE7;&#x627F;TargetGroup&#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x65AD;&#x70B9;&#x3002;</p>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x7684;&#xFF0C;&#x5F53;&#x65B0;&#x8FDB;&#x7A0B;&#x6216;&#x65B0;&#x7EBF;&#x7A0B;&#x52A0;&#x5165;&#x8C03;&#x8BD5;&#x7EC4;&#x65F6;&#xFF0C;&#x65AD;&#x70B9;&#x4F1A;&#x81EA;&#x52A8;&#x4F20;&#x64AD;&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> (grp *TargetGroup) addTarget(p ProcessInternal, pid <span class="hljs-keyword">int</span>, currentThread Thread, path <span class="hljs-keyword">string</span>, stopReason StopReason, cmdline <span class="hljs-keyword">string</span>) (*Target, error) {
   ...
   t, err := grp.newTarget(p, pid, currentThread, path, cmdline)
@@ -2240,9 +2429,56 @@ LogicalBreakpoints <span class="hljs-keyword">map</span>[<span class="hljs-keywo
   }
 }
 </code></pre>
-</li>
-<li><p><strong>&#x65AD;&#x70B9;&#x72B6;&#x6001;&#x540C;&#x6B65;&#xFF0C;&#x5168;&#x5C40;&#x5171;&#x4EAB;</strong>&#xFF1A;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x8BA1;&#x6570;&#x7B49;&#x4FE1;&#x606F;&#x5728;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7EA7;&#x522B;&#x7EF4;&#x62A4;&#xFF0C;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;</p>
-<pre><code class="lang-go"><span class="hljs-comment">// &#x903B;&#x8F91;&#x65AD;&#x70B9;&#xFF1A;&#x7528;&#x6237;&#x6982;&#x5FF5;&#x4E0A;&#x7684;&#x65AD;&#x70B9;</span>
+<h4 id="serverside-&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x7B56;&#x7565;">serverside &#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x7B56;&#x7565;</h4>
+<p>&#x901A;&#x8FC7; follow-exec &#x548C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x63A7;&#x5236;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x8303;&#x56F4;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x6253;&#x5F00;&#x4E86;followExec&#x6A21;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;followExecRegexp&#x4E0D;&#x7A7A;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x68C0;&#x67E5;&#x5B50;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x7684;cmdline&#x662F;&#x5426;&#x5339;&#x914D;&#xFF0C;&#x5982;&#x679C;&#x5339;&#x914D;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8FFD;&#x8E2A;&#x5E76;&#x8FDB;&#x884C;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x3002;</p>
+<pre><code class="lang-bash">  target follow-exec -on              // &#x6253;&#x5F00;follow-exec&#x6A21;&#x5F0F;
+  target follow-exec -on <span class="hljs-string">&quot;myapp.*&quot;</span>    // &#x6253;&#x5F00;follow-exec&#x6A21;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x8DDF;&#x8E2A;cmdline&#x5339;&#x914D;myapp.*&#x7684;&#x5B50;&#x8FDB;&#x7A0B;
+  target follow-exec -off             // &#x5173;&#x95ED;follow-exec&#x6A21;&#x5F0F;
+</code></pre>
+<p>&#x5904;&#x7406;&#x903B;&#x8F91;&#x8BE6;&#x89C1;&#xFF1A;</p>
+<pre><code class="lang-go">  <span class="hljs-keyword">type</span> TargetGroup <span class="hljs-keyword">struct</span> {
+    followExecEnabled <span class="hljs-keyword">bool</span>        <span class="hljs-comment">// &#x662F;&#x5426;&#x542F;&#x7528; follow-exec</span>
+    followExecRegex   *regexp.Regexp  <span class="hljs-comment">// &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8FC7;&#x6EE4;&#x5668;</span>
+    <span class="hljs-comment">// ...</span>
+  }
+
+  <span class="hljs-keyword">func</span> (grp *TargetGroup) addTarget(p ProcessInternal, pid <span class="hljs-keyword">int</span>, currentThread Thread, path <span class="hljs-keyword">string</span>, stopReason StopReason, cmdline <span class="hljs-keyword">string</span>) (*Target, error) {
+    logger := logflags.LogDebuggerLogger()
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(grp.targets) &gt; <span class="hljs-number">0</span> {
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x662F;&#x5426;&#x542F;&#x7528; follow-exec</span>
+        <span class="hljs-keyword">if</span> !grp.followExecEnabled {
+            logger.Debugf(<span class="hljs-string">&quot;Detaching from child target (follow-exec disabled) %d %q&quot;</span>, pid, cmdline)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>  <span class="hljs-comment">// &#x4E0D;&#x8DDF;&#x8E2A;&#x5B50;&#x8FDB;&#x7A0B;</span>
+        }
+
+        <span class="hljs-comment">// &#x68C0;&#x67E5;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8FC7;&#x6EE4;</span>
+        <span class="hljs-keyword">if</span> grp.followExecRegex != <span class="hljs-literal">nil</span> &amp;&amp; !grp.followExecRegex.MatchString(cmdline) {
+            logger.Debugf(<span class="hljs-string">&quot;Detaching from child target (follow-exec regex not matched) %d %q&quot;</span>, pid, cmdline)
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>  <span class="hljs-comment">// &#x4E0D;&#x8DDF;&#x8E2A;&#x4E0D;&#x5339;&#x914D;&#x7684;&#x8FDB;&#x7A0B;</span>
+        }
+    }
+
+    <span class="hljs-comment">// &#x65B0;&#x8FDB;&#x7A0B;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x8C03;&#x8BD5;&#x7EC4;&#xFF0C;&#x6240;&#x6709;&#x73B0;&#x6709;&#x65AD;&#x70B9;&#x4F1A;&#x81EA;&#x52A8;&#x5E94;&#x7528;</span>
+    t.Breakpoints().Logical = grp.LogicalBreakpoints
+    <span class="hljs-keyword">for</span> _, lbp := <span class="hljs-keyword">range</span> grp.LogicalBreakpoints {
+        err := enableBreakpointOnTarget(t, lbp)  <span class="hljs-comment">// &#x5728;&#x65B0;&#x8FDB;&#x7A0B;&#x4E2D;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;</span>
+    }
+  }
+</code></pre>
+<h4 id="serverside-&#x65AD;&#x70B9;&#x72B6;&#x6001;&#x5171;&#x4EAB;">serverside &#x65AD;&#x70B9;&#x72B6;&#x6001;&#x5171;&#x4EAB;</h4>
+<p>&#x524D;&#x9762;&#x4E5F;&#x66FE;&#x63D0;&#x5230;&#x8FC7;&#xFF0C;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7EDF;&#x4E00;&#x5728;TargetGroup&#x5C42;&#x6B21;&#x8FDB;&#x884C;&#x7EF4;&#x62A4;&#xFF0C;&#x65AD;&#x70B9;&#x7684;&#x547D;&#x4E2D;&#x8BA1;&#x6570;&#x7B49;&#x4FE1;&#x606F;&#x4E5F;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7EA7;&#x522B;&#x7EF4;&#x62A4;&#xFF0C;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x5171;&#x4EAB;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// TargetGroup represents a group of target processes being debugged that</span>
+<span class="hljs-comment">// will be resumed and stopped simultaneously...</span>
+<span class="hljs-keyword">type</span> TargetGroup <span class="hljs-keyword">struct</span> {
+    procgrp ProcessGroup
+    targets           []*Target
+    ...
+    LogicalBreakpoints <span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]*LogicalBreakpoint
+    ...
+}
+
+<span class="hljs-comment">// &#x903B;&#x8F91;&#x65AD;&#x70B9;&#xFF1A;&#x7528;&#x6237;&#x6982;&#x5FF5;&#x4E0A;&#x7684;&#x65AD;&#x70B9;</span>
 <span class="hljs-keyword">type</span> LogicalBreakpoint <span class="hljs-keyword">struct</span> {
   LogicalID    <span class="hljs-keyword">int</span>
   Set          SetBreakpoint            <span class="hljs-comment">// &#x65AD;&#x70B9;&#x8BBE;&#x7F6E;&#x4FE1;&#x606F;</span>
@@ -2252,51 +2488,196 @@ LogicalBreakpoints <span class="hljs-keyword">map</span>[<span class="hljs-keywo
   <span class="hljs-comment">// ...</span>
 }
 </code></pre>
-</li>
-<li><p><strong>&#x65AD;&#x70B9;&#x542F;&#x7528;&#x7B56;&#x7565;&#xFF0C;&#x63A7;&#x5236;&#x7075;&#x6D3B;</strong>&#xFF1A;&#x901A;&#x8FC7; follow-exec &#x548C;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x63A7;&#x5236;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x8303;&#x56F4;</p>
-<p>&#x5982;&#x679C;&#x6253;&#x5F00;&#x4E86;followExec&#x6A21;&#x5F0F;&#xFF0C;&#x5E76;&#x4E14;followExecRegexp&#x4E0D;&#x7A7A;&#xFF0C;&#x6B64;&#x65F6;&#x5C31;&#x4F1A;&#x68C0;&#x67E5;&#x5B50;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x7684;cmdline&#x662F;&#x5426;&#x5339;&#x914D;&#xFF0C;&#x5982;&#x679C;&#x5339;&#x914D;&#x5C31;&#x4F1A;&#x81EA;&#x52A8;&#x8FFD;&#x8E2A;&#x5E76;&#x8FDB;&#x884C;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x3002;</p>
-<pre><code class="lang-bash">target follow-exec -on              // &#x6253;&#x5F00;follow-exec&#x6A21;&#x5F0F;
-target follow-exec -on <span class="hljs-string">&quot;myapp.*&quot;</span>    // &#x6253;&#x5F00;follow-exec&#x6A21;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x53EA;&#x8DDF;&#x8E2A;cmdline&#x5339;&#x914D;myapp.*&#x7684;&#x5B50;&#x8FDB;&#x7A0B;
-target follow-exec -off             // &#x5173;&#x95ED;follow-exec&#x6A21;&#x5F0F;
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;continue">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF1A;continue</h3>
+<h4 id="&#x6211;&#x4EEC;&#x4ECE;attach&#x5F00;&#x59CB;">&#x6211;&#x4EEC;&#x4ECE;Attach&#x5F00;&#x59CB;</h4>
+<p>&#x5F53;&#x6210;&#x529F;&#x6DFB;&#x52A0;&#x5B8C;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;clientside&#x5C31;&#x53EF;&#x4EE5;&#x6267;&#x884C;&#x7EE7;&#x7EED;&#x6267;&#x884C;continue&#x547D;&#x4EE4;&#xFF0C;serverside&#x6536;&#x5230;&#x8BF7;&#x6C42;&#x540E;&#x4F1A;&#x6062;&#x590D;TargetGroup&#x7684;&#x6267;&#x884C;&#xFF0C;TargetGroup&#x5305;&#x542B;&#x4E86;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x7EC4;&#x4E2D;&#x7684;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x800C;&#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x53C8;&#x5305;&#x62EC;&#x4E86;&#x591A;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x90A3;&#x8FD9;&#x91CC;&#x7684;continue&#x662F;&#x6062;&#x590D;&#x6240;&#x6709;&#x7684;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x5417;&#xFF1F;&#x5F53;&#x67D0;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x4E2A;&#x522B;&#x7EBF;&#x7A0B;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x505C;&#x6B62;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x3001;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x53C8;&#x5982;&#x4F55;&#x5904;&#x7406;&#x5462;&#xFF1F;&#x524D;&#x4E00;&#x8282;&#x4ECB;&#x7ECD;&#x65AD;&#x70B9;&#x7CBE;&#x7EC6;&#x5316;&#x7BA1;&#x7406;&#x65F6;&#x63D0;&#x5230;&#x4E86;Stop Mode&#x5206;&#x4E3A;All-stop Mode&#x548C;None-stop Mode&#xFF0C;&#x6211;&#x4EEC;&#x4E00;&#x8D77;&#x6765;&#x770B;&#x4E0B;tinydbg&#x4E2D;&#x5B9E;&#x73B0;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
+<p>All-stop Mode, &#x9996;&#x5148;&#x8054;&#x60F3;&#x4E0B; <a href="11-tinydbg_attach.html">tinydbg attach</a> &#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;attach&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x65F6;&#xFF0C;&#x4F1A;&#x5C1D;&#x8BD5;&#x8DDF;&#x8E2A;&#x8DDF;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4E0B;&#x7684;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x3002;</p>
+<pre><code>func Attach(pid int, waitFor *proc.WaitFor) (*proc.TargetGroup, error) {
+    \-&gt; dbp.execPtraceFunc(func() { err = ptraceAttach(dbp.pid) })
+    |   _, _, err = dbp.wait(dbp.pid, 0)
+    \-&gt; tgt, err := dbp.initialize(findExecutable(&quot;&quot;, dbp.pid))
+            \-&gt; cmdline, err := dbp.initializeBasic()
+                    \-&gt; cmdline, err := initialize(dbp)
+                    \-&gt; if err := dbp.updateThreadList(); err != nil {
+                            \-&gt; foreach `tid` in /proc/&lt;pid&gt;/task/*
+                                    \-&gt; if _, err := dbp.addThread(tid, tid != dbp.pid); err != nil {
+                                            \-&gt; sys.PtraceAttach(tid)
+</code></pre><p>&#x5047;&#x5B9A;&#x6211;&#x4EEC;Attach&#x4E86;&#x4E4B;&#x540E;&#x518D;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x7406;&#x89E3;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7684;&#x5904;&#x7406;&#x8FC7;&#x7A0B;&#x4E86;&#xFF0C;&#x4E3A;&#x4E86;&#x8BA9;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x6267;&#x884C;continue&#x64CD;&#x4F5C;&#xFF0C;&#x4E0B;&#x9762;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;tinydbg&#x5982;&#x4F55;&#x5904;&#x7406;continue&#x547D;&#x4EE4;&#x3002;</p>
+<h4 id="clientside-&#x6838;&#x5FC3;&#x4EE3;&#x7801;">clientside &#x6838;&#x5FC3;&#x4EE3;&#x7801;</h4>
+<pre><code class="lang-go">continueCmd.cmdFn()
+    \-&gt; c.cont(t *Session, ctx callContext, args <span class="hljs-keyword">string</span>)
+            \-&gt; stateChan := t.client.Continue()
+                    \-&gt; <span class="hljs-keyword">for</span> {
+                    \-&gt;    out := <span class="hljs-built_in">new</span>(CommandOut)
+                    \-&gt;    err := c.call(<span class="hljs-string">&quot;Command&quot;</span>, &amp;api.DebuggerCommand{Name: api.Continue, ReturnInfoLoadConfig: c.retValLoadCfg}, &amp;out)
+                    \-&gt;
+                    \-&gt;    <span class="hljs-comment">// record current state</span>
+                    \-&gt;    state := out.State
+                    \-&gt;    ch &lt;- &amp;state
+                    \-&gt;      
+                    \-&gt;    <span class="hljs-comment">// breakpoint (including normal breakpoint and bp-based tracepoint)</span>
+                    \-&gt;    isbreakpoint := <span class="hljs-literal">false</span>
+                    \-&gt;    <span class="hljs-comment">// tracepoint (bp-based tracepoints, exclude normal breakpoint)</span>
+                    \-&gt;    istracepoint := <span class="hljs-literal">true</span>
+                    \-&gt;    <span class="hljs-keyword">for</span> i := <span class="hljs-keyword">range</span> state.Threads {
+                    \-&gt;       <span class="hljs-keyword">if</span> state.Threads[i].Breakpoint != <span class="hljs-literal">nil</span> {
+                    \-&gt;           isbreakpoint = <span class="hljs-literal">true</span>
+                    \-&gt;           istracepoint = istracepoint &amp;&amp; (state.Threads[i].Breakpoint.Tracepoint || state.Threads[i].Breakpoint.TraceReturn)
+                    \-&gt;      }
+                    \-&gt;    }
+                    \-&gt;
+                    \-&gt;    <span class="hljs-comment">// return if:</span>
+                    \-&gt;    <span class="hljs-comment">// - !isbreakpoint: doesn&apos;t encounter any breakpoint, i.e, target exit or other cases</span>
+                    \-&gt;    <span class="hljs-comment">// - !isbreakpoint || !istracepoint: encounter one normal breakpoint, not tracepoint</span>
+                    \-&gt;    <span class="hljs-keyword">if</span> !isbreakpoint || !istracepoint {
+                    \-&gt;        <span class="hljs-built_in">close</span>(ch)
+                    \-&gt;        <span class="hljs-keyword">return</span>
+                    \-&gt;    }
+                    \-&gt; }
+            \-&gt; <span class="hljs-keyword">for</span> state := <span class="hljs-keyword">range</span> stateChan { printcontext(t, state); }
+            \-&gt; printPos(t, state.CurrentThread, printPosShowArrow)
 </code></pre>
-<p>&#x5904;&#x7406;&#x903B;&#x8F91;&#x8BE6;&#x89C1;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">type</span> TargetGroup <span class="hljs-keyword">struct</span> {
-  followExecEnabled <span class="hljs-keyword">bool</span>        <span class="hljs-comment">// &#x662F;&#x5426;&#x542F;&#x7528; follow-exec</span>
-  followExecRegex   *regexp.Regexp  <span class="hljs-comment">// &#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8FC7;&#x6EE4;&#x5668;</span>
-  <span class="hljs-comment">// ...</span>
+<h4 id="serverside-resume-all">serverside resume all</h4>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (d *Debugger) Command(command *api.DebuggerCommand, resumeNotify <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}, clientStatusCh <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}) (state *api.DebuggerState, err error) {
+    ...
+    <span class="hljs-keyword">switch</span> command.Name {
+    <span class="hljs-keyword">case</span> api.Continue:
+        err = d.target.Continue()
+    ...
+    }
+    ...
+}
+</code></pre>
+<p>&#x800C; d.target.Continue() &#x5177;&#x4F53;&#x505A;&#x4E86;&#x54EA;&#x4E9B;&#x5904;&#x7406;&#x5462;&#xFF1F;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (grp *TargetGroup) Continue() error
+    ...
+    \-&gt; trapthread, stopReason, contOnceErr := grp.procgrp.ContinueOnce(grp.cctx)
+            \-&gt; <span class="hljs-keyword">for</span> {
+            |       err := procgrp.resume()
+            |       |    \-&gt; foreach dbp in procgrop.procs
+            |       |    |       \-&gt; foreach thread in dbp.threads
+            |       |    |       |       \-&gt; procgrp.stepInstruction(thread)
+            |       |    |       |       |       \-&gt; <span class="hljs-keyword">if</span> bp := t.CurrentBreakpoint.Breakpoint; bp is a hardware bp {
+            |       |    |       |       |       |       t.clearHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex)
+            |       |    |       |       |       |       <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() { err = t.writeHardwareBreakpoint(bp.Addr, bp.WatchType, bp.HWBreakIndex); }()
+            |       |    |       |       |       |   }
+            |       |    |       |       |       \-&gt; <span class="hljs-keyword">if</span> bp, ok := t.dbp.FindBreakpoint(pc, <span class="hljs-literal">false</span>); ok means bp is software breakpoint {
+            |       |    |       |       |       |       err = t.clearSoftwareBreakpoint(bp)
+            |       |    |       |       |       |       <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() { err = t.dbp.writeSoftwareBreakpoint(t, bp.Addr); }
+            |       |    |       |       |       |   }
+            |       |    |       |       |       \-&gt; err = procgrp.singleStep(t)
+            |       |    |       |       |       |      <span class="hljs-keyword">for</span> {
+            |       |    |       |       |       |          t.dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = ptraceSingleStep(t.ID, sig) })
+            |       |    |       |       |       |          wpid, status, err := t.dbp.waitFast(t.ID)
+            |       |    |       |       |       |              \-&gt; wpid, err := sys.Wait4(pid, &amp;s, sys.WALL, <span class="hljs-literal">nil</span>)
+            |       |    |       |       |       |                  ps: Since Linux <span class="hljs-number">4.7</span>, the __WALL flag is automatically implied <span class="hljs-keyword">if</span> the child is being ptraced,
+            |       |    |       |       |       |                      so debugger can know the all children (created by clone or non-clone) state changed.
+            |       |    |       |       |       |          <span class="hljs-keyword">if</span> t.ID== wpid { <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span> }
+            |       |    |       |       |       |      }
+            |       |    \-&gt; foreach dbp in procgrop.procs
+            |       |    |       \-&gt; foreach thread in dbp.threads
+            |       |    |       |       \-&gt; thread.resume()
+            |       |    |       |       |       \-&gt; sig := t.os.delayedSignal
+            |       |    |       |       |       \-&gt; <span class="hljs-keyword">return</span> t.resumeWithSig(sig)
+            |       |    |       |       |       |       \-&gt; t.os.running = <span class="hljs-literal">true</span>
+            |       |    |       |       |       |       \-&gt; t.dbp.execPtraceFunc(<span class="hljs-keyword">func</span>() { err = ptraceCont(t.ID, sig) })
+            |   }
+</code></pre>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;clientside&#x6BCF;&#x6267;&#x884C;&#x4E00;&#x6B21;continue&#x547D;&#x4EE4;&#xFF0C;&#x670D;&#x52A1;&#x5668;&#x786E;&#x5B9E;&#x4F1A;&#x8BA9;&#x8DDF;&#x8E2A;&#x7684;&#x6240;&#x6709;&#x6682;&#x505C;&#x7684;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x5168;&#x90E8;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;&#x65E2;&#x7136;&#x5DF2;&#x7ECF;&#x6062;&#x590D;&#x6267;&#x884C;&#x4E86;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x4EFB;&#x610F;&#x4E00;&#x4E2A;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x8FDB;&#x7A0B;&#x4E2D;&#x7684;&#x7EBF;&#x7A0B;&#x90FD;&#x53EF;&#x80FD;&#x4F1A;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#xFF08;&#x53EF;&#x80FD;&#x662F;&#x786C;&#x4EF6;&#x65AD;&#x70B9;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x8F6F;&#x4EF6;&#x65AD;&#x70B9;&#xFF09;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&#x4E0D;&#x7981;&#x8981;&#x95EE;&#xFF0C;&#x5F53;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x540E;&#xFF0C;debugger&#x662F;&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x5904;&#x7406;&#x7684;&#x5462;&#xFF1F;</p>
+<h4 id="serverside-stop-all">serverside stop all</h4>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (grp *TargetGroup) Continue() error
+    ...
+    \-&gt; trapthread, stopReason, contOnceErr := grp.procgrp.ContinueOnce(grp.cctx)
+    |       \-&gt; <span class="hljs-keyword">for</span> {
+    |       *       err := procgrp.resume()
+    |       |       ps: so far, all targets have been resumed to running
+    |       |
+    |       *       trapthread, err := trapWait(procgrp, <span class="hljs-number">-1</span>)
+    |       |           \-&gt; <span class="hljs-keyword">return</span> trapWaitInternal(procgrp, pid, <span class="hljs-number">0</span>)
+    |       |       <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> { <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, proc.StopUnknown, err }
+    |       |       ps: handles many events like child exit, cloned, non-cloned, 
+    |       |           and processing delayed signals including SIGTRAP, etc.
+    |       |
+    |       *       trapthread, err = procgrp.stop(cctx, trapthread)
+    |       |           \-&gt; <span class="hljs-keyword">for</span> dbp in procgrp.procs {
+    |       |           |       <span class="hljs-keyword">for</span> thread in dbp.threads {
+    |       |           |           <span class="hljs-keyword">if</span> thread running {
+    |       |           |               thread.stop()
+    |       |           |                   \-&gt; err = sys.Tgkill(t.dbp.pid, t.ID, sys.SIGSTOP)
+    |       |           |                       ps: SIGSTOP will causes target thread stop, which can be resumed by sending SIGCONT. 
+    |       |           |                           And SIGSTOP cannot be caught.
+    |       |           |           }
+    |       |           |       }    
+    |       |           |   }
+    |       |       <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> { <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, proc.StopUnknown, err }
+    |       |       ps: All-stop mode, <span class="hljs-keyword">if</span> we found one thread hit the breakpoint (or traced after thread cloned, non-cloned, etc),
+    |       |           we stop all running threads.
+    |       |
+    |       *       dbp := procgrp.procForThread(trapthread.ID)
+    |       |       dbp.memthread = trapthread
+    |       |       ps: here refresh other processes<span class="hljs-string">&apos; threads&apos;</span> memthread to the one, which is the <span class="hljs-number">1s</span>t thread.os.setbp == <span class="hljs-literal">true</span>.
+    |       |           When reading memory, we uses this memthread pid as ptrace(PTRACE_PEEK/POKE_DATA/TEXT, ...) operations.
+    |       |
+    |       |       <span class="hljs-keyword">return</span> trapthread, proc.StopUnknown, <span class="hljs-literal">nil</span>
+    |       |   }
+    \-&gt; series of state checking and clearing actions ... we skip them
+</code></pre>
+<p>continue&#x64CD;&#x4F5C;&#x4F1A;&#x5148;&#x5168;&#x90E8;&#x6062;&#x590D;&#x6267;&#x884C;&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x5F53;&#x9047;&#x5230;&#x4E00;&#x4E2A;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x7EBF;&#x7A0B;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x53D8;&#x5316;&#xFF0C;&#x5C31;&#x4F1A;&#x5C1D;&#x8BD5;stop&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x3001;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x66F4;&#x65B0;&#x5B83;&#x4EEC;memthread&#x7684;&#x7EBF;&#x7A0B;&#x4E3A;&#x5F53;&#x524D;trapthread&#xFF0C;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x90FD;&#x505C;&#x4E0B;&#x6765;&#x4E4B;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x60F3;&#x8BFB;&#x53D6;&#x3001;&#x4FEE;&#x6539;&#x5185;&#x5B58;&#x6570;&#x636E;&#x3001;&#x7EBF;&#x7A0B;&#x786C;&#x4EF6;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;ptrace&#x6765;&#x64CD;&#x4F5C;&#x4E86;&#x3002;</p>
+<h4 id="serverside-return-state">serverside return state</h4>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (d *Debugger) Command(command *api.DebuggerCommand, resumeNotify <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}, clientStatusCh <span class="hljs-keyword">chan</span> <span class="hljs-keyword">struct</span>{}) (state *api.DebuggerState, err error) {
+    ...
+    <span class="hljs-keyword">switch</span> command.Name {
+    <span class="hljs-keyword">case</span> api.Continue:
+        err = d.target.Continue()
+    ...
+    }
+    ...
+    state, stateErr := d.state(api.LoadConfigToProc(command.ReturnInfoLoadConfig), withBreakpointInfo)
+    ...
+    <span class="hljs-keyword">for</span> _, th := <span class="hljs-keyword">range</span> state.Threads {
+        <span class="hljs-keyword">if</span> th.Breakpoint != <span class="hljs-literal">nil</span> &amp;&amp; th.Breakpoint.TraceReturn {
+            <span class="hljs-keyword">for</span> _, v := <span class="hljs-keyword">range</span> th.BreakpointInfo.Arguments {
+                <span class="hljs-keyword">if</span> (v.Flags &amp; api.VariableReturnArgument) != <span class="hljs-number">0</span> {
+                    th.ReturnValues = <span class="hljs-built_in">append</span>(th.ReturnValues, v)
+                }
+            }
+        }
+    }
+    ...
+    <span class="hljs-keyword">return</span> state, err
 }
 
-<span class="hljs-keyword">func</span> (grp *TargetGroup) addTarget(p ProcessInternal, pid <span class="hljs-keyword">int</span>, currentThread Thread, path <span class="hljs-keyword">string</span>, stopReason StopReason, cmdline <span class="hljs-keyword">string</span>) (*Target, error) {
-  logger := logflags.LogDebuggerLogger()
-  <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(grp.targets) &gt; <span class="hljs-number">0</span> {
-      <span class="hljs-comment">// &#x68C0;&#x67E5;&#x662F;&#x5426;&#x542F;&#x7528; follow-exec</span>
-      <span class="hljs-keyword">if</span> !grp.followExecEnabled {
-          logger.Debugf(<span class="hljs-string">&quot;Detaching from child target (follow-exec disabled) %d %q&quot;</span>, pid, cmdline)
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>  <span class="hljs-comment">// &#x4E0D;&#x8DDF;&#x8E2A;&#x5B50;&#x8FDB;&#x7A0B;</span>
-      }
+<span class="hljs-comment">// Command interrupts, continues and steps through the program.</span>
+<span class="hljs-keyword">func</span> (s *RPCServer) Command(command api.DebuggerCommand, cb service.RPCCallback) {
+    st, err := s.debugger.Command(&amp;command, cb.SetupDoneChan(), cb.DisconnectChan())
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        cb.Return(<span class="hljs-literal">nil</span>, err)
+        <span class="hljs-keyword">return</span>
+    }
+    <span class="hljs-keyword">var</span> out CommandOut
+    out.State = *st
+    cb.Return(out, <span class="hljs-literal">nil</span>)
+}
 
-      <span class="hljs-comment">// &#x68C0;&#x67E5;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x8FC7;&#x6EE4;</span>
-      <span class="hljs-keyword">if</span> grp.followExecRegex != <span class="hljs-literal">nil</span> &amp;&amp; !grp.followExecRegex.MatchString(cmdline) {
-          logger.Debugf(<span class="hljs-string">&quot;Detaching from child target (follow-exec regex not matched) %d %q&quot;</span>, pid, cmdline)
-          <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>  <span class="hljs-comment">// &#x4E0D;&#x8DDF;&#x8E2A;&#x4E0D;&#x5339;&#x914D;&#x7684;&#x8FDB;&#x7A0B;</span>
-      }
-  }
-
-  <span class="hljs-comment">// &#x65B0;&#x8FDB;&#x7A0B;&#x88AB;&#x6DFB;&#x52A0;&#x5230;&#x8C03;&#x8BD5;&#x7EC4;&#xFF0C;&#x6240;&#x6709;&#x73B0;&#x6709;&#x65AD;&#x70B9;&#x4F1A;&#x81EA;&#x52A8;&#x5E94;&#x7528;</span>
-  t.Breakpoints().Logical = grp.LogicalBreakpoints
-  <span class="hljs-keyword">for</span> _, lbp := <span class="hljs-keyword">range</span> grp.LogicalBreakpoints {
-      err := enableBreakpointOnTarget(t, lbp)  <span class="hljs-comment">// &#x5728;&#x65B0;&#x8FDB;&#x7A0B;&#x4E2D;&#x8BBE;&#x7F6E;&#x65AD;&#x70B9;</span>
-  }
+<span class="hljs-keyword">func</span> (cb *RPCCallback) Return(out <span class="hljs-keyword">interface</span>{}, err error) {
+    ...
+    cb.s.sendResponse(cb.sending, &amp;cb.req, &amp;resp, out, cb.codec, errmsg)
 }
 </code></pre>
-</li>
-</ul>
-<p>OK&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x4E0B;&#x4E00;&#x5C0F;&#x8282;&#x770B;&#x4E0B; <code>breakpoint</code> &#x547D;&#x4EE4;&#x5728;clientside&#x3001;serverside&#x5206;&#x522B;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x7684;&#x3002;</p>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;-breakpoints">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;: <code>breakpoints</code></h3>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;-clear">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;: <code>clear</code></h3>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;-clearall">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;: <code>clearall</code></h3>
+<p>&#x6700;&#x540E;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5C06;&#x5F53;&#x524D;&#x7684;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x72B6;&#x6001;&#x4FE1;&#x606F; <code>state *api.DebuggerState</code> &#x8FD4;&#x56DE;&#x7ED9;clientside&#xFF0C;clientside&#x5219;&#x5B8C;&#x6210;&#x72B6;&#x6001;&#x4FE1;&#x606F;&#x7684;&#x6253;&#x5370;&#xFF1A;</p>
+<pre><code class="lang-go">continueCmd.cmdFn()
+    \-&gt; c.cont(t *Session, ctx callContext, args <span class="hljs-keyword">string</span>)
+            \-&gt; stateChan := t.client.Continue()
+            ...
+            \-&gt; <span class="hljs-keyword">for</span> state := <span class="hljs-keyword">range</span> stateChan { printcontext(t, state); }
+            \-&gt; printPos(t, state.CurrentThread, printPosShowArrow)
+</code></pre>
+<p>&#x5728;&#x8FD9;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x4F1A;&#x8BDD;&#x4E2D;&#x7EE7;&#x7EED;&#x8F93;&#x5165;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x5982; print vars&#xFF0C;eval expr&#x7B49;&#x7B49;&#xFF0C;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x64CD;&#x4F5C;&#x4E86;&#x3002;</p>
 <h3 id="&#x6267;&#x884C;&#x6D4B;&#x8BD5;">&#x6267;&#x884C;&#x6D4B;&#x8BD5;</h3>
-<h3 id="&#x672C;&#x6587;&#x603B;&#x7ED3;">&#x672C;&#x6587;&#x603B;&#x7ED3;</h3>
+<p>&#x7565;&#x3002;</p>
+<h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
+<p>&#x672C;&#x8282;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x4E86; tinydbg &#x8C03;&#x8BD5;&#x5668;&#x4E2D; <code>breakpoint</code> &#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x673A;&#x5236;&#xFF0C;&#x4EE5;&#x53CA; <code>continue</code> &#x547D;&#x4EE4;&#x5982;&#x4F55;&#x9A71;&#x52A8;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x5E76;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x505C;&#x4E0B;&#x7684;&#x5B8C;&#x6574;&#x6D41;&#x7A0B;&#x3002;&#x6211;&#x4EEC;&#x4ECE;&#x5BA2;&#x6237;&#x7AEF;&#x5982;&#x4F55;&#x89E3;&#x6790;&#x65AD;&#x70B9;&#x53C2;&#x6570;&#xFF08;&#x540D;&#x79F0;&#x3001;&#x4F4D;&#x7F6E;&#x3001;&#x6761;&#x4EF6;&#xFF09;&#x5E76;&#x4E0E;&#x670D;&#x52A1;&#x5668;&#x4EA4;&#x4E92;&#xFF0C;&#x8BB2;&#x5230;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x5982;&#x4F55;&#x67E5;&#x627E;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x3001;&#x521B;&#x5EFA;&#x548C;&#x7BA1;&#x7406;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x4E0E;&#x7269;&#x7406;&#x65AD;&#x70B9;&#xFF0C;&#x5E76;&#x652F;&#x6301;&#x5305;&#x62EC;&#x666E;&#x901A;&#x65AD;&#x70B9;&#x3001;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#x3001;suspended &#x65AD;&#x70B9;&#x3001;tracepoint &#x7B49;&#x591A;&#x79CD;&#x7C7B;&#x578B;&#x3002;&#x670D;&#x52A1;&#x5668;&#x7AEF;&#x91C7;&#x7528;&#x5C42;&#x6B21;&#x5316;&#x7684;&#x65AD;&#x70B9;&#x7BA1;&#x7406;&#x67B6;&#x6784;&#xFF0C;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x7EDF;&#x4E00;&#x7BA1;&#x7406;&#x65AD;&#x70B9;&#x7684;&#x72B6;&#x6001;&#x548C;&#x547D;&#x4E2D;&#x4FE1;&#x606F;&#xFF0C;&#x7269;&#x7406;&#x65AD;&#x70B9;&#x5219;&#x5177;&#x4F53;&#x4F5C;&#x7528;&#x4E8E;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x901A;&#x8FC7;&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x4F20;&#x64AD;&#x673A;&#x5236;&#x4FDD;&#x8BC1;&#x65B0;&#x8FDB;&#x7A0B;&#x3001;&#x65B0;&#x7EBF;&#x7A0B;&#x80FD;&#x591F;&#x7EE7;&#x627F;&#x73B0;&#x6709;&#x65AD;&#x70B9;&#x3002;&#x968F;&#x540E;&#xFF0C;<code>continue</code> &#x547D;&#x4EE4;&#x4F1A;&#x6062;&#x590D;&#x6240;&#x6709;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x548C;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#xFF0C;&#x9047;&#x5230;&#x65AD;&#x70B9;&#x65F6;&#x6839;&#x636E; all-stop/none-stop &#x6A21;&#x5F0F;&#x8FDB;&#x884C;&#x8C03;&#x5EA6;&#x548C;&#x72B6;&#x6001;&#x540C;&#x6B65;&#xFF0C;&#x6700;&#x7EC8;&#x5C06;&#x8C03;&#x8BD5;&#x72B6;&#x6001;&#x8FD4;&#x56DE;&#x7ED9;&#x5BA2;&#x6237;&#x7AEF;&#x3002;&#x6574;&#x4F53;&#x8BBE;&#x8BA1;&#x4E0D;&#x4EC5;&#x63D0;&#x5347;&#x4E86;&#x65AD;&#x70B9;&#x7BA1;&#x7406;&#x7684;&#x7075;&#x6D3B;&#x6027;&#x548C;&#x6548;&#x7387;&#xFF0C;&#x4E5F;&#x4E3A;&#x591A;&#x8FDB;&#x7A0B;&#x3001;&#x591A;&#x7EBF;&#x7A0B;&#x590D;&#x6742;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x63D0;&#x4F9B;&#x4E86;&#x575A;&#x5B9E;&#x7684;&#x57FA;&#x7840;&#x3002;&#x901A;&#x8FC7;&#x672C;&#x8282;&#x5185;&#x5BB9;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x7CFB;&#x7EDF;&#x7406;&#x89E3;&#x73B0;&#x4EE3;&#x8C03;&#x8BD5;&#x5668;&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x3001;&#x4F20;&#x64AD;&#x4E0E;&#x547D;&#x4E2D;&#x540E;&#x7684;&#x6838;&#x5FC3;&#x5B9E;&#x73B0;&#x903B;&#x8F91;&#x3002;</p>
 
                                 
                                 </section>
@@ -2324,12 +2705,12 @@ target follow-exec -off             // &#x5173;&#x95ED;follow-exec&#x6A21;&#x5F0
 
             
                 
-                <a href="22-debug_breakpoint_part1.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.22 tinydbg> breakpoint - part1">
+                <a href="21-debug_breakpoint_part1.html" class="navigation navigation-prev " aria-label="Previous page: 9.2.21 tinydbg> breakpoint - part1: 断点精细化管理">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="23-debug_condition.html" class="navigation navigation-next " aria-label="Next page: 9.2.23 tinydbg> condition">
+                <a href="23-debug_breakpoint_part3.html" class="navigation navigation-next " aria-label="Next page: 9.2.23 tinydbg> breakpoint - part3: 条件断点+执行到断点">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2340,7 +2721,7 @@ target follow-exec -off             // &#x5173;&#x95ED;follow-exec&#x6A21;&#x5F0
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.22 tinydbg> breakpoint - part2","level":"1.9.2.15","depth":3,"next":{"title":"9.2.23 tinydbg> condition","level":"1.9.2.16","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_condition.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_condition.md","articles":[]},"previous":{"title":"9.2.22 tinydbg> breakpoint - part1","level":"1.9.2.14","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part2.md","mtime":"2025-08-01T17:09:49.488Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2025-08-01T17:10:21.119Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.22 tinydbg> breakpoint - part2: 添加断点+执行到断点","level":"1.9.2.14","depth":3,"next":{"title":"9.2.23 tinydbg> breakpoint - part3: 条件断点+执行到断点","level":"1.9.2.15","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part3.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part3.md","articles":[]},"previous":{"title":"9.2.21 tinydbg> breakpoint - part1: 断点精细化管理","level":"1.9.2.13","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/21-debug_breakpoint_part1.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/21-debug_breakpoint_part1.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part2.md","mtime":"2026-09-09T17:56:35.234Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-09T17:57:02.038Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

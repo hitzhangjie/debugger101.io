@@ -213,7 +213,7 @@
                 <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
             
                     
-                    5.1 设计一个调试器雏形
+                    5.1 设计一个调试器
             
                 </a>
             
@@ -221,12 +221,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_solution.html">
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_arch.html">
             
-                <a href="../5-debugger-skeleton/2-debugger_solution.html">
+                <a href="../5-debugger-skeleton/2-debugger_arch.html">
             
                     
-                    5.2 架构设计和技术方案
+                    5.2 调试器架构设计
             
                 </a>
             
@@ -234,12 +234,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../5-debugger-skeleton/3-debugger_solution_final.html">
+        <li class="chapter " data-level="1.5.3" data-path="../5-debugger-skeleton/3-debugger_cmds.html">
             
-                <a href="../5-debugger-skeleton/3-debugger_solution_final.html">
+                <a href="../5-debugger-skeleton/3-debugger_cmds.html">
             
                     
-                    5.3 具体的实现方案选择
+                    5.3 调试器命令管理
             
                 </a>
             
@@ -247,12 +247,51 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="../5-debugger-skeleton/4-debugger_demos.html">
+        <li class="chapter " data-level="1.5.4" data-path="../5-debugger-skeleton/4-debugger_completion.html">
             
-                <a href="../5-debugger-skeleton/4-debugger_demos.html">
+                <a href="../5-debugger-skeleton/4-debugger_completion.html">
             
                     
-                    5.4 功能演示和实现效果
+                    5.4 输入自动补全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                <a href="../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                    
+                    5.5 其他可扩展性设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                <a href="../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                    
+                    5.6 具体的实施方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../5-debugger-skeleton/7-debugger_demos.html">
+            
+                <a href="../5-debugger-skeleton/7-debugger_demos.html">
+            
+                    
+                    5.7 功能演示和实现效果
             
                 </a>
             
@@ -2177,7 +2216,7 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 24;
+  counter-reset: h1 27;
 }
 </style></p>
 <h2 id="&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#xFF1A;&#x67E5;&#x770B;&#x5185;&#x5B58;&#x6570;&#x636E;">&#x67E5;&#x770B;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#xFF1A;&#x67E5;&#x770B;&#x5185;&#x5B58;&#x6570;&#x636E;</h2>
@@ -2538,7 +2577,7 @@ godbg&gt; pmem --addr 0x464<span class="hljs-built_in">fc</span>3 --count 16 --f
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.13 查看内存数据","level":"1.6.13","depth":2,"next":{"title":"6.14 查看寄存器数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-pregs.md","ref":"6-develop-inst-debugger/14-pregs.md","articles":[]},"previous":{"title":"6.12 运行到断点","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-continue.md","ref":"6-develop-inst-debugger/12-continue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/13-pmem.md","mtime":"2026-09-19T09:52:00.704Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-19T09:52:34.358Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.13 查看内存数据","level":"1.6.13","depth":2,"next":{"title":"6.14 查看寄存器数据","level":"1.6.14","depth":2,"path":"6-develop-inst-debugger/14-pregs.md","ref":"6-develop-inst-debugger/14-pregs.md","articles":[]},"previous":{"title":"6.12 运行到断点","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-continue.md","ref":"6-develop-inst-debugger/12-continue.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/13-pmem.md","mtime":"2026-09-19T14:11:47.268Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-19T14:12:17.707Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

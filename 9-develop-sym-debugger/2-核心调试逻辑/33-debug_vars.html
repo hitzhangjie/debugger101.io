@@ -213,7 +213,7 @@
                 <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
             
                     
-                    5.1 设计一个调试器雏形
+                    5.1 设计一个调试器
             
                 </a>
             
@@ -221,12 +221,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_solution.html">
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_arch.html">
             
-                <a href="../../5-debugger-skeleton/2-debugger_solution.html">
+                <a href="../../5-debugger-skeleton/2-debugger_arch.html">
             
                     
-                    5.2 架构设计和技术方案
+                    5.2 调试器架构设计
             
                 </a>
             
@@ -234,12 +234,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../../5-debugger-skeleton/3-debugger_solution_final.html">
+        <li class="chapter " data-level="1.5.3" data-path="../../5-debugger-skeleton/3-debugger_cmds.html">
             
-                <a href="../../5-debugger-skeleton/3-debugger_solution_final.html">
+                <a href="../../5-debugger-skeleton/3-debugger_cmds.html">
             
                     
-                    5.3 具体的实现方案选择
+                    5.3 调试器命令管理
             
                 </a>
             
@@ -247,12 +247,51 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="../../5-debugger-skeleton/4-debugger_demos.html">
+        <li class="chapter " data-level="1.5.4" data-path="../../5-debugger-skeleton/4-debugger_completion.html">
             
-                <a href="../../5-debugger-skeleton/4-debugger_demos.html">
+                <a href="../../5-debugger-skeleton/4-debugger_completion.html">
             
                     
-                    5.4 功能演示和实现效果
+                    5.4 输入自动补全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                <a href="../../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                    
+                    5.5 其他可扩展性设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                <a href="../../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                    
+                    5.6 具体的实施方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../5-debugger-skeleton/7-debugger_demos.html">
+            
+                <a href="../../5-debugger-skeleton/7-debugger_demos.html">
+            
+                    
+                    5.7 功能演示和实现效果
             
                 </a>
             
@@ -2177,7 +2216,7 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 105;
+  counter-reset: h1 108;
 }
 </style>
 &#x6253;&#x5370;&#x53D8;&#x91CF;&#xFF0C;&#x4EE5;print name&#x4E3A;&#x4F8B;&#xFF0C;&#x8FD9;&#x91CC;&#x9996;&#x5148;&#x9700;&#x8981;&#x68C0;&#x67E5;&#x6240;&#x6709;&#x7684;DIE&#xFF0C;&#x627E;&#x5230;name&#x5BF9;&#x5E94;&#x7684;DIE&#xFF0C;&#x7136;&#x540E;&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;Type DIE&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7ED3;&#x5408;name&#x53D8;&#x91CF;&#x503C;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x7ED3;&#x5408;&#x8FD9;&#x91CC;&#x7684;Type DIE&#x7684;&#x63CF;&#x8FF0;&#x4FE1;&#x606F;&#x6765;&#x8BFB;&#x53D6;&#x5E76;&#x7406;&#x89E3;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x6570;&#x636E;&#x3002;&#x8FD9;&#x6837;&#x5C31;&#x5B8C;&#x6210;&#x4E86;&#x53D8;&#x91CF;name&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#x663E;&#x793A;&#x3002;</p>
@@ -2234,7 +2273,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.33 tinydbg> vars","level":"1.9.2.25","depth":3,"next":{"title":"9.2.34 tinydbg> bt","level":"1.9.2.26","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.md","articles":[]},"previous":{"title":"9.2.32 tinydbg> funcs","level":"1.9.2.24","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/33-debug_vars.md","mtime":"2026-09-19T09:52:00.774Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-19T09:52:34.358Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.33 tinydbg> vars","level":"1.9.2.25","depth":3,"next":{"title":"9.2.34 tinydbg> bt","level":"1.9.2.26","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.md","articles":[]},"previous":{"title":"9.2.32 tinydbg> funcs","level":"1.9.2.24","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/33-debug_vars.md","mtime":"2026-09-19T14:11:47.339Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-19T14:12:17.707Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

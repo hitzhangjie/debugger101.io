@@ -2021,7 +2021,20 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.7" data-path="../12-appendix/80-go-tool-compile.html">
+        <li class="chapter " data-level="1.12.7" data-path="../12-appendix/7-x86-real-and-protected-mode.html">
+            
+                <a href="../12-appendix/7-x86-real-and-protected-mode.html">
+            
+                    
+                    12.7 x86 实模式与内存保护模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../12-appendix/80-go-tool-compile.html">
             
                 <a href="../12-appendix/80-go-tool-compile.html">
             
@@ -2034,7 +2047,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.8" data-path="../12-appendix/81-go-tool-asm.html">
+        <li class="chapter " data-level="1.12.9" data-path="../12-appendix/81-go-tool-asm.html">
             
                 <a href="../12-appendix/81-go-tool-asm.html">
             
@@ -2047,7 +2060,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.9" data-path="../12-appendix/82-go-tool-link.html">
+        <li class="chapter " data-level="1.12.10" data-path="../12-appendix/82-go-tool-link.html">
             
                 <a href="../12-appendix/82-go-tool-link.html">
             
@@ -2060,7 +2073,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.10" data-path="../12-appendix/90-why-buildid-loaded.html">
+        <li class="chapter " data-level="1.12.11" data-path="../12-appendix/90-why-buildid-loaded.html">
             
                 <a href="../12-appendix/90-why-buildid-loaded.html">
             
@@ -2073,7 +2086,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.11" data-path="../12-appendix/91-syntax-and-semantic-analysis.html">
+        <li class="chapter " data-level="1.12.12" data-path="../12-appendix/91-syntax-and-semantic-analysis.html">
             
                 <a href="../12-appendix/91-syntax-and-semantic-analysis.html">
             
@@ -2086,7 +2099,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.12" data-path="../12-appendix/92-why-gdb-uses-symtab.html">
+        <li class="chapter " data-level="1.12.13" data-path="../12-appendix/92-why-gdb-uses-symtab.html">
             
                 <a href="../12-appendix/92-why-gdb-uses-symtab.html">
             
@@ -2099,7 +2112,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.12.13" data-path="../12-appendix/93-anatomy-of-elf-core-file.html">
+        <li class="chapter " data-level="1.12.14" data-path="../12-appendix/93-anatomy-of-elf-core-file.html">
             
                 <a href="../12-appendix/93-anatomy-of-elf-core-file.html">
             
@@ -2168,11 +2181,8 @@ body {
 }
 </style></p>
 <h2 id="43-&#x53CD;&#x8C03;&#x8BD5;&#x6280;&#x672F;">4.3 &#x53CD;&#x8C03;&#x8BD5;&#x6280;&#x672F;</h2>
-<blockquote>
-<p><strong>&#x91CD;&#x8981;&#x58F0;&#x660E;&#xFF1A;</strong> &#x53CD;&#x8C03;&#x8BD5;&#x53EA;&#x80FD;&#x63D0;&#x9AD8;&#x9006;&#x5411;&#x5206;&#x6790;&#x7684;&#x6210;&#x672C;&#xFF0C;&#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;&#x5B89;&#x5168;&#x8FB9;&#x754C;&#x3002;&#x4EFB;&#x4F55;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#xFF08;&#x5305;&#x62EC;&#x5176;&#x4E2D;&#x7684;&#x53CD;&#x8C03;&#x8BD5;&#x68C0;&#x67E5;&#xFF09;&#x6700;&#x7EC8;&#x90FD;&#x5904;&#x4E8E;&#x653B;&#x51FB;&#x8005;&#x7684;&#x63A7;&#x5236;&#x4E4B;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x7ED5;&#x8FC7;&#x3001;patch &#x6216;&#x5728;&#x6A21;&#x62DF;&#x73AF;&#x5883;&#x4E2D;&#x6267;&#x884C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x91CD;&#x8981;&#x673A;&#x5BC6;&#x6570;&#x636E;&#x3001;&#x6388;&#x6743;&#x5224;&#x65AD;&#x7B49;&#x5173;&#x952E;&#x903B;&#x8F91;&#x7EDD;&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;&#x5BA2;&#x6237;&#x7AEF;&#x53CD;&#x8C03;&#x8BD5;&#x6765;&#x4FDD;&#x62A4;&#xFF0C;&#x5FC5;&#x987B;&#x7531;&#x670D;&#x52A1;&#x7AEF;&#x6216;&#x53EF;&#x4FE1;&#x6267;&#x884C;&#x73AF;&#x5883;&#x6765;&#x4FDD;&#x969C;&#x3002;&#x672C;&#x8282;&#x5185;&#x5BB9;&#x6539;&#x7F16;&#x81EA;&#x516C;&#x5F00;&#x7684;&#x53CD;&#x8C03;&#x8BD5;&#x6280;&#x672F;&#x8D44;&#x6599;&#xFF0C;&#x4E3B;&#x8981;&#x4F9B;&#x8BFB;&#x8005;&#x5F00;&#x9614;&#x89C6;&#x91CE;&#xFF0C;&#x4E86;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x4E0E;&#x53CD;&#x8C03;&#x8BD5;&#x624B;&#x6BB5;&#x4E4B;&#x95F4;&#x7684;&#x535A;&#x5F08;&#x3002;</p>
-</blockquote>
-<p>&#x53EA;&#x8981;&#x4ED8;&#x51FA;&#x8DB3;&#x591F;&#x7684;&#x65F6;&#x95F4;&#x548C;&#x7CBE;&#x529B;&#xFF0C;&#x53EF;&#x4EE5;&#x8BF4;&#x4EFB;&#x4F55;&#x7A0B;&#x5E8F;&#x90FD;&#x80FD;&#x88AB;&#x9006;&#x5411;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x4F7F;&#x5F97;&#x7406;&#x89E3;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x4E86;&#xFF0C;&#x5BF9;&#x5FC3;&#x6000;&#x6076;&#x610F;&#x7684;&#x8F6F;&#x4EF6;&#x9006;&#x5411;&#x4EBA;&#x5458;&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;&#x5B9E;&#x9645;&#x4E0A;&#x53EF;&#x4EE5;&#x91C7;&#x53D6;&#x4E00;&#x4E9B;&#x6218;&#x672F;&#x7ED9;&#x8F6F;&#x4EF6;&#x9006;&#x5411;&#x589E;&#x52A0;&#x70B9;&#x96BE;&#x5EA6;&#xFF0C;&#x4EE5;&#x963B;&#x6B62;&#x6216;&#x8005;&#x5EF6;&#x7F13;&#x4ED6;&#x4EEC;&#x5F04;&#x6E05;&#x7A0B;&#x5E8F;&#x7684;&#x5DE5;&#x4F5C;&#x903B;&#x8F91;&#x3002;</p>
-<p>&#x9274;&#x4E8E;&#x6B64;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x53D6;&#x4E00;&#x4E9B;&#x6B65;&#x9AA4;&#xFF0C;&#x5C06;&#x4F7F;&#x6076;&#x610F;&#x5DE5;&#x7A0B;&#x5E08;&#x5F88;&#x96BE;&#x901A;&#x8FC7;&#x8C03;&#x8BD5;&#x5668;&#x7AA5;&#x89C6;&#x60A8;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x53EA;&#x8981;&#x4ED8;&#x51FA;&#x8DB3;&#x591F;&#x7684;&#x65F6;&#x95F4;&#x548C;&#x7CBE;&#x529B;&#xFF0C;&#x53EF;&#x4EE5;&#x8BF4;&#x4EFB;&#x4F55;&#x7A0B;&#x5E8F;&#x90FD;&#x80FD;&#x88AB;&#x9006;&#x5411;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x4F7F;&#x5F97;&#x7406;&#x89E3;&#x7A0B;&#x5E8F;&#x903B;&#x8F91;&#x66F4;&#x52A0;&#x65B9;&#x4FBF;&#x4E86;&#xFF0C;&#x5BF9;&#x5FC3;&#x6000;&#x6076;&#x610F;&#x7684;&#x8F6F;&#x4EF6;&#x9006;&#x5411;&#x4EBA;&#x5458;&#x4E5F;&#x4E0D;&#x4F8B;&#x5916;&#x3002;&#x9274;&#x4E8E;&#x6B64;&#xFF0C;&#x4E00;&#x4E9B;&#x5F00;&#x53D1;&#x8005;&#x4F1A;&#x5728;&#x7A0B;&#x5E8F;&#x4E2D;&#x91C7;&#x53D6;&#x4E00;&#x4E9B;&#x6218;&#x672F;&#x6765;&#x7ED9;&#x9006;&#x5411;&#x5206;&#x6790;&#x589E;&#x52A0;&#x96BE;&#x5EA6;&#xFF0C;&#x4EE5;&#x963B;&#x6B62;&#x6216;&#x8005;&#x5EF6;&#x7F13;&#x653B;&#x51FB;&#x8005;&#x5F04;&#x6E05;&#x7A0B;&#x5E8F;&#x7684;&#x5DE5;&#x4F5C;&#x903B;&#x8F91;&#xFF0C;&#x8FD9;&#x7C7B;&#x6280;&#x672F;&#x7EDF;&#x79F0;&#x4E3A;&#x201C;&#x53CD;&#x8C03;&#x8BD5;&#x6280;&#x672F;&#x201D;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x5185;&#x5BB9;&#x4E3B;&#x8981;&#x4F9B;&#x8BFB;&#x8005;&#x5F00;&#x9614;&#x89C6;&#x91CE;&#xFF0C;&#x4E86;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x4E0E;&#x53CD;&#x8C03;&#x8BD5;&#x624B;&#x6BB5;&#x4E4B;&#x95F4;&#x7684;&#x535A;&#x5F08;&#x3002;&#x5728;&#x6B63;&#x5F0F;&#x5F00;&#x59CB;&#x4E4B;&#x524D;&#xFF0C;&#x8FD8;&#x9700;&#x7279;&#x522B;&#x58F0;&#x660E;&#xFF1A;&#x53CD;&#x8C03;&#x8BD5;&#x53EA;&#x80FD;&#x63D0;&#x9AD8;&#x9006;&#x5411;&#x5206;&#x6790;&#x7684;&#x6210;&#x672C;&#xFF0C;&#x4E0D;&#x80FD;&#x4F5C;&#x4E3A;&#x5B89;&#x5168;&#x8FB9;&#x754C;&#x3002;&#x4EFB;&#x4F55;&#x8FD0;&#x884C;&#x5728;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x7A0B;&#x5E8F;&#xFF08;&#x5305;&#x62EC;&#x5176;&#x4E2D;&#x7684;&#x53CD;&#x8C03;&#x8BD5;&#x68C0;&#x67E5;&#xFF09;&#x6700;&#x7EC8;&#x90FD;&#x5904;&#x4E8E;&#x653B;&#x51FB;&#x8005;&#x7684;&#x63A7;&#x5236;&#x4E4B;&#x4E0B;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x7ED5;&#x8FC7;&#x3001;patch &#x6216;&#x5728;&#x6A21;&#x62DF;&#x73AF;&#x5883;&#x4E2D;&#x6267;&#x884C;&#x3002;&#x56E0;&#x6B64;&#xFF0C;&#x91CD;&#x8981;&#x673A;&#x5BC6;&#x6570;&#x636E;&#x3001;&#x6388;&#x6743;&#x5224;&#x65AD;&#x7B49;&#x5173;&#x952E;&#x903B;&#x8F91;&#x7EDD;&#x4E0D;&#x80FD;&#x4F9D;&#x8D56;&#x5BA2;&#x6237;&#x7AEF;&#x53CD;&#x8C03;&#x8BD5;&#x6765;&#x4FDD;&#x62A4;&#xFF0C;&#x5FC5;&#x987B;&#x7531;&#x670D;&#x52A1;&#x7AEF;&#x6216;&#x53EF;&#x4FE1;&#x6267;&#x884C;&#x73AF;&#x5883;&#x6765;&#x4FDD;&#x969C;&#x3002;</p>
 <h3 id="431-&#x7CFB;&#x7EDF;&#x8C03;&#x7528;">4.3.1 &#x7CFB;&#x7EDF;&#x8C03;&#x7528;</h3>
 <h4 id="4311-windows">4.3.1.1 Windows</h4>
 <p>&#x67D0;&#x4E9B;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x63D0;&#x4F9B;&#x4E86;&#x7279;&#x6B8A;&#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;&#x80FD;&#x6307;&#x793A;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x662F;&#x5426;&#x6B63;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x8C03;&#x8BD5;&#x6A21;&#x5F0F;&#x4E0B;&#x6267;&#x884C;&#x3002; &#x4F8B;&#x5982;&#xFF0C;Windows KERNEL32.DLL&#x5BFC;&#x51FA;&#x4E86;&#x4E00;&#x4E2A;&#x540D;&#x4E3A;<code>IsDebuggerPresent()</code>&#x7684;&#x51FD;&#x6570;&#x3002; &#x60A8;&#x53EF;&#x4EE5;&#x5305;&#x88C5;&#x4E00;&#x4E2A;chk()&#x51FD;&#x6570;&#xFF0C;&#x51FD;&#x6570;&#x4F53;&#x5185;&#x4F7F;&#x7528;&#x8BE5;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x8FDB;&#x884C;&#x68C0;&#x67E5;&#x3002;</p>
@@ -2333,7 +2343,7 @@ dlv debug main.go
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.3 反调试技术","level":"1.4.3","depth":2,"next":{"title":"5 走进调试器开发","level":"1.5","depth":1,"path":"5-debugger-skeleton/README.md","ref":"5-debugger-skeleton/README.md","articles":[{"title":"5.1 设计一个调试器雏形","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},{"title":"5.2 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},{"title":"5.3 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},{"title":"5.4 功能演示和实现效果","level":"1.5.4","depth":2,"path":"5-debugger-skeleton/4-debugger_demos.md","ref":"5-debugger-skeleton/4-debugger_demos.md","articles":[]}]},"previous":{"title":"4.2 调试依赖","level":"1.4.2","depth":2,"path":"4-basics/2-dependencies.md","ref":"4-basics/2-dependencies.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4-basics/3-countertactics.md","mtime":"2026-09-19T07:05:37.866Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-19T07:06:07.778Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.3 反调试技术","level":"1.4.3","depth":2,"next":{"title":"5 走进调试器开发","level":"1.5","depth":1,"path":"5-debugger-skeleton/README.md","ref":"5-debugger-skeleton/README.md","articles":[{"title":"5.1 设计一个调试器雏形","level":"1.5.1","depth":2,"path":"5-debugger-skeleton/1-debugger_skeleton.md","ref":"5-debugger-skeleton/1-debugger_skeleton.md","articles":[]},{"title":"5.2 架构设计和技术方案","level":"1.5.2","depth":2,"path":"5-debugger-skeleton/2-debugger_solution.md","ref":"5-debugger-skeleton/2-debugger_solution.md","articles":[]},{"title":"5.3 具体的实现方案选择","level":"1.5.3","depth":2,"path":"5-debugger-skeleton/3-debugger_solution_final.md","ref":"5-debugger-skeleton/3-debugger_solution_final.md","articles":[]},{"title":"5.4 功能演示和实现效果","level":"1.5.4","depth":2,"path":"5-debugger-skeleton/4-debugger_demos.md","ref":"5-debugger-skeleton/4-debugger_demos.md","articles":[]}]},"previous":{"title":"4.2 调试依赖","level":"1.4.2","depth":2,"path":"4-basics/2-dependencies.md","ref":"4-basics/2-dependencies.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4-basics/3-countertactics.md","mtime":"2026-09-19T08:29:10.025Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-19T08:29:44.170Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

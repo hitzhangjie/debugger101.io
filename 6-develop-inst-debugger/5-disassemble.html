@@ -2246,48 +2246,53 @@ body {
 }
 </style></p>
 <h2 id="&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;disass-&#x53CD;&#x6C47;&#x7F16;">&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;<code>disass</code> &#x53CD;&#x6C47;&#x7F16;</h2>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-disass-address-&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg&gt; disass [address]</code> &#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;</h3>
-<p>&#x53CD;&#x6C47;&#x7F16;&#x662F;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E0D;&#x53EF;&#x7F3A;&#x5C11;&#x7684;&#x73AF;&#x8282;&#xFF0C;&#x5BF9;&#x4E8E;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x5C55;&#x793A;&#x6E90;&#x7801;&#x4FE1;&#x606F;&#xFF0C;&#x5BF9;&#x4E8E;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x800C;&#x8A00;&#x5C31;&#x662F;&#x8981;&#x5C55;&#x793A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E86;&#x3002;</p>
-<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x662F;&#x548C;&#x786C;&#x4EF6;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#xFF0C;&#x5176;&#x5B9E;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4E0D;&#x8FC7;&#x662F;&#x4E9B;&#x52A9;&#x8BB0;&#x7B26;&#xFF0C;&#x4E00;&#x6761;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x901A;&#x8FC7;&#x89C4;&#x5B9A;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;&#x4E0D;&#x540C;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x53EF;&#x80FD;&#x662F;&#x76F8;&#x540C;&#x7684;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x4E0D;&#x540C;&#x7684;&#xFF0C;&#x64CD;&#x4F5C;&#x6570;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x4E5F;&#x53EF;&#x80FD;&#x76F8;&#x540C;&#x6216;&#x4E0D;&#x540C;&#x3002;</p>
-<p>&#x4E0D;&#x540C;&#x786C;&#x4EF6;&#x5E73;&#x53F0;&#x3001;&#x6307;&#x4EE4;&#x96C6;&#x67B6;&#x6784;&#x3001;&#x8BF8;&#x591A;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x4EE5;&#x53CA;&#x6307;&#x4EE4;&#x7684;&#x5B9A;&#x957F;&#x7F16;&#x7801;&#x3001;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x7B49;&#x7B49;&#x56E0;&#x7D20;&#x90FD;&#x7ED9;&#x53CD;&#x6C47;&#x7F16;&#x5E26;&#x6765;&#x4E86;&#x4E00;&#x5B9A;&#x7684;&#x96BE;&#x5EA6;&#xFF0C;&#x8981;&#x60F3;&#x51ED;&#x4E00;&#x4EBA;&#x4E4B;&#x529B;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x8FD8;&#x771F;&#x7684;&#x4E0D;&#x662F;&#x4E00;&#x4EF6;&#x5BB9;&#x6613;&#x7684;&#x4E8B;&#x60C5;&#x3002;</p>
-<p>&#x5E78;&#x597D;&#x5DF2;&#x7ECF;&#x6709;&#x53CD;&#x6C47;&#x7F16;&#x6846;&#x67B6;<a href="http://www.capstone-engine.org/" target="_blank">Capstone</a>&#x6765;&#x4E13;&#x95E8;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x5BF9;&#x4E8E;go&#x8BED;&#x8A00;&#x800C;&#x8A00;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x4F7F;&#x7528;go&#x7248;&#x672C;&#x7684;<a href="https://github.com/bnagy/gapstone" target="_blank">Gapstone</a>&#x3002;&#x6216;&#x8005;&#xFF0C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;go&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x5DE5;&#x5177;&#x7C7B;<a href="https://golang.org/x/arch/x86/x86asm" target="_blank">arch/x86/x86asm</a>&#xFF0C;&#x6CE8;&#x610F;&#x5230;&#x5728;&#x6D41;&#x884C;&#x7684;go&#x8BED;&#x8A00;&#x8C03;&#x8BD5;&#x5668;dlv&#x91CC;&#x9762;&#x4E5F;&#x662F;&#x4F7F;&#x7528;x86asm&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x7684;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x7B80;&#x5355;&#x8D77;&#x89C1;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x5C06;&#x4F7F;&#x7528;arch/x86/x86asm&#x6765;&#x5B8C;&#x6210;&#x53CD;&#x6C47;&#x7F16;&#x4EFB;&#x52A1;&#xFF0C;&#x5F53;&#x7136;&#x4F7F;&#x7528;Capstone&#x3001;Gapstone&#x4E5F;&#x5E76;&#x975E;&#x4E0D;&#x53EF;&#x4EE5;&#xFF0C;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x611F;&#x5174;&#x8DA3;&#x53EF;&#x4EE5;&#x81EA;&#x884C;&#x5B9E;&#x9A8C;&#x3002;</p>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x8981;&#x638C;&#x63E1;&#x8FD9;&#x51E0;&#x4E2A;&#x64CD;&#x4F5C;&#xFF1A;</p>
+<p>6.1~6.4 &#x8282;&#x8BB2;&#x7684;&#x662F;&#x600E;&#x4E48;&#x628A;&#x8C03;&#x8BD5;&#x5668;&quot;&#x67B6;&#x8D77;&#x6765;&quot;&#xFF1A;&#x542F;&#x52A8;&#x3001;attach&#x3001;&#x7F16;&#x8BD1;&#x5E76;&#x8C03;&#x8BD5;&#x76EE;&#x6807;&#xFF0C;&#x4EE5;&#x53CA;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x3002;&#x622A;&#x81F3; 6.4 &#x8282;&#xFF0C;&#x4F1A;&#x8BDD;&#x91CC;&#x8FD8;&#x6CA1;&#x6709;&#x4E00;&#x6761;&#x771F;&#x6B63;&#x53BB;&#x770B;&#x76EE;&#x6807;&#x7A0B;&#x5E8F;&#x7684;&#x547D;&#x4EE4;&#x3002;&#x4ECE;&#x672C;&#x8282;&#x5F00;&#x59CB;&#xFF0C;&#x6211;&#x4EEC;&#x9010;&#x4E2A;&#x5B9E;&#x73B0;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5185;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;&#x53CD;&#x6C47;&#x7F16; <code>disass</code>&#x3002;</p>
+<p>&#x53CD;&#x6C47;&#x7F16;&#x662F;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x7684;&#x57FA;&#x7840;&#xFF1A;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x4E0D;&#x770B;&#x6E90;&#x7801;&#xFF0C;&#x770B;&#x7684;&#x5C31;&#x662F;&#x4E00;&#x6761;&#x6761;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x4EE5;&#x53CA;&#x5B83;&#x4EEC;&#x5728;&#x5185;&#x5B58;&#x91CC;&#x7684;&#x5730;&#x5740;&#x3002;&#x53E6;&#x5916;&#xFF0C;&#x53EA;&#x6709;&#x5148;&#x80FD;&#x770B;&#x5230;&#x6307;&#x4EE4;&#x53CA;&#x5176;&#x5730;&#x5740;&#xFF0C;&#x540E;&#x9762;&#x624D;&#x80FD;&#x5728;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5904;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x5148;&#x4ECB;&#x7ECD;&#x53CD;&#x6C47;&#x7F16;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.5</code>&#xFF0C;<code>git diff ch6.4 ch6.5</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x6539;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-disass-address-&#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg&gt; disass [address]</code> &#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;</h3>
+<p>&#x672C;&#x8282;&#x5B9E;&#x73B0; <code>disass [address]</code>&#xFF0C;address &#x662F;&#x53EF;&#x9009;&#x53C2;&#x6570;&#xFF1A;</p>
 <ul>
-<li>&#x5982;&#x4F55;&#x8BFB;&#x53D6;&#x6307;&#x5B9A;&#x8FDB;&#x7A0B;&#x7684;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF1B;</li>
-<li>&#x5982;&#x4F55;&#x5BF9;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x7A0B;&#x5E8F;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#xFF1B;</li>
-<li>&#x5982;&#x4F55;&#x5BF9;&#x65AD;&#x70B9;&#x5904;&#x6307;&#x4EE4;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x3002;</li>
+<li>&#x4E0D;&#x5E26; address&#xFF1A;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#xFF08;PC&#xFF09;&#x5F00;&#x59CB;&#x53CD;&#x6C47;&#x7F16;&#xFF1B;</li>
+<li>&#x5E26;&#x4E0A; address&#xFF1A;&#x4ECE;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5F00;&#x59CB;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x5730;&#x5740;&#x652F;&#x6301;&#x5341;&#x516D;&#x8FDB;&#x5236;&#x5199;&#x6CD5;&#xFF08;&#x5982; <code>0x478120</code>&#xFF09;&#xFF0C;&#x4E5F;&#x652F;&#x6301;&#x5341;&#x8FDB;&#x5236;&#x548C; <code>0</code> &#x5F00;&#x5934;&#x7684;&#x516B;&#x8FDB;&#x5236;&#xFF08;&#x540E;&#x9762; <code>parseAddress</code> &#x4F1A;&#x4ECB;&#x7ECD;&#xFF09;&#xFF1B;</li>
+<li>&#x4E24;&#x79CD;&#x7528;&#x6CD5;&#x90FD;&#x662F;&#x5148;&#x89E3;&#x6790;&#x51FA;&#x4E00;&#x4E2A;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF0C;&#x518D;&#x8D70;<strong>&#x540C;&#x4E00;&#x5957;</strong>&#x53CD;&#x6C47;&#x7F16;&#x5904;&#x7406;&#x903B;&#x8F91;&#xFF0C;&#x4E0D;&#x5B58;&#x5728;&#x4E24;&#x6761;&#x5206;&#x53C9;&#x7684;&#x5B9E;&#x73B0;&#x8DEF;&#x5F84;&#x3002;</li>
 </ul>
-<h4 id="&#x6839;&#x636E;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;">&#x6839;&#x636E;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;</h4>
-<p>tracer&#x5BF9;tracee&#x7684;&#x63A7;&#x5236;&#xFF0C;&#x5F88;&#x591A;&#x64CD;&#x4F5C;&#x90FD;&#x4F9D;&#x8D56;tracee&#x7684;pid&#xFF0C;&#x5982;&#x679C;&#x8981;&#x8BFB;&#x53D6;pid&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x90A3;&#x5C31;&#x5FC5;&#x987B;&#x5148;&#x901A;&#x8FC7;pid&#x627E;&#x5230;&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;&#xFF0C;&#x600E;&#x4E48;&#x505A;&#x5462;&#xFF1F;</p>
-<blockquote>
-<p>&#x76F4;&#x63A5;&#x8BFB;&#x53D6;pid&#x5BF9;&#x5E94;&#x8FDB;&#x7A0B;&#x5B9E;&#x4F8B;&#x7684;&#x5185;&#x5B58;&#x6570;&#x636E;&#x662F;&#x6CA1;&#x7528;&#x7684;&#xFF0C;&#x56E0;&#x4E3A;&#x91CC;&#x9762;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x4E0D;&#x5168;&#x3002;&#x8FDB;&#x7A0B;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x4E5F;&#x662F;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;&#x8BE6;&#x7EC6;&#x53EF;&#x4E86;&#x89E3;&#x4E0B;Linux PageFault&#x76F8;&#x5173;&#x5185;&#x5BB9;&#x3002;</p>
-</blockquote>
-<p>&#x5728;Linux&#x7CFB;&#x7EDF;&#x4E0B;&#xFF0C;&#x865A;&#x62DF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84; <code>/proc/&lt;pid&gt;/exe</code>&#x662F;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#xFF0C;&#x5B83;&#x6307;&#x5411;&#x4E86;&#x8FDB;&#x7A0B; <code>pid</code>&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x3002;go&#x7A0B;&#x5E8F;&#x91CC;&#x8BFB;&#x53D6;&#x8BE5;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#x4FE1;&#x606F;&#x5373;&#x53EF;&#x83B7;&#x77E5;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;&#x3002;</p>
-<p>&#x6BD4;&#x5982;&#x8FD9;&#x6837;&#x64CD;&#x4F5C;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-comment">// GetExecutable &#x6839;&#x636E;pid&#x83B7;&#x53D6;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;</span>
-<span class="hljs-keyword">func</span> GetExecutable(pid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">string</span>, error) {
-    exeLink := fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/exe&quot;</span>, pid)
-    exePath, err := os.Readlink(exeLink)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;find executable by pid err: %w&quot;</span>, err)
-    }
-    <span class="hljs-keyword">return</span> exePath, <span class="hljs-literal">nil</span>
-}
+<p>&#x7528;&#x6CD5;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; disass                          <span class="hljs-comment"># &#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#xFF0C;&#x9ED8;&#x8BA4; 10 &#x6761;</span>
+godbg&gt; disass 0x478120                 <span class="hljs-comment"># &#x4ECE; 0x478120 &#x5F00;&#x59CB;&#xFF0C;&#x9ED8;&#x8BA4; 10 &#x6761;</span>
+godbg&gt; disass -n 5                     <span class="hljs-comment"># &#x53EA;&#x53CD;&#x6C47;&#x7F16; 5 &#x6761;</span>
+godbg&gt; disass 0x478120 -n 3 <span class="hljs-_">-s</span> intel   <span class="hljs-comment"># &#x4ECE;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5F00;&#x59CB;&#x3001;3 &#x6761;&#x3001;intel &#x8BED;&#x6CD5;</span>
 </code></pre>
-<h4 id="&#x5B9E;&#x73B0;&#x5BF9;&#x5B8C;&#x6574;&#x7A0B;&#x5E8F;&#x53CD;&#x6C47;&#x7F16;">&#x5B9E;&#x73B0;&#x5BF9;&#x5B8C;&#x6574;&#x7A0B;&#x5E8F;&#x53CD;&#x6C47;&#x7F16;</h4>
-<p>&#x6839;&#x636E;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x4E4B;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x4E3A;&#x63A5;&#x4E0B;&#x6765;&#x53CD;&#x6C47;&#x7F16;&#x505A;&#x51C6;&#x5907;&#x3002;&#x4F46;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;Linux&#x4E8C;&#x8FDB;&#x5236;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#x662F;&#x6309;&#x7167; <code>ELF (Executable and Linkable Format)</code>&#x683C;&#x5F0F;&#x8FDB;&#x884C;&#x7EC4;&#x7EC7;&#x7684;&#xFF0C;&#x5176;&#x5927;&#x81F4;&#x7684;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;&#x8981;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;ELF&#x6587;&#x4EF6;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x501F;&#x52A9;&#x6807;&#x51C6;&#x5E93; <code>debug/elf</code> &#x6765;&#x5B8C;&#x6210;&#x3002;</p>
-<p><img src="assets/elf_layout.png" alt="elf"></p>
-<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E00;&#x4E2A;ELF&#x6587;&#x4EF6;&#x5305;&#x542B;&#x4E86;ELF Header&#x3001;Program Header Table&#x3001;Section Header Table&#x4EE5;&#x53CA;&#x4E00;&#x7CFB;&#x5217;&#x7684;Sections&#xFF0C;Program Header Table&#x3001;Section Header Table&#x4E2D;&#x5F15;&#x7528;Sections&#x3002;</p>
-<p>Program Header Table&#x548C;Section Header Table&#xFF0C;&#x662F;&#x4E3A;&#x6784;&#x5EFA;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x89C6;&#x56FE;&#x7279;&#x610F;&#x8BBE;&#x8BA1;&#x7684;&#xFF1A;</p>
+<p>&#x53CD;&#x6C47;&#x7F16;&#x6761;&#x6570;&#x7531; <code>-n/--max</code> &#x63A7;&#x5236;&#xFF0C;&#x9ED8;&#x8BA4; 10&#xFF1B;&#x6C47;&#x7F16;&#x8BED;&#x6CD5;&#x7531; <code>-s/--syntax</code> &#x63A7;&#x5236;&#xFF0C;&#x652F;&#x6301; <code>go</code>&#x3001;<code>gnu</code>&#x3001;<code>intel</code> &#x4E09;&#x79CD;&#xFF0C;&#x9ED8;&#x8BA4; <code>gnu</code>&#x3002;&#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x8F93;&#x51FA;&#x4E3A;&#x4E09;&#x5217;&#xFF1A;</p>
+<pre><code class="lang-text">0x478120:    e9 bb c8 ff ff    jmpq 0xffffffffffffc8c4
+</code></pre>
+<p>&#x7B2C;&#x4E00;&#x5217;&#x662F;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x7B2C;&#x4E8C;&#x5217;&#x662F;&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x673A;&#x5668;&#x7801;&#xFF0C;&#x7B2C;&#x4E09;&#x5217;&#x662F;&#x53CD;&#x6C47;&#x7F16;&#x5F97;&#x5230;&#x7684;&#x6C47;&#x7F16;&#x6587;&#x672C;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x8BA9;&quot;&#x4E0D;&#x5E26; address&quot;&#x8FD9;&#x79CD;&#x7528;&#x6CD5;&#x6210;&#x7ACB;&#xFF0C;&#x672C;&#x8282;&#x8FD8;&#x8981;&#x524D;&#x79FB;&#x4E00;&#x4E2A;&#x6700;&#x5C0F;&#x7684;&#x57FA;&#x7840;&#x80FD;&#x529B;&#xFF1A;&#x8BFB;&#x53D6;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5F53;&#x524D;&#x7684; PC&#x3002;&#x547D;&#x4EE4;&#x5C42;&#x5F97;&#x5148;&#x77E5;&#x9053;&quot;&#x5F53;&#x524D;&#x505C;&#x5728;&#x54EA;&#x513F;&quot;&#xFF0C;&#x624D;&#x80FD;&#x628A;&#x5B83;&#x5F53;&#x4F5C;&#x53CD;&#x6C47;&#x7F16;&#x8D77;&#x70B9;&#x3002;&#x6309;&#x524D;&#x9762;&#x7684;&#x5206;&#x5C42;&#xFF0C;&#x8FD9;&#x4E2A;&#x80FD;&#x529B;&#x8981;&#x4E00;&#x8DEF;&#x8865;&#x5230; <code>api.Client</code>&#x3001;<code>debugger</code> &#x95E8;&#x9762;&#x548C; <code>pkg/target</code>&#x3002;&#x5B8C;&#x6574;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x8BFB;&#x53D6;&#x547D;&#x4EE4;&#xFF08;<code>pregs</code>&#xFF09;&#x5230; 6.14 &#x8282;&#x624D;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x8865;&#x4E00;&#x4E2A; <code>CurrentPC()</code>&#xFF0C;&#x591F;&#x672C;&#x8282;&#x4F7F;&#x7528;&#x5373;&#x53EF;&#x3002;</p>
+<p>&#x8FD8;&#x8981;&#x63D0;&#x524D;&#x8BF4;&#x660E;&#x4E00;&#x70B9;&#xFF1A;&#x672C;&#x8282;&#x53EA;&#x505A;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x4E0D;&#x6D89;&#x53CA;&#x65AD;&#x70B9;&#x3002;&#x65AD;&#x70B9;&#x547D;&#x4EE4;&#x5728; 6.6 &#x8282;&#x624D;&#x5B9E;&#x73B0;&#xFF0C;&#x6240;&#x4EE5;&#x672C;&#x8282;&#x7684;&#x4EE3;&#x7801;&#x91CC;&#x6CA1;&#x6709;&quot;&#x65AD;&#x70B9;&#x843D;&#x5728;&#x53CD;&#x6C47;&#x7F16;&#x8D77;&#x70B9;&#x4E0A;&#xFF0C;&#x9700;&#x8981;&#x56DE;&#x9000; PC &#x6216;&#x8FD8;&#x539F; 0xCC&quot;&#x8FD9;&#x7C7B;&#x5904;&#x7406;&#x3002;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x539F;&#x7406;&#x6211;&#x4EEC;&#x7167;&#x5E38;&#x8BB2;&#x6E05;&#x695A;&#xFF0C;&#x4F46;&#x4F1A;&#x628A;&quot;&#x672C;&#x8282;&#x4EE3;&#x7801;&#x6CA1;&#x6709;&#x505A;&quot;&#x7684;&#x5730;&#x65B9;&#x6807;&#x51FA;&#x6765;&#x3002;</p>
+<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<h4 id="&#x53CD;&#x6C47;&#x7F16;&#xFF1A;&#x53D8;&#x957F;&#x6307;&#x4EE4;&#x7684;&#x9010;&#x6761;&#x89E3;&#x7801;">&#x53CD;&#x6C47;&#x7F16;&#xFF1A;&#x53D8;&#x957F;&#x6307;&#x4EE4;&#x7684;&#x9010;&#x6761;&#x89E3;&#x7801;</h4>
+<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x548C;&#x786C;&#x4EF6;&#x5F3A;&#x76F8;&#x5173;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x4E00;&#x7EC4;&#x52A9;&#x8BB0;&#x7B26;&#x548C;&#x64CD;&#x4F5C;&#x6570;&#xFF0C;&#x4E00;&#x6761;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x6309;&#x6307;&#x4EE4;&#x96C6;&#x89C4;&#x5B9A;&#x7684;&#x7F16;&#x7801;&#x65B9;&#x5F0F;&#x7F16;&#x7801;&#x540E;&#xFF0C;&#x5C31;&#x5F97;&#x5230;&#x4E86;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;&#x4E0D;&#x540C;&#x6307;&#x4EE4;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x5360;&#x7528;&#x5B57;&#x8282;&#x6570;&#x53EF;&#x80FD;&#x76F8;&#x540C;&#x4E5F;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;x86 &#x5C31;&#x662F;&#x5178;&#x578B;&#x7684;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x3002;</p>
+<p>&#x53D8;&#x957F;&#x7F16;&#x7801;&#x610F;&#x5473;&#x7740;&#x53CD;&#x6C47;&#x7F16;&#x4E0D;&#x80FD;&#x6309;&#x56FA;&#x5B9A;&#x6B65;&#x957F;&#x5F80;&#x540E;&#x6570;&#xFF0C;&#x5FC5;&#x987B;&#x4E00;&#x6761;&#x4E00;&#x6761;&#x89E3;&#x7801;&#xFF1A;&#x5148;&#x89E3;&#x51FA;&#x5F53;&#x524D;&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#xFF0C;&#x62FF;&#x5230;&#x5B83;&#x5360;&#x7528;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF0C;&#x518D;&#x79FB;&#x52A8;&#x5230;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x4F4D;&#x7F6E;&#x7EE7;&#x7EED;&#x89E3;&#x3002;x86asm &#x7684; <code>Decode</code> &#x8FD4;&#x56DE;&#x7684; <code>Inst.Len</code> &#x5C31;&#x662F;&#x5F53;&#x524D;&#x6307;&#x4EE4;&#x7684;&#x957F;&#x5EA6;&#xFF0C;&#x8FD9;&#x662F; decode &#x5FAA;&#x73AF;&#x91CC;&#x63A8;&#x8FDB;&#x504F;&#x79FB;&#x91CF;&#x7684;&#x4F9D;&#x636E;&#xFF1B;&#x4E00;&#x65E6;&#x9047;&#x5230;&#x89E3;&#x4E0D;&#x51FA;&#x6765;&#x7684;&#x5B57;&#x8282;&#xFF0C;&#x8FD8;&#x8981;&#x51B3;&#x5B9A;&#x662F;&#x8DF3;&#x8FC7;&#x7EE7;&#x7EED;&#x8FD8;&#x662F;&#x76F4;&#x63A5;&#x62A5;&#x9519;&#x3002;</p>
+<p>&#x81EA;&#x5DF1;&#x4ECE;&#x5934;&#x5B9E;&#x73B0;&#x4E00;&#x5957; x86 &#x89E3;&#x7801;&#x5668;&#x663E;&#x7136;&#x4E0D;&#x73B0;&#x5B9E;&#x3002;&#x73B0;&#x6210;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x65B9;&#x6848;&#x4E3B;&#x8981;&#x6709;&#xFF1A;</p>
 <ul>
-<li>Program Header Table&#x6784;&#x9020;&#x4E86;segments&#x89C6;&#x56FE;&#xFF0C;&#x5B83;&#x63CF;&#x8FF0;&#x4E86;&#x7A0B;&#x5E8F;&#x52A0;&#x8F7D;&#x65F6;loader&#x5982;&#x4F55;&#x901A;&#x8FC7;mmap&#x5C06;&#x5F15;&#x7528;&#x7684;sections&#x6620;&#x5C04;&#x5230;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF1B;</li>
-<li>Section Header Table&#x6784;&#x9020;&#x4E86;sections&#x89C6;&#x56FE;&#xFF0C;&#x63CF;&#x8FF0;&#x4E86;&#x4E8C;&#x8FDB;&#x5236;&#x7A0B;&#x5E8F;&#x4E2D;sections&#x7684;&#x987A;&#x5E8F;&#x4F4D;&#x7F6E;&#xFF0C;&#x4EE5;&#x53CA;&#x6307;&#x5BFC;linker&#x5982;&#x4F55;&#x8FDB;&#x884C;&#x94FE;&#x63A5;&#xFF1B;</li>
+<li><a href="http://www.capstone-engine.org/" target="_blank">Capstone</a>&#xFF1A;&#x652F;&#x6301;&#x591A;&#x5E73;&#x53F0;&#x3001;&#x591A;&#x6307;&#x4EE4;&#x96C6;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x6846;&#x67B6;&#xFF0C;C &#x5B9E;&#x73B0;&#xFF1B;Go &#x91CC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <a href="https://github.com/bnagy/gapstone" target="_blank">Gapstone</a> &#x7ED1;&#x5B9A;&#x8C03;&#x7528;&#xFF1B;</li>
+<li>Go &#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684; <a href="https://pkg.go.dev/golang.org/x/arch/x86/x86asm" target="_blank">golang.org/x/arch/x86/x86asm</a>&#xFF1A;&#x7EAF; Go &#x7684; x86/x86-64 &#x89E3;&#x7801;&#x5668;&#x3002;&#x6D41;&#x884C;&#x7684; Go &#x8C03;&#x8BD5;&#x5668; dlv &#x4E5F;&#x662F;&#x7528;&#x5B83;&#x505A;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x3002;</li>
 </ul>
-<p>&#x8FD9;&#x4E24;&#x79CD;&#x89C6;&#x56FE;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x4E8E;&#x6307;&#x5BFC;loader&#x3001;linker&#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>godbgv2 &#x9009;&#x62E9; x86asm&#xFF1A;&#x7EAF; Go &#x5B9E;&#x73B0;&#xFF0C;&#x4E0D;&#x7528;&#x5F15;&#x5165; CGO &#x548C;&#x989D;&#x5916;&#x7684;&#x52A8;&#x6001;&#x5E93;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x672C;&#x8EAB;&#x7684;&#x6784;&#x5EFA;&#x548C;&#x5206;&#x53D1;&#x90FD;&#x7B80;&#x5355;&#xFF1B;&#x6211;&#x4EEC;&#x53EA;&#x9700;&#x8981;&#x89E3;&#x7801;&#x548C;&#x683C;&#x5F0F;&#x5316;&#xFF0C;x86asm &#x7684; <code>Decode</code>&#x3001;<code>GNUSyntax</code>&#x3001;<code>GoSyntax</code>&#x3001;<code>IntelSyntax</code> &#x5C31;&#x591F;&#x7528;&#x4E86;&#x3002;</p>
+<h4 id="&#x6307;&#x4EE4;&#x6570;&#x636E;&#x4ECE;&#x54EA;&#x91CC;&#x6765;">&#x6307;&#x4EE4;&#x6570;&#x636E;&#x4ECE;&#x54EA;&#x91CC;&#x6765;</h4>
+<p>&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x5BF9;&#x8C61;&#x662F;&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF0C;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x53EF;&#x4EE5;&#x4ECE;&#x4E24;&#x4E2A;&#x5730;&#x65B9;&#x6765;&#xFF1A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x6216;&#x8005;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
+<p><strong>&#x505A;&#x6CD5;&#x4E00;&#xFF1A;&#x4ECE;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x91CC;&#x8BFB;&#x3002;</strong> &#x5148;&#x6839;&#x636E; pid &#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3002;Linux &#x4E0B;&#x865A;&#x62DF;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x8DEF;&#x5F84; <code>/proc/&lt;pid&gt;/exe</code> &#x662F;&#x4E00;&#x4E2A;&#x7B26;&#x53F7;&#x94FE;&#x63A5;&#xFF0C;&#x6307;&#x5411;&#x8FDB;&#x7A0B; <code>&lt;pid&gt;</code> &#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x7684;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#xFF0C;Go &#x7A0B;&#x5E8F;&#x8BFB;&#x53D6;&#x8BE5;&#x94FE;&#x63A5;&#x5C31;&#x80FD;&#x62FF;&#x5230;&#x8DEF;&#x5F84;&#x3002;Linux &#x4E0B;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x662F; ELF&#xFF08;Executable and Linkable Format&#xFF09;&#x683C;&#x5F0F;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x8981;&#x6309; ELF &#x683C;&#x5F0F;&#x89E3;&#x6790;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4ECE; <code>.text</code> &#x91CC;&#x8BFB;&#x51FA;&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF0C;&#x518D;&#x9010;&#x6761; decode&#x3002;</p>
+<blockquote>
+<p>&#x76F4;&#x63A5;&#x8BFB;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x4E0D;&#x5C31;&#x884C;&#x4E86;&#x5417;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x8FD8;&#x8981;&#x7ED5;&#x5230;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF1F;&#x56E0;&#x4E3A;&#x8FDB;&#x7A0B;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x662F;&#x6309;&#x9700;&#x52A0;&#x8F7D;&#x7684;&#xFF0C;&#x53EA;&#x6709;&#x771F;&#x6B63;&#x8BBF;&#x95EE;&#x5230;&#x7684;&#x9875;&#x624D;&#x4F1A;&#x6620;&#x5C04;&#x8FDB;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF1B;&#x5982;&#x679C;&#x6309; ELF &#x91CC;&#x7684;&#x5730;&#x5740;&#x76F4;&#x63A5;&#x53BB;&#x8BFB;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#xFF0C;&#x4F1A;&#x53D1;&#x73B0;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x5E76;&#x4E0D;&#x5168;&#x3002;&#x60F3;&#x8981;&#x62FF;&#x5230;&quot;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#x7684;&#x6307;&#x4EE4;&quot;&#xFF0C;&#x4ECE;&#x6587;&#x4EF6;&#x91CC;&#x8BFB; .text &#x66F4;&#x76F4;&#x63A5;&#x3002;</p>
+</blockquote>
+<p>ELF &#x6587;&#x4EF6;&#x7684;&#x5927;&#x81F4;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#x6240;&#x793A;&#x3002;&#x8981;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790; ELF &#x6587;&#x4EF6;&#x6570;&#x636E;&#xFF0C;&#x53EF;&#x4EE5;&#x501F;&#x52A9;&#x6807;&#x51C6;&#x5E93; <code>debug/elf</code>&#x3002;</p>
+<p><img src="assets/elf_layout.png" alt="elf"></p>
+<p>&#x6211;&#x4EEC;&#x770B;&#x5230;&#x4E00;&#x4E2A; ELF &#x6587;&#x4EF6;&#x5305;&#x542B;&#x4E86; ELF Header&#x3001;Program Header Table&#x3001;Section Header Table &#x4EE5;&#x53CA;&#x4E00;&#x7CFB;&#x5217;&#x7684; Sections&#xFF0C;Program Header Table&#x3001;Section Header Table &#x4E2D;&#x5F15;&#x7528; Sections &#x4E2D;&#x5B9A;&#x4E49;&#x7684; Section&#x3002;</p>
+<p>Program Header Table &#x548C; Section Header Table&#xFF0C;&#x662F;&#x4E3A;&#x6784;&#x5EFA;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x89C6;&#x56FE;&#x7279;&#x610F;&#x8BBE;&#x8BA1;&#x7684;&#xFF1A;</p>
+<ul>
+<li>Program Header Table &#x6784;&#x9020;&#x4E86; segments &#x89C6;&#x56FE;&#xFF0C;&#x5B83;&#x63CF;&#x8FF0;&#x4E86;&#x7A0B;&#x5E8F;&#x52A0;&#x8F7D;&#x65F6; loader &#x5982;&#x4F55;&#x901A;&#x8FC7; mmap &#x5C06;&#x5F15;&#x7528;&#x7684; sections &#x6620;&#x5C04;&#x5230;&#x5185;&#x5B58;&#x7A7A;&#x95F4;&#xFF1B;</li>
+<li>Section Header Table &#x6784;&#x9020;&#x4E86; sections &#x89C6;&#x56FE;&#xFF0C;&#x63CF;&#x8FF0;&#x4E86;&#x4E8C;&#x8FDB;&#x5236;&#x7A0B;&#x5E8F;&#x4E2D; sections &#x7684;&#x987A;&#x5E8F;&#x4F4D;&#x7F6E;&#xFF0C;&#x4EE5;&#x53CA;&#x6307;&#x5BFC; linker &#x5982;&#x4F55;&#x8FDB;&#x884C;&#x94FE;&#x63A5;&#xFF1B;</li>
+</ul>
+<p>&#x8FD9;&#x4E24;&#x79CD;&#x89C6;&#x56FE;&#x4E92;&#x4E0D;&#x5E72;&#x6270;&#xFF0C;&#x5206;&#x522B;&#x7528;&#x4E8E;&#x6307;&#x5BFC; loader&#x3001;linker &#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x3002;</p>
 <blockquote>
 <p><strong>What You Need To Know About ELF for CS452</strong></p>
 <p><strong>Two views of the world</strong></p>
@@ -2296,217 +2301,279 @@ body {
 <p>Because you are writing a loader, not a linker, <strong>you can completely ignore the section view</strong>. You only care about the program view. This throws away around 80% of the ELF spec. Doesn&apos;t that make you feel good?</p>
 <p>see: <a href="https://student.cs.uwaterloo.ca/~cs452/W18/elf/elf.html" target="_blank">https://student.cs.uwaterloo.ca/~cs452/W18/elf/elf.html</a></p>
 </blockquote>
-<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x8981;&#x60F3;&#x5B9E;&#x73B0;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x7684;&#x8BDD;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x5148;&#x5C06;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF08;Linux&#x4E0B;&#x662F;ELF&#x683C;&#x5F0F;&#xFF09;&#x6309;&#x7167;ELF&#x683C;&#x5F0F;&#x6B63;&#x5E38;&#x89E3;&#x6790;&#xFF0C;&#x518D;&#x4ECE;.text segment&#x8BFB;&#x53D6;&#x51FA;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;</p>
-<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x5C31;&#x6765;&#x505A;&#x8FD9;&#x4E2A;&#x4E8B;&#x60C5;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
-
-<span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;debug/elf&quot;</span>
-    <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;os&quot;</span>
-    <span class="hljs-string">&quot;strconv&quot;</span>
-
-    <span class="hljs-string">&quot;golang.org/x/arch/x86/x86asm&quot;</span>
-)
-
-<span class="hljs-keyword">func</span> main() {
-
-    <span class="hljs-comment">// go run main.go &lt;pid&gt;</span>
-    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(os.Args) != <span class="hljs-number">2</span> {
-        <span class="hljs-built_in">panic</span>(<span class="hljs-string">&quot;invalid params&quot;</span>)
-    }
-
-    <span class="hljs-comment">// pid</span>
-    pid, err := strconv.Atoi(os.Args[<span class="hljs-number">1</span>])
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-
-    <span class="hljs-comment">// &#x901A;&#x8FC7;pid&#x627E;&#x5230;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;</span>
-    exePath, err := GetExecutable(pid)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-    fmt.Println(exePath)
-
-    <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x4FE1;&#x606F;&#x5E76;&#x53CD;&#x6C47;&#x7F16;</span>
-    elfFile, err := elf.Open(exePath)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-    section := elfFile.Section(<span class="hljs-string">&quot;.text&quot;</span>)
-    buf, err := section.Data()
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-built_in">panic</span>(err)
-    }
-
-    <span class="hljs-comment">// &#x9010;&#x8BED;&#x53E5;&#x89E3;&#x6790;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x5E76;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x7136;&#x540E;&#x6253;&#x5370;&#x51FA;&#x6765;</span>
-    offset := <span class="hljs-number">0</span>
-    <span class="hljs-keyword">for</span> {
-        <span class="hljs-comment">// &#x4F7F;&#x7528;64&#x4F4D;&#x6A21;&#x5F0F;</span>
-        inst, err := x86asm.Decode(buf[offset:], <span class="hljs-number">64</span>)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-built_in">panic</span>(err)
-        }
-        fmt.Printf(<span class="hljs-string">&quot;%8x %s\n&quot;</span>, offset, inst.String())
-        offset += inst.Len
-    }
-}
-</code></pre>
-<p>&#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x6BD4;&#x8F83;&#x5B8C;&#x6574;&#xFF0C;&#x5B83;&#x63A5;&#x6536;&#x4E00;&#x4E2A;pid&#xFF0C;&#x7136;&#x540E;&#x83B7;&#x53D6;&#x5BF9;&#x5E94;&#x7684;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7;&#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x7684;elf package&#x6765;&#x8BFB;&#x53D6;&#x6587;&#x4EF6;&#x5E76;&#x6309;ELF&#x6587;&#x4EF6;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x3002;&#x4ECE;&#x4E2D;&#x8BFB;&#x53D6;.text section&#x7684;&#x6570;&#x636E;&#x3002;&#x4F17;&#x6240;&#x5468;&#x77E5;&#xFF0C;.text section&#x5185;&#x90E8;&#x6570;&#x636E;&#x5373;&#x4E3A;&#x7A0B;&#x5E8F;&#x7684;&#x6307;&#x4EE4;&#x3002;</p>
-<p>&#x62FF;&#x5230;&#x6307;&#x4EE4;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>golang.org/x/arch/x86/x86asm</code>&#x6765;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x4E86;&#xFF0C;&#x56E0;&#x4E3A;&#x6307;&#x4EE4;&#x662F;&#x53D8;&#x957F;&#x7F16;&#x7801;&#xFF0C;&#x53CD;&#x6C47;&#x7F16;&#x6210;&#x529F;&#x540E;&#xFF0C;&#x8FD4;&#x56DE;&#x7684;&#x4FE1;&#x606F;&#x4E2D;&#x5305;&#x542B;&#x4E86;&#x5F53;&#x524D;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x7684;&#x5B57;&#x8282;&#x6570;&#xFF0C;&#x6211;&#x4EEC;&#x501F;&#x6B64;&#x8C03;&#x6574;&#x504F;&#x79FB;&#x91CF;&#x540E;&#x53EF;&#x4EE5;&#x5BF9;&#x540E;&#x7EED;&#x6307;&#x4EE4;&#x7EE7;&#x7EED;&#x53CD;&#x6C47;&#x7F16;&#x3002;</p>
-<h4 id="&#x5BF9;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;">&#x5BF9;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;</h4>
-<p>&#x5BF9;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x9996;&#x8981;&#x4EFB;&#x52A1;&#x5C31;&#x662F;&#x83B7;&#x5F97;&#x5F53;&#x524D;&#x65AD;&#x70B9;&#x7684;&#x4F4D;&#x7F6E;&#x3002;</p>
-<p>&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF0C;&#x5F80;&#x5F80;&#x662F;&#x901A;&#x8FC7;&#x6307;&#x4EE4;patch&#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5373;&#x5C06;&#x4EFB;&#x610F;&#x5B8C;&#x6574;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x6210; <code>0xCC (int 3)</code>&#x6307;&#x4EE4;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x5B8C;0xCC&#x4E4B;&#x540E;&#x81EA;&#x8EAB;&#x5C31;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x65AD;&#x70B9;&#x7684;&#x6548;&#x679C;&#x3002;</p>
-<p>&#x65AD;&#x70B9;&#x901A;&#x8FC7;&#x6307;&#x4EE4;patch&#x6765;&#x5B9E;&#x73B0;&#x5FC5;&#x987B;&#x8986;&#x76D6;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x4E0D;&#x80FD;&#x8986;&#x76D6;&#x5176;&#x4ED6;&#x5B57;&#x8282;&#xFF0C;&#x539F;&#x56E0;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x6307;&#x4EE4;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x89E3;&#x7801;&#x6548;&#x7387;&#x3001;&#x652F;&#x6301;&#x66F4;&#x591A;&#x64CD;&#x4F5C;&#x7C7B;&#x578B;&#xFF0C;&#x5F80;&#x5F80;&#x90FD;&#x662F;&#x91C7;&#x7528;&#x7684;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x5199;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x90A3;&#x4E48;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x3002;&#x6BD4;&#x5982;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x64CD;&#x4F5C;&#x7801;&#x6709;&#x591A;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x7ED3;&#x679C;&#x56E0;&#x4E3A;&#x8986;&#x76D6;&#x7684;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x53D8;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#xFF0C;&#x6267;&#x884C;&#x65F6;&#x5C31;&#x4F1A;&#x6709;&#x5F02;&#x5E38;&#x3002;&#x518D;&#x6BD4;&#x5982;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x975E;&#x8981;&#x5199;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x8282;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x90A3;&#x5C31;&#x8D77;&#x4E0D;&#x5230;&#x65AD;&#x70B9;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x6267;&#x884C;&#x5230;&#x8FD9;&#x4E2A;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;&#x524D;&#x9762;&#x672C;&#x4E0D;&#x5E94;&#x8BE5;&#x6267;&#x884C;&#x7684;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x5374;&#x6267;&#x884C;&#x4E86;&#x3002;</p>
-<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x6709;&#x7CFB;&#x7EDF;&#x6027;&#x5730;&#x4ECB;&#x7ECD;&#x8FC7;&#x6307;&#x4EE4;patch&#x7684;&#x6982;&#x5FF5;&#x3001;&#x5E94;&#x7528;&#x573A;&#x666F;&#x7B49;&#xFF08;&#x6BD4;&#x5982;&#x8C03;&#x8BD5;&#x5668;&#x3001;mock&#x6D4B;&#x8BD5;&#x6846;&#x67B6;gomonkey&#x7B49;&#x7B49;&#xFF09;&#xFF0C;&#x5982;&#x60A8;&#x8FD8;&#x611F;&#x5230;&#x4E0D;&#x719F;&#x6089;&#xFF0C;&#x8BF7;&#x56DE;&#x5934;&#x67E5;&#x770B;&#x76F8;&#x5173;&#x7AE0;&#x8282;&#x3002;</p>
-<p>&#x5047;&#x5982;&#x8BF4;&#x5F53;&#x524D;&#x6211;&#x4EEC;&#x7684;&#x65AD;&#x70B9;&#x4F4D;&#x4E8E;offset&#x5904;&#xFF0C;&#x73B0;&#x5728;&#x8981;&#x6267;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x52A8;&#x4F5C;&#xFF0C;&#x5927;&#x81F4;&#x6709;&#x5982;&#x4E0B;&#x6B65;&#x9AA4;&#xFF1A;</p>
+<p>&#x6309; ELF &#x683C;&#x5F0F;&#x89E3;&#x6790;&#x3001;&#x4ECE; <code>.text</code> &#x8BFB;&#x51FA;&#x5168;&#x90E8;&#x6307;&#x4EE4;&#x518D;&#x9010;&#x6761; decode &#x7684;&#x5B8C;&#x6574;&#x5C0F;&#x7A0B;&#x5E8F;&#xFF0C;&#x653E;&#x5728;&#x914D;&#x5957;&#x7684;&#x72EC;&#x7ACB;&#x793A;&#x4F8B; <code>golang-debugger-lessons/5_disassemble</code> &#x91CC;&#xFF0C;&#x8FD0;&#x884C; <code>path-to/5_disassemble &lt;pid&gt;</code> &#x53EF;&#x4EE5;&#x53CD;&#x6C47;&#x7F16;&#x76EE;&#x6807;&#x7A0B;&#x5E8F;&#x91CC;&#x5305;&#x542B;&#x7684;&#x5168;&#x90E8;&#x6307;&#x4EE4;&#xFF1B;&#x5B83;&#x4E5F;&#x5904;&#x7406;&#x4E86;&#x53EF;&#x80FD;&#x9047;&#x5230;&#x7684;&#x9519;&#x8BEF;&#xFF0C;&#x5305;&#x62EC;&#x4E0D;&#x8BA4;&#x8BC6;&#x7684;&#x6307;&#x4EE4;&#x3001;&#x8D8A;&#x754C;&#x95EE;&#x9898;&#x3002;</p>
+<p><strong>&#x505A;&#x6CD5;&#x4E8C;&#xFF1A;&#x7528; ptrace &#x76F4;&#x63A5;&#x8BFB;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x3002;</strong> &#x8FD9;&#x662F; godbgv2 &#x91C7;&#x7528;&#x7684;&#x505A;&#x6CD5;&#x3002;tracee &#x5904;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>ptrace(PTRACE_PEEKTEXT, pid, addr, ...)</code> &#x8BFB;&#x53D6;&#x76EE;&#x6807;&#x5730;&#x5740;&#x5904;&#x7684;&#x6570;&#x636E;&#x3002;Linux &#x4E0D;&#x533A;&#x5206; text &#x548C; data &#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;PEEKTEXT &#x548C; PEEKDATA &#x6548;&#x679C;&#x76F8;&#x540C;&#xFF0C;&#x90FD;&#x662F;&#x8BFB; tracee &#x7684;&#x5185;&#x5B58;&#x3002;</p>
+<p>&#x8FD9;&#x4E2A;&#x505A;&#x6CD5;&#x7B80;&#x5355;&#x76F4;&#x63A5;&#xFF0C;&#x8BFB;&#x5230;&#x7684;&#x662F;&#x8FDB;&#x7A0B;&#x8FD0;&#x884C;&#x65F6;&#x771F;&#x5B9E;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x505A;&quot;&#x6587;&#x4EF6;&#x504F;&#x79FB; &#x2192; &#x8FDB;&#x7A0B;&#x5730;&#x5740;&quot;&#x7684;&#x6362;&#x7B97;&#xFF0C;&#x4E5F;&#x4E0D;&#x7528;&#x7BA1; PIE &#x7A0B;&#x5E8F;&#x6BCF;&#x6B21;&#x8FD0;&#x884C;&#x52A0;&#x8F7D;&#x5730;&#x5740;&#x4E0D;&#x540C;&#x7684;&#x95EE;&#x9898;&#x3002;&#x5B83;&#x7684;&#x9650;&#x5236;&#x662F;&#x53EA;&#x80FD;&#x8BFB;&#x5DF2;&#x7ECF;&#x6620;&#x5C04;&#x7684;&#x9875;&#xFF1A;&#x8C03;&#x8BD5;&#x5668;&#x5E73;&#x65F6;&#x53EA;&#x5173;&#x5FC3;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x9644;&#x8FD1;&#x7684;&#x4E00;&#x5C0F;&#x6BB5;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x6BB5;&#x5185;&#x5B58;&#x4E00;&#x5B9A;&#x5728;&#xFF08;CPU &#x6B63;&#x505C;&#x5728;&#x8FD9;&#x91CC;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5B8C;&#x5168;&#x591F;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x8981;&#x5168;&#x91CF;&#x53CD;&#x6C47;&#x7F16;&#x6574;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x624D;&#x9700;&#x8981;&#x56DE;&#x5230;&#x505A;&#x6CD5;&#x4E00;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x7684;&#x76EE;&#x6807;&#x5C42;&#x4ECE;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x8BFB; 1024 &#x5B57;&#x8282;&#x7684;&#x7A97;&#x53E3;&#xFF0C;&#x518D;&#x5728;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x4E0A;&#x9010;&#x6761;&#x89E3;&#x7801;&#x3002;&#x4E3A;&#x4EC0;&#x4E48;&#x662F; 1024&#xFF1F;x86 &#x5355;&#x6761;&#x6307;&#x4EE4;&#x6700;&#x957F; 15 &#x5B57;&#x8282;&#xFF0C;&#x9ED8;&#x8BA4;&#x53CD;&#x6C47;&#x7F16; 10 &#x6761;&#x6307;&#x4EE4;&#x6700;&#x591A;&#x4E5F;&#x5C31; 150 &#x5B57;&#x8282;&#xFF0C;1024 &#x5B57;&#x8282;&#x7684;&#x7A97;&#x53E3;&#x7EF0;&#x7EF0;&#x6709;&#x4F59;&#xFF1B;<code>-n</code> &#x6570;&#x503C;&#x518D;&#x5927;&#xFF0C;&#x4E5F;&#x53EA;&#x662F;&#x5728;&#x8FD9;&#x4E2A;&#x7A97;&#x53E3;&#x91CC;&#x591A;&#x89E3;&#x51E0;&#x6761;&#xFF0C;&#x4E0D;&#x4F1A;&#x4E3A;&#x4E86;&#x53CD;&#x6C47;&#x7F16;&#x53BB;&#x8BFB;&#x66F4;&#x5927;&#x8303;&#x56F4;&#x7684;&#x5185;&#x5B58;&#x3002;</p>
+<h4 id="&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#xFF08;&#x539F;&#x7406;&#xFF0C;&#x672C;&#x8282;&#x5C1A;&#x672A;&#x5B9E;&#x73B0;&#xFF09;">&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#xFF08;&#x539F;&#x7406;&#xFF0C;&#x672C;&#x8282;&#x5C1A;&#x672A;&#x5B9E;&#x73B0;&#xFF09;</h4>
+<blockquote>
+<p>&#x8FD9;&#x4E00;&#x5C0F;&#x8282;&#x8BB2;&#x7684;&#x662F;&#x65AD;&#x70B9;&#x5B58;&#x5728;&#x65F6;&#x53CD;&#x6C47;&#x7F16;&#x8981;&#x989D;&#x5916;&#x5904;&#x7406;&#x4EC0;&#x4E48;&#x3002;&#x672C;&#x8282;&#x4EE3;&#x7801;&#x8FD8;&#x6CA1;&#x6709;&#x65AD;&#x70B9;&#xFF08;6.6 &#x8282;&#x5B9E;&#x73B0;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E9B;&#x5904;&#x7406;&#x76EE;&#x524D;&#x90FD;&#x6CA1;&#x6709;&#x505A;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x628A;&#x539F;&#x7406;&#x548C;&#x540E;&#x9762;&#x7684;&#x5B9E;&#x73B0;&#x8BA1;&#x5212;&#x8BB2;&#x6E05;&#x695A;&#x3002;</p>
+</blockquote>
+<p>&#x52A8;&#x6001;&#x65AD;&#x70B9;&#x5F80;&#x5F80;&#x662F;&#x901A;&#x8FC7;&#x6307;&#x4EE4; patch &#x6765;&#x5B9E;&#x73B0;&#x7684;&#xFF0C;&#x5373;&#x5C06;&#x4EFB;&#x610F;&#x5B8C;&#x6574;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x6570;&#x636E;&#x4FDD;&#x5B58;&#xFF0C;&#x7136;&#x540E;&#x5C06;&#x5176;&#x66FF;&#x6362;&#x6210; <code>0xCC (int 3)</code> &#x6307;&#x4EE4;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x5B8C; 0xCC &#x4E4B;&#x540E;&#x81EA;&#x8EAB;&#x5C31;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x65AD;&#x70B9;&#x7684;&#x6548;&#x679C;&#x3002;</p>
+<p>&#x65AD;&#x70B9;&#x901A;&#x8FC7;&#x6307;&#x4EE4; patch &#x6765;&#x5B9E;&#x73B0;&#x5FC5;&#x987B;&#x8986;&#x76D6;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x4E0D;&#x80FD;&#x8986;&#x76D6;&#x5176;&#x4ED6;&#x5B57;&#x8282;&#xFF0C;&#x539F;&#x56E0;&#x5F88;&#x7B80;&#x5355;&#xFF1A;&#x6307;&#x4EE4;&#x4E3A;&#x4E86;&#x63D0;&#x9AD8;&#x89E3;&#x7801;&#x6548;&#x7387;&#x3001;&#x652F;&#x6301;&#x66F4;&#x591A;&#x64CD;&#x4F5C;&#x7C7B;&#x578B;&#xFF0C;&#x5F80;&#x5F80;&#x90FD;&#x662F;&#x91C7;&#x7528;&#x7684;&#x53D8;&#x957F;&#x7F16;&#x7801;&#x3002;&#x5982;&#x679C;&#x5199;&#x7684;&#x4E0D;&#x662F;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x90A3;&#x4E48;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x65F6;&#x53EF;&#x80FD;&#x4F1A;&#x4EA7;&#x751F;&#x9519;&#x8BEF;&#x3002;&#x6BD4;&#x5982;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x64CD;&#x4F5C;&#x7801;&#x6709;&#x591A;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x7ED3;&#x679C;&#x56E0;&#x4E3A;&#x8986;&#x76D6;&#x7684;&#x539F;&#x56E0;&#x5BFC;&#x81F4;&#x53D8;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x7684;&#x64CD;&#x4F5C;&#x7801;&#xFF0C;&#x6267;&#x884C;&#x65F6;&#x5C31;&#x4F1A;&#x6709;&#x5F02;&#x5E38;&#x3002;&#x518D;&#x6BD4;&#x5982;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x975E;&#x8981;&#x5199;&#x5230;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x8282;&#x5B58;&#x8D77;&#x6765;&#xFF0C;&#x90A3;&#x5C31;&#x8D77;&#x4E0D;&#x5230;&#x65AD;&#x70B9;&#x7684;&#x4F5C;&#x7528;&#xFF0C;&#x56E0;&#x4E3A;&#x6267;&#x884C;&#x5230;&#x8FD9;&#x4E2A;&#x65AD;&#x70B9;&#x65F6;&#xFF0C;&#x524D;&#x9762;&#x672C;&#x4E0D;&#x5E94;&#x8BE5;&#x6267;&#x884C;&#x7684;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x5374;&#x6267;&#x884C;&#x4E86;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x65AD;&#x70B9;&#x6307;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x300A;4.2.3 &#x65AD;&#x70B9;&#x4E0E;&#x6267;&#x884C;&#x63A7;&#x5236;&#x300B;&#x8FDB;&#x884C;&#x8FC7;&#x4ECB;&#x7ECD;&#xFF1B;&#x5BF9;&#x4E8E;&#x6307;&#x4EE4; patch&#xFF0C;&#x4E0D;&#x5149;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x4F1A;&#x7528;&#x5230;&#xFF0C;&#x5BF9;&#x4E8E; gomonkey mock &#x6D4B;&#x8BD5;&#x6846;&#x67B6;&#x3001;&#x8F6F;&#x4EF6;&#x9006;&#x5411;&#x53CA;&#x7834;&#x89E3;&#x9886;&#x57DF;&#xFF0C;&#x4E5F;&#x662F;&#x4F1A;&#x4F7F;&#x7528;&#x7684;&#x3002;</p>
+<p>&#x56DE;&#x5230;&#x53CD;&#x6C47;&#x7F16;&#x3002;&#x5047;&#x5B9A;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x662F; <code>addr</code>&#xFF0C;&#x6211;&#x4EEC;&#x9996;&#x5148;&#x9700;&#x8981;&#x5173;&#x6CE8;&#x7684;&#x662F; <code>addr</code> &#x5904;&#x662F;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x6307;&#x4EE4;&#x65AD;&#x70B9;&#xFF0C;&#x8FD9;&#x51B3;&#x5B9A;&#x4E86;&#x63A5;&#x4E0B;&#x6765;&#x4E24;&#x79CD;&#x4E0D;&#x540C;&#x7684;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ul>
+<li><strong><code>addr</code> &#x5904;&#x4E0D;&#x662F;&#x65AD;&#x70B9;</strong>&#xFF1A;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x4ECE; <code>addr</code> &#x5F00;&#x59CB;&#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x3001;&#x9010;&#x6761; decode&#xFF1B;</li>
+<li><strong><code>addr</code> &#x5904;&#x662F;&#x65AD;&#x70B9;</strong>&#xFF1A;<code>addr</code> &#x5F00;&#x59CB;&#x7684;&#x90A3;&#x6761;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#x5DF2;&#x7ECF;&#x88AB; patch &#x8FC7;&#x4E86;&#xFF0C;&#x4ECE; <code>addr</code> &#x5F00;&#x59CB;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x5FC5;&#x987B;&#x5148;&#x6062;&#x590D;&#x4E3A;&#x539F;&#x6765;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x518D;&#x505A; decode&#x3002;</li>
+</ul>
 <pre><code class="lang-bash">&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x4E4B;&#x524D;&#xFF1A;
-offset:  0x0 0x1 0x2 0x3 0x4
+addr:  0x?? 0x1 0x2 0x3 0x4
 
 &#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x4E4B;&#x540E;&#xFF1A;
-offset: 0xcc 0x1 0x2 0x3 0x4   | orig: &lt;offset,0x0&gt;
+addr:  0xcc 0x1 0x2 0x3 0x4   | orig: &lt;addr, 0x??&gt;
 </code></pre>
+<p>&#x8FD9;&#x91CC;&#x8981;&#x7279;&#x522B;&#x6CE8;&#x610F;&#xFF0C;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x5E76;&#x4E0D;&#x662F;&#x63A7;&#x5236;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x5B83;&#x53EA;&#x9700;&#x8981;&#x628A;&#x8BFB;&#x51FA;&#x6765;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x7F13;&#x51B2;&#x533A;&#x4E2D;&#x7684; 0xCC &#x6062;&#x590D;&#x6210;&#x539F;&#x6765;&#x7684;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x901A;&#x8FC7;&#x6307;&#x4EE4; patch &#x628A; 0xCC &#x5199;&#x56DE;&#x539F;&#x6570;&#x636E;&#x3002;&#x7B49;&#x540E;&#x7EED; next&#x3001;continue&#x3001;step &#x8FD9;&#x4E9B;&#x771F;&#x6B63;&#x5F71;&#x54CD;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x624D;&#x9700;&#x8981;&#x628A;&#x5185;&#x5B58;&#x91CC;&#x7684; 0xCC &#x66FF;&#x6362;&#x56DE;&#x539F;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x90A3;&#x4E48;&quot;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&quot;&#x548C;&#x65AD;&#x70B9;&#x5730;&#x5740;&#x53C8;&#x662F;&#x4EC0;&#x4E48;&#x5173;&#x7CFB;&#xFF1F;&#x8F6F;&#x4EF6;&#x65AD;&#x70B9;&#x547D;&#x4E2D;&#x65F6;&#xFF0C;CPU &#x6267;&#x884C;&#x7684;&#x662F; <code>0xCC</code>&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x6761;&#x5B8C;&#x6574;&#x7684;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#xFF0C;&#x6267;&#x884C;&#x5B8C;&#x4E4B;&#x540E; PC &#x6307;&#x5411;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-bash">&#x5F53;&#x524D;&#x505C;&#x6B62;&#x5728;&#x65AD;&#x70B9;&#x5904;&#xFF1A;
+addr:  0xcc 0x1 0x2 0x3 0x4   | orig: &lt;addr, 0x??&gt;
+PC = addr + 1
+</code></pre>
+<p>&#x6240;&#x4EE5;&#x5BF9;&#x65E0;&#x53C2;&#x7684; <code>disass</code> &#x6765;&#x8BF4;&#xFF0C;&#x771F;&#x6B63;&#x8981;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x8D77;&#x70B9;&#x5F80;&#x5F80;&#x4E0D;&#x662F; PC&#xFF0C;&#x800C;&#x662F; <code>PC-1</code>&#xFF1A;</p>
 <ul>
-<li>&#x9996;&#x5148;&#xFF0C;&#x8981;&#x77E5;&#x9053;0xCC&#x6267;&#x884C;&#x540E;&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x610F;&#x5473;&#x7740;&#x6B64;&#x65F6;PC=offset+1</li>
-<li>&#x518D;&#x6B21;&#xFF0C;&#x8981;&#x77E5;&#x9053;PC-1&#x5904;&#x7684;&#x6307;&#x4EE4;&#x4E0D;&#x662F;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#xFF0C;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x88AB;patch&#x4E86;&#xFF0C;&#x9700;&#x8981;&#x8FD8;&#x539F;&#xFF1B;</li>
-<li>&#x6700;&#x540E;&#xFF0C;&#x8981;&#x77E5;&#x9053;PC&#x503C;&#x662F;&#x7279;&#x6B8A;&#x5BC4;&#x5B58;&#x5668;&#x503C;&#xFF0C;&#x6307;&#x5411;&#x5F85;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5F53;&#x524D;PC=offset+1&#xFF0C;&#x662F;&#x539F;&#x6307;&#x4EE4;&#x8D77;&#x59CB;&#x5B57;&#x8282;&#x7684;&#x4E0B;&#x4E2A;&#x5B57;&#x8282;&#x4F4D;&#x7F6E;&#xFF0C;&#x8981;&#x4ECE; PC-1 &#x8FD9;&#x4E2A;&#x5185;&#x5B58;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x8BFB;&#x53D6;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#xFF0C;&#x518D;&#x53CD;&#x6C47;&#x7F16;&#xFF1B;</li>
+<li><code>PC-1</code> &#x5904;&#x662F;&#x6211;&#x4EEC;&#x4E0B;&#x7684;&#x65AD;&#x70B9;&#xFF1A;&#x4ECE; <code>PC-1</code> &#x5F00;&#x59CB;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x5E76;&#x628A;&#x8BE5;&#x5904;&#x8BFB;&#x5230;&#x7684; 0xCC &#x6062;&#x590D;&#x6210;&#x539F;&#x59CB;&#x5B57;&#x8282;&#xFF1B;</li>
+<li><code>PC-1</code> &#x5904;&#x4E0D;&#x662F;&#x65AD;&#x70B9;&#xFF1A;&#x90A3; PC &#x672C;&#x8EAB;&#x5C31;&#x662F;&#x4E0B;&#x4E00;&#x6761;&#x5F85;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x76F4;&#x63A5;&#x4ECE; PC &#x5F00;&#x59CB;&#x53CD;&#x6C47;&#x7F16;&#x5373;&#x53EF;&#x3002;exec &#x542F;&#x52A8;&#x540E;&#x505C;&#x5728;&#x5165;&#x53E3;&#x3001;attach &#x540E;&#x505C;&#x5728;&#x76EE;&#x6807;&#x7EBF;&#x7A0B;&#x8FD9;&#x4E9B;&#x60C5;&#x51B5;&#xFF0C;&#x90FD;&#x5C5E;&#x4E8E;&#x8FD9;&#x4E00;&#x7C7B;&#x3002;</li>
 </ul>
-<p>&#x8FD9;&#x5927;&#x6982;&#x5C31;&#x662F;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x5904;&#x6267;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x6240;&#x9700;&#x8981;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x5982;&#x679C;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x5904;&#x4E0D;&#x662F;&#x65AD;&#x70B9;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6267;&#x884C; <code>pc=pc-1</code>&#x3002;</p>
-<h4 id="put-it-together">Put It Together</h4>
-<p>&#x7ECF;&#x8FC7;&#x4E0A;&#x9762;&#x4E00;&#x756A;&#x8BA8;&#x8BBA;&#x4E4B;&#x540E;&#xFF0C;&#x53CD;&#x6C47;&#x7F16;&#x547D;&#x4EE4;disassCmd&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<p>&#x8FD9;&#x5957;&#x5904;&#x7406;&#x5728; godbgv2 &#x91CC;&#x8981;&#x7B49; 6.6 &#x8282;&#x5B9E;&#x73B0;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#x624D;&#x8865;&#x9F50;&#x3002;godbg &#x7684;&#x5B8C;&#x6574;&#x5B9E;&#x73B0;&#x91CC;&#xFF0C;<code>disass</code> &#x63D0;&#x4F9B;&#x4E86; <code>--clearall</code> &#x9009;&#x9879;&#xFF0C;&#x914D;&#x5408;&#x76EE;&#x6807;&#x5C42;&#x7684; <code>DisassembleWithBreakpointCleared</code> &#x626B;&#x63CF;&#x53CD;&#x6C47;&#x7F16;&#x7A97;&#x53E3;&#x5185;&#x7684;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x3001;&#x628A;&#x7F13;&#x51B2;&#x533A;&#x91CC;&#x7684; 0xCC &#x8FD8;&#x539F;&#x6210;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x518D;&#x53CD;&#x6C47;&#x7F16;&#xFF1B;godbgv2 &#x76EE;&#x524D;&#x8FD8;&#x6CA1;&#x6709;&#x8FD9;&#x90E8;&#x5206;&#xFF0C;&#x672C;&#x8282;&#x7684;&#x76EE;&#x6807;&#x5C42; <code>disassembleData</code> &#x62FF;&#x5230;&#x4EC0;&#x4E48;&#x5B57;&#x8282;&#x5C31;&#x89E3;&#x4EC0;&#x4E48;&#x5B57;&#x8282;&#x3002;&#x7B49;&#x65AD;&#x70B9;&#x5B9E;&#x73B0;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x518D;&#x56DE;&#x6765;&#x628A; <code>disass</code> &#x7684;&#x65AD;&#x70B9;&#x5904;&#x7406;&#x8865;&#x4E0A;&#xFF0C;&#x8FD9;&#x4E0E;&quot;&#x672C;&#x8282;&#x53EA;&#x505A;&#x53CD;&#x6C47;&#x7F16;&quot;&#x7684;&#x8303;&#x56F4;&#x5212;&#x5206;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;</p>
+<h3 id="&#x5728;-godbgv2-&#x4E2D;&#x5B9E;&#x73B0;">&#x5728; godbgv2 &#x4E2D;&#x5B9E;&#x73B0;</h3>
+<p>&#x524D;&#x9762;&#x51E0;&#x8282;&#x642D;&#x597D;&#x7684;&#x5206;&#x5C42;&#x8FD9;&#x6B21;&#x4E0D;&#x7528;&#x52A8;&#xFF1A;&#x547D;&#x4EE4;&#x5C42;&#x65B0;&#x589E; <code>disass</code> &#x5B50;&#x547D;&#x4EE4;&#xFF0C;<code>api.Client</code> &#x8865;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;<code>CurrentPC</code>&#x3001;<code>Disassemble</code>&#xFF09;&#xFF0C;<code>debugger</code> &#x95E8;&#x9762;&#x8F6C;&#x53D1;&#xFF0C;<code>pkg/target</code> &#x771F;&#x6B63;&#x53BB;&#x8BFB;&#x5BC4;&#x5B58;&#x5668;&#x548C;&#x8BFB;&#x5185;&#x5B58;&#x3002;&#x76F8;&#x5BF9; ch6.4&#xFF0C;&#x8FD9;&#x4E00;&#x8282;&#x7684;&#x8C03;&#x7528;&#x94FE;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-text">godbg&gt; disass [address]
+    cmd/debug/disass.go            RunE&#xFF1A;&#x6821;&#x9A8C; 0 &#x6216; 1 &#x4E2A;&#x53C2;&#x6570;&#xFF1B;disassStartAddress &#x5F97;&#x5230;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF1B;
+                                   &#x8C03; Client.Disassemble&#xFF0C;&#x6309;&#x4E09;&#x5217;&#x683C;&#x5F0F;&#x6253;&#x5370;&#x7ED3;&#x679C;
+    pkg/service/api                Client &#x63A5;&#x53E3;&#xFF1A;&#x65B0;&#x589E; CurrentPC&#xFF1B;Disassemble &#x8FD4;&#x56DE; []AsmInstruction
+    pkg/service/debugger           &#x95E8;&#x9762;&#xFF0C;&#x628A;&#x8BF7;&#x6C42;&#x8F6C;&#x7ED9;&#x76EE;&#x6807;&#x5C42;
+    pkg/target                     pc.go&#xFF1A;PTRACE_GETREGS &#x8BFB; RIP
+                                   disassemble.go&#xFF1A;PTRACE_PEEKTEXT &#x8BFB;&#x5185;&#x5B58; + x86asm.Decode
+</code></pre>
+<p>&#x547D;&#x4EE4;&#x5C42;&#x540E;&#x9762;&#x4ECD;&#x7136;&#x662F; <code>Client</code>&#xFF0C;<code>main</code> &#x91CC;&#x628A;&#x5B83;&#x88C5;&#x914D;&#x6210; <code>debugger.New()</code>&#xFF0C;&#x8FD9;&#x4E2A;&#x7EA6;&#x5B9A;&#x6CA1;&#x6709;&#x53D8;&#x3002;&#x4E0B;&#x9762;&#x6309;&#x547D;&#x4EE4;&#x5C42;&#x3001;&#x670D;&#x52A1;&#x5C42;&#x3001;&#x76EE;&#x6807;&#x5C42;&#x5206;&#x522B;&#x770B;&#x3002;</p>
+<h4 id="&#x547D;&#x4EE4;&#x5C42;">&#x547D;&#x4EE4;&#x5C42;</h4>
+<p><code>cmd/debug/disass.go</code> &#x7684;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
 
 <span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;errors&quot;</span>
     <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;os&quot;</span>
-    <span class="hljs-string">&quot;syscall&quot;</span>
 
+    <span class="hljs-string">&quot;github.com/hitzhangjie/godbgv2/pkg/service/api&quot;</span>
     <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
-    <span class="hljs-string">&quot;golang.org/x/arch/x86/x86asm&quot;</span>
 )
 
 <span class="hljs-keyword">var</span> disassCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;disass &lt;locspec&gt;&quot;</span>,
-    Short: <span class="hljs-string">&quot;&#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;&quot;</span>,
+    Use:     <span class="hljs-string">&quot;disass [address]&quot;</span>,
+    Short:   <span class="hljs-string">&quot;&#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF08;&#x7F3A;&#x7701;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#xFF09;&quot;</span>,
+    Aliases: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;dis&quot;</span>, <span class="hljs-string">&quot;disassemble&quot;</span>},
     Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
-        cmdGroupKey: cmdGroupSource,
+        cmdGroupAnnotation: cmdGroupSource,
     },
     RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) &gt; <span class="hljs-number">1</span> {
+            <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;usage: disass [address]&quot;</span>)
+        }
 
-        <span class="hljs-comment">// &#x8BFB;&#x53D6;PC&#x503C;</span>
-        regs := syscall.PtraceRegs{}
-        err := syscall.PtraceGetRegs(TraceePID, &amp;regs)
+        <span class="hljs-comment">// &#x672A;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x65F6;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x65F6;&#x4ECE;&#x8BE5;&#x5730;&#x5740;&#x5F00;&#x59CB;&#xFF1B;</span>
+        <span class="hljs-comment">// &#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x90FD;&#x662F;&#x5148;&#x89E3;&#x6790;&#x51FA;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF0C;&#x518D;&#x8D70;&#x540C;&#x4E00;&#x5957;&#x53CD;&#x6C47;&#x7F16;&#x5904;&#x7406;&#x903B;&#x8F91;&#x3002;</span>
+        addr, err := disassStartAddress(args)
         <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
             <span class="hljs-keyword">return</span> err
         }
 
-        buf := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, <span class="hljs-number">1</span>)
-        n, err := syscall.PtracePeekText(TraceePID, <span class="hljs-keyword">uintptr</span>(regs.PC()<span class="hljs-number">-1</span>), buf)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
-            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;peek text error: %v, bytes: %d&quot;</span>, err, n)
-        }
-        fmt.Printf(<span class="hljs-string">&quot;read %d bytes, value of %x\n&quot;</span>, n, buf[<span class="hljs-number">0</span>])
-        <span class="hljs-comment">// PC&#x524D;&#x4E00;&#x5B57;&#x8282;&#x4E3A;0xCC&#x8868;&#x793A;&#x5F53;&#x524D;PC&#x5E94;&#x56DE;&#x9000;1&#x5B57;&#x8282;&#x624D;&#x80FD;&#x8BFB;&#x53D6;&#x5230;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#x6570;&#x636E;</span>
-        <span class="hljs-keyword">if</span> buf[<span class="hljs-number">0</span>] == <span class="hljs-number">0xCC</span> {
-            regs.SetPC(regs.PC() - <span class="hljs-number">1</span>)
-        }
+        max, _ := cmd.Flags().GetUint64(<span class="hljs-string">&quot;max&quot;</span>)
+        syntax, _ := cmd.Flags().GetString(<span class="hljs-string">&quot;syntax&quot;</span>)
 
-        <span class="hljs-comment">// &#x67E5;&#x627E;&#xFF0C;&#x5982;&#x679C;&#x4E4B;&#x524D;&#x8BBE;&#x7F6E;&#x8FC7;&#x65AD;&#x70B9;&#xFF0C;&#x5C06;&#x6062;&#x590D;</span>
-        dat := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, <span class="hljs-number">1024</span>)
-        n, err = syscall.PtracePeekText(TraceePID, <span class="hljs-keyword">uintptr</span>(regs.PC()), dat)
+        <span class="hljs-keyword">var</span> insts []api.AsmInstruction
+        insts, err = Client.Disassemble(addr, max, syntax)
         <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;peek text error: %v, bytes: %d&quot;</span>, err, n)
+            <span class="hljs-keyword">return</span> err
         }
-        fmt.Printf(<span class="hljs-string">&quot;size of text: %d\n&quot;</span>, n)
 
-        <span class="hljs-comment">// TODO &#x5728;&#x5B9E;&#x73B0;&#x4E86;&#x65AD;&#x70B9;&#x529F;&#x80FD;&#x4E4B;&#x540E;&#xFF0C;&#x9700;&#x6CE8;&#x610F;&#x8BFB;&#x53D6;&#x5230;&#x7684;dat[0]&#x4E3A;0xCC&#xFF0C;&#x6B64;&#x65F6;&#x9700;&#x6CE8;&#x610F;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;</span>
-        <span class="hljs-comment">// &#x5426;&#x5219;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x662F;&#x6709;&#x9519;&#x8BEF;&#x7684;&#x3002;</span>
-
-        <span class="hljs-comment">// &#x53CD;&#x6C47;&#x7F16;&#x8FD9;&#x91CC;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;</span>
-        offset := <span class="hljs-number">0</span>
-        <span class="hljs-keyword">for</span> offset &lt; n {
-            <span class="hljs-comment">// &#x4F7F;&#x7528;64&#x4F4D;&#x6A21;&#x5F0F;</span>
-            inst, err := x86asm.Decode(dat[offset:], <span class="hljs-number">64</span>)
-            <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-                <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;x86asm decode error: %v&quot;</span>, err)
-            }
-            fmt.Printf(<span class="hljs-string">&quot;%8x %s\n&quot;</span>, offset, inst.String())
-            offset += inst.Len
+        <span class="hljs-keyword">for</span> _, inst := <span class="hljs-keyword">range</span> insts {
+            fmt.Printf(<span class="hljs-string">&quot;%#x:\t% x\t%s\n&quot;</span>, inst.Addr, inst.Bytes, inst.Text)
         }
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
     },
+}
+
+<span class="hljs-comment">// disassStartAddress &#x89E3;&#x6790;&#x53CD;&#x6C47;&#x7F16;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF1A;&#x672A;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x65F6;&#x53D6;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#xFF08;PC&#xFF09;&#xFF0C;</span>
+<span class="hljs-comment">// &#x6307;&#x5B9A;&#x5730;&#x5740;&#x65F6;&#x6309;&#x53C2;&#x6570;&#x89E3;&#x6790;&#x3002;&#x4E24;&#x79CD;&#x60C5;&#x51B5;&#x5F97;&#x5230;&#x76F8;&#x540C;&#x7684;&#x8D77;&#x59CB;&#x5730;&#x5740;&#x8BED;&#x4E49;&#x3002;</span>
+<span class="hljs-keyword">func</span> disassStartAddress(args []<span class="hljs-keyword">string</span>) (<span class="hljs-keyword">uint64</span>, error) {
+    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) == <span class="hljs-number">0</span> {
+        pc, err := Client.CurrentPC()
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>, fmt.Errorf(<span class="hljs-string">&quot;read current pc err: %v&quot;</span>, err)
+        }
+        <span class="hljs-keyword">return</span> pc, <span class="hljs-literal">nil</span>
+    }
+
+    addr, err := parseAddress(args[<span class="hljs-number">0</span>])
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>, fmt.Errorf(<span class="hljs-string">&quot;parse address err: %v&quot;</span>, err)
+    }
+    <span class="hljs-keyword">return</span> addr, <span class="hljs-literal">nil</span>
 }
 
 <span class="hljs-keyword">func</span> init() {
     debugRootCmd.AddCommand(disassCmd)
-}
 
-<span class="hljs-comment">// GetExecutable &#x6839;&#x636E;pid&#x83B7;&#x53D6;&#x53EF;&#x6267;&#x884C;pa&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;</span>
-<span class="hljs-keyword">func</span> GetExecutable(pid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">string</span>, error) {
-    exeLink := fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/exe&quot;</span>, pid)
-    exePath, err := os.Readlink(exeLink)
+    disassCmd.Flags().Uint64P(<span class="hljs-string">&quot;max&quot;</span>, <span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-number">10</span>, <span class="hljs-string">&quot;&#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6570;&#x91CF;&quot;</span>)
+    disassCmd.Flags().StringP(<span class="hljs-string">&quot;syntax&quot;</span>, <span class="hljs-string">&quot;s&quot;</span>, <span class="hljs-string">&quot;gnu&quot;</span>, <span class="hljs-string">&quot;&#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x8BED;&#x6CD5;&#xFF0C;&#x652F;&#x6301;&#xFF1A;go, gnu, intel&quot;</span>)
+}
+</code></pre>
+<p>&#x51E0;&#x4E2A;&#x8981;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><code>Use</code> &#x662F; <code>disass [address]</code>&#xFF0C;&#x65B9;&#x62EC;&#x53F7;&#x8868;&#x793A; address &#x53EF;&#x9009;&#xFF1B;<code>len(args) &gt; 1</code> &#x65F6;&#x8FD4;&#x56DE; usage &#x9519;&#x8BEF;&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x53EA;&#x63A5;&#x53D7; 0 &#x4E2A;&#x6216; 1 &#x4E2A;&#x53C2;&#x6570;&#xFF1B;</li>
+<li>&#x8D77;&#x59CB;&#x5730;&#x5740;&#x7684;&#x89E3;&#x6790;&#x96C6;&#x4E2D;&#x5728; <code>disassStartAddress</code>&#xFF1A;&#x6CA1;&#x6709;&#x53C2;&#x6570;&#x65F6;&#x8C03; <code>Client.CurrentPC()</code> &#x53D6;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#xFF0C;&#x6709;&#x53C2;&#x6570;&#x65F6;&#x4EA4;&#x7ED9; <code>parseAddress</code>&#x3002;&#x4E24;&#x79CD;&#x6765;&#x6E90;&#x6700;&#x7EC8;&#x90FD;&#x53D8;&#x6210;&#x4E00;&#x4E2A; <code>uint64</code> &#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF0C;&#x540E;&#x9762;&#x5C31;&#x53EA;&#x5269;&#x4E00;&#x6761;&#x8DEF;&#x5F84;&#x2014;&#x2014;<code>Client.Disassemble(addr, max, syntax)</code>&#x3002;&#x8FD9;&#x6B63;&#x662F;&quot;&#x65E0;&#x53C2;=&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x3001;&#x6709;&#x53C2;=&#x6307;&#x5B9A;&#x5730;&#x5740;&#xFF0C;&#x4E24;&#x8005;&#x540C;&#x4E00;&#x5957;&#x5904;&#x7406;&#x903B;&#x8F91;&quot;&#x5728;&#x4EE3;&#x7801;&#x4E0A;&#x7684;&#x843D;&#x70B9;&#xFF1B;</li>
+<li><code>-n/--max</code>&#x3001;<code>-s/--syntax</code> &#x5728; <code>init</code> &#x91CC;&#x6CE8;&#x518C;&#xFF0C;<code>RunE</code> &#x53EA;&#x8D1F;&#x8D23;&#x8BFB;&#x53D6;&#xFF1B;&#x9ED8;&#x8BA4;&#x503C; 10 &#x548C; gnu &#x5C31;&#x662F; <code>help disass</code> &#x91CC;&#x663E;&#x793A;&#x7684;&#x503C;&#xFF1B;</li>
+<li>&#x53CD;&#x6C47;&#x7F16;&#x672C;&#x8EAB;&#x4E0D;&#x5728;&#x547D;&#x4EE4;&#x5C42;&#x505A;&#xFF1A;&#x547D;&#x4EE4;&#x5C42;&#x62FF;&#x5230;&#x7684;&#x662F; <code>[]api.AsmInstruction</code> &#x5FEB;&#x7167;&#xFF0C;&#x53EA;&#x8D1F;&#x8D23;&#x628A;&#x6BCF;&#x6761;&#x6307;&#x4EE4;&#x6309; <code>0xADDR:\tBYTES\tTEXT</code> &#x4E09;&#x5217;&#x6253;&#x5370;&#x51FA;&#x6765;&#x3002;&#x540E;&#x7AEF;&#x4E0D;&#x6253;&#x5370;&#x3001;&#x524D;&#x7AEF;&#x53EA;&#x5C55;&#x793A;&#xFF0C;&#x8FD9;&#x662F;&#x8D2F;&#x7A7F;&#x672C;&#x4E66;&#x7684;&#x7EA6;&#x5B9A;&#xFF1B;</li>
+<li>&#x547D;&#x4EE4;&#x8FD8;&#x6CE8;&#x518C;&#x4E86; <code>dis</code>&#x3001;<code>disassemble</code> &#x4E24;&#x4E2A;&#x522B;&#x540D;&#xFF0C;&#x5C31;&#x662F; <code>Use</code> &#x4E0B;&#x9762;&#x7684; <code>Aliases</code>&#xFF0C;&#x6572;&#x77ED;&#x4E00;&#x70B9;&#x4E5F;&#x4E00;&#x6837;&#x80FD;&#x7528;&#x3002;</li>
+</ul>
+<p>&#x5730;&#x5740;&#x5B57;&#x7B26;&#x4E32;&#x7684;&#x89E3;&#x6790;&#x653E;&#x5728; <code>cmd/debug/address.go</code>&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;strconv&quot;</span>
+)
+
+<span class="hljs-comment">// parseAddress &#x5C06;&#x5B57;&#x7B26;&#x4E32;&#x89E3;&#x6790;&#x4E3A;&#x5730;&#x5740;&#x503C;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &#x652F;&#x6301; 0x &#x524D;&#x7F00;&#x7684;&#x5341;&#x516D;&#x8FDB;&#x5236;&#xFF08;&#x5982; 0x478120&#xFF09;&#x4E0E;&#x5341;&#x8FDB;&#x5236;&#xFF08;&#x5982; 4686112&#xFF09;&#xFF0C;</span>
+<span class="hljs-comment">// &#x4EE5;&#x53CA; 0 &#x524D;&#x7F00;&#x7684;&#x516B;&#x8FDB;&#x5236;&#xFF08;Go &#x7684; strconv.ParseUint base=0 &#x7EA6;&#x5B9A;&#xFF09;&#x3002;</span>
+<span class="hljs-keyword">func</span> parseAddress(locStr <span class="hljs-keyword">string</span>) (<span class="hljs-keyword">uint64</span>, error) {
+    v, err := strconv.ParseUint(locStr, <span class="hljs-number">0</span>, <span class="hljs-number">64</span>)
     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;find executable by pid err: %w&quot;</span>, err)
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>, fmt.Errorf(<span class="hljs-string">&quot;invalid address: %v&quot;</span>, err)
     }
-    <span class="hljs-keyword">return</span> exePath, <span class="hljs-literal">nil</span>
+    <span class="hljs-keyword">return</span> v, <span class="hljs-literal">nil</span>
 }
 </code></pre>
-<h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
-<p>&#x6211;&#x4EEC;&#x968F;&#x4FBF;&#x5199;&#x4E00;&#x4E2A;go&#x7A0B;&#x5E8F;&#xFF0C;&#x8BA9;&#x5176;&#x8FD0;&#x884C;&#x8D77;&#x6765;&#xFF0C;&#x67E5;&#x770B;&#x5176;pid&#x4E3A;2507&#xFF0C;&#x968F;&#x540E;&#x6267;&#x884C; <code>godbg attach 2507</code>&#x5F00;&#x59CB;&#x5BF9;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
-<p>&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x542F;&#x52A8;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x76F4;&#x63A5;&#x8F93;&#x5165;disass&#x547D;&#x4EE4;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6240;&#x6709;&#x6307;&#x4EE4;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x6570;&#x636E;&#x3002;&#x6211;&#x4EEC;&#x5F53;&#x524D;&#x8FD8;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; <code>breakpoint</code> &#x529F;&#x80FD;&#xFF0C;&#x6240;&#x4EE5;&#x6B64;&#x5904;&#x5148;&#x4E0D;&#x6F14;&#x793A;&#x5BF9;&#x65AD;&#x70B9;&#x5904;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x6548;&#x679C;&#xFF0C;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E2D;&#x4E5F;&#x5DF2;&#x7ECF;&#x8FDB;&#x884C;&#x4E86;&#x8BF4;&#x660E;&#xFF0C;&#x5982;&#x679C;PC-1&#x5904;&#x4E3A;&#x65AD;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x5C06;&#x5BF9;&#x5E94;&#x4F4D;&#x7F6E;&#x7684;0xCC&#x7ED9;&#x8FD8;&#x539F;&#x3002;</p>
-<blockquote>
-<p>TODO &#x8FD9;&#x91CC;&#x9700;&#x8981;&#x5728;&#x5B9E;&#x73B0;&#x4E86;&#x65AD;&#x70B9;&#x529F;&#x80FD;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x8865;&#x5145;&#x4E00;&#x4E2A;&#x5C0F;&#x8282;&#x7EE7;&#x7EED;&#x5B8C;&#x5584;&#x4E0B;&#x65AD;&#x70B9;&#x5904;&#x53CD;&#x6C47;&#x7F16;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x6D89;&#x53CA;&#x5230;&#x4ECE;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x7684;&#x90E8;&#x5206;&#x3001;&#x6307;&#x4EE4;patch&#x6570;&#x636E;&#x7684;&#x5907;&#x4EFD;&#x8FD8;&#x539F;&#x3001;&#x53CD;&#x6C47;&#x7F16;&#x3002;</p>
-</blockquote>
-<pre><code class="lang-bash">$ godbg attach 2507
-process 2507 attached succ
-process 2507 stopped: <span class="hljs-literal">true</span>
-
-godbg&gt; disass
-<span class="hljs-built_in">read</span> 1 bytes, value of 89
-size of text: 1024
-       0 MOV [RSP+Reg(0)+0x20], EAX
-       4 RET
-       5 INT 0x3
-      ..........
-      1e INT 0x3
-      1f INT 0x3
-      20 MOV EDI, [RSP+Reg(0)+0x8]
-      24 MOV RSI, 0x2
-      2b MOV RDX, 0x1
-      32 MOV EAX, 0x48
-      37 SYSCALL
-      39 RET
-      ..........
-     100 CMP [RAX+0x8], RCX
-     104 JE .+60
-     106 XOR ECX, ECX
-     108 TEST CL, CL
-     10a JNE .+16
-     10c XOR EAX, EAX
-     10e MOV [RSP+Reg(0)+0x40], AL
-     112 MOV RBP, [RSP+Reg(0)+0x20]
-     117 ADD RSP, 0x28
-     11b RET
-     11c LEA RCX, [RDX+0x18]
-     120 MOV [RSP+Reg(0)], RCX
-     124 ADD RAX, 0x18
-      ..........
-     3fd INT 0x3
-     3fe INT 0x3
-     3ff INT 0x3
-     Error: x86asm decode error: truncated instruction
+<p><code>strconv.ParseUint(locStr, 0, 64)</code> &#x7684; base &#x4F20; 0&#xFF0C;&#x8868;&#x793A;&#x6309;&#x5B57;&#x7B26;&#x4E32;&#x524D;&#x7F00;&#x63A8;&#x65AD;&#x8FDB;&#x5236;&#xFF1A;<code>0x</code> &#x5F00;&#x5934;&#x6309;&#x5341;&#x516D;&#x8FDB;&#x5236;&#xFF0C;<code>0</code> &#x5F00;&#x5934;&#x6309;&#x516B;&#x8FDB;&#x5236;&#xFF0C;&#x5176;&#x4F59;&#x6309;&#x5341;&#x8FDB;&#x5236;&#x3002;&#x6240;&#x4EE5; <code>disass 0x478120</code>&#x3001;<code>disass 4686112</code> &#x90FD;&#x662F;&#x5408;&#x6CD5;&#x7684;&#xFF1B;&#x89E3;&#x6790;&#x5931;&#x8D25;&#x4F1A;&#x8FD4;&#x56DE; <code>invalid address</code> &#x9519;&#x8BEF;&#x3002;</p>
+<h4 id="&#x670D;&#x52A1;&#x5C42;">&#x670D;&#x52A1;&#x5C42;</h4>
+<p><code>api.Client</code> &#x65B0;&#x589E;&#x4E86;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;<code>CurrentPC</code> &#x7ED9;&#x65E0;&#x53C2; disass &#x53D6;&#x8D77;&#x70B9;&#xFF0C;<code>Disassemble</code> &#x505A;&#x53CD;&#x6C47;&#x7F16;&#x5E76;&#x8FD4;&#x56DE;&#x6307;&#x4EE4;&#x5FEB;&#x7167;&#xFF08;&#x8FD9;&#x91CC;&#x7701;&#x7565;&#x4E86;&#x63A5;&#x53E3;&#x6587;&#x4EF6;&#x5934;&#x90E8;&#x7684;&#x6CE8;&#x91CA;&#x548C; <code>Kind</code>&#x3001;<code>State</code> &#x7684;&#x5B9A;&#x4E49;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Client <span class="hljs-keyword">interface</span> {
+    <span class="hljs-comment">// Launch &#x542F;&#x52A8;&#x5E76;&#x8DDF;&#x8E2A;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD4;&#x56DE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B; pid</span>
+    Launch(kind Kind, cmd <span class="hljs-keyword">string</span>, args ...<span class="hljs-keyword">string</span>) (<span class="hljs-keyword">int</span>, error)
+    <span class="hljs-comment">// State &#x8FD4;&#x56DE;&#x5F53;&#x524D;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x72B6;&#x6001;</span>
+    State() (*State, error)
+    <span class="hljs-comment">// CurrentPC &#x8FD4;&#x56DE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x7684; PC&#xFF08;&#x6307;&#x4EE4;&#x6307;&#x9488;&#xFF09;&#x3002;</span>
+    <span class="hljs-comment">//</span>
+    <span class="hljs-comment">// tracee &#x5904;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x5B83;&#x5C31;&#x662F;&quot;&#x5F53;&#x524D;&#x505C;&#x4E0B;&#x4F4D;&#x7F6E;&quot;&#xFF1A;&#x65E0;&#x53C2; disass &#x7B49;</span>
+    <span class="hljs-comment">// &#x4EE5;&#x5F53;&#x524D;&#x4F4D;&#x7F6E;&#x4E3A;&#x8D77;&#x70B9;&#x7684;&#x547D;&#x4EE4;&#x636E;&#x6B64;&#x786E;&#x5B9A;&#x8D77;&#x70B9;&#x3002;</span>
+    CurrentPC() (<span class="hljs-keyword">uint64</span>, error)
+    <span class="hljs-comment">// Kill &#x7EC8;&#x6B62;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
+    Kill() error
+    <span class="hljs-comment">// Attach &#x8DDF;&#x8E2A;&#x4E00;&#x4E2A;&#x6B63;&#x5728;&#x8FD0;&#x884C;&#x7684;&#x8FDB;&#x7A0B;</span>
+    Attach(pid <span class="hljs-keyword">int</span>) error
+    <span class="hljs-comment">// Detach &#x7ED3;&#x675F;&#x8C03;&#x8BD5;&#xFF0C;&#x5206;&#x79BB;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
+    Detach() error
+    <span class="hljs-comment">// Disassemble &#x53CD;&#x6C47;&#x7F16;&#x5730;&#x5740; addr &#x5904;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x8FD4;&#x56DE; max &#x6761;</span>
+    Disassemble(addr, max <span class="hljs-keyword">uint64</span>, syntax <span class="hljs-keyword">string</span>) ([]AsmInstruction, error)
+}
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x4E5F;&#x6CE8;&#x610F;&#x5230;&#x6700;&#x540E;&#x4E00;&#x884C;&#x6709;&#x9519;&#x8BEF;&#x4FE1;&#x606F;&#xFF0C;&#x63D0;&#x793A;&#x201C;truncated instruction&#x201D;&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A;&#x6211;&#x4EEC;&#x56FA;&#x5B9A;&#x4E86;&#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x7684;buffer&#x662F;1024 bytes&#xFF0C;&#x53EF;&#x80FD;&#x6709;&#x4E00;&#x6761;&#x6700;&#x540E;&#x7684;&#x6307;&#x4EE4;&#x6CA1;&#x6709;&#x5B8C;&#x5168;&#x8BFB;&#x53D6;&#x8FC7;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x8FDB;&#x884C;decode&#x7684;&#x65F6;&#x5019;&#x8FD9;&#x6761;&#x6307;&#x4EE4;&#x5931;&#x8D25;&#x4E86;&#x3002;</p>
-<p>&#x8FD9;&#x91CC;&#x7684;&#x5931;&#x8D25;&#x662F;&#x7B26;&#x5408;&#x9884;&#x671F;&#x7684;&#x3001;&#x65E0;&#x5BB3;&#x7684;&#xFF0C;&#x6211;&#x4EEC;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x4F1A;&#x663E;&#x793A;&#x8FD9;&#x4E48;&#x591A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#xFF0C;&#x53EA;&#x4F1A;&#x663E;&#x793A;&#x65AD;&#x70B9;&#x9644;&#x8FD1;&#x7684;&#x51E0;&#x5341;&#x6761;&#x6307;&#x4EE4;&#x800C;&#x5DF2;&#xFF0C;&#x5BF9;&#x4E8E;decode&#x5931;&#x8D25;&#x7684;buffer&#x672B;&#x5C3E;&#x51E0;&#x6761;&#x6307;&#x4EE4;&#x7B80;&#x5355;&#x5FFD;&#x7565;&#x5C31;&#x53EF;&#x4EE5;&#x3002;</p>
-<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x5B9E;&#x73B0;&#x4E86;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x529F;&#x80FD;&#xFF0C;&#x4E0B;&#x4E00;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x901A;&#x8FC7;&#x6307;&#x4EE4;patch&#x6765;&#x5B9E;&#x73B0;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#x7684;&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x3002;</p>
-<blockquote>
-<p>ps: &#x5728;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x7A0B;&#x5E8F; <code>golang-debugger-lessons/5_disassemble `&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;&#x53EF;&#x4EE5;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x8FD0;&#x884C; `path-to/5_disassemble `&lt;pid&gt;</code> &#x53EF;&#x4EE5;&#x53CD;&#x6C47;&#x7F16;&#x7A0B;&#x5E8F;&#x4E2D;&#x5305;&#x542B;&#x7684;&#x6240;&#x6709;&#x6307;&#x4EE4;&#xFF0C;&#x7A0B;&#x5E8F;&#x4E5F;&#x5BF9;&#x53EF;&#x80FD;&#x9047;&#x5230;&#x7684;&#x9519;&#x8BEF;&#x8FDB;&#x884C;&#x4E86;&#x5904;&#x7406;&#xFF0C;&#x5305;&#x62EC;&#x4E0D;&#x8BA4;&#x8BC6;&#x7684;&#x6307;&#x4EE4;&#x3001;&#x8D8A;&#x754C;&#x95EE;&#x9898;&#x3002;</p>
-</blockquote>
-<h3 id="&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;">&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;</h3>
-<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6709;go&#x3001;intel&#x3001;gnu 3&#x79CD;&#x5E38;&#x89C1;&#x98CE;&#x683C;&#xFF0C;gnu&#x98CE;&#x683C;&#x7684;&#x4FD7;&#x79F0;at&amp;t&#x98CE;&#x683C;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x4E0D;&#x540C;&#x4E60;&#x60EF;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x80FD;&#x987A;&#x7545;&#x5730;&#x9605;&#x8BFB;&#x76F8;&#x5173;&#x53CD;&#x6C47;&#x7F16;&#x51FA;&#x6765;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x6211;&#x4EEC;&#x540E;&#x7EED;&#x53C8;&#x4E3A;disass&#x547D;&#x4EE4;&#x6DFB;&#x52A0;&#x4E86;&#x9009;&#x9879; <code>disass -s &lt;syntax&gt;</code>&#x6765;&#x6307;&#x5B9A;&#x6C47;&#x7F16;&#x6307;&#x6307;&#x4EE4;&#x7684;&#x98CE;&#x683C;&#xFF0C;&#x5982;&#x679C;&#x60A8;&#x503E;&#x5411;&#x4E8E;&#x9605;&#x8BFB;at&amp;t&#x683C;&#x5F0F;&#x6C47;&#x7F16;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>disass -s gnu</code>&#x6765;&#x67E5;&#x770B;&#x5BF9;&#x5E94;&#x98CE;&#x683C;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x3002;</p>
-<p>&#x51FD;&#x6570; <code>instSyntax(inst x86asm.Inst, syntax string) (string, error)</code>&#x5B9E;&#x73B0;&#x4E86;&#x5BF9;&#x4E0D;&#x540C;&#x6C47;&#x7F16;&#x98CE;&#x683C;&#x7684;&#x8F6C;&#x6362;&#x652F;&#x6301;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> instSyntax(inst x86asm.Inst, syntax <span class="hljs-keyword">string</span>) (<span class="hljs-keyword">string</span>, error) {
+<p><code>CurrentPC</code> &#x63D2;&#x5728; <code>State</code> &#x4E4B;&#x540E;&#xFF0C;&#x6CE8;&#x91CA;&#x91CC;&#x5199;&#x660E;&#x4E86;&#x5B83;&#x7684;&#x5B9A;&#x4F4D;&#xFF1A;tracee &#x5904;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x65F6;&#xFF0C;&#x5B83;&#x8FD4;&#x56DE;&#x7684;&#x5C31;&#x662F;&quot;&#x5F53;&#x524D;&#x505C;&#x4E0B;&#x4F4D;&#x7F6E;&quot;&#x3002;&#x5B8C;&#x6574;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x8BFB;&#x53D6;&#x80FD;&#x529B;&#x8981;&#x5230; 6.14 &#x8282; <code>pregs</code> &#x624D;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x628A;&quot;&#x8BFB; PC&quot;&#x8FD9;&#x4E00;&#x9879;&#x6700;&#x5C0F;&#x80FD;&#x529B;&#x524D;&#x79FB;&#xFF0C;&#x56E0;&#x4E3A;&#x65E0;&#x53C2; disass &#x73B0;&#x5728;&#x5C31;&#x9700;&#x8981;&#x5B83;&#x3002;</p>
+<p>&#x53CD;&#x6C47;&#x7F16;&#x7ED3;&#x679C;&#x7528; <code>api.AsmInstruction</code> &#x8868;&#x793A;&#xFF0C;&#x5B9A;&#x4E49;&#x5728; <code>pkg/service/api/types.go</code>&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// AsmInstruction &#x4E00;&#x6761;&#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;</span>
+<span class="hljs-keyword">type</span> AsmInstruction <span class="hljs-keyword">struct</span> {
+    Addr  <span class="hljs-keyword">uint64</span> <span class="hljs-comment">// &#x6307;&#x4EE4;&#x5730;&#x5740;</span>
+    Bytes []<span class="hljs-keyword">byte</span> <span class="hljs-comment">// &#x6307;&#x4EE4;&#x673A;&#x5668;&#x7801;</span>
+    Text  <span class="hljs-keyword">string</span> <span class="hljs-comment">// &#x6307;&#x4EE4;&#x6C47;&#x7F16;&#x6587;&#x672C;</span>
+}
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x4F53;&#x73B0;&#x4E86;&#x670D;&#x52A1;&#x5C42;&#x7684;&#x4E24;&#x6761;&#x7EA6;&#x5B9A;&#xFF1A;&#x63A5;&#x53E3;&#x53EA;&#x4F20;&#x503C;&#x3001;&#x53EA;&#x8FD4;&#x56DE;&#x5FEB;&#x7167;&#xFF08;<code>[]api.AsmInstruction</code> &#x4E00;&#x6B21;&#x6027;&#x8FD4;&#x56DE;&#xFF0C;&#x4E0D;&#x505A;&#x6D41;&#x5F0F;&#x6216;&#x56DE;&#x8C03;&#xFF09;&#xFF1B;&#x540E;&#x7AEF;&#x4E0D;&#x6253;&#x5370;&#x4EFB;&#x4F55;&#x5185;&#x5BB9;&#xFF0C;&#x8F93;&#x51FA;&#x683C;&#x5F0F;&#x7531;&#x547D;&#x4EE4;&#x5C42;&#x51B3;&#x5B9A;&#x3002;</p>
+<p><code>pkg/service/debugger</code> &#x95E8;&#x9762;&#x53EA;&#x505A;&#x8F6C;&#x53D1;&#x548C;&#x7A7A;&#x6307;&#x9488;&#x68C0;&#x67E5;&#xFF08;&#x540C;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x91CC;&#x8FD8;&#x6709; Launch&#x3001;Attach&#x3001;Detach &#x7B49;&#x65B9;&#x6CD5;&#xFF0C;&#x672C;&#x8282;&#x4E0D;&#x6D89;&#x53CA;&#xFF0C;&#x8FD9;&#x91CC;&#x7701;&#x7565;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// CurrentPC &#x8FD4;&#x56DE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x7684; PC&#xFF08;&#x6307;&#x4EE4;&#x6307;&#x9488;&#xFF09;</span>
+<span class="hljs-keyword">func</span> (d *Debugger) CurrentPC() (<span class="hljs-keyword">uint64</span>, error) {
+    <span class="hljs-keyword">if</span> d.dbp == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>, fmt.Errorf(<span class="hljs-string">&quot;no debugged process&quot;</span>)
+    }
+    <span class="hljs-keyword">return</span> d.dbp.CurrentPC()
+}
+
+<span class="hljs-comment">// Disassemble &#x53CD;&#x6C47;&#x7F16;&#x5730;&#x5740; addr &#x5904;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x8FD4;&#x56DE; max &#x6761;</span>
+<span class="hljs-keyword">func</span> (d *Debugger) Disassemble(addr, max <span class="hljs-keyword">uint64</span>, syntax <span class="hljs-keyword">string</span>) ([]api.AsmInstruction, error) {
+    <span class="hljs-keyword">if</span> d.dbp == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;no debugged process&quot;</span>)
+    }
+    <span class="hljs-keyword">return</span> d.dbp.Disassemble(addr, max, syntax)
+}
+</code></pre>
+<p>&#x88C5;&#x914D;&#x6CA1;&#x6709;&#x53D8;&#x5316;&#xFF0C;<code>main</code> &#x91CC;&#x4ECD;&#x7136;&#x662F; <code>cmd.Client = debugger.New()</code>&#xFF1B;&#x547D;&#x4EE4;&#x5C42;&#x4E0D;&#x9700;&#x8981;&#x77E5;&#x9053;&#x540E;&#x7AEF;&#x6362;&#x4E86;&#x8C01;&#xFF0C;&#x7B2C; 9 &#x7AE0;&#x5207;&#x5230; headless RPC &#x65F6;&#x8FD9;&#x4E00;&#x5C42;&#x540C;&#x6837;&#x4E0D;&#x7528;&#x6539;&#x3002;</p>
+<h4 id="&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x8BFB;&#x53D6;&#x5F53;&#x524D;-pc">&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x8BFB;&#x53D6;&#x5F53;&#x524D; PC</h4>
+<p><code>pkg/target/pc.go</code> &#x662F;&#x672C;&#x8282;&#x65B0;&#x589E;&#x7684;&#x6587;&#x4EF6;&#xFF0C;&#x903B;&#x8F91;&#x5F88;&#x77ED;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> target
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;syscall&quot;</span>
+
+<span class="hljs-comment">// CurrentPC &#x8FD4;&#x56DE;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x7684; PC&#xFF08;&#x6307;&#x4EE4;&#x6307;&#x9488;&#xFF09;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &#x8C03;&#x8BD5;&#x5668;&#x53EA;&#x4F1A;&#x5728; tracee &#x5904;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x65F6;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x6B64;&#x65F6;&#x76F4;&#x63A5;&#x901A;&#x8FC7;</span>
+<span class="hljs-comment">// PTRACE_GETREGS &#x8BFB;&#x53D6; RIP &#x5373;&#x53EF;&#xFF1B;ptrace &#x8BF7;&#x6C42;&#x7EDF;&#x4E00;&#x7ECF; ExecPtrace &#x4E32;&#x884C;&#x6267;&#x884C;&#x3002;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) CurrentPC() (<span class="hljs-keyword">uint64</span>, error) {
+    <span class="hljs-keyword">var</span> regs syscall.PtraceRegs
+    err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        <span class="hljs-keyword">return</span> syscall.PtraceGetRegs(p.Process.Pid, &amp;regs)
+    })
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>, err
+    }
+    <span class="hljs-keyword">return</span> regs.PC(), <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<ul>
+<li>&#x8C03;&#x8BD5;&#x5668;&#x53EA;&#x4F1A;&#x5728; tracee &#x5904;&#x4E8E;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x65F6;&#x6267;&#x884C;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;&#x76F4;&#x63A5; <code>PTRACE_GETREGS</code> &#x8BFB;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;&#x62FF;&#x5230;&#x7684; RIP &#x5C31;&#x662F;&quot;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&quot;&#xFF1B;</li>
+<li>ptrace &#x8BF7;&#x6C42;&#x6CA1;&#x6709;&#x76F4;&#x63A5;&#x88F8;&#x8C03; <code>syscall.PtraceGetRegs</code>&#xFF0C;&#x800C;&#x662F;&#x5305;&#x5728; <code>ExecPtrace</code> &#x91CC;&#x3002;6.1 &#x8282;&#x8BB2;&#x8FC7; ptrace limit&#xFF1A;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#x5EFA;&#x7ACB;&#x540E;&#xFF0C;&#x6240;&#x6709; ptrace &#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x4E2A; tracer &#x7EBF;&#x7A0B;&#xFF0C;<code>ExecPtrace</code> &#x5C31;&#x662F;&#x7528;&#x6765;&#x4FDD;&#x8BC1;&#x8FD9;&#x4E00;&#x70B9;&#x7684;&#xFF1B;<code>CurrentPC</code> &#x548C;&#x540E;&#x9762;&#x7684; <code>peekMemory</code> &#x90FD;&#x8D70;&#x8FD9;&#x6761;&#x8DEF;&#xFF0C;&#x4E32;&#x884C;&#x6267;&#x884C;&#xFF0C;&#x4E0D;&#x4F1A;&#x4E92;&#x76F8;&#x63D2;&#x961F;&#xFF1B;</li>
+<li>&#x8FD9;&#x91CC;&#x8BFB;&#x7684;&#x662F;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF08;<code>p.Process.Pid</code>&#xFF09;&#x7684; RIP&#x3002;&#x672C;&#x8282;&#x793A;&#x4F8B; <code>loop</code> &#x505C;&#x5728;&#x5165;&#x53E3;&#x65F6;&#x8FD8;&#x662F;&#x5355;&#x7EBF;&#x7A0B;&#xFF0C;&#x6240;&#x4EE5;&#x591F;&#x7528;&#xFF1B;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x91CC;&quot;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&quot;&#x8FD8;&#x8981;&#x8003;&#x8651;&#x9009;&#x54EA;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x90A3;&#x662F; 6.20 &#x8282;&quot;&#x8C03;&#x8BD5;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&quot;&#x7684;&#x5185;&#x5BB9;&#x3002;</li>
+</ul>
+<h4 id="&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x5E76;&#x53CD;&#x6C47;&#x7F16;">&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x8BFB;&#x53D6;&#x6307;&#x4EE4;&#x5E76;&#x53CD;&#x6C47;&#x7F16;</h4>
+<p><code>pkg/target/disassemble.go</code> &#x8D1F;&#x8D23;&#x771F;&#x6B63;&#x5E72;&#x6D3B;&#xFF0C;&#x6838;&#x5FC3;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF08;&#x7701;&#x7565;&#x4E86;&#x6587;&#x4EF6;&#x5934;&#x90E8;&#x7684; import &#x548C;&#x524D;&#x9762;&#x7684; <code>DisassembleSingleInstruction</code>&#xFF0C;&#x89C1;&#x4E0B;&#x9762; ps&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Disassemble &#x53CD;&#x6C47;&#x7F16;&#x5730;&#x5740;addr&#x5904;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x8FD4;&#x56DE;max&#x6761;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) Disassemble(addr, max <span class="hljs-keyword">uint64</span>, syntax <span class="hljs-keyword">string</span>) ([]api.AsmInstruction, error) {
+    <span class="hljs-comment">// &#x6307;&#x4EE4;&#x6570;&#x636E;</span>
+    dat := <span class="hljs-built_in">make</span>([]<span class="hljs-keyword">byte</span>, <span class="hljs-number">1024</span>)
+    n, err := p.peekMemory(<span class="hljs-keyword">uintptr</span>(addr), dat)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n == <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;peek text error: %v, bytes: %d&quot;</span>, err, n)
+    }
+
+    <span class="hljs-keyword">return</span> p.disassembleData(addr, dat[:n], max, syntax)
+}
+
+<span class="hljs-comment">// disassembleData &#x5728;&#x7ED9;&#x5B9A;&#x7684;&#x6570;&#x636E;&#x4E0A;&#x8FDB;&#x884C;&#x53CD;&#x6C47;&#x7F16;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) disassembleData(addr <span class="hljs-keyword">uint64</span>, data []<span class="hljs-keyword">byte</span>, max <span class="hljs-keyword">uint64</span>, syntax <span class="hljs-keyword">string</span>) ([]api.AsmInstruction, error) {
+    insts := []api.AsmInstruction{}
+
+    <span class="hljs-comment">// &#x53CD;&#x6C47;&#x7F16;&#x8FD9;&#x91CC;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;</span>
+    offset := <span class="hljs-keyword">uint64</span>(<span class="hljs-number">0</span>)
+    count := <span class="hljs-keyword">uint64</span>(<span class="hljs-number">0</span>)
+
+    <span class="hljs-keyword">for</span> count &lt; max &amp;&amp; <span class="hljs-keyword">int</span>(offset) &lt; <span class="hljs-built_in">len</span>(data) {
+        inst, err := x86asm.Decode(data[offset:], <span class="hljs-number">64</span>)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">if</span> err == x86asm.ErrUnrecognized {
+                offset++
+                <span class="hljs-keyword">continue</span>
+            }
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;x86asm decode error: %v&quot;</span>, err)
+        }
+
+        asm, err := instSyntax(inst, syntax)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;x86asm syntax error: %v&quot;</span>, err)
+        }
+
+        end := offset + <span class="hljs-keyword">uint64</span>(inst.Len)
+        insts = <span class="hljs-built_in">append</span>(insts, api.AsmInstruction{
+            Addr:  addr + offset,
+            Bytes: data[offset:end],
+            Text:  asm,
+        })
+        offset = end
+        count++
+    }
+    <span class="hljs-keyword">return</span> insts, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// instSyntax &#x6309;&#x6307;&#x5B9A;&#x8BED;&#x6CD5;&#x98CE;&#x683C;&#x683C;&#x5F0F;&#x5316;&#x4E00;&#x6761;&#x6307;&#x4EE4;</span>
+<span class="hljs-keyword">func</span> instSyntax(inst x86asm.Inst, syntax <span class="hljs-keyword">string</span>) (<span class="hljs-keyword">string</span>, error) {
     asm := <span class="hljs-string">&quot;&quot;</span>
     <span class="hljs-keyword">switch</span> syntax {
     <span class="hljs-keyword">case</span> <span class="hljs-string">&quot;go&quot;</span>:
@@ -2520,17 +2587,131 @@ size of text: 1024
     }
     <span class="hljs-keyword">return</span> asm, <span class="hljs-literal">nil</span>
 }
+
+<span class="hljs-comment">// peekMemory &#x8BFB;&#x53D6;&#x5185;&#x5B58;&#x5730;&#x5740;addr&#x5904;&#x7684;&#x6570;&#x636E;&#x5230;buf&#x4E2D;&#xFF0C;&#x8FD4;&#x56DE;&#x5B9E;&#x9645;&#x8BFB;&#x53D6;&#x7684;&#x5B57;&#x8282;&#x6570;&#x3002;</span>
+<span class="hljs-comment">// TODO(ch6.13): &#x5C06; peekMemory &#x62BD;&#x51FA;&#x4E3A; DebuggedProcess.ReadMemory &#x65B9;&#x6CD5;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) peekMemory(addr <span class="hljs-keyword">uintptr</span>, buf []<span class="hljs-keyword">byte</span>) (<span class="hljs-keyword">int</span>, error) {
+    <span class="hljs-keyword">var</span> (
+        dat <span class="hljs-keyword">int</span>
+        err error
+    )
+    err = p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        <span class="hljs-comment">// PtracePeekText &#x4E0E; PtracePeekData &#x6548;&#x679C;&#x76F8;&#x540C;</span>
+        n, err := syscall.PtracePeekText(p.Process.Pid, addr, buf)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+        dat = n
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    })
+    <span class="hljs-keyword">return</span> dat, err
+}
 </code></pre>
-<p>&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4E5F;&#x6DFB;&#x52A0;&#x4E86;&#x9009;&#x9879; <code>disass -n &lt;num&gt;</code>&#x6765;&#x6307;&#x5B9A;&#x4E00;&#x6B21;&#x53CD;&#x6C47;&#x7F16;&#x64CD;&#x4F5C;&#x8981;decode&#x7684;&#x6307;&#x4EE4;&#x6761;&#x6570;&#xFF0C;&#x56E0;&#x4E3A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x5F80;&#x5F80;&#x66F4;&#x5173;&#x5FC3;&#x5F53;&#x524D;&#x5F85;&#x6267;&#x884C;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x5FC5;&#x8981;&#x4E00;&#x6B21;&#x53CD;&#x6C47;&#x7F16;&#x6210;&#x5343;&#x4E0A;&#x4E07;&#x884C;&#x6307;&#x4EE4;&#xFF0C;&#x90A3;&#x4EC5;&#x4F1A;&#x5206;&#x6563;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x7684;&#x6CE8;&#x610F;&#x529B;&#x800C;&#x5DF2;&#x3002;</p>
-<p>&#x60A8;&#x53EF;&#x4EE5;&#x5728;&#x9879;&#x76EE; <code>hitzhangjie/godbg</code> &#x6E90;&#x6587;&#x4EF6; <code>godbg/cmd/debug/disass.go</code>&#x4E2D;&#x67E5;&#x770B;&#x5B8C;&#x6574;&#x53CD;&#x6C47;&#x7F16;&#x5B9E;&#x73B0;&#x3002;</p>
+<p>&#x9010;&#x6BB5;&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li><code>Disassemble</code> &#x53EA;&#x505A;&#x4E24;&#x4EF6;&#x4E8B;&#xFF1A;&#x4ECE; <code>addr</code> &#x8BFB;&#x4E00;&#x6BB5;&#x56FA;&#x5B9A; 1024 &#x5B57;&#x8282;&#x7684;&#x7A97;&#x53E3;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x7A97;&#x53E3;&#x4EA4;&#x7ED9; <code>disassembleData</code>&#x3002;&#x7A97;&#x53E3;&#x8BFB;&#x53D6;&#x5931;&#x8D25;&#x6216;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x90FD;&#x8BFB;&#x4E0D;&#x5230;&#x65F6;&#xFF0C;&#x8FD4;&#x56DE; <code>peek text error</code>&#xFF1B;</li>
+<li><code>disassembleData</code> &#x662F; decode &#x5FAA;&#x73AF;&#xFF1A;<code>count &lt; max &amp;&amp; offset &lt; len(data)</code> &#x4E24;&#x4E2A;&#x6761;&#x4EF6;&#x540C;&#x65F6;&#x6EE1;&#x8DB3;&#x624D;&#x7EE7;&#x7EED;&#xFF1B;&#x6BCF;&#x6B21; <code>x86asm.Decode(data[offset:], 64)</code> &#x6309; 64 &#x4F4D;&#x6A21;&#x5F0F;&#x89E3;&#x7801;&#xFF0C;&#x6210;&#x529F;&#x540E;&#x7528; <code>instSyntax</code> &#x8F6C;&#x6210;&#x6307;&#x5B9A;&#x8BED;&#x6CD5;&#xFF0C;<code>Bytes</code> &#x53D6; <code>data[offset:offset+inst.Len]</code>&#xFF0C;<code>Addr</code> &#x662F; <code>addr+offset</code>&#xFF0C;&#x7136;&#x540E; <code>offset += inst.Len</code>&#x3001;<code>count++</code>&#xFF1B;</li>
+<li>&#x89E3;&#x7801;&#x5931;&#x8D25;&#x5206;&#x4E24;&#x79CD;&#xFF1A;<code>x86asm.ErrUnrecognized</code> &#x8868;&#x793A;&#x8FD9;&#x6BB5;&#x5B57;&#x8282;&#x4E0D;&#x662F;&#x53EF;&#x8BC6;&#x522B;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x8DF3;&#x8FC7;&#x4E00;&#x4E2A;&#x5B57;&#x8282;&#x7EE7;&#x7EED;&#xFF08;&#x76F8;&#x5F53;&#x4E8E;&#x91CD;&#x65B0;&#x540C;&#x6B65;&#xFF09;&#xFF1B;&#x5176;&#x4ED6;&#x9519;&#x8BEF;&#xFF08;&#x6BD4;&#x5982;&#x6307;&#x4EE4;&#x88AB;&#x622A;&#x65AD;&#xFF09;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#x3002;&#x56E0;&#x4E3A;&#x9ED8;&#x8BA4;&#x53EA;&#x89E3; 10 &#x6761;&#x3001;&#x7A97;&#x53E3;&#x6709; 1024 &#x5B57;&#x8282;&#xFF0C;&#x6B63;&#x5E38;&#x60C5;&#x51B5;&#x4E0B;&#x8D70;&#x4E0D;&#x5230;&#x7A97;&#x53E3;&#x672B;&#x5C3E;&#xFF0C;&#x8FD9;&#x4E2A;&#x9519;&#x8BEF;&#x5206;&#x652F;&#x4E0D;&#x5BB9;&#x6613;&#x78B0;&#x5230;&#xFF1B;</li>
+<li><code>instSyntax</code> &#x6309; <code>-s</code> &#x7684;&#x53D6;&#x503C;&#x9009;&#x62E9; <code>GoSyntax</code>&#x3001;<code>GNUSyntax</code>&#x3001;<code>IntelSyntax</code>&#xFF0C;&#x672A;&#x77E5;&#x53D6;&#x503C;&#x8FD4;&#x56DE; <code>invalid asm syntax error</code>&#xFF1B;</li>
+<li><code>peekMemory</code> &#x628A; PEEKTEXT &#x5305;&#x8FDB; <code>ExecPtrace</code> &#x6267;&#x884C;&#x3002;&#x6CE8;&#x91CA;&#x91CC;&#x7684; <code>TODO(ch6.13)</code> &#x8BF4;&#x660E;&#x5B83;&#x540E;&#x9762;&#x4F1A;&#x62BD;&#x6210;&#x6B63;&#x5F0F;&#x7684; <code>ReadMemory</code> &#x65B9;&#x6CD5;&#xFF0C;&#x5230; 6.13 &#x8282;&#x5B9E;&#x73B0; <code>pmem</code> &#x65F6;&#x8865;&#x4E0A;&#x3002;</li>
+</ul>
+<blockquote>
+<p>ps: &#x76EE;&#x6807;&#x5C42;&#x8FD8;&#x6709;&#x4E00;&#x4E2A; <code>DisassembleSingleInstruction</code>&#xFF0C;&#x8BFB; 16 &#x5B57;&#x8282;&#x3001;decode &#x4E00;&#x6761;&#x6307;&#x4EE4;&#x5C31;&#x8FD4;&#x56DE;&#xFF0C;&#x7559;&#x7ED9;&#x540E;&#x9762;&#x9700;&#x8981;&quot;&#x5355;&#x6761;&#x6307;&#x4EE4;&#x4FE1;&#x606F;&quot;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x4F7F;&#x7528;&#xFF0C;&#x672C;&#x8282;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x7A97;&#x53E3;&#x4E0D;&#x8D70;&#x5B83;&#x3002;</p>
+</blockquote>
+<h3 id="&#x8FD0;&#x884C;&#x6548;&#x679C;">&#x8FD0;&#x884C;&#x6548;&#x679C;</h3>
+<p>&#x5728; godbgv2 &#x4ED3;&#x5E93;&#x91CC;&#x5207;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#xFF0C;&#x628A;&#x8C03;&#x8BD5;&#x5668;&#x548C; fixture &#x90FD;&#x6784;&#x5EFA;&#x51FA;&#x6765;&#xFF1A;</p>
+<pre><code class="lang-bash">git checkout ch6.5
+make build
+make fixtures
+</code></pre>
+<p><code>make build</code> &#x4EA7;&#x51FA; <code>./godbg</code>&#xFF0C;<code>make fixtures</code> &#x628A; <code>examples/debuggee</code> &#x4E0B;&#x7684;&#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x7F16;&#x5230; <code>_fixtures/</code>&#xFF0C;&#x7F16;&#x8BD1;&#x65F6;&#x5E26; <code>-gcflags &quot;all=-N -l&quot;</code>&#xFF0C;&#x4E0D;&#x505A;&#x4F18;&#x5316;&#x3001;&#x4E0D;&#x505A;&#x5185;&#x8054;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x3002;&#x672C;&#x8282;&#x7528; <code>_fixtures/loop</code> &#x505A;&#x76EE;&#x6807;&#x7A0B;&#x5E8F;&#x3002;</p>
+<p>&#x7136;&#x540E; <code>godbg exec</code> &#x542F;&#x52A8;&#x5B83;&#xFF0C;&#x8FDB;&#x7A0B;&#x4F1A;&#x505C;&#x5728; exec &#x4EA7;&#x751F;&#x7684; SIGTRAP &#x4E0A;&#xFF0C;&#x63A5;&#x7740;&#x5C31;&#x53EF;&#x4EE5;&#x7528; <code>disass</code> &#x53CD;&#x6C47;&#x7F16;&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 1668541 launched, stopped by SIGTRAP
+godbg&gt; disass
+0x478120:    e9 bb c8 ff ff    jmpq 0xffffffffffffc8c4
+0x478125:    cc    int3
+0x478126:    cc    int3
+0x478127:    cc    int3
+0x478128:    cc    int3
+0x478129:    cc    int3
+0x47812a:    cc    int3
+0x47812b:    cc    int3
+0x47812c:    cc    int3
+0x47812d:    cc    int3
+godbg&gt; disass -n 5
+0x478120:    e9 bb c8 ff ff    jmpq 0xffffffffffffc8c4
+0x478125:    cc    int3
+0x478126:    cc    int3
+0x478127:    cc    int3
+0x478128:    cc    int3
+godbg&gt; disass 0x478120 -n 3
+0x478120:    e9 bb c8 ff ff    jmpq 0xffffffffffffc8c4
+0x478125:    cc    int3
+0x478126:    cc    int3
+godbg&gt; disass 0x478120 -n 3 <span class="hljs-_">-s</span> intel
+0x478120:    e9 bb c8 ff ff    jmp 0xffffffffffffc8c4
+0x478125:    cc    int3
+0x478126:    cc    int3
+godbg&gt; <span class="hljs-built_in">help</span> disass
+&#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF08;&#x7F3A;&#x7701;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#xFF09;
+
+disass [address]
+  -h, --help            <span class="hljs-built_in">help</span> <span class="hljs-keyword">for</span> disass
+  -n, --max uint        &#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6570;&#x91CF; (default 10)
+  <span class="hljs-_">-s</span>, --syntax string   &#x53CD;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x8BED;&#x6CD5;&#xFF0C;&#x652F;&#x6301;&#xFF1A;go, gnu, intel (default <span class="hljs-string">&quot;gnu&quot;</span>)
+</code></pre>
+<p>&#x89C2;&#x5BDF;&#x4E00;&#x4E0B;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF1A;</p>
+<ul>
+<li><code>_fixtures/loop</code> &#x7684; ELF &#x5165;&#x53E3;&#x5730;&#x5740;&#x662F; <code>0x478120</code>&#xFF08;<code>readelf -h _fixtures/loop</code> &#x91CC;&#x7684; Entry point address&#xFF09;&#xFF0C;exec &#x542F;&#x52A8;&#x540E;&#x521D;&#x59CB;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5C31;&#x662F;&#x5165;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x53C2; <code>disass</code> &#x548C; <code>disass 0x478120</code> &#x7684;&#x8D77;&#x70B9;&#x4E00;&#x81F4;&#xFF1B;&#x5165;&#x53E3;&#x5904;&#x662F;&#x4E00;&#x6761; jmp&#xFF0C;&#x540E;&#x9762;&#x8DDF;&#x7740;&#x4E00;&#x4E32; int3 &#x586B;&#x5145;&#xFF1B;</li>
+<li><code>disass</code> &#x9ED8;&#x8BA4;&#x53CD;&#x6C47;&#x7F16; 10 &#x6761;&#xFF0C;&#x8FD9;&#x91CC;&#x5C31;&#x662F; 1 &#x6761; jmp &#x52A0; 9 &#x6761; int3&#xFF1B;<code>disass -n 5</code> &#x53EA;&#x8F93;&#x51FA; 5 &#x6761;&#xFF1B;<code>disass 0x478120 -n 3</code> &#x4ECE;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5F00;&#x59CB;&#x3001;&#x8F93;&#x51FA; 3 &#x6761;&#x3002;&#x6BCF;&#x884C;&#x4E09;&#x5217;&#x5206;&#x522B;&#x662F;&#x5730;&#x5740;&#x3001;&#x673A;&#x5668;&#x7801;&#x3001;&#x6C47;&#x7F16;&#x6587;&#x672C;&#xFF0C;&#x7528; tab &#x5206;&#x9694;&#xFF1B;</li>
+<li><code>-s intel</code> &#x5207;&#x6362;&#x8BED;&#x6CD5;&#x4E4B;&#x540E;&#xFF0C;&#x540C;&#x4E00;&#x6761; jmp &#x4ECE; <code>jmpq</code> &#x53D8;&#x6210; <code>jmp</code>&#xFF08;gnu/AT&amp;T &#x98CE;&#x683C;&#x5E26;&#x64CD;&#x4F5C;&#x7801;&#x540E;&#x7F00;&#xFF09;&#x3002;&#x6307;&#x4EE4;&#x548C;&#x5730;&#x5740;&#x90FD;&#x6CA1;&#x6709;&#x53D8;&#xFF0C;&#x53D8;&#x7684;&#x53EA;&#x662F;&#x6587;&#x672C;&#x5448;&#x73B0;&#xFF1B;</li>
+<li><code>help disass</code> &#x7684;&#x7B2C;&#x4E00;&#x884C;&#x5C31;&#x662F;&#x547D;&#x4EE4;&#x7684; <code>Short</code>&#xFF1B;usage &#x91CC; <code>[address]</code> &#x7684;&#x65B9;&#x62EC;&#x53F7;&#x8868;&#x793A;&#x5730;&#x5740;&#x53EF;&#x9009;&#xFF1B;<code>-n</code>&#x3001;<code>-s</code> &#x7684;&#x9ED8;&#x8BA4;&#x503C;&#x4E5F;&#x5728;&#x8FD9;&#x91CC;&#x5217;&#x51FA;&#x6765;&#x3002;</li>
+</ul>
+<blockquote>
+<p>ps: &#x7EC6;&#x5FC3;&#x7684;&#x8BFB;&#x8005;&#x4F1A;&#x6CE8;&#x610F;&#x5230; <code>jmpq</code> &#x7684;&#x76EE;&#x6807; <code>0xffffffffffffc8c4</code> &#x4E0D;&#x50CF;&#x4E00;&#x4E2A;&#x6B63;&#x5E38;&#x5730;&#x5740;&#x3002;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; <code>x86asm.GNUSyntax(inst, pc, nil)</code> &#x8981;&#x62FF;&#x5230;&#x6307;&#x4EE4;&#x81EA;&#x8EAB;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x624D;&#x80FD;&#x628A; PC &#x76F8;&#x5BF9;&#x8DF3;&#x8F6C;&#x7684;&#x504F;&#x79FB;&#x6362;&#x7B97;&#x6210;&#x7EDD;&#x5BF9;&#x76EE;&#x6807;&#xFF1B;<code>instSyntax</code> &#x91CC;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x662F; <code>inst.PCRel</code>&#xFF0C;&#x800C; <code>Inst.PCRel</code> &#x8868;&#x793A; PC &#x76F8;&#x5BF9;&#x5B57;&#x6BB5;&#x7684;<strong>&#x957F;&#x5EA6;</strong>&#xFF08;rel32 &#x65F6;&#x662F; 4&#xFF09;&#xFF0C;&#x4E0D;&#x662F;&#x504F;&#x79FB;&#x91CF;&#xFF0C;&#x4E8E;&#x662F;&#x7B97;&#x51FA;&#x6765;&#x7684;&#x76EE;&#x6807;&#x503C;&#x6CA1;&#x6709;&#x5B9E;&#x9645;&#x610F;&#x4E49;&#x3002;&#x8FD9;&#x4E0D;&#x5F71;&#x54CD;&#x6211;&#x4EEC;&#x67E5;&#x770B;&#x6307;&#x4EE4;&#x672C;&#x8EAB;&#x548C;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF1B;&#x771F;&#x8981;&#x5C55;&#x793A;&#x7EDD;&#x5BF9;&#x8DF3;&#x8F6C;&#x76EE;&#x6807;&#xFF0C;&#x628A;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x4F20;&#x7ED9; <code>GNUSyntax</code> &#x5373;&#x53EF;&#x3002;</p>
+</blockquote>
+<p>&#x672C;&#x8282;&#x7684;&#x5192;&#x70DF;&#x811A;&#x672C; <code>testdata/script/ch6.5.txt</code> &#x5185;&#x5BB9;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-text"># ch6.5 smoke: &#x53CD;&#x6C47;&#x7F16;&#x673A;&#x5668;&#x6307;&#x4EE4;&#xFF08;address &#x53EF;&#x9009;&#xFF0C;&#x7F3A;&#x7701;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&#xFF09;
+# &#x5730;&#x5740; 0x478120 &#x53D6;&#x81EA; _fixtures/loop &#x7684; ELF &#x5165;&#x53E3;&#xFF08;readelf -h&#xFF09;&#xFF0C;
+# fixture &#x7531;&#x56FA;&#x5B9A;&#x5DE5;&#x5177;&#x94FE; go1.24.13 &#x6784;&#x5EFA;&#xFF0C;&#x975E; PIE &#x7A0B;&#x5E8F;&#x5730;&#x5740;&#x56FA;&#x5B9A;&#xFF1B;
+# exec &#x521D;&#x59CB;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5373; ELF &#x5165;&#x53E3;&#xFF0C;&#x6545;&#x65E0;&#x53C2; disass &#x4E0E; disass 0x478120 &#x7ED3;&#x679C;&#x4E00;&#x81F4;&#x3002;
+disass -n 2
+=0x478120:
+disass 0x478120 -n 2
+=0x478120:
+</code></pre>
+<p><code>=</code> &#x5F00;&#x5934;&#x7684;&#x884C;&#x662F;&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x7684;&#x65AD;&#x8A00;&#x3002;&#x4E24;&#x6761;&#x547D;&#x4EE4;&#x4E00;&#x6761;&#x4E0D;&#x5E26; address&#x3001;&#x4E00;&#x6761;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x5165;&#x53E3;&#x5730;&#x5740;&#xFF0C;&#x90FD;&#x65AD;&#x8A00;&#x8F93;&#x51FA;&#x91CC;&#x51FA;&#x73B0; <code>0x478120:</code>&#xFF0C;&#x6B63;&#x597D;&#x628A;&quot;&#x65E0;&#x53C2;&#x65F6;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#x5F00;&#x59CB;&quot;&#x8FD9;&#x4E2A;&#x884C;&#x4E3A;&#x548C;&#x663E;&#x5F0F;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5BF9;&#x9F50;&#x9A8C;&#x8BC1;&#x4E86;&#x3002;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-bash">$ make smoke S=ch6.5
+smoke: running testdata/script/ch6.5.txt
+smoke: all passed
+</code></pre>
+<p>&#xFF08;<code>make smoke</code> &#x4F1A;&#x5148;&#x6784;&#x5EFA; godbg &#x548C; fixtures&#xFF0C;&#x8FD9;&#x91CC;&#x7684;&#x8F93;&#x51FA;&#x7701;&#x7565;&#x4E86;&#x6784;&#x5EFA;&#x65E5;&#x5FD7;&#x3002;&#xFF09;</p>
+<p>&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x65F6;&#x4F1A;&#x8D70; 6.4 &#x8282;&#x6CE8;&#x518C;&#x7684;&#x6E05;&#x7406;&#x903B;&#x8F91;&#xFF0C;exec &#x542F;&#x52A8;&#x7684; tracee &#x88AB; kill&#xFF0C;&#x7EC8;&#x7AEF;&#x4E0A;&#x4F1A;&#x770B;&#x5230; <code>tracee is run by tracer, kill it</code>&#x3002;</p>
+<h3 id="&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;">&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;</h3>
+<p>&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6709; go&#x3001;gnu&#x3001;intel &#x4E09;&#x79CD;&#x5E38;&#x89C1;&#x98CE;&#x683C;&#xFF0C;gnu &#x98CE;&#x683C;&#x7684;&#x4FD7;&#x79F0; AT&amp;T &#x98CE;&#x683C;&#x3002;&#x4E09;&#x8005;&#x53EA;&#x662F;&#x540C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x4E09;&#x79CD;&#x6587;&#x672C;&#x5199;&#x6CD5;&#xFF0C;&#x8BED;&#x4E49;&#x5B8C;&#x5168;&#x4E00;&#x81F4;&#xFF1B;&#x5404;&#x6709;&#x5404;&#x7684;&#x4E60;&#x60EF;&#xFF0C;&#x6BD4;&#x5982; gnu &#x98CE;&#x683C;&#x5BC4;&#x5B58;&#x5668;&#x5E26; <code>%</code> &#x524D;&#x7F00;&#x3001;&#x64CD;&#x4F5C;&#x6570;&#x987A;&#x5E8F;&#x4E0E; intel &#x76F8;&#x53CD;&#x3002;&#x4E3A;&#x4E86;&#x65B9;&#x4FBF;&#x4E0D;&#x540C;&#x4E60;&#x60EF;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x9605;&#x8BFB;&#x53CD;&#x6C47;&#x7F16;&#x7ED3;&#x679C;&#xFF0C;disass &#x7528; <code>-s/--syntax</code> &#x6765;&#x5207;&#x6362;&#xFF0C;&#x9ED8;&#x8BA4; gnu&#xFF1B;&#x5B9E;&#x73B0;&#x4E0A;&#x5C31;&#x662F; <code>instSyntax</code> &#x91CC;&#x5BF9; <code>x86asm.GoSyntax</code>&#x3001;<code>GNUSyntax</code>&#x3001;<code>IntelSyntax</code> &#x7684;&#x9009;&#x62E9;&#xFF0C;&#x8BED;&#x6CD5;&#x5B57;&#x7B26;&#x4E32;&#x4F20;&#x9519;&#x65F6;&#x4F1A;&#x8FD4;&#x56DE; <code>invalid asm syntax error</code>&#x3002;</p>
+<blockquote>
+<p>&#x6362;&#x8BED;&#x6CD5;&#x53EA;&#x5F71;&#x54CD;&quot;&#x6587;&#x672C;&#x600E;&#x4E48;&#x5199;&quot;&#xFF0C;&#x4E0D;&#x5F71;&#x54CD;&#x6307;&#x4EE4;&#x672C;&#x8EAB;&#x548C;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x6240;&#x4EE5; <code>-n</code>&#x3001;<code>-s</code> &#x53EF;&#x4EE5;&#x4EFB;&#x610F;&#x7EC4;&#x5408;&#x3002;</p>
+</blockquote>
+<p>&#x9664;&#x4E86;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5185;&#x7684;&#x5373;&#x65F6;&#x53CD;&#x6C47;&#x7F16;&#xFF0C;&#x8FD8;&#x6709;&#x4E00;&#x79CD;&#x5E38;&#x89C1;&#x9700;&#x6C42;&#x662F;&#x628A;&#x78C1;&#x76D8;&#x4E0A;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#x6574;&#x4F53;&#x53CD;&#x6C47;&#x7F16;&#x51FA;&#x6765;&#x505A;&#x79BB;&#x7EBF;&#x5206;&#x6790;&#x3002;&#x672C;&#x4E66;&#x914D;&#x5957;&#x7684;&#x72EC;&#x7ACB;&#x793A;&#x4F8B; <code>golang-debugger-lessons/5_disassemble</code> &#x5C31;&#x662F;&#x505A;&#x8FD9;&#x4EF6;&#x4E8B;&#x7684;&#xFF1A;&#x5B83;&#x63A5;&#x6536; pid&#xFF0C;&#x901A;&#x8FC7; <code>/proc/&lt;pid&gt;/exe</code> &#x627E;&#x5230;&#x7A0B;&#x5E8F;&#x3001;&#x6309; ELF &#x8BFB;&#x51FA; <code>.text</code> &#x7684;&#x5168;&#x90E8;&#x6307;&#x4EE4;&#x518D;&#x9010;&#x6761; decode&#xFF0C;&#x5E76;&#x4E14;&#x5BF9;&#x4E0D;&#x8BA4;&#x8BC6;&#x7684;&#x6307;&#x4EE4;&#x505A;&#x4E86;&#x8DF3;&#x8FC7;&#x5904;&#x7406;&#x3002;&#x5B83;&#x548C; godbgv2 &#x7684; <code>disass</code> &#x5206;&#x522B;&#x4EE3;&#x8868;&#x4E86;&#x524D;&#x9762;&quot;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x4ECE;&#x54EA;&#x91CC;&#x6765;&quot;&#x7684;&#x4E24;&#x79CD;&#x505A;&#x6CD5;&#x2014;&#x2014;&#x4E00;&#x4E2A;&#x9762;&#x5411;&#x79BB;&#x7EBF;&#x5168;&#x91CF;&#x5206;&#x6790;&#xFF0C;&#x4E00;&#x4E2A;&#x9762;&#x5411;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x91CC;&#x5373;&#x65F6;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x6307;&#x4EE4;&#x3002;</p>
+<p>&#x5B8C;&#x6574;&#x7684;&#x5B9E;&#x73B0;&#x53EF;&#x4EE5;&#x5728; godbgv2 &#x4ED3;&#x5E93;&#x7684; tag <code>ch6.5</code> &#x4E0B;&#x67E5;&#x770B;&#xFF0C;&#x6D89;&#x53CA; <code>cmd/debug/disass.go</code>&#x3001;<code>cmd/debug/address.go</code>&#x3001;<code>pkg/service/api/client.go</code>&#x3001;<code>pkg/service/api/types.go</code>&#x3001;<code>pkg/service/debugger/debugger.go</code>&#x3001;<code>pkg/target/pc.go</code>&#x3001;<code>pkg/target/disassemble.go</code>&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x4E2D;&#x53CD;&#x6C47;&#x7F16;&#x529F;&#x80FD;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x4E0E;&#x5177;&#x4F53;&#x65B9;&#x6CD5;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;<strong>&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x57FA;&#x672C;&#x6982;&#x5FF5;&#x4E0E;&#x5B9E;&#x73B0;&#x6846;&#x67B6;&#x9009;&#x62E9;</strong>&#xFF0C;&#x901A;&#x8FC7;&#x5BF9;&#x6BD4;Capstone&#x3001;Gapstone&#x7B49;&#x6846;&#x67B6;&#xFF0C;&#x6700;&#x7EC8;&#x9009;&#x62E9;Go&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;x86asm&#x5E93;&#xFF1B;<strong>ELF&#x6587;&#x4EF6;&#x89E3;&#x6790;&#x4E0E;&#x6307;&#x4EE4;&#x63D0;&#x53D6;</strong>&#xFF0C;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x4E86;&#x5982;&#x4F55;&#x901A;&#x8FC7;debug/elf&#x5305;&#x89E3;&#x6790;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#xFF0C;&#x4ECE;.text&#x6BB5;&#x63D0;&#x53D6;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF1B;<strong>&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x7279;&#x6B8A;&#x5904;&#x7406;</strong>&#xFF0C;&#x91CD;&#x70B9;&#x9610;&#x8FF0;&#x4E86;&#x65AD;&#x70B9;&#x5904;&#x6307;&#x4EE4;patch&#x673A;&#x5236;&#x5BF9;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x4EE5;&#x53CA;PC&#x503C;&#x8C03;&#x6574;&#x548C;&#x6307;&#x4EE4;&#x8FD8;&#x539F;&#x7684;&#x5173;&#x952E;&#x6B65;&#x9AA4;&#xFF1B;<strong>&#x5B8C;&#x6574;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x547D;&#x4EE4;&#x5B9E;&#x73B0;</strong>&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;disassCmd&#x7684;&#x5177;&#x4F53;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;&#xFF0C;&#x652F;&#x6301;&#x591A;&#x79CD;&#x6C47;&#x7F16;&#x8BED;&#x6CD5;&#x98CE;&#x683C;&#x548C;&#x6307;&#x4EE4;&#x6570;&#x91CF;&#x63A7;&#x5236;&#x3002;&#x672C;&#x8282;&#x7684;&#x6838;&#x5FC3;&#x96BE;&#x70B9;&#x5728;&#x4E8E;&#x7406;&#x89E3;&#x65AD;&#x70B9;&#x5904;&#x6307;&#x4EE4;patch&#x7684;&#x5DE5;&#x4F5C;&#x539F;&#x7406;&#xFF1A;&#x5F53;&#x65AD;&#x70B9;&#x901A;&#x8FC7;0xCC&#x6307;&#x4EE4;&#x5B9E;&#x73B0;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x6B63;&#x786E;&#x8BC6;&#x522B;PC&#x4F4D;&#x7F6E;&#x5E76;&#x8FD8;&#x539F;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x786E;&#x4FDD;&#x53CD;&#x6C47;&#x7F16;&#x7ED3;&#x679C;&#x7684;&#x51C6;&#x786E;&#x6027;&#x3002;</p>
-<p>&#x901A;&#x8FC7;&#x672C;&#x8282;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x8BFB;&#x8005;&#x638C;&#x63E1;&#x4E86;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x5B8C;&#x6574;&#x6280;&#x672F;&#x94FE;&#x8DEF;&#xFF0C;&#x4E3A;&#x6784;&#x5EFA;&#x529F;&#x80FD;&#x5B8C;&#x6574;&#x7684;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x5173;&#x952E;&#x652F;&#x6491;&#x3002;&#x4E0B;&#x4E00;&#x8282;&#x5C06;&#x57FA;&#x4E8E;&#x672C;&#x8282;&#x7684;&#x53CD;&#x6C47;&#x7F16;&#x57FA;&#x7840;&#xFF0C;&#x8BC6;&#x522B;&#x7279;&#x5B9A;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x5E76;&#x5B9E;&#x73B0;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#x7684;&#x6DFB;&#x52A0;&#x4E0E;&#x79FB;&#x9664;&#x529F;&#x80FD;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x5B9E;&#x73B0;&#x4E86;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x547D;&#x4EE4; <code>disass</code>&#xFF1A;</p>
+<ul>
+<li>&#x652F;&#x6301; <code>disass [address]</code>&#xFF1A;address &#x53EF;&#x9009;&#xFF0C;&#x4E0D;&#x5E26;&#x5730;&#x5740;&#x65F6;&#x4ECE;&#x5F53;&#x524D;&#x505C;&#x6B62;&#x4F4D;&#x7F6E;&#xFF08;PC&#xFF09;&#x5F00;&#x59CB;&#xFF0C;&#x5E26;&#x5730;&#x5740;&#x65F6;&#x4ECE;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5F00;&#x59CB;&#xFF1B;&#x4E24;&#x79CD;&#x6765;&#x6E90;&#x90FD;&#x7ECF; <code>disassStartAddress</code> &#x89E3;&#x6790;&#x6210;&#x540C;&#x4E00;&#x4E2A;&#x8D77;&#x59CB;&#x5730;&#x5740;&#xFF0C;&#x518D;&#x8D70;&#x540C;&#x4E00;&#x6761; <code>Client.Disassemble(addr, max, syntax)</code> &#x5904;&#x7406;&#x8DEF;&#x5F84;&#xFF1B;</li>
+<li>&#x4E3A;&#x6B64;&#x524D;&#x79FB;&#x4E86;&#x6700;&#x5C0F;&#x57FA;&#x7840;&#x80FD;&#x529B; <code>CurrentPC</code>&#xFF1A;<code>api.Client</code> &#x589E;&#x52A0;&#x63A5;&#x53E3;&#xFF0C;<code>debugger</code> &#x95E8;&#x9762;&#x8F6C;&#x53D1;&#xFF0C;<code>pkg/target</code> &#x901A;&#x8FC7; <code>PTRACE_GETREGS</code> &#x8BFB; RIP&#xFF1B;&#x5B8C;&#x6574;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x8BFB;&#x53D6;&#x7559;&#x5230; 6.14 &#x8282; <code>pregs</code>&#xFF1B;</li>
+<li>&#x53CD;&#x6C47;&#x7F16;&#x9009;&#x7528; x86asm&#xFF1A;&#x53D8;&#x957F;&#x6307;&#x4EE4;&#x9010;&#x6761; decode&#xFF0C;<code>Inst.Len</code> &#x7528;&#x6765;&#x63A8;&#x8FDB;&#x504F;&#x79FB;&#x91CF;&#xFF1B;&#x652F;&#x6301; <code>-n/--max</code>&#xFF08;&#x9ED8;&#x8BA4; 10 &#x6761;&#xFF09;&#x548C; <code>-s/--syntax</code>&#xFF08;go/gnu/intel&#xFF0C;&#x9ED8;&#x8BA4; gnu&#xFF09;&#xFF0C;&#x8F93;&#x51FA;&#x4E3A; <code>0xADDR:\tBYTES\tTEXT</code> &#x4E09;&#x5217;&#xFF1B;</li>
+<li>&#x6307;&#x4EE4;&#x6570;&#x636E;&#x7528; ptrace PEEKTEXT &#x76F4;&#x63A5;&#x4ECE;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x8BFB;&#xFF08;1024 &#x5B57;&#x8282;&#x7A97;&#x53E3;&#xFF09;&#xFF0C;&#x770B;&#x5230;&#x7684;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x771F;&#x5B9E;&#x7684;&#x6307;&#x4EE4;&#xFF1B;&#x4ECE; ELF &#x7684; <code>.text</code> &#x5168;&#x91CF;&#x53CD;&#x6C47;&#x7F16;&#x5219;&#x662F;&#x72EC;&#x7ACB;&#x53CD;&#x6C47;&#x7F16;&#x5DE5;&#x5177;&#x7684;&#x505A;&#x6CD5;&#xFF0C;&#x672C;&#x8282;&#x4F5C;&#x4E3A;&#x80CC;&#x666F;&#x5BF9;&#x7167;&#x4ECB;&#x7ECD;&#xFF1B;</li>
+<li>&#x8BB2;&#x6E05;&#x4E86;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x53CD;&#x6C47;&#x7F16;&#x7684;&#x539F;&#x7406;&#xFF1A;0xCC patch &#x53EA;&#x8986;&#x76D6;&#x6307;&#x4EE4;&#x7B2C;&#x4E00;&#x5B57;&#x8282;&#xFF0C;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x65F6; PC &#x5DF2;&#x7ECF;&#x6307;&#x5411;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;&#x65E0;&#x53C2; disass &#x8981;&#x5173;&#x6CE8; PC-1&#x3001;&#x5E76;&#x6062;&#x590D;&#x7F13;&#x51B2;&#x533A;&#x91CC;&#x7684;&#x539F;&#x59CB;&#x5B57;&#x8282;&#xFF1B;&#x672C;&#x8282;&#x4EE3;&#x7801;&#x8FD8;&#x6CA1;&#x6709;&#x65AD;&#x70B9;&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x7559;&#x5230; 6.6 &#x8282;&#x5B9E;&#x73B0;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#x518D;&#x8865;&#x9F50;&#xFF08;godbg &#x7684;&#x5B8C;&#x6574;&#x5B9E;&#x73B0;&#x7528; <code>--clearall</code> &#x548C; <code>DisassembleWithBreakpointCleared</code> &#x5151;&#x73B0;&#x8BE5;&#x80FD;&#x529B;&#xFF09;&#x3002;</li>
+</ul>
+<p>&#x4E0B;&#x4E00;&#x8282;&#x6211;&#x4EEC;&#x5C31;&#x5728;&#x8FD9;&#x4E2A;&#x57FA;&#x7840;&#x4E0A;&#x5B9E;&#x73B0;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;&#x7528; <code>break &lt;address&gt;</code> &#x5728;&#x6307;&#x5B9A;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904; patch &#x4E00;&#x4E2A; 0xCC&#xFF0C;&#x5E76;&#x8BB0;&#x5F55;&#x8BE5;&#x5730;&#x5740;&#x5904;&#x7684;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
 <ol>
 <li>What You Need To Know About ELF, <a href="https://student.cs.uwaterloo.ca/~cs452/W18/elf/elf.html" target="_blank">https://student.cs.uwaterloo.ca/~cs452/W18/elf/elf.html</a></li>
 <li>dissecting go binaries, <a href="https://www.grant.pizza/blog/dissecting-go-binaries/" target="_blank">https://www.grant.pizza/blog/dissecting-go-binaries/</a></li>
 <li>how many x86-64 instructions are there anyway, <a href="https://stefanheule.com/blog/how-many-x86-64-instructions-are-there-anyway/" target="_blank">https://stefanheule.com/blog/how-many-x86-64-instructions-are-there-anyway/</a></li>
+<li>golang.org/x/arch/x86/x86asm, <a href="https://pkg.go.dev/golang.org/x/arch/x86/x86asm" target="_blank">https://pkg.go.dev/golang.org/x/arch/x86/x86asm</a></li>
+<li>Capstone disassembly framework, <a href="http://www.capstone-engine.org/" target="_blank">http://www.capstone-engine.org/</a></li>
 </ol>
 
                                 
@@ -2575,7 +2756,7 @@ size of text: 1024
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"next":{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},"previous":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-session.md","ref":"6-develop-inst-debugger/4-session.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/5-disassemble.md","mtime":"2026-10-25T05:40:58.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T05:41:30.850Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"next":{"title":"6.6 添加断点","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-breakpoint.md","ref":"6-develop-inst-debugger/6-breakpoint.md","articles":[]},"previous":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-session.md","ref":"6-develop-inst-debugger/4-session.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/5-disassemble.md","mtime":"2026-10-25T08:02:19.870Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T08:02:50.554Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

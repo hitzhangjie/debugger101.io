@@ -2245,70 +2245,94 @@ body {
   counter-reset: h1 22;
 }
 </style></p>
-<h2 id="&#x8F6F;&#x4EF6;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;&#x79FB;&#x9664;&#x65AD;&#x70B9;">&#x8F6F;&#x4EF6;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#xFF1A;&#x79FB;&#x9664;&#x65AD;&#x70B9;</h2>
-<h3 id="&#x8BBE;&#x8BA1;&#x76EE;&#x6807;&#xFF1A;godbg-clear--n-bpno-&#x79FB;&#x9664;&#x65AD;&#x70B9;">&#x8BBE;&#x8BA1;&#x76EE;&#x6807;&#xFF1A;<code>godbg&gt; clear -n [bpNo.]</code> &#x79FB;&#x9664;&#x65AD;&#x70B9;</h3>
-<p>&#x524D;&#x9762;&#x4ECB;&#x7ECD;&#x4E86;&#x5982;&#x4F55;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x3001;&#x663E;&#x793A;&#x65AD;&#x70B9;&#x5217;&#x8868;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x770B;&#x5982;&#x4F55;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x3002;</p>
-<p>&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x4E0E;&#x65B0;&#x589E;&#x65AD;&#x70B9;&#xFF0C;&#x90FD;&#x662F;&#x9700;&#x8981;&#x501F;&#x52A9;ptrace&#x6765;&#x5B9E;&#x73B0;&#x3002;&#x56DE;&#x60F3;&#x4E0B;&#x65B0;&#x589E;&#x65AD;&#x70B9;&#x9996;&#x5148;&#x901A;&#x8FC7;PTRACEPEEKDATA/PTRACEPOKEDATA&#x6765;&#x5B9E;&#x73B0;&#x5BF9;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x7684;&#x5907;&#x4EFD;&#x3001;&#x8986;&#x5199;&#xFF0C;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x7684;&#x903B;&#x8F91;&#x6709;&#x70B9;&#x76F8;&#x53CD;&#xFF0C;&#x5148;&#x5C06;&#x539F;&#x6765;&#x5907;&#x4EFD;&#x7684;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x8986;&#x5199;&#x56DE;&#x65AD;&#x70B9;&#x5BF9;&#x5E94;&#x7684;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x5904;&#xFF0C;&#x7136;&#x540E;&#xFF0C;&#x4ECE;&#x5DF2;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x4E2D;&#x79FB;&#x9664;&#x5373;&#x53EF;&#x3002;</p>
-<blockquote>
-<p>ps: &#x5728;Linux&#x4E0B;PTRACE_PEEKTEXT/PTRACE_PEEKDATA&#xFF0C;&#x4EE5;&#x53CA;PTRACE_POKETEXT/PTRACE_POKEDATA&#x5E76;&#x6CA1;&#x6709;&#x4EC0;&#x4E48;&#x4E0D;&#x540C;&#xFF0C;&#x6240;&#x4EE5;&#x6267;&#x884C;ptrace&#x64CD;&#x4F5C;&#x7684;&#x65F6;&#x5019;&#xFF0C;ptrace request&#x53EF;&#x4EE5;&#x4EFB;&#x9009;&#x4E00;&#x4E2A;&#x3002;</p>
-<p>&#x4E3A;&#x4E86;&#x53EF;&#x8BFB;&#x6027;&#xFF0C;&#x8BFB;&#x5199;&#x6307;&#x4EE4;&#x65F6;&#x503E;&#x5411;&#x4E8E;PTRACE_PEEKTEXT/PTRACE_POKETEXT&#xFF0C;&#x8BFB;&#x5199;&#x6570;&#x636E;&#x65F6;&#x5219;&#x503E;&#x5411;&#x4E8E;PTRACE_PEEKDATA/PTRACE_POKEDATA&#x3002;</p>
-</blockquote>
-<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x9996;&#x5148;&#x89E3;&#x6790;&#x65AD;&#x70B9;&#x7F16;&#x53F7;&#x53C2;&#x6570; <code>-n &lt;breakNo&gt;</code>&#xFF0C;&#x5E76;&#x4ECE;&#x5DF2;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x4E2D;&#x67E5;&#x8BE2;&#xFF0C;&#x662F;&#x5426;&#x6709;&#x7F16;&#x53F7;&#x4E3A;n&#x7684;&#x65AD;&#x70B9;&#x5B58;&#x5728;&#xFF0C;&#x5982;&#x679C;&#x6CA1;&#x6709;&#x5219; <code>&lt;breakNo&gt;</code> &#x4E3A;&#x65E0;&#x6548;&#x53C2;&#x6570;&#x3002;</p>
-<p>&#x5982;&#x679C;&#x65AD;&#x70B9;&#x786E;&#x5B9E;&#x5B58;&#x5728;&#xFF0C;&#x5219;&#x6267;&#x884C;ptrace(PTRACE_POKEDATA,...)&#x5C06;&#x539F;&#x6765;&#x5907;&#x4EFD;&#x7684;1&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x8986;&#x5199;&#x56DE;&#x539F;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF0C;&#x5373;&#x6D88;&#x9664;&#x4E86;&#x65AD;&#x70B9;&#x3002;&#x7136;&#x540E;&#xFF0C;&#x518D;&#x4ECE;&#x5DF2;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x4E2D;&#x5220;&#x9664;&#x8FD9;&#x4E2A;&#x65AD;&#x70B9;&#x3002;</p>
-<p>clear &#x64CD;&#x4F5C;&#x5B9E;&#x73B0;&#x6BD4;&#x8F83;&#x7B80;&#x5355;&#xFF0C;&#x5728; <a href="https://github.com/hitzhangjie/godbg" target="_blank">hitzhangjie/godbg</a> &#x4E2D;&#x8FDB;&#x884C;&#x4E86;&#x5B9E;&#x73B0;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x67E5;&#x770B; godbg &#x7684;&#x6E90;&#x7801;&#x3002;&#x4F46;&#x662F;&#x6211;&#x4EEC;&#x4E5F;&#x5F3A;&#x8C03;&#x8FC7;&#x4E86;&#xFF0C;&#x4E0A;&#x8FF0;repo&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x4E00;&#x4E2A;&#x529F;&#x80FD;&#x76F8;&#x5BF9;&#x5B8C;&#x5907;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x4EE3;&#x7801;&#x91CF;&#x4F1A;&#x6BD4;&#x8F83;&#x5927;&#x3002;&#x56E0;&#x6B64;&#x6211;&#x4EEC;&#x4E5F;&#x5728; <a href="https://github.com/hitzhangjie/golang-debugger-lessons" target="_blank">hitzhangjie/golang-debugger-lessons</a>)/8_clear &#x63D0;&#x4F9B;&#x4E86;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x4E2D;&#x6F14;&#x793A;&#x4E86;break&#x3001;breakpoints&#x3001;continue&#x3001;clear&#x8FD9;&#x51E0;&#x4E2A;&#x65AD;&#x70B9;&#x76F8;&#x5173;&#x64CD;&#x4F5C;&#x3002;</p>
+<h2 id="&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;clear--n-id-&#x79FB;&#x9664;&#x65AD;&#x70B9;">&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;<code>clear -n &lt;id&gt;</code> &#x79FB;&#x9664;&#x65AD;&#x70B9;</h2>
+<p>6.6 &#x8282;&#x5B9E;&#x73B0;&#x4E86; <code>break</code>&#xFF1A;&#x628A;&#x65AD;&#x70B9;&#x5730;&#x5740;&#x5904;&#x7684;&#x6307;&#x4EE4;&#x9996;&#x5B57;&#x8282; patch &#x6210; <code>0xCC</code>&#xFF0C;&#x5E76;&#x628A;&#x65AD;&#x70B9;&#x767B;&#x8BB0;&#x8FDB;&#x6309;&#x5730;&#x5740;&#x3001;&#x6309;&#x7F16;&#x53F7;&#x4E24;&#x5F20;&#x7D22;&#x5F15;&#xFF1B;6.7 &#x8282;&#x5B9E;&#x73B0;&#x4E86; <code>breakpoints</code>&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x5347;&#x5E8F;&#x5217;&#x51FA;&#x5DF2;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;&#x3002;&#x65AD;&#x70B9;&#x80FD;&#x52A0;&#x3001;&#x80FD;&#x770B;&#xFF0C;&#x63A5;&#x4E0B;&#x6765;&#x5C31;&#x8981;&#x80FD;&#x5220;&#x2014;&#x2014;&#x65AD;&#x70B9;&#x4E0B;&#x9519;&#x4E86;&#x4F4D;&#x7F6E;&#x3001;&#x6216;&#x8005;&#x67D0;&#x4E2A;&#x4F4D;&#x7F6E;&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x5173;&#x5FC3;&#xFF0C;&#x90FD;&#x9700;&#x8981;&#x628A;&#x5B83;&#x6458;&#x6389;&#x3002;</p>
+<p>&#x6458;&#x6389;&#x65AD;&#x70B9;&#x4E0D;&#x53EA;&#x662F;&#x4ECE;&#x5217;&#x8868;&#x91CC;&#x5220;&#x4E00;&#x884C;&#x3002;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x91CC;&#x90A3;&#x4E2A; <code>0xCC</code> &#x5FC5;&#x987B;&#x6362;&#x56DE;&#x539F;&#x6765;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x5426;&#x5219;&#x8FDB;&#x7A0B;&#x4E4B;&#x540E;&#x6267;&#x884C;&#x5230;&#x90A3;&#x91CC;&#x4F1A;&#x6536;&#x5230;&#x4E00;&#x4E2A;&#x6CA1;&#x6709;&#x5BF9;&#x5E94;&#x65AD;&#x70B9;&#x7684; SIGTRAP&#x3002;&#x6240;&#x4EE5;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x548C;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x662F;&#x4E00;&#x5BF9;&#x4E25;&#x683C;&#x7684;&#x53CD;&#x5411;&#x64CD;&#x4F5C;&#xFF1A;&#x6DFB;&#x52A0;&#x65F6;&quot;&#x4FDD;&#x5B58;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x3001;&#x5199;&#x5165; <code>0xCC</code>&#x3001;&#x767B;&#x8BB0;&#x65AD;&#x70B9;&quot;&#xFF0C;&#x79FB;&#x9664;&#x65F6;&quot;&#x6309;&#x7F16;&#x53F7;&#x627E;&#x5230;&#x65AD;&#x70B9;&#x3001;&#x628A;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x5199;&#x56DE;&#x53BB;&#x3001;&#x6458;&#x9664;&#x767B;&#x8BB0;&quot;&#x3002;6.6 &#x8282;&#x4FDD;&#x5B58;&#x7684; <code>Orig</code> &#x5B57;&#x6BB5;&#xFF0C;&#x5C31;&#x662F;&#x4E3A;&#x8FD9;&#x4E00;&#x523B;&#x51C6;&#x5907;&#x7684;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.8</code>&#xFF0C;<code>git diff ch6.7 ch6.8</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x6539;&#x4E86;&#x4EC0;&#x4E48;&#xFF1A;&#x547D;&#x4EE4;&#x5C42;&#x628A; <code>clear</code> &#x5B50;&#x547D;&#x4EE4;&#x7684;&#x5360;&#x4F4D;&#x5B9E;&#x73B0;&#x8865;&#x5168;&#xFF0C;<code>api.Client</code> &#x548C; <code>debugger</code> &#x95E8;&#x9762;&#x5404;&#x8865;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF0C;&#x76EE;&#x6807;&#x5C42;&#x65B0;&#x589E; <code>ClearBreakpoint</code>&#x3001;<code>RestoreInstruction</code> &#x4EE5;&#x53CA;&quot;&#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&quot;&#x9519;&#x8BEF;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-clear--n-id-&#x79FB;&#x9664;&#x65AD;&#x70B9;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg&gt; clear -n &lt;id&gt;</code> &#x79FB;&#x9664;&#x65AD;&#x70B9;</h3>
+<p><code>clear</code> &#x6309;&#x7F16;&#x53F7;&#x79FB;&#x9664;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#xFF0C;&#x7F16;&#x53F7;&#x901A;&#x8FC7; <code>-n</code> &#x6307;&#x5B9A;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; clear -n 1           <span class="hljs-comment"># &#x79FB;&#x9664;&#x7F16;&#x53F7;&#x4E3A; 1 &#x7684;&#x65AD;&#x70B9;</span>
+</code></pre>
+<p>&#x79FB;&#x9664;&#x6210;&#x529F;&#x540E;&#x8F93;&#x51FA;&#x65AD;&#x70B9;&#x7F16;&#x53F7;&#x548C;&#x5730;&#x5740;&#xFF0C;&#x4FBF;&#x4E8E;&#x786E;&#x8BA4;&#x5220;&#x6389;&#x7684;&#x662F;&#x54EA;&#x4E00;&#x4E2A;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; clear -n 1
+breakpoint 1 at 0x478120 cleared
+</code></pre>
+<p>&#x8FD9;&#x91CC;&#x6709;&#x51E0;&#x70B9;&#x7EA6;&#x5B9A;&#xFF1A;</p>
+<ul>
+<li>&#x7F16;&#x53F7;&#x5C31;&#x662F; <code>breakpoints</code> &#x8F93;&#x51FA;&#x91CC;&#x7684; <code>breakpoint[1]</code> &#x4E2D;&#x7684;&#x6570;&#x5B57;&#x3002;&#x7F16;&#x53F7;&#x662F;&#x7528;&#x6237;&#x64CD;&#x4F5C;&#x65AD;&#x70B9;&#x7684;&#x53E5;&#x67C4;&#xFF0C;6.7 &#x8282;&#x7528;&#x5B83;&#x5217;&#x51FA;&#x65AD;&#x70B9;&#xFF0C;&#x672C;&#x8282;&#x7528;&#x5B83;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#xFF1B;</li>
+<li><code>-n</code> &#x662F; <code>uint64</code> &#x7C7B;&#x578B;&#x7684; flag&#xFF0C;&#x9ED8;&#x8BA4;&#x503C;&#x4E3A; 1&#x3002;&#x4E5F;&#x5C31;&#x662F;&#x8BF4; <code>clear</code> &#x4E0D;&#x5E26;&#x53C2;&#x6570;&#x7B49;&#x4EF7;&#x4E8E; <code>clear -n 1</code>&#xFF0C;&#x4F1A;&#x76F4;&#x63A5;&#x79FB;&#x9664;&#x7F16;&#x53F7; 1 &#x7684;&#x65AD;&#x70B9;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x8BEF;&#x5220;&#xFF0C;&#x5B9E;&#x9645;&#x64CD;&#x4F5C;&#x65F6;&#x5E94;&#x5F53;&#x59CB;&#x7EC8;&#x663E;&#x5F0F;&#x5199;&#x4E0A; <code>-n &lt;id&gt;</code>&#xFF1B;</li>
+<li>&#x4E00;&#x6B21;&#x53EA;&#x79FB;&#x9664;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#x3002;&#x60F3;&#x4E00;&#x6B21;&#x6E05;&#x7A7A;&#x5168;&#x90E8;&#x65AD;&#x70B9;&#x7528; 6.9 &#x8282;&#x7684; <code>clearall</code>&#xFF1B;</li>
+<li><p>&#x7F16;&#x53F7;&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x660E;&#x786E;&#x62A5;&#x9519;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x9759;&#x9ED8;&#x6210;&#x529F;&#xFF1A;</p>
+<pre><code class="lang-bash">godbg&gt; clear -n 9
+Error: &#x79FB;&#x9664;&#x65AD;&#x70B9;&#x5931;&#x8D25;: breakpoint not existed
+</code></pre>
+</li>
+<li>&#x5220;&#x9664;&#x540E;&#x7684;&#x7F16;&#x53F7;&#x4E0D;&#x4F1A;&#x56DE;&#x6536;&#x3002;&#x7F16;&#x53F7;&#x7531;&#x5305;&#x7EA7;&#x53D8;&#x91CF; <code>bpSeqNo</code> &#x5355;&#x8C03;&#x9012;&#x589E;&#x5206;&#x914D;&#xFF0C;&#x5220;&#x6389;&#x65AD;&#x70B9; 1 &#x540E;&#x518D;&#x6DFB;&#x52A0;&#x65B0;&#x65AD;&#x70B9;&#xFF0C;&#x65B0;&#x65AD;&#x70B9;&#x62FF;&#x5230;&#x7684;&#x662F;&#x4E0B;&#x4E00;&#x4E2A;&#x7F16;&#x53F7;&#xFF0C;&#x800C;&#x4E0D;&#x662F; 1&#x3002;</li>
+</ul>
+<h3 id="&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x67E5;&#x3001;&#x6309;&#x5730;&#x5740;&#x8FD8;&#x539F;">&#x8BBE;&#x8BA1;&#x8981;&#x70B9;&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x67E5;&#x3001;&#x6309;&#x5730;&#x5740;&#x8FD8;&#x539F;</h3>
+<h4 id="&#x4E24;&#x6B21;&#x67E5;&#x627E;&#xFF1A;&#x7F16;&#x53F7;-&#x2192;-&#x5730;&#x5740;-&#x2192;-&#x65AD;&#x70B9;">&#x4E24;&#x6B21;&#x67E5;&#x627E;&#xFF1A;&#x7F16;&#x53F7; &#x2192; &#x5730;&#x5740; &#x2192; &#x65AD;&#x70B9;</h4>
+<p>&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x7684;&#x7B2C;&#x4E00;&#x6B65;&#x662F;&#x627E;&#x5230;&#x5B83;&#x3002;&#x7528;&#x6237;&#x7ED9;&#x7684;&#x662F;&#x7F16;&#x53F7;&#xFF0C;&#x800C;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x9700;&#x8981;&#x5730;&#x5740;&#xFF0C;&#x6240;&#x4EE5;&#x8981;&#x8D70;&#x4E24;&#x6B21;&#x7D22;&#x5F15;&#xFF1A;</p>
+<pre><code class="lang-text">BreakpointsByID[id]  &#x2192;  *Breakpoint&#xFF08;&#x62FF;&#x5230; Addr&#x3001;Orig&#xFF09;
+Breakpoints[addr]    &#x2192;  *Breakpoint&#xFF08;RestoreInstruction &#x5185;&#x90E8;&#x518D;&#x786E;&#x8BA4;&#x4E00;&#x6B21;&#xFF09;
+</code></pre>
+<p>&#x4E24;&#x5F20; map &#x90FD;&#x662F; O(1) &#x67E5;&#x627E;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x904D;&#x5386;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x3002;6.6 &#x8282;&#x5EFA;&#x7ACB;&#x8FD9;&#x4E24;&#x5F20;&#x7D22;&#x5F15;&#x65F6;&#x5DF2;&#x7ECF;&#x8BF4;&#x660E;&#x4E86;&#x5206;&#x5DE5;&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x7D22;&#x5F15;&#x670D;&#x52A1;&#x7528;&#x6237;&#x89C6;&#x89D2;&#x7684;&#x589E;&#x5220;&#x67E5;&#xFF0C;&#x6309;&#x5730;&#x5740;&#x7D22;&#x5F15;&#x670D;&#x52A1;&#x5185;&#x5B58;&#x64CD;&#x4F5C;&#x548C;&#x53BB;&#x91CD;&#x3002;&#x8FD9;&#x91CC;&#x6B63;&#x597D;&#x628A;&#x4E24;&#x8005;&#x4E32;&#x8D77;&#x6765;&#x3002;</p>
+<p><code>ClearBreakpoint</code> &#x5728;&#x62FF;&#x5230; <code>bp</code> &#x4E4B;&#x540E;&#x8C03;&#x7528; <code>RestoreInstruction(bp.Addr)</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x81EA;&#x5DF1;&#x76F4;&#x63A5; POKE&#x3002;&#x591A;&#x4E00;&#x5C42;&#x8C03;&#x7528;&#x7684;&#x539F;&#x56E0;&#x662F;&quot;&#x6309;&#x5730;&#x5740;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&quot;&#x672C;&#x8EAB;&#x662F;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB;&#x7684;&#x539F;&#x5B50;&#x52A8;&#x4F5C;&#xFF1A;6.9 &#x8282; <code>clearall</code> &#x8981;&#x9010;&#x4E2A;&#x65AD;&#x70B9;&#x8FD8;&#x539F;&#xFF0C;6.12 &#x8282; <code>continue</code> &#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x540E;&#x4E5F;&#x8981;&#x5148;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x3001;&#x5355;&#x6B65;&#x8D8A;&#x8FC7;&#x3001;&#x518D;&#x91CD;&#x65B0;&#x52A0;&#x4E0A;&#x65AD;&#x70B9;&#x3002;&#x628A;&#x8FD9;&#x90E8;&#x5206;&#x62BD;&#x6210; <code>RestoreInstruction</code>&#xFF0C;&#x4E09;&#x5904;&#x5171;&#x7528;&#x540C;&#x4E00;&#x5957;&#x903B;&#x8F91;&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&#x67D0;&#x4E00;&#x5904;&#x6F0F;&#x5220;&#x7D22;&#x5F15;&#x3001;&#x6216;&#x8005;&#x8FD8;&#x539F;&#x987A;&#x5E8F;&#x5199;&#x53CD;&#x3002;</p>
+<h4 id="&#x8FD8;&#x539F;&#x987A;&#x5E8F;&#xFF1A;&#x5148;-poke&#xFF0C;&#x540E;&#x6458;&#x7D22;&#x5F15;">&#x8FD8;&#x539F;&#x987A;&#x5E8F;&#xFF1A;&#x5148; POKE&#xFF0C;&#x540E;&#x6458;&#x7D22;&#x5F15;</h4>
+<p><code>RestoreInstruction</code> &#x7684;&#x987A;&#x5E8F;&#x662F;&#xFF1A;&#x5148; <code>PTRACE_POKEDATA</code> &#x628A; <code>Orig</code> &#x5199;&#x56DE;&#x65AD;&#x70B9;&#x5730;&#x5740;&#xFF0C;&#x6210;&#x529F;&#x540E;&#x518D;&#x5220;&#x9664;&#x4E24;&#x5F20;&#x7D22;&#x5F15;&#x91CC;&#x7684;&#x8BB0;&#x5F55;&#x3002;&#x987A;&#x5E8F;&#x4E0D;&#x80FD;&#x53CD;&#xFF1A;</p>
+<ul>
+<li>&#x5982;&#x679C;&#x5148;&#x5220;&#x7D22;&#x5F15;&#x3001;&#x518D; POKE&#xFF0C;&#x4E00;&#x65E6; POKE &#x5931;&#x8D25;&#xFF08;&#x5730;&#x5740;&#x5931;&#x6548;&#x3001;&#x8FDB;&#x7A0B;&#x5DF2;&#x9000;&#x51FA;&#x7B49;&#xFF09;&#xFF0C;&#x65AD;&#x70B9;&#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x6CA1;&#x4E86;&#xFF0C;<code>Orig</code> &#x4E5F;&#x627E;&#x4E0D;&#x56DE;&#x6765;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x91CC;&#x7684; <code>0xCC</code> &#x5C31;&#x6C38;&#x8FDC;&#x7559;&#x5728;&#x90A3;&#x91CC;&#xFF1B;</li>
+<li>&#x5148; POKE&#x3001;&#x6210;&#x529F;&#x540E;&#x518D;&#x5220;&#xFF0C;&#x5931;&#x8D25;&#x65F6;&#x4E24;&#x5F20;&#x7D22;&#x5F15;&#x539F;&#x5C01;&#x4E0D;&#x52A8;&#xFF0C;<code>Orig</code> &#x8FD8;&#x5728;&#xFF0C;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x91CD;&#x8BD5; <code>clear</code>&#xFF0C;&#x6216;&#x8005;&#x5148;&#x6392;&#x67E5;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x72B6;&#x6001;&#x3002;</li>
+</ul>
+<p>&#x4E24;&#x6B21; <code>delete</code> &#x90FD;&#x653E;&#x5728; <code>ExecPtrace</code> &#x7684;&#x95ED;&#x5305;&#x91CC;&#x3001;POKE &#x6210;&#x529F;&#x4E4B;&#x540E;&#x6267;&#x884C;&#xFF0C;&#x4EFB;&#x4F55;&#x4E00;&#x6B65;&#x51FA;&#x9519;&#x90FD;&#x4F1A;&#x63D0;&#x524D; return&#xFF0C;&#x4E0D;&#x4F1A;&#x51FA;&#x73B0;&quot;&#x5185;&#x5B58;&#x8FD8;&#x539F;&#x4E86;&#x4F46;&#x7D22;&#x5F15;&#x8FD8;&#x5728;&quot;&#x6216;&quot;&#x7D22;&#x5F15;&#x5220;&#x4E86;&#x4F46;&#x5185;&#x5B58;&#x6CA1;&#x8FD8;&#x539F;&quot;&#x7684;&#x4E2D;&#x95F4;&#x72B6;&#x6001;&#x3002;</p>
+<h4 id="ptracepoketext-&#x8FD8;&#x662F;-ptracepokedata"><code>PTRACE_POKETEXT</code> &#x8FD8;&#x662F; <code>PTRACE_POKEDATA</code></h4>
+<p>&#x672C;&#x8282;&#x4EE3;&#x7801;&#x7528;&#x7684;&#x662F; <code>syscall.PtracePokeData</code>&#xFF0C;6.6 &#x8282;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7528;&#x7684;&#x662F; <code>PtracePeekText</code>&#x3001;<code>PtracePokeText</code>&#x3002;&#x5728; Linux &#x4E0A;&#xFF0C;<code>PTRACE_PEEKTEXT</code>/<code>PTRACE_PEEKDATA</code> &#x4EE5;&#x53CA; <code>PTRACE_POKETEXT</code>/<code>PTRACE_POKEDATA</code> &#x7684;&#x884C;&#x4E3A;&#x5E76;&#x6CA1;&#x6709;&#x533A;&#x522B;&#xFF1A;x86-64 &#x4E0D;&#x533A;&#x5206;&#x6307;&#x4EE4;&#x548C;&#x6570;&#x636E;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x4E24;&#x5957;&#x8BF7;&#x6C42;&#x6700;&#x7EC8;&#x90FD;&#x843D;&#x5230;&#x540C;&#x4E00;&#x7247;&#x5185;&#x5B58;&#x4E0A;&#xFF0C;&#x53EF;&#x4EE5;&#x6DF7;&#x7528;&#x3002;6.6 &#x8282;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x65F6;&#x8BFB;&#x5199;&#x7684;&#x90FD;&#x662F;&#x6307;&#x4EE4;&#xFF0C;&#x6240;&#x4EE5;&#x7528; TEXT&#xFF1B;&#x672C;&#x8282;&#x8FD8;&#x539F;&#x65F6;&#x5199;&#x6210; DATA&#xFF0C;&#x53EA;&#x662F;&#x4E60;&#x60EF;&#x4E0A;&#x7684;&#x5206;&#x7C7B;&#xFF0C;&#x628A;&#x8FD9;&#x91CC;&#x6362;&#x6210; POKETEXT &#x7ED3;&#x679C;&#x5B8C;&#x5168;&#x76F8;&#x540C;&#xFF0C;&#x8BFB;&#x8005;&#x4E0D;&#x5FC5;&#x7EA0;&#x7ED3;&#x3002;</p>
+<h4 id="&#x672C;&#x8282;&#x8FB9;&#x754C;&#xFF1A;&#x53EA;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#xFF0C;&#x6CA1;&#x6709;&#x56DE;&#x9000;&#x7EBF;&#x7A0B;-pc">&#x672C;&#x8282;&#x8FB9;&#x754C;&#xFF1A;&#x53EA;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#xFF0C;&#x6CA1;&#x6709;&#x56DE;&#x9000;&#x7EBF;&#x7A0B; PC</h4>
+<p>&#x672C;&#x8282;&#x53EA;&#x505A;&#x4E86;&quot;&#x8FD8;&#x539F;&#x6307;&#x4EE4; + &#x6458;&#x9664;&#x7D22;&#x5F15;&quot;&#xFF0C;&#x6CA1;&#x6709;&#x5904;&#x7406;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x505C;&#x5728;&#x4E86;&#x8981;&#x5220;&#x9664;&#x7684;&#x65AD;&#x70B9;&#x5904;&#x3002;&#x6B64;&#x65F6;&#x8BE5;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x8FC7; <code>0xCC</code>&#xFF0C;PC &#x6307;&#x5411;&#x65AD;&#x70B9;&#x5730;&#x5740;&#x7684;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF08;<code>PC = addr + 1</code>&#xFF09;&#x3002;&#x5982;&#x679C;&#x53EA;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x3001;&#x4E0D;&#x56DE;&#x9000; PC&#xFF0C;&#x4E4B;&#x540E;&#x6062;&#x590D;&#x8BE5;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x65F6;&#xFF0C;CPU &#x4F1A;&#x4ECE;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x8282;&#x5F00;&#x59CB;&#x8BD1;&#x7801;&#xFF0C;&#x5F97;&#x5230;&#x4E00;&#x6761;&#x5B8C;&#x5168;&#x4E0D;&#x540C;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x8F7B;&#x5219;&#x884C;&#x4E3A;&#x5F02;&#x5E38;&#xFF0C;&#x91CD;&#x5219;&#x76F4;&#x63A5;&#x5D29;&#x6E83;&#x3002;</p>
+<p>godbgv2 &#x5728; <code>ClearBreakpoint</code> &#x7684;&#x6CE8;&#x91CA;&#x91CC;&#x660E;&#x786E;&#x628A;&#x8FD9;&#x4EF6;&#x4E8B;&#x7559;&#x5230;&#x4E86;&#x540E;&#x9762;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x6070;&#x597D;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#xFF08;PC=&#x65AD;&#x70B9;&#x5730;&#x5740;+1&#xFF09;&#xFF0C;&#x8FD8;&#x9700;&#x56DE;&#x9000;&#x8BE5;&#x7EBF;&#x7A0B;</span>
+<span class="hljs-comment">// &#x7684; PC&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#xFF08;ch6.20.5&#xFF09;&#x4E2D;&#x5B9E;&#x73B0;&#x3002;</span>
+</code></pre>
+<p>&#x5728;&#x672C;&#x8282;&#x7684;&#x8C03;&#x8BD5;&#x6D41;&#x7A0B;&#x91CC;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x901A;&#x5E38;&#x521A;&#x5728; exec &#x6216; attach &#x540E;&#x505C;&#x4F4F;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x6267;&#x884C;&#x5230;&#x4EFB;&#x4F55;&#x65AD;&#x70B9;&#xFF0C;&#x6240;&#x4EE5;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x8FD9;&#x79CD;&#x60C5;&#x51B5;&#xFF1B;&#x4F46; <code>continue</code>&#xFF08;6.12&#xFF09;&#x8BA9;&#x7A0B;&#x5E8F;&#x8DD1;&#x5230;&#x65AD;&#x70B9;&#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C; <code>clear</code> &#x5C31;&#x53EF;&#x80FD;&#x78B0;&#x4E0A;&#x3002;6.20 &#x8282;&#x5B9E;&#x73B0;&#x591A;&#x7EBF;&#x7A0B;&#x65AD;&#x70B9;&#x65F6;&#x4F1A;&#x904D;&#x5386;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#xFF0C;&#x5BF9;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x7684;&#x7EBF;&#x7A0B;&#x505A; PC &#x56DE;&#x9000;&#xFF08;6.20.5 &#x8282;&#xFF09;&#x3002;&#x672C;&#x8282;&#x5148;&#x628A;&#x5355;&#x7EBF;&#x7A0B;&#x3001;&#x975E;&#x547D;&#x4E2D;&#x72B6;&#x6001;&#x4E0B;&#x7684;&#x79FB;&#x9664;&#x505A;&#x5BF9;&#xFF0C;&#x628A;&#x9650;&#x5236;&#x5199;&#x5728;&#x6CE8;&#x91CA;&#x91CC;&#x3002;</p>
+<h3 id="&#x5728;-godbgv2-&#x4E2D;&#x5B9E;&#x73B0;">&#x5728; godbgv2 &#x4E2D;&#x5B9E;&#x73B0;</h3>
+<p>&#x76F8;&#x5BF9; ch6.7&#xFF0C;&#x8FD9;&#x4E00;&#x8282;&#x7684;&#x8C03;&#x7528;&#x94FE;&#x662F;&#xFF1A;</p>
+<pre><code class="lang-text">godbg&gt; clear -n &lt;id&gt;
+    cmd/debug/clear.go            RunE&#xFF1A;&#x8BFB; -n flag&#xFF1B;&#x8C03; Client.ClearBreakpoint&#xFF1B;
+                                  &#x6253;&#x5370;&#x7F16;&#x53F7;&#x4E0E;&#x5730;&#x5740;
+    pkg/service/api               Client &#x63A5;&#x53E3;&#xFF1A;&#x65B0;&#x589E; ClearBreakpoint(id)&#xFF0C;&#x8FD4;&#x56DE;&#x88AB;&#x5220;&#x65AD;&#x70B9;&#x7684;&#x503C;&#x5FEB;&#x7167;
+    pkg/service/debugger          &#x95E8;&#x9762;&#xFF0C;&#x68C0;&#x67E5; dbp &#x975E;&#x7A7A;&#x540E;&#x8F6C;&#x7ED9;&#x76EE;&#x6807;&#x5C42;
+    pkg/target                    breakpoint.go&#xFF1A;ClearBreakpoint &#x6309;&#x7F16;&#x53F7;&#x67E5;&#x627E;&#xFF1B;
+                                  RestoreInstruction &#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x3001;&#x6458;&#x9664;&#x4E24;&#x5F20;&#x7D22;&#x5F15;
+</code></pre>
+<p>&#x4E0B;&#x9762;&#x6309;&#x547D;&#x4EE4;&#x5C42;&#x3001;&#x670D;&#x52A1;&#x5C42;&#x3001;&#x76EE;&#x6807;&#x5C42;&#x5206;&#x522B;&#x770B;&#x3002;</p>
+<h4 id="&#x547D;&#x4EE4;&#x5C42;">&#x547D;&#x4EE4;&#x5C42;</h4>
+<p><code>cmd/debug/clear.go</code> &#x5728; 6.7 &#x8282;&#x65F6;&#x8FD8;&#x662F;&#x4E00;&#x4E2A;&#x5360;&#x4F4D;&#x547D;&#x4EE4;&#xFF0C;<code>Run</code> &#x91CC;&#x53EA;&#x6709;&#x4E00;&#x53E5; <code>TODO(ch6.8): clear &#x5C1A;&#x672A;&#x5B9E;&#x73B0;</code>&#x3002;&#x672C;&#x8282;&#x628A;&#x5B83;&#x8865;&#x5168;&#xFF0C;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
 
 <span class="hljs-keyword">import</span> (
-    <span class="hljs-string">&quot;errors&quot;</span>
     <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;strings&quot;</span>
-    <span class="hljs-string">&quot;syscall&quot;</span>
-
-    <span class="hljs-string">&quot;godbg/target&quot;</span>
 
     <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
 )
 
 <span class="hljs-keyword">var</span> clearCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;clear &lt;n&gt;&quot;</span>,
-    Short: <span class="hljs-string">&quot;&#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;&quot;</span>,
-    Long:  <span class="hljs-string">`&#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;`</span>,
+    Use:   <span class="hljs-string">&quot;clear -n &lt;id&gt;&quot;</span>,
+    Short: <span class="hljs-string">&quot;&#x79FB;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;&quot;</span>,
+    Long:  <span class="hljs-string">`&#x79FB;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;&#xFF0C;&#x5E76;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x5904;&#x7684;&#x539F;&#x59CB;&#x6307;&#x4EE4;`</span>,
     Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
-        cmdGroupKey: cmdGroupBreakpoints,
+        cmdGroupAnnotation: cmdGroupBreakpoints,
     },
     RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
-        fmt.Printf(<span class="hljs-string">&quot;clear %s\n&quot;</span>, strings.Join(args, <span class="hljs-string">&quot; &quot;</span>))
-
         id, err := cmd.Flags().GetUint64(<span class="hljs-string">&quot;n&quot;</span>)
         <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
             <span class="hljs-keyword">return</span> err
         }
 
-        <span class="hljs-comment">// &#x67E5;&#x627E;&#x65AD;&#x70B9;</span>
-        <span class="hljs-keyword">var</span> brk *target.Breakpoint
-        <span class="hljs-keyword">for</span> _, b := <span class="hljs-keyword">range</span> breakpoints {
-            <span class="hljs-keyword">if</span> b.ID != id {
-                <span class="hljs-keyword">continue</span>
-            }
-            brk = b
-            <span class="hljs-keyword">break</span>
-        }
-
-        <span class="hljs-keyword">if</span> brk == <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;&#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&quot;</span>)
-        }
-
-        <span class="hljs-comment">// &#x79FB;&#x9664;&#x65AD;&#x70B9;</span>
-        n, err := syscall.PtracePokeData(TraceePID, brk.Addr, []<span class="hljs-keyword">byte</span>{brk.Orig})
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
+        bp, err := Client.ClearBreakpoint(id)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
             <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x5931;&#x8D25;: %v&quot;</span>, err)
         }
-        <span class="hljs-built_in">delete</span>(breakpoints, brk.Addr)
 
-        ...
-
-        fmt.Println(<span class="hljs-string">&quot;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x6210;&#x529F;&quot;</span>)
+        fmt.Printf(<span class="hljs-string">&quot;breakpoint %d at %#x cleared\n&quot;</span>, bp.ID, bp.Addr)
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
     },
 }
@@ -2319,160 +2343,164 @@ body {
     clearCmd.Flags().Uint64P(<span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-string">&quot;n&quot;</span>, <span class="hljs-number">1</span>, <span class="hljs-string">&quot;&#x65AD;&#x70B9;&#x7F16;&#x53F7;&quot;</span>)
 }
 </code></pre>
-<h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
-<p>&#x9996;&#x5148;&#x8FD0;&#x884C;&#x4E00;&#x4E2A;&#x5F85;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x83B7;&#x53D6;&#x5176;pid&#xFF0C;&#x7136;&#x540E;&#x901A;&#x8FC7; <code>godbg attach &lt;pid&gt;</code>&#x8C03;&#x8BD5;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x9996;&#x5148;&#x901A;&#x8FC7;&#x547D;&#x4EE4; <code>disass</code>&#x663E;&#x793A;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x5217;&#x8868;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C; <code>b &lt;locspec&gt;</code>&#x547D;&#x4EE4;&#x6DFB;&#x52A0;&#x51E0;&#x4E2A;&#x65AD;&#x70B9;&#x3002;</p>
-<pre><code class="lang-bash">godbg&gt; b 0x4653af
-<span class="hljs-built_in">break</span> 0x4653af
-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
-godbg&gt; b 0x4653b6
-<span class="hljs-built_in">break</span> 0x4653b6
-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
-godbg&gt; b 0x4653c2
-<span class="hljs-built_in">break</span> 0x4653c2
-&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x6210;&#x529F;
-</code></pre>
-<p>&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E86;3&#x6B21;&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x64CD;&#x4F5C;&#xFF0C;<code>breakpoints</code>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;&#x5217;&#x8868;&#xFF1A;</p>
-<pre><code class="lang-bash">godbg&gt; breakpoints
-breakpoint[1] 0x4653af 
-breakpoint[2] 0x4653b6 
-breakpoint[3] 0x4653c2
-</code></pre>
-<p>&#x7136;&#x540E;&#x6211;&#x4EEC;&#x6267;&#x884C; <code>clear -n 2</code>&#x79FB;&#x9664;&#x7B2C;2&#x4E2A;&#x65AD;&#x70B9;&#xFF1A;</p>
-<pre><code class="lang-bash">godbg&gt; clear -n 2
-clear 
-&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x6210;&#x529F;
-</code></pre>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x518D;&#x6B21;&#x6267;&#x884C; <code>breakpoints</code>&#x67E5;&#x770B;&#x5269;&#x4F59;&#x7684;&#x65AD;&#x70B9;&#xFF1A;</p>
-<pre><code class="lang-bash">godbg&gt; bs
-breakpoint[1] 0x4653af 
-breakpoint[3] 0x4653c2
-</code></pre>
-<p>&#x73B0;&#x5728;&#x65AD;&#x70B9;2&#x5DF2;&#x7ECF;&#x88AB;&#x79FB;&#x9664;&#x4E86;&#xFF0C;&#x6211;&#x4EEC;&#x7684;&#x6DFB;&#x52A0;&#x3001;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x7684;&#x529F;&#x80FD;&#x662F;&#x6B63;&#x5E38;&#x7684;&#x3002;</p>
-<h3 id="&#x601D;&#x8003;&#xFF1A;&#x4EC5;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x5C31;&#x53EF;&#x4EE5;&#x5417;">&#x601D;&#x8003;&#xFF1A;&#x4EC5;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#x5C31;&#x53EF;&#x4EE5;&#x5417;</h3>
-<p>&#x5927;&#x5BB6;&#x8003;&#x8651;&#x8FD9;&#x4E48;&#x4E00;&#x79CD;&#x7279;&#x6B8A;&#x60C5;&#x51B5;&#xFF1A;&#x5B58;&#x5728;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x7EBF;&#x7A0B;&#x5DF2;&#x7ECF;&#x505C;&#x5728;&#x4E86;&#x8981;&#x5220;&#x9664;&#x7684;&#x65AD;&#x70B9;&#x5904;&#xFF0C;&#x6362;&#x8A00;&#x4E4B;&#xFF0C;&#x5B83;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#x4E86;&#x88AB;patched&#x6307;&#x4EE4;&#x7684;&#x7B2C;1&#x5B57;&#x8282;0xCC&#xFF0C;&#x5F53;&#x524D;PC&#x6307;&#x5411;&#x7B2C;2&#x5B57;&#x8282;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x5BF9;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;PC&#x4E0D;&#x505A;&#x56DE;&#x9000;&#xFF0C;&#x90A3;&#x4E48;&#x5F53;&#x6211;&#x4EEC;&#x6267;&#x884C;continue&#x6062;&#x590D;&#x5176;&#x6267;&#x884C;&#x65F6;&#xFF0C;CPU&#x53D6;&#x6307;&#x4EE4;&#x3001;&#x6307;&#x4EE4;&#x8BD1;&#x7801;&#x5C06;&#x4ECE;&#x4E0A;&#x8FF0;&#x8FD8;&#x539F;&#x540E;&#x7684;&#x5B8C;&#x6574;&#x6307;&#x4EE4;&#x7684;&#x7B2C;2&#x5B57;&#x8282;&#x5F00;&#x59CB;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7B2C;1&#x5B57;&#x8282;&#x3002;&#x8FD9;&#x6837;&#xFF0C;&#x663E;&#x7136;CPU&#x6307;&#x4EE4;&#x8BD1;&#x7801;&#x65F6;&#x4F1A;&#x51FA;&#x9519;&#x3002;</p>
-<p>&#x6240;&#x4EE5;&#x4E0A;&#x8FF0;clear&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x662F;&#x4E0D;&#x5B8C;&#x5907;&#x7684;&#xFF0C;&#x9700;&#x8981;&#x8865;&#x5145;&#x67E5;&#x627E;&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#xFF0C;&#x4EE5;&#x53CA;rewind&#x7EBF;&#x7A0B;PC&#x7684;&#x903B;&#x8F91;&#x3002;</p>
-<p>godbg&#x4E2D;clearCmd&#x7684;&#x540E;&#x7EED;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x5982;&#x4E0B;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x67E5;&#x770B; [hitzhangjie/godbg]&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">var</span> clearCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;clear &lt;breakpoint no.&gt;&quot;</span>,
-    Short: <span class="hljs-string">&quot;&#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;&quot;</span>,
-    Long:  <span class="hljs-string">`&#x6E05;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;`</span>,
-    ...
-    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
-        <span class="hljs-comment">//fmt.Printf(&quot;clear %s\n&quot;, strings.Join(args, &quot; &quot;))</span>
-        id, err := cmd.Flags().GetUint64(<span class="hljs-string">&quot;n&quot;</span>)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> err
-        }
-
-        <span class="hljs-comment">// &#x67E5;&#x627E;&#x65AD;&#x70B9;</span>
-        <span class="hljs-keyword">var</span> brk *target.Breakpoint
-        <span class="hljs-keyword">for</span> _, b := <span class="hljs-keyword">range</span> target.DBPProcess.Breakpoints {
-            <span class="hljs-keyword">if</span> b.ID != id {
-                <span class="hljs-keyword">continue</span>
-            }
-            brk = b
-            <span class="hljs-keyword">break</span>
-        }
-
-        <span class="hljs-keyword">if</span> brk == <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> errors.New(<span class="hljs-string">&quot;&#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&quot;</span>)
-        }
-
-        <span class="hljs-comment">// &#x79FB;&#x9664;&#x65AD;&#x70B9;</span>
-        _, err = target.DBPProcess.ClearBreakpoint(brk.Addr)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> err
-        }
-
-        fmt.Println(<span class="hljs-string">&quot;&#x79FB;&#x9664;&#x65AD;&#x70B9;&#x6210;&#x529F;&quot;</span>)
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-    },
+<p>&#x51E0;&#x4E2A;&#x8981;&#x70B9;&#xFF1A;</p>
+<ul>
+<li><code>RunE</code> &#x800C;&#x4E0D;&#x662F; <code>Run</code>&#xFF1A;<code>ClearBreakpoint</code> &#x53EF;&#x80FD;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF08;&#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&#x3001;ptrace &#x5931;&#x8D25;&#x3001;&#x6CA1;&#x6709;&#x6B63;&#x5728;&#x8C03;&#x8BD5;&#x7684;&#x8FDB;&#x7A0B;&#xFF09;&#xFF0C;<code>RunE</code> &#x8BA9;&#x9519;&#x8BEF;&#x80FD;&#x4E00;&#x8DEF;&#x629B;&#x7ED9; cobra&#xFF0C;&#x6700;&#x7EC8;&#x6253;&#x5370;&#x6210; <code>Error: ...</code>&#x3002;6.6 &#x8282; <code>break</code>&#x3001;6.7 &#x8282; <code>breakpoints</code> &#x4E5F;&#x662F;&#x540C;&#x6837;&#x7684;&#x5199;&#x6CD5;&#xFF1B;</li>
+<li><code>Annotations</code> &#x628A;&#x547D;&#x4EE4;&#x5F52;&#x5230;&#x65AD;&#x70B9;&#x5206;&#x7EC4;&#xFF0C;<code>help</code> &#x6309;&#x5206;&#x7EC4;&#x5C55;&#x793A;&#x65F6;&#xFF0C;<code>break</code>&#x3001;<code>breakpoints</code>&#x3001;<code>clear</code> &#x6392;&#x5728;&#x4E00;&#x8D77;&#xFF08;&#x547D;&#x4EE4;&#x5206;&#x7EC4;&#x5728; 5.7 &#x8282;&#x642D;&#x9AA8;&#x67B6;&#x65F6;&#x4ECB;&#x7ECD;&#x8FC7;&#xFF09;&#xFF1B;</li>
+<li>&#x547D;&#x4EE4;&#x5C42;&#x4E0D;&#x505A;&#x67E5;&#x627E;&#xFF0C;&#x4E5F;&#x4E0D;&#x78B0; ptrace&#xFF1A;<code>Client.ClearBreakpoint(id)</code> &#x8FD4;&#x56DE;&#x88AB;&#x5220;&#x9664;&#x65AD;&#x70B9;&#x7684; <code>*api.Breakpoint</code> &#x5FEB;&#x7167;&#xFF0C;&#x547D;&#x4EE4;&#x5C42;&#x53EA;&#x6309; <code>breakpoint %d at %#x cleared</code> &#x6253;&#x5370;&#x7F16;&#x53F7;&#x548C;&#x5730;&#x5740;&#x3002;&#x540E;&#x7AEF;&#x4E0D;&#x6253;&#x5370;&#x3001;&#x524D;&#x7AEF;&#x53EA;&#x5C55;&#x793A;&#xFF0C;&#x4E0E;&#x524D;&#x9762;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x4E00;&#x81F4;&#xFF1B;</li>
+<li><code>Uint64P(&quot;n&quot;, &quot;n&quot;, 1, ...)</code> &#x6CE8;&#x518C;&#x4E86;&#x957F;&#x9009;&#x9879; <code>--n</code> &#x548C;&#x77ED;&#x9009;&#x9879; <code>-n</code>&#xFF0C;&#x7C7B;&#x578B;&#x662F; <code>uint64</code>&#xFF0C;&#x9ED8;&#x8BA4;&#x503C; 1&#x3002;&#x975E;&#x6CD5;&#x503C;&#xFF08;&#x6BD4;&#x5982; <code>clear -n abc</code>&#xFF09;&#x5728; cobra &#x89E3;&#x6790; flag &#x9636;&#x6BB5;&#x5C31;&#x4F1A;&#x62A5; <code>invalid argument &quot;abc&quot; for &quot;-n, --n&quot; flag</code>&#xFF0C;<code>GetUint64</code> &#x7684;&#x9519;&#x8BEF;&#x5206;&#x652F;&#x57FA;&#x672C;&#x8D70;&#x4E0D;&#x5230;&#xFF1B;&#x4FDD;&#x7559;&#x5B83;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x8BA9;&#x53D6;&#x503C;&#x8DEF;&#x5F84;&#x5B8C;&#x6574;&#x3002;</li>
+</ul>
+<h4 id="&#x670D;&#x52A1;&#x5C42;">&#x670D;&#x52A1;&#x5C42;</h4>
+<p><code>pkg/service/api/client.go</code> &#x7ED9; <code>Client</code> &#x63A5;&#x53E3;&#x589E;&#x52A0;&#x4E86;&#x4E00;&#x4E2A;&#x65B9;&#x6CD5;&#xFF08;&#x8FD9;&#x91CC;&#x53EA;&#x5217;&#x65AD;&#x70B9;&#x76F8;&#x5173;&#x90E8;&#x5206;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">type</span> Client <span class="hljs-keyword">interface</span> {
+    <span class="hljs-comment">// ...&#xFF08;Launch&#x3001;State&#x3001;Disassemble&#x3001;AddBreakpoint&#x3001;ListBreakpoints &#x7B49;&#xFF0C;&#x6B64;&#x5904;&#x7701;&#x7565;&#xFF09;</span>
+    <span class="hljs-comment">// AddBreakpoint &#x5728;&#x5730;&#x5740; addr &#x5904;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;</span>
+    AddBreakpoint(addr <span class="hljs-keyword">uint64</span>) (*Breakpoint, error)
+    <span class="hljs-comment">// ListBreakpoints &#x6309;&#x7F16;&#x53F7;&#x5347;&#x5E8F;&#x8FD4;&#x56DE;&#x5168;&#x90E8;&#x65AD;&#x70B9;</span>
+    ListBreakpoints() ([]Breakpoint, error)
+    <span class="hljs-comment">// ClearBreakpoint &#x79FB;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;</span>
+    ClearBreakpoint(id <span class="hljs-keyword">uint64</span>) (*Breakpoint, error)
 }
-
-<span class="hljs-comment">// ClearBreakpoint &#x79FB;&#x9664;&#x6307;&#x5B9A;&#x5730;&#x5740;&#x5904;&#x65AD;&#x70B9;&#xFF0C;&#x5E76;rewind&#x53D7;&#x5F71;&#x54CD;&#x7684;thread</span>
-<span class="hljs-keyword">func</span> (p *DebuggedProcess) ClearBreakpoint(addr <span class="hljs-keyword">uintptr</span>) (*Breakpoint, error) {
-    brk, err := p.RestoreInstruction(addr)
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+</code></pre>
+<p>&#x8FD4;&#x56DE;&#x503C;&#x662F; <code>*Breakpoint</code> &#x800C;&#x4E0D;&#x662F;&#x53EA;&#x8FD4;&#x56DE; <code>error</code>&#xFF0C;&#x56E0;&#x4E3A;&#x547D;&#x4EE4;&#x5C42;&#x8981;&#x6253;&#x5370;&quot;&#x5220;&#x6389;&#x7684;&#x662F;&#x54EA;&#x4E2A;&#x65AD;&#x70B9;&quot;&#x3002;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x65AD;&#x70B9;&#x4FE1;&#x606F;&#x7684;&#x503C;&#x5FEB;&#x7167;&#xFF0C;&#x5185;&#x90E8;&#x8BB0;&#x5F55;&#x5DF2;&#x7ECF;&#x4ECE;&#x7D22;&#x5F15;&#x91CC;&#x6458;&#x9664;&#x4E86;&#xFF0C;&#x4F46;&#x8FD9;&#x4EFD;&#x5FEB;&#x7167;&#x672C;&#x8EAB;&#x4ECD;&#x7136;&#x6709;&#x6548;&#xFF1A;</p>
+<ul>
+<li><code>Breakpoint</code> &#x662F;&#x670D;&#x52A1;&#x5C42;&#x7684;&#x7EAF;&#x503C;&#x7C7B;&#x578B;&#xFF08;6.6 &#x8282;&#x5B9A;&#x4E49;&#x5728; <code>pkg/service/api/types.go</code>&#xFF09;&#xFF0C;&#x5B57;&#x6BB5;&#x90FD;&#x662F; <code>uint64</code>&#x3001;<code>string</code>&#x3001;<code>byte</code> &#x8FD9;&#x7C7B;&#x53EF;&#x5E8F;&#x5217;&#x5316;&#x7684;&#x7C7B;&#x578B;&#xFF1B;</li>
+<li>&#x7B2C; 9 &#x7AE0;&#x5F15;&#x5165; headless RPC &#x540E;&#xFF0C;&#x8FD9;&#x4E2A;&#x8FD4;&#x56DE;&#x503C;&#x8981;&#x8DE8;&#x8FDB;&#x7A0B;&#x4F20;&#x8F93;&#xFF0C;&#x503C;&#x5FEB;&#x7167;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5E8F;&#x5217;&#x5316;&#xFF1B;&#x5982;&#x679C;&#x8FD4;&#x56DE;&#x5185;&#x90E8; <code>*target.Breakpoint</code>&#xFF0C;&#x65E2;&#x66B4;&#x9732;&#x76EE;&#x6807;&#x5C42;&#x5B9E;&#x73B0;&#xFF0C;&#x4E5F;&#x6CA1;&#x6CD5;&#x8DE8;&#x8FDB;&#x7A0B;&#x4F20;&#x3002;</li>
+</ul>
+<p><code>pkg/service/debugger/debugger.go</code> &#x91CC;&#x7684;&#x95E8;&#x9762;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// ClearBreakpoint &#x79FB;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;</span>
+<span class="hljs-keyword">func</span> (d *Debugger) ClearBreakpoint(id <span class="hljs-keyword">uint64</span>) (*api.Breakpoint, error) {
+    <span class="hljs-keyword">if</span> d.dbp == <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;no debugged process&quot;</span>)
     }
-
-    <span class="hljs-comment">// &#x662F;&#x5426;&#x6709;&#x7EBF;&#x7A0B;&#x9700;&#x8981;rewind pc</span>
-    bpStoppedThreads, err := p.ThreadStoppedAtBreakpoint()
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;&#x68C0;&#x67E5;&#x7EBF;&#x7A0B;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x5931;&#x8D25;: %v&quot;</span>, err)
-    }
-    <span class="hljs-keyword">for</span> tid, bpAddr := <span class="hljs-keyword">range</span> bpStoppedThreads {
-        <span class="hljs-keyword">if</span> bpAddr != brk.Addr {
-            <span class="hljs-keyword">continue</span>
-        }
-        regs, err := p.ReadRegister(tid)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;&#x8BFB;&#x53D6;&#x5BC4;&#x5B58;&#x5668;&#x5931;&#x8D25;: %v&quot;</span>, err)
-        }
-        regs.SetPC(regs.PC() - <span class="hljs-number">1</span>)
-        <span class="hljs-keyword">if</span> err = p.WriteRegister(tid, regs); err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;&#x5199;&#x5165;&#x5BC4;&#x5B58;&#x5668;&#x5931;&#x8D25;: %v&quot;</span>, err)
-        }
-    }
-    <span class="hljs-keyword">return</span> brk, <span class="hljs-literal">nil</span>
+    <span class="hljs-keyword">return</span> d.dbp.ClearBreakpoint(id)
 }
+</code></pre>
+<p>&#x95E8;&#x9762;&#x505A;&#x7684;&#x4E8B;&#x60C5;&#x5F88;&#x8584;&#xFF1A;&#x68C0;&#x67E5; <code>d.dbp</code> &#x662F;&#x5426;&#x4E3A;&#x7A7A;&#xFF0C;&#x7136;&#x540E;&#x628A;&#x8BF7;&#x6C42;&#x8F6C;&#x7ED9;&#x76EE;&#x6807;&#x5C42;&#x3002;<code>d.dbp == nil</code> &#x8BF4;&#x660E;&#x5F53;&#x524D;&#x6CA1;&#x6709; exec/attach &#x4EFB;&#x4F55;&#x8FDB;&#x7A0B;&#xFF0C;&#x6B64;&#x65F6;&#x8FD4;&#x56DE; <code>no debugged process</code> &#x6BD4;&#x8BA9;&#x540E;&#x9762;&#x7684;&#x7A7A;&#x6307;&#x9488; panic &#x66F4;&#x53CB;&#x597D;&#x3002;&#x6587;&#x4EF6;&#x672B;&#x5C3E;&#x7684; <code>var _ api.Client = (*Debugger)(nil)</code> &#x5728;&#x7F16;&#x8BD1;&#x671F;&#x4FDD;&#x8BC1;&#x95E8;&#x9762;&#x6CA1;&#x6709;&#x6F0F;&#x6389;&#x63A5;&#x53E3;&#x65B9;&#x6CD5;&#x3002;</p>
+<h4 id="&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x67E5;&#x3001;&#x6309;&#x5730;&#x5740;&#x8FD8;&#x539F;">&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x67E5;&#x3001;&#x6309;&#x5730;&#x5740;&#x8FD8;&#x539F;</h4>
+<p><code>pkg/target/breakpoint.go</code> &#x65B0;&#x589E;&#x4E86;&#x4E00;&#x4E2A;&#x9519;&#x8BEF;&#x503C;&#x548C;&#x4E24;&#x4E2A;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">var</span> (
+    <span class="hljs-comment">// ErrBreakpointNotExisted &#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;</span>
+    ErrBreakpointNotExisted = fmt.Errorf(<span class="hljs-string">&quot;breakpoint not existed&quot;</span>)
+)
 
-<span class="hljs-comment">// ThreadStoppedAtBreakpoint &#x68C0;&#x67E5;&#x6240;&#x6709;&#x7EBF;&#x7A0B;&#x662F;&#x5426;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;</span>
-<span class="hljs-keyword">func</span> (p *DebuggedProcess) ThreadStoppedAtBreakpoint() (<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">uintptr</span>, error) {
-    threadStoppedAtBP := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">map</span>[<span class="hljs-keyword">int</span>]<span class="hljs-keyword">uintptr</span>)
-
-    <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(p.Threads) == <span class="hljs-number">0</span> {
-        <span class="hljs-keyword">return</span> threadStoppedAtBP, <span class="hljs-literal">nil</span>
-    }
-
-    <span class="hljs-keyword">for</span> tid, thread := <span class="hljs-keyword">range</span> p.Threads {
-        regs, err := p.ReadRegister(thread.Tid)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-comment">// &#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x5DF2;&#x7ECF;&#x9000;&#x51FA;&#xFF0C;&#x8DF3;&#x8FC7;</span>
-            <span class="hljs-keyword">if</span> err == syscall.ESRCH {
-                fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;warn: thread %d exited\n&quot;</span>, tid)
-                <span class="hljs-keyword">continue</span>
-            }
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;read register for thread %d: %v&quot;</span>, tid, err)
-        }
-
-        <span class="hljs-comment">// &#x68C0;&#x67E5;PC-1&#x4F4D;&#x7F6E;&#x662F;&#x5426;&#x6709;&#x65AD;&#x70B9;&#xFF08;&#x56E0;&#x4E3A;&#x65AD;&#x70B9;&#x6307;&#x4EE4;&#x5DF2;&#x7ECF;&#x6267;&#x884C;&#xFF09;</span>
-        pc := regs.PC()
-        <span class="hljs-keyword">if</span> bp, exists := p.Breakpoints[<span class="hljs-keyword">uintptr</span>(pc<span class="hljs-number">-1</span>)]; exists {
-            threadStoppedAtBP[tid] = bp.Addr
-        }
-    }
-
-    <span class="hljs-keyword">return</span> threadStoppedAtBP, <span class="hljs-literal">nil</span>
-}
-
-<span class="hljs-comment">// &#x79FB;&#x9664;&#x65AD;&#x70B9;&#xFF0C;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;+&#x4ECE;&#x65AD;&#x70B9;&#x5217;&#x8868;&#x4E2D;&#x79FB;&#x9664;</span>
-<span class="hljs-keyword">func</span> (p *DebuggedProcess) RestoreInstruction(addr <span class="hljs-keyword">uintptr</span>) (*Breakpoint, error) {
-    brk, ok := p.Breakpoints[addr]
+<span class="hljs-comment">// ClearBreakpoint &#x79FB;&#x9664;&#x6307;&#x5B9A;&#x7F16;&#x53F7;&#x7684;&#x65AD;&#x70B9;&#xFF1A;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x5904;&#x7684;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#xFF0C;</span>
+<span class="hljs-comment">// &#x5E76;&#x6458;&#x9664;&#x65AD;&#x70B9;&#x7D22;&#x5F15;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF1A;&#x5982;&#x679C;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x6070;&#x597D;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#xFF08;PC=&#x65AD;&#x70B9;&#x5730;&#x5740;+1&#xFF09;&#xFF0C;&#x8FD8;&#x9700;&#x56DE;&#x9000;&#x8BE5;&#x7EBF;&#x7A0B;</span>
+<span class="hljs-comment">// &#x7684; PC&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5728;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#xFF08;ch6.20.5&#xFF09;&#x4E2D;&#x5B9E;&#x73B0;&#x3002;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) ClearBreakpoint(id <span class="hljs-keyword">uint64</span>) (*api.Breakpoint, error) {
+    bp, ok := p.BreakpointsByID[id]
     <span class="hljs-keyword">if</span> !ok {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, ErrBreakpointNotExisted
     }
 
-    <span class="hljs-comment">// &#x79FB;&#x9664;&#x65AD;&#x70B9;</span>
+    <span class="hljs-keyword">if</span> _, err := p.RestoreInstruction(bp.Addr); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+    <span class="hljs-keyword">return</span> toAPIBreakpoint(bp), <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// RestoreInstruction &#x79FB;&#x9664;&#x65AD;&#x70B9;&#xFF1A;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x4ECE;&#x65AD;&#x70B9;&#x7D22;&#x5F15;&#x4E2D;&#x79FB;&#x9664;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) RestoreInstruction(addr <span class="hljs-keyword">uintptr</span>) (*Breakpoint, error) {
+    bp, ok := p.Breakpoints[addr]
+    <span class="hljs-keyword">if</span> !ok {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, ErrBreakpointNotExisted
+    }
+
     pid := p.Process.Pid
 
     err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
-        n, err := syscall.PtracePokeData(pid, brk.Addr, []<span class="hljs-keyword">byte</span>{brk.Orig})
+        n, err := syscall.PtracePokeData(pid, bp.Addr, []<span class="hljs-keyword">byte</span>{bp.Orig})
         <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> || n != <span class="hljs-number">1</span> {
             <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;ptrace poke data err: %v&quot;</span>, err)
         }
-        <span class="hljs-built_in">delete</span>(p.Breakpoints, brk.Addr)
+        <span class="hljs-built_in">delete</span>(p.Breakpoints, bp.Addr)
+        <span class="hljs-built_in">delete</span>(p.BreakpointsByID, bp.ID)
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
     })
     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
     }
-    <span class="hljs-keyword">return</span> brk, <span class="hljs-literal">nil</span>
+    <span class="hljs-keyword">return</span> bp, <span class="hljs-literal">nil</span>
 }
 </code></pre>
+<p>&#x9010;&#x6BB5;&#x8BF4;&#x660E;&#xFF1A;</p>
+<ul>
+<li><code>ClearBreakpoint</code> &#x5148;&#x7528; <code>BreakpointsByID[id]</code> &#x6309;&#x7F16;&#x53F7;&#x627E;&#x65AD;&#x70B9;&#xFF0C;&#x627E;&#x4E0D;&#x5230;&#x5C31;&#x8FD4;&#x56DE; <code>ErrBreakpointNotExisted</code>&#x3002;&#x8FD9;&#x662F;&quot;&#x7F16;&#x53F7;&#x4E0D;&#x5B58;&#x5728;&quot;&#x62A5;&#x9519;&#x7684;&#x6765;&#x6E90;&#xFF1B;</li>
+<li>&#x627E;&#x5230;&#x540E;&#x4EA4;&#x7ED9; <code>RestoreInstruction(bp.Addr)</code>&#xFF0C;&#x7531;&#x5B83;&#x5B8C;&#x6210;&#x771F;&#x6B63;&#x7684;&#x8FD8;&#x539F;&#x548C;&#x6458;&#x9664;&#x3002;&#x8FD4;&#x56DE;&#x503C;&#x88AB;&#x4E22;&#x5F03;&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x8C03;&#x7528;&#x65B9;&#x5DF2;&#x7ECF;&#x62FF;&#x7740; <code>bp</code>&#xFF0C;&#x53EA;&#x9700;&#x8981;&#x77E5;&#x9053;&#x6210;&#x529F;&#x4E0E;&#x5426;&#xFF1B;</li>
+<li><code>RestoreInstruction</code> &#x518D;&#x6309;&#x5730;&#x5740;&#x67E5;&#x4E00;&#x6B21; <code>Breakpoints[addr]</code>&#x3002;&#x8FD9;&#x4E0D;&#x662F;&#x591A;&#x4F59;&#xFF1A;&#x5730;&#x5740;&#x7D22;&#x5F15;&#x624D;&#x662F;&quot;&#x8FD9;&#x4E2A;&#x5730;&#x5740;&#x4E0A;&#x5230;&#x5E95;&#x6709;&#x6CA1;&#x6709;&#x65AD;&#x70B9;&quot;&#x7684;&#x6743;&#x5A01;&#x5224;&#x65AD;&#xFF0C;&#x5C06;&#x6765; <code>continue</code>&#x3001;<code>clearall</code> &#x90FD;&#x4F1A;&#x76F4;&#x63A5;&#x6309;&#x5730;&#x5740;&#x8C03;&#x5B83;&#x3002;&#x4E24;&#x5F20;&#x7D22;&#x5F15;&#x7406;&#x8BBA;&#x4E0A;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x2014;&#x2014;6.6 &#x8282;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x65F6;&#x4E00;&#x8D77;&#x5199;&#x3001;&#x8FD9;&#x91CC;&#x4E00;&#x8D77;&#x5220;&#x2014;&#x2014;&#x771F;&#x51FA;&#x73B0;&#x4E0D;&#x4E00;&#x81F4;&#x65F6;&#xFF0C;&#x6309;&#x5730;&#x5740;&#x67E5;&#x4E0D;&#x5230;&#x5C31;&#x6309;&quot;&#x65AD;&#x70B9;&#x4E0D;&#x5B58;&#x5728;&quot;&#x5904;&#x7406;&#xFF0C;&#x4E0D;&#x4F1A;&#x53BB;&#x505A;&#x4E00;&#x6B21;&#x6CA1;&#x6709;&#x4F9D;&#x636E;&#x7684;&#x5185;&#x5B58;&#x5199;&#xFF1B;</li>
+<li>POKE &#x7684;&#x5B57;&#x8282;&#x6570;&#x56FA;&#x5B9A;&#x4E3A; 1&#xFF0C;&#x5199;&#x7684;&#x662F; <code>bp.Orig</code>&#x3002;<code>n != 1</code> &#x4E5F;&#x5F53;&#x4F5C;&#x5931;&#x8D25;&#x5904;&#x7406;&#xFF1A;ptrace &#x7684; POKE &#x6B63;&#x5E38;&#x53EA;&#x8FD4;&#x56DE; 1&#xFF0C;&#x8FD4;&#x56DE;&#x5176;&#x4ED6;&#x503C;&#x8BF4;&#x660E;&#x8FD9;&#x6B21;&#x5199;&#x5165;&#x6CA1;&#x6709;&#x6309;&#x9884;&#x671F;&#x5B8C;&#x6210;&#xFF1B;</li>
+<li>POKE &#x548C;&#x4E24;&#x6B21; <code>delete</code> &#x90FD;&#x5728; <code>ExecPtrace</code> &#x7684;&#x95ED;&#x5305;&#x91CC;&#x3002;6.1 &#x8282;&#x8BB2;&#x8FC7; ptrace limit&#xFF1A;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#x5EFA;&#x7ACB;&#x540E;&#xFF0C;&#x6240;&#x6709; ptrace &#x8BF7;&#x6C42;&#x5FC5;&#x987B;&#x6765;&#x81EA;&#x540C;&#x4E00;&#x4E2A; tracer &#x7EBF;&#x7A0B;&#xFF0C;<code>ExecPtrace</code> &#x4FDD;&#x8BC1;&#x4E32;&#x884C;&#x3001;&#x4E0D;&#x8DE8;&#x7EBF;&#x7A0B;&#xFF1B;</li>
+<li>&#x5220;&#x9664;&#x65F6;&#x540C;&#x65F6;&#x6E05;&#x6389; <code>BreakpointsByID[bp.ID]</code> &#x548C; <code>Breakpoints[bp.Addr]</code>&#xFF0C;&#x907F;&#x514D;&#x7559;&#x4E0B;&quot;&#x6309;&#x7F16;&#x53F7;&#x8FD8;&#x80FD;&#x67E5;&#x5230;&#x3001;&#x6309;&#x5730;&#x5740;&#x5DF2;&#x7ECF;&#x67E5;&#x4E0D;&#x5230;&quot;&#x7684;&#x5E7D;&#x7075;&#x8BB0;&#x5F55;&#xFF1B;</li>
+<li>&#x8FD4;&#x56DE; <code>bp</code>&#xFF08;&#x5185;&#x90E8;&#x65AD;&#x70B9;&#x5BF9;&#x8C61;&#xFF09;&#xFF0C;&#x7531; <code>ClearBreakpoint</code> &#x8F6C;&#x6210; <code>*api.Breakpoint</code> &#x5FEB;&#x7167;&#x3002;&#x5185;&#x90E8;&#x7ED3;&#x6784;&#x4E0D;&#x66B4;&#x9732;&#x7ED9; client &#x4FA7;&#x3002;</li>
+</ul>
+<h3 id="&#x8FD0;&#x884C;&#x6548;&#x679C;">&#x8FD0;&#x884C;&#x6548;&#x679C;</h3>
+<p>&#x5728; godbgv2 &#x4ED3;&#x5E93;&#x91CC;&#x5207;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#xFF0C;&#x628A;&#x8C03;&#x8BD5;&#x5668;&#x548C; fixture &#x90FD;&#x6784;&#x5EFA;&#x51FA;&#x6765;&#xFF1A;</p>
+<pre><code class="lang-bash">git checkout ch6.8
+make build
+make fixtures
+</code></pre>
+<p><code>make build</code> &#x4EA7;&#x51FA; <code>./godbg</code>&#xFF0C;<code>make fixtures</code> &#x628A; <code>examples/debuggee</code> &#x4E0B;&#x7684;&#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x7F16;&#x5230; <code>_fixtures/</code>&#xFF0C;&#x7F16;&#x8BD1;&#x65F6;&#x5E26; <code>-gcflags &quot;all=-N -l&quot;</code>&#xFF0C;&#x4E0D;&#x505A;&#x4F18;&#x5316;&#x3001;&#x4E0D;&#x505A;&#x5185;&#x8054;&#x3002;&#x4ECD;&#x7136;&#x7528; <code>_fixtures/loop</code> &#x505A;&#x76EE;&#x6807;&#x7A0B;&#x5E8F;&#xFF0C;&#x5165;&#x53E3;&#x5730;&#x5740;&#x662F; <code>0x478120</code>&#xFF0C;<code>_rt0_amd64</code> &#x7684;&#x5730;&#x5740;&#x662F; <code>0x4749e0</code>&#xFF08;<code>readelf -h _fixtures/loop</code> &#x548C; <code>objdump -d</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF09;&#x3002;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x6DFB;&#x52A0;&#x4E24;&#x4E2A;&#x65AD;&#x70B9;&#xFF0C;&#x5217;&#x51FA;&#xFF0C;&#x7136;&#x540E;&#x79FB;&#x9664;&#x7F16;&#x53F7; 1 &#x7684;&#x65AD;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 2206561 launched, stopped by SIGTRAP
+godbg&gt; <span class="hljs-built_in">break</span> 0x478120
+breakpoint 1 added at 0x478120
+godbg&gt; <span class="hljs-built_in">break</span> 0x4749e0
+breakpoint 2 added at 0x4749e0
+godbg&gt; breakpoints
+breakpoint[1] addr:0x478120, loc:-
+breakpoint[2] addr:0x4749e0, loc:-
+godbg&gt; clear -n 1
+breakpoint 1 at 0x478120 cleared
+godbg&gt; breakpoints
+breakpoint[2] addr:0x4749e0, loc:-
+godbg&gt; <span class="hljs-built_in">exit</span>
+tracee is run by tracer, <span class="hljs-built_in">kill</span> it
+</code></pre>
+<p>&#x89C2;&#x5BDF;&#x4E00;&#x4E0B;&#x8FD9;&#x6BB5;&#x8F93;&#x51FA;&#xFF1A;</p>
+<ul>
+<li><code>clear -n 1</code> &#x6309;&#x7F16;&#x53F7;&#x627E;&#x5230;&#x4E86; <code>0x478120</code> &#x5904;&#x7684;&#x65AD;&#x70B9;&#xFF0C;&#x8F93;&#x51FA;&#x91CC;&#x7684;&#x7F16;&#x53F7;&#x548C;&#x5730;&#x5740;&#x4E0E; <code>breakpoints</code> &#x4E2D;&#x7F16;&#x53F7; 1 &#x90A3;&#x6761;&#x4E00;&#x81F4;&#xFF1B;</li>
+<li>&#x518D;&#x6B21;&#x6267;&#x884C; <code>breakpoints</code>&#xFF0C;&#x53EA;&#x5269;&#x7F16;&#x53F7; 2 &#x7684;&#x65AD;&#x70B9;&#xFF0C;&#x8BF4;&#x660E; <code>ClearBreakpoint</code> &#x5DF2;&#x7ECF;&#x628A;&#x5B83;&#x4ECE;&#x4E24;&#x5F20;&#x7D22;&#x5F15;&#x91CC;&#x6458;&#x6389;&#x4E86;&#x3002;&#x7F16;&#x53F7; 2 &#x4FDD;&#x6301;&#x4E0D;&#x53D8;&#xFF0C;&#x4E5F;&#x8BF4;&#x660E;&#x5220;&#x9664;&#x4E0D;&#x4F1A;&#x5F71;&#x54CD;&#x5176;&#x4ED6;&#x65AD;&#x70B9;&#x7684;&#x7F16;&#x53F7;&#xFF1B;</li>
+<li>&#x8F93;&#x51FA;&#x6587;&#x6848; <code>breakpoint %d at %#x cleared</code> &#x7528;&#x7684;&#x662F;&#x65AD;&#x70B9;&#x81EA;&#x8EAB;&#x7684; <code>ID</code>&#x3001;<code>Addr</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x7528;&#x6237;&#x8F93;&#x5165;&#xFF1B;&#x7528;&#x6237;&#x8F93;&#x5165;&#x7684;&#x662F;&#x7F16;&#x53F7;&#xFF0C;&#x5C55;&#x793A;&#x7684;&#x662F;&quot;&#x54EA;&#x4E2A;&#x65AD;&#x70B9;&#x88AB;&#x5220;&#x4E86;&quot;&#xFF0C;&#x4E24;&#x8005;&#x5BF9;&#x5F97;&#x4E0A;&#x3002;</li>
+</ul>
+<p>&#x53EA;&#x770B;&#x5217;&#x8868;&#x8FD8;&#x4E0D;&#x591F;&#xFF1A;&#x65AD;&#x70B9;&#x4ECE;&#x5217;&#x8868;&#x91CC;&#x6D88;&#x5931;&#xFF0C;&#x4E0D;&#x4EE3;&#x8868;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x91CC;&#x7684; <code>0xCC</code> &#x5DF2;&#x7ECF;&#x6362;&#x56DE;&#x53BB;&#x4E86;&#x3002;&#x7528; <code>disass</code> &#x5728;&#x79FB;&#x9664;&#x524D;&#x540E;&#x5404;&#x770B;&#x4E00;&#x6B21; <code>0x4749e0</code>&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 2207188 launched, stopped by SIGTRAP
+godbg&gt; <span class="hljs-built_in">break</span> 0x4749e0
+breakpoint 1 added at 0x4749e0
+godbg&gt; disass 0x4749e0 -n 2
+0x4749e0:    cc    int3
+0x4749e1:    8b 3c 24    mov (%rsp),%edi
+godbg&gt; clear -n 1
+breakpoint 1 at 0x4749e0 cleared
+godbg&gt; disass 0x4749e0 -n 2
+0x4749e0:    48 8b 3c 24    mov (%rsp),%rdi
+0x4749e4:    48 8d 74 24 08    lea 0x8(%rsp),%rsi
+godbg&gt; <span class="hljs-built_in">exit</span>
+tracee is run by tracer, <span class="hljs-built_in">kill</span> it
+</code></pre>
+<p>&#x8FD9;&#x6BB5;&#x5BF9;&#x6BD4;&#x5F88;&#x76F4;&#x89C2;&#xFF1A;</p>
+<ul>
+<li>&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x540E;&#xFF0C;<code>0x4749e0</code> &#x7684;&#x9996;&#x5B57;&#x8282;&#x662F; <code>cc</code>&#xFF0C;&#x53CD;&#x6C47;&#x7F16;&#x6210; <code>int3</code>&#xFF0C;&#x4ECE; <code>0x4749e1</code> &#x5F00;&#x59CB;&#x89E3;&#x7801;&#x8FD8;&#x628A; REX &#x524D;&#x7F00; <code>48</code> &#x4E22;&#x6389;&#x4E86;&#xFF0C;<code>mov (%rsp),%rdi</code> &#x53D8;&#x6210;&#x4E86; <code>mov (%rsp),%edi</code>&#xFF1B;</li>
+<li><code>clear -n 1</code> &#x4E4B;&#x540E;&#xFF0C;&#x9996;&#x5B57;&#x8282; <code>48</code> &#x56DE;&#x6765;&#x4E86;&#xFF0C;&#x6307;&#x4EE4;&#x6062;&#x590D;&#x6210;&#x5B8C;&#x6574;&#x7684; <code>mov (%rsp),%rdi</code>&#xFF0C;&#x4E0B;&#x4E00;&#x6761;&#x4E5F;&#x4ECE;&#x6B63;&#x786E;&#x7684; <code>0x4749e4</code> &#x5F00;&#x59CB;&#x3002;&#x8FD9;&#x8BF4;&#x660E; <code>RestoreInstruction</code> &#x786E;&#x5B9E;&#x628A; <code>Orig</code> &#x5199;&#x56DE;&#x4E86;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#xFF0C;&#x800C;&#x4E0D;&#x53EA;&#x662F;&#x5220;&#x4E86;&#x65AD;&#x70B9;&#x8868;&#x91CC;&#x7684;&#x4E00;&#x884C;&#xFF1B;</li>
+<li>&#x53CD;&#x6C47;&#x7F16;&#x8BFB;&#x7684;&#x662F;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5F53;&#x524D;&#x5185;&#x5B58;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x4E2A;&#x5BF9;&#x6BD4;&#x80FD;&#x76F4;&#x63A5;&#x8BC1;&#x660E;&#x8FD8;&#x539F;&#x751F;&#x6548;&#x3002;&#x5982;&#x679C;&#x53EA;&#x68C0;&#x67E5; <code>breakpoints</code>&#xFF0C;&#x662F;&#x770B;&#x4E0D;&#x5230;&#x8FD9;&#x4E00;&#x5C42;&#x7684;&#x3002;</li>
+</ul>
+<p>&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x65F6;&#x4ECD;&#x7136;&#x8D70; 6.4 &#x8282;&#x6CE8;&#x518C;&#x7684;&#x6E05;&#x7406;&#x903B;&#x8F91;&#xFF0C;exec &#x542F;&#x52A8;&#x7684; tracee &#x88AB; kill&#xFF0C;&#x7EC8;&#x7AEF;&#x4E0A;&#x4F1A;&#x770B;&#x5230; <code>tracee is run by tracer, kill it</code>&#x3002;</p>
+<h3 id="&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;">&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;</h3>
+<p><strong><code>clear</code> &#x4E0E; <code>clearall</code>&#x3002;</strong> &#x4E24;&#x8005;&#x5171;&#x7528; <code>RestoreInstruction</code>&#xFF1A;&#x4E0B;&#x4E00;&#x8282;&#x7684; <code>clearall</code> &#x53EA;&#x662F;&#x904D;&#x5386;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x9010;&#x4E2A;&#x8C03;&#x7528;&#xFF0C;<code>continue</code> &#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x540E;&#x7684;&quot;&#x8FD8;&#x539F;&#x2014;&#x5355;&#x6B65;&#x2014;&#x91CD;&#x8BBE;&quot;&#x4E5F;&#x590D;&#x7528;&#x5B83;&#x3002;</p>
+<p><strong>&#x65AD;&#x70B9;&#x8868;&#x4E0E;&#x5185;&#x5B58;&#x7684;&#x4E00;&#x81F4;&#x6027;&#x3002;</strong> &#x6DFB;&#x52A0;&#x65F6;&#x5148;&#x767B;&#x8BB0;&#x7D22;&#x5F15;&#x518D; POKE&#x3001;&#x5931;&#x8D25;&#x56DE;&#x6EDA;&#xFF0C;&#x79FB;&#x9664;&#x65F6;&#x5148; POKE &#x518D;&#x5220;&#x7D22;&#x5F15;&#x3001;&#x5931;&#x8D25;&#x4FDD;&#x7559;&#xFF0C;&#x907F;&#x514D;&#x7D22;&#x5F15;&#x4E0E;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5185;&#x5B58;&#x8131;&#x8282;&#x3002;<code>Orig</code> &#x53EA;&#x5B58;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x5185;&#x5B58;&#x91CC;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x5F02;&#x5E38;&#x9000;&#x51FA;&#x65F6;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684; <code>0xCC</code> &#x6CA1;&#x4EBA;&#x8FD8;&#x539F;&#xFF0C;&#x6240;&#x4EE5; 6.10 &#x8282;&#x4F1A;&#x5728; <code>exit</code> &#x524D;&#x8C03;&#x7528; <code>clearall</code>&#x3002;</p>
+<p><strong>GDB &#x4E0E; Delve&#x3002;</strong> GDB &#x7684; <code>delete &lt;num&gt;</code>&#x3001;Delve &#x7684; <code>clear &lt;id&gt;</code>/<code>clearall</code> &#x8BED;&#x4E49;&#x4E0E;&#x672C;&#x8282;&#x4E00;&#x81F4;&#x3002;&#x5B83;&#x4EEC;&#x5220;&#x9664;&#x65AD;&#x70B9;&#x65F6;&#x8FD8;&#x4F1A;&#x56DE;&#x9000;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x7684;&#x7EBF;&#x7A0B; PC&#xFF0C;godbgv2 &#x628A;&#x8FD9;&#x90E8;&#x5206;&#x653E;&#x5728; 6.20.5 &#x8282;&#x5B9E;&#x73B0;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x4E2D;&#x52A8;&#x6001;&#x65AD;&#x70B9;&#x7684;&#x79FB;&#x9664;&#x529F;&#x80FD;&#x5B9E;&#x73B0;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#x65AD;&#x70B9;&#x79FB;&#x9664;&#x4E0E;&#x6DFB;&#x52A0;&#x7684;&#x5BF9;&#x79F0;&#x6027;&#x3001;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x53CD;&#x5411;&#x64CD;&#x4F5C;&#xFF0C;&#x4EE5;&#x53CA;&#x5220;&#x9664;&#x65AD;&#x70B9;&#x65F6;&#x7684;&#x65AD;&#x70B9;&#x7F16;&#x53F7;&#x9A8C;&#x8BC1;&#x3001;&#x65AD;&#x70B9;&#x67E5;&#x627E;&#x3001;&#x6307;&#x4EE4;&#x6062;&#x590D;&#x548C;&#x65AD;&#x70B9;&#x96C6;&#x5408;&#x6E05;&#x7406;&#x6B65;&#x9AA4;&#x3002;ptrace&#x64CD;&#x4F5C;PTRACE_PEEKTEXT/PTRACE_POKETEXT&#x7528;&#x4E8E;&#x6307;&#x4EE4;&#x64CD;&#x4F5C;&#xFF0C;PTRACE_PEEKDATA/PTRACE_POKEDATA&#x7528;&#x4E8E;&#x6570;&#x636E;&#x64CD;&#x4F5C;&#xFF0C;&#x4F46;&#x5B9E;&#x9645;&#x529F;&#x80FD;&#x76F8;&#x540C;&#x3002;</p>
-<p>&#x672C;&#x8282;&#x5185;&#x5BB9;&#x5B8C;&#x5584;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x65AD;&#x70B9;&#x7BA1;&#x7406;&#x7684;&#x6838;&#x5FC3;&#x529F;&#x80FD;&#xFF0C;&#x4E0E;&#x524D;&#x9762;&#x7684;&#x65AD;&#x70B9;&#x6DFB;&#x52A0;&#x3001;&#x65AD;&#x70B9;&#x5217;&#x8868;&#x663E;&#x793A;&#x529F;&#x80FD;&#x5171;&#x540C;&#x6784;&#x6210;&#x4E86;&#x5B8C;&#x6574;&#x7684;&#x65AD;&#x70B9;&#x64CD;&#x4F5C;&#x4F53;&#x7CFB;&#xFF0C;&#x4E3A;&#x8BFB;&#x8005;&#x7406;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x5185;&#x90E8;&#x673A;&#x5236;&#x63D0;&#x4F9B;&#x4E86;&#x91CD;&#x8981;&#x7684;&#x5B9E;&#x8DF5;&#x57FA;&#x7840;&#x3002;&#x901A;&#x8FC7;&#x672C;&#x8282;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x638C;&#x63E1;&#x65AD;&#x70B9;&#x79FB;&#x9664;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x5B66;&#x4E60;&#x66F4;&#x590D;&#x6742;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x529F;&#x80FD;&#xFF08;&#x5982;&#x6761;&#x4EF6;&#x65AD;&#x70B9;&#x3001;&#x65AD;&#x70B9;&#x4FEE;&#x6539;&#x7B49;&#xFF09;&#x5960;&#x5B9A;&#x4E86;&#x6280;&#x672F;&#x57FA;&#x7840;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x5B9E;&#x73B0;&#x4E86; <code>clear -n &lt;id&gt;</code>&#xFF1A;&#x6309;&#x7F16;&#x53F7;&#x627E;&#x5230;&#x65AD;&#x70B9;&#xFF0C;&#x628A;&#x8BE5;&#x5730;&#x5740;&#x5904;&#x539F;&#x6709;&#x7684;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#x5199;&#x56DE;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x5E76;&#x4ECE;&#x65AD;&#x70B9;&#x7D22;&#x5F15;&#x4E2D;&#x6458;&#x9664;&#x3002;&#x5B83;&#x662F; 6.6 &#x8282;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x7684;&#x9006;&#x64CD;&#x4F5C;&#xFF1B;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x7684;&#x7EBF;&#x7A0B; PC &#x56DE;&#x9000;&#x7559;&#x5230; 6.20.5 &#x8282;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x4E0B;&#x4E00;&#x8282;&#x5B9E;&#x73B0; <code>clearall</code>&#xFF0C;&#x4E00;&#x6B21;&#x6E05;&#x7A7A;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF1B;&#x518D;&#x5F80;&#x540E;&#x662F; <code>step</code>&#x3001;<code>continue</code>&#xFF0C;&#x5176;&#x4E2D; <code>continue</code> &#x8BA9;&#x7A0B;&#x5E8F;&#x771F;&#x6B63;&#x8FD0;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x5904;&#x3002;&#x65AD;&#x70B9;&#x7684;&quot;&#x589E;&#x3001;&#x67E5;&#x3001;&#x5220;&#x3001;&#x547D;&#x4E2D;&quot;&#x95ED;&#x73AF;&#x5230;&#x8FD9;&#x91CC;&#x53EA;&#x5DEE;&#x6700;&#x540E;&#x4E00;&#x6B65;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;&#x6587;&#x732E;">&#x53C2;&#x8003;&#x6587;&#x732E;</h3>
+<ol>
+<li>ptrace(2) - Linux manual page, <a href="https://man7.org/linux/man-pages/man2/ptrace.2.html" target="_blank">https://man7.org/linux/man-pages/man2/ptrace.2.html</a></li>
+<li>INT3/INT n - Intel 64 and IA-32 Architectures Software Developer&apos;s Manual, <a href="https://www.felixcloutier.com/x86/intn:into:int3:int1" target="_blank">https://www.felixcloutier.com/x86/intn:into:int3:int1</a></li>
+<li>GDB - Breakpoints, Watchpoints, and Catchpoints, <a href="https://sourceware.org/gdb/current/onlinedocs/gdb.html/Breakpoints.html" target="_blank">https://sourceware.org/gdb/current/onlinedocs/gdb.html/Breakpoints.html</a></li>
+<li>Delve - breakpoints and clear commands, <a href="https://github.com/go-delve/delve/tree/master/Documentation/cli" target="_blank">https://github.com/go-delve/delve/tree/master/Documentation/cli</a></li>
+</ol>
 
                                 
                                 </section>
@@ -2516,7 +2544,7 @@ breakpoint[3] 0x4653c2
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"next":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"previous":{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/8-clear.md","mtime":"2026-10-25T15:13:01.612Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T15:13:27.550Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.8 移除断点","level":"1.6.8","depth":2,"next":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"previous":{"title":"6.7 列出断点","level":"1.6.7","depth":2,"path":"6-develop-inst-debugger/7-breakpoints.md","ref":"6-develop-inst-debugger/7-breakpoints.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/8-clear.md","mtime":"2026-10-25T21:33:55.161Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T21:34:27.454Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

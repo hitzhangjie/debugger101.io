@@ -318,12 +318,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-process_start.html">
+        <li class="chapter " data-level="1.6.1" data-path="../../6-develop-inst-debugger/1-exec.html">
             
-                <a href="../../6-develop-inst-debugger/1-process_start.html">
+                <a href="../../6-develop-inst-debugger/1-exec.html">
             
                     
-                    6.1 启动进程
+                    6.1 启动并跟踪进程
             
                 </a>
             
@@ -331,12 +331,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-process_attach.html">
+        <li class="chapter " data-level="1.6.2" data-path="../../6-develop-inst-debugger/2-attach.html">
             
-                <a href="../../6-develop-inst-debugger/2-process_attach.html">
+                <a href="../../6-develop-inst-debugger/2-attach.html">
             
                     
-                    6.2 跟踪进程
+                    6.2 跟踪运行中进程
             
                 </a>
             
@@ -344,12 +344,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-process_start_attach.html">
+        <li class="chapter " data-level="1.6.3" data-path="../../6-develop-inst-debugger/3-debug.html">
             
-                <a href="../../6-develop-inst-debugger/3-process_start_attach.html">
+                <a href="../../6-develop-inst-debugger/3-debug.html">
             
                     
-                    6.3 启动&跟踪进程
+                    6.3 构建并启动调试
             
                 </a>
             
@@ -357,12 +357,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-debug-session.html">
+        <li class="chapter " data-level="1.6.4" data-path="../../6-develop-inst-debugger/4-replay.html">
             
-                <a href="../../6-develop-inst-debugger/4-debug-session.html">
+                <a href="../../6-develop-inst-debugger/4-replay.html">
             
                     
-                    6.4 调试会话
+                    6.4 调试脚本回放
             
                 </a>
             
@@ -2236,7 +2236,7 @@ body {
 <h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;</h3>
 <p>&#x540E;&#x9762;&#x7684;attach&#x3001;exec&#x3001;debug&#x3001;core&#x3001;connect&#xFF0C;&#x8FD9;&#x51E0;&#x4E2A;&#x547D;&#x4EE4;&#x672C;&#x8D28;&#x4E0A;&#x90FD;&#x662F;&#x542F;&#x52A8;&#x4E00;&#x4E2A;debugger backend&#xFF0C;&#x7136;&#x540E;&#x8BA9;debugger frontend&#x548C;debugger backend&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x7684;&#x64CD;&#x4F5C;&#x3002;</p>
 <p>&#x5728;&#x5EFA;&#x7ACB;&#x8FDE;&#x63A5;&#x4E4B;&#x540E;&#xFF0C;debugger frontend&#x5C31;&#x9700;&#x8981;&#x5EFA;&#x7ACB;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E86;&#xFF0C;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E2D;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x952E;&#x5165;&#x8C03;&#x8BD5;&#x547D;&#x4EE4; <code>godbg&gt; COMMAND [flags] [args]</code> &#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x3002;</p>
-<p>&#x5728;&#x7B2C;6&#x7AE0;&#x4ECB;&#x7ECD;&#x6307;&#x4EE4;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x8FC7;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E86;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x5176;&#x5B9E;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x6211;&#x4EEC;&#x5BF9; go-delve/delve &#x8FDB;&#x884C;&#x4E86;&#x5927;&#x5E45;&#x7B80;&#x5316;&#x4E4B;&#x540E;&#xFF1A;</p>
+<p>&#x5728;&#x7B2C;5.7&#x8282;&#x642D;&#x5EFA;&#x8C03;&#x8BD5;&#x5668;&#x9AA8;&#x67B6;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x5DF2;&#x7ECF;&#x4ECB;&#x7ECD;&#x8FC7;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x4EA4;&#x4E92;&#x5F0F;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x4E86;&#xFF08;&#x7B2C;6.4&#x8282;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#x8865;&#x5145;&#x4E86; --init &#x811A;&#x672C;&#x56DE;&#x653E;&#x80FD;&#x529B;&#xFF09;&#x3002;&#x8FD9;&#x91CC;&#xFF0C;&#x5176;&#x5B9E;&#x5927;&#x540C;&#x5C0F;&#x5F02;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x6211;&#x4EEC;&#x5BF9; go-delve/delve &#x8FDB;&#x884C;&#x4E86;&#x5927;&#x5E45;&#x7B80;&#x5316;&#x4E4B;&#x540E;&#xFF1A;</p>
 <ul>
 <li>&#x79FB;&#x9664;&#x4E86;&#x5206;&#x9875;&#x8F93;&#x51FA;&#x64CD;&#x4F5C;&#xFF0C;&#x5C3D;&#x7BA1;&#x5B83;&#x5728;&#x8F93;&#x51FA;&#x5927;&#x91CF;&#x6570;&#x636E;&#x65F6;&#x6BD4;&#x8F83;&#x6709;&#x7528;&#xFF08;&#x6BD4;&#x5982;print&#x4E00;&#x4E2A;&#x6570;&#x636E;&#x6BD4;&#x8F83;&#x591A;&#x7684;&#x53D8;&#x91CF;&#x3001;bt&#x6253;&#x5370;&#x4E00;&#x4E2A;&#x6BD4;&#x8F83;&#x6DF1;&#x7684;&#x8C03;&#x7528;&#x6808;&#x3001;goroutines&#x663E;&#x793A;&#x6240;&#x6709;goroutines&#x5217;&#x8868;&#x7B49;&#xFF09;&#xFF1B;</li>
 <li>&#x79FB;&#x9664;&#x4E86;starlark&#x652F;&#x6301;&#xFF0C;&#x5C3D;&#x7BA1;repl&#x7684;&#x65B9;&#x5F0F;&#x4EA4;&#x4E92;&#x5F0F;&#x6267;&#x884C;starlark&#x547D;&#x4EE4;&#x3001;&#x6216;&#x8005;source&#x6267;&#x884C;starlark&#x811A;&#x672C;&#x5F88;&#x9177;&#x3001;&#x80FD;&#x8FDB;&#x4E00;&#x6B65;&#x589E;&#x5F3A;&#x8C03;&#x8BD5;&#x5668;&#x80FD;&#x529B;&#xFF1B;</li>
@@ -2907,7 +2907,7 @@ func (c *RPCClient) ListPackageVariables(filter string, cfg api.LoadConfig) ([]a
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"9.2.01 打开调试会话","level":"1.9.2.2","depth":3,"next":{"title":"9.2.11 tinydbg attach","level":"1.9.2.3","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","articles":[]},"previous":{"title":"9.2.00 核心调试命令","level":"1.9.2.1","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.md","mtime":"2026-10-21T00:28:28.656Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-21T00:28:57.987Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"9.2.01 打开调试会话","level":"1.9.2.2","depth":3,"next":{"title":"9.2.11 tinydbg attach","level":"1.9.2.3","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.md","articles":[]},"previous":{"title":"9.2.00 核心调试命令","level":"1.9.2.1","depth":3,"path":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","ref":"9-develop-sym-debugger/2-核心调试逻辑/00-cmds.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.md","mtime":"2026-10-25T02:57:51.407Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T02:58:26.181Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

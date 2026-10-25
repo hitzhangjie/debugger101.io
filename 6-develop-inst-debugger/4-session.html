@@ -2494,9 +2494,9 @@ debug.CurrentSession.Start()
 <pre><code class="lang-text"># ch6.4 smoke: &#x9A8C;&#x8BC1;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x53EF;&#x811A;&#x672C;&#x5316;&#x56DE;&#x653E;&#xFF08;--init &#x6279;&#x91CF;&#x6A21;&#x5F0F;&#xFF09;&#xFF0C;&#x9000;&#x51FA;&#x65F6;&#x5584;&#x540E;
 help
 =godbg interactive debugging commands
-=- \[breaks\]
-=- \[execute\]
-=- \[info\]
+=\[breaks\]
+=\[execute\]
+=\[info\]
 exit
 # &#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#xFF08;&#x542B;&#x6279;&#x91CF;&#x56DE;&#x653E;&#x7ED3;&#x675F;&#xFF09;&#x65F6;&#x6309; Kind &#x5584;&#x540E;&#xFF1A;exec &#x542F;&#x52A8;&#x7684; tracee &#x88AB; kill
 =tracee is run by tracer, kill it
@@ -2513,7 +2513,7 @@ godbg interactive debugging commands
 <span class="hljs-built_in">help</span> [<span class="hljs-built_in">command</span>]
   -h, --help   <span class="hljs-built_in">help</span> <span class="hljs-keyword">for</span> <span class="hljs-built_in">help</span>
 
-- [breaks]
+[breaks]
   ...&#xFF08;&#x5206;&#x7EC4;&#x5C55;&#x793A;&#xFF0C;&#x4E0E; 5.7 &#x8282;&#x4E00;&#x81F4;&#xFF09;
 godbg&gt; <span class="hljs-built_in">exit</span>
 tracee is run by tracer, <span class="hljs-built_in">kill</span> it
@@ -2579,7 +2579,7 @@ smoke: all passed
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"next":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},"previous":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-debug.md","ref":"6-develop-inst-debugger/3-debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/4-session.md","mtime":"2026-10-25T14:14:26.178Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T14:14:58.228Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"next":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},"previous":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-debug.md","ref":"6-develop-inst-debugger/3-debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/4-session.md","mtime":"2026-10-25T15:13:01.611Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T15:13:27.550Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

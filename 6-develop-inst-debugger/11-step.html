@@ -2256,76 +2256,67 @@ body {
 <li>&#x4E00;&#x6761;&#x7ECF;&#x8FC7;&#x6307;&#x4EE4;patch&#x540E;&#x7684;&#x591A;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#xFF0C;&#x9996;&#x5B57;&#x8282;&#x5904;&#x4FEE;&#x6539;&#x4E3A;&#x4E86;0xCC&#xFF0C;&#x5F53;&#x524D;&#x5BC4;&#x5B58;&#x5668;PC&#x503C;&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x8BE5;&#x591A;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x7684;&#x7B2C;&#x4E8C;&#x4E2A;&#x5B57;&#x8282;&#x7684;&#x5730;&#x5740;&#xFF0C;&#x800C;&#x975E;&#x9996;&#x5B57;&#x8282;&#x7684;&#x5730;&#x5740;&#x3002;&#x5982;&#x679C;&#x5BF9;PC&#x503C;&#x4E0D;&#x505A;&#x4FEE;&#x6539;&#xFF0C;&#x5904;&#x7406;&#x5668;&#x6267;&#x884C;&#x7684;&#x65F6;&#x5019;&#x4ECE;&#x7B2C;&#x4E8C;&#x5B57;&#x8282;&#x5F00;&#x59CB;&#x89E3;&#x7801;&#x4F1A;&#x89E3;&#x7801;&#x5931;&#x8D25;&#xFF0C;&#x65E0;&#x6CD5;&#x6267;&#x884C;&#x6307;&#x4EE4;&#xFF1B;</li>
 <li>&#x4E00;&#x6761;&#x5355;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#xFF0C;&#x5982;&#x679C;&#x6211;&#x4EEC;&#x76F4;&#x63A5;decode&#x4E0B;&#x4E00;&#x4E2A;&#x5730;&#x5740;&#x5904;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x8FD8;&#x4F1A;&#x6F0F;&#x6389;&#x65AD;&#x70B9;&#x5904;&#x539F;&#x6765;&#x7684;&#x4E00;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#xFF1B;</li>
 </ol>
-<p>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;step&#x6B63;&#x5E38;&#x6267;&#x884C;&#xFF0C;&#x5728; <code>ptrace(PTRACE_SINGLESTEP,...)</code> &#x4E4B;&#x524D;&#xFF0C;&#x9700;&#x8981;&#x9996;&#x5148;&#x901A;&#x8FC7; <code>ptrace(PTRACE_PEEKTEXT,...)</code> &#x53BB;&#x8BFB;&#x53D6; <code>PC-1</code> &#x5730;&#x5740;&#x5904;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5982;&#x679C;&#x662F;0xCC&#xFF0C;&#x5219;&#x8868;&#x660E;&#x6B64;&#x5904;&#x4E3A;&#x4E00;&#x4E2A;&#x65AD;&#x70B9;&#xFF0C;&#x9700;&#x8981;&#x5C06;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x524D;&#x7684;&#x539F;&#x59CB;&#x6570;&#x636E;&#x8FD8;&#x539F;&#x3001;PC=PC-1&#xFF0C;&#x7136;&#x540E;&#x518D;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x4E3A;&#x4E86;&#x4FDD;&#x8BC1;step&#x6B63;&#x5E38;&#x6267;&#x884C;&#xFF0C;&#x5728; <code>ptrace(PTRACE_SINGLESTEP,...)</code> &#x4E4B;&#x524D;&#xFF0C;&#x5148;&#x68C0;&#x67E5; <code>PC-1</code> &#x5904;&#x662F;&#x5426;&#x4E3A;&#x6211;&#x4EEC;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;&#xFF1A;&#x4E0D;&#x662F;&#x65AD;&#x70B9;&#x5C31;&#x76F4;&#x63A5;&#x5355;&#x6B65;&#xFF1B;&#x662F;&#x65AD;&#x70B9;&#x5219;&#x5148;&#x8FD8;&#x539F;&#x8BE5;&#x5904;&#x7684;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#xFF0C;&#x518D;&#x628A; PC &#x56DE;&#x9000;&#x5230; <code>PC-1</code>&#xFF0C;&#x5355;&#x6B65;&#x6267;&#x884C;&#x5B8C;&#x539F;&#x6307;&#x4EE4;&#x540E;&#x91CD;&#x65B0;&#x628A;&#x65AD;&#x70B9;&#x52A0;&#x56DE;&#x53BB;&#x3002;</p>
 <p><strong>file&#xFF1A;cmd/debug/step.go</strong></p>
 <pre><code class="lang-go"><span class="hljs-keyword">package</span> debug
 
 <span class="hljs-keyword">import</span> (
     <span class="hljs-string">&quot;fmt&quot;</span>
-    <span class="hljs-string">&quot;syscall&quot;</span>
 
+    <span class="hljs-string">&quot;github.com/hitzhangjie/godbgv2/pkg/service/api&quot;</span>
     <span class="hljs-string">&quot;github.com/spf13/cobra&quot;</span>
 )
 
 <span class="hljs-keyword">var</span> stepCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;step&quot;</span>,
-    Short: <span class="hljs-string">&quot;&#x6267;&#x884C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&quot;</span>,
+    Use:     <span class="hljs-string">&quot;step&quot;</span>,
+    Short:   <span class="hljs-string">&quot;&#x6267;&#x884C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&quot;</span>,
+    Aliases: []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;s&quot;</span>},
     Annotations: <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{
-        cmdGroupKey: cmdGroupCtrlFlow,
+        cmdGroupAnnotation: cmdGroupCtrlFlow,
     },
-    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
-        dbp := target.DBPProcess
+    RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) (err error) {
 
         <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
             <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
                 <span class="hljs-keyword">return</span>
             }
-            <span class="hljs-comment">// display current pc</span>
-            regs, err := dbp.ReadRegister(dbp.Process.Pid)
+            <span class="hljs-comment">// &#x5C55;&#x793A;&#x6B65;&#x8FDB;&#x540E;&#x7684;&#x5F53;&#x524D; PC</span>
+            regs, err := Client.ReadRegs()
             <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-                fmt.Printf(<span class="hljs-string">&quot;get regs error: %v&quot;</span>, err)
+                fmt.Printf(<span class="hljs-string">&quot;get regs error: %v\n&quot;</span>, err)
                 <span class="hljs-keyword">return</span>
             }
             fmt.Printf(<span class="hljs-string">&quot;single step ok, current PC: %#x\n&quot;</span>, regs.PC())
         }()
 
-        <span class="hljs-comment">// &#x8BFB;&#x53D6;PC&#x503C;</span>
-        regs, err := dbp.ReadRegister(dbp.Process.Pid)
+        <span class="hljs-comment">// &#x8BFB;&#x53D6;&#x5F53;&#x524D; PC</span>
+        regs, err := Client.ReadRegs()
         <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
             <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;get regs error: %v&quot;</span>, err)
         }
 
-        <span class="hljs-comment">// isn&apos;t a breakpoint</span>
-        _, ok := dbp.Breakpoint(<span class="hljs-keyword">uintptr</span>(regs.PC() - <span class="hljs-number">1</span>))
-        <span class="hljs-keyword">if</span> !ok {
-            <span class="hljs-keyword">if</span> _, err = dbp.SingleStep(dbp.Process.Pid); err != <span class="hljs-literal">nil</span> {
-                <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;single step err: %v&quot;</span>, err)
+        <span class="hljs-comment">// PC-1 &#x5904;&#x4E0D;&#x662F;&#x65AD;&#x70B9;&#xFF1A;&#x76F4;&#x63A5;&#x5355;&#x6B65;&#x6267;&#x884C;</span>
+        addr := regs.PC() - <span class="hljs-number">1</span>
+        <span class="hljs-keyword">if</span> err := Client.RestoreInstruction(addr); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">if</span> err == api.ErrBreakpointNotExisted {
+                <span class="hljs-keyword">if</span> err := Client.Step(); err != <span class="hljs-literal">nil</span> {
+                    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;single step error: %v&quot;</span>, err)
+                }
+                <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
             }
-            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
-        }
-
-        <span class="hljs-comment">// is a breakpoint</span>
-        brk, err := dbp.RestoreInstruction(<span class="hljs-keyword">uintptr</span>(regs.PC() - <span class="hljs-number">1</span>))
-        <span class="hljs-keyword">if</span> err == target.ErrBreakpointNotExisted {
-            <span class="hljs-comment">// this 0xcc isn&apos;t patched by debugger, and this 0xcc is already executed,</span>
-            <span class="hljs-comment">// just single step</span>
-            _, err = dbp.SingleStep(dbp.Process.Pid)
-            <span class="hljs-keyword">return</span> err
-        }
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-comment">// debugger inner error</span>
+            <span class="hljs-comment">// &#x8C03;&#x8BD5;&#x5668;&#x5185;&#x90E8;&#x9519;&#x8BEF;</span>
             <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;clear breakpoint err: %v&quot;</span>, err)
         }
-        <span class="hljs-keyword">defer</span> dbp.AddBreakpoint(brk.Addr)
 
-        <span class="hljs-comment">// rewind pc by 1</span>
-        regs.SetPC(regs.PC() - <span class="hljs-number">1</span>)
-        <span class="hljs-keyword">if</span> err = dbp.WriteRegister(dbp.Process.Pid, regs); err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> err
+        <span class="hljs-comment">// PC-1 &#x5904;&#x662F;&#x65AD;&#x70B9;&#xFF1A;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x6307;&#x4EE4; &#x2192; &#x56DE;&#x9000; PC &#x2192; &#x5355;&#x6B65; &#x2192; &#x91CD;&#x65B0;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;</span>
+        <span class="hljs-keyword">defer</span> Client.AddBreakpoint(addr)
+
+        regs.SetPC(addr)
+        <span class="hljs-keyword">if</span> err = Client.WriteRegs(regs); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;write regs error: %v&quot;</span>, err)
         }
 
-        <span class="hljs-comment">// single step</span>
-        <span class="hljs-keyword">if</span> _, err = dbp.SingleStep(dbp.Process.Pid); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">if</span> err := Client.Step(); err != <span class="hljs-literal">nil</span> {
             <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;single step error: %v&quot;</span>, err)
         }
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
@@ -2336,7 +2327,40 @@ body {
     debugRootCmd.AddCommand(stepCmd)
 }
 </code></pre>
-<p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;step&#x547D;&#x4EE4;&#x7684;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5341;&#x5206;&#x53CB;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
+<p>&#x547D;&#x4EE4;&#x5C42;&#x7EDF;&#x4E00;&#x7ECF; <code>api.Client</code> &#x8C03;&#x7528;&#x5E95;&#x5C42;&#x80FD;&#x529B;&#xFF1A;<code>RestoreInstruction(addr)</code> &#x5728; <code>addr</code> &#x5904;&#x6CA1;&#x6709;&#x65AD;&#x70B9;&#x65F6;&#x8FD4;&#x56DE; <code>api.ErrBreakpointNotExisted</code>&#xFF0C;&#x547D;&#x4EE4;&#x5C42;&#x636E;&#x6B64;&#x533A;&#x5206;&#x201C;PC-1 &#x4E0D;&#x662F;&#x65AD;&#x70B9;&#x201D;&#x548C;&#x201C;&#x8C03;&#x8BD5;&#x5668;&#x5185;&#x90E8;&#x9519;&#x8BEF;&#x201D;&#xFF1B;<code>ReadRegs</code>&#x3001;<code>WriteRegs</code> &#x8D1F;&#x8D23;&#x8BFB;&#x5199;&#x5BC4;&#x5B58;&#x5668;&#xFF0C;<code>api.Registers</code> &#x63D0;&#x4F9B; <code>PC()</code>&#x3001;<code>SetPC()</code> &#x8BFB;&#x5199;&#x6307;&#x4EE4;&#x6307;&#x9488;&#x3002;<code>Client.Step()</code> &#x7531; <code>debugger</code> &#x95E8;&#x9762;&#x8F6C;&#x53D1;&#x5230; <code>pkg/target</code> &#x7684; <code>SingleStep</code>&#xFF0C;&#x7531;&#x5B83;&#x53D1;&#x8D77; <code>ptrace(PTRACE_SINGLESTEP,...)</code> &#x5E76;&#x7B49;&#x5F85; tracee &#x72B6;&#x6001;&#x53D8;&#x5316;&#xFF1A;</p>
+<p><strong>file&#xFF1A;pkg/target/step.go</strong></p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> target
+
+<span class="hljs-keyword">import</span> (
+    <span class="hljs-string">&quot;fmt&quot;</span>
+    <span class="hljs-string">&quot;syscall&quot;</span>
+)
+
+<span class="hljs-comment">// SingleStep &#x8BA9;&#x6307;&#x5B9A;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x4E00;&#x6761;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// MUST: &#x5F53;&#x53D1;&#x8D77;&#x4E86;&#x67D0;&#x4E9B;&#x5BF9; tracee &#x6267;&#x884C;&#x63A7;&#x5236;&#x7684; ptrace request &#x4E4B;&#x540E;&#xFF0C;&#x8981;&#x8C03;&#x7528;</span>
+<span class="hljs-comment">// syscall.Wait &#x7B49;&#x5F85;&#x5E76;&#x83B7;&#x53D6; tracee &#x72B6;&#x6001;&#x53D8;&#x5316;&#x3002;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) SingleStep(pid <span class="hljs-keyword">int</span>) (*syscall.WaitStatus, error) {
+    err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        <span class="hljs-keyword">return</span> syscall.PtraceSingleStep(pid)
+    })
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
+    <span class="hljs-keyword">var</span> (
+        wstatus syscall.WaitStatus
+        rusage  syscall.Rusage
+    )
+    _, err = syscall.Wait4(pid, &amp;wstatus, syscall.WALL, &amp;rusage)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;wait error: %v&quot;</span>, err)
+    }
+
+    <span class="hljs-keyword">return</span> &amp;wstatus, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x4EE5;&#x4E0A;&#x5C31;&#x662F;step&#x547D;&#x4EE4;&#x53CA;&#x76F8;&#x5173;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x4F46;&#x8FD9;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x5341;&#x5206;&#x53CB;&#x597D;&#x7684;&#x5B9E;&#x73B0;&#xFF1A;</p>
 <ul>
 <li>&#x5B83;&#x786E;&#x5B9E;&#x5B9E;&#x73B0;&#x4E86;&#x9010;&#x6307;&#x4EE4;&#x6267;&#x884C;&#xFF0C;&#x5B8C;&#x6210;&#x4E86;&#x672C;&#x8282;&#x76EE;&#x6807;&#xFF1B;</li>
 <li>&#x6BCF;&#x9010;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x4E4B;&#x540E;&#xFF0C;&#x5B83;&#x8FD8;&#x80FD;&#x6253;&#x5370;&#x5F53;&#x524D;&#x5BC4;&#x5B58;&#x5668;PC&#x503C;&#xFF0C;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x786E;&#x5B9A;&#x4E0B;&#x6761;&#x5F85;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x5730;&#x5740;&#xFF1B;</li>
@@ -2350,36 +2374,41 @@ body {
    ...
 </code></pre><p>&#x8FD9;&#x91CC;&#x4F1A;&#x5F71;&#x54CD;&#x5230;&#x8C03;&#x8BD5;&#x4F53;&#x9A8C;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x5728;&#x540E;&#x7EED;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E88;&#x4EE5;&#x5B8C;&#x5584;&#x3002;</p>
 <blockquote>
-<p>ps&#xFF1A;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x662F; <a href="https://github.com/hitzhangjie/godbg" target="_blank">hitzhangjie/godbg</a> &#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x6211;&#x4EEC;&#x91CD;&#x70B9;&#x4ECB;&#x7ECD;&#x4E86;step&#x7684;&#x5B9E;&#x73B0;&#x3002;&#x53E6;&#x5916;&#x5728; <a href="https://github.com/hitzhangjie/golang-debugger-lessons" target="_blank">hitzhangjie/golang-debuger-lessons</a> /11_step &#x4E0B;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E2A;step&#x6267;&#x884C;&#x7684;&#x793A;&#x4F8B;&#xFF0C;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x6E90;&#x6587;&#x4EF6;&#xFF0C;&#x4E0E;&#x5176;&#x4ED6;demo&#x4E92;&#x4E0D;&#x5F71;&#x54CD;&#xFF0C;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x6309;&#x7167;&#x4F60;&#x7684;&#x60F3;&#x6CD5;&#x4FEE;&#x6539;&#x6D4B;&#x8BD5;&#x4E0B;&#xFF0C;&#x4E0D;&#x7528;&#x62C5;&#x5FC3;&#x6539;&#x574F;&#x6574;&#x4E2A; godbg&#x7684;&#x95EE;&#x9898;&#x3002;</p>
-<p>FIXME(demo) &#x8FD9;&#x91CC;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x662F;godbg&#x4E2D;&#x7684;&#x65E9;&#x671F;&#x5B9E;&#x73B0;&#x7248;&#x672C;&#x4E86;&#xFF0C;&#x540E;&#x7EED;&#x4E3A;&#x4E86;&#x589E;&#x5F3A;&#x7EF4;&#x62A4;&#x6027;&#xFF0C;&#x65E9;&#x5C31;&#x8FDB;&#x884C;&#x4E86;&#x5927;&#x8303;&#x56F4;&#x7684;&#x91CD;&#x6784;&#x3002;</p>
+<p>ps&#xFF1A;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53D6;&#x81EA; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.11</code>&#x3002;&#x4E3A;&#x4E86;&#x8BA9;&#x6B63;&#x6587;&#x805A;&#x7126;&#x5728; step &#x7684;&#x6D41;&#x7A0B;&#x4E0A;&#xFF0C;&#x8FD9;&#x91CC;&#x53EA;&#x5C55;&#x5F00;&#x4E86;&#x547D;&#x4EE4;&#x5C42;&#x548C;&#x5355;&#x6B65;&#x6267;&#x884C;&#x7684;&#x5E95;&#x5C42;&#x5B9E;&#x73B0;&#xFF1B;&#x5BC4;&#x5B58;&#x5668;&#x8BFB;&#x5199;&#x3001;<code>api.Client</code> &#x63A5;&#x53E3;&#x548C; <code>debugger</code> &#x95E8;&#x9762;&#x7684;&#x6539;&#x52A8;&#x5C5E;&#x4E8E;&#x914D;&#x5957;&#x7684;&#x652F;&#x6491;&#x4EE3;&#x7801;&#x3002;</p>
 </blockquote>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
-<p>&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x7A0B;&#x5E8F;&#xFF0C;&#x83B7;&#x53D6;&#x5176;&#x8FDB;&#x7A0B;pid&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C; <code>godbg attach &lt;pid&gt;</code>&#x5BF9;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#xFF0C;&#x7B49;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5C31;&#x7EEA;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x8F93;&#x5165; <code>disass</code> &#x53CD;&#x6C47;&#x7F16;&#x770B;&#x4E0B;&#x5F53;&#x524D;&#x6307;&#x4EE4;&#x5730;&#x5740;&#x4E4B;&#x540E;&#x7684;&#x6C47;&#x7F16;&#x6307;&#x4EE4;&#x6709;&#x54EA;&#x4E9B;&#x3002;</p>
-<pre><code class="lang-bash">godbg&gt; disass
-0x40ab47 movb <span class="hljs-variable">$0x0</span>,0x115(%rdx)
-0x40ab4e mov 0x18(%rsp),%rcx
-0x40ab53 mov 0x38(%rsp),%rdx
-0x40ab58 mov (%rdx),%ebx
-0x40ab5a <span class="hljs-built_in">test</span> %ebx,%ebx
-0x40ab5c jne 0x4c
-0x40ab5e mov 0x30(%rax),%rbx
-0x40ab62 movb <span class="hljs-variable">$0x1</span>,0x115(%rbx)
-0x40ab69 mov %rdx,(%rsp)
-0x40ab6d movl <span class="hljs-variable">$0x0</span>,0x8(%rsp)
+<p>&#x6D4B;&#x8BD5;&#x5BF9;&#x8C61;&#x662F; godbgv2 &#x81EA;&#x5E26;&#x7684; <code>_fixtures/loop</code>&#xFF0C;&#x5B83;&#x6BCF;&#x79D2;&#x6253;&#x5370;&#x4E00;&#x6B21; pid &#x548C;&#x5FAA;&#x73AF;&#x8BA1;&#x6570;&#xFF0C;&#x7A0B;&#x5E8F;&#x5165;&#x53E3;&#x56FA;&#x5B9A;&#x4E3A; <code>0x478120</code>&#xFF08;Makefile &#x56FA;&#x5B9A;&#x4E86;&#x6784;&#x5EFA;&#x6240;&#x7528;&#x7684; Go &#x5DE5;&#x5177;&#x94FE;&#x7248;&#x672C;&#xFF09;&#x3002;&#x5207;&#x5230;&#x672C;&#x8282;&#x4EE3;&#x7801;&#x5E76;&#x6784;&#x5EFA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git checkout ch6.11
+$ make build
+$ make fixtures
 </code></pre>
-<p>&#x7136;&#x540E;&#x5C1D;&#x8BD5;&#x6267;&#x884C; <code>step</code> &#x547D;&#x4EE4;&#xFF0C;&#x89C2;&#x5BDF;&#x8F93;&#x51FA;&#x60C5;&#x51B5;&#x3002;</p>
-<pre><code class="lang-bash">godbg&gt; step
-step
-single step ok, current PC: 0x40ab4e
+<p>&#x5148;&#x7528; <code>exec</code> &#x542F;&#x52A8; target&#xFF0C;&#x505C;&#x5728;&#x5165;&#x53E3;&#x65F6;&#x8FDE;&#x7EED;&#x6267;&#x884C; <code>step</code>&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 2249900 launched, stopped by SIGTRAP
 godbg&gt; step
-step
-single step ok, current PC: 0x40ab53
+single step ok, current PC: 0x4749e0
 godbg&gt; step
-step
-single step ok, current PC: 0x40ab58
-godbg&gt;
+single step ok, current PC: 0x4749e4
+godbg&gt; step
+single step ok, current PC: 0x4749e9
+godbg&gt; <span class="hljs-built_in">exit</span>
+tracee is run by tracer, <span class="hljs-built_in">kill</span> it
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x6267;&#x884C;&#x4E86;step&#x6307;&#x4EE4;3&#x6B21;&#xFF0C;step&#x6BCF;&#x6B21;&#x6267;&#x884C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x4E4B;&#x540E;&#xFF0C;&#x4F1A;&#x8F93;&#x51FA;&#x6267;&#x884C;&#x6307;&#x4EE4;&#x540E;&#x7684;PC&#x503C;&#xFF0C;&#x4F9D;&#x6B21;&#x662F;0x40ab4e&#x3001;0x40ab53&#x3001;0x40ab58&#xFF0C;&#x4F9D;&#x6B21;&#x662F;&#x4E0B;&#x6761;&#x6307;&#x4EE4;&#x7684;&#x9996;&#x5730;&#x5740;&#x3002;</p>
+<p>&#x542F;&#x52A8;&#x540E; PC &#x505C;&#x5728;&#x7A0B;&#x5E8F;&#x5165;&#x53E3; <code>0x478120</code>&#xFF0C;&#x5165;&#x53E3;&#x7B2C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x662F;&#x4E00;&#x6761;&#x8DF3;&#x8F6C;&#x6307;&#x4EE4;&#xFF0C;&#x6267;&#x884C;&#x540E; PC &#x53D8;&#x6210; <code>0x4749e0</code>&#xFF08;<code>_rt0_amd64</code>&#xFF09;&#xFF1B;&#x4E4B;&#x540E;&#x6BCF;&#x6267;&#x884C;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#xFF0C;PC &#x4F9D;&#x6B21;&#x63A8;&#x8FDB;&#x5230; <code>0x4749e4</code>&#x3001;<code>0x4749e9</code>&#x3002;&#x8FD9;&#x6761;&#x8DEF;&#x5F84;&#x4E0A; <code>PC-1</code> &#x90FD;&#x4E0D;&#x662F;&#x65AD;&#x70B9;&#xFF0C;<code>step</code> &#x76F4;&#x63A5;&#x8C03;&#x7528; <code>PTRACE_SINGLESTEP</code> &#x5355;&#x6B65;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x518D;&#x770B; <code>PC-1</code> &#x6070;&#x597D;&#x662F;&#x65AD;&#x70B9;&#x7684;&#x60C5;&#x51B5;&#x3002;&#x91CD;&#x65B0;&#x542F;&#x52A8; target&#xFF0C;&#x5728;&#x5165;&#x53E3;&#x5730;&#x5740;&#x4E0B;&#x65AD;&#x70B9;&#xFF0C;&#x7136;&#x540E;&#x8FDE;&#x7EED; <code>step</code>&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 2249926 launched, stopped by SIGTRAP
+godbg&gt; <span class="hljs-built_in">break</span> 0x478120
+breakpoint 1 added at 0x478120
+godbg&gt; step
+single step ok, current PC: 0x478121
+godbg&gt; step
+single step ok, current PC: 0x4749e0
+godbg&gt; step
+single step ok, current PC: 0x4749e4
+</code></pre>
+<p>&#x7B2C;&#x4E00;&#x6B21; <code>step</code> &#x65F6; PC &#x8FD8;&#x662F; <code>0x478120</code>&#xFF0C;<code>PC-1</code> &#x4E0D;&#x662F;&#x65AD;&#x70B9;&#xFF0C;&#x4E8E;&#x662F;&#x76F4;&#x63A5;&#x5355;&#x6B65;&#xFF1B;&#x4F46;&#x5165;&#x53E3;&#x9996;&#x5B57;&#x8282;&#x5DF2;&#x7ECF;&#x88AB;&#x65AD;&#x70B9;&#x6539;&#x5199;&#x6210; <code>0xCC</code>&#xFF0C;&#x6240;&#x4EE5;&#x5B9E;&#x9645;&#x6267;&#x884C;&#x7684;&#x662F; <code>int3</code>&#xFF0C;PC &#x524D;&#x8FDB;&#x5230; <code>0x478121</code>&#x3002;</p>
+<p>&#x7B2C;&#x4E8C;&#x6B21; <code>step</code> &#x65F6; <code>PC-1=0x478120</code> &#x547D;&#x4E2D;&#x65AD;&#x70B9;&#xFF0C;<code>step</code> &#x5148;&#x8FD8;&#x539F;&#x539F;&#x59CB;&#x6307;&#x4EE4;&#x3001;&#x628A; PC &#x56DE;&#x9000;&#x5230; <code>0x478120</code>&#xFF0C;&#x518D;&#x5355;&#x6B65;&#x6267;&#x884C;&#x539F;&#x6765;&#x7684;&#x8DF3;&#x8F6C;&#x6307;&#x4EE4;&#xFF0C;PC &#x843D;&#x5230; <code>0x4749e0</code>&#xFF0C;&#x6700;&#x540E;&#x91CD;&#x65B0;&#x628A;&#x65AD;&#x70B9;&#x52A0;&#x56DE;&#x53BB;&#x3002;&#x7B2C;&#x4E09;&#x6B21; <code>step</code> &#x4E0E;&#x524D;&#x9762;&#x7684;&#x666E;&#x901A;&#x6B65;&#x8FDB;&#x76F8;&#x540C;&#xFF0C;PC &#x63A8;&#x8FDB;&#x5230; <code>0x4749e4</code>&#x3002;</p>
 <p>&#x4E0D;&#x7981;&#x8981;&#x95EE;&#xFF0C;&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>ptrace(PTRACE_SINGLESTEP,...)</code> &#x65F6;&#xFF0C;&#x5185;&#x6838;&#x662F;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x9010;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x7684;&#xFF1F;&#x53EA;&#x6267;&#x884C;&#x4E00;&#x6761;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x540E;&#x7ACB;&#x5373;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x6709;&#x70B9;&#x5947;&#x5999;&#xFF01;</p>
 <h3 id="&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#xFF1A;singlestep">&#x66F4;&#x591A;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#xFF1A;SINGLESTEP</h3>
 <p>&#x5185;&#x6838;&#x662F;&#x5982;&#x4F55;&#x5904;&#x7406;PTRACE_SINGLESTEP&#x8BF7;&#x6C42;&#x7684;&#x5462;&#xFF1F;SINGLESTEP&#x786E;&#x5B9E;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5728;man(2)&#x624B;&#x518C;&#x91CC;&#x9762;&#x5E76;&#x6CA1;&#x6709;&#x627E;&#x5230;&#x592A;&#x591A;&#x6709;&#x4EF7;&#x503C;&#x7684;&#x4FE1;&#x606F;&#xFF1A;</p>
@@ -2466,7 +2495,7 @@ The trap flag is reset when the 8086 does a type-1 interrupt, so the single-step
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.11 步进操作","level":"1.6.11","depth":2,"next":{"title":"6.12 运行到断点","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-continue.md","ref":"6-develop-inst-debugger/12-continue.md","articles":[]},"previous":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/11-step.md","mtime":"2026-10-25T21:33:55.160Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T21:34:27.454Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.11 步进操作","level":"1.6.11","depth":2,"next":{"title":"6.12 运行到断点","level":"1.6.12","depth":2,"path":"6-develop-inst-debugger/12-continue.md","ref":"6-develop-inst-debugger/12-continue.md","articles":[]},"previous":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"path":"6-develop-inst-debugger/10-clearall-atexit.md","ref":"6-develop-inst-debugger/10-clearall-atexit.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/11-step.md","mtime":"2026-10-25T22:48:21.344Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T22:48:48.227Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

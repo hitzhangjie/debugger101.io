@@ -2259,9 +2259,10 @@ body {
 <ol>
 <li><strong>&#x6307;&#x4EE4;&#x4E0D;&#x5B8C;&#x6574;</strong>&#xFF1A;&#x591A;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x88AB;patch&#x540E;&#x53D8;&#x6210;&#x4E0D;&#x5B8C;&#x6574;&#x7684;&#x6307;&#x4EE4;&#x5E8F;&#x5217;</li>
 <li><strong>SIGTRAP&#x4FE1;&#x53F7;</strong>&#xFF1A;&#x5F53;tracee&#x6267;&#x884C;&#x5230;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x65F6;&#xFF0C;&#x4F1A;&#x89E6;&#x53D1;SIGTRAP&#x4FE1;&#x53F7;</li>
-<li><strong>&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;</strong>&#xFF1A;&#x5728;&#x6CA1;&#x6709;tracer&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5185;&#x6838;&#x7684;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x662F;&#x6740;&#x6B7B;&#x8BE5;tracee&#x8FDB;&#x7A0B;</li>
+<li><strong>&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;</strong>&#xFF1A;SIGTRAP&#x7684;&#x9ED8;&#x8BA4;&#x52A8;&#x4F5C;&#x662F;&#x7EC8;&#x6B62;&#x8FDB;&#x7A0B;&#x5E76;&#x4EA7;&#x751F;core dump&#x3002;Go&#x7A0B;&#x5E8F;&#x66F4;&#x7279;&#x6B8A;&#x4E00;&#x4E9B;&#xFF1A;runtime&#x81EA;&#x5DF1;&#x63A5;&#x7BA1;&#x4E86;SIGTRAP&#xFF0C;&#x5728;&#x6CA1;&#x6709;tracer&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x4F1A;&#x628A;<code>int3</code>&#x5F53;&#x6210;&#x8FD0;&#x884C;&#x65F6;&#x5D29;&#x6E83;&#xFF0C;&#x6253;&#x5370;goroutine&#x6808;&#x540E;&#x9000;&#x51FA;</li>
 </ol>
 <p>&#x6211;&#x4EEC;&#x5FC5;&#x987B;&#x8DB3;&#x591F;&#x91CD;&#x89C6;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#xFF0C;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00;atexit&#x7684;&#x673A;&#x5236;&#xFF0C;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x81EA;&#x52A8;&#x6E05;&#x7406;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.10</code>&#xFF0C;<code>git diff ch6.9 ch6.10</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x7684;&#x6539;&#x52A8;&#x3002;&#x5176;&#x4E2D; <code>api.Client</code> &#x65B9;&#x6CD5;&#x987A;&#x5E8F;&#x8C03;&#x6574;&#x3001;<code>State</code> &#x4ECE; <code>client.go</code> &#x642C;&#x5230; <code>types.go</code>&#x3001;&#x95E8;&#x9762;&#x65B9;&#x6CD5;&#x91CD;&#x65B0;&#x6392;&#x5E8F;&#x5C5E;&#x4E8E;&#x4EE3;&#x7801;&#x6574;&#x7406;&#xFF0C;&#x672C;&#x8282;&#x53EA;&#x5C55;&#x5F00;&#x4E0E;&#x9000;&#x51FA;&#x6E05;&#x7406;&#x76F4;&#x63A5;&#x76F8;&#x5173;&#x7684;&#x5B9E;&#x73B0;&#x3002;</p>
 <h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x6E05;&#x7406;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x6E05;&#x7406;</h3>
 <p>&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x4E0A;&#x8FF0;&#x95EE;&#x9898;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x81EA;&#x52A8;&#x6E05;&#x7406;&#x6240;&#x6709;&#x5DF2;&#x6DFB;&#x52A0;&#x7684;&#x65AD;&#x70B9;&#x3002;&#x8FD9;&#x8981;&#x6C42;&#x6211;&#x4EEC;&#xFF1A;</p>
 <ol>
@@ -2270,14 +2271,14 @@ body {
 <li><strong>&#x4F18;&#x96C5;&#x9000;&#x51FA;</strong>&#xFF1A;&#x786E;&#x4FDD;tracee&#x8FDB;&#x7A0B;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x540E;&#x80FD;&#x591F;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x8FD0;&#x884C;</li>
 </ol>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00; <code>atexit</code>&#x7684;&#x673A;&#x5236;&#x6765;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x3002;&#x5177;&#x4F53;&#x5B9E;&#x73B0;&#x5305;&#x62EC;&#xFF1A;</p>
+<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00; <code>atexit</code>&#x7684;&#x673A;&#x5236;&#x6765;&#x5B9E;&#x73B0;&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x3002;&#x6539;&#x52A8;&#x96C6;&#x4E2D;&#x5728;&#x56DB;&#x5904;&#xFF1A;&#x4F1A;&#x8BDD;&#x7684; <code>AtExit</code> &#x673A;&#x5236;&#x3001;<code>Cleanup</code> &#x7684;&#x5584;&#x540E;&#x903B;&#x8F91;&#x3001;&#x4F1A;&#x8BDD;&#x542F;&#x52A8;&#x65F6;&#x7684;&#x6CE8;&#x518C;&#xFF0C;&#x4EE5;&#x53CA;&#x4FE1;&#x53F7;&#x9000;&#x51FA;&#x8DEF;&#x5F84;&#x4E0A;&#x7684;&#x663E;&#x5F0F;&#x8C03;&#x7528;&#x3002;</p>
 <h4 id="1-debugsession&#x7ED3;&#x6784;&#x4F53;&#x6269;&#x5C55;">1. DebugSession&#x7ED3;&#x6784;&#x4F53;&#x6269;&#x5C55;</h4>
 <pre><code class="lang-go"><span class="hljs-keyword">type</span> DebugSession <span class="hljs-keyword">struct</span> {
     <span class="hljs-comment">// ... &#x5176;&#x4ED6;&#x5B57;&#x6BB5;</span>
-    defers []<span class="hljs-keyword">func</span>() <span class="hljs-comment">// &#x9000;&#x51FA;&#x524D;&#x9700;&#x8981;&#x6267;&#x884C;&#x7684;&#x6E05;&#x7406;&#x51FD;&#x6570;</span>
+    defers []<span class="hljs-keyword">func</span>()
 }
 
-<span class="hljs-comment">// AtExit &#x6CE8;&#x518C;&#x9000;&#x51FA;&#x524D;&#x7684;&#x6E05;&#x7406;&#x51FD;&#x6570;</span>
+<span class="hljs-comment">// AtExit &#x6CE8;&#x518C;&#x9000;&#x51FA;&#x4F1A;&#x8BDD;&#x65F6;&#x8981;&#x6267;&#x884C;&#x7684;&#x6E05;&#x7406;&#x51FD;&#x6570;&#xFF08;&#x540E;&#x6CE8;&#x518C;&#x5148;&#x6267;&#x884C;&#xFF09;</span>
 <span class="hljs-keyword">func</span> (s *DebugSession) AtExit(fn <span class="hljs-keyword">func</span>()) *DebugSession {
     s.defers = <span class="hljs-built_in">append</span>(s.defers, fn)
     <span class="hljs-keyword">return</span> s
@@ -2288,7 +2289,6 @@ body {
     s.liner.SetCompleter(completer)
     s.liner.SetTabCompletionStyle(liner.TabPrints)
 
-    <span class="hljs-comment">// &#x6CE8;&#x518C;&#x9000;&#x51FA;&#x524D;&#x7684;&#x6E05;&#x7406;&#x903B;&#x8F91;</span>
     <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
         <span class="hljs-keyword">for</span> idx := <span class="hljs-built_in">len</span>(s.defers) - <span class="hljs-number">1</span>; idx &gt;= <span class="hljs-number">0</span>; idx-- {
             s.defers[idx]()
@@ -2298,149 +2298,200 @@ body {
     <span class="hljs-comment">// ... &#x5176;&#x4ED6;&#x542F;&#x52A8;&#x903B;&#x8F91;</span>
 }
 </code></pre>
+<p><code>Start</code> &#x662F;&#x4F1A;&#x8BDD;&#x7684;&#x4E3B;&#x5FAA;&#x73AF;&#xFF0C;<code>exit</code> &#x547D;&#x4EE4;&#x53EA;&#x8D1F;&#x8D23;&#x8C03;&#x7528; <code>Stop()</code> &#x8BA9;&#x5FAA;&#x73AF;&#x8FD4;&#x56DE;&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x6E05;&#x7406;&#x7531;&#x8FD9;&#x4E2A; <code>defer</code> &#x5B8C;&#x6210;&#x3002;<code>--init</code> &#x811A;&#x672C;&#x56DE;&#x653E;&#x7ED3;&#x675F;&#x65F6;&#x540C;&#x6837;&#x4ECE; <code>Start</code> &#x8FD4;&#x56DE;&#xFF0C;&#x6240;&#x4EE5;&#x6279;&#x91CF;&#x6A21;&#x5F0F;&#x4E5F;&#x4F1A;&#x6E05;&#x7406;&#x3002;&#x6309; <code>defers</code> &#x9006;&#x5E8F;&#x6267;&#x884C;&#xFF0C;&#x4E0E; C &#x8BED;&#x8A00; <code>atexit</code> &#x7684;&#x201C;&#x540E;&#x6CE8;&#x518C;&#x5148;&#x6267;&#x884C;&#x201D;&#x4E00;&#x81F4;&#x3002;</p>
+<p><code>defer</code> &#x80FD;&#x8986;&#x76D6;&#x6B63;&#x5E38;&#x8FD4;&#x56DE;&#x548C; panic &#x5C55;&#x5F00;&#xFF0C;&#x4F46;&#x8986;&#x76D6;&#x4E0D;&#x4E86; <code>os.Exit</code>&#x3002;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x6070;&#x597D;&#x8D70;&#x7684;&#x662F; <code>os.Exit</code> &#x8DEF;&#x5F84;&#xFF0C;&#x8FD9;&#x4E5F;&#x662F;&#x540E;&#x9762;&#x8981;&#x5355;&#x72EC;&#x5904;&#x7406;&#x4FE1;&#x53F7;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
 <h4 id="3-&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x51FD;&#x6570;">3. &#x65AD;&#x70B9;&#x6E05;&#x7406;&#x51FD;&#x6570;</h4>
-<pre><code class="lang-go"><span class="hljs-comment">// Cleanup &#x6E05;&#x7406;&#x6240;&#x6709;&#x65AD;&#x70B9;&#x7684;&#x51FD;&#x6570;</span>
+<p><code>Cleanup</code> &#x653E;&#x5728; <code>cmd/debug/exit.go</code>&#xFF0C;&#x5B8C;&#x6574;&#x5B9E;&#x73B0;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Cleanup &#x6E05;&#x7406;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF1A;&#x8FD8;&#x539F;&#x5168;&#x90E8;&#x65AD;&#x70B9;&#xFF0C;&#x5E76;&#x6309;&#x8C03;&#x8BD5;&#x53D1;&#x8D77;&#x65B9;&#x5F0F;&#x5BF9;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
+<span class="hljs-comment">// &#x5584;&#x540E;&#x5904;&#x7406;&#x2014;&#x2014;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">//   - debug/exec: &#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7531;&#x8C03;&#x8BD5;&#x5668;&#x521B;&#x5EFA;&#xFF0C;&#x6740;&#x6389;&#xFF1B;</span>
+<span class="hljs-comment">//   - attach:     &#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x539F;&#x672C;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#xFF0C;&#x5206;&#x79BB;&#x4F7F;&#x5176;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &#x6784;&#x5EFA;&#x4EA7;&#x7269;&#x7684;&#x5220;&#x9664;&#x7531; cmd &#x5C42;&#x7684; debug &#x547D;&#x4EE4;&#x81EA;&#x884C;&#x5904;&#x7406;&#xFF08;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x79FB;&#x9664;&#xFF09;&#x3002;</span>
 <span class="hljs-keyword">func</span> Cleanup() {
-    <span class="hljs-keyword">var</span> (
-        dbp = target.DBPProcess
-        err error
-    )
-
-    <span class="hljs-comment">// &#x5148;&#x6E05;&#x7406;&#x6389;&#x4E4B;&#x524D;&#x521B;&#x5EFA;&#x7684;&#x65AD;&#x70B9;</span>
-    fmt.Printf(<span class="hljs-string">&quot;before detached, clearall created breakpoints.&quot;</span>)
-    <span class="hljs-keyword">if</span> err := target.DBPProcess.ClearAll(); err != <span class="hljs-literal">nil</span> {
-        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;clearall failed err: %v\n&quot;</span>, err)
-    }
-
-    <span class="hljs-comment">// &#x6839;&#x636E;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x7684;&#x65B9;&#x5F0F;&#xFF0C;debug&#x3001;exec or attach&#xFF0C;&#x6765;&#x51B3;&#x5B9A;&#x5982;&#x4F55;&#x505A;&#x5584;&#x540E;&#x5904;&#x7406;</span>
-    <span class="hljs-comment">// - debug: kill traced process, delete generated binary</span>
-    <span class="hljs-comment">// - exec: kill traced process</span>
-    <span class="hljs-comment">// - attach: detach traced process</span>
-    <span class="hljs-keyword">if</span> err = dbp.Detach(); err != <span class="hljs-literal">nil</span> {
-        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;detach tracee: %d, err: %v\n&quot;</span>, dbp.Process.Pid, err)
+    <span class="hljs-keyword">if</span> Client == <span class="hljs-literal">nil</span> {
         <span class="hljs-keyword">return</span>
     }
 
-    <span class="hljs-keyword">switch</span> dbp.Kind {
-    <span class="hljs-keyword">case</span> target.DEBUG:
-        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee is is built and run by tracer, remove binary and kill it: %d\n&quot;</span>, dbp.Kind)
+    <span class="hljs-comment">// &#x8FD8;&#x539F;&#x5168;&#x90E8;&#x65AD;&#x70B9;</span>
+    <span class="hljs-keyword">if</span> err := Client.ClearAll(); err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;clearall failed err: %v\n&quot;</span>, err)
+    }
 
-        <span class="hljs-keyword">if</span> err = os.RemoveAll(dbp.Command); err != <span class="hljs-literal">nil</span> {
-            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;remove built binary %s, err: %v\n&quot;</span>, dbp.Command, err)
-            <span class="hljs-keyword">return</span>
+    st, err := Client.State()
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;get state error: %v\n&quot;</span>, err)
+        <span class="hljs-keyword">return</span>
+    }
+
+    <span class="hljs-keyword">switch</span> st.Kind {
+    <span class="hljs-keyword">case</span> api.KindDebug:
+        fmt.Println(<span class="hljs-string">&quot;tracee is built and run by tracer, remove binary and kill it&quot;</span>)
+        <span class="hljs-keyword">if</span> err := Client.Kill(); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;kill tracee: %d, err: %v\n&quot;</span>, st.PID, err)
         }
-        <span class="hljs-keyword">if</span> err = syscall.Kill(dbp.Process.Pid, syscall.SIGKILL); err != <span class="hljs-literal">nil</span> {
-            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;kill tracee: %d, err: %v\n&quot;</span>, dbp.Process.Pid, err)
-            <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">case</span> api.KindExec:
+        fmt.Println(<span class="hljs-string">&quot;tracee is run by tracer, kill it&quot;</span>)
+        <span class="hljs-keyword">if</span> err := Client.Kill(); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;kill tracee: %d, err: %v\n&quot;</span>, st.PID, err)
         }
-        <span class="hljs-keyword">fallthrough</span>
-    <span class="hljs-keyword">case</span> target.EXEC:
-        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee is is run by tracer, kill it: %d\n&quot;</span>, dbp.Kind)
-        <span class="hljs-keyword">if</span> err = syscall.Kill(dbp.Process.Pid, syscall.SIGKILL); err != <span class="hljs-literal">nil</span> {
-            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;kill tracee: %d, err: %v\n&quot;</span>, dbp.Process.Pid, err)
-            <span class="hljs-keyword">return</span>
+    <span class="hljs-keyword">case</span> api.KindAttach:
+        fmt.Println(<span class="hljs-string">&quot;tracee is an attached process, leave it running&quot;</span>)
+        <span class="hljs-keyword">if</span> err := Client.Detach(); err != <span class="hljs-literal">nil</span> {
+            fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;detach tracee: %d, err: %v\n&quot;</span>, st.PID, err)
         }
-    <span class="hljs-keyword">default</span>:
-        fmt.Fprintf(os.Stdout, <span class="hljs-string">&quot;tracee is an attached process, leave it running&quot;</span>)
     }
 }
 </code></pre>
-<p>&#x7279;&#x522B;&#x6CE8;&#x610F;&#x7684;&#x662F; <code>target.DBPProcess.ClearAll()</code> &#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x4E0D;&#x5149;&#x4F1A;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x5904;&#x6307;&#x4EE4;&#x6570;&#x636E;&#xFF0C;&#x8FD8;&#x4F1A;rewind&#x6240;&#x6709;&#x53D7;&#x5F71;&#x54CD;&#x7684;&#x7EBF;&#x7A0B;&#x7684;PC&#xFF0C;&#x4FDD;&#x8BC1;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x540E;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x53EF;&#x4EE5;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x6267;&#x884C;&#x3002;&#x540C;&#x65F6;&#x8003;&#x8651;&#x4E86;attach&#x3001;debug&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#x4E0B;&#x5BF9;&#x4E8E;tracee&#x7684;&#x4E0D;&#x540C;&#x5904;&#x7406;&#xFF0C;&#x540E;&#x8005;&#x4F1A;&#x6740;&#x6B7B;&#xFF0C;&#x524D;&#x8005;&#x4F1A;&#x8BE2;&#x95EE;&#x662F;&#x5426;&#x8981;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#x3002;</p>
+<p>&#x8FD9;&#x6BB5;&#x5B9E;&#x73B0;&#x7684;&#x5173;&#x952E;&#x70B9;&#x6709;&#x4E09;&#x5904;&#xFF1A;</p>
+<ul>
+<li><strong>&#x901A;&#x8FC7; <code>api.Client</code> &#x64CD;&#x4F5C;&#x540E;&#x7AEF;</strong>&#xFF1A;<code>ClearAll</code>&#x3001;<code>State</code>&#x3001;<code>Kill</code>&#x3001;<code>Detach</code> &#x90FD;&#x8D70;&#x63A5;&#x53E3;&#xFF0C;<code>cmd/debug</code> &#x4E0D;&#x76F4;&#x63A5;&#x4F9D;&#x8D56; <code>pkg/target</code>&#xFF0C;&#x65E2;&#x7B26;&#x5408;&#x5206;&#x5C42;&#x7EA6;&#x5B9A;&#xFF0C;&#x4E5F;&#x8BA9; <code>main.go</code> &#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x8C03;&#x7528; <code>Cleanup</code>&#xFF1B;</li>
+<li><strong>&#x5148;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#xFF0C;&#x518D;&#x5904;&#x7406;&#x8FDB;&#x7A0B;</strong>&#xFF1A;&#x987A;&#x5E8F;&#x4E0D;&#x80FD;&#x53CD;&#xFF0C;&#x5148; detach &#x53EF;&#x80FD;&#x8BA9; target &#x649E;&#x4E0A;&#x6B8B;&#x7559;&#x65AD;&#x70B9;&#x3002;&#x4E4B;&#x540E;&#x6309; Kind &#x5584;&#x540E;&#x2014;&#x2014;debug/exec &#x76F4;&#x63A5; <code>Kill</code>&#xFF08;SIGKILL &#x5BF9;&#x5904;&#x4E8E; ptrace &#x505C;&#x6B62;&#x72B6;&#x6001;&#x7684;&#x8FDB;&#x7A0B;&#x540C;&#x6837;&#x6709;&#x6548;&#xFF0C;&#x4E0D;&#x5FC5;&#x5148; detach&#xFF09;&#xFF0C;&#x53EA;&#x6709; attach &#x624D; <code>Detach</code>&#xFF1B;</li>
+<li><strong>&#x5165;&#x53E3;&#x5148;&#x505A;&#x9632;&#x62A4;</strong>&#xFF1A;<code>Client == nil</code> &#x6216; <code>State()</code> &#x51FA;&#x9519;&#x90FD;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x907F;&#x514D;&#x5728;&#x6CA1;&#x6709;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x65F6;&#x8BBF;&#x95EE;&#x7A7A;&#x6307;&#x9488;&#x3002;</li>
+</ul>
+<p>&#x65E7;&#x5B9E;&#x73B0;&#x91CC;&#x7684; <code>fallthrough</code> &#x4F1A;&#x8BA9; debug &#x5206;&#x652F;&#x628A;&#x540C;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B; kill &#x4E24;&#x6B21;&#xFF1B;&#x6784;&#x5EFA;&#x4EA7;&#x7269; <code>__debug_bin__</code> &#x7684;&#x5220;&#x9664;&#x4E5F;&#x79FB;&#x5230;&#x4E86; <code>cmd/debug.go</code> &#x7684; <code>PostRun</code>&#xFF0C;<code>Cleanup</code> &#x53EA;&#x8D1F;&#x8D23;&#x65AD;&#x70B9;&#x548C;&#x8FDB;&#x7A0B;&#x3002;</p>
+<p>&#x9700;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F;&#xFF0C;ch6.10 &#x7684; <code>ClearAll</code> &#x53EA;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x56DE;&#x9000;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x7EBF;&#x7A0B;&#x7684; PC&#xFF08;&#x7559;&#x5230; 6.20.5&#xFF09;&#x3002;&#x672C;&#x8282;&#x573A;&#x666F;&#x4E2D; target &#x505C;&#x5728;&#x542F;&#x52A8;&#x4F4D;&#x7F6E;&#x6216; attach &#x540E;&#x7684; SIGSTOP&#xFF0C;&#x6CA1;&#x6709;&#x7EBF;&#x7A0B;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x4E0A;&#xFF0C;&#x4E0D;&#x53D7;&#x5F71;&#x54CD;&#x3002;</p>
 <h4 id="4-&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;">4. &#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x7684;&#x521B;&#x5EFA;&#x548C;&#x4F7F;&#x7528;</h4>
-<pre><code class="lang-go"><span class="hljs-comment">// &#x521B;&#x5EFA;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x5E76;&#x6CE8;&#x518C;&#x6E05;&#x7406;&#x51FD;&#x6570;</span>
-session := debug.NewDebugSession().AtExit(Cleanup)
-session.Start()
+<p>&#x4F1A;&#x8BDD;&#x542F;&#x52A8;&#x65F6;&#x628A; <code>Cleanup</code> &#x6CE8;&#x518C;&#x8FDB;&#x53BB;&#x3002;<code>cmd/session.go</code> &#x7684; <code>startDebugSession</code> &#x662F;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x7EA7;&#x547D;&#x4EE4;&#xFF08;exec/attach/debug/core&#xFF09;&#x8FDB;&#x5165;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;&#x7684;&#x7EDF;&#x4E00;&#x5165;&#x53E3;&#xFF1A;</p>
+<pre><code class="lang-go">debug.Client = Client
+<span class="hljs-comment">// &#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#xFF08;&#x542B; --init &#x6279;&#x91CF;&#x56DE;&#x653E;&#x7ED3;&#x675F;&#xFF09;&#x65F6;&#xFF0C;&#x7EDF;&#x4E00;&#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
+debug.CurrentSession = debug.NewDebugSession().AtExit(debug.Cleanup)
+<span class="hljs-keyword">if</span> initFile != <span class="hljs-string">&quot;&quot;</span> {
+    debug.CurrentSession.SetInitFile(initFile)
+}
+debug.CurrentSession.Start()
 </code></pre>
+<p><code>exit</code> &#x547D;&#x4EE4;&#x672C;&#x8EAB;&#x4E0D;&#x6E05;&#x7406;&#xFF0C;&#x53EA;&#x7ED3;&#x675F;&#x5FAA;&#x73AF;&#xFF1A;</p>
+<pre><code class="lang-go">Run: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
+    <span class="hljs-comment">// &#x9000;&#x51FA;&#x524D;&#x6E05;&#x7406;&#x5728; Cleanup &#x4E2D;&#x5B8C;&#x6210;&#xFF08;&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x65F6;&#x7ECF; AtExit &#x8C03;&#x7528;&#xFF09;</span>
+    CurrentSession.Stop()
+},
+</code></pre>
+<p><code>Stop</code> &#x5173;&#x95ED; <code>done</code> channel&#xFF0C;<code>Start</code> &#x7684; <code>select</code> &#x770B;&#x5230;&#x540E;&#x8FD4;&#x56DE;&#xFF0C;&#x6CE8;&#x518C;&#x7684; <code>defers</code> &#x624D;&#x4F9D;&#x6B21;&#x6267;&#x884C;&#x3002;&#x628A;&#x6E05;&#x7406;&#x653E;&#x5728;&#x4F1A;&#x8BDD;&#x5C42;&#x800C;&#x4E0D;&#x662F; <code>exit</code> &#x547D;&#x4EE4;&#x91CC;&#xFF0C;<code>--init</code> &#x56DE;&#x653E;&#x7ED3;&#x675F;&#x3001;&#x4EE5;&#x53CA;&#x5C06;&#x6765;&#x5176;&#x4ED6;&#x7ED3;&#x675F;&#x4F1A;&#x8BDD;&#x7684;&#x8DEF;&#x5F84;&#x90FD;&#x80FD;&#x590D;&#x7528;&#x540C;&#x4E00;&#x5957;&#x903B;&#x8F91;&#x3002;</p>
+<h4 id="5-&#x4FE1;&#x53F7;&#x9000;&#x51FA;&#x8DEF;&#x5F84;">5. &#x4FE1;&#x53F7;&#x9000;&#x51FA;&#x8DEF;&#x5F84;</h4>
+<p><code>Start</code> &#x7684; <code>defer</code> &#x6709;&#x4E00;&#x4E2A;&#x8986;&#x76D6;&#x4E0D;&#x5230;&#x7684;&#x573A;&#x666F;&#xFF1A;&#x8FDB;&#x7A0B;&#x6536;&#x5230; <code>SIGTERM</code>&#x3001;<code>SIGINT</code>&#x3001;<code>SIGQUIT</code>&#x3002;<code>main.go</code> &#x7684;&#x4FE1;&#x53F7;&#x5904;&#x7406;&#x76F4;&#x63A5;&#x7528; <code>os.Exit</code> &#x7ED3;&#x675F;&#x8FDB;&#x7A0B;&#xFF0C;&#x4E0D;&#x4F1A;&#x7B49; <code>Start</code> &#x8FD4;&#x56DE;&#xFF0C;&#x56E0;&#x6B64;&#x5FC5;&#x987B;&#x663E;&#x5F0F;&#x8C03;&#x7528;&#x4E00;&#x6B21; <code>Cleanup</code>&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> processSignals() {
+    ch := <span class="hljs-built_in">make</span>(<span class="hljs-keyword">chan</span> os.Signal, <span class="hljs-number">16</span>)
+    signal.Notify(ch, syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT, syscall.SIGURG)
+
+    <span class="hljs-keyword">for</span> sig := <span class="hljs-keyword">range</span> ch {
+        <span class="hljs-keyword">switch</span> sig {
+        <span class="hljs-keyword">case</span> syscall.SIGURG:
+            <span class="hljs-comment">// go &#x8FD0;&#x884C;&#x65F6;&#x5F02;&#x6B65;&#x62A2;&#x5360;&#x4FE1;&#x53F7;&#xFF0C;&#x5FFD;&#x7565;</span>
+        <span class="hljs-keyword">case</span> syscall.SIGTERM, syscall.SIGINT, syscall.SIGQUIT:
+            <span class="hljs-comment">// &#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x540E;&#x9000;&#x51FA;&#xFF1A;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#xFF0C;&#x5E76;&#x6309; Kind &#x51B3;&#x5B9A; kill &#x6216; detach&#x3002;</span>
+            <span class="hljs-comment">// &#x6CE8;&#x610F;&#xFF1A;&#x6B64;&#x5904;&#x76F4;&#x63A5; os.Exit&#xFF0C;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x4F1A;&#x8BDD;&#x7684; AtExit &#x6E05;&#x7406;&#xFF0C;</span>
+            <span class="hljs-comment">// &#x56E0;&#x6B64;&#x9700;&#x8981;&#x663E;&#x5F0F;&#x8C03;&#x7528; Cleanup&#x3002;</span>
+            debug.Cleanup()
+            os.Exit(<span class="hljs-number">1</span>)
+        }
+    }
+}
+</code></pre>
+<p><code>signal.Notify</code> &#x6536;&#x5230; <code>SIGINT</code> &#x540E;&#x4E0D;&#x4F1A;&#x8BA9;&#x8FDB;&#x7A0B;&#x6309;&#x9ED8;&#x8BA4;&#x52A8;&#x4F5C;&#x9000;&#x51FA;&#xFF0C;&#x4FE1;&#x53F7;&#x88AB;&#x8F6C;&#x5230; <code>processSignals</code> &#x7684; channel&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x662F;&#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x6700;&#x540E;&#x673A;&#x4F1A;&#x3002;&#x6E05;&#x7406;&#x5B8C;&#x6210;&#x540E;&#x518D; <code>os.Exit(1)</code>&#xFF0C;<code>SIGURG</code> &#x5219;&#x662F; Go runtime &#x7684;&#x5F02;&#x6B65;&#x62A2;&#x5360;&#x4FE1;&#x53F7;&#xFF0C;&#x5FC5;&#x987B;&#x5FFD;&#x7565;&#x3002;</p>
 <h3 id="&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;">&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;</h3>
-<h4 id="&#x6D4B;&#x8BD5;&#x573A;&#x666F;&#xFF1A;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#x7684;&#x540E;&#x679C;">&#x6D4B;&#x8BD5;&#x573A;&#x666F;&#xFF1A;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#x7684;&#x540E;&#x679C;</h4>
-<p>&#x6211;&#x4EEC;&#x901A;&#x8FC7;&#x4E00;&#x4E2A;&#x5B9E;&#x9645;&#x7684;&#x6D4B;&#x8BD5;&#x6765;&#x6F14;&#x793A;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#x4F1A;&#x5BFC;&#x81F4;&#x7684;&#x95EE;&#x9898;&#xFF1A;</p>
-<ol>
-<li><strong>&#x542F;&#x52A8;&#x6D4B;&#x8BD5;&#x8FDB;&#x7A0B;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">$ <span class="hljs-keyword">while</span> [ 1 <span class="hljs-_">-eq</span> 1 ]; <span class="hljs-keyword">do</span> t=`date`; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$t</span> pid: $$&quot;</span>; sleep 1; <span class="hljs-keyword">done</span>
-
-Sun Sep  7 15:22:23 CST 2025 pid: 416728
-Sun Sep  7 15:22:24 CST 2025 pid: 416728
-Sun Sep  7 15:22:25 CST 2025 pid: 416728
-Sun Sep  7 15:22:26 CST 2025 pid: 416728
+<p>&#x6D4B;&#x8BD5;&#x5BF9;&#x8C61;&#x662F; godbgv2 &#x81EA;&#x5E26;&#x7684; <code>_fixtures/loop</code>&#x3002;&#x5B83;&#x6BCF;&#x79D2;&#x6253;&#x5370;&#x4E00;&#x6B21; pid &#x548C;&#x5FAA;&#x73AF;&#x8BA1;&#x6570;&#xFF0C;&#x6B63;&#x597D;&#x7528;&#x6765;&#x89C2;&#x5BDF;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x540E; target &#x662F;&#x5426;&#x8FD8;&#x5728;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> main() {
+    pid := os.Getpid()
+    <span class="hljs-keyword">for</span> i := <span class="hljs-number">0</span>; ; i++ {
+        fmt.Printf(<span class="hljs-string">&quot;pid: %d, loop: %d\n&quot;</span>, pid, i)
+        time.Sleep(time.Second)
+    }
+}
 </code></pre>
-<ol>
-<li><strong>&#x9644;&#x52A0;&#x8C03;&#x8BD5;&#x5668;&#x5E76;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">godbg attach 416728
-godbg&gt; pregs
-    Rax &lt;Rax value&gt;
-    Rbx &lt;Rbx value&gt;
-    ... 
-    Rip &lt;Rip value&gt;
-    ...
-
-godbg&gt; <span class="hljs-built_in">break</span> &lt;Rip value&gt;
-godbg&gt; <span class="hljs-built_in">continue</span>
+<p>&#x5207;&#x5230;&#x672C;&#x8282;&#x4EE3;&#x7801;&#x5E76;&#x6784;&#x5EFA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git checkout ch6.10
+$ make build
+$ make fixtures
+$ go tool nm _fixtures/loop | grep <span class="hljs-string">&apos; main.main$&apos;</span>
+  4b3940 T main.main
 </code></pre>
-<ol>
-<li><strong>&#x89C2;&#x5BDF;&#x8FDB;&#x7A0B;&#x884C;&#x4E3A;</strong>&#xFF1A;</li>
-</ol>
-<p>&#x6267;&#x884C;continue&#x540E;&#xFF0C;tracee&#x5F00;&#x59CB;&#x91CD;&#x65B0;&#x8F93;&#x51FA;&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre><code class="lang-bash">Sun Sep  7 15:23:19 CST 2025 pid: 416728 &lt;= after we run `<span class="hljs-built_in">continue</span>`, we see the output again.
-</code></pre>
-<ol>
-<li><strong>&#x9000;&#x51FA;&#x8C03;&#x8BD5;&#x5668;&#xFF08;&#x4E0D;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#xFF09;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">godbg&gt; <span class="hljs-built_in">exit</span>
-</code></pre>
-<ol>
-<li><strong>&#x89C2;&#x5BDF;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">Sun Sep  7 15:22:23 CST 2025 pid: 416728
-Sun Sep  7 15:22:24 CST 2025 pid: 416728
-Sun Sep  7 15:22:25 CST 2025 pid: 416728
-Sun Sep  7 15:22:26 CST 2025 pid: 416728
-Sun Sep  7 15:22:27 CST 2025 pid: 416728 
-
-
-Sun Sep  7 15:23:19 CST 2025 pid: 416728
-
-[process exited with code 5 (0x00000005)] &lt;= tracee exited with error
-You can now close this terminal with Ctrl+D, or press Enter to restart.
-</code></pre>
-<h4 id="&#x6D4B;&#x8BD5;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;atexit&#x673A;&#x5236;&#x7684;&#x6B63;&#x786E;&#x884C;&#x4E3A;">&#x6D4B;&#x8BD5;&#x573A;&#x666F;&#xFF1A;&#x4F7F;&#x7528;AtExit&#x673A;&#x5236;&#x7684;&#x6B63;&#x786E;&#x884C;&#x4E3A;</h4>
-<ol>
-<li><strong>&#x542F;&#x52A8;&#x6D4B;&#x8BD5;&#x8FDB;&#x7A0B;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">$ <span class="hljs-keyword">while</span> [ 1 <span class="hljs-_">-eq</span> 1 ]; <span class="hljs-keyword">do</span> t=`date`; <span class="hljs-built_in">echo</span> <span class="hljs-string">&quot;<span class="hljs-variable">$t</span> pid: $$&quot;</span>; sleep 1; <span class="hljs-keyword">done</span>
-</code></pre>
-<ol>
-<li><strong>&#x4F7F;&#x7528;&#x5E26;AtExit&#x7684;&#x8C03;&#x8BD5;&#x5668;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">godbg attach 416728
-godbg&gt; <span class="hljs-built_in">break</span> &lt;address&gt;
+<p><code>main.main</code> &#x7684;&#x5FAA;&#x73AF;&#x4F53;&#x4ECE; <code>0x4b3971</code>&#xFF08;<code>main.main+0x31</code>&#xFF09;&#x5F00;&#x59CB;&#xFF0C;&#x6BCF;&#x8F6E;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#xFF0C;&#x9002;&#x5408;&#x4F5C;&#x4E3A; attach &#x573A;&#x666F;&#x7684;&#x65AD;&#x70B9;&#x5730;&#x5740;&#x3002;&#x5165;&#x53E3;&#x5730;&#x5740; <code>0x478120</code> &#x53EA;&#x5728;&#x7A0B;&#x5E8F;&#x542F;&#x52A8;&#x65F6;&#x6267;&#x884C;&#x4E00;&#x6B21;&#xFF0C;attach &#x4E0A;&#x53BB;&#x4EE5;&#x540E;&#x4E0D;&#x4F1A;&#x518D;&#x547D;&#x4E2D;&#xFF0C;&#x6240;&#x4EE5;&#x4E0B;&#x6587;&#x7684; attach &#x793A;&#x4F8B;&#x7528; <code>0x4b3971</code>&#xFF0C;exec &#x793A;&#x4F8B;&#x7528; <code>0x478120</code>&#x3002;</p>
+<p>attach &#x793A;&#x4F8B;&#x628A; target &#x4F5C;&#x4E3A; godbg &#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#x542F;&#x52A8;&#x540E;&#x518D; attach&#xFF0C;&#x6EE1;&#x8DB3; Linux Yama <code>ptrace_scope=1</code> &#x4E0B;&#x201C;tracer &#x5FC5;&#x987B;&#x662F; tracee &#x7684;&#x7956;&#x5148;&#x201D;&#x7684;&#x9650;&#x5236;&#x3002;&#x5982;&#x679C;&#x8FD0;&#x884C;&#x73AF;&#x5883;&#x5DF2;&#x7ECF;&#x653E;&#x5F00;&#x4E86; ptrace &#x9650;&#x5236;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x76F4;&#x63A5;&#x5728;&#x53E6;&#x4E00;&#x4E2A;&#x7EC8;&#x7AEF;&#x6267;&#x884C; <code>godbg attach &lt;pid&gt;</code>&#x3002;</p>
+<h4 id="&#x573A;&#x666F;&#x4E00;&#xFF1A;&#x4E0D;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x7684;&#x540E;&#x679C;">&#x573A;&#x666F;&#x4E00;&#xFF1A;&#x4E0D;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x7684;&#x540E;&#x679C;</h4>
+<p>&#x5148;&#x770B;&#x53CD;&#x4F8B;&#x3002;godbgv2 &#x5728; ch6.9 &#x7684;&#x9000;&#x51FA;&#x903B;&#x8F91;&#x53EA;&#x505A; detach&#xFF0C;&#x4E0D;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x3002;&#x5207;&#x5230;&#x90A3;&#x4E00;&#x8282;&#x6784;&#x5EFA;&#xFF0C;attach &#x5230;&#x8FD0;&#x884C;&#x4E2D;&#x7684; <code>loop</code>&#xFF0C;&#x5728;&#x5FAA;&#x73AF;&#x4F53;&#x4E0A;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x540E;&#x9000;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git checkout ch6.9
+$ make build &amp;&amp; make fixtures
+$ bash -c <span class="hljs-string">&apos;./_fixtures/loop &gt; /tmp/loop.out 2&gt;&amp;1 &amp; exec ./godbg attach $!&apos;</span>
+process 2231841 attached, stopped by SIGSTOP
+godbg&gt; <span class="hljs-built_in">break</span> 0x4b3971
+breakpoint 1 added at 0x4b3971
 godbg&gt; <span class="hljs-built_in">exit</span>
-&#x6B63;&#x5728;&#x6E05;&#x7406;&#x65AD;&#x70B9;...
-&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x5B8C;&#x6210;
+tracee is an attached process, leave it running
 </code></pre>
-<ol>
-<li><strong>&#x9A8C;&#x8BC1;&#x8FDB;&#x7A0B;&#x7EE7;&#x7EED;&#x8FD0;&#x884C;</strong>&#xFF1A;</li>
-</ol>
-<pre><code class="lang-bash">Sun Sep  7 15:22:23 CST 2025 pid: 416728
-Sun Sep  7 15:22:24 CST 2025 pid: 416728
-Sun Sep  7 15:22:25 CST 2025 pid: 416728
-Sun Sep  7 15:22:26 CST 2025 pid: 416728
-Sun Sep  7 15:22:27 CST 2025 pid: 416728 
+<p>&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x540E;&#xFF0C;target &#x7EE7;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;&#x4E00;&#x79D2;&#x4E4B;&#x5185;&#x5C31;&#x4F1A;&#x8D70;&#x5230; <code>0x4b3971</code>&#xFF0C;&#x6267;&#x884C;&#x90A3;&#x91CC;&#x6B8B;&#x7559;&#x7684; <code>0xCC</code>&#xFF1A;</p>
+<pre><code class="lang-bash">$ cat /tmp/loop.out
+pid: 2231841, loop: 0
+SIGTRAP: trace <span class="hljs-built_in">trap</span>
+PC=0x4b3972 m=0 sigcode=128
 
-
-Sun Sep  7 15:23:19 CST 2025 pid: 416728
-Sun Sep  7 15:23:20 CST 2025 pid: 416728 &lt;= &#x8FDB;&#x7A0B;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x8FD0;&#x884C;
-Sun Sep  7 15:23:21 CST 2025 pid: 416728
+goroutine 1 gp=0xc000002380 m=0 mp=0x5736a0 [running]:
+main.main()
+    /tmp/godbgv2-ch6.9/examples/debuggee/loop.go:16 +0x32 fp=0xc0000c2f78 sp=0xc0000c2ee0 pc=0x4b3972
+...
+[process exited]
 </code></pre>
+<p>&#x4E24;&#x4E2A;&#x7EC6;&#x8282;&#x503C;&#x5F97;&#x6CE8;&#x610F;&#xFF1A;</p>
+<ul>
+<li><code>PC=0x4b3972</code> &#x6B63;&#x597D;&#x662F;&#x65AD;&#x70B9;&#x5730;&#x5740; <code>0x4b3971</code> &#x7684;&#x4E0B;&#x4E00;&#x6761;&#x6307;&#x4EE4;&#x3002;<code>int3</code> &#x6267;&#x884C;&#x540E; PC &#x5DF2;&#x7ECF;&#x540E;&#x79FB;&#xFF0C;&#x800C; ch6.9 &#x65E2;&#x6CA1;&#x6709;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#xFF0C;&#x4E5F;&#x6CA1;&#x6709;&#x56DE;&#x9000; PC&#xFF1B;</li>
+<li>&#x6B64;&#x65F6; tracer &#x5DF2;&#x7ECF; detach&#xFF0C;SIGTRAP &#x6CA1;&#x6709;&#x63A5;&#x6536;&#x8005;&#x3002;Go runtime &#x63A5;&#x7BA1;&#x4E86; SIGTRAP&#xFF0C;&#x628A;&#x5B83;&#x5F53;&#x6210;&#x8FD0;&#x884C;&#x65F6;&#x5D29;&#x6E83;&#xFF0C;&#x6253;&#x5370; goroutine &#x6808;&#x540E;&#x7EC8;&#x6B62;&#x8FDB;&#x7A0B;&#x3002;&#x5982;&#x679C;&#x662F;&#x6CA1;&#x6709;&#x63A5;&#x7BA1; SIGTRAP &#x7684;&#x7A0B;&#x5E8F;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x6309;&#x9ED8;&#x8BA4;&#x52A8;&#x4F5C;&#x76F4;&#x63A5;&#x7EC8;&#x6B62;&#x5B83;&#x5E76;&#x4EA7;&#x751F; core dump&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x5C31;&#x662F;&#x9000;&#x51FA;&#x524D;&#x5FC5;&#x987B;&#x6E05;&#x7406;&#x65AD;&#x70B9;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<h4 id="&#x573A;&#x666F;&#x4E8C;&#xFF1A;exec-&#x542F;&#x52A8;&#xFF0C;&#x9000;&#x51FA;&#x65F6;&#x8FD8;&#x539F;&#x5E76;&#x6740;&#x6389;">&#x573A;&#x666F;&#x4E8C;&#xFF1A;exec &#x542F;&#x52A8;&#xFF0C;&#x9000;&#x51FA;&#x65F6;&#x8FD8;&#x539F;&#x5E76;&#x6740;&#x6389;</h4>
+<p>&#x56DE;&#x5230; ch6.10&#xFF0C;&#x7528; <code>exec</code> &#x542F;&#x52A8; target&#xFF0C;&#x5728;&#x5165;&#x53E3;&#x5730;&#x5740;&#x6DFB;&#x52A0;&#x65AD;&#x70B9;&#x540E;&#x9000;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git checkout ch6.10
+$ make build &amp;&amp; make fixtures
+$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 2232027 launched, stopped by SIGTRAP
+godbg&gt; <span class="hljs-built_in">break</span> 0x478120
+breakpoint 1 added at 0x478120
+godbg&gt; <span class="hljs-built_in">exit</span>
+tracee is run by tracer, <span class="hljs-built_in">kill</span> it
+</code></pre>
+<p><code>exit</code> &#x53EA;&#x8C03;&#x7528; <code>Stop()</code>&#xFF0C;&#x771F;&#x6B63;&#x7684;&#x6E05;&#x7406;&#x53D1;&#x751F;&#x5728; <code>Start</code> &#x7684; <code>defer</code> &#x4E2D;&#xFF1A;<code>Cleanup</code> &#x5148;&#x8C03;&#x7528; <code>Client.ClearAll()</code>&#xFF0C;&#x628A; <code>0x478120</code> &#x5904;&#x7684;&#x539F;&#x59CB;&#x5B57;&#x8282;&#x5199;&#x56DE;&#xFF1B;&#x518D;&#x7531; <code>State()</code> &#x8BFB;&#x5230; <code>KindExec</code>&#xFF0C;&#x8C03;&#x7528; <code>Client.Kill()</code> &#x53D1;&#x9001; SIGKILL&#x3002;&#x8FDB;&#x7A0B;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x521B;&#x5EFA;&#x7684;&#xFF0C;&#x6740;&#x6389;&#x5373;&#x53EF;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x5148; detach&#x3002;</p>
+<p><code>godbg debug</code> &#x542F;&#x52A8;&#x7684; target &#x8D70; <code>KindDebug</code> &#x5206;&#x652F;&#xFF0C;&#x5904;&#x7406;&#x65B9;&#x5F0F;&#x76F8;&#x540C;&#xFF1B;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E; <code>cmd/debug.go</code> &#x7684; <code>PostRun</code> &#x8FD8;&#x4F1A;&#x5220;&#x9664;&#x6784;&#x5EFA;&#x51FA;&#x7684; <code>__debug_bin__</code>&#x3002;</p>
+<h4 id="&#x573A;&#x666F;&#x4E09;&#xFF1A;attach-&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x9000;&#x51FA;&#x65F6;&#x8FD8;&#x539F;&#x5E76;-detach">&#x573A;&#x666F;&#x4E09;&#xFF1A;attach &#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x9000;&#x51FA;&#x65F6;&#x8FD8;&#x539F;&#x5E76; detach</h4>
+<p>&#x540C;&#x6837;&#x7684; target&#xFF0C;&#x8FD9;&#x6B21;&#x4EE5; attach &#x65B9;&#x5F0F;&#x8C03;&#x8BD5;&#xFF0C;&#x5E76;&#x5728;&#x6BCF;&#x8F6E;&#x90FD;&#x4F1A;&#x6267;&#x884C;&#x7684;&#x5FAA;&#x73AF;&#x4F53;&#x5730;&#x5740;&#x4E0A;&#x4E0B;&#x65AD;&#x70B9;&#xFF1A;</p>
+<pre><code class="lang-bash">$ bash -c <span class="hljs-string">&apos;./_fixtures/loop &gt; /tmp/loop.out 2&gt;&amp;1 &amp; exec ./godbg attach $!&apos;</span>
+process 2232045 attached, stopped by SIGSTOP
+godbg&gt; <span class="hljs-built_in">break</span> 0x4b3971
+breakpoint 1 added at 0x4b3971
+godbg&gt; <span class="hljs-built_in">exit</span>
+tracee is an attached process, leave it running
+</code></pre>
+<p>&#x9000;&#x51FA;&#x540E;&#x67E5;&#x770B; target &#x7684;&#x8F93;&#x51FA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ tail <span class="hljs-_">-f</span> /tmp/loop.out
+pid: 2232045, loop: 0
+pid: 2232045, loop: 1
+pid: 2232045, loop: 2
+pid: 2232045, loop: 3
+pid: 2232045, loop: 4
+</code></pre>
+<p><code>loop: 0</code>&#x3001;<code>loop: 1</code> &#x662F; attach &#x4E4B;&#x524D;&#x6253;&#x5370;&#x7684;&#xFF0C;<code>loop: 2</code> &#x4E4B;&#x540E;&#x662F; <code>exit</code> &#x4E4B;&#x540E;&#x7684;&#x8F93;&#x51FA;&#x3002;&#x8BA1;&#x6570;&#x7EE7;&#x7EED;&#x589E;&#x957F;&#xFF0C;&#x8BF4;&#x660E;&#x4E24;&#x4EF6;&#x4E8B;&#x90FD;&#x6210;&#x7ACB;&#xFF1A;</p>
+<ul>
+<li><code>0x4b3971</code> &#x5904;&#x7684; <code>0xCC</code> &#x5DF2;&#x7ECF;&#x6362;&#x56DE;&#x539F;&#x6307;&#x4EE4;&#xFF0C;target &#x518D;&#x6B21;&#x6267;&#x884C;&#x5230;&#x8FD9;&#x91CC;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1; SIGTRAP&#xFF1B;</li>
+<li>target &#x5DF2;&#x7ECF;&#x8131;&#x79BB; ptrace&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x6CA1;&#x6709; tracer &#x7684;&#x60C5;&#x51B5;&#x4E0B;&#x72EC;&#x7ACB;&#x8FD0;&#x884C;&#x3002;</li>
+</ul>
+<p>&#x5982;&#x679C;&#x8FD9;&#x91CC;&#x7684; <code>Cleanup</code> &#x53EA; detach &#x4E0D;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#xFF0C;&#x5C31;&#x4F1A;&#x5F97;&#x5230;&#x573A;&#x666F;&#x4E00;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
+<h4 id="&#x573A;&#x666F;&#x56DB;&#xFF1A;ctrlc-&#x9000;&#x51FA;">&#x573A;&#x666F;&#x56DB;&#xFF1A;Ctrl+C &#x9000;&#x51FA;</h4>
+<p><code>processSignals</code> &#x6536;&#x5230; <code>SIGTERM</code>&#x3001;<code>SIGINT</code>&#x3001;<code>SIGQUIT</code> &#x540E;&#x76F4;&#x63A5;&#x8C03;&#x7528; <code>Cleanup()</code>&#xFF0C;&#x518D; <code>os.Exit(1)</code>&#x3002;&#x5728;&#x4F1A;&#x8BDD;&#x671F;&#x95F4;&#x6309; Ctrl+C&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop
+process 2232434 launched, stopped by SIGTRAP
+godbg&gt; <span class="hljs-built_in">break</span> 0x478120
+breakpoint 1 added at 0x478120
+godbg&gt; ^C
+tracee is run by tracer, <span class="hljs-built_in">kill</span> it
+</code></pre>
+<p>&#x4FE1;&#x53F7;&#x8DEF;&#x5F84; <code>processSignals</code> &#x91CC;&#x663E;&#x5F0F;&#x6E05;&#x7406;&#xFF0C;&#x5426;&#x5219;&#x5982;&#x679C;&#x662F;kind attach&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x76F4;&#x63A5; <code>os.Exit(1)</code> &#x4F1A;&#x8BA9;&#x65AD;&#x70B9;&#x6B8B;&#x7559;&#x7559;&#x5728; target &#x91CC;&#xFF0C;&#x5982;&#x679C;&#x4E0B;&#x6B21;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x4F1A;&#x5BFC;&#x81F4;&#x573A;&#x666F;&#x4E00;&#x7684;&#x7ED3;&#x679C;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
 <p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x673A;&#x5236;&#x7684;&#x91CD;&#x8981;&#x6027;&#x4E0E;&#x5B9E;&#x73B0;&#x65B9;&#x6CD5;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;<strong>&#x65AD;&#x70B9;&#x6B8B;&#x7559;&#x7684;&#x5371;&#x5BB3;&#x6027;&#x5206;&#x6790;</strong>&#xFF1B;<strong>SIGTRAP&#x4FE1;&#x53F7;&#x5BFC;&#x81F4;&#x7684;&#x8FDB;&#x7A0B;&#x7EC8;&#x6B62;&#x95EE;&#x9898;</strong>&#xFF1B;<strong>AtExit&#x673A;&#x5236;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;</strong>&#xFF1B;<strong>&#x81EA;&#x52A8;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x7684;&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</strong>&#x3002;</p>
 <p>&#x672C;&#x8282;&#x6838;&#x5FC3;&#x8981;&#x70B9;&#x5305;&#x62EC;&#xFF1A;</p>
 <ul>
 <li>&#x65AD;&#x70B9;&#x901A;&#x8FC7;ptrace&#x4FEE;&#x6539;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#x5B9E;&#x73B0;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x6E05;&#x7406;&#x4F1A;&#x5BFC;&#x81F4;&#x591A;&#x5B57;&#x8282;&#x6307;&#x4EE4;&#x4E0D;&#x5B8C;&#x6574;&#xFF0C;&#x6267;&#x884C;&#x65F6;&#x89E6;&#x53D1;SIGTRAP&#x4FE1;&#x53F7;</li>
-<li>&#x5728;&#x6CA1;&#x6709;tracer&#x7684;&#x60C5;&#x51B5;&#x4E0B;&#xFF0C;&#x5185;&#x6838;&#x9ED8;&#x8BA4;&#x884C;&#x4E3A;&#x662F;&#x6740;&#x6B7B;&#x89E6;&#x53D1;SIGTRAP&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x5BFC;&#x81F4;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5F02;&#x5E38;&#x7EC8;&#x6B62;</li>
+<li>&#x6CA1;&#x6709;tracer&#x63A5;&#x6536;SIGTRAP&#x65F6;&#xFF0C;Go runtime&#x4F1A;&#x6253;&#x5370;&#x5D29;&#x6E83;&#x6808;&#x540E;&#x9000;&#x51FA;&#xFF0C;&#x5176;&#x4ED6;&#x7A0B;&#x5E8F;&#x5219;&#x7531;&#x5185;&#x6838;&#x6309;&#x9ED8;&#x8BA4;&#x52A8;&#x4F5C;&#x7EC8;&#x6B62;</li>
 <li>&#x901A;&#x8FC7;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C;C&#x8BED;&#x8A00;atexit&#x7684;&#x673A;&#x5236;&#xFF0C;&#x5728;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x524D;&#x81EA;&#x52A8;&#x6E05;&#x7406;&#x6240;&#x6709;&#x65AD;&#x70B9;&#xFF0C;&#x786E;&#x4FDD;tracee&#x8FDB;&#x7A0B;&#x80FD;&#x591F;&#x7EE7;&#x7EED;&#x6B63;&#x5E38;&#x8FD0;&#x884C;</li>
-<li>AtExit&#x673A;&#x5236;&#x901A;&#x8FC7;defer&#x51FD;&#x6570;&#x548C;&#x56DE;&#x8C03;&#x51FD;&#x6570;&#x6CE8;&#x518C;&#x5B9E;&#x73B0;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4F18;&#x96C5;&#x7684;&#x8D44;&#x6E90;&#x6E05;&#x7406;&#x65B9;&#x5F0F;</li>
+<li>ch6.10 &#x7684; <code>ClearAll</code> &#x53EA;&#x8FD8;&#x539F;&#x6307;&#x4EE4;&#x5B57;&#x8282;&#xFF0C;&#x5C1A;&#x672A;&#x56DE;&#x9000;&#x505C;&#x5728;&#x65AD;&#x70B9;&#x5904;&#x7EBF;&#x7A0B;&#x7684; PC&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x7559;&#x5230; 6.20.5 &#x5904;&#x7406;</li>
 </ul>
 <p>&#x672C;&#x8282;&#x5185;&#x5BB9;&#x4E3A;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5065;&#x58EE;&#x6027;&#x8BBE;&#x8BA1;&#x63D0;&#x4F9B;&#x4E86;&#x91CD;&#x8981;&#x4FDD;&#x969C;&#xFF0C;&#x786E;&#x4FDD;&#x8C03;&#x8BD5;&#x5668;&#x5728;&#x5404;&#x79CD;&#x9000;&#x51FA;&#x573A;&#x666F;&#x4E0B;&#x90FD;&#x80FD;&#x6B63;&#x786E;&#x6E05;&#x7406;&#x8D44;&#x6E90;&#xFF0C;&#x4E3A;&#x8BFB;&#x8005;&#x7406;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x751F;&#x547D;&#x5468;&#x671F;&#x7BA1;&#x7406;&#x548C;&#x8D44;&#x6E90;&#x6E05;&#x7406;&#x673A;&#x5236;&#x5960;&#x5B9A;&#x4E86;&#x5B9E;&#x8DF5;&#x57FA;&#x7840;&#x3002;&#x901A;&#x8FC7;&#x672C;&#x8282;&#x7684;&#x5B66;&#x4E60;&#xFF0C;&#x8BFB;&#x8005;&#x53EF;&#x4EE5;&#x638C;&#x63E1;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x4E2D;&#x8D44;&#x6E90;&#x7BA1;&#x7406;&#x7684;&#x6700;&#x4F73;&#x5B9E;&#x8DF5;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x5F00;&#x53D1;&#x66F4;&#x590D;&#x6742;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x529F;&#x80FD;&#x63D0;&#x4F9B;&#x4E86;&#x91CD;&#x8981;&#x7684;&#x8BBE;&#x8BA1;&#x53C2;&#x8003;&#x3002;</p>
 
@@ -2486,7 +2537,7 @@ Sun Sep  7 15:23:21 CST 2025 pid: 416728
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"next":{"title":"6.11 步进操作","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-step.md","ref":"6-develop-inst-debugger/11-step.md","articles":[]},"previous":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/10-clearall-atexit.md","mtime":"2026-10-25T21:33:55.160Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T21:34:27.454Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.10 调试器退出前的断点清理机制","level":"1.6.10","depth":2,"next":{"title":"6.11 步进操作","level":"1.6.11","depth":2,"path":"6-develop-inst-debugger/11-step.md","ref":"6-develop-inst-debugger/11-step.md","articles":[]},"previous":{"title":"6.9 清空断点","level":"1.6.9","depth":2,"path":"6-develop-inst-debugger/9-clearall.md","ref":"6-develop-inst-debugger/9-clearall.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/10-clearall-atexit.md","mtime":"2026-10-25T22:48:21.344Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T22:48:48.227Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

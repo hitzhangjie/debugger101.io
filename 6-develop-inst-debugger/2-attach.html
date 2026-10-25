@@ -357,12 +357,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="4-replay.html">
+        <li class="chapter " data-level="1.6.4" data-path="4-session.html">
             
-                <a href="4-replay.html">
+                <a href="4-session.html">
             
                     
-                    6.4 调试脚本回放
+                    6.4 脚本回放与清理善后
             
                 </a>
             
@@ -1963,6 +1963,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.10.11" data-path="../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                <a href="../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                    
+                    10.11 命令行参数与选项的分离：cobra 如何解析 --
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2238,7 +2251,7 @@ body {
 <p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.2</code>&#xFF0C;<code>git diff ch6.1 ch6.2</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x5728; exec &#x7684;&#x57FA;&#x7840;&#x4E0A;&#x591A;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
 <h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-attach-pid-&#x8DDF;&#x8E2A;&#x8FD0;&#x884C;&#x4E2D;&#x8FDB;&#x7A0B;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg attach &lt;pid&gt;</code> &#x8DDF;&#x8E2A;&#x8FD0;&#x884C;&#x4E2D;&#x8FDB;&#x7A0B;</h3>
 <p>&#x5982;&#x679C;&#x8FDB;&#x7A0B;&#x5DF2;&#x7ECF;&#x5728;&#x8FD0;&#x884C;&#x4E86;&#xFF0C;&#x8981;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x5148;&#x901A;&#x8FC7; attach &#x64CD;&#x4F5C;&#x8DDF;&#x8E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F85;&#x5176;&#x505C;&#x6B62;&#x6267;&#x884C;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x67E5;&#x770B;&#x4FEE;&#x6539;&#x6570;&#x636E;&#x3001;&#x63A7;&#x5236;&#x7A0B;&#x5E8F;&#x6267;&#x884C;&#x7684;&#x64CD;&#x4F5C;&#x3002;&#x5E38;&#x89C1;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x5982; dlv&#x3001;gdb &#x7B49;&#x90FD;&#x652F;&#x6301;&#x4F20;&#x9012; pid &#x53C2;&#x6570;&#x6765;&#x5BF9;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x8FDB;&#x884C;&#x8DDF;&#x8E2A;&#x8C03;&#x8BD5;&#x3002;</p>
-<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x5B9E;&#x73B0;&#x7A0B;&#x5E8F; <code>godbg attach &lt;pid&gt;</code> &#x5B50;&#x547D;&#x4EE4;&#xFF1A;attach &#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x6B64;&#x65F6;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x5B83;&#x505C;&#x7A33;&#x540E;&#x8FDB;&#x5165; 5.7 &#x8282;&#x642D;&#x597D;&#x7684;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x3002;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x89E3;&#x9664;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x663E;&#x5F0F; detach&#x3001;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x3001;&#x7ED3;&#x675F;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x8FD9;&#x4E9B;&#x6E05;&#x7406;&#x52A8;&#x4F5C;&#xFF0C;6.10 &#x8282;&#x518D;&#x7EDF;&#x4E00;&#x5904;&#x7406;&#x3002;</p>
+<p>&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5C06;&#x5B9E;&#x73B0;&#x7A0B;&#x5E8F; <code>godbg attach &lt;pid&gt;</code> &#x5B50;&#x547D;&#x4EE4;&#xFF1A;attach &#x5230;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#xFF0C;&#x6B64;&#x65F6;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x4F1A;&#x6682;&#x505C;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x5B83;&#x505C;&#x7A33;&#x540E;&#x8FDB;&#x5165; 5.7 &#x8282;&#x642D;&#x597D;&#x7684;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x3002;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x89E3;&#x9664;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#xFF0C;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x6062;&#x590D;&#x6267;&#x884C;&#x3002;&#x672C;&#x8282;&#x8FD8;&#x4F1A;&#x5728; attach &#x6210;&#x529F;&#x540E;&#x628A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x4ECE; <code>/proc</code> &#x91CC;&#x8BFB;&#x56DE;&#x6765;&#x5B58;&#x597D;&#xFF0C;&#x4E3A;&#x540E;&#x7EED; restart &#x8C03;&#x8BD5;&#x505A;&#x51C6;&#x5907;&#xFF1B;&#x8C03;&#x8BD5;&#x5668;&#x9000;&#x51FA;&#x524D;&#x663E;&#x5F0F; detach&#x3001;&#x8FD8;&#x539F;&#x65AD;&#x70B9;&#x3001;&#x7ED3;&#x675F;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x8FD9;&#x4E9B;&#x6E05;&#x7406;&#x52A8;&#x4F5C;&#xFF0C;&#x4ECE; 6.4 &#x8282;&#x5F00;&#x59CB;&#x7EDF;&#x4E00;&#x5904;&#x7406;&#xFF08;&#x4FE1;&#x53F7;&#x9000;&#x51FA;&#x573A;&#x666F;&#x5728; 6.10 &#x8282;&#x8865;&#x9F50;&#xFF09;&#x3002;</p>
 <h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
 <h4 id="ptraceattach--ptracedetach">PTRACE_ATTACH / PTRACE_DETACH</h4>
 <p>&#x5F53;&#x6211;&#x4EEC;&#x901A;&#x8FC7; <code>ptrace(PTRACE_ATTACH, pid, ...)</code> &#x64CD;&#x4F5C;&#x53BB;&#x8DDF;&#x8E2A;&#x4E00;&#x4E2A;&#x6307;&#x5B9A;&#x7684;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x7ED9;&#x8FD9;&#x4E2A;&#x76EE;&#x6807;&#x7EBF;&#x7A0B;&#x53D1;&#x9001;&#x4E00;&#x4E2A;&#x4FE1;&#x53F7; SIGSTOP&#x3002;</p>
@@ -2322,7 +2335,7 @@ Error: process 31060 attached error: operation not permitted
     <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
 },
 PostRun: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
-    <span class="hljs-comment">// TODO(ch6.10): &#x9000;&#x51FA;&#x4F1A;&#x8BDD;&#x65F6;&#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
+    <span class="hljs-comment">// TODO(ch6.4): &#x9000;&#x51FA;&#x4F1A;&#x8BDD;&#x65F6;&#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
     debug.CurrentSession = debug.NewDebugSession()
     debug.CurrentSession.Start()
 },
@@ -2380,7 +2393,11 @@ PostRun: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span
         <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
     }
 
-    <span class="hljs-comment">// TODO(ch6.3): initialize &#x8BFB;&#x53D6; /proc/pid/comm&#x3001;/proc/pid/cmdline</span>
+    <span class="hljs-comment">// &#x8BFB;&#x53D6; /proc/pid/comm&#x3001;/proc/pid/cmdline&#xFF0C;&#x4FBF;&#x4E8E;&#x540E;&#x7EED;&#x652F;&#x6301;&#x91CD;&#x542F;&#x8C03;&#x8BD5;</span>
+    <span class="hljs-keyword">if</span> err := p.initialize(); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+
     <span class="hljs-comment">// TODO(ch6.20.1): attach &#x5230;&#x8BE5;&#x8FDB;&#x7A0B;&#x7684;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;</span>
     <span class="hljs-keyword">return</span> p, <span class="hljs-literal">nil</span>
 }
@@ -2432,7 +2449,76 @@ PostRun: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span
 }
 </code></pre>
 <blockquote>
-<p>ps: tracer &#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x5373;&#x4F7F;&#x6CA1;&#x6709;&#x663E;&#x5F0F; detach&#xFF0C;&#x5185;&#x6838;&#x4E5F;&#x4F1A;&#x89E3;&#x9664;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#xFF0C;&#x8BA9; tracee &#x6062;&#x590D;&#x6267;&#x884C;&#x3002;&#x6240;&#x4EE5;&#x672C;&#x8282;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x540E;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FD8;&#x80FD;&#x7EE7;&#x7EED;&#x8DD1;&#xFF0C;&#x663E;&#x5F0F;&#x7684; detach &#x4E0E;&#x65AD;&#x70B9;&#x6E05;&#x7406;&#x7559;&#x5230; 6.10 &#x8282;&#x3002;</p>
+<p>ps: tracer &#x9000;&#x51FA;&#x65F6;&#xFF0C;&#x5373;&#x4F7F;&#x6CA1;&#x6709;&#x663E;&#x5F0F; detach&#xFF0C;&#x5185;&#x6838;&#x4E5F;&#x4F1A;&#x89E3;&#x9664;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#xFF0C;&#x8BA9; tracee &#x6062;&#x590D;&#x6267;&#x884C;&#x3002;&#x6240;&#x4EE5;&#x672C;&#x8282;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x540E;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x8FD8;&#x80FD;&#x7EE7;&#x7EED;&#x8DD1;&#xFF1B;&#x663E;&#x5F0F;&#x7684; detach&#x3001;&#x65AD;&#x70B9;&#x8FD8;&#x539F;&#x548C;&#x8FDB;&#x7A0B;&#x5584;&#x540E;&#x4ECE; 6.4 &#x8282;&#x5F00;&#x59CB;&#x7EDF;&#x4E00;&#x5B9E;&#x73B0;&#x3002;</p>
+</blockquote>
+<h4 id="&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x8BFB;&#x53D6;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#xFF08;initialize&#xFF09;">&#x76EE;&#x6807;&#x5C42;&#xFF1A;&#x8BFB;&#x53D6;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#xFF08;initialize&#xFF09;</h4>
+<p>attach &#x662F;&quot;&#x534A;&#x8DEF;&#x63A5;&#x624B;&quot;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF1A;&#x8C03;&#x8BD5;&#x5668;&#x770B;&#x5230;&#x5B83;&#x65F6;&#x5B83;&#x5DF2;&#x7ECF;&#x8DD1;&#x8D77;&#x6765;&#x4E86;&#xFF0C;&#x4E0D;&#x77E5;&#x9053;&#x5B83;&#x662F;&#x600E;&#x4E48;&#x542F;&#x52A8;&#x7684;&#x3002;&#x4E0D;&#x77E5;&#x9053;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#xFF0C;&#x540E;&#x7EED;&#x60F3;&#x652F;&#x6301; restart&#xFF08;&#x91CD;&#x65B0;&#x53D1;&#x8D77;&#x8C03;&#x8BD5;&#xFF09;&#x65F6;&#x5C31;&#x6CA1;&#x6CD5;&#x628A;&#x8FDB;&#x7A0B;&#x518D;&#x62C9;&#x8D77;&#x6765;&#x3002;exec/debug &#x542F;&#x52A8;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x662F;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x5668;&#x65F6;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x5929;&#x7136;&#x5C31;&#x77E5;&#x9053;&#xFF1B;attach &#x7684;&#x8FDB;&#x7A0B;&#x53EA;&#x80FD;&#x4ECE;&#x5185;&#x6838;&#x7684; <code>/proc</code> &#x63A5;&#x53E3;&#x91CC;&#x8BFB;&#x56DE;&#x6765;&#x3002;</p>
+<p>&#x6240;&#x4EE5; <code>AttachTargetProcess</code> &#x5728; attach &#x6210;&#x529F;&#x540E;&#x8C03;&#x7528; <code>p.initialize()</code>&#xFF0C;&#x8BFB;&#x53D6; <code>/proc/pid/comm</code>&#x3001;<code>/proc/pid/cmdline</code> &#x586B;&#x5145; <code>DebuggedProcess.Command/Args</code>&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// initialize &#x521D;&#x59CB;&#x5316;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) initialize() error {
+    <span class="hljs-keyword">var</span> err error
+
+    <span class="hljs-comment">// initialize the command and arguments, after then, we could support</span>
+    <span class="hljs-comment">// restart command.</span>
+    <span class="hljs-keyword">if</span> p.Command, err = readProcComm(p.Process.Pid); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> err
+    }
+    <span class="hljs-keyword">if</span> p.Args, err = readProcCommArgs(p.Process.Pid); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> err
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p><code>readProcComm</code>&#x3001;<code>readProcCommArgs</code> &#x7684;&#x5B9E;&#x73B0;&#x653E;&#x5728; <code>pkg/target/procfs.go</code>&#xFF08;6.1 &#x8282;&#x7684; status &#x51FD;&#x6570;&#x4E5F;&#x5728;&#x8FD9;&#x91CC;&#xFF09;&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// readProcComm &#x8BFB;&#x53D6; /proc/pid/comm &#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;</span>
+<span class="hljs-keyword">func</span> readProcComm(pid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">string</span>, error) {
+    comm, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/comm&quot;</span>, pid))
+    <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> {
+        <span class="hljs-comment">// removes newline character</span>
+        comm = bytes.TrimSuffix(comm, []<span class="hljs-keyword">byte</span>(<span class="hljs-string">&quot;\n&quot;</span>))
+    }
+
+    <span class="hljs-keyword">if</span> comm == <span class="hljs-literal">nil</span> || <span class="hljs-built_in">len</span>(comm) &lt;= <span class="hljs-number">0</span> {
+        <span class="hljs-comment">// /proc/pid/comm &#x8BFB;&#x53D6;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x4ECE; /proc/pid/stat &#x4E2D;&#x89E3;&#x6790;</span>
+        stat, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/stat&quot;</span>, pid))
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;could not read proc stat: %v&quot;</span>, err)
+        }
+        expr := fmt.Sprintf(<span class="hljs-string">&quot;%d\\s*\\((.*)\\)&quot;</span>, pid)
+        rexp, err := regexp.Compile(expr)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;regexp compile error: %v&quot;</span>, err)
+        }
+        match := rexp.FindSubmatch(stat)
+        <span class="hljs-keyword">if</span> match == <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;no match found using regexp &apos;%s&apos; in /proc/%d/stat&quot;</span>, expr, pid)
+        }
+        comm = match[<span class="hljs-number">1</span>]
+    }
+
+    cmdStr := strings.ReplaceAll(<span class="hljs-keyword">string</span>(comm), <span class="hljs-string">&quot;%&quot;</span>, <span class="hljs-string">&quot;%%&quot;</span>)
+    <span class="hljs-keyword">return</span> cmdStr, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// readProcCommArgs &#x8BFB;&#x53D6; /proc/pid/cmdline &#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;</span>
+<span class="hljs-keyword">func</span> readProcCommArgs(pid <span class="hljs-keyword">int</span>) ([]<span class="hljs-keyword">string</span>, error) {
+    dat, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/cmdline&quot;</span>, pid))
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+    }
+    args := strings.Split(<span class="hljs-keyword">string</span>(dat), <span class="hljs-keyword">string</span>([]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0</span>}))[<span class="hljs-number">1</span>:]
+    <span class="hljs-keyword">return</span> args, <span class="hljs-literal">nil</span>
+}
+</code></pre>
+<p>&#x51E0;&#x4E2A;&#x7EC6;&#x8282;&#xFF1A;</p>
+<ul>
+<li><code>/proc/pid/comm</code> &#x662F;&#x5185;&#x6838;&#x4FA7; task_struct.comm &#x7684;&#x6295;&#x5F71;&#xFF0C;&#x6700;&#x591A; 15 &#x5B57;&#x8282;&#x52A0;&#x4E00;&#x4E2A; <code>\0</code>&#xFF0C;&#x8BFB;&#x51FA;&#x6765;&#x8981; trim &#x6389;&#x6362;&#x884C;&#xFF1B;&#x8BFB;&#x4E0D;&#x5230;&#x65F6;&#x4ECE; <code>/proc/pid/stat</code> &#x91CC;&#x6309; <code>pid (comm)</code> &#x7684;&#x683C;&#x5F0F;&#x89E3;&#x6790;&#x515C;&#x5E95;&#xFF1B;</li>
+<li><code>/proc/pid/cmdline</code> &#x662F; NUL &#x5206;&#x9694;&#x7684;&#x5B8C;&#x6574;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x7B2C; 0 &#x9879;&#x662F;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;&#xFF08;argv[0]&#xFF09;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x624D;&#x662F;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5; Args &#x53D6; <code>[1:]</code>&#xFF1B;</li>
+<li><code>comm</code> &#x91CC;&#x7684; <code>%</code> &#x88AB;&#x66FF;&#x6362;&#x6210; <code>%%</code>&#xFF0C;&#x907F;&#x514D;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E4B;&#x540E;&#x88AB;&#x5F53;&#x683C;&#x5F0F;&#x4E32;&#x4F7F;&#x7528;&#x65F6;&#x51FA;&#x95EE;&#x9898;&#x3002;</li>
+</ul>
+<p>&#x914D;&#x5957;&#x7684; <code>pkg/target/procfs_test.go</code> &#x7528; pid 1&#xFF08;init/systemd&#xFF09;&#x9A8C;&#x8BC1;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;comm &#x975E;&#x7A7A;&#x3001;args &#x8FD4;&#x56DE;&#x5408;&#x6CD5; slice&#x3002;</p>
+<blockquote>
+<p>ps: &#x8FD9;&#x6BB5;&#x80FD;&#x529B;&#x539F;&#x8BA1;&#x5212;&#x653E; ch6.3&#xFF0C;&#x540E;&#x6765;&#x6309;&quot;&#x6BCF;&#x8282;&#x53EA;&#x505A;&#x672C;&#x8282;&#x7684;&#x4E8B;&quot;&#x91CD;&#x65B0;&#x5F52;&#x4F4D;&#xFF1A;attach &#x7684;&#x542F;&#x52A8;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;&#x5C5E;&#x4E8E; attach &#x672C;&#x8EAB;&#xFF0C;&#x653E;&#x5728;&#x672C;&#x8282;&#x8BB2;&#xFF1B;exec/debug &#x542F;&#x52A8;&#x7684;&#x8FDB;&#x7A0B;&#x672C;&#x6765;&#x5C31;&#x77E5;&#x9053;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x4ECE; <code>/proc</code> &#x8BFB;&#x3002;Command/Args &#x76EE;&#x524D;&#x8FD8;&#x53EA;&#x662F;&#x8BB0;&#x5F55;&#x4E0B;&#x6765;&#xFF0C;restart &#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x7559;&#x5F85;&#x540E;&#x7EED;&#x7AE0;&#x8282;&#x5B9E;&#x73B0;&#x3002;</p>
 </blockquote>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
 <p>&#x6211;&#x4EEC;&#x5148;&#x5728;bash&#x542F;&#x52A8;&#x4E00;&#x4E2A;&#x547D;&#x4EE4;&#xFF0C;&#x8FD9;&#x4E2A;&#x547D;&#x4EE4;&#x7684;&#x6267;&#x884C;&#x6548;&#x679C;&#x662F;&#x6BCF;&#x9694;1s&#x6253;&#x5370;&#x4E0B;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x7684;pid&#xFF0C;&#x7136;&#x540E;&#x6211;&#x4EEC;&#x6267;&#x884C; <code>godbg attach &lt;pid&gt;</code> &#x6765;&#x8DDF;&#x8E2A;&#x8BE5;&#x8FDB;&#x7A0B;&#x3002;</p>
@@ -2581,6 +2667,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 <li>&#x5BF9;&#x6BD4;&#x4E86;&#x4E24;&#x79CD;&#x5EFA;&#x7ACB;&#x8DDF;&#x8E2A;&#x5173;&#x7CFB;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;exec &#x8D70; PTRACE_TRACEME&#xFF08;tracee &#x56E0; SIGTRAP &#x505C;&#x5728; exec &#x5904;&#xFF09;&#xFF0C;attach &#x8D70; PTRACE_ATTACH&#xFF08;&#x5185;&#x6838;&#x6CE8;&#x5165; SIGSTOP&#xFF0C;tracee &#x56E0; SIGSTOP &#x505C;&#x4F4F;&#xFF09;&#xFF0C;tracer &#x4FA7;&#x7B49;&#x5F85;&#x505C;&#x7A33;&#x7684;&#x65B9;&#x5F0F;&#x90FD;&#x662F; wait4 + WSTOPPED&#xFF1B;</li>
 <li>&#x5206;&#x6790;&#x4E86; attach &#x5931;&#x8D25;&#x7684;&#x5E38;&#x89C1;&#x539F;&#x56E0;&#xFF1A;&#x76EE;&#x6807;&#x7EBF;&#x7A0B;&#x5DF2;&#x88AB;&#x5176;&#x4ED6;&#x8C03;&#x8BD5;&#x5668;&#x8DDF;&#x8E2A;&#x3001;&#x51ED;&#x636E;&#x68C0;&#x67E5;&#x4E0D;&#x901A;&#x8FC7;&#x3001;tracee &#x5904;&#x4E8E; nondumpable &#x72B6;&#x6001;&#x3001;Yama LSM &#x7684; ptrace_scope &#x9650;&#x5236;&#xFF1B;</li>
 <li>&#x5728; godbgv2 &#x4E2D;&#x5B9E;&#x73B0;&#x4E86;&#x547D;&#x4EE4;&#x5C42;&#x3001;&#x670D;&#x52A1;&#x5C42;&#x3001;&#x76EE;&#x6807;&#x5C42;&#x7684;&#x5B8C;&#x6574;&#x8C03;&#x7528;&#x94FE;&#xFF0C;&#x5E76;&#x8865;&#x5145;&#x4E86;&#x5BF9;&#x5E94;&#x7684;&#x5355;&#x5143;&#x6D4B;&#x8BD5;&#xFF1B;</li>
+<li>attach &#x6210;&#x529F;&#x540E;&#x7528; initialize &#x8BFB;&#x53D6; <code>/proc/pid/comm</code>&#x3001;<code>/proc/pid/cmdline</code>&#xFF0C;&#x628A;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#x8BB0;&#x5F55;&#x5230; <code>DebuggedProcess.Command/Args</code>&#xFF0C;&#x4E3A;&#x540E;&#x7EED; restart &#x8C03;&#x8BD5;&#x505A;&#x51C6;&#x5907;&#xFF08;exec/debug &#x7684;&#x573A;&#x666F;&#x5929;&#x7136;&#x5DF2;&#x77E5;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x8BFB; /proc&#xFF09;&#xFF1B;</li>
 <li>&#x7ED3;&#x5408; Go &#x7684;&#x534F;&#x7A0B;&#x7F16;&#x7A0B;&#x6A21;&#x578B;&#xFF0C;&#x89E3;&#x91CA;&#x4E86; attach &#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x540E;&quot;&#x505C;&#x4E0D;&#x4E0B;&#x6765;&quot;&#x7684;&#x73B0;&#x8C61;&#xFF1A;attach &#x53EA;&#x8DDF;&#x8E2A;&#x4E86;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x6267;&#x884C; main.main &#x7684; main goroutine &#x5E76;&#x4E0D;&#x7ED1;&#x5B9A;&#x5728;&#x4E3B;&#x7EBF;&#x7A0B;&#x4E0A;&#xFF0C;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x4ECD;&#x5728;&#x8FD0;&#x884C;&#xFF1B;&#x8981;&#x89E3;&#x51B3;&#x8FD9;&#x4E2A;&#x95EE;&#x9898;&#x9700;&#x8981; All-stop Mode&#xFF0C;&#x679A;&#x4E3E; <code>/proc/&lt;pid&gt;/task</code> &#x9010;&#x4E2A; attach&#xFF0C;&#x8FD9;&#x90E8;&#x5206;&#x5728; 6.20.1 &#x8282;&#x5B9E;&#x73B0;&#x3002;</li>
 </ul>
 <p>&#x901A;&#x8FC7;&#x8FD9;&#x4E9B;&#x5185;&#x5BB9;&#xFF0C;&#x6211;&#x4EEC;&#x68B3;&#x7406;&#x5E76;&#x89E3;&#x7B54;&#x4E86; attach &#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#x4E00;&#x4E9B;&#x57FA;&#x7840;&#x4F46;&#x81F3;&#x5173;&#x91CD;&#x8981;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x6DF1;&#x5165;&#x7406;&#x89E3;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x5B9E;&#x73B0;&#x539F;&#x7406;&#x6253;&#x4E0B;&#x4E86;&#x575A;&#x5B9E;&#x7684;&#x57FA;&#x7840;&#x3002;</p>
@@ -2627,7 +2714,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.2 跟踪运行中进程","level":"1.6.2","depth":2,"next":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-debug.md","ref":"6-develop-inst-debugger/3-debug.md","articles":[]},"previous":{"title":"6.1 启动并跟踪进程","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-exec.md","ref":"6-develop-inst-debugger/1-exec.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/2-attach.md","mtime":"2026-10-25T02:57:51.349Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T02:58:26.181Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.2 跟踪运行中进程","level":"1.6.2","depth":2,"next":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-debug.md","ref":"6-develop-inst-debugger/3-debug.md","articles":[]},"previous":{"title":"6.1 启动并跟踪进程","level":"1.6.1","depth":2,"path":"6-develop-inst-debugger/1-exec.md","ref":"6-develop-inst-debugger/1-exec.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/2-attach.md","mtime":"2026-10-25T05:40:58.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T05:41:30.850Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="4-replay.html" />
+    <link rel="next" href="4-session.html" />
     
     
     <link rel="prev" href="2-attach.html" />
@@ -357,12 +357,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.6.4" data-path="4-replay.html">
+        <li class="chapter " data-level="1.6.4" data-path="4-session.html">
             
-                <a href="4-replay.html">
+                <a href="4-session.html">
             
                     
-                    6.4 调试脚本回放
+                    6.4 脚本回放与清理善后
             
                 </a>
             
@@ -1963,6 +1963,19 @@
             
         </li>
     
+        <li class="chapter " data-level="1.10.11" data-path="../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                <a href="../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                    
+                    10.11 命令行参数与选项的分离：cobra 如何解析 --
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -2234,9 +2247,10 @@ body {
 </style></p>
 <h2 id="&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#xFF1A;&#x6784;&#x5EFA;&#x5E76;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#xFF08;debug&#xFF09;">&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#xFF1A;&#x6784;&#x5EFA;&#x5E76;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#xFF08;debug&#xFF09;</h2>
 <p>&#x524D;&#x4E24;&#x8282;&#x5B9E;&#x73B0;&#x7684; <code>godbg exec &lt;prog&gt;</code>&#x3001;<code>godbg attach &lt;pid&gt;</code> &#x90FD;&#x8981;&#x6C42;&#x76EE;&#x6807;&#x7A0B;&#x5E8F;&#x5DF2;&#x7ECF;&#x6784;&#x5EFA;&#x597D;&#xFF1A;exec &#x76F4;&#x63A5;&#x542F;&#x52A8;&#x73B0;&#x6210;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;attach &#x76F4;&#x63A5;&#x8DDF;&#x8E2A;&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x3002;&#x4F46;&#x8C03;&#x8BD5;&#x5F80;&#x5F80;&#x53D1;&#x751F;&#x5728;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x6B64;&#x65F6;&#x6E90;&#x7801;&#x53EF;&#x80FD;&#x8FD8;&#x6CA1;&#x7F16;&#x8BD1;&#xFF0C;&#x6216;&#x8005;&#x6539;&#x52A8;&#x540E;&#x8FD8;&#x6CA1;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x3002;&#x6BCF;&#x6B21;&#x8C03;&#x8BD5;&#x524D;&#x624B;&#x52A8;&#x6267;&#x884C; go build &#x518D; exec&#xFF0C;&#x672A;&#x514D;&#x592A;&#x9EBB;&#x70E6;&#xFF0C;&#x800C;&#x4E14;&#x5BB9;&#x6613;&#x5FD8;&#x8BB0;&#x5E26;&#x4E0A;&#x8C03;&#x8BD5;&#x9700;&#x8981;&#x7684;&#x7F16;&#x8BD1;&#x9009;&#x9879;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x5E94;&#x8BE5;&#x66FF;&#x6211;&#x4EEC;&#x5B8C;&#x6210;&#x8FD9;&#x4EF6;&#x4E8B;&#xFF1A;&#x6784;&#x5EFA;&#x3001;&#x542F;&#x52A8;&#x3001;&#x8DDF;&#x8E2A;&#x4E00;&#x6C14;&#x5475;&#x6210;&#xFF0C;&#x8FD9;&#x5C31;&#x662F; <code>godbg debug</code> &#x8981;&#x505A;&#x7684;&#x3002;</p>
-<p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.3</code>&#xFF0C;<code>git diff ch6.2 ch6.3</code> &#x80FD;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x5728; attach &#x7684;&#x57FA;&#x7840;&#x4E0A;&#x591A;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
-<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-debug-directoryfile-&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5;-go-&#x7A0B;&#x5E8F;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg debug [directory|file]</code> &#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5; go &#x7A0B;&#x5E8F;</h3>
+<p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.3</code>&#xFF0C;<code>git diff ch6.2 ch6.3</code> &#x80FD;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x76F8;&#x5BF9; attach &#x591A;&#x4E86;&#x4EC0;&#x4E48;&#xFF1A;&#x53EA;&#x6539;&#x4E86; <code>cmd/debug.go</code> &#x4E00;&#x4E2A;&#x6587;&#x4EF6;&#x3002;</p>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;godbg-debug-directoryfile----args-&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5;-go-&#x7A0B;&#x5E8F;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;<code>godbg debug [directory|file] [-- args...]</code> &#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5; go &#x7A0B;&#x5E8F;</h3>
 <p><code>godbg debug</code> &#x63A5;&#x6536;&#x76EE;&#x5F55;&#x6216;&#x6E90;&#x7801;&#x6587;&#x4EF6;&#x4F5C;&#x4E3A;&#x53C2;&#x6570;&#xFF08;&#x7F3A;&#x7701;&#x4E3A;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#xFF09;&#xFF0C;&#x5148;&#x7F16;&#x8BD1;&#x6784;&#x5EFA;&#x51FA;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;&#x518D;&#x6309; 6.1 &#x8282;&#x7684;&#x65B9;&#x5F0F;&#x542F;&#x52A8;&#x5E76;&#x8DDF;&#x8E2A;&#xFF0C;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF1B;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x5220;&#x9664;&#x6784;&#x5EFA;&#x4EA7;&#x7269;&#x3002;</p>
+<p>&#x4E0E; 6.1 &#x8282;&#x7684; <code>godbg exec</code> &#x4E00;&#x6837;&#xFF0C;godbg &#x81EA;&#x8EAB;&#x9009;&#x9879;&#x5199;&#x5728; <code>--</code> &#x4E4B;&#x524D;&#xFF0C;<code>--</code> &#x4E4B;&#x540E;&#x7684;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x539F;&#x6837;&#x4F20;&#x7ED9;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x3002;&#x533A;&#x522B;&#x5728;&#x4E8E; debug &#x8FD8;&#x6709;&#x4E00;&#x4E2A;&quot;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&quot;&#xFF1A;<code>--</code> &#x4E4B;&#x524D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x662F; go build &#x7684;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x3002;&#x6240;&#x4EE5;&#x547D;&#x4EE4;&#x884C;&#x5F62;&#x5982; <code>godbg debug [directory|file] [-- args...]</code>&#x3002;</p>
 <p>&#x6784;&#x5EFA;&#x65F6;&#x6709;&#x4E24;&#x4E2A;&#x548C;&#x8C03;&#x8BD5;&#x5F3A;&#x76F8;&#x5173;&#x7684;&#x9009;&#x9879;&#xFF1A;</p>
 <ul>
 <li><code>-gcflags=all=-N -l</code>&#xFF1A;<code>-N</code> &#x5173;&#x95ED;&#x4F18;&#x5316;&#xFF0C;<code>-l</code> &#x5173;&#x95ED;&#x5185;&#x8054;&#x3002;&#x4F18;&#x5316;&#x548C;&#x5185;&#x8054;&#x4F1A;&#x6253;&#x4E71;&#x6E90;&#x7801;&#x4E0E;&#x673A;&#x5668;&#x6307;&#x4EE4;&#x4E4B;&#x95F4;&#x7684;&#x5BF9;&#x5E94;&#x5173;&#x7CFB;&#xFF0C;&#x65AD;&#x70B9;&#x3001;&#x5355;&#x6B65;&#x3001;&#x67E5;&#x770B;&#x53D8;&#x91CF;&#x90FD;&#x4F1A;&#x53D7;&#x5F71;&#x54CD;&#xFF0C;&#x8C03;&#x8BD5;&#x671F;&#x95F4;&#x4E00;&#x822C;&#x90FD;&#x8981;&#x5173;&#x6389;&#x3002;dlv debug &#x4E5F;&#x4F1A;&#x81EA;&#x52A8;&#x52A0;&#x4E0A;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF1B;</li>
@@ -2245,10 +2259,11 @@ body {
 <p>&#x6784;&#x5EFA;&#x4EA7;&#x7269;&#x540D;&#x7EA6;&#x5B9A;&#x4E3A; <code>__debug_bin__</code>&#xFF08;&#x4E0E; delve &#x540C;&#x540D;&#xFF09;&#xFF0C;&#x653E;&#x5728;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#xFF0C;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x5373;&#x5220;&#x9664;&#xFF0C;&#x4E0D;&#x6C61;&#x67D3;&#x5DE5;&#x4F5C;&#x533A;&#x3002;</p>
 <p>go build &#x80CC;&#x540E;&#x53D1;&#x751F;&#x7684;&#x4E8B;&#x60C5;&#xFF08;&#x7F16;&#x8BD1;&#x5668;&#x3001;&#x94FE;&#x63A5;&#x5668;&#x5982;&#x4F55;&#x534F;&#x540C;&#x5DE5;&#x4F5C;&#xFF09;&#xFF0C;7.1 &#x8282;&quot;Go&#x6784;&#x5EFA;&#x5185;&#x5E55;&quot;&#x4F1A;&#x8BE6;&#x7EC6;&#x5C55;&#x5F00;&#xFF0C;&#x8FD9;&#x91CC;&#x5148;&#x4E13;&#x6CE8;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x672C;&#x8EAB;&#x3002;</p>
 <h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
-<p><code>godbg debug</code> &#x7684;&#x8C03;&#x7528;&#x94FE;&#xFF0C;&#x524D;&#x534A;&#x6BB5;&#x662F; go build&#xFF0C;&#x540E;&#x534A;&#x6BB5;&#x590D;&#x7528; 6.1 &#x8282;&#x7684; Launch&#xFF1A;</p>
-<pre><code class="lang-text">godbg debug [directory|file]
+<p><code>godbg debug</code> &#x7684;&#x8C03;&#x7528;&#x94FE;&#xFF0C;&#x524D;&#x534A;&#x6BB5;&#x662F; go build&#xFF0C;&#x540E;&#x534A;&#x6BB5;&#x590D;&#x7528; 6.1 &#x8282;&#x7684; Launch&#xFF1B;<code>--</code> &#x4E4B;&#x540E;&#x7684;&#x53C2;&#x6570;&#x4E5F;&#x4E00;&#x5E76;&#x900F;&#x4F20;&#xFF1A;</p>
+<pre><code class="lang-text">godbg debug [directory|file] [-- args...]
     cmd/debug.go                       RunE&#xFF1A;go build -gcflags=all=-N -l -o __debug_bin__
-                                       &#x2192; Client.Launch(KindDebug, ./__debug_bin__)
+                                       &#x7528; ArgsLenAtDash &#x62C6;&#x5206;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x4E0E;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;
+                                       &#x2192; Client.Launch(KindDebug, ./__debug_bin__, traceeArgs...)
     pkg/service/debugger               Launch &#x2192; target.NewDebuggedProcess&#xFF08;&#x540C; 6.1&#xFF09;
     pkg/target                         &#x542F;&#x52A8;&#x5E76;&#x8DDF;&#x8E2A;&#xFF0C;&#x7B49;&#x5F85; SIGTRAP&#xFF08;&#x540C; 6.1&#xFF09;
     cmd/debug                           PostRun&#xFF1A;&#x5220;&#x9664; __debug_bin__&#xFF0C;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;
@@ -2260,14 +2275,34 @@ body {
 
 <span class="hljs-comment">// debugCmd &#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5; go &#x7A0B;&#x5E8F;</span>
 <span class="hljs-keyword">var</span> debugCmd = &amp;cobra.Command{
-    Use:   <span class="hljs-string">&quot;debug [directory|file]&quot;</span>,
+    Use:   <span class="hljs-string">&quot;debug [directory|file] [-- args...]&quot;</span>,
     Short: <span class="hljs-string">&quot;&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5; go &#x7A0B;&#x5E8F;&quot;</span>,
-    Long:  <span class="hljs-string">`&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5; go &#x7A0B;&#x5E8F;`</span>,
+    Long: <span class="hljs-string">`&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5; go &#x7A0B;&#x5E8F;
+
+&#x4E0E; godbg exec &#x4E00;&#x6837;&#xFF0C;godbg &#x81EA;&#x8EAB;&#x7684;&#x9009;&#x9879;&#x8981;&#x5199;&#x5728; -- &#x4E4B;&#x524D;&#xFF0C;-- &#x4E4B;&#x540E;&#x7684;&#x53C2;&#x6570;&#x4F1A;
+&#x539F;&#x6837;&#x4F20;&#x9012;&#x7ED9;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF1B;-- &#x4E4B;&#x524D;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x662F; go build &#x7684;&#x6784;&#x5EFA;&#x76EE;&#x6807;
+&#xFF08;&#x76EE;&#x5F55;&#x6216;&#x6E90;&#x7801;&#x6587;&#x4EF6;&#xFF09;&#xFF0C;&#x7F3A;&#x7701;&#x4E3A;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#xFF1A;
+
+  godbg debug ./examples/debuggee/ -- -name value
+
+&#x82E5;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x4E0D;&#x9700;&#x8981;&#x4EE5;&#x7834;&#x6298;&#x53F7;&#x5F00;&#x5934;&#x7684;&#x53C2;&#x6570;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x7701;&#x7565; --&#xFF0C;&#x6B64;&#x65F6;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;
+&#x4ECD;&#x5168;&#x90E8;&#x6309;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x5904;&#x7406;&#xFF08;&#x4E0E; go build &#x4E00;&#x81F4;&#xFF09;&#xFF1A;
+
+  godbg debug ./examples/debuggee/ arg1 arg2
+
+&#x9700;&#x8981;&#x540C;&#x65F6;&#x6307;&#x5B9A;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x548C;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#x65F6;&#xFF0C;&#x8BF7;&#x4F7F;&#x7528; -- &#x5206;&#x9694;&#x3002;`</span>,
     RunE: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) error {
 
-        <span class="hljs-comment">// &#x6784;&#x5EFA;&#x5F85;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF1A;&#x7981;&#x7528;&#x4F18;&#x5316;&#x4E0E;&#x5185;&#x8054;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;</span>
+        <span class="hljs-comment">// &#x6784;&#x5EFA;&#x5F85;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF1A;&#x7981;&#x7528;&#x4F18;&#x5316;&#x4E0E;&#x5185;&#x8054;&#xFF0C;&#x65B9;&#x4FBF;&#x8C03;&#x8BD5;&#x3002;</span>
+        <span class="hljs-comment">// -- &#x4E4B;&#x524D;&#x7684;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x662F;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#xFF0C;-- &#x4E4B;&#x540E;&#x7684;&#x662F;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x7684;&#x53C2;&#x6570;&#x3002;</span>
         cmdName := []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;.&quot;</span>}
-        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) != <span class="hljs-number">0</span> {
+        <span class="hljs-keyword">var</span> traceeArgs []<span class="hljs-keyword">string</span>
+        <span class="hljs-keyword">if</span> dash := cmd.ArgsLenAtDash(); dash &gt;= <span class="hljs-number">0</span> {
+            <span class="hljs-keyword">if</span> dash &gt; <span class="hljs-number">0</span> {
+                cmdName = args[:dash]
+            }
+            traceeArgs = args[dash:]
+        } <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) != <span class="hljs-number">0</span> {
             cmdName = args
         }
 
@@ -2281,9 +2316,8 @@ body {
             <span class="hljs-keyword">return</span> err
         }
 
-        <span class="hljs-comment">// &#x542F;&#x52A8;&#x5E76;&#x8DDF;&#x8E2A;&#x6784;&#x5EFA;&#x51FA;&#x7684;&#x4E8C;&#x8FDB;&#x5236;</span>
-        <span class="hljs-comment">// TODO(ch6.4): &#x652F;&#x6301;&#x5411;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x4F20;&#x9012;&#x53C2;&#x6570;&#xFF08;-- &#x4E4B;&#x540E;&#xFF09;</span>
-        pid, err := Client.Launch(api.KindDebug, <span class="hljs-string">&quot;./&quot;</span>+BuildExecName)
+        <span class="hljs-comment">// &#x542F;&#x52A8;&#x5E76;&#x8DDF;&#x8E2A;&#x6784;&#x5EFA;&#x51FA;&#x7684;&#x4E8C;&#x8FDB;&#x5236;&#xFF08;-- &#x4E4B;&#x540E;&#x7684;&#x53C2;&#x6570;&#x4F20;&#x9012;&#x7ED9;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF09;</span>
+        pid, err := Client.Launch(api.KindDebug, <span class="hljs-string">&quot;./&quot;</span>+BuildExecName, traceeArgs...)
         <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
             os.RemoveAll(BuildExecName)
             <span class="hljs-keyword">return</span> err
@@ -2294,7 +2328,7 @@ body {
     PostRun: <span class="hljs-keyword">func</span>(cmd *cobra.Command, args []<span class="hljs-keyword">string</span>) {
         <span class="hljs-comment">// &#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x5220;&#x9664;&#x6784;&#x5EFA;&#x4EA7;&#x7269;</span>
         <span class="hljs-keyword">defer</span> os.RemoveAll(BuildExecName)
-        <span class="hljs-comment">// TODO(ch6.10): &#x9000;&#x51FA;&#x4F1A;&#x8BDD;&#x65F6;&#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
+        <span class="hljs-comment">// TODO(ch6.4): &#x9000;&#x51FA;&#x4F1A;&#x8BDD;&#x65F6;&#x6E05;&#x7406;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;</span>
         debug.CurrentSession = debug.NewDebugSession()
         debug.CurrentSession.Start()
     },
@@ -2302,93 +2336,35 @@ body {
 </code></pre>
 <p>&#x51E0;&#x4E2A;&#x8981;&#x70B9;&#xFF1A;</p>
 <ul>
-<li>&#x53C2;&#x6570;&#x7F3A;&#x7701;&#x65F6;&#x53D6; <code>&quot;.&quot;</code>&#xFF0C;&#x5426;&#x5219;&#x7528;&#x4F20;&#x5165;&#x7684;&#x76EE;&#x5F55;&#x6216;&#x6587;&#x4EF6;&#xFF0C;&#x4F5C;&#x4E3A; go build &#x7684;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#xFF1B;</li>
+<li>&#x53C2;&#x6570;&#x7F3A;&#x7701;&#x65F6;&#x53D6; <code>&quot;.&quot;</code>&#xFF1B;<code>--</code> &#x4E4B;&#x524D;&#x7684;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x90FD;&#x4F5C;&#x4E3A; go build &#x7684;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#xFF08;&#x53EF;&#x4EE5;&#x591A;&#x4E2A;&#xFF0C;&#x548C; <code>go build</code> &#x4E00;&#x81F4;&#xFF09;&#xFF0C;&#x7F3A;&#x7701;&#x4E3A;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#xFF1B;</li>
+<li><code>--</code> &#x4E4B;&#x540E;&#x7684;&#x53C2;&#x6570;&#x6536;&#x96C6;&#x5230; <code>traceeArgs</code>&#xFF0C;&#x539F;&#x6837;&#x4EA4;&#x7ED9; <code>Client.Launch</code>&#xFF0C;&#x4E0E; exec &#x7684;&#x4F20;&#x53C2;&#x7EA6;&#x5B9A;&#x4E00;&#x81F4;&#xFF1B;</li>
 <li>&#x6784;&#x5EFA;&#x9636;&#x6BB5;&#x76F4;&#x63A5;&#x590D;&#x7528; <code>os/exec</code>&#xFF1A;<code>go build -gcflags=all=-N -l -ldflags=-compressdwarf=false -o __debug_bin__</code>&#x3002;&#x6784;&#x5EFA;&#x5931;&#x8D25;&#x65F6;&#x628A; go &#x5DE5;&#x5177;&#x94FE;&#x7684; stderr &#x6253;&#x51FA;&#x6765;&#xFF0C;&#x8FD4;&#x56DE;&#x9519;&#x8BEF;&#xFF1B;</li>
 <li>&#x6784;&#x5EFA;&#x6210;&#x529F;&#x540E;&#x8C03;&#x7528; <code>Client.Launch</code>&#xFF0C;Kind &#x4F20; <code>KindDebug</code>&#xFF0C;&#x4E0E; exec &#x7684; <code>KindExec</code>&#x3001;attach &#x7684; <code>KindAttach</code> &#x533A;&#x5206;&#x3002;&#x4ECE;&#x8FD9;&#x91CC;&#x5F00;&#x59CB;&#x5C31;&#x548C; 6.1 &#x8282;&#x7684; exec &#x5B8C;&#x5168;&#x4E00;&#x6837;&#x4E86;&#xFF1A;&#x542F;&#x52A8;&#x3001;&#x8DDF;&#x8E2A;&#x3001;&#x7B49; SIGTRAP&#xFF1B;</li>
 <li><code>PostRun</code> &#x91CC;&#x5148; <code>defer os.RemoveAll(BuildExecName)</code>&#xFF0C;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x5220;&#x9664;&#x6784;&#x5EFA;&#x4EA7;&#x7269;&#xFF0C;&#x7136;&#x540E;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x3002;6.4 &#x8282;&#x4F1A;&#x628A;&#x5404;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x7684; PostRun &#x7EDF;&#x4E00;&#x6536;&#x8FDB; startDebugSession&#x3002;</li>
 </ul>
-<p>&#x4EE3;&#x7801;&#x91CC;&#x7684; TODO(ch6.4) &#x8FD8;&#x7559;&#x4E86;&#x4E00;&#x4EF6;&#x4E8B;&#xFF1A;&#x652F;&#x6301; <code>--</code> &#x4E4B;&#x540E;&#x5411;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#x4F20;&#x9012;&#x53C2;&#x6570;&#x3002;&#x5B83;&#x6807;&#x8BB0;&#x7684;&#x662F; ch6.4 &#x7684;&#x8BA1;&#x5212;&#xFF0C;&#x5B9E;&#x9645; ch6.4 &#x843D;&#x5730;&#x7684;&#x662F; --init &#x811A;&#x672C;&#x56DE;&#x653E;&#xFF0C;&#x53C2;&#x6570;&#x900F;&#x4F20;&#x7559;&#x5F85;&#x540E;&#x7EED;&#x7AE0;&#x8282;&#xFF0C;&#x672C;&#x8282;&#x5148;&#x4E0D;&#x7BA1;&#x3002;</p>
-<h4 id="&#x76EE;&#x6807;&#x5C42;&#xFF1A;initialize-&#x8BFB;&#x53D6;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;">&#x76EE;&#x6807;&#x5C42;&#xFF1A;initialize &#x8BFB;&#x53D6;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;</h4>
-<p>ch6.2 &#x91CC; <code>AttachTargetProcess</code> &#x7559;&#x4E86;&#x4E2A; TODO(ch6.3)&#xFF0C;&#x672C;&#x8282;&#x628A;&#x5B83;&#x586B;&#x4E0A;&#xFF1A;attach &#x6210;&#x529F;&#x540E;&#x8C03;&#x7528; <code>p.initialize()</code> &#x8BFB;&#x53D6; <code>/proc/pid/comm</code>&#x3001;<code>/proc/pid/cmdline</code>&#xFF0C;&#x5F97;&#x5230;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#xFF0C;&#x5B58;&#x8FDB; <code>DebuggedProcess.Command/Args</code>&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-keyword">func</span> AttachTargetProcess(pid <span class="hljs-keyword">int</span>) (p *DebuggedProcess, err error) {
-    ...
-    <span class="hljs-comment">// &#x8BFB;&#x53D6; /proc/pid/comm&#x3001;/proc/pid/cmdline&#xFF0C;&#x4FBF;&#x4E8E;&#x540E;&#x7EED;&#x652F;&#x6301;&#x91CD;&#x542F;&#x8C03;&#x8BD5;</span>
-    <span class="hljs-keyword">if</span> err := p.initialize(); err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+<h4 id="&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x600E;&#x4E48;&#x5206;&#xFF1A;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x8FD8;&#x662F;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#xFF1F;">&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x600E;&#x4E48;&#x5206;&#xFF1A;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x8FD8;&#x662F;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#xFF1F;</h4>
+<p>debug &#x548C; exec &#x4E0D;&#x4E00;&#x6837;&#xFF1A;exec &#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x4E00;&#x5B9A;&#x662F;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;&#xFF0C;&#x5269;&#x4E0B;&#x7684;&#x90FD;&#x662F;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#xFF1B;debug &#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x662F; go build &#x7684;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#xFF0C;&#x540E;&#x9762;&#x65E2;&#x53EF;&#x80FD;&#x662F;&#x66F4;&#x591A;&#x7684;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#xFF0C;&#x4E5F;&#x53EF;&#x80FD;&#x662F;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#xFF0C;&#x53EA;&#x770B;&#x4F4D;&#x7F6E;&#x5206;&#x4E0D;&#x6E05;&#x3002;&#x6240;&#x4EE5;&#x8FD9;&#x91CC;&#x7528; cobra &#x7684; <code>cmd.ArgsLenAtDash()</code> &#x6309; <code>--</code> &#x5207;&#x5206;&#xFF1A;</p>
+<pre><code class="lang-go">cmdName := []<span class="hljs-keyword">string</span>{<span class="hljs-string">&quot;.&quot;</span>}
+<span class="hljs-keyword">var</span> traceeArgs []<span class="hljs-keyword">string</span>
+<span class="hljs-keyword">if</span> dash := cmd.ArgsLenAtDash(); dash &gt;= <span class="hljs-number">0</span> {
+    <span class="hljs-keyword">if</span> dash &gt; <span class="hljs-number">0</span> {
+        cmdName = args[:dash]
     }
-    <span class="hljs-comment">// TODO(ch6.20.1): attach &#x5230;&#x8BE5;&#x8FDB;&#x7A0B;&#x7684;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;</span>
-    <span class="hljs-keyword">return</span> p, <span class="hljs-literal">nil</span>
-}
-
-<span class="hljs-comment">// initialize &#x521D;&#x59CB;&#x5316;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;</span>
-<span class="hljs-keyword">func</span> (p *DebuggedProcess) initialize() error {
-    <span class="hljs-keyword">var</span> err error
-
-    <span class="hljs-comment">// initialize the command and arguments, after then, we could support</span>
-    <span class="hljs-comment">// restart command.</span>
-    <span class="hljs-keyword">if</span> p.Command, err = readProcComm(p.Process.Pid); err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> err
-    }
-    <span class="hljs-keyword">if</span> p.Args, err = readProcCommArgs(p.Process.Pid); err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> err
-    }
-    <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+    traceeArgs = args[dash:]
+} <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(args) != <span class="hljs-number">0</span> {
+    cmdName = args
 }
 </code></pre>
-<p>&#x8FD9;&#x6709;&#x4EC0;&#x4E48;&#x7528;&#x5462;&#xFF1F;&#x8003;&#x8651; restart &#x547D;&#x4EE4;&#x3002;&#x4E00;&#x8F6E;&#x8C03;&#x8BD5;&#x7ED3;&#x675F;&#xFF08;&#x6BD4;&#x5982;&#x65AD;&#x70B9;&#x4F4D;&#x7F6E;&#x8BBE;&#x9519;&#x4E86;&#xFF0C;&#x9519;&#x8FC7;&#x4E86;&#x5173;&#x952E;&#x4EE3;&#x7801;&#xFF09;&#xFF0C;&#x60F3;&#x91CD;&#x65B0;&#x53D1;&#x8D77;&#x8C03;&#x8BD5;&#xFF0C;&#x5C31;&#x5F97;&#x77E5;&#x9053;&#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x6700;&#x521D;&#x662F;&#x600E;&#x4E48;&#x542F;&#x52A8;&#x7684;&#x3002;</p>
 <ul>
-<li>exec/debug &#x542F;&#x52A8;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x662F;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x65F6;&#x5019;&#x6307;&#x5B9A;&#x7684;&#xFF0C;&#x5929;&#x7136;&#x77E5;&#x9053;&#x8FD9;&#x91CC;&#x7684;&#x53C2;&#x6570;&#x4FE1;&#x606F;&#xFF1B;</li>
-<li>attach &#x7684;&#x8FDB;&#x7A0B;&#x5219;&#x662F;&quot;&#x534A;&#x8DEF;&#x63A5;&#x624B;&quot;&#xFF0C;&#x53EA;&#x80FD;&#x4ECE;&#x5185;&#x6838;&#x7684; /proc &#x63A5;&#x53E3;&#x91CC;&#x8BFB;&#x56DE;&#x6765;&#x3002;</li>
+<li><code>godbg debug ./examples/debuggee/ -- -test.v</code>&#xFF1A;&#x6784;&#x5EFA; <code>./examples/debuggee/</code>&#xFF0C;tracee &#x6536;&#x5230; <code>-test.v</code>&#xFF1B;</li>
+<li><code>godbg debug ./examples/debuggee/</code>&#xFF1A;&#x53EA;&#x6784;&#x5EFA;&#xFF0C;&#x6CA1;&#x6709;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#xFF1B;</li>
+<li><code>godbg debug ./examples/debuggee/ ./cmd/tool</code>&#xFF1A;&#x6CA1;&#x6709; <code>--</code>&#xFF0C;&#x4E24;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x90FD;&#x6309;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x5904;&#x7406;&#xFF08;&#x4E0E; <code>go build</code> &#x4E00;&#x81F4;&#xFF09;&#xFF1B;</li>
+<li><code>godbg debug -- -flag</code>&#xFF1A;<code>--</code> &#x4E4B;&#x524D;&#x6CA1;&#x6709;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#xFF0C;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x53D6;&#x7F3A;&#x7701; <code>&quot;.&quot;</code>&#x3002;</li>
 </ul>
-<h4 id="procfsgo">procfs.go</h4>
-<p><code>readProcComm</code>&#x3001;<code>readProcCommArgs</code> &#x7684;&#x5B9E;&#x73B0;&#x653E;&#x5728; <code>pkg/target/procfs.go</code>&#xFF08;6.1 &#x8282;&#x7684; status &#x51FD;&#x6570;&#x4E5F;&#x5728;&#x8FD9;&#x91CC;&#xFF09;&#xFF1A;</p>
-<pre><code class="lang-go"><span class="hljs-comment">// readProcComm &#x8BFB;&#x53D6; /proc/pid/comm &#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x547D;&#x4EE4;</span>
-<span class="hljs-keyword">func</span> readProcComm(pid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">string</span>, error) {
-    comm, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/comm&quot;</span>, pid))
-    <span class="hljs-keyword">if</span> err == <span class="hljs-literal">nil</span> {
-        <span class="hljs-comment">// removes newline character</span>
-        comm = bytes.TrimSuffix(comm, []<span class="hljs-keyword">byte</span>(<span class="hljs-string">&quot;\n&quot;</span>))
-    }
-
-    <span class="hljs-keyword">if</span> comm == <span class="hljs-literal">nil</span> || <span class="hljs-built_in">len</span>(comm) &lt;= <span class="hljs-number">0</span> {
-        <span class="hljs-comment">// /proc/pid/comm &#x8BFB;&#x53D6;&#x5931;&#x8D25;&#x65F6;&#xFF0C;&#x4ECE; /proc/pid/stat &#x4E2D;&#x89E3;&#x6790;</span>
-        stat, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/stat&quot;</span>, pid))
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;could not read proc stat: %v&quot;</span>, err)
-        }
-        expr := fmt.Sprintf(<span class="hljs-string">&quot;%d\\s*\\((.*)\\)&quot;</span>, pid)
-        rexp, err := regexp.Compile(expr)
-        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;regexp compile error: %v&quot;</span>, err)
-        }
-        match := rexp.FindSubmatch(stat)
-        <span class="hljs-keyword">if</span> match == <span class="hljs-literal">nil</span> {
-            <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;&quot;</span>, fmt.Errorf(<span class="hljs-string">&quot;no match found using regexp &apos;%s&apos; in /proc/%d/stat&quot;</span>, expr, pid)
-        }
-        comm = match[<span class="hljs-number">1</span>]
-    }
-
-    cmdStr := strings.ReplaceAll(<span class="hljs-keyword">string</span>(comm), <span class="hljs-string">&quot;%&quot;</span>, <span class="hljs-string">&quot;%%&quot;</span>)
-    <span class="hljs-keyword">return</span> cmdStr, <span class="hljs-literal">nil</span>
-}
-
-<span class="hljs-comment">// readProcCommArgs &#x8BFB;&#x53D6; /proc/pid/cmdline &#x83B7;&#x53D6;&#x8FDB;&#x7A0B;&#x7684;&#x542F;&#x52A8;&#x53C2;&#x6570;</span>
-<span class="hljs-keyword">func</span> readProcCommArgs(pid <span class="hljs-keyword">int</span>) ([]<span class="hljs-keyword">string</span>, error) {
-    dat, err := os.ReadFile(fmt.Sprintf(<span class="hljs-string">&quot;/proc/%d/cmdline&quot;</span>, pid))
-    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
-        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
-    }
-    args := strings.Split(<span class="hljs-keyword">string</span>(dat), <span class="hljs-keyword">string</span>([]<span class="hljs-keyword">byte</span>{<span class="hljs-number">0</span>}))[<span class="hljs-number">1</span>:]
-    <span class="hljs-keyword">return</span> args, <span class="hljs-literal">nil</span>
-}
-</code></pre>
-<p>&#x51E0;&#x4E2A;&#x7EC6;&#x8282;&#xFF1A;</p>
-<ul>
-<li><code>/proc/pid/comm</code> &#x662F;&#x5185;&#x6838;&#x4FA7; task_struct.comm &#x7684;&#x6295;&#x5F71;&#xFF0C;&#x6700;&#x591A; 15 &#x5B57;&#x8282;&#x52A0;&#x4E00;&#x4E2A; <code>\0</code>&#xFF0C;&#x8BFB;&#x51FA;&#x6765;&#x8981; trim &#x6389;&#x6362;&#x884C;&#xFF1B;&#x8BFB;&#x4E0D;&#x5230;&#x65F6;&#x4ECE; <code>/proc/pid/stat</code> &#x91CC;&#x6309; <code>pid (comm)</code> &#x7684;&#x683C;&#x5F0F;&#x89E3;&#x6790;&#x515C;&#x5E95;&#xFF1B;</li>
-<li><code>/proc/pid/cmdline</code> &#x662F; NUL &#x5206;&#x9694;&#x7684;&#x5B8C;&#x6574;&#x547D;&#x4EE4;&#x884C;&#xFF0C;&#x7B2C; 0 &#x9879;&#x662F;&#x7A0B;&#x5E8F;&#x8DEF;&#x5F84;&#xFF08;argv[0]&#xFF09;&#xFF0C;&#x540E;&#x9762;&#x7684;&#x624D;&#x662F;&#x53C2;&#x6570;&#xFF0C;&#x6240;&#x4EE5; Args &#x53D6; <code>[1:]</code>&#xFF1B;</li>
-<li><code>comm</code> &#x91CC;&#x7684; <code>%</code> &#x88AB;&#x66FF;&#x6362;&#x6210; <code>%%</code>&#xFF0C;&#x907F;&#x514D;&#x8FD9;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x4E4B;&#x540E;&#x88AB;&#x5F53;&#x683C;&#x5F0F;&#x4E32;&#x4F7F;&#x7528;&#x65F6;&#x51FA;&#x95EE;&#x9898;&#x3002;</li>
-</ul>
-<p>&#x914D;&#x5957;&#x7684; <code>pkg/target/procfs_test.go</code> &#x7528; pid 1&#xFF08;init/systemd&#xFF09;&#x9A8C;&#x8BC1;&#x4E86;&#x8FD9;&#x4E24;&#x4E2A;&#x51FD;&#x6570;&#xFF1A;comm &#x975E;&#x7A7A;&#x3001;args &#x8FD4;&#x56DE;&#x5408;&#x6CD5; slice&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#x4E0D;&#x8981;&#x628A;&quot;&#x7B2C;&#x4E00;&#x4E2A;&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x662F;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x3001;&#x5176;&#x4F59;&#x662F;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&quot;&#x8FD9;&#x79CD;&#x6309;&#x4F4D;&#x7F6E;&#x786C;&#x62C6;&#x7684;&#x65B9;&#x5F0F;&#x5199;&#x8FDB;&#x53BB;&#xFF1A;&#x90A3;&#x6837;&#x591A;&#x4E2A;&#x6784;&#x5EFA;&#x76EE;&#x6807;&#x65F6;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x4F1A;&#x88AB;&#x6084;&#x6084;&#x5F53;&#x6210;&#x7A0B;&#x5E8F;&#x53C2;&#x6570;&#xFF0C;&#x548C; <code>go build</code> &#x7684;&#x884C;&#x4E3A;&#x4E0D;&#x4E00;&#x81F4;&#x3002;delve &#x7684;&#x505A;&#x6CD5;&#x4E5F;&#x662F;&#x6309; <code>--</code> &#x5207;&#x5206;&#xFF08;<code>splitArgs</code> + <code>ArgsLenAtDash</code>&#xFF09;&#x3002;</p>
+<blockquote>
+<p>ps: attach &#x6210;&#x529F;&#x540E;&#x8BFB;&#x53D6; <code>/proc/pid/comm</code>&#x3001;<code>/proc/pid/cmdline</code> &#x8BB0;&#x5F55;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#xFF08;initialize&#xFF09;&#x7684;&#x5185;&#x5BB9;&#xFF0C;&#x653E;&#x5728; 6.2 &#x8282; attach &#x4E2D;&#x8BB2;&#xFF0C;&#x5B83;&#x4E0D;&#x5C5E;&#x4E8E; debug &#x547D;&#x4EE4;&#xFF1A;exec/debug &#x542F;&#x52A8;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;&#x547D;&#x4EE4;&#x548C;&#x53C2;&#x6570;&#x5728;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x5668;&#x65F6;&#x5929;&#x7136;&#x5C31;&#x77E5;&#x9053;&#x3002;</p>
+</blockquote>
 <h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
 <p>&#x5728; godbgv2 &#x4ED3;&#x5E93;&#x91CC;&#x5207;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#xFF0C;&#x628A;&#x8C03;&#x8BD5;&#x5668;&#x6784;&#x5EFA;&#x51FA;&#x6765;&#xFF1A;</p>
 <pre><code class="lang-bash">git checkout ch6.3
@@ -2402,17 +2378,19 @@ godbg&gt;
 <ul>
 <li>&#x6784;&#x5EFA;&#x9636;&#x6BB5;&#xFF1A;go build &#x7684;&#x8F93;&#x51FA;&#x6765;&#x81EA; go &#x5DE5;&#x5177;&#x94FE;&#xFF0C;&#x6784;&#x5EFA;&#x6210;&#x529F;&#x540E;&#x8FDB;&#x5165;&#x542F;&#x52A8;&#x8DDF;&#x8E2A;&#x6D41;&#x7A0B;&#xFF0C;&#x8F93;&#x51FA; <code>process 31493 launched, stopped by SIGTRAP</code>&#xFF0C;&#x4E0E; 6.1 &#x8282; exec &#x7684;&#x8F93;&#x51FA;&#x4E00;&#x81F4;&#xFF1B;</li>
 <li>&#x4F1A;&#x8BDD;&#x9636;&#x6BB5;&#xFF1A;&#x4E0E; exec/attach &#x65E0;&#x5F02;&#xFF0C;<code>godbg&gt;</code> &#x63D0;&#x793A;&#x7B26;&#xFF0C;help &#x53EF;&#x4EE5;&#x5217;&#x51FA;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF08;5.7 &#x8282;&#x4ECB;&#x7ECD;&#x8FC7;&#xFF09;&#xFF1B;</li>
-<li>&#x9000;&#x51FA;&#x9636;&#x6BB5;&#xFF1A;&#x8F93;&#x5165; <code>exit</code>&#xFF0C;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#xFF0C;PostRun &#x91CC;&#x7684; defer &#x5220;&#x9664; <code>__debug_bin__</code>&#xFF0C;<code>ls</code> &#x786E;&#x8BA4;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x6CA1;&#x6709;&#x6B8B;&#x7559;&#x3002;</li>
+<li>&#x9000;&#x51FA;&#x9636;&#x6BB5;&#xFF1A;&#x8F93;&#x5165; <code>exit</code>&#xFF0C;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#xFF0C;PostRun &#x91CC;&#x7684; defer &#x5220;&#x9664; <code>__debug_bin__</code>&#xFF0C;<code>ls</code> &#x786E;&#x8BA4;&#x5F53;&#x524D;&#x76EE;&#x5F55;&#x6CA1;&#x6709;&#x6B8B;&#x7559;&#x3002;&#x6CE8;&#x610F;&#x8FD9;&#x4E00;&#x7248;&#x9000;&#x51FA;&#x65F6;&#x8FD8;&#x4E0D;&#x4F1A;&#x6E05;&#x7406; tracee&#xFF0C;6.4 &#x8282;&#x8865;&#x4E0A;&#x9000;&#x51FA;&#x5584;&#x540E;&#x3002;</li>
 </ul>
+<p>&#x53C2;&#x6570;&#x900F;&#x4F20;&#x4E0E; exec &#x5171;&#x7528;&#x540C;&#x4E00;&#x5957; <code>Client.Launch</code> &#x94FE;&#x8DEF;&#xFF0C;<code>./godbg debug --help</code> &#x53EF;&#x4EE5;&#x770B;&#x5230; <code>Usage: godbg debug [directory|file] [-- args...]</code>&#x3002;&#x672C;&#x8282;&#x8FD8;&#x6CA1;&#x6709; continue &#x547D;&#x4EE4;&#xFF08;6.12 &#x8282;&#x5B9E;&#x73B0;&#xFF09;&#xFF0C;&#x4F1A;&#x8BDD;&#x91CC;&#x6CA1;&#x6CD5;&#x8BA9; tracee &#x8DD1;&#x8D77;&#x6765;&#x89C2;&#x5BDF;&#x5B83;&#x62FF;&#x5230;&#x7684; <code>os.Args</code>&#xFF1B;&#x7B49; continue &#x53EF;&#x7528;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x80FD;&#x5728;&#x7A0B;&#x5E8F;&#x8F93;&#x51FA;&#x91CC;&#x770B;&#x5230; <code>--</code> &#x4E4B;&#x540E;&#x4F20;&#x8FDB;&#x53BB;&#x7684;&#x53C2;&#x6570;&#x3002;</p>
 <p>&#x5BF9;&#x6BD4;&#x4E00;&#x4E0B;&#x4E24;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;<code>godbg exec _fixtures/loop</code> &#x8C03;&#x8BD5;&#x7684;&#x662F;&#x73B0;&#x6210;&#x4E8C;&#x8FDB;&#x5236;&#xFF0C;<code>godbg debug ./examples/debuggee/</code> &#x662F;&#x73B0;&#x7F16;&#x8BD1;&#x73B0;&#x8C03;&#x3002;&#x5F00;&#x53D1;&#x8FC7;&#x7A0B;&#x4E2D; debug &#x66F4;&#x8D34;&#x8FD1;&#x5DE5;&#x4F5C;&#x6D41;&#xFF0C;&#x800C; exec &#x9002;&#x5408;&#x8C03;&#x8BD5;&#x5DF2;&#x7ECF;&#x53D1;&#x5E03;&#x3001;&#x4E0D;&#x60F3;&#x91CD;&#x65B0;&#x7F16;&#x8BD1;&#x7684;&#x7A0B;&#x5E8F;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x8282;&#x5B9E;&#x73B0;&#x4E86; <code>godbg debug [directory|file]</code>&#xFF0C;&#x8865;&#x9F50;&#x4E86;&#x53D1;&#x8D77;&#x8C03;&#x8BD5;&#x7684;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<p>&#x672C;&#x8282;&#x5B9E;&#x73B0;&#x4E86; <code>godbg debug [directory|file] [-- args...]</code>&#xFF0C;&#x8865;&#x9F50;&#x4E86;&#x53D1;&#x8D77;&#x8C03;&#x8BD5;&#x7684;&#x7B2C;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF1A;</p>
 <ul>
 <li>debug &#x9762;&#x5411;&#x5C1A;&#x672A;&#x6784;&#x5EFA;&#x7684;&#x7A0B;&#x5E8F;&#xFF1A;&#x5148; go build&#xFF08;&#x5E26;&#x4E0A; <code>-gcflags=all=-N -l</code> &#x5173;&#x95ED;&#x4F18;&#x5316;&#x4E0E;&#x5185;&#x8054;&#x3001;<code>-ldflags=-compressdwarf=false</code> &#x5173;&#x95ED; DWARF &#x538B;&#x7F29;&#xFF09;&#xFF0C;&#x518D;&#x590D;&#x7528; 6.1 &#x8282;&#x7684; Launch &#x6D41;&#x7A0B;&#x542F;&#x52A8;&#x5E76;&#x8DDF;&#x8E2A;&#xFF0C;&#x4F1A;&#x8BDD;&#x7ED3;&#x675F;&#x540E;&#x5220;&#x9664;&#x6784;&#x5EFA;&#x4EA7;&#x7269;&#xFF1B;</li>
 <li>&#x6784;&#x5EFA;&#x4EA7;&#x7269;&#x7EA6;&#x5B9A;&#x4E3A; <code>__debug_bin__</code>&#xFF0C;&#x4E0E; delve &#x7684;&#x7EA6;&#x5B9A;&#x4E00;&#x81F4;&#xFF1B;</li>
-<li>&#x987A;&#x5E26;&#x8865;&#x4E0A;&#x4E86; ch6.2 &#x7684; TODO&#xFF1A;attach &#x6210;&#x529F;&#x540E; initialize &#x8BFB;&#x53D6; <code>/proc/pid/comm</code>&#x3001;<code>/proc/pid/cmdline</code>&#xFF0C;&#x4E3A;&#x540E;&#x7EED;&#x652F;&#x6301; restart &#x547D;&#x4EE4;&#x51C6;&#x5907;&#x542F;&#x52A8;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#x3002;</li>
+<li>&#x4F4D;&#x7F6E;&#x53C2;&#x6570;&#x6309; <code>--</code> &#x5207;&#x5206;&#xFF1A;<code>--</code> &#x4E4B;&#x524D;&#x662F; go build &#x6784;&#x5EFA;&#x76EE;&#x6807;&#xFF0C;<code>--</code> &#x4E4B;&#x540E;&#x900F;&#x4F20;&#x7ED9;&#x88AB;&#x8C03;&#x8BD5;&#x7A0B;&#x5E8F;&#xFF0C;&#x7528; <code>ArgsLenAtDash</code> &#x5B9E;&#x73B0;&#xFF0C;&#x4E0E; exec &#x7684;&#x4F20;&#x53C2;&#x7EA6;&#x5B9A;&#x4E00;&#x81F4;&#xFF1B;</li>
+<li>attach &#x7684;&#x542F;&#x52A8;&#x4FE1;&#x606F;&#x8BB0;&#x5F55;&#x5C5E;&#x4E8E; 6.2 &#x8282;&#xFF0C;&#x672C;&#x8282;&#x4E0D;&#x518D;&#x91CD;&#x590D;&#x3002;</li>
 </ul>
-<p>&#x81F3;&#x6B64;&#xFF0C;<code>godbg exec</code>&#xFF08;&#x542F;&#x52A8;&#x5DF2;&#x6784;&#x5EFA;&#x7A0B;&#x5E8F;&#x5E76;&#x8DDF;&#x8E2A;&#xFF09;&#x3001;<code>godbg attach</code>&#xFF08;&#x8DDF;&#x8E2A;&#x8FD0;&#x884C;&#x4E2D;&#x8FDB;&#x7A0B;&#xFF09;&#x3001;<code>godbg debug</code>&#xFF08;&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5;&#xFF09;&#x4E09;&#x79CD;&#x53D1;&#x8D77;&#x8C03;&#x8BD5;&#x7684;&#x65B9;&#x5F0F;&#x90FD;&#x9F50;&#x4E86;&#x3002;6.4 &#x8282;&#x6211;&#x4EEC;&#x7ED9;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x52A0;&#x4E00;&#x4E2A;&#x6279;&#x91CF;&#x56DE;&#x653E;&#x80FD;&#x529B;&#xFF0C;&#x7528; <code>--init &lt;file&gt;</code> &#x4E00;&#x952E;&#x91CD;&#x653E;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x811A;&#x672C;&#x3002;</p>
+<p>&#x81F3;&#x6B64;&#xFF0C;<code>godbg exec</code>&#xFF08;&#x542F;&#x52A8;&#x5DF2;&#x6784;&#x5EFA;&#x7A0B;&#x5E8F;&#x5E76;&#x8DDF;&#x8E2A;&#xFF09;&#x3001;<code>godbg attach</code>&#xFF08;&#x8DDF;&#x8E2A;&#x8FD0;&#x884C;&#x4E2D;&#x8FDB;&#x7A0B;&#xFF09;&#x3001;<code>godbg debug</code>&#xFF08;&#x6784;&#x5EFA;&#x5E76;&#x8C03;&#x8BD5;&#xFF09;&#x4E09;&#x79CD;&#x53D1;&#x8D77;&#x8C03;&#x8BD5;&#x7684;&#x65B9;&#x5F0F;&#x90FD;&#x9F50;&#x4E86;&#x3002;6.4 &#x8282;&#x6211;&#x4EEC;&#x7ED9;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x52A0;&#x4E00;&#x4E2A;&#x6279;&#x91CF;&#x56DE;&#x653E;&#x80FD;&#x529B;&#xFF0C;&#x7528; <code>--init &lt;file&gt;</code> &#x4E00;&#x952E;&#x91CD;&#x653E;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x811A;&#x672C;&#xFF0C;&#x5E76;&#x8865;&#x4E0A;&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x65F6;&#x7684;&#x8FDB;&#x7A0B;&#x5584;&#x540E;&#x3002;</p>
 
                                 
                                 </section>
@@ -2445,7 +2423,7 @@ godbg&gt;
                 </a>
                 
                 
-                <a href="4-replay.html" class="navigation navigation-next " aria-label="Next page: 6.4 调试脚本回放">
+                <a href="4-session.html" class="navigation navigation-next " aria-label="Next page: 6.4 脚本回放与清理善后">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2456,7 +2434,7 @@ godbg&gt;
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"next":{"title":"6.4 调试脚本回放","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-replay.md","ref":"6-develop-inst-debugger/4-replay.md","articles":[]},"previous":{"title":"6.2 跟踪运行中进程","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-attach.md","ref":"6-develop-inst-debugger/2-attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/3-debug.md","mtime":"2026-10-25T02:57:51.349Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T02:58:26.181Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"next":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-session.md","ref":"6-develop-inst-debugger/4-session.md","articles":[]},"previous":{"title":"6.2 跟踪运行中进程","level":"1.6.2","depth":2,"path":"6-develop-inst-debugger/2-attach.md","ref":"6-develop-inst-debugger/2-attach.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/3-debug.md","mtime":"2026-10-25T05:40:58.232Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-25T05:41:30.850Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

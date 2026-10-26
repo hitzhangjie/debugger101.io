@@ -2244,17 +2244,160 @@
 body {
   counter-reset: h1 37;
 }
-</style>
-&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x5728;&#x8C03;&#x8BD5;&#x5668;&#x5B9E;&#x73B0;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x8DDF;&#x8E2A;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x548C;&#x8DDF;&#x8E2A;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B9E;&#x73B0;&#x6280;&#x672F;&#x4E0A;&#x5DEE;&#x522B;&#x4E0D;&#x5927;&#x3002;</p>
-<p>&#x5C3D;&#x7BA1;&#x5927;&#x591A;&#x6570;&#x8C03;&#x8BD5;&#x573A;&#x666F;&#x4E2D;,&#x6211;&#x4EEC;&#x66F4;&#x52A0;&#x4FA7;&#x91CD;&#x4E8E;&#x5355;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x90E8;&#x5206;,&#x4F46;&#x662F;&#x4E3A;&#x4E86;&#x7CFB;&#x7EDF;&#x6027;&#x4ECB;&#x7ECD;&#x8C03;&#x8BD5;&#x7684;&#x65B9;&#x65B9;&#x9762;&#x9762;,&#x6211;&#x4EEC;&#x8FD8;&#x662F;&#x5E0C;&#x671B;&#x7B80;&#x5355;&#x8BB2;&#x4E00;&#x4E0B;&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x4E2D;&#x6D89;&#x53CA;&#x5230;&#x7684;&#x4E00;&#x4E9B;&#x5185;&#x5BB9;.</p>
-<p>&#x5FC5;&#x8981;&#x65F6;&#x8FD8;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x7C7B;&#x4F3C; gdb <code>set follow-fork-mode=child/parent/ask</code> &#x7684;&#x8C03;&#x8BD5;&#x6548;&#x679C;&#x5462;</p>
-<p>&#x4E4B;&#x524D;&#x8BB2;&#x8FC7;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x5176;&#x5B9E;&#x8FD9;&#x91CC;&#x8BBE;&#x7F6E;&#x4E0B;&#x8FD9;&#x4E2A;&#x9009;&#x9879;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5B9E;&#x73B0;&#x8DDF;&#x8E2A;&#x65B0;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x4E86;</p>
-<pre><code class="lang-go">opts := syscall.PTRACE_O_TRACEFORK | syscall.PTRACE_O_TRACEVFORK | syscall.PTRACE_O_TRACECLONE
-<span class="hljs-keyword">if</span> err := syscall.PtraceSetOptions(<span class="hljs-keyword">int</span>(pid), opts); err != <span class="hljs-literal">nil</span> {
-    fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;set options fail: %v\n&quot;</span>, err)
-    os.Exit(<span class="hljs-number">1</span>)
-}
-</code></pre>
+</style></p>
+<h2 id="&#x8C03;&#x8BD5;&#x591A;&#x8FDB;&#x7A0B;&#x7A0B;&#x5E8F;">&#x8C03;&#x8BD5;&#x591A;&#x8FDB;&#x7A0B;&#x7A0B;&#x5E8F;</h2>
+<p>&#x524D;&#x9762; 6.20 &#x8282;&#x8BA8;&#x8BBA;&#x7684;&#x90FD;&#x662F;&#x5355;&#x4E2A;&#x8FDB;&#x7A0B;&#x5185;&#x7684;&#x591A;&#x7EBF;&#x7A0B;&#xFF1A;&#x679A;&#x4E3E;&#x5DF2;&#x6709;&#x7EBF;&#x7A0B;&#x3001;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x3001;all-stop &#x6302;&#x8D77;&#x4E0E;&#x6062;&#x590D;&#x3002;&#x4F46;&#x771F;&#x5B9E;&#x4E16;&#x754C;&#x91CC;&#x7684;&#x7A0B;&#x5E8F;&#x5E76;&#x4E0D;&#x603B;&#x662F;&#x8001;&#x8001;&#x5B9E;&#x5B9E;&#x5F85;&#x5728;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x91CC;&#xFF1A;</p>
+<ul>
+<li>shell &#x7BA1;&#x9053; <code>cmd1 | cmd2 | cmd3</code> &#x4F1A;&#x521B;&#x5EFA;&#x4E09;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5B83;&#x4EEC;&#x901A;&#x8FC7; stdin/stdout &#x7684;&#x91CD;&#x5B9A;&#x5411;&#x4E32;&#x5728;&#x4E00;&#x8D77;&#xFF1B;</li>
+<li>protoc &#x7F16;&#x8BD1;&#x5668;&#x4F1A;&#x53BB; <code>$PATH</code> &#x91CC;&#x641C;&#x7D22; <code>protoc-gen-go</code> &#x5E76;&#x628A;&#x5B83;&#x542F;&#x52A8;&#x8D77;&#x6765;&#xFF0C;&#x901A;&#x8FC7; stdin/stdout &#x4F20;&#x9012;&#x4EE3;&#x7801;&#x751F;&#x6210;&#x8BF7;&#x6C42;&#xFF1B;</li>
+<li>&#x670D;&#x52A1;&#x7AEF;&#x7A0B;&#x5E8F;&#x7ECF;&#x5E38; fork &#x51FA; worker &#x8FDB;&#x7A0B;&#xFF0C;&#x6216;&#x8005; exec &#x81EA;&#x5DF1;&#x6362;&#x4E00;&#x4EFD;&#x955C;&#x50CF;&#xFF1B;</li>
+<li>&#x5BB9;&#x5668;&#x91CC;&#x7684; init &#x8FDB;&#x7A0B;&#x8FD8;&#x8981;&#x8D1F;&#x8D23;&#x6536;&#x5272;&#x4E00;&#x5806;&#x5B50;&#x8FDB;&#x7A0B;&#x3002;</li>
+</ul>
+<p>&#x628A;&#x8FD9;&#x4E9B;&#x573A;&#x666F;&#x653E;&#x5230;&#x8C03;&#x8BD5;&#x5668;&#x9762;&#x524D;&#xFF0C;&#x95EE;&#x9898;&#x53EF;&#x4EE5;&#x5F52;&#x7ED3;&#x4E3A;&#x4E24;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li><strong>&#x8DDF;&#x4E0D;&#x8DDF;</strong>&#xFF1A;&#x5B50;&#x8FDB;&#x7A0B;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;&#x8C03;&#x8BD5;&#x5668;&#x8981;&#x4E0D;&#x8981;&#x628A;&#x5B83;&#x7EB3;&#x5165;&#x8DDF;&#x8E2A;&#xFF1F;&#x8DDF;&#x7236;&#x8FDB;&#x7A0B;&#x8FD8;&#x662F;&#x5B50;&#x8FDB;&#x7A0B;&#xFF1F;&#x53EA;&#x8DDF;&#x547D;&#x4EE4;&#x884C;&#x5339;&#x914D;&#x7684;&#x90A3;&#x4E2A;&#xFF0C;&#x8FD8;&#x662F;&#x5168;&#x90FD;&#x8DDF;&#xFF1F;</li>
+<li><strong>&#x600E;&#x4E48;&#x505C;</strong>&#xFF1A;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x547D;&#x4E2D;&#x65AD;&#x70B9;&#x3001;&#x6536;&#x5230;&#x4FE1;&#x53F7;&#x6216;&#x7528;&#x6237;&#x4E2D;&#x65AD;&#x65F6;&#xFF0C;&#x8981;&#x4E0D;&#x8981;&#x628A;&#x5176;&#x4ED6;&#x8FDB;&#x7A0B;&#x4E5F;&#x4E00;&#x8D77;&#x505C;&#x4E0B;&#x6765;&#xFF1F;continue/step &#x65F6;&#x53C8;&#x6062;&#x590D;&#x54EA;&#x4E9B;&#x8FDB;&#x7A0B;&#xFF1F;</li>
+</ul>
+<p>&#x672C;&#x8282;&#x4E0D;&#x518D;&#x5B9E;&#x73B0;&#x4EE3;&#x7801;&#x3002;&#x8DDF;&#x8E2A;&#x591A;&#x8FDB;&#x7A0B;&#x548C;&#x8DDF;&#x8E2A;&#x591A;&#x7EBF;&#x7A0B;&#x5728;&#x5185;&#x6838;&#x5C42;&#x9762;&#x672C;&#x6765;&#x5C31;&#x7528;&#x540C;&#x4E00;&#x5957;&#x673A;&#x5236;&#xFF0C;godbgv2 &#x5728; 6.20 &#x8282;&#x5DF2;&#x7ECF;&#x628A; <code>PTRACE_O_TRACECLONE</code> &#x8FD9;&#x6761;&#x94FE;&#x8DEF;&#x8BB2;&#x900F;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x6362;&#x4E2A;&#x89D2;&#x5EA6;&#xFF0C;&#x770B;&#x770B; gdb&#x3001;lldb&#x3001;dlv &#x8FD9;&#x4E9B;&#x6210;&#x719F;&#x8C03;&#x8BD5;&#x5668;&#x5206;&#x522B;&#x662F;&#x600E;&#x4E48;&#x5904;&#x7406;&#x591A;&#x8FDB;&#x7A0B;&#x7684;&#xFF0C;&#x4E86;&#x89E3;&#x5B83;&#x4EEC;&#x7684;&#x53D6;&#x820D;&#x5373;&#x53EF;&#x3002;</p>
+<h3 id="&#x5185;&#x6838;&#x5BF9;&#x591A;&#x8FDB;&#x7A0B;&#x8DDF;&#x8E2A;&#x7684;&#x652F;&#x6301;">&#x5185;&#x6838;&#x5BF9;&#x591A;&#x8FDB;&#x7A0B;&#x8DDF;&#x8E2A;&#x7684;&#x652F;&#x6301;</h3>
+<p>Linux &#x4E0B;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x4E3B;&#x8981;&#x6709;&#x4E09;&#x6761;&#x8DEF;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;</th>
+<th>&#x884C;&#x4E3A;</th>
+<th>&#x5178;&#x578B;&#x573A;&#x666F;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>fork</code></td>
+<td>&#x590D;&#x5236;&#x7236;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x7236;&#x5B50;&#x5404;&#x81EA;&#x6267;&#x884C;</td>
+<td>&#x4F20;&#x7EDF; Unix &#x670D;&#x52A1;&#x7AEF;</td>
+</tr>
+<tr>
+<td><code>vfork</code></td>
+<td>&#x5B50;&#x8FDB;&#x7A0B;&#x5171;&#x4EAB;&#x7236;&#x8FDB;&#x7A0B;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B;&#x963B;&#x585E;&#x5230;&#x5B50;&#x8FDB;&#x7A0B; exec/exit</td>
+<td>fork+exec &#x7684;&#x4F18;&#x5316;&#x8DEF;&#x5F84;</td>
+</tr>
+<tr>
+<td><code>clone</code></td>
+<td>&#x901A;&#x7528;&#x5165;&#x53E3;&#xFF0C;&#x6309; flags &#x51B3;&#x5B9A;&#x5171;&#x4EAB;&#x54EA;&#x4E9B;&#x8D44;&#x6E90;</td>
+<td>&#x7EBF;&#x7A0B;&#x3001;&#x5BB9;&#x5668;&#x3001;Go &#x7684; <code>os/exec</code></td>
+</tr>
+</tbody>
+</table>
+<p>&#x4E09;&#x8005;&#x7684;&#x8FB9;&#x754C;&#x6CA1;&#x6709;&#x60F3;&#x8C61;&#x4E2D;&#x90A3;&#x4E48;&#x6E05;&#x6670;&#x3002;<code>pthread_create</code> &#x5E95;&#x5C42;&#x662F; <code>clone(CLONE_VM|CLONE_THREAD|...)</code>&#xFF0C;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x662F;&#x7EBF;&#x7A0B;&#xFF1B;glibc &#x7684; <code>fork</code> &#x5E95;&#x5C42;&#x4E5F;&#x662F; <code>clone(SIGCHLD)</code>&#xFF1B;Go &#x7684; <code>os/exec</code> &#x5219;&#x4F7F;&#x7528; <code>clone(CLONE_VFORK|CLONE_VM)</code> &#x5B9E;&#x73B0; vfork &#x8BED;&#x4E49;&#xFF0C;&#x907F;&#x514D;&#x590D;&#x5236;&#x6574;&#x4E2A;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#xFF0C;&#x518D;&#x5728;&#x5B50;&#x8FDB;&#x7A0B;&#x91CC; <code>execve</code>&#x3002;&#x6240;&#x4EE5;&#x5185;&#x6838;&#x773C;&#x91CC;&#x5927;&#x5BB6;&#x90FD;&#x662F; <code>task_struct</code>&#xFF0C;&#x533A;&#x522B;&#x53EA;&#x5728;&#x5171;&#x4EAB;&#x4E86;&#x54EA;&#x4E9B;&#x8D44;&#x6E90;&#x3002;</p>
+<p>ptrace &#x4E3A;&#x8FD9;&#x4E9B;&quot;&#x751F;&#x65B0;&#x4EFB;&#x52A1;&quot;&#x7684;&#x65F6;&#x523B;&#x51C6;&#x5907;&#x4E86;&#x4E00;&#x7EC4;&#x9009;&#x9879;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>ptrace &#x9009;&#x9879;</th>
+<th>&#x4E0A;&#x62A5;&#x7684;&#x4E8B;&#x4EF6;</th>
+<th>&#x89E6;&#x53D1;&#x65F6;&#x673A;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PTRACE_O_TRACEFORK</code></td>
+<td><code>PTRACE_EVENT_FORK</code></td>
+<td><code>fork(2)</code> &#x521B;&#x5EFA;&#x5B50;&#x8FDB;&#x7A0B;</td>
+</tr>
+<tr>
+<td><code>PTRACE_O_TRACEVFORK</code></td>
+<td><code>PTRACE_EVENT_VFORK</code></td>
+<td><code>vfork(2)</code> / <code>clone(CLONE_VFORK)</code></td>
+</tr>
+<tr>
+<td><code>PTRACE_O_TRACECLONE</code></td>
+<td><code>PTRACE_EVENT_CLONE</code></td>
+<td><code>clone(2)</code> &#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#xFF08;&#x6216;&#x8FDB;&#x7A0B;&#xFF09;</td>
+</tr>
+<tr>
+<td><code>PTRACE_O_TRACEEXEC</code></td>
+<td><code>PTRACE_EVENT_EXEC</code></td>
+<td><code>execve(2)</code> &#x66FF;&#x6362;&#x8FDB;&#x7A0B;&#x955C;&#x50CF;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x8BBE;&#x7F6E;&#x9009;&#x9879;&#x4E4B;&#x540E;&#xFF0C;&#x65B0;&#x4EFB;&#x52A1;&#x4F1A;&#x88AB;&#x5185;&#x6838;&#x81EA;&#x52A8;&#x7EB3;&#x5165;&#x540C;&#x4E00;&#x4E2A; tracer &#x7684;&#x8DDF;&#x8E2A;&#xFF0C;&#x5E76;&#x5728;&#x521B;&#x5EFA;&#xFF08;&#x6216; exec&#xFF09;&#x5904;&#x505C;&#x4E0B;&#x6765;&#xFF1B;tracer &#x901A;&#x8FC7; <code>waitpid</code> &#x6536;&#x5230;&#x5E26; <code>SIGTRAP</code> &#x7684;&#x72B6;&#x6001;&#xFF0C;&#x7528; <code>PTRACE_GETEVENTMSG</code> &#x53D6;&#x51FA;&#x65B0;&#x4EFB;&#x52A1;&#x7684; tid/pid&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x7684;&#x9009;&#x62E9;&#x65E0;&#x975E;&#x4E24;&#x4E2A;&#xFF1A;&#x7EE7;&#x7EED;&#x8DDF;&#x8E2A;&#x5B83;&#xFF0C;&#x6216;&#x8005; <code>PTRACE_DETACH</code> &#x653E;&#x5B83;&#x81EA;&#x5DF1;&#x8DD1;&#x3002;</p>
+<p><code>TRACECLONE</code>&#x3001;<code>TRACEFORK</code>&#x3001;<code>TRACEVFORK</code> &#x7684;&#x5206;&#x5DE5;&#xFF0C;&#x7531; clone &#x7684; flags &#x548C;&#x9000;&#x51FA;&#x4FE1;&#x53F7;&#x51B3;&#x5B9A;&#xFF1A;&#x5E26; <code>CLONE_VFORK</code> &#x7684;&#x8C03;&#x7528;&#x5728;&#x8BBE;&#x7F6E;&#x4E86; <code>TRACEVFORK</code> &#x65F6;&#x4E0A;&#x62A5; <code>PTRACE_EVENT_VFORK</code>&#xFF1B;&#x9000;&#x51FA;&#x4FE1;&#x53F7;&#x4E3A; <code>SIGCHLD</code> &#x7684;&#x8C03;&#x7528;&#x5728;&#x8BBE;&#x7F6E;&#x4E86; <code>TRACEFORK</code> &#x65F6;&#x4E0A;&#x62A5; <code>PTRACE_EVENT_FORK</code>&#xFF1B;&#x5176;&#x4F59;&#x60C5;&#x51B5;&#x624D;&#x5F52; <code>TRACECLONE</code>&#x3002;&#x540C;&#x4E00;&#x4E2A; clone &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x65E2;&#x80FD;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x4E5F;&#x80FD;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#xFF0C;&#x5185;&#x6838;&#x6B63;&#x662F;&#x9760;&#x8FD9;&#x4E9B;&#x6807;&#x5FD7;&#x6765;&#x533A;&#x5206;&quot;&#x8FD9;&#x662F;&#x4E0D;&#x662F;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x6267;&#x884C;&#x5B9E;&#x4F53;&quot;&#x3002;</p>
+<h3 id="gdb&#xFF1A;inferior--follow-fork-mode--schedule-multiple">GDB&#xFF1A;inferior + follow-fork-mode + schedule-multiple</h3>
+<p>GDB &#x7684;&#x65B9;&#x6848;&#x6700;&#x5B8C;&#x6574;&#xFF0C;&#x6838;&#x5FC3;&#x6982;&#x5FF5;&#x662F; <strong>inferior&#xFF08;&#x4E0B;&#x7EA7;&#xFF09;</strong>&#xFF1A;&#x4E00;&#x4E2A;&#x88AB;&#x8C03;&#x8BD5;&#x7684;&#x6267;&#x884C;&#x5B9E;&#x4F53;&#xFF0C;&#x62E5;&#x6709;&#x81EA;&#x5DF1;&#x7684;&#x5730;&#x5740;&#x7A7A;&#x95F4;&#x3001;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#x548C; pid&#x3002;&#x4E00;&#x4E2A; GDB &#x4F1A;&#x8BDD;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x7BA1;&#x7406;&#x591A;&#x4E2A; inferior&#x3002;</p>
+<p>&#x4E0E;&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x76F4;&#x63A5;&#x76F8;&#x5173;&#x7684;&#x9009;&#x9879;&#x6709;&#x8FD9;&#x51E0;&#x4E2A;&#xFF1A;</p>
+<ul>
+<li><code>set follow-fork-mode parent|child</code>&#xFF08;&#x9ED8;&#x8BA4; <code>parent</code>&#xFF09;&#xFF1A;fork/vfork &#x4E4B;&#x540E;&#x8DDF;&#x8C01;&#x3002;</li>
+<li><code>set detach-on-fork on|off</code>&#xFF08;&#x9ED8;&#x8BA4; <code>on</code>&#xFF09;&#xFF1A;&#x4E0D;&#x8DDF;&#x7684;&#x90A3;&#x4E00;&#x65B9;&#x600E;&#x4E48;&#x529E;&#x3002;<code>on</code> &#x8868;&#x793A;&#x76F4;&#x63A5;&#x653E;&#x884C;&#xFF1B;<code>off</code> &#x8868;&#x793A;&#x4E24;&#x4E2A;&#x90FD;&#x7559;&#x7740;&#xFF0C;&#x88AB;&#x653E;&#x5F03;&#x7684;&#x8FDB;&#x7A0B;&#x505C;&#x5728;&#x539F;&#x5730;&#x6210;&#x4E3A;&#x4E00;&#x4E2A;&#x72EC;&#x7ACB; inferior&#xFF0C;&#x4E4B;&#x540E;&#x53EF;&#x4EE5; <code>info inferiors</code> &#x67E5;&#x770B;&#x3001;<code>inferior N</code> &#x5207;&#x8FC7;&#x53BB;&#x7EE7;&#x7EED;&#x8C03;&#x8BD5;&#x3002;</li>
+<li><code>set follow-exec-mode same|new</code>&#xFF08;&#x9ED8;&#x8BA4; <code>same</code>&#xFF09;&#xFF1A;exec &#x4E4B;&#x540E;&#x662F;&#x5728;&#x539F; inferior &#x91CC;&#x6362;&#x955C;&#x50CF;&#xFF08;<code>same</code>&#xFF09;&#xFF0C;&#x8FD8;&#x662F;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A; inferior&#xFF08;<code>new</code>&#xFF09;&#x3002;<code>new</code> &#x7684;&#x597D;&#x5904;&#x662F;&#x539F;&#x6765;&#x7684;&#x7A0B;&#x5E8F;&#x955C;&#x50CF;&#x8FD8;&#x4FDD;&#x7559;&#x7740;&#xFF0C;&#x53EF;&#x4EE5; <code>run</code> &#x91CD;&#x65B0;&#x542F;&#x52A8;&#xFF1B;<code>same</code> &#x5219;&#x66F4;&#x8D34;&#x8FD1;&quot;&#x8FDB;&#x7A0B;&#x53EA;&#x662F;&#x6362;&#x4E86;&#x8EAB;&#x8863;&#x670D;&quot;&#x7684;&#x76F4;&#x89C9;&#x3002;</li>
+<li><code>set schedule-multiple on|off</code>&#xFF08;&#x9ED8;&#x8BA4; <code>off</code>&#xFF09;&#xFF1A;6.20 &#x8282;&#x6302;&#x8D77;&#x7B56;&#x7565;&#x91CC;&#x63D0;&#x5230;&#x7684;&#x8BBE;&#x7F6E;&#x9879;&#x3002;&#x6267;&#x884C; continue/next/step &#x65F6;&#xFF0C;&#x662F;&#x53EA;&#x6062;&#x590D;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD8;&#x662F;&#x6062;&#x590D;&#x6240;&#x6709;&#x8FDB;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x3002;<code>off</code> &#x65F6;&#x8981;&#x8C03;&#x8BD5;&#x53E6;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x5F97;&#x5148; <code>inferior N</code> &#x5207;&#x8FC7;&#x53BB;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x5957;&#x7EC4;&#x5408;&#x57FA;&#x672C;&#x8986;&#x76D6;&#x4E86;&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x7684;&#x5E38;&#x89C1;&#x8BC9;&#x6C42;&#x3002;&#x6BD4;&#x5982;&#x7528; GDB &#x8C03; protoc &#x7684;&#x63D2;&#x4EF6;&#xFF1A;<code>set follow-fork-mode child</code> &#x4E4B;&#x540E;&#xFF0C;&#x7236;&#x8FDB;&#x7A0B; protoc &#x88AB;&#x653E;&#x884C;&#xFF0C;&#x5B50;&#x8FDB;&#x7A0B;&#x88AB;&#x8DDF;&#x8E2A;&#x7740; exec &#x6210; protoc-gen-go&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x5728;&#x63D2;&#x4EF6;&#x4EE3;&#x7801;&#x91CC;&#x4E0B;&#x65AD;&#x70B9;&#x3002;&#x5982;&#x679C;&#x5E0C;&#x671B;&#x7236;&#x5B50;&#x90FD;&#x7559;&#x7740;&#xFF0C;&#x518D;&#x52A0; <code>set detach-on-fork off</code>&#xFF1B;&#x5982;&#x679C;&#x53EA;&#x60F3;&#x5728; fork &#x5904;&#x505C;&#x4E0B;&#x770B;&#x4E00;&#x773C;&#x3001;&#x4E0D;&#x6539;&#x53D8;&#x8DDF;&#x968F;&#x7B56;&#x7565;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x7528; <code>catch fork</code>&#x3001;<code>catch exec</code> &#x8FD9;&#x7C7B; catchpoint&#x3002;&#x5982;&#x679C;&#x4F60;&#x5BF9; protoc &#x7684;&#x63D2;&#x4EF6;&#x673A;&#x5236;&#x672C;&#x8EAB;&#x611F;&#x5174;&#x8DA3;&#xFF0C;&#x53EF;&#x4EE5;&#x9605;&#x8BFB; <a href="https://www.hitzhangjie.pro/blog/2017-05-23-protoc%E5%8F%8A%E6%8F%92%E4%BB%B6%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90%E7%B2%BE%E5%8D%8E%E7%89%88/" target="_blank">Protoc&#x53CA;&#x5176;&#x63D2;&#x4EF6;&#x5DE5;&#x4F5C;&#x539F;&#x7406;</a>&#x3002;</p>
+<blockquote>
+<p>ps&#xFF1A;GDB &#x7684; <code>follow-fork-mode</code> &#x53EA;&#x6709; <code>parent</code> &#x548C; <code>child</code> &#x4E24;&#x4E2A;&#x53D6;&#x503C;&#xFF0C;&#x6CA1;&#x6709; <code>ask</code>&#x3002;&#x7F51;&#x4E0A;&#x6709;&#x4E9B;&#x8D44;&#x6599;&#x5199;&#x6210; <code>parent/child/ask</code>&#xFF0C;&#x5B9E;&#x9645;&#x5728; GDB &#x91CC;&#x662F;&#x8BBE;&#x4E0D;&#x8FDB;&#x53BB;&#x7684;&#x3002;</p>
+</blockquote>
+<h3 id="lldb&#xFF1A;follow-fork-mode--&#x591A;-target">LLDB&#xFF1A;follow-fork-mode + &#x591A; target</h3>
+<p>LLDB &#x7684;&#x6A21;&#x578B;&#x6BD4; GDB &#x7B80;&#x5355;&#xFF1A;</p>
+<ul>
+<li><code>settings set target.process.follow-fork-mode parent|child</code>&#xFF08;&#x9ED8;&#x8BA4; <code>parent</code>&#xFF09;&#xFF1A;fork/vfork &#x4E4B;&#x540E;&#x8DDF;&#x54EA;&#x4E00;&#x65B9;&#x3002;</li>
+<li><code>settings set target.process.stop-on-exec true|false</code>&#xFF08;&#x9ED8;&#x8BA4; <code>true</code>&#xFF09;&#xFF1A;exec &#x4E4B;&#x540E;&#x662F;&#x5426;&#x505C;&#x4E0B;&#x6765;&#x3002;</li>
+</ul>
+<p>LLDB &#x6CA1;&#x6709; <code>detach-on-fork</code> &#x8FD9;&#x6837;&#x7684;&#x5F00;&#x5173;&#xFF0C;<code>follow-fork-mode</code> &#x53EA;&#x51B3;&#x5B9A;&#x8DDF;&#x968F;&#x54EA;&#x4E00;&#x65B9;&#xFF0C;&#x88AB;&#x653E;&#x5F03;&#x7684;&#x4E00;&#x65B9;&#x4E0D;&#x4F1A;&#x4F5C;&#x4E3A;&#x53EF;&#x5207;&#x6362;&#x7684;&#x8FDB;&#x7A0B;&#x7559;&#x5728;&#x5F53;&#x524D;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x91CC;&#x3002;&#x5B83;&#x4E5F;&#x6CA1;&#x6709; inferior &#x62BD;&#x8C61;&#xFF0C;&#x4E00;&#x4E2A; target &#x5BF9;&#x5E94;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF1B;&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x9760;&#x521B;&#x5EFA;&#x591A;&#x4E2A; target &#x6765;&#x7BA1;&#x7406;&#xFF08;<code>target create</code>&#x3001;<code>target list</code>&#x3001;<code>target select</code>&#xFF09;&#xFF0C;&#x6BCF;&#x4E2A; target &#x5404;&#x81EA;&#x6301;&#x6709;&#x4E00;&#x4E2A;&#x8FDB;&#x7A0B;&#x3002;</p>
+<p>&#x56E0;&#x6B64; LLDB &#x66F4;&#x9002;&#x5408;&quot;&#x6211;&#x660E;&#x786E;&#x77E5;&#x9053;&#x8981;&#x8DDF;&#x54EA;&#x4E00;&#x652F;&quot;&#x7684;&#x573A;&#x666F;&#x3002;&#x8981;&#x5728;&#x7236;&#x5B50;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x6765;&#x56DE;&#x5207;&#x6362;&#x3001;&#x540C;&#x65F6;&#x89C2;&#x5BDF;&#xFF0C;GDB &#x7684; inferior &#x4F53;&#x9A8C;&#x4F1A;&#x66F4;&#x987A;&#x4E00;&#x4E9B;&#x3002;</p>
+<h3 id="delve&#xFF1A;follow-exec--targetgroup">Delve&#xFF1A;follow-exec + TargetGroup</h3>
+<p>Delve &#x7684;&#x601D;&#x8DEF;&#x53C8;&#x4E0D;&#x4E00;&#x6837;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x670D;&#x52A1;&#x7684;&#x662F; Go &#x7A0B;&#x5E8F;&#x3002;</p>
+<p>Go &#x8FD0;&#x884C;&#x65F6;&#x662F;&#x591A;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x76F4;&#x63A5; fork &#x53EA;&#x4F1A;&#x590D;&#x5236;&#x8C03;&#x7528; fork &#x7684;&#x90A3;&#x4E2A;&#x7EBF;&#x7A0B;&#xFF1B;&#x5B50;&#x8FDB;&#x7A0B;&#x91CC;&#x5176;&#x4ED6;&#x7EBF;&#x7A0B;&#x3001;&#x8FD0;&#x884C;&#x65F6;&#x72B6;&#x6001;&#x3001;&#x9501;&#x90FD;&#x53EF;&#x80FD;&#x4E0D;&#x4E00;&#x81F4;&#xFF0C;&#x6240;&#x4EE5; Go &#x4EE3;&#x7801;&#x91CC;&#x51E0;&#x4E4E;&#x4E0D;&#x4F1A;&#x76F4;&#x63A5; fork&#x3002;&#x521B;&#x5EFA;&#x8FDB;&#x7A0B;&#x57FA;&#x672C;&#x90FD;&#x8D70; <code>os/exec</code>&#xFF0C;&#x5E95;&#x5C42;&#x662F; <code>clone(CLONE_VFORK|CLONE_VM)</code> + <code>execve</code>&#x3002;Delve &#x9488;&#x5BF9;&#x8FD9;&#x4E2A;&#x73B0;&#x5B9E;&#x505A;&#x4E86;&#x53D6;&#x820D;&#xFF1A;</p>
+<ul>
+<li>&#x53EA;&#x5B9E;&#x73B0; follow-exec&#xFF0C;&#x4E0D;&#x5B9E;&#x73B0; follow-fork&#xFF1A;<code>target follow-exec [-on [regex]] [-off]</code>&#xFF0C;&#x9ED8;&#x8BA4;&#x5173;&#x95ED;&#x3002;&#x5F00;&#x542F;&#x540E;&#xFF0C;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B; exec &#x51FA;&#x6765;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#x4F1A;&#x88AB;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#xFF1B;&#x53EF;&#x9009;&#x7684; regex &#x7528;&#x6765;&#x6309;&#x547D;&#x4EE4;&#x884C;&#x7B5B;&#x9009;&#xFF0C;&#x53EA;&#x8DDF;&#x611F;&#x5174;&#x8DA3;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#x3002;</li>
+<li>&#x5B9E;&#x73B0;&#x4E0A;&#xFF0C;Delve &#x5728; <code>PTRACE_O_TRACECLONE</code> &#x4E4B;&#x5916;&#x589E;&#x52A0;&#x4E86; <code>PTRACE_O_TRACEVFORK</code> &#x548C; <code>PTRACE_O_TRACEEXEC</code>&#xFF0C;&#x4F46;&#x6CA1;&#x6709; <code>PTRACE_O_TRACEFORK</code>&#x2014;&#x2014;&#x56E0;&#x4E3A; Go &#x7684; <code>os/exec</code> &#x8D70;&#x7684;&#x662F; vfork &#x8BED;&#x4E49;&#x3002;&#x6536;&#x5230; <code>PTRACE_EVENT_VFORK</code> &#x65F6;&#xFF0C;&#x5B83;&#x5148;&#x628A;&#x5B50;&#x8FDB;&#x7A0B;&#x5F53;&#x6210;&#x4E00;&#x4E2A;&#x666E;&#x901A;&#x7EBF;&#x7A0B;&#x6536;&#x8FDB;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#xFF1B;&#x7B49; <code>PTRACE_EVENT_EXEC</code> &#x5230;&#x6765;&#xFF0C;&#x518D;&#x628A;&#x5B83;&#x62C6;&#x51FA;&#x53BB;&#xFF0C;&#x521B;&#x5EFA;&#x65B0;&#x7684; <code>Target</code>&#x3002;</li>
+<li>&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x7531; <code>TargetGroup</code> &#x7BA1;&#x7406;&#xFF1A;<code>target list</code> &#x5217;&#x51FA;&#x5F53;&#x524D;&#x8DDF;&#x8E2A;&#x7684;&#x8FDB;&#x7A0B;&#xFF0C;<code>target switch &lt;pid&gt;</code> &#x5207;&#x6362;&#x5F53;&#x524D;&#x8FDB;&#x7A0B;&#x3002;&#x903B;&#x8F91;&#x65AD;&#x70B9;&#x662F; group &#x7EA7;&#x522B;&#x5171;&#x4EAB;&#x7684;&#xFF0C;&#x65B0;&#x5EFA; target &#x65F6;&#x4F1A;&#x81EA;&#x52A8;&#x628A;&#x65AD;&#x70B9;&#x4E0B;&#x597D;&#xFF1B;continue&#x3001;step &#x8FD9;&#x7C7B;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x4F5C;&#x7528;&#x4E8E;&#x5F53;&#x524D;&#x9009;&#x4E2D;&#x7684; target&#x3002;</li>
+<li>&#x5982;&#x679C; follow-exec &#x5173;&#x7740;&#xFF0C;&#x6216;&#x8005;&#x5B50;&#x8FDB;&#x7A0B;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x4E0D;&#x5339;&#x914D; regex&#xFF0C;Delve &#x4F1A;&#x76F4;&#x63A5; detach&#xFF0C;&#x8BA9;&#x5B83;&#x81EA;&#x5DF1;&#x8DD1;&#x3002;</li>
+</ul>
+<p>&#x8FD9;&#x5957;&#x80FD;&#x529B;&#x5BF9; Go &#x5F00;&#x53D1;&#x8005;&#x5176;&#x5B9E;&#x591F;&#x7528;&#xFF1A;&#x7EDD;&#x5927;&#x591A;&#x6570;&quot;&#x591A;&#x8FDB;&#x7A0B;&quot;&#x573A;&#x666F;&#x90FD;&#x662F; exec &#x578B;&#x7684;&#xFF08;protoc &#x63D2;&#x4EF6;&#x3001;git hook&#x3001;&#x8C03;&#x7528;&#x5916;&#x90E8;&#x547D;&#x4EE4;&#xFF09;&#xFF0C;&#x771F;&#x6B63; fork &#x4E4B;&#x540E;&#x4E0D; exec &#x7684; Go &#x7A0B;&#x5E8F;&#x975E;&#x5E38;&#x5C11;&#x89C1;&#x3002;</p>
+<h3 id="&#x4E09;&#x79CD;&#x7B56;&#x7565;&#x7684;&#x5BF9;&#x6BD4;">&#x4E09;&#x79CD;&#x7B56;&#x7565;&#x7684;&#x5BF9;&#x6BD4;</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x9ED8;&#x8BA4;&#x8DDF;&#x968F;</th>
+<th>&#x80FD;&#x5426;&#x540C;&#x65F6;&#x4FDD;&#x7559;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;</th>
+<th>&#x591A;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x63A7;&#x5236;</th>
+<th>&#x8BBE;&#x8BA1;&#x53D6;&#x5411;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GDB</td>
+<td>&#x7236;&#x8FDB;&#x7A0B;</td>
+<td>&#x53EF;&#x4EE5;&#xFF0C;<code>detach-on-fork off</code> + inferior</td>
+<td><code>schedule-multiple</code>&#x3001;non-stop</td>
+<td>&#x529F;&#x80FD;&#x6700;&#x5168;&#xFF0C;&#x6982;&#x5FF5;&#x4E5F;&#x6700;&#x591A;</td>
+</tr>
+<tr>
+<td>LLDB</td>
+<td>&#x7236;&#x8FDB;&#x7A0B;</td>
+<td>&#x591A;&#x4E2A; target&#xFF0C;&#x4F46; fork &#x65F6;&#x53EA;&#x4FDD;&#x7559;&#x8DDF;&#x968F;&#x7684;&#x4E00;&#x65B9;</td>
+<td>&#x5207;&#x6362; target</td>
+<td>&#x7B80;&#x5355;&#x76F4;&#x63A5;</td>
+</tr>
+<tr>
+<td>Delve</td>
+<td>&#x4E0D;&#x8DDF;&#xFF08;follow-exec &#x9ED8;&#x8BA4;&#x5173;&#xFF09;</td>
+<td>&#x53EF;&#x4EE5;&#xFF0C;<code>TargetGroup</code> + <code>target list/switch</code></td>
+<td>&#x5207;&#x6362;&#x5F53;&#x524D; target</td>
+<td>&#x53EA;&#x4E3A; Go &#x7684; exec &#x573A;&#x666F;&#x670D;&#x52A1;</td>
+</tr>
+</tbody>
+</table>
+<p>&#x4ECE;&#x8FD9;&#x5F20;&#x8868;&#x4E5F;&#x80FD;&#x770B;&#x51FA;&#x4E09;&#x79CD;&#x5178;&#x578B;&#x7684;&#x8BBE;&#x8BA1;&#x53D6;&#x5411;&#xFF1A;GDB &#x628A;&quot;&#x8C03;&#x8BD5;&#x591A;&#x4E2A;&#x6267;&#x884C;&#x5B9E;&#x4F53;&quot;&#x5F53;&#x6210;&#x4E00;&#x7B49;&#x516C;&#x6C11;&#xFF0C;&#x62BD;&#x8C61;&#x51FA; inferior&#xFF0C;&#x9009;&#x9879;&#x591A;&#x3001;&#x63A7;&#x5236;&#x7EC6;&#xFF1B;LLDB &#x628A;&#x8FDB;&#x7A0B;&#x6302;&#x5728; target &#x4E0B;&#xFF0C;&#x591F;&#x7528;&#x5C31;&#x597D;&#xFF1B;Delve &#x5219;&#x6839;&#x636E; Go &#x7A0B;&#x5E8F;&#x7684;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#x780D;&#x6389;&#x4E86; fork &#x8DDF;&#x8E2A;&#xFF0C;&#x53EA;&#x4FDD;&#x7559;&#x771F;&#x6B63;&#x4F1A;&#x9047;&#x5230;&#x7684; exec &#x573A;&#x666F;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x6211;&#x4EEC;&#x5728; godbgv2 &#x91CC;&#x5B9E;&#x73B0;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#x6765;&#x8BF4;&#xFF0C;6.20 &#x8282;&#x5DF2;&#x7ECF;&#x6709; <code>Threads</code> &#x5217;&#x8868;&#x548C; all-stop continue&#xFF0C;&#x8981;&#x6269;&#x5C55;&#x5230;&#x591A;&#x8FDB;&#x7A0B;&#xFF0C;&#x6280;&#x672F;&#x4E0A;&#x5927;&#x4F53;&#x4E0A;&#x662F;&#x628A;&quot;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&quot;&#x6362;&#x6210;&quot;&#x8FDB;&#x7A0B;&#x5217;&#x8868; + &#x6BCF;&#x4E2A;&#x8FDB;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&quot;&#xFF0C;&#x518D;&#x51B3;&#x5B9A;&#x8981;&#x4E0D;&#x8981;&#x589E;&#x52A0; <code>PTRACE_O_TRACEFORK</code>/<code>TRACEVFORK</code>/<code>TRACEEXEC</code>&#x3002;&#x771F;&#x6B63;&#x82B1;&#x65F6;&#x95F4;&#x7684;&#x662F;&#x8C03;&#x8BD5;&#x4F53;&#x9A8C;&#x4E0A;&#x7684;&#x53D6;&#x820D;&#xFF1A;&#x8DDF;&#x8C01;&#x3001;&#x505C;&#x8C01;&#x3001;&#x600E;&#x4E48;&#x5728;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#x4E4B;&#x95F4;&#x5207;&#x6362;&#x89C6;&#x56FE;&#x3002;&#x8FD9;&#x4E5F;&#x662F;&#x672C;&#x8282;&#x53EA;&#x4ECB;&#x7ECD;&#x7B56;&#x7565;&#x3001;&#x4E0D;&#x7EE7;&#x7EED;&#x5806;&#x4EE3;&#x7801;&#x7684;&#x539F;&#x56E0;&#x3002;</p>
+<h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
+<p>&#x672C;&#x8282;&#x4ECE; Linux &#x7684; fork/vfork/clone &#x51FA;&#x53D1;&#xFF0C;&#x8BF4;&#x660E;&#x4E86;&#x8DDF;&#x8E2A;&#x591A;&#x8FDB;&#x7A0B;&#x548C;&#x8DDF;&#x8E2A;&#x591A;&#x7EBF;&#x7A0B;&#x5728;&#x5185;&#x6838;&#x5C42;&#x9762;&#x5171;&#x7528;&#x540C;&#x4E00;&#x5957; ptrace &#x4E8B;&#x4EF6;&#x673A;&#x5236;&#xFF0C;&#x7136;&#x540E;&#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x4E86;&#x4E09;&#x79CD;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x7B56;&#x7565;&#xFF1A;</p>
+<ul>
+<li>GDB &#x4EE5; inferior &#x4E3A;&#x5355;&#x4F4D;&#x7BA1;&#x7406;&#x591A;&#x4E2A;&#x8FDB;&#x7A0B;&#xFF0C;&#x901A;&#x8FC7; <code>follow-fork-mode</code>&#x3001;<code>detach-on-fork</code>&#x3001;<code>follow-exec-mode</code> &#x51B3;&#x5B9A;&#x8DDF;&#x8C01;&#x3001;&#x7559;&#x8C01;&#xFF0C;&#x901A;&#x8FC7; <code>schedule-multiple</code> &#x63A7;&#x5236;&#x6062;&#x590D;&#x8303;&#x56F4;&#xFF1B;</li>
+<li>LLDB &#x4EE5; target &#x4E3A;&#x5355;&#x4F4D;&#x7BA1;&#x7406;&#x8FDB;&#x7A0B;&#xFF0C;&#x53EA;&#x6709; <code>follow-fork-mode</code> &#x548C; <code>stop-on-exec</code> &#x4E24;&#x4E2A;&#x5173;&#x952E;&#x9009;&#x9879;&#xFF0C;&#x8DDF;&#x968F;&#x7B56;&#x7565;&#x4E0A;&#x4E8C;&#x9009;&#x4E00;&#xFF1B;</li>
+<li>Delve &#x9762;&#x5411; Go &#x7A0B;&#x5E8F;&#x7684;&#x5B9E;&#x9645;&#x60C5;&#x51B5;&#xFF0C;&#x53EA;&#x652F;&#x6301; follow-exec&#xFF0C;&#x7528; <code>PTRACE_O_TRACEVFORK</code> + <code>PTRACE_O_TRACEEXEC</code> &#x8DDF;&#x8E2A; <code>os/exec</code> &#x51FA;&#x6765;&#x7684;&#x5B50;&#x8FDB;&#x7A0B;&#xFF0C;&#x7528; <code>TargetGroup</code> &#x7BA1;&#x7406;&#x591A;&#x4E2A; target&#x3002;</li>
+</ul>
+<p>&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x6CA1;&#x6709;&#x552F;&#x4E00;&#x6B63;&#x786E;&#x7684;&#x7B54;&#x6848;&#xFF0C;&#x5173;&#x952E;&#x5728;&#x4E8E;&#x8C03;&#x8BD5;&#x5668;&#x9762;&#x5411;&#x7684;&#x8BED;&#x8A00;&#x3001;&#x5E73;&#x53F0;&#x548C;&#x7528;&#x6237;&#x4E60;&#x60EF;&#x3002;&#x4E86;&#x89E3;&#x8FD9;&#x4E9B;&#x53D6;&#x820D;&#xFF0C;&#x6BD4;&#x7167;&#x7740;&#x67D0;&#x4E00;&#x5BB6;&#x5B9E;&#x73B0;&#x6284;&#x4E00;&#x904D;&#x66F4;&#x6709;&#x4EF7;&#x503C;&#x3002;</p>
 
                                 
                                 </section>
@@ -2298,7 +2441,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.21 调试多进程程序","level":"1.6.18","depth":2,"next":{"title":"6.80 认识ASLR","level":"1.6.19","depth":2,"path":"6-develop-inst-debugger/80-aslr.md","ref":"6-develop-inst-debugger/80-aslr.md","articles":[]},"previous":{"title":"6.20.5 线程执行控制 - 断点移除","level":"1.6.17.5","depth":3,"path":"6-develop-inst-debugger/20-multithread/5-breakpoint.md","ref":"6-develop-inst-debugger/20-multithread/5-breakpoint.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/21-multiprocess/README.md","mtime":"2026-10-26T00:44:51.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-26T00:45:25.176Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.21 调试多进程程序","level":"1.6.18","depth":2,"next":{"title":"6.80 认识ASLR","level":"1.6.19","depth":2,"path":"6-develop-inst-debugger/80-aslr.md","ref":"6-develop-inst-debugger/80-aslr.md","articles":[]},"previous":{"title":"6.20.5 线程执行控制 - 断点移除","level":"1.6.17.5","depth":3,"path":"6-develop-inst-debugger/20-multithread/5-breakpoint.md","ref":"6-develop-inst-debugger/20-multithread/5-breakpoint.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/21-multiprocess/README.md","mtime":"2026-10-26T01:39:52.826Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-26T01:40:31.414Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

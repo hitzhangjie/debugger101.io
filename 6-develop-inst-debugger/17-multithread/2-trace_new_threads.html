@@ -1,0 +1,2725 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>6.17.2 跟踪新创建线程 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="3-suspend_policy.html" />
+    
+    
+    <link rel="prev" href="1-trace_old_threads.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../2-preface/">
+            
+                <a href="../../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../3-terms/">
+            
+                <a href="../../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../../4-basics/">
+            
+                <a href="../../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../../4-basics/1-purposes.html">
+            
+                <a href="../../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../../4-basics/2-dependencies.html">
+            
+                <a href="../../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../../4-basics/3-countertactics.html">
+            
+                <a href="../../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../../5-debugger-skeleton/">
+            
+                <a href="../../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 设计一个调试器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../../5-debugger-skeleton/2-debugger_arch.html">
+            
+                <a href="../../5-debugger-skeleton/2-debugger_arch.html">
+            
+                    
+                    5.2 调试器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../../5-debugger-skeleton/3-debugger_cmds.html">
+            
+                <a href="../../5-debugger-skeleton/3-debugger_cmds.html">
+            
+                    
+                    5.3 调试器命令管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../../5-debugger-skeleton/4-debugger_completion.html">
+            
+                <a href="../../5-debugger-skeleton/4-debugger_completion.html">
+            
+                    
+                    5.4 输入自动补全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                <a href="../../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                    
+                    5.5 其他可扩展性设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                <a href="../../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                    
+                    5.6 具体的实施方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../../5-debugger-skeleton/7-debugger_demos.html">
+            
+                <a href="../../5-debugger-skeleton/7-debugger_demos.html">
+            
+                    
+                    5.7 功能演示和实现效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../1-exec.html">
+            
+                <a href="../1-exec.html">
+            
+                    
+                    6.1 启动并跟踪进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../2-attach.html">
+            
+                <a href="../2-attach.html">
+            
+                    
+                    6.2 跟踪运行中进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../3-debug.html">
+            
+                <a href="../3-debug.html">
+            
+                    
+                    6.3 构建并启动调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../4-session.html">
+            
+                <a href="../4-session.html">
+            
+                    
+                    6.4 脚本回放与清理善后
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../5-disassemble.html">
+            
+                <a href="../5-disassemble.html">
+            
+                    
+                    6.5 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../6-breakpoint.html">
+            
+                <a href="../6-breakpoint.html">
+            
+                    
+                    6.6 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../7-breakpoints.html">
+            
+                <a href="../7-breakpoints.html">
+            
+                    
+                    6.7 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../8-clear.html">
+            
+                <a href="../8-clear.html">
+            
+                    
+                    6.8 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../9-clearall.html">
+            
+                <a href="../9-clearall.html">
+            
+                    
+                    6.9 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../10-clearall-atexit.html">
+            
+                <a href="../10-clearall-atexit.html">
+            
+                    
+                    6.10 调试器退出前的断点清理机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../11-step.html">
+            
+                <a href="../11-step.html">
+            
+                    
+                    6.11 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../12-continue.html">
+            
+                <a href="../12-continue.html">
+            
+                    
+                    6.12 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../13-pmem.html">
+            
+                <a href="../13-pmem.html">
+            
+                    
+                    6.13 查看内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../14-pregs.html">
+            
+                <a href="../14-pregs.html">
+            
+                    
+                    6.14 查看寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../15-set-mem.html">
+            
+                <a href="../15-set-mem.html">
+            
+                    
+                    6.15 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../16-set-regs.html">
+            
+                <a href="../16-set-regs.html">
+            
+                    
+                    6.16 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    6.17 调试多线程程序
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.17.1" data-path="1-trace_old_threads.html">
+            
+                <a href="1-trace_old_threads.html">
+            
+                    
+                    6.17.1 跟踪已创建线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.6.17.2" data-path="2-trace_new_threads.html">
+            
+                <a href="2-trace_new_threads.html">
+            
+                    
+                    6.17.2 跟踪新创建线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.3" data-path="3-suspend_policy.html">
+            
+                <a href="3-suspend_policy.html">
+            
+                    
+                    6.17.3 线程执行控制 - 挂起策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.4" data-path="4-continue.html">
+            
+                <a href="4-continue.html">
+            
+                    
+                    6.17.4 线程执行控制 - continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17.5" data-path="5-breakpoint.html">
+            
+                <a href="5-breakpoint.html">
+            
+                    
+                    6.17.5 线程执行控制 - 断点移除
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../18-multiprocess/">
+            
+                <a href="../18-multiprocess/">
+            
+                    
+                    6.18 调试多进程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../100-more.html">
+            
+                <a href="../100-more.html">
+            
+                    
+                    6.100 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../../7-headto-sym-debugger/">
+            
+                <a href="../../7-headto-sym-debugger/">
+            
+                    
+                    7 挺进符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                <a href="../../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../../7-headto-sym-debugger/2-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../../7-headto-sym-debugger/3-syms.html">
+            
+                <a href="../../7-headto-sym-debugger/3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                <a href="../../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                    
+                    7.7.2 如何破解那些细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../../8-dwarf/">
+            
+                <a href="../../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../../8-dwarf/1-history.html">
+            
+                <a href="../../8-dwarf/1-history.html">
+            
+                    
+                    8.1 DWARF发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../../8-dwarf/2-overview.html">
+            
+                <a href="../../8-dwarf/2-overview.html">
+            
+                    
+                    8.2 DWARF内容概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../../8-dwarf/3-dwarfdata.html">
+            
+                <a href="../../8-dwarf/3-dwarfdata.html">
+            
+                    
+                    8.3 DWARF数据分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../../8-dwarf/4-die/">
+            
+                <a href="../../8-dwarf/4-die/">
+            
+                    
+                    8.4 DIE详细介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                <a href="../../8-dwarf/4-die/1-desc-data-type.html">
+            
+                    
+                    8.4.1 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                <a href="../../8-dwarf/4-die/2-desc-locations.html">
+            
+                    
+                    8.4.2 位置数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../../8-dwarf/4-die/3-desc-code.html">
+            
+                <a href="../../8-dwarf/4-die/3-desc-code.html">
+            
+                    
+                    8.4.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../../8-dwarf/4-die/4-encoding.html">
+            
+                <a href="../../8-dwarf/4-die/4-encoding.html">
+            
+                    
+                    8.4.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../../8-dwarf/5-other/">
+            
+                <a href="../../8-dwarf/5-other/">
+            
+                    
+                    8.5 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                <a href="../../8-dwarf/5-other/1-accelerated-access.html">
+            
+                    
+                    8.5.1 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                <a href="../../8-dwarf/5-other/2-lineno-table.html">
+            
+                    
+                    8.5.2 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                <a href="../../8-dwarf/5-other/3-callframe-info.html">
+            
+                    
+                    8.5.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../../8-dwarf/5-other/4-macro-info.html">
+            
+                <a href="../../8-dwarf/5-other/4-macro-info.html">
+            
+                    
+                    8.5.4 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                <a href="../../8-dwarf/5-other/5-varlen-data.html">
+            
+                    
+                    8.5.5 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                <a href="../../8-dwarf/5-other/6-shrink-data.html">
+            
+                    
+                    8.5.6 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                <a href="../../8-dwarf/5-other/7-elf-sections.html">
+            
+                    
+                    8.5.7 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-practices.html">
+            
+                <a href="../../8-dwarf/6-practices.html">
+            
+                    
+                    8.6 DWARF解析及应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-summary.html">
+            
+                <a href="../../8-dwarf/7-summary.html">
+            
+                    
+                    8.7 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../../9-develop-sym-debugger/">
+            
+                <a href="../../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../../9-develop-sym-debugger/1-架构设计/">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/">
+            
+                    
+                    9.1 架构设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../../9-develop-sym-debugger/1-架构设计/1-现代调试器架构.html">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/1-现代调试器架构.html">
+            
+                    
+                    9.1.1 现代调试器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../../9-develop-sym-debugger/1-架构设计/2-前端UI层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/2-前端UI层设计.html">
+            
+                    
+                    9.1.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../../9-develop-sym-debugger/1-架构设计/3-Service层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/3-Service层设计.html">
+            
+                    
+                    9.1.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../../9-develop-sym-debugger/1-架构设计/4-后端符号层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/4-后端符号层设计.html">
+            
+                    
+                    9.1.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../../9-develop-sym-debugger/1-架构设计/5-后端目标层设计.html">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/5-后端目标层设计.html">
+            
+                    
+                    9.1.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../../9-develop-sym-debugger/1-架构设计/6-日志系统设计.html">
+            
+                <a href="../../9-develop-sym-debugger/1-架构设计/6-日志系统设计.html">
+            
+                    
+                    9.1.6 日志系统设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/">
+            
+                    
+                    9.2 核心调试逻辑
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/00-cmds.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/00-cmds.html">
+            
+                    
+                    9.2.00 核心调试命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.html">
+            
+                    
+                    9.2.01 打开调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.html">
+            
+                    
+                    9.2.11 tinydbg attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.html">
+            
+                    
+                    9.2.12 tinydbg attach+waitfor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/13-tinydbg_exec.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/13-tinydbg_exec.html">
+            
+                    
+                    9.2.13 tinydbg exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.html">
+            
+                    
+                    9.2.14 tinydbg debug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core.html">
+            
+                    
+                    9.2.15 tinydbg core
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.8" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.html">
+            
+                    
+                    9.2.16 tinydbg connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.9" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.html">
+            
+                    
+                    9.2.17 tinydbg trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.10" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/18-how_evalexpr_works.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/18-how_evalexpr_works.html">
+            
+                    
+                    9.2.18 evalexpr表达式计算引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.11" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/19-how_locspec_works.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/19-how_locspec_works.html">
+            
+                    
+                    9.2.19 locspec解析与地址转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.12" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/20-debug_disassemble.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/20-debug_disassemble.html">
+            
+                    
+                    9.2.20 tinydbg> disass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.13" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/21-debug_breakpoint_part1.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/21-debug_breakpoint_part1.html">
+            
+                    
+                    9.2.21 tinydbg> breakpoint - part1: 断点精细化管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.14" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part2.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part2.html">
+            
+                    
+                    9.2.22 tinydbg> breakpoint - part2: 添加断点+执行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.15" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part3.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part3.html">
+            
+                    
+                    9.2.23 tinydbg> breakpoint - part3: 条件断点+执行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.16" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part4.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part4.html">
+            
+                    
+                    9.2.24 tinydbg> breakpoint - part4: 其他断点相关命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.17" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/25-debug_trace.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/25-debug_trace.html">
+            
+                    
+                    9.2.25 tinydbg> trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.18" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/26-debug_watch.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/26-debug_watch.html">
+            
+                    
+                    9.2.26 tinydbg> watch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.19" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/27-debug_continue.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/27-debug_continue.html">
+            
+                    
+                    9.2.27 tinydbg> continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.20" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/28-debug_next.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/28-debug_next.html">
+            
+                    
+                    9.2.28 tinydbg> next
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.21" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/29-debug_step.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/29-debug_step.html">
+            
+                    
+                    9.2.29 tinydbg> step
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.22" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/30-debug_pmem.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/30-debug_pmem.html">
+            
+                    
+                    9.2.30 tinydbg> pmem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.23" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/31-debug_regs.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/31-debug_regs.html">
+            
+                    
+                    9.2.31 tinydbg> regs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.24" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.html">
+            
+                    
+                    9.2.32 tinydbg> funcs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.25" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/33-debug_vars.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/33-debug_vars.html">
+            
+                    
+                    9.2.33 tinydbg> vars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.26" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.html">
+            
+                    
+                    9.2.34 tinydbg> bt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.27" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/100-how_listfunctions_work.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/100-how_listfunctions_work.html">
+            
+                    
+                    9.2.100 how ListFunctions work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.28" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/100-debug_goroutines.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/100-debug_goroutines.html">
+            
+                    
+                    9.2.100 tinydbg> goroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.29" data-path="../../9-develop-sym-debugger/2-核心调试逻辑/100-multi-threads.html">
+            
+                <a href="../../9-develop-sym-debugger/2-核心调试逻辑/100-multi-threads.html">
+            
+                    
+                    9.2.100 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../../9-develop-sym-debugger/3-高级功能扩展/">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/">
+            
+                    
+                    9.3 高级功能扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../../9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                    
+                    9.3.100 集成starlark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../../9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                    
+                    9.3.101 基于eBPF跟踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../../9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                    
+                    9.3.102 实现语法高亮
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../../9-develop-sym-debugger/3-高级功能扩展/103-howto_paging_output.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/103-howto_paging_output.html">
+            
+                    
+                    9.3.103 实现分页输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../../9-develop-sym-debugger/3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                    
+                    9.3.104 读取分离存储的DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../../9-develop-sym-debugger/3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                    
+                    9.3.105 自动推测源文件路径映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../../9-develop-sym-debugger/3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                    
+                    9.3.106 实现目标进程IO重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../../9-develop-sym-debugger/3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                    
+                    9.3.107 支持用户偏好配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../../9-develop-sym-debugger/3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                    
+                    9.3.108 支持多客户端调试模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../../9-develop-sym-debugger/3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                    
+                    9.3.109 支持调试活动记录本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.11" data-path="../../9-develop-sym-debugger/3-高级功能扩展/110-howto_debug_deterministically.html">
+            
+                <a href="../../9-develop-sym-debugger/3-高级功能扩展/110-howto_debug_deterministically.html">
+            
+                    
+                    9.3.110 如何实现确定性调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../../10-extras/">
+            
+                <a href="../../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../../10-extras/1-development-of-debugger.html">
+            
+                <a href="../../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../../10-extras/2-development-of-logging.html">
+            
+                <a href="../../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../../10-extras/3-development-of-metrics.html">
+            
+                <a href="../../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../../10-extras/4-development-of-tracing.html">
+            
+                <a href="../../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../../10-extras/5-development-of-bisect.html">
+            
+                <a href="../../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../../10-extras/7-development-of-replay.html">
+            
+                <a href="../../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../../10-extras/9-ai-assisted-debugging.html">
+            
+                <a href="../../10-extras/9-ai-assisted-debugging.html">
+            
+                    
+                    10.9 AI助力软件调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../../10-extras/10-ai-assisted-reverse-engineering.html">
+            
+                <a href="../../10-extras/10-ai-assisted-reverse-engineering.html">
+            
+                    
+                    10.10 AI助力软件逆向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                <a href="../../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                    
+                    10.11 命令行参数与选项的分离：cobra 如何解析 --
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../../11-thanks/">
+            
+                <a href="../../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="../../12-appendix/">
+            
+                <a href="../../12-appendix/">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="../../12-appendix/1-go-programme-start.html">
+            
+                <a href="../../12-appendix/1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                <a href="../../12-appendix/2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="../../12-appendix/3-git-bisect.html">
+            
+                <a href="../../12-appendix/3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="../../12-appendix/4-vscode-extension-bisect.html">
+            
+                <a href="../../12-appendix/4-vscode-extension-bisect.html">
+            
+                    
+                    12.4 vscode extension bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="../../12-appendix/5-ptrace-attach-race.html">
+            
+                <a href="../../12-appendix/5-ptrace-attach-race.html">
+            
+                    
+                    12.5 ptrace attach的竞态问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="../../12-appendix/6-go-dwarf-version-matrix.html">
+            
+                <a href="../../12-appendix/6-go-dwarf-version-matrix.html">
+            
+                    
+                    12.6 Go调试信息版本矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="../../12-appendix/7-x86-real-and-protected-mode.html">
+            
+                <a href="../../12-appendix/7-x86-real-and-protected-mode.html">
+            
+                    
+                    12.7 x86 实模式与内存保护模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="../../12-appendix/8-aslr.html">
+            
+                <a href="../../12-appendix/8-aslr.html">
+            
+                    
+                    12.8 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="../../12-appendix/80-go-tool-compile.html">
+            
+                <a href="../../12-appendix/80-go-tool-compile.html">
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="../../12-appendix/81-go-tool-asm.html">
+            
+                <a href="../../12-appendix/81-go-tool-asm.html">
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="../../12-appendix/82-go-tool-link.html">
+            
+                <a href="../../12-appendix/82-go-tool-link.html">
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="../../12-appendix/90-why-buildid-loaded.html">
+            
+                <a href="../../12-appendix/90-why-buildid-loaded.html">
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                <a href="../../12-appendix/91-syntax-and-semantic-analysis.html">
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.14" data-path="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                <a href="../../12-appendix/92-why-gdb-uses-symtab.html">
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.15" data-path="../../12-appendix/93-anatomy-of-elf-core-file.html">
+            
+                <a href="../../12-appendix/93-anatomy-of-elf-core-file.html">
+            
+                    
+                    12.16 More: ELF core文件格式剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >6.17.2 跟踪新创建线程</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><style>
+body {
+  counter-reset: h1 33;
+}
+</style></p>
+<h2 id="&#x8C03;&#x8BD5;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;---&#x8DDF;&#x8E2A;&#x65B0;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;">&#x8C03;&#x8BD5;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F; - &#x8DDF;&#x8E2A;&#x65B0;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;</h2>
+<h3 id="&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x611F;&#x77E5;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x5E76;&#x8DDF;&#x8E2A;">&#x5B9E;&#x73B0;&#x76EE;&#x6807;&#xFF1A;&#x611F;&#x77E5;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x5E76;&#x8DDF;&#x8E2A;</h3>
+<p>&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x6709;&#x53EF;&#x80FD;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x5C24;&#x5176;&#x662F;&#x50CF;Go&#x7A0B;&#x5E8F;&#x8FD9;&#x6837;&#xFF0C;&#x4E3A;&#x4E86;&#x5145;&#x5206;&#x5229;&#x7528;&#x591A;&#x6838;CPU&#x8D44;&#x6E90;&#xFF0C;&#x4F1A;&#x81EA;&#x52A8;&#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x6765;&#x6267;&#x884C;goroutine&#x3002;&#x5F53;&#x67D0;&#x4E9B;goroutine&#x6267;&#x884C;&#x963B;&#x585E;&#x578B;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5BFC;&#x81F4;&#x7EBF;&#x7A0B;&#x963B;&#x585E;&#x65F6;&#xFF0C;Go&#x8FD0;&#x884C;&#x65F6;&#x4E3A;&#x4E86;&#x7EF4;&#x6301;GMP&#x8C03;&#x5EA6;&#x7684;&#x6B63;&#x5E38;&#x8FD0;&#x8F6C;&#x8FD8;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;&#x6765;&#x6267;&#x884C;goroutines&#x3002;&#x5728;Go&#x8FDB;&#x7A0B;&#x521D;&#x59CB;&#x5316;&#x65F6;&#xFF0C;&#x4E5F;&#x4F1A;&#x521B;&#x5EFA;&#x4E13;&#x95E8;&#x7684;&#x7EBF;&#x7A0B;&#x6765;&#x6267;&#x884C;sysmon&#x4EFB;&#x52A1;&#xFF0C;&#x8F6E;&#x8BE2;netpoller&#x3001;timer&#x3001;&#x5F3A;&#x5236;GC&#x7B49;&#x4EFB;&#x52A1; &#x2026;&#x2026; OK&#xFF0C;Go&#x8BED;&#x8A00;&#x867D;&#x7136;&#x662F;&#x9762;&#x5411;goroutine&#x7684;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#xFF0C;&#x672C;&#x8D28;&#x4E0A;&#x8FD8;&#x662F;&#x4F9D;&#x8D56;&#x7EBF;&#x7A0B;&#xFF0C;&#x4F9D;&#x8D56;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x5BF9;&#x7EBF;&#x7A0B;&#x7684;&#x8C03;&#x5EA6;&#x63A7;&#x5236;&#x80FD;&#x529B;&#xFF0C;&#x7136;&#x540E;&#x624D;&#x662F;GMP&#x4E2D;work-stealing&#x7684;&#x65B9;&#x5F0F;&#x7EBF;&#x7A0B;&#x6267;&#x884C;goroutine&#x7684;&#x903B;&#x8F91;&#x3002;</p>
+<p>&#x8BF4;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x53EA;&#x662F;&#x4E3A;&#x4E86;&#x5F3A;&#x8C03;Go&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x53EF;&#x80FD;&#x4F1A;&#x968F;&#x65F6;&#x521B;&#x5EFA;&#x4E00;&#x4E9B;&#x65B0;&#x7EBF;&#x7A0B;&#x51FA;&#x6765;&#x3002;&#x4F5C;&#x4E3A;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x5177;&#x5907;&#x611F;&#x77E5;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x3001;&#x4E3B;&#x52A8;&#x8DDF;&#x8E2A;&#x7684;&#x80FD;&#x529B;&#x3002;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x7EBF;&#x7A0B;&#x662F;&#x4EC0;&#x4E48;&#xFF0C;Linux&#x662F;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;Go&#x8FD0;&#x884C;&#x65F6;&#x662F;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x6709;&#x90A3;&#x4E9B;&#x7CFB;&#x7EDF;&#x5C42;&#x9762;&#x7684;&#x652F;&#x6301;&#x80FD;&#x591F;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x611F;&#x77E5;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x4E86;&#xFF0C;&#x5E76;&#x5BF9;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x8FDB;&#x884C;&#x5373;&#x65F6;&#x7684;&#x8DDF;&#x8E2A;&#x63A7;&#x5236;&#x3002;&#x672C;&#x8282;&#x6211;&#x4EEC;&#x5C31;&#x6765;&#x770B;&#x770B;&#x5982;&#x4F55;&#x5B9E;&#x73B0;&#x8FD9;&#x4E2A;&#x76EE;&#x6807;&#x3002;</p>
+<h3 id="&#x57FA;&#x7840;&#x77E5;&#x8BC6;">&#x57FA;&#x7840;&#x77E5;&#x8BC6;</h3>
+<h4 id="&#x7EBF;&#x7A0B;&#x662F;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x7684;">&#x7EBF;&#x7A0B;&#x662F;&#x5982;&#x4F55;&#x521B;&#x5EFA;&#x7684;</h4>
+<p>newosproc&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;&#xFF08;newproc&#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;goroutine)&#xFF0C;&#x662F;&#x901A;&#x8FC7; <code>clone</code> &#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6765;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x6CE8;&#x610F;&#x770B;cloneFlags&#x4EE5;&#x53CA;clone&#x64CD;&#x4F5C;&#x5B9E;&#x73B0;&#x3002;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// clone&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x65F6;&#x7684;&#x514B;&#x9686;&#x53C2;&#x6570;</span>
+<span class="hljs-keyword">const</span> (
+    cloneFlags = _CLONE_VM | <span class="hljs-comment">/* share memory */</span>
+        _CLONE_FS | <span class="hljs-comment">/* share cwd, etc */</span>
+        _CLONE_FILES | <span class="hljs-comment">/* share fd table */</span>
+        _CLONE_SIGHAND | <span class="hljs-comment">/* share sig handler table */</span>
+        _CLONE_SYSVSEM | <span class="hljs-comment">/* share SysV semaphore undo lists (see issue #20763) */</span>
+        _CLONE_THREAD <span class="hljs-comment">/* revisit - okay for now */</span>
+)
+
+<span class="hljs-comment">// &#x521B;&#x5EFA;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;</span>
+<span class="hljs-keyword">func</span> newosproc(mp *m) {
+    stk := unsafe.Pointer(mp.g0.stack.hi)
+    <span class="hljs-comment">/*
+     * note: strace gets confused if we use CLONE_PTRACE here.
+     */</span>
+    <span class="hljs-keyword">if</span> <span class="hljs-literal">false</span> {
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;newosproc stk=&quot;</span>, stk, <span class="hljs-string">&quot; m=&quot;</span>, mp, <span class="hljs-string">&quot; g=&quot;</span>, mp.g0, <span class="hljs-string">&quot; clone=&quot;</span>, abi.FuncPCABI0(clone), <span class="hljs-string">&quot; id=&quot;</span>, mp.id, <span class="hljs-string">&quot; ostk=&quot;</span>, &amp;mp, <span class="hljs-string">&quot;\n&quot;</span>)
+    }
+
+    <span class="hljs-comment">// Disable signals during clone, so that the new thread starts</span>
+    <span class="hljs-comment">// with signals disabled. It will enable them in minit.</span>
+    <span class="hljs-keyword">var</span> oset sigset
+    sigprocmask(_SIG_SETMASK, &amp;sigset_all, &amp;oset)
+    ret := clone(cloneFlags, stk, unsafe.Pointer(mp), unsafe.Pointer(mp.g0), unsafe.Pointer(abi.FuncPCABI0(mstart)))
+    sigprocmask(_SIG_SETMASK, &amp;oset, <span class="hljs-literal">nil</span>)
+
+    <span class="hljs-keyword">if</span> ret &lt; <span class="hljs-number">0</span> {
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;runtime: failed to create new OS thread (have &quot;</span>, mcount(), <span class="hljs-string">&quot; already; errno=&quot;</span>, -ret, <span class="hljs-string">&quot;)\n&quot;</span>)
+        <span class="hljs-keyword">if</span> ret == -_EAGAIN {
+            <span class="hljs-built_in">println</span>(<span class="hljs-string">&quot;runtime: may need to increase max user processes (ulimit -u)&quot;</span>)
+        }
+        throw(<span class="hljs-string">&quot;newosproc&quot;</span>)
+    }
+}
+
+<span class="hljs-comment">//go:noescape</span>
+<span class="hljs-keyword">func</span> clone(flags <span class="hljs-keyword">int32</span>, stk, mp, gp, fn unsafe.Pointer) <span class="hljs-keyword">int32</span>
+</code></pre>
+<p>&#x8FDB;&#x7A0B;&#x4E0B;&#x7684;&#x7EBF;&#x7A0B;&#xFF0C;&#x5171;&#x4EAB;&#x8FDB;&#x7A0B;&#x6253;&#x5F00;&#x7684;&#x67D0;&#x4E9B;&#x8D44;&#x6E90;&#xFF0C;&#x901A;&#x8FC7;&#x4E0A;&#x8FF0;cloneFlags&#x4E5F;&#x53EF;&#x4EE5;&#x770B;&#x51FA;&#x4E00;&#x70B9;&#x7AEF;&#x502A;&#x3002;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x8BBE;&#x8BA1;&#x4E0A;&#xFF0C;&#x8FDB;&#x7A0B;&#x662F;&#x8D44;&#x6E90;&#x5206;&#x914D;&#x5355;&#x4F4D;&#xFF0C;&#x7EBF;&#x7A0B;&#x5219;&#x662F;&#x6700;&#x5C0F;&#x7684;&#x8C03;&#x5EA6;&#x5355;&#x4F4D;&#x3002;&#x4EE5;Linux&#x4E3A;&#x4F8B;&#xFF0C;&#x4E0D;&#x7BA1;&#x662F;&#x8FDB;&#x7A0B;&#x8FD8;&#x662F;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x7531;&#x5BF9;&#x5E94;&#x7684;task_struct&#x7ED3;&#x6784;&#x6765;&#x63CF;&#x8FF0;&#xFF0C;&#x5E76;&#x4F5C;&#x4E3A;sched_entity&#x5728;&#x5185;&#x6838;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x5668;&#x4E2D;&#x8FDB;&#x884C;&#x8C03;&#x5EA6;&#x3002;ps: &#x5173;&#x4E8E;Linux&#x4E0B;&#x7684;&#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#xFF0C;&#x611F;&#x5174;&#x8DA3;&#x60A8;&#x53EF;&#x4EE5;&#x9605;&#x8BFB;&#x6211;&#x7684;&#x535A;&#x5BA2; <a href="https://www.hitzhangjie.pro/categories/linux%E5%86%85%E6%A0%B8/" target="_blank">Linux&#x5185;&#x6838;</a> &#x4EFB;&#x52A1;&#x8C03;&#x5EA6;&#x76F8;&#x5173;&#x5185;&#x5BB9;&#x3002;</p>
+<p>&#x4E0A;&#x8FF0;clone&#x51FD;&#x6570;&#x5728;amd64&#x67B6;&#x6784;&#x4E0B;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x8BE6;&#x89C1; go/src/runtime/sys_linux_amd64.s:</p>
+<pre><code class="lang-asm"> // int32 clone(int32 flags, void *stk, M *mp, G *gp, void (*fn)(void));
+TEXT runtime&#xB7;clone(SB),NOSPLIT,$0
+    MOVL    flags+0(FP), DI     // &#x51C6;&#x5907;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x53C2;&#x6570;
+    MOVQ    stk+8(FP), SI
+    ...
+
+    // Copy mp, gp, fn off parent stack for use by child.
+    // Careful: Linux system call clobbers CX and R11.
+    MOVQ    mp+16(FP), R13
+    MOVQ    gp+24(FP), R9
+    MOVQ    fn+32(FP), R12
+    ...
+
+    MOVL    $SYS_clone, AX   // clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x53F7;
+    syscall                  // &#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;
+
+    // In parent, return.
+    CMPQ    AX, $0
+    JEQ     3(PC)
+    MOVL    AX, ret+40(FP)   // &#x7236;&#x8FDB;&#x7A0B;&#xFF0C;&#x8FD4;&#x56DE;clone&#x51FA;&#x7684;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;tid
+    RET
+
+    // In child, on new stack.
+    MOVQ    SI, SP
+
+    // If g or m are nil, skip Go-related setup.
+    CMPQ    R13, $0          // m
+    JEQ     nog2
+    CMPQ    R9, $0           // g
+    JEQ     nog2
+
+    // Initialize m-&gt;procid to Linux tid
+    MOVL    $SYS_gettid, AX
+    SYSCALL
+    MOVQ    AX, m_procid(R13)
+
+    // In child, set up new stack
+    get_tls(CX)
+    MOVQ    R13, g_m(R9)
+    MOVQ    R9, g(CX)
+    MOVQ    R9, R14          // set g register
+    CALL    runtime&#xB7;stackcheck(SB)
+
+nog2:
+    // Call fn. This is the PC of an ABI0 function.
+    CALL    R12              // &#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x521D;&#x59CB;&#x5316;&#x76F8;&#x5173;&#x7684;gmp&#x8C03;&#x5EA6;&#xFF0C;&#x5F00;&#x59CB;&#x6267;&#x884C;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;mstart&#xFF0C;
+                             // clone&#x53C2;&#x6570;&#x4E2D;&#x6709;&#x4E2A; abi.FuncPCABI0(mstart)
+    ...
+</code></pre>
+<p>&#x7531;&#x6B64;&#x53EF;&#x77E5;&#xFF0C;&#x5176;&#x5B9E;&#x53EA;&#x8981;tracee&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;clone&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x7ED9;&#x6211;&#x4EEC;&#x4E00;&#x4E2A;&#x901A;&#x77E5;&#x5C31;&#x53EF;&#x4EE5;&#x4E86;&#x3002;</p>
+<h4 id="&#x5411;&#x5185;&#x6838;&#x6CE8;&#x518C;clone&#x8DDF;&#x8E2A;&#x52A8;&#x4F5C;">&#x5411;&#x5185;&#x6838;&#x6CE8;&#x518C;clone&#x8DDF;&#x8E2A;&#x52A8;&#x4F5C;</h4>
+<p><strong>&#x65B9;&#x6CD5;1</strong>&#xFF1A;&#x901A;&#x8FC7; <code>syscall.PtraceSyscall(pid, signal)</code> &#x68C0;&#x67E5;&#x6709;&#x65E0;clone&#x88AB;&#x8C03;&#x7528;&#x4E8B;&#x4EF6;</p>
+<p>&#x8FD9;&#x6837;tracee&#x6267;&#x884C;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;clone&#x65F6;&#xFF0C;&#x5728;enter syscall clone&#x3001;exit syscall clone&#x7684;&#x4F4D;&#x7F6E;&#x4F1A;&#x505C;&#x4E0B;&#x6765;&#xFF0C;&#x65B9;&#x4FBF;&#x6211;&#x4EEC;&#x505A;&#x70B9;&#x8C03;&#x8BD5;&#x65B9;&#x9762;&#x7684;&#x5DE5;&#x4F5C;&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x8BFB;&#x53D6;&#x6B64;&#x65F6;RAX&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#x6765;&#x5224;&#x65AD;&#x5F53;&#x524D;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x53F7;&#x662F;&#x4E0D;&#x662F; <code>__NR_clone</code> &#xFF0C;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x90A3;&#x8BF4;&#x660E;&#x6267;&#x884C;&#x4E86;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;clone&#xFF0C;&#x6211;&#x4EEC;&#x5C31;&#x53EF;&#x4EE5;&#x501F;&#x6B64;&#x5224;&#x65AD;&#x521B;&#x5EFA;&#x4E86;&#x4E00;&#x4E2A;&#x65B0;&#x7684;&#x7EBF;&#x7A0B;&#x3002;&#x540C;&#x6837;&#x7684;&#x53EF;&#x4EE5;&#x5728;exit syscall&#x7684;&#x65F6;&#x5019;&#x7528;&#x7C7B;&#x4F3C;&#x7684;&#x529E;&#x6CD5;&#x53BB;&#x83B7;&#x53D6;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;tid&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x901A;&#x8FC7;&#x8FD9;&#x4E2A;&#x529E;&#x6CD5;&#x53EF;&#x4EE5;&#x611F;&#x77E5;&#x5230;tracee&#x521B;&#x5EFA;&#x4E86;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x529E;&#x6CD5;&#xFF0C;&#x4F46;&#x662F;&#x8FD9;&#x4E2A;&#x529E;&#x6CD5; <code>syscall.PtraceSyscall(pid, signal)</code> &#x8FC7;&#x4E8E;&#x901A;&#x7528;&#x4E86;&#xFF0C;&#x4F60;&#x8FD8;&#x8981;&#x61C2;&#x70B9;ABI&#x8C03;&#x7528;&#x60EF;&#x4F8B;&#xFF08;&#x6BD4;&#x5982;&#x901A;&#x8FC7;&#x5BC4;&#x5B58;&#x5668;&#x5206;&#x914D;&#x6765;&#x4F20;&#x9012;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x53F7;&#x3001;&#x8FD4;&#x56DE;&#x503C;&#x4FE1;&#x606F;&#xFF09;&#xFF0C;&#x4F7F;&#x7528;&#x8D77;&#x6765;&#x5C31;&#x6CA1;&#x6709;&#x90A3;&#x4E48;&#x65B9;&#x4FBF;&#x3002;</p>
+<p><strong>&#x65B9;&#x6CD5;2</strong>&#xFF1A;&#x901A;&#x8FC7; <code>syscall.PtraceSetOptions(pid, opts)</code> &#x6307;&#x5B9A; <code>PTRACE_O_TRACECLONE</code> &#x8BA9;&#x5185;&#x6838;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;clone</p>
+<p>&#x6267;&#x884C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#xFF0C;&#x9700;&#x8981;&#x5148;attach tracee&#x4E4B;&#x540E;&#xFF0C;&#x6BD4;&#x5982;attach&#x8FD0;&#x884C;&#x4E2D;&#x7684;&#x8FDB;&#x7A0B;&#x6267;&#x884C; <code>syscall.PtraceAttach(pid)</code> &#xFF0C;&#x6216;&#x8005; <code>exec.Cmd.Ptrace=true</code> &#x6307;&#x5B9A;execve&#x65F6;&#x6267;&#x884C;PTRACE_TRACEME&#x64CD;&#x4F5C;&#x3002;&#x5728;&#x8FD9;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x901A;&#x8FC7; <code>syscall.PtraceSetOptions(pid, opts)</code> &#x4F20;&#x9012;&#x9009;&#x9879; <code>PTRACE_O_TRACECLONE</code> &#xFF0C;&#x8FD9;&#x4E2A;&#x64CD;&#x4F5C;&#x662F;&#x4E13;&#x95E8;&#x4E3A;&#x8DDF;&#x8E2A;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x800C;&#x8BBE;&#x7F6E;&#x7684;&#x3002;</p>
+<p>&#x5BF9;&#x4E8E;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x3001;&#x65B0;&#x8FDB;&#x7A0B;&#x521B;&#x5EFA;&#x800C;&#x8A00;&#xFF0C;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x66F4;&#x805A;&#x7126;&#x3001;&#x66F4;&#x6709;&#x9488;&#x5BF9;&#x6027;&#xFF0C;&#x5BB9;&#x6613;&#x7406;&#x89E3;&#x548C;&#x7EF4;&#x62A4;&#xFF0C;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x65F6;&#x6211;&#x4EEC;&#x5C06;&#x91C7;&#x7528;&#x7B2C;&#x4E8C;&#x79CD;&#x65B9;&#x6CD5;&#x3002;&#x5728;&#x8C03;&#x8BD5;&#x65F6;&#x8DDF;&#x8E2A;&#x4EFB;&#x610F;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5C31;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7B2C;&#x4E00;&#x79CD;&#x65B9;&#x6CD5;&#x4E86;&#xFF0C;&#x540E;&#x9762;&#x6269;&#x5C55;&#x9605;&#x8BFB;&#x90E8;&#x5206;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x4F1A;&#x5355;&#x72EC;&#x4E00;&#x8282;&#x5BF9;&#x6B64;&#x8FDB;&#x884C;&#x8FDB;&#x4E00;&#x6B65;&#x7684;&#x4ECB;&#x7ECD;&#x3002;</p>
+<h4 id="&#x63A5;&#x6536;&#x5185;&#x6838;&#x901A;&#x77E5;&#x7684;clone&#x8C03;&#x7528;&#x4E8B;&#x4EF6;">&#x63A5;&#x6536;&#x5185;&#x6838;&#x901A;&#x77E5;&#x7684;clone&#x8C03;&#x7528;&#x4E8B;&#x4EF6;</h4>
+<p>&#x5728;&#x6267;&#x884C;&#x5B8C;&#x4E0A;&#x8FF0;&#x8BBE;&#x7F6E;&#x4E4B;&#x540E;&#xFF0C;tracee&#x5728;&#x6267;&#x884C;clone&#x64CD;&#x4F5C;&#x65F6;&#xFF0C;tracer&#x4FBF;&#x4F1A;&#x6536;&#x5230;&#x901A;&#x77E5;&#x3002;</p>
+<ol>
+<li>tracee&#x6267;&#x884C;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x7ED9;tracee&#x53D1;&#x9001;&#x4E00;&#x4E2A;SIGTRAP&#x4FE1;&#x53F7;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x6682;&#x505C;tracee&#x6267;&#x884C;&#xFF0C;&#x5E76;&#x901A;&#x77E5;tracer&#x3002;</li>
+<li>tracer&#x9700;&#x8981;&#x4E3B;&#x52A8;&#x53BB;&#x611F;&#x77E5;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;&#xFF0C;&#x6709;&#x4E24;&#x4E2A;&#x529E;&#x6CD5;&#xFF1A;</li>
+</ol>
+<p><strong>&#x65B9;&#x6CD5;1</strong>&#xFF1A; &#x901A;&#x8FC7;SIGCHLD&#x4FE1;&#x53F7;&#x53BB;&#x611F;&#x77E5;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;</p>
+<p>&#x5185;&#x6838;&#x4F1A;&#x53D1;&#x9001;&#x4FE1;&#x53F7;SIGCHLD&#x7ED9;tracer&#xFF0C;&#x5E76;&#x901A;&#x8FC7;si_status==SIGTRAP&#x6765;&#x8BF4;&#x660E;&#x662F;&#x8C03;&#x8BD5;&#x5F15;&#x8D77;&#x7684;&#x3002;&#x60F3;&#x8FDB;&#x4E00;&#x6B65;&#x83B7;&#x53D6;&#x662F;&#x56E0;&#x4E3A;&#x54EA;&#x4E2A;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5BFC;&#x81F4;&#x7684;&#xFF0C;&#x5219;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>syscall.PtraceGetRegs</code> &#x6765;&#x4ECE;&#x5BC4;&#x5B58;&#x5668;&#x4E2D;&#x83B7;&#x53D6;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7F16;&#x53F7;&#xFF0C;&#x901A;&#x8FC7;&#x4E0E;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7F16;&#x53F7;&#x6BD4;&#x8F83;&#x5373;&#x53EF;&#x5224;&#x65AD;&#x5F53;&#x524D;tracee&#x662F;&#x5426;&#x6267;&#x884C;&#x7684;&#x662F;clone&#x64CD;&#x4F5C;&#x3002;si_pid&#x5B57;&#x6BB5;&#x5219;&#x5305;&#x542B;&#x4E86;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;pid&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;tid&#x3002;</p>
+<pre><code class="lang-c">siginfo_t {
+        int      si_signo;     /* Signal number */
+        int      si_errno;     /* An errno value */
+        int      si_code;      /* Signal code */
+        int      si_trapno;    /* Trap number that caused
+                                      hardware-generated signal
+                                      (unused on most architectures) */
+        pid_t    si_pid;       /* Sending process ID */
+        uid_t    si_uid;       /* Real user ID of sending process */
+        int      si_status;    /* Exit value or signal */
+        ...
+}
+
+SIGCHLD fills in si_pid, si_uid, si_status, si_utime, and
+    si_stime, providing information about the child.  The si_pid
+    field is the process ID of the child; si_uid is the child&apos;s
+    real user ID.  The si_status field contains the exit status of
+    the child (if si_code is CLD_EXITED), or the signal number that
+    caused the process to change state.
+</code></pre>
+<p><strong>&#x65B9;&#x6CD5;2</strong>&#xFF1A;&#x901A;&#x8FC7;waitpid()&#x53BB;&#x611F;&#x77E5;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x7684;&#x53D1;&#x751F;</p>
+<p>&#x901A;&#x8FC7;waitpid()&#x662F;&#x66F4;&#x5E38;&#x7528;&#x7684;&#x611F;&#x77E5;tracee&#x7684;&#x8FD0;&#x884C;&#x72B6;&#x6001;&#x53D1;&#x751F;&#x4E86;&#x6539;&#x53D8;&#x7684;&#x65B9;&#x6CD5;&#xFF0C;&#x6267;&#x884C;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x7684;&#x7EBF;&#x7A0B;&#x5B8C;&#x6210;&#x8BE5;&#x64CD;&#x4F5C;&#x540E;&#x4F1A;&#x6682;&#x505C;&#xFF0C;waitpid&#x4F1A;&#x5728;status&#x5B57;&#x6BB5;&#x4E2D;&#x8BB0;&#x5F55;&#x53D1;&#x751F;&#x4E86;PTRACE_EVENT_CLONE&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD9;&#x6837;tracer&#x5C31;&#x53EF;&#x4EE5;&#x5224;&#x65AD;&#x51FA;&#x662F;tracee&#x6267;&#x884C;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x5BFC;&#x81F4;&#x7684;&#x3002;&#x7136;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x501F;&#x52A9; <code>newpid, syscall.PtraceGetEventMsg(pid)</code>&#x6765;&#x83B7;&#x53D6;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;pid&#x4FE1;&#x606F;&#x3002;</p>
+<p>see: <code>man 2 ptrace</code> &#x4E2D;&#x5173;&#x4E8E;&#x9009;&#x9879; PTRACE_O_TRACECLONE &#x7684;&#x8BF4;&#x660E;</p>
+<pre><code class="lang-bash">PTRACE_O_TRACECLONE (since Linux 2.5.46)
+    Stop the tracee at the next <span class="hljs-built_in">clone</span>(2) and automatically start tracing the newly cloned process, <span class="hljs-built_in">which</span> will start with a SIGSTOP, or PTRACE_EVENT_STOP <span class="hljs-keyword">if</span> PTRACE_SEIZE was used.  A  waitpid(2)
+    by the tracer will <span class="hljs-built_in">return</span> a status value such that
+
+    status&gt;&gt;8 == (SIGTRAP | (PTRACE_EVENT_CLONE&lt;&lt;8))
+
+    The PID of the new process can be retrieved with PTRACE_GETEVENTMSG.
+
+    This  option  may not catch <span class="hljs-built_in">clone</span>(2) calls <span class="hljs-keyword">in</span> all cases.  If the tracee calls <span class="hljs-built_in">clone</span>(2) with the CLONE_VFORK flag, PTRACE_EVENT_VFORK will be delivered instead <span class="hljs-keyword">if</span> PTRACE_O_TRACEVFORK is <span class="hljs-built_in">set</span>;
+    otherwise <span class="hljs-keyword">if</span> the tracee calls <span class="hljs-built_in">clone</span>(2) with the <span class="hljs-built_in">exit</span> signal <span class="hljs-built_in">set</span> to SIGCHLD, PTRACE_EVENT_FORK will be delivered <span class="hljs-keyword">if</span> PTRACE_O_TRACEFORK is set.
+</code></pre>
+<p>tracer&#x5982;&#x679C;&#x786E;&#x5B9A;&#x4E86;&#x662F;clone&#x5BFC;&#x81F4;&#x7684;&#x4EE5;&#x540E;&#xFF0C;&#x53EF;&#x4EE5;&#x8FDB;&#x4E00;&#x6B65;&#x901A;&#x8FC7; <code>newpid, _ = syscall.PtraceGetEventMsg(pid)</code> &#x62FF;&#x5230;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;pid&#x4FE1;&#x606F;&#x3002;</p>
+<p>3&#x3001;&#x62FF;&#x5230;&#x7EBF;&#x7A0B;pid&#x4E4B;&#x540E;&#x5C31;&#x53EF;&#x4EE5;&#x5C06;&#x65B0;&#x7EBF;&#x7A0B;&#x7EB3;&#x5165;&#x8DDF;&#x8E2A;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x9009;&#x62E9;&#x653E;&#x884C;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x6216;&#x8005;&#x6682;&#x505C;&#x65B0;&#x7EBF;&#x7A0B;&#x3001;&#x8BFB;&#x5199;&#x6570;&#x636E;&#x3001;&#x89C2;&#x5BDF;&#x5E76;&#x63A7;&#x5236;&#x6267;&#x884C;&#x3002;</p>
+<h4 id="&#x5173;&#x4E8E;syscallptracegeteventmsg&#x7684;&#x8BF4;&#x660E;">&#x5173;&#x4E8E;syscall.PtraceGetEventMsg&#x7684;&#x8BF4;&#x660E;</h4>
+<p>&#x5982;&#x679C;&#x6211;&#x4EEC;&#x4F7F;&#x7528;ptrace&#x7684;PTRACE_GETEVENTMSG&#x64CD;&#x4F5C;&#x6765;&#x83B7;&#x53D6;&#x65B0;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;tid&#xFF0C;&#x5E94;&#x8BE5;&#x6CE8;&#x610F;&#x4E9B;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;</p>
+<ul>
+<li>&#x8FD9;&#x4E2A;event&#x4F1A;&#x5B58;&#x591A;&#x4E45;&#xFF0C;</li>
+<li>&#x8FD9;&#x4E2A;event&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x4F1A;&#x88AB;&#x6E05;&#x7A7A;&#xFF0C;</li>
+<li>&#x5F53;&#x68C0;&#x6D4B;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x65F6;&#x9700;&#x8981;&#x7406;&#x89E3;&#x6267;&#x884C;&#x8BE5;&#x64CD;&#x4F5C;&#x5417;&#xFF1F;</li>
+<li>&#x53EF;&#x4EE5;wait&#x5230;N(N&gt;1)&#x4E2A;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#x540E;&#xFF0C;&#x518D;&#x6267;&#x884C;&#x8BE5;&#x64CD;&#x4F5C;&#x5417;&#xFF1F;</li>
+</ul>
+<p>&#x8FD9;&#x51E0;&#x4E2A;&#x95EE;&#x9898;&#x4FC3;&#x4F7F;&#x6211;&#x4EEC;&#x601D;&#x8003;event&#x7684;&#x751F;&#x6210;&#x3001;&#x5B58;&#x50A8;&#x3001;&#x6E05;&#x7A7A;&#x673A;&#x5236;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x8FDB;&#x884C;&#x4E86;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x603B;&#x7ED3;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x89E6;&#x53D1;&#x60C5;&#x51B5;</th>
+<th>&#x6D88;&#x606F;&#x662F;&#x5426;&#x88AB;&#x6E05;&#x9664;</th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>PTRACE_CONT</code> &#x6216; <code>PTRACE_DETACH</code></td>
+<td><strong>&#x662F;</strong></td>
+<td>&#x5B50;&#x8FDB;&#x7A0B;&#x7EE7;&#x7EED;&#x6267;&#x884C;&#xFF0C;&#x5185;&#x6838;&#x6E05;&#x7A7A;&#x7F13;&#x51B2;&#x533A;</td>
+</tr>
+<tr>
+<td>&#x518D;&#x6B21;&#x51FA;&#x73B0; <code>PTRACE_EVENT</code></td>
+<td><strong>&#x662F;</strong></td>
+<td>&#x65B0;&#x4E8B;&#x4EF6;&#x5199;&#x5165;&#x65F6;&#x8986;&#x76D6;&#x65E7;&#x6D88;&#x606F;</td>
+</tr>
+<tr>
+<td>&#x8FDB;&#x7A0B;&#x9000;&#x51FA;</td>
+<td><strong>&#x662F;</strong></td>
+<td>&#x8FDB;&#x7A0B;&#x7ED3;&#x675F;&#xFF0C;&#x5185;&#x6838;&#x9500;&#x6BC1;&#x7ED3;&#x6784;</td>
+</tr>
+<tr>
+<td><code>PTRACE_GETEVENTMSG</code></td>
+<td><strong>&#x5426;</strong></td>
+<td>&#x53EA;&#x8BFB;&#x53D6;&#xFF0C;&#x4E0D;&#x6E05;&#x7A7A;</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>&#x6700;&#x4F73;&#x5B9E;&#x8DF5;</strong>&#xFF1A;</p>
+<ol>
+<li><strong>&#x5728;&#x6BCF;&#x6B21; <code>waitpid()</code> &#x8FD4;&#x56DE; <code>SIGTRAP|0x80</code>&#xFF08;&#x5373; ptrace &#x4E8B;&#x4EF6;&#xFF09;&#x540E;&#x7ACB;&#x5373;&#x8BFB;&#x53D6;&#x4E8B;&#x4EF6;&#x6D88;&#x606F;</strong>&#x3002;</li>
+<li><strong>&#x968F;&#x540E;&#x7ACB;&#x5373;&#x53D1; <code>PTRACE_CONT</code></strong>&#xFF0C;&#x5B8C;&#x6210;&#x4E00;&#x8F6E;&#x201C;&#x4E8B;&#x4EF6;&#x2011;&#x8BFB;&#x53D6;&#x2011;&#x7EE7;&#x7EED;&#x201D;&#x5FAA;&#x73AF;&#x3002;</li>
+<li>&#x8FD9;&#x6837;&#x65E2;&#x80FD;&#x62FF;&#x5230;&#x6240;&#x6709;&#x4E8B;&#x4EF6;&#x6D88;&#x606F;&#xFF0C;&#x53C8;&#x80FD;&#x907F;&#x514D;&#x6D88;&#x606F;&#x88AB;&#x540E;&#x7EED;&#x4E8B;&#x4EF6;&#x6216; <code>CONT</code> &#x8986;&#x76D6;&#x3002;</li>
+</ol>
+</blockquote>
+<p>&#x8FD9;&#x6837;&#x8BBE;&#x8BA1;&#xFF0C;ptrace &#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x624D;&#x80FD;&#x987A;&#x5229;&#x3001;&#x51C6;&#x786E;&#x5730;&#x6355;&#x83B7;&#x6240;&#x6709; <code>PTRACE_EVENT</code> &#x7684;&#x4FE1;&#x606F;</p>
+<h4 id="&#x5173;&#x4E8E;&#x7EBF;&#x7A0B;tid&#x3001;pid&#x7684;&#x8BF4;&#x660E;">&#x5173;&#x4E8E;&#x7EBF;&#x7A0B;tid&#x3001;pid&#x7684;&#x8BF4;&#x660E;</h4>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x63D0;tid&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x662F;&#x60F3;&#x8BF4;&#x7EBF;&#x7A0B;ID&#xFF0C;&#x5F53;&#x63D0;pid&#x7684;&#x65F6;&#x5019;&#x662F;&#x60F3;&#x63D0;&#x7EBF;&#x7A0B;&#x6240;&#x5C5E;&#x8FDB;&#x7A0B;&#x7684;pid&#x3002;&#x4F46;&#x662F;&#x6709;&#x4E9B;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x4F3C;&#x4E4E;&#x5374;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x7684;&#x60EF;&#x4F8B;&#xFF0C;&#x6BD4;&#x5982;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528; <code>ptrace(pid, ...)</code> &#x5C3D;&#x7BA1;&#x5B83;&#x7684;&#x64CD;&#x4F5C;&#x5BF9;&#x8C61;&#x662F;&#x7EBF;&#x7A0B;&#xFF0C;&#x4F46;&#x662F;&#x5374;&#x7528;&#x4E86;pid&#x8FD9;&#x6837;&#x7684;&#x547D;&#x540D;&#xFF0C;&#x4E3A;&#x4EC0;&#x4E48;&#x5462;&#xFF1F;&#x8FD9;&#x8981;&#x4ECE;&#x5185;&#x6838;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x6765;&#x8BF4;&#x8D77;&#x3002;</p>
+<p>&#x5728; Linux &#x5185;&#x6838;&#x91CC;&#xFF0C;<strong>&#x6240;&#x6709;&#x7684;&#x53EF;&#x8C03;&#x5EA6;&#x5B9E;&#x4F53;&#x90FD;&#x662F; <code>task_struct</code></strong>&#x3002;&#x201C;&#x8FDB;&#x7A0B;&#x201D;&#x5E76;&#x4E0D;&#x662F;&#x4E00;&#x79CD;&#x72EC;&#x7ACB;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x800C;&#x662F; <strong>&#x4E00;&#x7EC4;&#x5171;&#x4EAB;&#x76F8;&#x540C;&#x5185;&#x5B58;&#xFF08;<code>mm_struct</code>&#xFF09;&#x7684;&#x7EBF;&#x7A0B;</strong> &#x7684;&#x96C6;&#x5408;&#x2014;&#x2014;&#x8FD9;&#x7EC4;&#x7EBF;&#x7A0B;&#x88AB;&#x79F0;&#x4E3A; <strong>&#x7EBF;&#x7A0B;&#x7EC4;&#xFF08;thread group&#xFF09;</strong>&#x3002;</p>
+<ul>
+<li><strong>&#x7EBF;&#x7A0B;&#x7EC4;&#x7684;&#x9996;&#x4E2A;&#x6210;&#x5458;&#xFF08;&#x7EBF;&#x7A0B;&#x7EC4;&#x9996;&#x9886;&#xFF09;</strong> &#x7684; <code>pid</code> &#x4E0E; <code>tgid</code> &#x76F8;&#x7B49;&#xFF0C;&#x6211;&#x4EEC;&#x4E60;&#x60EF;&#x53EB;&#x6CD5;&#x662F; &#x201C;&#x4E3B;&#x7EBF;&#x7A0B;&quot;&#xFF1B;</li>
+<li><strong>&#x5176;&#x5B83;&#x6210;&#x5458;</strong>&#xFF08;&#x5373;&#x4E3B;&#x7EBF;&#x7A0B;&#x4EE5;&#x5916;&#x7684;&#x201C;&#x7EBF;&#x7A0B;&#x201D;&#xFF09;&#x7684; <code>pid</code> &#x4E0E; <code>tgid</code> &#x4E0D;&#x76F8;&#x7B49;&#xFF0C;&#x5B83;&#x4EEC;&#x7684; <code>tgid</code> &#x4E0E;&#x7EC4;&#x9996;&#x9886;&#x7684; <code>pid</code> &#x76F8;&#x540C;&#x3002;</li>
+</ul>
+<p>&#x4E0D;&#x7BA1;&#x662F;&#x8FDB;&#x7A0B;&#x8FD8;&#x662F;&#x7EBF;&#x7A0B;&#xFF0C;&#x5B83;&#x4EEC;&#x90FD;&#x7531;&#x5404;&#x81EA;&#x7684;task_struct&#x6765;&#x8868;&#x793A;&#xFF0C;&#x5B83;&#x4EEC;&#x5171;&#x4EAB;&#x7684;&#x5185;&#x5B58;&#x533A;&#x57DF;&#x5219;&#x7531;task_struct-&gt;mm_struct&#x6765;&#x8868;&#x793A;&#xFF0C;&#x5176;&#x4ED6;&#x5171;&#x4EAB;&#x7684;&#x4FE1;&#x606F;&#x5219;&#x901A;&#x8FC7;task_struct-&gt;thread_group&#x6765;&#x63CF;&#x8FF0;&#x3002;&#x56E0;&#x4E3A;&#x7EBF;&#x7A0B;&#x662F;&#x901A;&#x8FC7;clone&#x65F6;&#x6307;&#x5B9A;&#x4E00;&#x4E9B;&#x7279;&#x6B8A;&#x7684;&#x5171;&#x4EAB;&#x9009;&#x9879;&#x6765;&#x521B;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#xFF0C;task_struct&#x4E2D;&#x7684;&#x5F88;&#x591A;&#x4FE1;&#x606F;&#x5171;&#x4EAB;&#x81EA;&#x4E3B;&#x7EBF;&#x7A0B;&#xFF0C;&#x662F;&#x6BD4;&#x8F83;&#x8F7B;&#x91CF;&#x7684;&#xFF0C;&#x6240;&#x4EE5;&#x4E5F;&#x7ECF;&#x5E38;&#x79F0;&#x4E4B;&#x4E3A;LWP&#xFF08;&#x8F7B;&#x91CF;&#x7EA7;&#x8FDB;&#x7A0B;&#xFF0C;Light Weight Process)&#x3002;<code>/proc/processID/task/threadID</code>&#xFF0C;threadID&#x5176;&#x5B9E;&#x5C31;&#x662F;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;task_struct-&gt;pid&#xFF0C;&#x800C;&#x8FDB;&#x7A0B;processID&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;task_struct-&gt;tgid&#x3002;</p>
+<p>&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x91CC;&#x9762;&#x6709;&#x4E9B;&#x51FD;&#x6570;&#x53C2;&#x6570;&#x5B9A;&#x4E49;&#x4E3A;pid&#xFF0C;&#x8FD9;&#x79CD;&#x4E00;&#x822C;&#x6307;&#x7684;&#x662F;&#x5404;&#x4E2A;&#x7EBF;&#x7A0B;&#x7684;task_struct-&gt;pid&#x8FD9;&#x4E2A;&#x6982;&#x5FF5;&#xFF0C;&#x6BD4;&#x5982;ptrace&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x3002;&#x4F46;&#x662F;&#x4E5F;&#x6709;&#x4E9B;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x6216;&#x8005;&#x5E93;&#x51FD;&#x6570;&#x547D;&#x540D;&#x4E0A;&#x5BB9;&#x6613;&#x8BA9;&#x4EBA;&#x4EA7;&#x751F;&#x6B67;&#x4E49;&#xFF1A;</p>
+<ul>
+<li>getpid&#xFF0C;&#x83B7;&#x53D6;&#x8C03;&#x7528;&#x65B9;&#x6240;&#x5C5E;&#x7684;&#x8FDB;&#x7A0B;&#x7684;pid&#xFF0C;&#x4E5F;&#x5C31;&#x662F;&#x7EBF;&#x7A0B;&#x6240;&#x5C5E;&#x8FDB;&#x7A0B;&#x7684;&#x8FDB;&#x7A0B;pid&#xFF0C;&#x6216;&#x8005;&#x8BF4;&#x7EBF;&#x7A0B;&#x7684;tgid&#xFF1B;</li>
+<li>gettid&#xFF0C;&#x83B7;&#x53D6;&#x7EBF;&#x7A0B;&#x7684;pid&#xFF08;&#x7EBF;&#x7A0B;&#x5BF9;&#x5E94;&#x7684;task_struct-&gt;pid&#xFF09;&#xFF1B;</li>
+</ul>
+<p>&#x6709;&#x65F6;&#x5019;&#x6587;&#x4E2D;&#x4F1A;&#x6DF7;&#x7528;pid&#x3001;tid&#x6982;&#x5FF5;&#xFF0C;&#x8BF7;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x6839;&#x636E;&#x8BED;&#x5883;&#x533A;&#x5206;&#x6211;&#x4EEC;&#x6307;&#x7684;&#x662F;&#x7EBF;&#x7A0B;&#x6240;&#x5C5E;&#x8FDB;&#x7A0B;&#x7684;pid&#xFF0C;&#x8FD8;&#x662F;&#x7EBF;&#x7A0B;&#x81EA;&#x8EAB;&#x7684;pid&#x3002;</p>
+<h3 id="&#x4EE3;&#x7801;&#x5B9E;&#x73B0;">&#x4EE3;&#x7801;&#x5B9E;&#x73B0;</h3>
+<p>godbgv2 &#x5728; ch6.17.2 &#x4E2D;&#x628A;&#x201C;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x201D;&#x62C6;&#x6210;&#x4E09;&#x4E2A;&#x52A8;&#x4F5C;&#xFF1A;&#x6CE8;&#x518C; <code>PTRACE_O_TRACECLONE</code>&#x3001;&#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;&#x3001;&#x4ECE;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x4E2D;&#x53D6;&#x51FA;&#x65B0;&#x7EBF;&#x7A0B; tid &#x5E76;&#x52A0;&#x5165;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#x3002;</p>
+<h4 id="&#x6CE8;&#x518C;-ptraceotraceclone">&#x6CE8;&#x518C; PTRACE_O_TRACECLONE</h4>
+<p>exec &#x542F;&#x52A8;&#x8DEF;&#x5F84;&#x5728; <code>launchCommand</code> &#x4E4B;&#x540E;&#x7ACB;&#x5373;&#x8BBE;&#x7F6E;&#x9009;&#x9879;&#xFF1A;</p>
+<p><strong>file&#xFF1A;pkg/target/process.go</strong>&#xFF08;&#x7247;&#x6BB5;&#xFF09;</p>
+<pre><code class="lang-go">    err = dbp.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        <span class="hljs-comment">// start and trace</span>
+        dbp.Process, err = dbp.launchCommand(cmd, args...)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+
+        <span class="hljs-comment">// &#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x65B0;&#x521B;&#x5EFA;&#x7684;&#x7EBF;&#x7A0B;&#xFF08;ch6.17.2&#xFF09;</span>
+        <span class="hljs-keyword">return</span> syscall.PtraceSetOptions(dbp.Process.Pid, syscall.PTRACE_O_TRACECLONE)
+    })
+</code></pre>
+<p>attach &#x8DEF;&#x5F84;&#x5219;&#x5728; <code>addThread</code> &#x91CC;&#x4E3A;&#x6BCF;&#x4E2A;&#x5DF2;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#x8BBE;&#x7F6E;&#x540C;&#x6837;&#x7684;&#x9009;&#x9879;&#xFF1A;</p>
+<p><strong>file&#xFF1A;pkg/target/thread.go</strong>&#xFF08;&#x7247;&#x6BB5;&#xFF09;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">func</span> (p *DebuggedProcess) addThread(tid <span class="hljs-keyword">int</span>, attach <span class="hljs-keyword">bool</span>) (*Thread, error) {
+    ...
+    <span class="hljs-comment">// &#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x8BE5;&#x7EBF;&#x7A0B;&#x540E;&#x7EED; clone &#x51FA;&#x7684;&#x65B0;&#x7EBF;&#x7A0B;&#xFF08;ch6.17.2&#xFF09;&#xFF1A;</span>
+    <span class="hljs-comment">// &#x8BBE;&#x7F6E; PTRACE_O_TRACECLONE &#x540E;&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x5728; clone &#x65F6;&#x505C;&#x6B62;&#x514B;&#x9686;&#x8005;</span>
+    <span class="hljs-comment">// &#x5E76;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#xFF08;&#x65B0;&#x7EBF;&#x7A0B;&#x4EE5; SIGSTOP &#x5F00;&#x59CB;&#xFF09;&#x3002;</span>
+    err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        <span class="hljs-keyword">return</span> syscall.PtraceSetOptions(tid, syscall.PTRACE_O_TRACECLONE)
+    })
+    <span class="hljs-keyword">if</span> err == syscall.ESRCH {
+        <span class="hljs-comment">// &#x7EBF;&#x7A0B;&#x53EF;&#x80FD;&#x6070;&#x5728;&#x6B64;&#x65F6;&#x9000;&#x51FA;&#xFF0C;&#x7B49;&#x5F85;&#x5176;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x540E;&#x91CD;&#x8BD5;&#x4E00;&#x6B21;</span>
+        <span class="hljs-keyword">if</span> _, _, err := p.waitFast(tid); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;error while waiting after adding thread: %d %s&quot;</span>, tid, err)
+        }
+        err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+            <span class="hljs-keyword">return</span> syscall.PtraceSetOptions(tid, syscall.PTRACE_O_TRACECLONE)
+        })
+        <span class="hljs-keyword">if</span> err == syscall.ESRCH {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, err
+        }
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;could not set options for new traced thread %d %s&quot;</span>, tid, err)
+        }
+    }
+    ...
+}
+</code></pre>
+<p><code>PTRACE_O_TRACECLONE</code> &#x662F;&#x201C;&#x4E00;&#x6B21;&#x8BBE;&#x7F6E;&#x3001;&#x6301;&#x7EED;&#x751F;&#x6548;&#x201D;&#x7684;&#x9009;&#x9879;&#xFF1A;&#x8BBE;&#x7F6E;&#x4E4B;&#x540E;&#xFF0C;&#x8BE5;&#x7EBF;&#x7A0B;&#x6BCF;&#x6B21;&#x6267;&#x884C; clone &#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x5185;&#x6838;&#x90FD;&#x4F1A;&#x5728; clone &#x8FD4;&#x56DE;&#x5904;&#x8BA9;&#x514B;&#x9686;&#x8005;&#x505C;&#x4E0B;&#xFF0C;&#x5E76;&#x81EA;&#x52A8;&#x628A;&#x65B0;&#x7EBF;&#x7A0B;&#x7EB3;&#x5165;&#x8DDF;&#x8E2A;&#x3002;&#x56E0;&#x6B64; exec &#x8DEF;&#x5F84;&#x53EA;&#x9700;&#x8981;&#x5728;&#x542F;&#x52A8;&#x65F6;&#x5BF9;&#x4E3B;&#x7EBF;&#x7A0B;&#x8BBE;&#x7F6E;&#x4E00;&#x6B21;&#xFF0C;attach &#x8DEF;&#x5F84;&#x5219;&#x8981;&#x5BF9;&#x679A;&#x4E3E;&#x51FA;&#x6765;&#x7684;&#x6BCF;&#x4E2A;&#x7EBF;&#x7A0B;&#x5206;&#x522B;&#x8BBE;&#x7F6E;&#x3002;</p>
+<p>&#x65B0;&#x7EBF;&#x7A0B;&#x88AB;&#x5185;&#x6838;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x540E;&#xFF0C;&#x4F1A;&#x4EE5;&#x4E00;&#x4E2A;&#x521D;&#x59CB; SIGSTOP &#x5F00;&#x59CB;&#x3002;&#x8C03;&#x8BD5;&#x5668;&#x4E0D;&#x80FD;&#x5047;&#x8BBE;&#x53EA;&#x7B49;&#x5F85;&#x4E3B;&#x7EBF;&#x7A0B;&#x5C31;&#x591F;&#xFF0C;&#x5426;&#x5219;&#x8FD9;&#x4E2A; SIGSTOP &#x4F1A;&#x4E00;&#x76F4;&#x6302;&#x5728;&#x7B49;&#x5F85;&#x961F;&#x5217;&#x91CC;&#xFF0C;&#x540E;&#x7EED; <code>wait</code> &#x4F1A;&#x5148;&#x628A;&#x5B83;&#x53D6;&#x51FA;&#x6765;&#x3002;</p>
+<h4 id="&#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;">&#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;</h4>
+<p><strong>file&#xFF1A;pkg/target/ptrace_linux.go</strong>&#xFF08;&#x7247;&#x6BB5;&#xFF09;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// waitAny &#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x88AB;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#x8FDB;&#x5165;&#x505C;&#x6B62;&#x72B6;&#x6001;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// &#x7EBF;&#x7A0B;&#x7EC4; leader &#x5DF2;&#x9000;&#x51FA;&#x4F46;&#x7559;&#x4E0B;&#x50F5;&#x5C38;&#x5B50;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x76F4;&#x63A5; wait4 &#x4F1A;&#x6C38;&#x8FDC;&#x963B;&#x585E;&#xFF0C;</span>
+<span class="hljs-comment">// &#x56E0;&#x6B64;&#x4EE5; WNOHANG &#x8F6E;&#x8BE2;&#xFF0C;&#x76F4;&#x5230; wait4 &#x6210;&#x529F;&#x6216;&#x53D1;&#x73B0; leader &#x5DF2;&#x6210;&#x50F5;&#x5C38;&#x3002;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) waitAny(options <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">int</span>, *syscall.WaitStatus, error) {
+    <span class="hljs-keyword">var</span> s syscall.WaitStatus
+    <span class="hljs-keyword">for</span> {
+        wpid, err := syscall.Wait4(<span class="hljs-number">-1</span>, &amp;s, syscall.WNOHANG|syscall.WALL|options, <span class="hljs-literal">nil</span>)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>, <span class="hljs-literal">nil</span>, err
+        }
+        <span class="hljs-keyword">if</span> wpid != <span class="hljs-number">0</span> {
+            <span class="hljs-keyword">return</span> wpid, &amp;s, <span class="hljs-literal">nil</span>
+        }
+        <span class="hljs-keyword">if</span> status(p.Process.Pid, p.Command) == statusZombie {
+            <span class="hljs-keyword">return</span> p.Process.Pid, <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>
+        }
+        time.Sleep(<span class="hljs-number">200</span> * time.Millisecond)
+    }
+}
+</code></pre>
+<p><code>waitAny</code> &#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F; <code>-1</code>&#xFF0C;&#x8868;&#x793A;&#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x88AB;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x50CF;&#x4EE5;&#x524D;&#x90A3;&#x6837;&#x53EA;&#x7B49;&#x5F85;&#x4E3B;&#x7EBF;&#x7A0B; pid&#x3002;&#x5B83;&#x7528; <code>WNOHANG</code> &#x8F6E;&#x8BE2;&#x800C;&#x4E0D;&#x662F;&#x963B;&#x585E;&#x5F0F; <code>wait4</code>&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x7EBF;&#x7A0B;&#x7EC4; leader &#x9000;&#x51FA;&#x540E;&#x53EF;&#x80FD;&#x7559;&#x4E0B;&#x50F5;&#x5C38;&#x5B50;&#x7EBF;&#x7A0B;&#xFF0C;&#x76F4;&#x63A5;&#x963B;&#x585E;&#x4F1A;&#x6C38;&#x8FDC;&#x7B49;&#x4E0D;&#x5230;&#x3002;</p>
+<h4 id="&#x4ECE;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x4E2D;&#x53D6;&#x51FA;&#x65B0;&#x7EBF;&#x7A0B;">&#x4ECE;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x4E2D;&#x53D6;&#x51FA;&#x65B0;&#x7EBF;&#x7A0B;</h4>
+<p><strong>file&#xFF1A;pkg/target/continue.go</strong>&#xFF08;&#x7247;&#x6BB5;&#xFF09;</p>
+<pre><code class="lang-go"><span class="hljs-comment">// Continue &#x6062;&#x590D;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x6267;&#x884C;&#xFF0C;&#x7B49;&#x5F85;&#x5176;&#x505C;&#x6B62;&#xFF0C;&#x8FD4;&#x56DE;&#x505C;&#x6B62;&#x539F;&#x56E0;&#x3002;</span>
+<span class="hljs-comment">//</span>
+<span class="hljs-comment">// ch6.17.2 &#x8D77;&#xFF1A;&#x82E5;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x662F;&#x7EBF;&#x7A0B;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#xFF08;PTRACE_EVENT_CLONE&#xFF09;&#xFF0C;</span>
+<span class="hljs-comment">// &#x8BFB;&#x53D6;&#x65B0;&#x7EBF;&#x7A0B; tid &#x5E76;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x4E4B;&#xFF0C;&#x7136;&#x540E;&#x62A5;&#x544A;&#x8BE5;&#x4E8B;&#x4EF6;&#x3002;</span>
+<span class="hljs-comment">// &#xFF08;all-stop &#x6302;&#x8D77;&#x7B56;&#x7565;&#x5C06;&#x5728; ch6.17.3 &#x4E2D;&#x5B9E;&#x73B0;&#xFF09;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) Continue() (*api.StopInfo, error) {
+    pid := p.Process.Pid
+
+    err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        err := syscall.PtraceCont(pid, <span class="hljs-number">0</span>)
+        <span class="hljs-keyword">if</span> err == syscall.ESRCH {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>
+        }
+        <span class="hljs-keyword">return</span> err
+    })
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;ptrace cont thread %d err: %v&quot;</span>, pid, err)
+    }
+
+    <span class="hljs-comment">// &#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x88AB;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;</span>
+    wpid, status, err := p.waitAny(syscall.WSTOPPED)
+    <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;wait error: %v&quot;</span>, err)
+    }
+    <span class="hljs-keyword">if</span> status == <span class="hljs-literal">nil</span> {
+        <span class="hljs-comment">// &#x76EE;&#x6807;&#x8FDB;&#x7A0B;&#x5DF2;&#x9000;&#x51FA;&#xFF08;zombie&#xFF09;</span>
+        <span class="hljs-keyword">return</span> &amp;api.StopInfo{PID: wpid, Reason: <span class="hljs-string">&quot;exited&quot;</span>}, <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-comment">// &#x514B;&#x9686;&#x4E8B;&#x4EF6;&#xFF1A;&#x65B0;&#x7EBF;&#x7A0B;&#x5DF2;&#x88AB;&#x5185;&#x6838;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#xFF0C;&#x8BFB;&#x53D6;&#x5176; tid &#x5E76;&#x52A0;&#x5165;&#x7EBF;&#x7A0B;&#x5217;&#x8868;</span>
+    <span class="hljs-keyword">if</span> status.Stopped() &amp;&amp; status.TrapCause() == syscall.PTRACE_EVENT_CLONE {
+        newTid, err := p.getEventMessage(wpid)
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;get event msg error: %v&quot;</span>, err)
+        }
+        <span class="hljs-keyword">if</span> _, err := p.addThread(newTid, <span class="hljs-literal">false</span>); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> <span class="hljs-literal">nil</span>, fmt.Errorf(<span class="hljs-string">&quot;add thread error: %v&quot;</span>, err)
+        }
+        <span class="hljs-keyword">return</span> &amp;api.StopInfo{
+            PID:    wpid,
+            Reason: fmt.Sprintf(<span class="hljs-string">&quot;PTRACE_EVENT_CLONE: new thread %d&quot;</span>, newTid),
+        }, <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-keyword">return</span> &amp;api.StopInfo{PID: wpid, Reason: descStatus(status)}, <span class="hljs-literal">nil</span>
+}
+
+<span class="hljs-comment">// getEventMessage &#x8BFB;&#x53D6;&#x7EBF;&#x7A0B;tid&#x6700;&#x8FD1;&#x4E00;&#x6B21; ptrace &#x4E8B;&#x4EF6;&#x9644;&#x5E26;&#x7684;&#x6D88;&#x606F;</span>
+<span class="hljs-keyword">func</span> (p *DebuggedProcess) getEventMessage(tid <span class="hljs-keyword">int</span>) (<span class="hljs-keyword">int</span>, error) {
+    <span class="hljs-keyword">var</span> msg <span class="hljs-keyword">uint</span>
+    err := p.ExecPtrace(<span class="hljs-keyword">func</span>() error {
+        <span class="hljs-keyword">var</span> err error
+        msg, err = syscall.PtraceGetEventMsg(tid)
+        <span class="hljs-keyword">return</span> err
+    })
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">int</span>(msg), err
+}
+</code></pre>
+<p><code>waitAny</code> &#x8FD4;&#x56DE;&#x540E;&#xFF0C;<code>Continue</code> &#x5148;&#x7528; <code>status.TrapCause()</code> &#x5224;&#x65AD;&#x8FD9;&#x662F;&#x5426;&#x662F; <code>PTRACE_EVENT_CLONE</code>&#x3002;&#x5982;&#x679C;&#x662F;&#xFF0C;&#x5C31;&#x7ACB;&#x523B;&#x7528; <code>PtraceGetEventMsg</code> &#x8BFB;&#x53D6;&#x4E8B;&#x4EF6;&#x9644;&#x5E26;&#x7684;&#x6D88;&#x606F;&#x2014;&#x2014;&#x4E5F;&#x5C31;&#x662F;&#x65B0;&#x7EBF;&#x7A0B;&#x7684; tid&#x2014;&#x2014;&#x5E76;&#x8C03;&#x7528; <code>addThread(newTid, false)</code> &#x628A;&#x5B83;&#x52A0;&#x5165;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#x3002;&#x8FD9;&#x91CC;&#x4F20; <code>false</code>&#xFF0C;&#x662F;&#x56E0;&#x4E3A;&#x5185;&#x6838;&#x5DF2;&#x7ECF;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x4E86;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x518D;&#x6B21; <code>PTRACE_ATTACH</code>&#x3002;</p>
+<p>&#x6CE8;&#x610F;&#xFF0C;&#x6B64;&#x65F6;&#x8FD4;&#x56DE;&#x7ED9;&#x4E0A;&#x5C42;&#x7684; <code>StopInfo</code> &#x7406;&#x7531;&#x662F; <code>PTRACE_EVENT_CLONE: new thread &lt;tid&gt;</code>&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x666E;&#x901A;&#x7684; <code>stopped: ...</code>&#x3002;ch6.17.2 &#x53EA;&#x505A;&#x5230;&#x201C;&#x611F;&#x77E5;&#x5E76;&#x8DDF;&#x8E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x201D;&#xFF0C;&#x8FD8;&#x6CA1;&#x6709;&#x5B9E;&#x73B0; all-stop &#x6302;&#x8D77;&#x7B56;&#x7565;&#xFF0C;&#x6240;&#x4EE5;&#x8FD9;&#x65F6;&#x65B0;&#x7EBF;&#x7A0B;&#x81EA;&#x8EAB;&#x7684;&#x521D;&#x59CB; SIGSTOP &#x4ECD;&#x53EF;&#x80FD;&#x5728;&#x4E0B;&#x4E00;&#x6B21; <code>waitAny</code> &#x65F6;&#x88AB;&#x5F53;&#x4F5C;&#x666E;&#x901A;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x62A5;&#x544A;&#x51FA;&#x6765;&#xFF1B;ch6.17.3 &#x4F1A;&#x628A;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x5F53;&#x4F5C;&#x5185;&#x90E8;&#x4E8B;&#x4EF6;&#x6D88;&#x8D39;&#x6389;&#xFF0C;&#x7EE7;&#x7EED;&#x7B49;&#x5F85;&#x771F;&#x6B63;&#x7684;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#x3002;</p>
+<blockquote>
+<p>ps&#xFF1A;&#x4E0A;&#x8FF0;&#x4EE3;&#x7801;&#x53D6;&#x81EA; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.17.2</code>&#x3002;&#x672C;&#x8282;&#x65B0;&#x589E;&#x7684;&#x662F; <code>PTRACE_O_TRACECLONE</code> &#x7684;&#x6CE8;&#x518C;&#x3001;<code>waitAny</code> &#x548C;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x5904;&#x7406;&#xFF1B;&#x547D;&#x4EE4;&#x5C42;&#x7684; <code>continue</code>&#x3001;<code>addThread</code> &#x7684;&#x7EBF;&#x7A0B;&#x5217;&#x8868;&#x7BA1;&#x7406;&#x6CBF;&#x7528; ch6.17.1 &#x5DF2;&#x6709;&#x5B9E;&#x73B0;&#xFF0C;<code>getEventMessage</code> &#x662F;&#x5BF9; <code>PTRACE_GETEVENTMSG</code> &#x7684;&#x7B80;&#x5355;&#x5C01;&#x88C5;&#x3002;</p>
+</blockquote>
+<h3 id="&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;">&#x4EE3;&#x7801;&#x6D4B;&#x8BD5;</h3>
+<p>&#x6D4B;&#x8BD5;&#x76EE;&#x6807;&#x4ECD;&#x662F; godbgv2 &#x81EA;&#x5E26;&#x7684; <code>_fixtures/loop2</code>&#x3002;&#x5B83;&#x7684;&#x4E3B;&#x534F;&#x7A0B;&#x548C;&#x5B50;&#x534F;&#x7A0B;&#x4F1A;&#x6301;&#x7EED;&#x8FD0;&#x884C;&#xFF0C;Go &#x8FD0;&#x884C;&#x65F6;&#x5728;&#x542F;&#x52A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F1A;&#x521B;&#x5EFA;&#x65B0;&#x7684; OS &#x7EBF;&#x7A0B;&#xFF0C;&#x6B63;&#x597D;&#x53EF;&#x4EE5;&#x7528;&#x6765;&#x89C2;&#x5BDF;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x3002;</p>
+<p>&#x5207;&#x6362;&#x5230;&#x672C;&#x8282;&#x4EE3;&#x7801;&#x5E76;&#x6784;&#x5EFA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ git checkout ch6.17.2
+$ make build
+$ make fixtures
+</code></pre>
+<p>&#x7528; <code>godbg exec</code> &#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x7136;&#x540E;&#x6267;&#x884C;&#x4E00;&#x6B21; <code>continue</code>&#xFF1A;</p>
+<pre><code class="lang-bash">$ ./godbg <span class="hljs-built_in">exec</span> _fixtures/loop2
+process 2369083 launched, stopped by SIGTRAP
+godbg&gt; <span class="hljs-built_in">continue</span>
+thread 2369083 status: PTRACE_EVENT_CLONE: new thread 2369086
+godbg&gt; pregs
+Register    Value
+Rip         0x478912
+Rsp         0x7fffe9a9f190
+Rbp         0x7fffe9a9f1c8
+Rax         0xffffffffffffffda
+Rbx         0x569338
+...
+godbg&gt; <span class="hljs-built_in">exit</span>
+tracee is run by tracer, <span class="hljs-built_in">kill</span> it
+</code></pre>
+<p>&#x8FDB;&#x7A0B;&#x88AB; <code>exec</code> &#x542F;&#x52A8;&#x540E;&#x5148;&#x56E0; SIGTRAP &#x505C;&#x5728;&#x5165;&#x53E3;&#x5904;&#x3002;<code>continue</code> &#x6062;&#x590D;&#x4E3B;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#xFF0C;Go &#x8FD0;&#x884C;&#x65F6;&#x521D;&#x59CB;&#x5316;&#x65F6;&#x8C03;&#x7528; clone &#x521B;&#x5EFA;&#x65B0;&#x7EBF;&#x7A0B;&#xFF0C;&#x5185;&#x6838;&#x5728;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x5904;&#x505C;&#x4E0B;&#x514B;&#x9686;&#x8005;&#xFF0C;&#x5E76;&#x628A;&#x65B0;&#x7EBF;&#x7A0B; 2369086 &#x7EB3;&#x5165;&#x8DDF;&#x8E2A;&#x3002;<code>waitAny</code> &#x7B49;&#x5230;&#x8FD9;&#x4E2A;&#x4E8B;&#x4EF6;&#x540E;&#xFF0C;<code>Continue</code> &#x8BFB;&#x51FA;&#x4E8B;&#x4EF6;&#x6D88;&#x606F;&#x4E2D;&#x7684; tid&#xFF0C;&#x628A;&#x5B83;&#x52A0;&#x5165; <code>Threads</code>&#xFF0C;&#x7136;&#x540E;&#x628A; <code>PTRACE_EVENT_CLONE: new thread 2369086</code> &#x62A5;&#x544A;&#x7ED9;&#x547D;&#x4EE4;&#x5C42;&#x3002;</p>
+<p>&#x6B64;&#x65F6; <code>pregs</code> &#x6253;&#x5370;&#x7684;&#x662F;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#xFF08;&#x4E3B;&#x7EBF;&#x7A0B; 2369083&#xFF09;&#x7684;&#x5BC4;&#x5B58;&#x5668;&#x5FEB;&#x7167;&#x3002;<code>Rip 0x478912</code> &#x4F4D;&#x4E8E; <code>runtime.clone</code> &#x4E2D; <code>syscall</code> &#x6307;&#x4EE4;&#x7684;&#x8FD4;&#x56DE;&#x5904;&#xFF0C;<code>OrigRax 0x38</code> &#x662F; clone &#x7684;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x53F7;&#xFF0C;&#x8BF4;&#x660E;&#x4E3B;&#x7EBF;&#x7A0B;&#x6B63;&#x505C;&#x5728;&#x53D1;&#x8D77; clone &#x7684;&#x8FD0;&#x884C;&#x65F6;&#x4EE3;&#x7801;&#x4E2D;&#x3002;</p>
+<blockquote>
+<p>ps&#xFF1A;&#x6BCF;&#x6B21;&#x8FD0;&#x884C;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#x65F6;&#x673A;&#x3001;tid &#x548C;&#x6808;&#x5730;&#x5740;&#x90FD;&#x4F1A;&#x4E0D;&#x540C;&#xFF0C;&#x6709;&#x65F6;&#x7B2C;&#x4E8C;&#x6B21; <code>continue</code> &#x770B;&#x5230;&#x7684;&#x662F;&#x53E6;&#x4E00;&#x4E2A;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#xFF0C;&#x6709;&#x65F6;&#x770B;&#x5230;&#x7684;&#x662F;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x521D;&#x59CB; SIGSTOP&#xFF08;&#x8F93;&#x51FA;&#x5F62;&#x5982; <code>thread &lt;tid&gt; status: stopped: stopped (signal)</code>&#xFF09;&#x3002;&#x524D;&#x8005;&#x8BF4;&#x660E;&#x514B;&#x9686;&#x4E8B;&#x4EF6;&#x88AB;&#x6B63;&#x786E;&#x8BC6;&#x522B;&#xFF0C;&#x540E;&#x8005;&#x8BF4;&#x660E; ch6.17.2 &#x5C1A;&#x672A;&#x6D88;&#x8D39;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x521D;&#x59CB;&#x505C;&#x6B62;&#x4E8B;&#x4EF6;&#xFF0C;&#x8FD9;&#x6B63;&#x662F;&#x4E0B;&#x4E00;&#x8282; all-stop &#x6302;&#x8D77;&#x7B56;&#x7565;&#x8981;&#x89E3;&#x51B3;&#x7684;&#x95EE;&#x9898;&#x3002;</p>
+</blockquote>
+<h3 id="&#x601D;&#x8003;&#xFF1A;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x7279;&#x6027;&#x652F;&#x6301;">&#x601D;&#x8003;&#xFF1A;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x7279;&#x6027;&#x652F;&#x6301;</h3>
+<h4 id="go&#x8BED;&#x8A00;gmp&#x8C03;&#x5EA6;&#x7684;&#x7279;&#x6B8A;&#x6027;">Go&#x8BED;&#x8A00;GMP&#x8C03;&#x5EA6;&#x7684;&#x7279;&#x6B8A;&#x6027;</h4>
+<p>&#x4E0D;&#x540C;&#x4E8E;C\C++&#x591A;&#x7EBF;&#x7A0B;&#x7F16;&#x7A0B;&#x64CD;&#x4F5C;&#x65F6;&#x9762;&#x5411;&#x7EBF;&#x7A0B;&#x7684;&#xFF0C;&#x7EBF;&#x7A0B;&#x51FD;&#x6570;&#x5373;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#xFF0C;&#x800C;&#x5728;go&#x8BED;&#x8A00;&#x4E2D;&#xFF0C;&#x5E76;&#x4E0D;&#x662F;&#x8FD9;&#x6837;&#x3002;&#x5BF9;&#x4E8E;go&#x8BED;&#x8A00;&#x800C;&#x8A00;&#xFF0C;&#x7EBF;&#x7A0B;&#x6709;&#x7740;&#x7279;&#x6B8A;&#x7684;&#x610F;&#x4E49;&#x3002;go&#x63D0;&#x4F9B;&#x7684;&#x662F;&#x9762;&#x5411;&#x534F;&#x7A0B;goroutine&#x7EA7;&#x522B;&#x7684;&#x5E76;&#x53D1;&#xFF0C;&#x6BD4;&#x5982;chan sendrecv&#x3001;mutex&#x52A0;&#x89E3;&#x9501;&#x7B49;&#x7B49;&#x3002;&#x7531;&#x4E8E;GMP&#x8C03;&#x5EA6;&#x8BBE;&#x8BA1;&#x7684;&#x539F;&#x56E0;&#xFF0C;&#x5B9E;&#x9645;&#x4E0A;&#x6211;&#x4EEC;&#x4E5F;&#x5F88;&#x96BE;&#x77E5;&#x9053;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;goroutine&#x4F1A;&#x5728;&#x54EA;&#x4E2A;thread&#x4E0A;&#x6267;&#x884C;&#xFF0C;&#x540C;&#x4E00;&#x4E2A;goroutine&#x7684;&#x5B8C;&#x6574;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x5B9E;&#x9645;&#x4E0A;&#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x4F1A;&#x56FA;&#x5B9A;&#x5728;&#x540C;&#x4E00;&#x4E2A;thread&#x4E0A;&#x6267;&#x884C; &#x2026;&#x2026; &#x8C03;&#x8BD5;go&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x80FD;&#x6781;&#x5C11;&#x6709;&#x8BC9;&#x6C42;&#x53BB;&#x8DDF;&#x8E2A;&#x67D0;&#x4E2A;&#x7279;&#x5B9A;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x6267;&#x884C;&#x60C5;&#x51B5;&#x3002;</p>
+<h4 id="&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5728;&#x7EBF;&#x7A0B;&#x95F4;&#x5207;&#x6362;">&#x4EC0;&#x4E48;&#x65F6;&#x5019;&#x9700;&#x8981;&#x5728;&#x7EBF;&#x7A0B;&#x95F4;&#x5207;&#x6362;</h4>
+<p>dlv&#x5B9E;&#x9645;&#x4E0A;&#x662F;&#x63D0;&#x4F9B;&#x4E86; <code>threads</code> &#x548C; <code>thread</code> &#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;&#x6765;&#x5141;&#x8BB8;&#x8C03;&#x8BD5;&#x4EBA;&#x5458;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x5B58;&#x5728;&#x7684;&#x7EBF;&#x7A0B;&#x4EE5;&#x53CA;&#x5728;&#x5B83;&#x4EEC;&#x4E4B;&#x95F4;&#x8FDB;&#x884C;&#x5207;&#x6362;&#x3002;&#x90A3;&#x4EC0;&#x4E48;&#x8C03;&#x8BD5;&#x60C5;&#x666F;&#x4E0B;&#x6211;&#x9700;&#x8981;&#x7528;&#x5230;&#x8FD9;&#x4E2A;&#x7EBF;&#x7A0B;&#x5207;&#x6362;&#x80FD;&#x529B;&#x5462;&#xFF1F;</p>
+<p>&#x73B0;&#x5728;&#x4E3B;&#x6D41;&#x8C03;&#x8BD5;&#x5668;&#x5BF9;&#x4E8E;&#x8FDB;&#x7A0B;&#x5185;&#x7EBF;&#x7A0B;&#x7BA1;&#x7406;&#xFF0C;&#x57FA;&#x672C;&#x4E0A;&#x90FD;&#x662F;&#x91C7;&#x7528;Stop-all&#x3001;Start-all Mode&#xFF08;&#x539F;&#x56E0;&#x5C31;&#x662F;&#x65B9;&#x4FBF;&#x89C2;&#x5BDF;&#x3001;&#x907F;&#x514D;&#x7EBF;&#x7A0B;&#x95F4;&#x540C;&#x6B65;&#x903B;&#x8F91;&#x5F02;&#x5E38;&#xFF09;&#xFF0C;&#x6240;&#x4EE5;&#x5F53;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#x7EBF;&#x7A0B;&#x95F4;&#x5207;&#x6362;&#x7684;&#x65F6;&#x5019;&#xFF0C;&#x5176;&#x5B9E;&#x6307;&#x7684;&#x662F;&#x5C06;&#x5F53;&#x524D;&#x8C03;&#x8BD5;&#x5668;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x65F6;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF08;context&#xFF09;&#xFF0C;&#x5207;&#x6362;&#x4E3A;&#x76EE;&#x6807;&#x7EBF;&#x7A0B;&#x7684;&#x4E0A;&#x4E0B;&#x6587;&#xFF08;context&#xFF09;&#xFF0C;&#x6BD4;&#x5982;&#x6267;&#x884C;&#x547D;&#x4EE4;pregs&#x65F6;&#x6253;&#x5370;&#x7684;&#x5C31;&#x662F;&#x5F53;&#x524D;&#x7EBF;&#x7A0B;&#x7684;&#x786C;&#x4EF6;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x5176;&#x4ED6;&#x88AB;&#x8DDF;&#x8E2A;&#x7684;&#x7EBF;&#x7A0B;&#x7684;&#x786C;&#x4EF6;&#x4E0A;&#x4E0B;&#x6587;&#x4FE1;&#x606F;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8C03;&#x8BD5;&#x7684;&#x7EBF;&#x7A0B;&#x6267;&#x884C;&#x7684;&#x662F;cgo&#x4EE3;&#x7801;&#xFF08;&#x8FD9;&#x90E8;&#x5206;&#x4EE3;&#x7801;&#x903B;&#x8F91;&#x4E0D;&#x4F1A;&#x50CF;goroutine&#x903B;&#x8F91;&#x90A3;&#x6837;&#x4F1A;&#x5728;&#x7EBF;&#x7A0B;&#x95F4;&#x8FC1;&#x79FB;&#xFF09;&#xFF0C;&#x5982;&#x679C;&#x8C03;&#x8BD5;&#x7684;goroutine&#x6267;&#x884C;&#x4E86;runtime.LockOSThread()&#xFF0C;&#x5982;&#x679C;&#x9700;&#x8981;&#x67E5;&#x770B;go&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x5E95;&#x5C42;&#x903B;&#x8F91;&#xFF0C;&#x6BD4;&#x5982;GMP&#x8C03;&#x5EA6;&#xFF0C;&#x6216;&#x8005;&#x9700;&#x8981;&#x8C03;&#x8BD5;&#x770B;&#x4E0B;&#x4E0D;&#x540C;&#x7EBF;&#x7A0B;&#x7684;&#x7EBF;&#x7A0B;&#x53EF;&#x89C1;&#x6027;&#x95EE;&#x9898; &#x2026;&#x2026; &#x786E;&#x5B9E;&#x8FD8;&#x662F;&#x4F1A;&#x6709;&#x4E9B;&#x573A;&#x666F;&#x9700;&#x8981;&#x7528;&#x5230;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x5207;&#x6362;&#x80FD;&#x529B;&#x7684;&#x652F;&#x6301;&#x3002;</p>
+<h3 id="&#x601D;&#x8003;&#xFF1A;&#x9700;&#x8981;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x5230;&#x65B0;&#x7EBF;&#x7A0B;&#x5417;">&#x601D;&#x8003;&#xFF1A;&#x9700;&#x8981;&#x81EA;&#x52A8;&#x5207;&#x6362;&#x5230;&#x65B0;&#x7EBF;&#x7A0B;&#x5417;</h3>
+<p>&#x90A3;&#x4E48;&#xFF0C;&#x5BF9;&#x4E8E;&#x591A;&#x7EBF;&#x7A0B;&#x7A0B;&#x5E8F;&#x800C;&#x8A00;&#xFF0C;&#x6211;&#x4EEC;&#x8DDF;&#x8E2A;&#x5230;&#x4E00;&#x4E2A;&#x65B0;&#x7EBF;&#x7A0B;&#x65F6;&#xFF0C;&#x662F;&#x5426;&#x9700;&#x8981;&#x5141;&#x8BB8;&#x7528;&#x6237;&#x9009;&#x62E9;&#xFF0C;&#x4F60;&#x9700;&#x8981;&#x5207;&#x6362;&#x5230;&#x67D0;&#x4E2A;&#x7EBF;&#x7A0B;&#x4E0A;&#x4E0B;&#x6587;&#x53BB;&#x5417;&#xFF1F;&#x610F;&#x4E49;&#x5E94;&#x8BE5;&#x4E0D;&#x5927;&#x3002;&#x9996;&#x5148;Go&#x4E3B;&#x8981;&#x662F;&#x9762;&#x5411;goroutine&#x7EA7;&#x522B;&#x7684;&#x5E76;&#x53D1;&#x63A7;&#x5236;&#x64CD;&#x4F5C;&#xFF0C;&#x8C03;&#x8BD5;&#x65F6;&#x5207;&#x6362;&#x7EBF;&#x7A0B;&#x4F5C;&#x7528;&#x4E0D;&#x5927;&#x3002;&#x5373;&#x4F7F;&#x524D;&#x9762;&#x63D0;&#x5230;&#x786E;&#x5B9E;&#x6709;&#x4E9B;&#x573A;&#x666F;&#x9700;&#x8981;&#x7EBF;&#x7A0B;&#x5207;&#x6362;&#x652F;&#x6301;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x53EF;&#x4EE5;&#x624B;&#x52A8;&#x6267;&#x884C;&#x547D;&#x4EE4; <code>thread &lt;n&gt;</code> &#x6765;&#x5207;&#x6362;&#xFF0C;&#x6240;&#x4EE5;&#x6CA1;&#x6709;&#x5FC5;&#x8981;&#x652F;&#x6301;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;&#x5E76;&#x5207;&#x6362;&#x5230;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;&#x7279;&#x6027;&#x3002;</p>
+<h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
+<p>&#x672C;&#x8282;&#x4E3B;&#x8981;&#x63A2;&#x8BA8;&#x4E86;&#x8C03;&#x8BD5;&#x5668;&#x5982;&#x4F55;&#x611F;&#x77E5;&#x548C;&#x8DDF;&#x8E2A;&#x65B0;&#x521B;&#x5EFA;&#x7EBF;&#x7A0B;&#x7684;&#x6280;&#x672F;&#x5B9E;&#x73B0;&#xFF0C;&#x6838;&#x5FC3;&#x5185;&#x5BB9;&#x5305;&#x62EC;&#xFF1A;&#x901A;&#x8FC7; <code>PTRACE_O_TRACECLONE</code> &#x9009;&#x9879;&#x8BA9;&#x5185;&#x6838;&#x81EA;&#x52A8;&#x8DDF;&#x8E2A;clone&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF1B;&#x5229;&#x7528; <code>waitAny()</code> &#x7B49;&#x5F85;&#x4EFB;&#x610F;&#x88AB;&#x8DDF;&#x8E2A;&#x7EBF;&#x7A0B;&#x505C;&#x6B62;&#xFF0C;&#x5E76;&#x901A;&#x8FC7; <code>PTRACE_EVENT_CLONE</code> &#x4E8B;&#x4EF6;&#x673A;&#x5236;&#x611F;&#x77E5;&#x65B0;&#x7EBF;&#x7A0B;&#x521B;&#x5EFA;&#xFF1B;&#x901A;&#x8FC7; <code>PtraceGetEventMsg()</code> &#x83B7;&#x53D6;&#x65B0;&#x7EBF;&#x7A0B;&#x7684;LWP ID&#xFF0C;&#x518D;&#x4EE5; <code>addThread(newTid, false)</code> &#x5C06;&#x5176;&#x7EB3;&#x5165;&#x8C03;&#x8BD5;&#x5668;&#x7BA1;&#x7406;&#x3002;&#x672C;&#x8282;&#x8FD8;&#x5206;&#x6790;&#x4E86;Linux&#x5185;&#x6838;&#x4E2D;&#x7EBF;&#x7A0B;&#x4E0E;&#x8FDB;&#x7A0B;&#x7684;&#x672C;&#x8D28;&#x533A;&#x522B;&#xFF0C;&#x4EE5;&#x53CA;Go&#x8BED;&#x8A00;GMP&#x8C03;&#x5EA6;&#x6A21;&#x578B;&#x5BF9;&#x7EBF;&#x7A0B;&#x8C03;&#x8BD5;&#x7684;&#x7279;&#x6B8A;&#x5F71;&#x54CD;&#x3002;&#x81F3;&#x4E8E;fork/exec&#x51FA;&#x6765;&#x7684;&#x65B0;&#x8FDB;&#x7A0B;&#x8BE5;&#x5982;&#x4F55;&#x8DDF;&#x8E2A;&#xFF0C;&#x4EE5;&#x53CA;gdb&#x3001;lldb&#x3001;dlv&#x5404;&#x81EA;&#x7684;&#x591A;&#x8FDB;&#x7A0B;&#x8C03;&#x8BD5;&#x7B56;&#x7565;&#xFF0C;&#x5C06;&#x5728; 6.18 &#x8282;&#x7EE7;&#x7EED;&#x4ECB;&#x7ECD;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="1-trace_old_threads.html" class="navigation navigation-prev " aria-label="Previous page: 6.17.1 跟踪已创建线程">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="3-suspend_policy.html" class="navigation navigation-next " aria-label="Next page: 6.17.3 线程执行控制 - 挂起策略">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"6.17.2 跟踪新创建线程","level":"1.6.17.2","depth":3,"next":{"title":"6.17.3 线程执行控制 - 挂起策略","level":"1.6.17.3","depth":3,"path":"6-develop-inst-debugger/17-multithread/3-suspend_policy.md","ref":"6-develop-inst-debugger/17-multithread/3-suspend_policy.md","articles":[]},"previous":{"title":"6.17.1 跟踪已创建线程","level":"1.6.17.1","depth":3,"path":"6-develop-inst-debugger/17-multithread/1-trace_old_threads.md","ref":"6-develop-inst-debugger/17-multithread/1-trace_old_threads.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/17-multithread/2-trace_new_threads.md","mtime":"2026-10-27T00:32:36.499Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-27T00:33:13.723Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

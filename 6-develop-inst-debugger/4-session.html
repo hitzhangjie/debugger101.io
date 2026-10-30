@@ -2403,43 +2403,54 @@ debug.CurrentSession.Start()
 }
 </code></pre>
 <ol>
-<li><code>Start</code> &#x91CC;&#x5982;&#x679C; initFile &#x975E;&#x7A7A;&#xFF0C;&#x5148;&#x56DE;&#x653E;&#x811A;&#x672C;&#xFF0C;&#x56DE;&#x653E;&#x5B8C; <code>liner.Close()</code> &#x9000;&#x51FA;&#xFF0C;&#x4E0D;&#x518D;&#x8FDB;&#x5165;&#x8BFB;&#x8F93;&#x5165;&#x7684;&#x4E3B;&#x5FAA;&#x73AF;&#xFF1A;</li>
+<li><code>Start</code> &#x91CC;&#x5982;&#x679C; initFile &#x975E;&#x7A7A;&#xFF0C;&#x5148;&#x56DE;&#x653E;&#x811A;&#x672C;&#x5E76;&#x76F4;&#x63A5;&#x8FD4;&#x56DE;&#xFF0C;&#x4E0D;&#x518D;&#x8FDB;&#x5165;&#x8BFB;&#x8F93;&#x5165;&#x7684;&#x4E3B;&#x5FAA;&#x73AF;&#x3002;&#x914D;&#x5408;&#x8FD9;&#x5904;&#x6539;&#x52A8;&#xFF0C;<code>NewDebugSession</code> &#x4E0D;&#x518D;&#x5728;&#x6784;&#x9020;&#x65F6;&#x5C31; <code>liner.NewLiner()</code>&#xFF0C;&#x800C;&#x662F;&#x7B49;&#x771F;&#x6B63;&#x8FDB;&#x5165;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;&#x518D;&#x521B;&#x5EFA;&#xFF1A;</li>
 </ol>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> (s *DebugSession) Start() {
-    s.liner.SetCompleter(completer)
-    s.liner.SetTabCompletionStyle(liner.TabPrints)
-
     <span class="hljs-keyword">defer</span> <span class="hljs-keyword">func</span>() {
         <span class="hljs-keyword">for</span> idx := <span class="hljs-built_in">len</span>(s.defers) - <span class="hljs-number">1</span>; idx &gt;= <span class="hljs-number">0</span>; idx-- {
             s.defers[idx]()
         }
     }()
 
-    <span class="hljs-comment">// &#x56DE;&#x653E; init &#x811A;&#x672C;&#xFF0C;&#x56DE;&#x653E;&#x7ED3;&#x675F;&#x540E;&#x9000;&#x51FA;&#x4F1A;&#x8BDD;</span>
+    <span class="hljs-comment">// &#x56DE;&#x653E; init &#x811A;&#x672C;&#xFF0C;&#x56DE;&#x653E;&#x7ED3;&#x675F;&#x540E;&#x9000;&#x51FA;&#x4F1A;&#x8BDD;&#x3002;</span>
+    <span class="hljs-comment">// &#x6279;&#x91CF;&#x6A21;&#x5F0F;&#x4E0D;&#x521B;&#x5EFA; liner&#xFF1A;&#x5B83;&#x4ECE;&#x4E0D;&#x8BFB;&#x5199;&#x7EC8;&#x7AEF;&#xFF0C;&#x800C; liner.Close &#x4F1A;&#x65E0;&#x6761;&#x4EF6;</span>
+    <span class="hljs-comment">// &#x5BF9; stdin &#x505A; tcsetattr&#xFF0C;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;&#x91CC;&#x8FD9;&#x4F1A;&#x6536;&#x5230; SIGTTOU&#xFF08;&#x89C1;&#x4E0B;&#x6587;&#xFF09;&#x3002;</span>
     <span class="hljs-keyword">if</span> s.initFile != <span class="hljs-string">&quot;&quot;</span> {
         <span class="hljs-keyword">if</span> err := s.replay(s.initFile); err != <span class="hljs-literal">nil</span> {
             fmt.Fprintf(os.Stderr, <span class="hljs-string">&quot;replay init file %s error: %v\n&quot;</span>, s.initFile, err)
         }
-        s.liner.Close()
         <span class="hljs-keyword">return</span>
     }
+
+    <span class="hljs-comment">// &#x53EA;&#x6709;&#x4EA4;&#x4E92;&#x6A21;&#x5F0F;&#x624D;&#x521B;&#x5EFA;&#x884C;&#x7F16;&#x8F91;&#x5668;&#xFF0C;&#x8FD4;&#x56DE;&#x65F6;&#x6062;&#x590D;&#x7EC8;&#x7AEF;&#x6A21;&#x5F0F;</span>
+    s.liner = liner.NewLiner()
+    s.liner.SetCompleter(completer)
+    s.liner.SetTabCompletionStyle(liner.TabPrints)
+    <span class="hljs-keyword">defer</span> s.liner.Close()
 
     <span class="hljs-comment">// ...&#xFF08;&#x8BFB;&#x8F93;&#x5165;&#x7684;&#x4E3B;&#x5FAA;&#x73AF;&#x4E0D;&#x53D8;&#xFF0C;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x7EDF;&#x4E00;&#x8D70; s.execute(txt)&#xFF09;</span>
 }
 </code></pre>
+<p>&#x4E3A;&#x4EC0;&#x4E48;&#x6279;&#x91CF;&#x6A21;&#x5F0F;&#x8981;&#x7ED5;&#x5F00; liner&#xFF1F;<code>liner.Close()</code> &#x4F1A;&#x65E0;&#x6761;&#x4EF6;&#x5BF9; stdin &#x505A; <code>tcsetattr</code> &#x6062;&#x590D;&#x7EC8;&#x7AEF;&#x6A21;&#x5F0F;&#x3002;&#x624B;&#x52A8;&#x5728;&#x7EC8;&#x7AEF;&#x91CC;&#x8FD0;&#x884C; godbg &#x65F6;&#xFF0C;&#x8FDB;&#x7A0B;&#x5904;&#x4E8E;&#x524D;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;&#xFF0C;&#x8FD9;&#x4E2A;&#x8C03;&#x7528;&#x5408;&#x6CD5;&#xFF1B;&#x4F46;&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x7528; <code>timeout ./godbg ...</code> &#x542F;&#x52A8;&#x4F1A;&#x8BDD;&#x65F6;&#xFF0C;GNU timeout &#x9ED8;&#x8BA4;&#x628A;&#x5B50;&#x547D;&#x4EE4;&#x653E;&#x8FDB;&#x65B0;&#x7684;&#x8FDB;&#x7A0B;&#x7EC4;&#xFF0C;godbg &#x4E8E;&#x662F;&#x6210;&#x4E86;&#x7EC8;&#x7AEF;&#x7684;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;&#x2014;&#x2014;&#x540E;&#x53F0;&#x8FDB;&#x7A0B;&#x7EC4;&#x5BF9;&#x7EC8;&#x7AEF;&#x505A; <code>tcsetattr</code>&#xFF0C;&#x5185;&#x6838;&#x4F1A;&#x6295;&#x9012; SIGTTOU&#xFF0C;&#x628A;&#x6574;&#x4E2A;&#x8FDB;&#x7A0B;&#x505C;&#x4F4F;&#xFF08;&#x72B6;&#x6001; T&#xFF09;&#x3002;timeout &#x5230;&#x70B9;&#x540E;&#x53D1;&#x7684; SIGTERM &#x5BF9;&#x5DF2;&#x505C;&#x6B62;&#x7684;&#x8FDB;&#x7A0B;&#x53EA;&#x80FD;&#x4FDD;&#x6301; pending&#xFF0C;&#x800C; timeout &#x4E0D;&#x5E26; <code>-k</code> &#x65F6;&#x4F1A;&#x4E00;&#x76F4;&#x7B49;&#x5F85;&#x5B50;&#x8FDB;&#x7A0B;&#x9000;&#x51FA;&#xFF0C;&#x6700;&#x7EC8;&#x8868;&#x73B0;&#x4E3A; <code>make smoke</code> &#x6C38;&#x4E45;&#x6302;&#x8D77;&#x800C;&#x4E0D;&#x662F;&#x62A5;&#x9519;&#x3002;&#x6279;&#x91CF;&#x6A21;&#x5F0F;&#x4ECE;&#x4E0D;&#x8BFB;&#x5199;&#x7EC8;&#x7AEF;&#xFF0C;&#x672C;&#x6765;&#x5C31;&#x4E0D;&#x9700;&#x8981;&#x6062;&#x590D;&#x7EC8;&#x7AEF;&#x6A21;&#x5F0F;&#xFF1B;&#x4E0D;&#x521B;&#x5EFA; liner &#x662F;&#x6BD4;&quot;&#x5FFD;&#x7565; SIGTTOU&quot;&#x66F4;&#x5E72;&#x51C0;&#x7684;&#x4FEE;&#x6CD5;&#x3002;</p>
 <ol>
 <li><code>replay</code> &#x9010;&#x884C;&#x5904;&#x7406;&#x811A;&#x672C;&#xFF1A;</li>
 </ol>
 <pre><code class="lang-go"><span class="hljs-comment">// replay &#x9010;&#x884C;&#x56DE;&#x653E;&#x811A;&#x672C;&#x4E2D;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1A;</span>
-<span class="hljs-comment">// &apos;#&apos; &#x4E3A;&#x6CE8;&#x91CA;&#xFF1B;&#x4EE5; &apos;!&apos; &#x6216; &apos;=&apos; &#x5F00;&#x5934;&#x7684;&#x884C;&#x662F;&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x7684;&#x5BBF;&#x4E3B;&#x6307;&#x4EE4;</span>
-<span class="hljs-comment">// &#xFF08;shell &#x4E0E;&#x65AD;&#x8A00;&#xFF0C;&#x7531; scripts/smoke.sh &#x5904;&#x7406;&#xFF09;&#xFF0C;&#x4F1A;&#x8BDD;&#x56DE;&#x653E;&#x65F6;&#x8DF3;&#x8FC7;&#x3002;</span>
-<span class="hljs-comment">// &#x4F1A;&#x8BDD;&#x524D;&#x6307;&#x4EE4;&#x4E0E; @capture &#x7684;&#x5206;&#x5DE5;&#x89C1;&#x672C;&#x8282;&#x5192;&#x70DF;&#x8BBE;&#x8BA1;&#xFF0C;&#x4E0D;&#x5728;&#x8FD9;&#x91CC;&#x5C55;&#x5F00;&#x3002;</span>
+<span class="hljs-comment">// &apos;#&apos; &#x4E3A;&#x6CE8;&#x91CA;&#xFF1B;&apos;!&apos;&#x3001;&apos;=&apos; &#x4E0E; &apos;@spawn/@delay/@set/...&apos; &#x662F;&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x811A;&#x672C;&#x7684;</span>
+<span class="hljs-comment">// &#x5BBF;&#x4E3B;&#x6307;&#x4EE4;&#xFF08;&#x7531; scripts/smoke.sh &#x5904;&#x7406;&#xFF09;&#xFF0C;&#x4F1A;&#x8BDD;&#x56DE;&#x653E;&#x65F6;&#x8DF3;&#x8FC7;&#xFF1B;</span>
+<span class="hljs-comment">// &apos;@capture &lt;var&gt; &lt;re&gt;&apos; &#x7531;&#x56DE;&#x653E;&#x5668;&#x81EA;&#x8EAB;&#x5904;&#x7406;&#xFF1A;&#x4ECE;&#x4E0A;&#x4E00;</span>
+<span class="hljs-comment">// &#x547D;&#x4EE4;&#x7684;&#x8F93;&#x51FA;&#x4E2D;&#x63D0;&#x53D6;&#x6B63;&#x5219;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x6355;&#x83B7;&#x7EC4;&#x5B58;&#x5165; $&lt;var&gt;&#xFF0C;&#x540E;&#x7EED;&#x547D;&#x4EE4;&#x884C;</span>
+<span class="hljs-comment">// &#x4E2D;&#x7684; $&lt;var&gt; &#x5728;&#x6267;&#x884C;&#x524D;&#x66FF;&#x6362;&#x2014;&#x2014;&#x7EBF;&#x7A0B; id &#x7B49;&#x53EA;&#x5B58;&#x5728;&#x4E8E;&#x672C;&#x6B21;&#x4F1A;&#x8BDD;&#x8F93;&#x51FA;</span>
+<span class="hljs-comment">// &#x4E2D;&#x7684;&#x503C;&#xFF08;&#x8DE8;&#x4F1A;&#x8BDD;&#x65E0;&#x610F;&#x4E49;&#xFF09;&#x53EF;&#x7ECF;&#x6B64;&#x5728;&#x540C;&#x4E00;&#x4F1A;&#x8BDD;&#x5185;&#x4F20;&#x9012;&#x3002;</span>
 <span class="hljs-keyword">func</span> (s *DebugSession) replay(file <span class="hljs-keyword">string</span>) error {
     f, err := os.Open(file)
     <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
         <span class="hljs-keyword">return</span> err
     }
     <span class="hljs-keyword">defer</span> f.Close()
+
+    caps := <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>]<span class="hljs-keyword">string</span>{}
+    <span class="hljs-keyword">var</span> lastOut []<span class="hljs-keyword">byte</span> <span class="hljs-comment">// &#x4E0A;&#x4E00;&#x547D;&#x4EE4;&#x7684;&#x8F93;&#x51FA;&#xFF08;@capture &#x7684;&#x6765;&#x6E90;&#xFF09;</span>
 
     scanner := bufio.NewScanner(f)
     <span class="hljs-keyword">for</span> scanner.Scan() {
@@ -2450,10 +2461,53 @@ debug.CurrentSession.Start()
             strings.HasPrefix(line, <span class="hljs-string">&quot;=&quot;</span>) {
             <span class="hljs-keyword">continue</span>
         }
+        <span class="hljs-keyword">if</span> strings.HasPrefix(line, <span class="hljs-string">&quot;@&quot;</span>) {
+            <span class="hljs-keyword">if</span> strings.HasPrefix(line, <span class="hljs-string">&quot;@capture &quot;</span>) {
+                rest := strings.TrimSpace(line[<span class="hljs-built_in">len</span>(<span class="hljs-string">&quot;@capture &quot;</span>):])
+                fields := strings.SplitN(rest, <span class="hljs-string">&quot; &quot;</span>, <span class="hljs-number">2</span>)
+                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(fields) != <span class="hljs-number">2</span> {
+                    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;@capture: usage: @capture &lt;var&gt; &lt;regexp&gt;&quot;</span>)
+                }
+                pat := strings.Trim(fields[<span class="hljs-number">1</span>], <span class="hljs-string">&quot;&apos;&quot;</span>)
+                re, err := regexp.Compile(pat)
+                <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+                    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;@capture: invalid regexp %q: %v&quot;</span>, pat, err)
+                }
+                m := re.FindSubmatch(lastOut)
+                <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(m) &lt; <span class="hljs-number">2</span> {
+                    <span class="hljs-keyword">return</span> fmt.Errorf(<span class="hljs-string">&quot;@capture %s: no match for %q in last command output&quot;</span>, fields[<span class="hljs-number">0</span>], pat)
+                }
+                caps[fields[<span class="hljs-number">0</span>]] = <span class="hljs-keyword">string</span>(m[<span class="hljs-number">1</span>])
+            }
+            <span class="hljs-keyword">continue</span>
+        }
+
+        <span class="hljs-comment">// $&lt;var&gt; &#x66FF;&#x6362;&#xFF08;@capture &#x63D0;&#x53D6;&#x7684;&#x503C;&#xFF09;</span>
+        <span class="hljs-keyword">for</span> name, val := <span class="hljs-keyword">range</span> caps {
+            line = strings.ReplaceAll(line, <span class="hljs-string">&quot;$&quot;</span>+name, val)
+        }
 
         fmt.Printf(<span class="hljs-string">&quot;godbg&gt; %s\n&quot;</span>, line)
 
-        <span class="hljs-keyword">if</span> err := s.execute(line); err != <span class="hljs-literal">nil</span> {
+        <span class="hljs-comment">// &#x6355;&#x83B7;&#x672C;&#x547D;&#x4EE4;&#x8F93;&#x51FA;&#x4F9B; @capture &#x4F7F;&#x7528;&#xFF1A;&#x4E34;&#x65F6;&#x91CD;&#x5B9A;&#x5411; os.Stdout</span>
+        <span class="hljs-comment">// &#x5230;&#x7BA1;&#x9053;&#xFF0C;&#x6267;&#x884C;&#x540E;&#x5148;&#x8BFB;&#x5168;&#x7F13;&#x51B2;&#x518D;&#x56DE;&#x5199;&#x771F;&#x5B9E; stdout&#xFF08;&#x547D;&#x4EE4;&#x8F93;&#x51FA;</span>
+        <span class="hljs-comment">// &#x91CF;&#x5C0F;&#xFF0C;&#x7BA1;&#x9053;&#x7F13;&#x51B2;&#x8DB3;&#x591F;&#xFF0C;&#x4E0D;&#x4F1A;&#x6B7B;&#x9501;&#xFF09;</span>
+        r, w, err := os.Pipe()
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-keyword">return</span> err
+        }
+        old := os.Stdout
+        os.Stdout = w
+        err = s.execute(line)
+        w.Close()
+        os.Stdout = old
+        out, _ := io.ReadAll(r)
+        r.Close()
+        <span class="hljs-keyword">if</span> <span class="hljs-built_in">len</span>(out) &gt; <span class="hljs-number">0</span> {
+            os.Stdout.Write(out)
+        }
+        lastOut = out
+        <span class="hljs-keyword">if</span> err != <span class="hljs-literal">nil</span> {
             <span class="hljs-keyword">return</span> err
         }
         <span class="hljs-keyword">if</span> s.stopped {
@@ -2498,7 +2552,8 @@ debug.CurrentSession.Start()
 <p>&#x8981;&#x70B9;&#xFF1A;</p>
 <ul>
 <li>&#x56DE;&#x653E;&#x811A;&#x672C;&#x91CC;&#x7684;&#x7A7A;&#x884C;&#x3001;<code>#</code> &#x6CE8;&#x91CA;&#x884C;&#x8DF3;&#x8FC7;&#xFF1B;</li>
-<li>&#x4EE5; <code>!</code> &#x6216; <code>=</code> &#x5F00;&#x5934;&#x7684;&#x884C;&#x662F;&#x5192;&#x70DF;&#x811A;&#x672C;&#x7684;&#x5BBF;&#x4E3B;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x6BB5;&#x56DE;&#x653E;&#x4E0D;&#x6267;&#x884C;&#x3002;<code>!=</code> &#x4E5F;&#x4EE5; <code>!</code> &#x5F00;&#x5934;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x4F1A;&#x88AB;&#x5F53;&#x6210;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1B;smoke &#x5728;&#x5BBF;&#x4E3B;&#x4FA7;&#x628A; <code>!=</code> &#x8BA4;&#x6210;&#x53CD;&#x5411;&#x65AD;&#x8A00;&#xFF0C;&#x628A;&#x5176;&#x4F59;&#x7684; <code>!</code> &#x8BA4;&#x6210; shell&#x3002;<code>@</code> &#x5F00;&#x5934;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x5927;&#x90E8;&#x5206;&#x90FD;&#x662F; smoke.sh &#x4FA7;&#x7684;&#x6307;&#x4EE4;&#xFF0C;&#x9664;&#x4E86; <code>@capture</code> &#x8FD9;&#x6761;&#x7279;&#x6B8A;&#x7684;&#x4F1A;&#x8BDD;&#x5185;&#x6307;&#x4EE4;&#xFF0C;&#x8BE5;&#x6307;&#x4EE4;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x4F1A;&#x8BDD;&#x5185;&#x624D;&#x80FD;&#x52A8;&#x6001;&#x83B7;&#x53D6;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x65B9;&#x4FBF;&#x52A8;&#x6001;&#x751F;&#x6210;&#x4E0B;&#x6761;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1B;</li>
+<li>&#x4EE5; <code>!</code> &#x6216; <code>=</code> &#x5F00;&#x5934;&#x7684;&#x884C;&#x662F;&#x5192;&#x70DF;&#x811A;&#x672C;&#x7684;&#x5BBF;&#x4E3B;&#x6307;&#x4EE4;&#xFF0C;&#x8FD9;&#x6BB5;&#x56DE;&#x653E;&#x4E0D;&#x6267;&#x884C;&#x3002;<code>!=</code> &#x4E5F;&#x4EE5; <code>!</code> &#x5F00;&#x5934;&#xFF0C;&#x56E0;&#x6B64;&#x4E0D;&#x4F1A;&#x88AB;&#x5F53;&#x6210;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1B;smoke &#x5728;&#x5BBF;&#x4E3B;&#x4FA7;&#x628A; <code>!=</code> &#x8BA4;&#x6210;&#x53CD;&#x5411;&#x65AD;&#x8A00;&#xFF0C;&#x628A;&#x5176;&#x4F59;&#x7684; <code>!</code> &#x8BA4;&#x6210; shell&#x3002;&#x5176;&#x4F59; <code>@</code> &#x5F00;&#x5934;&#x7684;&#x6307;&#x4EE4;&#xFF08;<code>@spawn</code>&#x3001;<code>@delay</code>&#x3001;<code>@skip-if</code>&#x3001;<code>@set</code> &#x7B49;&#xFF09;&#x540C;&#x6837;&#x4EA4;&#x7ED9; smoke.sh&#xFF0C;&#x56DE;&#x653E;&#x65F6;&#x8DF3;&#x8FC7;&#xFF1B;</li>
+<li><code>@capture</code> &#x4F8B;&#x5916;&#xFF0C;&#x7531;&#x56DE;&#x653E;&#x5668;&#x81EA;&#x5DF1;&#x5904;&#x7406;&#xFF1A;&#x4ECE;&#x4E0A;&#x4E00;&#x547D;&#x4EE4;&#x7684;&#x8F93;&#x51FA;&#x91CC;&#x7528;&#x6B63;&#x5219;&#x53D6;&#x51FA;&#x7B2C;&#x4E00;&#x4E2A;&#x6355;&#x83B7;&#x7EC4;&#xFF0C;&#x5B58;&#x8FDB; <code>$&lt;var&gt;</code>&#xFF0C;&#x540E;&#x7EED;&#x547D;&#x4EE4;&#x884C;&#x5728;&#x6267;&#x884C;&#x524D;&#x66FF;&#x6362;&#x3002;&#x4E3A;&#x4E86;&#x62FF;&#x5230;&quot;&#x4E0A;&#x4E00;&#x547D;&#x4EE4;&#x7684;&#x8F93;&#x51FA;&quot;&#xFF0C;&#x56DE;&#x653E;&#x5668;&#x6267;&#x884C;&#x547D;&#x4EE4;&#x65F6;&#x628A; <code>os.Stdout</code> &#x4E34;&#x65F6;&#x91CD;&#x5B9A;&#x5411;&#x5230;&#x7BA1;&#x9053;&#xFF0C;&#x6267;&#x884C;&#x5B8C;&#x8BFB;&#x51FA;&#x5168;&#x90E8;&#x8F93;&#x51FA;&#x3001;&#x56DE;&#x5199;&#x7EC8;&#x7AEF;&#xFF0C;&#x540C;&#x65F6;&#x7559;&#x7ED9;&#x4E0B;&#x4E00;&#x6761; <code>@capture</code> &#x4F7F;&#x7528;&#xFF1B;&#x7EBF;&#x7A0B; id &#x8FD9;&#x7C7B;&#x53EA;&#x5B58;&#x5728;&#x4E8E;&#x672C;&#x6B21;&#x4F1A;&#x8BDD;&#x8F93;&#x51FA;&#x91CC;&#x7684;&#x503C;&#xFF0C;&#x9760;&#x5B83;&#x5728;&#x540C;&#x4E00;&#x4F1A;&#x8BDD;&#x5185;&#x4F20;&#x9012;&#xFF1B;</li>
 <li>&#x5176;&#x4F59;&#x884C;&#x6309;&#x7A7A;&#x683C;&#x5207;&#x6210;&#x547D;&#x4EE4;&#x4E0E;&#x53C2;&#x6570;&#xFF0C;&#x4EA4;&#x7ED9; <code>s.execute</code> &#x6267;&#x884C;&#xFF1B;&#x6BCF;&#x884C;&#x56DE;&#x663E;&#x6210; <code>godbg&gt; ...</code>&#xFF0C;&#x65B9;&#x4FBF;&#x5BF9;&#x7167;&#x8F93;&#x51FA;&#xFF1B;</li>
 <li><code>exit</code> &#x7B49;&#x547D;&#x4EE4;&#x6267;&#x884C;&#x540E;&#x4F1A;&#x628A; <code>s.stopped</code> &#x7F6E;&#x4F4D;&#xFF08;<code>Stop</code> &#x91CC;&#x7F6E;&#x4F4D;&#xFF09;&#xFF0C;&#x56DE;&#x653E;&#x63D0;&#x524D;&#x7ED3;&#x675F;&#x3002;</li>
 </ul>
@@ -2519,8 +2574,8 @@ debug.CurrentSession.Start()
 <li><code>!</code>&#xFF1A;&#x5BBF;&#x4E3B; shell&#x3002;&#x53EA;&#x7531; <code>scripts/smoke.sh</code> &#x6267;&#x884C;&#xFF0C;&#x56DE;&#x653E;&#x8DF3;&#x8FC7;&#x3002;&#x9700;&#x8981;&#x5728;&#x4F1A;&#x8BDD;&#x5916;&#x770B;&#x4E00;&#x773C;&#x8FDB;&#x7A0B;&#x3001;&#x6587;&#x4EF6;&#x6216;&#x73AF;&#x5883;&#x65F6;&#x7528;&#x5B83;&#xFF1B;</li>
 <li><code>=</code> &#x4E0E; <code>!=</code>&#xFF1A;&#x65AD;&#x8A00;&#xFF0C;&#x53EA;&#x7531; smoke &#x6838;&#x5BF9;&#x3002;&#x5B83;&#x4EEC;&#x7ED1;&#x5B9A;&#x6700;&#x8FD1;&#x4E00;&#x6761; godbg &#x547D;&#x4EE4;&#x7684;&#x8F93;&#x51FA;&#xFF1A;<code>=</code> &#x8981;&#x6C42;&#x5339;&#x914D;&#xFF0C;<code>!=</code> &#x8981;&#x6C42;&#x4E0D;&#x5339;&#x914D;&#x3002;&#x524D;&#x9762;&#x547D;&#x4EE4;&#x5DF2;&#x7ECF;&#x6253;&#x51FA;&#x6765;&#x7684;&#x6587;&#x672C;&#x4E0D;&#x53C2;&#x52A0;&#x8FD9;&#x4E00;&#x6761;&#x65AD;&#x8A00;&#x3002;<code>!=</code> &#x5F00;&#x5934;&#x7684;&#x884C;&#x662F;&#x53CD;&#x5411;&#x65AD;&#x8A00;&#xFF0C;&#x5176;&#x4F59;&#x4EE5; <code>!</code> &#x5F00;&#x5934;&#x7684;&#x884C;&#x624D;&#x662F;&#x5BBF;&#x4E3B; shell&#xFF1B;</li>
 <li><code>@spawn</code>&#x3001;<code>@attach</code>&#x3001;<code>@exec</code>&#xFF1A;&#x4F1A;&#x8BDD;&#x5F00;&#x59CB;&#x524D;&#xFF0C;&#x7531; smoke &#x628A;&#x8C03;&#x8BD5;&#x5668;&#x548C;&#x88AB;&#x8C03;&#x8BD5;&#x8FDB;&#x7A0B;&#x5BF9;&#x4E0A;&#xFF0C;&#x9009;&#x62E9;&#x8C03;&#x8BD5;&#x5668;&#x4EE5;&#x54EA;&#x79CD;&#x5165;&#x53E3;&#x63A5;&#x8FDB;&#x53BB;&#xFF1B;</li>
-<li><code>@delay</code>&#xFF1A;&#x4F1A;&#x8BDD;&#x5F00;&#x59CB;&#x524D;&#x7684;&#x7B49;&#x5F85;&#xFF0C;&#x7531; smoke &#x5904;&#x7406;&#x542F;&#x52A8;&#x65F6;&#x5E8F;&#xFF1B;</li>
-<li><code>@skip-if</code>&#xFF1A;&#x6761;&#x4EF6;&#x6210;&#x7ACB;&#x65F6;&#xFF0C;smoke &#x8DF3;&#x8FC7;&#x6574;&#x6761;&#x7528;&#x4F8B;&#xFF0C;&#x56DE;&#x653E;&#x4E0D;&#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x6210;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1B;</li>
+<li><code>@delay &lt;secs&gt; &lt;cmd&gt;</code>&#xFF1A;&#x4F1A;&#x8BDD;&#x8FDB;&#x884C;&#x4E2D;&#x7684;&#x5EF6;&#x8FDF;&#x6267;&#x884C;&#x3002;smoke &#x5728;&#x4F1A;&#x8BDD;&#x5F00;&#x59CB;&#x524D;&#x628A;&#x547D;&#x4EE4;&#x6302;&#x5230;&#x540E;&#x53F0;&#xFF0C;&#x8BA1;&#x65F6; <code>&lt;secs&gt;</code> &#x79D2;&#x540E;&#x518D;&#x6267;&#x884C;&#xFF0C;&#x7528;&#x6765;&#x5728;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x8FDB;&#x884C;&#x5230;&#x67D0;&#x4E2A;&#x65F6;&#x523B;&#x6295;&#x9012;&#x4FE1;&#x53F7;&#x3001;&#x6539;&#x6587;&#x4EF6;&#x7B49;&#xFF1B;&#x56DE;&#x653E;&#x4E0D;&#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x6210;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1B;</li>
+<li><code>@skip-if &lt;cmd&gt;</code>&#xFF1A;&#x80FD;&#x529B;&#x63A2;&#x6D4B;&#x3002;smoke &#x5728;&#x4F1A;&#x8BDD;&#x5F00;&#x59CB;&#x524D;&#x6267;&#x884C; <code>&lt;cmd&gt;</code>&#xFF0C;&#x9000;&#x51FA;&#x7801;&#x4E3A; 0 &#x65F6;&#x8DF3;&#x8FC7;&#x5F53;&#x524D;&#x7528;&#x4F8B;&#x5E76;&#x89C6;&#x4E3A;&#x901A;&#x8FC7;&#xFF08;&#x4F8B;&#x5982;&#x5F53;&#x524D;&#x5185;&#x6838;&#x4E0D;&#x652F;&#x6301;&#x786C;&#x4EF6;&#x76D1;&#x89C6;&#x70B9;&#xFF09;&#xFF0C;&#x56DE;&#x653E;&#x4E0D;&#x4F1A;&#x628A;&#x5B83;&#x5F53;&#x6210;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF1B;</li>
 <li><code>@set</code>&#xFF1A;&#x4F1A;&#x8BDD;&#x5F00;&#x59CB;&#x524D;&#x7684;&#x8BBE;&#x7F6E;&#xFF0C;&#x7531; smoke &#x5728;&#x62C9;&#x8D77; godbg &#x4E4B;&#x524D;&#x5199;&#x5165;&#x3002;&#x6B64;&#x65F6;&#x8FD8;&#x6CA1;&#x6709;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x53EF;&#x4EE5;&#x66FF;&#x6362;&#xFF1B;</li>
 <li><code>@capture</code>&#xFF1A;&#x4F1A;&#x8BDD;&#x5185;&#x3002;&#x56DE;&#x653E;&#x5668;&#x66FF;&#x6362;&#x8FDB;&#x540E;&#x7EED;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#xFF0C;smoke &#x66FF;&#x6362;&#x8FDB;&#x65AD;&#x8A00;&#x3002;</li>
 </ul>
@@ -2621,7 +2676,7 @@ smoke: all passed
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"next":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},"previous":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-debug.md","ref":"6-develop-inst-debugger/3-debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/4-session.md","mtime":"2026-10-29T19:49:29.002Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-29T19:50:00.154Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.4 脚本回放与清理善后","level":"1.6.4","depth":2,"next":{"title":"6.5 反汇编","level":"1.6.5","depth":2,"path":"6-develop-inst-debugger/5-disassemble.md","ref":"6-develop-inst-debugger/5-disassemble.md","articles":[]},"previous":{"title":"6.3 构建并启动调试","level":"1.6.3","depth":2,"path":"6-develop-inst-debugger/3-debug.md","ref":"6-develop-inst-debugger/3-debug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/4-session.md","mtime":"2026-10-30T00:38:48.600Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-30T00:39:16.464Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

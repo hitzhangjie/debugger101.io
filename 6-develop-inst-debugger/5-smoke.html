@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>6.5 冒烟测试机制的设计与实现 · GitBook</title>
+        <title>6.5 冒烟测试机制 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -362,7 +362,7 @@
                 <a href="4-cleanup.html">
             
                     
-                    6.4 调试会话的清理善后
+                    6.4 调试会话清理
             
                 </a>
             
@@ -375,7 +375,7 @@
                 <a href="5-smoke.html">
             
                     
-                    6.5 冒烟测试机制的设计与实现
+                    6.5 冒烟测试机制
             
                 </a>
             
@@ -2251,7 +2251,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >6.5 冒烟测试机制的设计与实现</a>
+        <a href=".." >6.5 冒烟测试机制</a>
     </h1>
 </div>
 
@@ -2271,7 +2271,7 @@ body {
   counter-reset: h1 19;
 }
 </style></p>
-<h2 id="&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x673A;&#x5236;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x73B0;">&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x673A;&#x5236;&#x7684;&#x8BBE;&#x8BA1;&#x4E0E;&#x5B9E;&#x73B0;</h2>
+<h2 id="&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x673A;&#x5236;">&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x673A;&#x5236;</h2>
 <p>&#x4E0A;&#x4E00;&#x8282;&#x628A;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x9000;&#x51FA;&#x65F6;&#x7684;&#x6E05;&#x7406;&#x5584;&#x540E;&#x8865;&#x9F50;&#x4E86;&#x3002;&#x81F3;&#x6B64;&#xFF0C;6.1~6.4 &#x8282;&#x5DF2;&#x7ECF;&#x80FD;&#x628A;&#x8C03;&#x8BD5;&#x5668;&quot;&#x67B6;&#x8D77;&#x6765;&quot;&#xFF1A;&#x542F;&#x52A8;&#x3001;attach&#x3001;&#x7F16;&#x8BD1;&#x5E76;&#x8C03;&#x8BD5;&#x76EE;&#x6807;&#xFF0C;&#x8FDB;&#x5165;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#xFF0C;&#x9000;&#x51FA;&#x65F6;&#x6309;&#x8C03;&#x8BD5;&#x53D1;&#x8D77;&#x65B9;&#x5F0F;&#x5584;&#x540E;&#x3002;&#x4F46;&#x4ECE;&#x8FD9;&#x4E00;&#x8282;&#x5F00;&#x59CB;&#xFF0C;&#x4E66;&#x91CC;&#x8981;&#x5927;&#x91CF;&#x51FA;&#x73B0;&#x5177;&#x4F53;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x548C;&#x8FD0;&#x884C;&#x8F93;&#x51FA;&#xFF0C;&#x600E;&#x4E48;&#x4FDD;&#x8BC1;&#x4E66;&#x4E2D;&#x7684;&#x793A;&#x4F8B;&#x3001;godbgv2 &#x7684;&#x8BBE;&#x8BA1;&#x5B9E;&#x73B0;&#x3001;&#x5B9E;&#x9645;&#x8FD0;&#x884C;&#x6548;&#x679C;&#x4E09;&#x8005;&#x59CB;&#x7EC8;&#x4E00;&#x81F4;&#xFF1F;</p>
 <p>&#x4EA4;&#x4E92;&#x5F0F;&#x8F93;&#x5165;&#x5728;&#x81EA;&#x52A8;&#x5316;&#x573A;&#x666F;&#x4E0B;&#x5E76;&#x4E0D;&#x597D;&#x7528;&#xFF1A;&#x547D;&#x4EE4;&#x4E00;&#x591A;&#xFF0C;&#x9010;&#x6761;&#x624B;&#x6572;&#x53C8;&#x6162;&#x53C8;&#x5BB9;&#x6613;&#x51FA;&#x9519;&#xFF1B;&#x56DE;&#x5F52;&#x6D4B;&#x8BD5;&#x3001;&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x6CA1;&#x6CD5;&#x9760;&#x4EBA;&#x8089;&#x8F93;&#x5165;&#xFF1B;&#x590D;&#x76D8;&#x67D0;&#x4E2A;&#x8C03;&#x8BD5;&#x8FC7;&#x7A0B;&#x65F6;&#xFF0C;&#x5E0C;&#x671B;&#x628A;&#x6B65;&#x9AA4;&#x5B58;&#x6210;&#x811A;&#x672C;&#x4E00;&#x952E;&#x56DE;&#x653E;&#x3002;gdb &#x6709; <code>-x/--command</code> &#x9009;&#x9879;&#xFF0C;dlv &#x652F;&#x6301; starlark &#x811A;&#x672C;&#xFF0C;godbg &#x5BF9;&#x5E94;&#x7684;&#x80FD;&#x529B;&#x662F; <code>--init &lt;file&gt;</code>&#xFF1A;&#x542F;&#x52A8;&#x8C03;&#x8BD5;&#x4F1A;&#x8BDD;&#x65F6;&#xFF0C;&#x628A;&#x6587;&#x4EF6;&#x91CC;&#x7684;&#x8C03;&#x8BD5;&#x547D;&#x4EE4;&#x9010;&#x6761;&#x56DE;&#x653E;&#x4E00;&#x904D;&#x3002;&#x56DE;&#x653E;&#x672C;&#x8EAB;&#x4E0D;&#x662F;&#x76EE;&#x7684;&#xFF0C;&#x5B83;&#x662F;&#x4E3A;&#x5192;&#x70DF;&#x6D4B;&#x8BD5;&#x670D;&#x52A1;&#x7684;&#xFF1A;&#x9A71;&#x52A8;&#x5668;&#x7ED9;&#x4F1A;&#x8BDD;&#x5582;&#x811A;&#x672C;&#xFF0C;&#x4F1A;&#x8BDD;&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF0C;&#x9A71;&#x52A8;&#x5668;&#x518D;&#x6838;&#x5BF9;&#x7ED3;&#x679C;&#x662F;&#x5426;&#x7B26;&#x5408;&#x9884;&#x671F;&#x3002;</p>
 <p>&#x672C;&#x8282;&#x914D;&#x5957;&#x4EE3;&#x7801;&#x5728; <a href="https://github.com/hitzhangjie/godbgv2" target="_blank">hitzhangjie/godbgv2</a> &#x7684; tag <code>ch6.5</code>&#xFF0C;<code>git diff ch6.4 ch6.5</code> &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x8FD9;&#x4E00;&#x8282;&#x6539;&#x4E86;&#x4EC0;&#x4E48;&#x3002;</p>
@@ -2581,7 +2581,7 @@ smoke: all passed
 
             
                 
-                <a href="4-cleanup.html" class="navigation navigation-prev " aria-label="Previous page: 6.4 调试会话的清理善后">
+                <a href="4-cleanup.html" class="navigation navigation-prev " aria-label="Previous page: 6.4 调试会话清理">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2597,7 +2597,7 @@ smoke: all passed
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"6.5 冒烟测试机制的设计与实现","level":"1.6.5","depth":2,"next":{"title":"6.6 反汇编","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-disassemble.md","ref":"6-develop-inst-debugger/6-disassemble.md","articles":[]},"previous":{"title":"6.4 调试会话的清理善后","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-cleanup.md","ref":"6-develop-inst-debugger/4-cleanup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/5-smoke.md","mtime":"2026-10-30T01:58:59.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-30T01:59:24.356Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"6.5 冒烟测试机制","level":"1.6.5","depth":2,"next":{"title":"6.6 反汇编","level":"1.6.6","depth":2,"path":"6-develop-inst-debugger/6-disassemble.md","ref":"6-develop-inst-debugger/6-disassemble.md","articles":[]},"previous":{"title":"6.4 调试会话清理","level":"1.6.4","depth":2,"path":"6-develop-inst-debugger/4-cleanup.md","ref":"6-develop-inst-debugger/4-cleanup.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"6-develop-inst-debugger/5-smoke.md","mtime":"2026-10-30T03:18:21.629Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-10-30T03:18:51.064Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

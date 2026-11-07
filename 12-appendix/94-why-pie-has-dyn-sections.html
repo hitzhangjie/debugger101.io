@@ -1,0 +1,2629 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>12.17 More: PIE可执行文件为什么有.interp/.dynsym/.dynamic · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-intopic-toc/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    
+    <link rel="prev" href="93-anatomy-of-elf-core-file.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    1 介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../2-preface/">
+            
+                <a href="../2-preface/">
+            
+                    
+                    2 前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../3-terms/">
+            
+                <a href="../3-terms/">
+            
+                    
+                    3 常用术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../4-basics/">
+            
+                <a href="../4-basics/">
+            
+                    
+                    4 软件调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../4-basics/1-purposes.html">
+            
+                <a href="../4-basics/1-purposes.html">
+            
+                    
+                    4.1 调试目的
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../4-basics/2-dependencies.html">
+            
+                <a href="../4-basics/2-dependencies.html">
+            
+                    
+                    4.2 调试依赖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../4-basics/3-countertactics.html">
+            
+                <a href="../4-basics/3-countertactics.html">
+            
+                    
+                    4.3 反调试技术
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5" data-path="../5-debugger-skeleton/">
+            
+                <a href="../5-debugger-skeleton/">
+            
+                    
+                    5 走进调试器开发
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1" data-path="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                <a href="../5-debugger-skeleton/1-debugger_skeleton.html">
+            
+                    
+                    5.1 设计一个调试器
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" data-path="../5-debugger-skeleton/2-debugger_arch.html">
+            
+                <a href="../5-debugger-skeleton/2-debugger_arch.html">
+            
+                    
+                    5.2 调试器架构设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.3" data-path="../5-debugger-skeleton/3-debugger_cmds.html">
+            
+                <a href="../5-debugger-skeleton/3-debugger_cmds.html">
+            
+                    
+                    5.3 调试器命令管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.4" data-path="../5-debugger-skeleton/4-debugger_completion.html">
+            
+                <a href="../5-debugger-skeleton/4-debugger_completion.html">
+            
+                    
+                    5.4 输入自动补全
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.5" data-path="../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                <a href="../5-debugger-skeleton/5-debugger_extensibility.html">
+            
+                    
+                    5.5 其他可扩展性设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.6" data-path="../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                <a href="../5-debugger-skeleton/6-debugger_implementation.html">
+            
+                    
+                    5.6 具体的实施方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.7" data-path="../5-debugger-skeleton/7-debugger_demos.html">
+            
+                <a href="../5-debugger-skeleton/7-debugger_demos.html">
+            
+                    
+                    5.7 功能演示和实现效果
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6" data-path="../6-develop-inst-debugger/">
+            
+                <a href="../6-develop-inst-debugger/">
+            
+                    
+                    6 开发go指令级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.1" data-path="../6-develop-inst-debugger/1-exec.html">
+            
+                <a href="../6-develop-inst-debugger/1-exec.html">
+            
+                    
+                    6.1 启动并跟踪进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.2" data-path="../6-develop-inst-debugger/2-attach.html">
+            
+                <a href="../6-develop-inst-debugger/2-attach.html">
+            
+                    
+                    6.2 跟踪运行中进程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.3" data-path="../6-develop-inst-debugger/3-debug.html">
+            
+                <a href="../6-develop-inst-debugger/3-debug.html">
+            
+                    
+                    6.3 构建并启动调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.4" data-path="../6-develop-inst-debugger/4-cleanup.html">
+            
+                <a href="../6-develop-inst-debugger/4-cleanup.html">
+            
+                    
+                    6.4 结束调试时进程清理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.5" data-path="../6-develop-inst-debugger/5-smoke.html">
+            
+                <a href="../6-develop-inst-debugger/5-smoke.html">
+            
+                    
+                    6.5 冒烟测试机制
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.6" data-path="../6-develop-inst-debugger/6-disassemble.html">
+            
+                <a href="../6-develop-inst-debugger/6-disassemble.html">
+            
+                    
+                    6.6 反汇编
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.7" data-path="../6-develop-inst-debugger/7-breakpoint.html">
+            
+                <a href="../6-develop-inst-debugger/7-breakpoint.html">
+            
+                    
+                    6.7 添加断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.8" data-path="../6-develop-inst-debugger/8-breakpoints.html">
+            
+                <a href="../6-develop-inst-debugger/8-breakpoints.html">
+            
+                    
+                    6.8 列出断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.9" data-path="../6-develop-inst-debugger/9-clear.html">
+            
+                <a href="../6-develop-inst-debugger/9-clear.html">
+            
+                    
+                    6.9 移除断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.10" data-path="../6-develop-inst-debugger/10-clearall.html">
+            
+                <a href="../6-develop-inst-debugger/10-clearall.html">
+            
+                    
+                    6.10 清空断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.11" data-path="../6-develop-inst-debugger/11-clearall-atexit.html">
+            
+                <a href="../6-develop-inst-debugger/11-clearall-atexit.html">
+            
+                    
+                    6.11 结束调试时断点清理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.12" data-path="../6-develop-inst-debugger/12-step.html">
+            
+                <a href="../6-develop-inst-debugger/12-step.html">
+            
+                    
+                    6.12 步进操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.13" data-path="../6-develop-inst-debugger/13-continue.html">
+            
+                <a href="../6-develop-inst-debugger/13-continue.html">
+            
+                    
+                    6.13 运行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.14" data-path="../6-develop-inst-debugger/14-pmem.html">
+            
+                <a href="../6-develop-inst-debugger/14-pmem.html">
+            
+                    
+                    6.14 查看内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.15" data-path="../6-develop-inst-debugger/15-pregs.html">
+            
+                <a href="../6-develop-inst-debugger/15-pregs.html">
+            
+                    
+                    6.15 查看寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.16" data-path="../6-develop-inst-debugger/16-set-mem.html">
+            
+                <a href="../6-develop-inst-debugger/16-set-mem.html">
+            
+                    
+                    6.16 修改内存数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.17" data-path="../6-develop-inst-debugger/17-set-regs.html">
+            
+                <a href="../6-develop-inst-debugger/17-set-regs.html">
+            
+                    
+                    6.17 修改寄存器数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18" data-path="../6-develop-inst-debugger/18-multithread/">
+            
+                <a href="../6-develop-inst-debugger/18-multithread/">
+            
+                    
+                    6.18 调试多线程程序
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.6.18.1" data-path="../6-develop-inst-debugger/18-multithread/1-trace_old_threads.html">
+            
+                <a href="../6-develop-inst-debugger/18-multithread/1-trace_old_threads.html">
+            
+                    
+                    6.18.1 跟踪已创建线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18.2" data-path="../6-develop-inst-debugger/18-multithread/2-trace_new_threads.html">
+            
+                <a href="../6-develop-inst-debugger/18-multithread/2-trace_new_threads.html">
+            
+                    
+                    6.18.2 跟踪新创建线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18.3" data-path="../6-develop-inst-debugger/18-multithread/3-suspend_policy.html">
+            
+                <a href="../6-develop-inst-debugger/18-multithread/3-suspend_policy.html">
+            
+                    
+                    6.18.3 线程执行控制 - 挂起策略
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18.4" data-path="../6-develop-inst-debugger/18-multithread/4-continue.html">
+            
+                <a href="../6-develop-inst-debugger/18-multithread/4-continue.html">
+            
+                    
+                    6.18.4 线程执行控制 - continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.18.5" data-path="../6-develop-inst-debugger/18-multithread/5-breakpoint.html">
+            
+                <a href="../6-develop-inst-debugger/18-multithread/5-breakpoint.html">
+            
+                    
+                    6.18.5 线程执行控制 - 断点移除
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.19" data-path="../6-develop-inst-debugger/19-multiprocess/">
+            
+                <a href="../6-develop-inst-debugger/19-multiprocess/">
+            
+                    
+                    6.19 调试多进程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.6.20" data-path="../6-develop-inst-debugger/100-more.html">
+            
+                <a href="../6-develop-inst-debugger/100-more.html">
+            
+                    
+                    6.100 More...
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7" data-path="../7-headto-sym-debugger/">
+            
+                <a href="../7-headto-sym-debugger/">
+            
+                    
+                    7 符号级调试基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.1" data-path="../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                <a href="../7-headto-sym-debugger/1-how-go-build-works.html">
+            
+                    
+                    7.1 Go构建内幕
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.2" data-path="../7-headto-sym-debugger/2-elf.html">
+            
+                <a href="../7-headto-sym-debugger/2-elf.html">
+            
+                    
+                    7.2 理解ELF文件
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.3" data-path="../7-headto-sym-debugger/3-syms.html">
+            
+                <a href="../7-headto-sym-debugger/3-syms.html">
+            
+                    
+                    7.3 符号&符号表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.4" data-path="../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                <a href="../7-headto-sym-debugger/4-syms-resolve-reloc.html">
+            
+                    
+                    7.4 符号解析&重定位
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.5" data-path="../7-headto-sym-debugger/5-loading.html">
+            
+                <a href="../7-headto-sym-debugger/5-loading.html">
+            
+                    
+                    7.5 加载
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/">
+            
+                    
+                    7.6 go标准库debug/*
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.6.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+            
+                    
+                    7.6.1 debug/elf
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+            
+                    
+                    7.6.2 debug/gosym
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.6.3" data-path="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
+            
+                    
+                    7.6.3 debug/dwarf
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/">
+            
+                    
+                    7.7 挺进DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.7.7.1" data-path="../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
+            
+                    
+                    7.7.1 相关的GoPackages
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
+            
+                    
+                    7.7.2 如何破解那些细节
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
+            
+                    
+                    7.7.3 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.4" data-path="../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
+            
+                    
+                    7.7.4 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7.5" data-path="../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                <a href="../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
+            
+                    
+                    7.7.5 可以了解DWARF了
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8" data-path="../8-dwarf/">
+            
+                <a href="../8-dwarf/">
+            
+                    
+                    8 调试信息标准: DWARF
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.1" data-path="../8-dwarf/1-history.html">
+            
+                <a href="../8-dwarf/1-history.html">
+            
+                    
+                    8.1 DWARF发展历史
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.2" data-path="../8-dwarf/2-overview.html">
+            
+                <a href="../8-dwarf/2-overview.html">
+            
+                    
+                    8.2 DWARF内容概览
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.3" data-path="../8-dwarf/3-dwarfdata.html">
+            
+                <a href="../8-dwarf/3-dwarfdata.html">
+            
+                    
+                    8.3 DWARF数据分类
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4" data-path="../8-dwarf/4-die/">
+            
+                <a href="../8-dwarf/4-die/">
+            
+                    
+                    8.4 DIE详细介绍
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.4.1" data-path="../8-dwarf/4-die/1-desc-data-type.html">
+            
+                <a href="../8-dwarf/4-die/1-desc-data-type.html">
+            
+                    
+                    8.4.1 DIE描述数据和类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.2" data-path="../8-dwarf/4-die/2-desc-locations.html">
+            
+                <a href="../8-dwarf/4-die/2-desc-locations.html">
+            
+                    
+                    8.4.2 位置数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.3" data-path="../8-dwarf/4-die/3-desc-code.html">
+            
+                <a href="../8-dwarf/4-die/3-desc-code.html">
+            
+                    
+                    8.4.3 DIE描述可执行代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.4.4" data-path="../8-dwarf/4-die/4-encoding.html">
+            
+                <a href="../8-dwarf/4-die/4-encoding.html">
+            
+                    
+                    8.4.4 DIE数据编码
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5" data-path="../8-dwarf/5-other/">
+            
+                <a href="../8-dwarf/5-other/">
+            
+                    
+                    8.5 其他调试数据
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.5.1" data-path="../8-dwarf/5-other/1-accelerated-access.html">
+            
+                <a href="../8-dwarf/5-other/1-accelerated-access.html">
+            
+                    
+                    8.5.1 加速访问
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.2" data-path="../8-dwarf/5-other/2-lineno-table.html">
+            
+                <a href="../8-dwarf/5-other/2-lineno-table.html">
+            
+                    
+                    8.5.2 行号表信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.3" data-path="../8-dwarf/5-other/3-callframe-info.html">
+            
+                <a href="../8-dwarf/5-other/3-callframe-info.html">
+            
+                    
+                    8.5.3 调用栈帧信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.4" data-path="../8-dwarf/5-other/4-macro-info.html">
+            
+                <a href="../8-dwarf/5-other/4-macro-info.html">
+            
+                    
+                    8.5.4 宏信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.5" data-path="../8-dwarf/5-other/5-varlen-data.html">
+            
+                <a href="../8-dwarf/5-other/5-varlen-data.html">
+            
+                    
+                    8.5.5 变长数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.6" data-path="../8-dwarf/5-other/6-shrink-data.html">
+            
+                <a href="../8-dwarf/5-other/6-shrink-data.html">
+            
+                    
+                    8.5.6 压缩DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.5.7" data-path="../8-dwarf/5-other/7-elf-sections.html">
+            
+                <a href="../8-dwarf/5-other/7-elf-sections.html">
+            
+                    
+                    8.5.7 ELF Sections
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-practices.html">
+            
+                <a href="../8-dwarf/6-practices.html">
+            
+                    
+                    8.6 DWARF解析及应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-summary.html">
+            
+                <a href="../8-dwarf/7-summary.html">
+            
+                    
+                    8.7 本章总结
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9" data-path="../9-develop-sym-debugger/">
+            
+                <a href="../9-develop-sym-debugger/">
+            
+                    
+                    9 开发go符号级调试器
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1" data-path="../9-develop-sym-debugger/1-架构设计/">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/">
+            
+                    
+                    9.1 架构设计
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.1.1" data-path="../9-develop-sym-debugger/1-架构设计/1-现代调试器架构.html">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/1-现代调试器架构.html">
+            
+                    
+                    9.1.1 现代调试器架构
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.2" data-path="../9-develop-sym-debugger/1-架构设计/2-前端UI层设计.html">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/2-前端UI层设计.html">
+            
+                    
+                    9.1.2 前端UI层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.3" data-path="../9-develop-sym-debugger/1-架构设计/3-Service层设计.html">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/3-Service层设计.html">
+            
+                    
+                    9.1.3 Service层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.4" data-path="../9-develop-sym-debugger/1-架构设计/4-后端符号层设计.html">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/4-后端符号层设计.html">
+            
+                    
+                    9.1.4 后端符号层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.5" data-path="../9-develop-sym-debugger/1-架构设计/5-后端目标层设计.html">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/5-后端目标层设计.html">
+            
+                    
+                    9.1.5 后端目标层设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.1.6" data-path="../9-develop-sym-debugger/1-架构设计/6-日志系统设计.html">
+            
+                <a href="../9-develop-sym-debugger/1-架构设计/6-日志系统设计.html">
+            
+                    
+                    9.1.6 日志系统设计
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2" data-path="../9-develop-sym-debugger/2-核心调试逻辑/">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/">
+            
+                    
+                    9.2 核心调试逻辑
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.2.1" data-path="../9-develop-sym-debugger/2-核心调试逻辑/00-cmds.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/00-cmds.html">
+            
+                    
+                    9.2.00 核心调试命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.2" data-path="../9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/01-debug-session.html">
+            
+                    
+                    9.2.01 打开调试会话
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.3" data-path="../9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/11-tinydbg_attach.html">
+            
+                    
+                    9.2.11 tinydbg attach
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.4" data-path="../9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/12-tinydbg_attach_waitfor.html">
+            
+                    
+                    9.2.12 tinydbg attach+waitfor
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.5" data-path="../9-develop-sym-debugger/2-核心调试逻辑/13-tinydbg_exec.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/13-tinydbg_exec.html">
+            
+                    
+                    9.2.13 tinydbg exec
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.6" data-path="../9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/14-tinydbg_debug.html">
+            
+                    
+                    9.2.14 tinydbg debug
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.7" data-path="../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/15-tinydbg_core.html">
+            
+                    
+                    9.2.15 tinydbg core
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.8" data-path="../9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/16-tinydbg_connect.html">
+            
+                    
+                    9.2.16 tinydbg connect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.9" data-path="../9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/17-tinydbg_trace.html">
+            
+                    
+                    9.2.17 tinydbg trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.10" data-path="../9-develop-sym-debugger/2-核心调试逻辑/18-how_evalexpr_works.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/18-how_evalexpr_works.html">
+            
+                    
+                    9.2.18 evalexpr表达式计算引擎
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.11" data-path="../9-develop-sym-debugger/2-核心调试逻辑/19-how_locspec_works.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/19-how_locspec_works.html">
+            
+                    
+                    9.2.19 locspec解析与地址转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.12" data-path="../9-develop-sym-debugger/2-核心调试逻辑/20-debug_disassemble.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/20-debug_disassemble.html">
+            
+                    
+                    9.2.20 tinydbg> disass
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.13" data-path="../9-develop-sym-debugger/2-核心调试逻辑/21-debug_breakpoint_part1.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/21-debug_breakpoint_part1.html">
+            
+                    
+                    9.2.21 tinydbg> breakpoint - part1: 断点精细化管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.14" data-path="../9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part2.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/22-debug_breakpoint_part2.html">
+            
+                    
+                    9.2.22 tinydbg> breakpoint - part2: 添加断点+执行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.15" data-path="../9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part3.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/23-debug_breakpoint_part3.html">
+            
+                    
+                    9.2.23 tinydbg> breakpoint - part3: 条件断点+执行到断点
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.16" data-path="../9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part4.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/24-debug_breakpoint_part4.html">
+            
+                    
+                    9.2.24 tinydbg> breakpoint - part4: 其他断点相关命令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.17" data-path="../9-develop-sym-debugger/2-核心调试逻辑/25-debug_trace.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/25-debug_trace.html">
+            
+                    
+                    9.2.25 tinydbg> trace
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.18" data-path="../9-develop-sym-debugger/2-核心调试逻辑/26-debug_watch.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/26-debug_watch.html">
+            
+                    
+                    9.2.26 tinydbg> watch
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.19" data-path="../9-develop-sym-debugger/2-核心调试逻辑/27-debug_continue.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/27-debug_continue.html">
+            
+                    
+                    9.2.27 tinydbg> continue
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.20" data-path="../9-develop-sym-debugger/2-核心调试逻辑/28-debug_next.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/28-debug_next.html">
+            
+                    
+                    9.2.28 tinydbg> next
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.21" data-path="../9-develop-sym-debugger/2-核心调试逻辑/29-debug_step.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/29-debug_step.html">
+            
+                    
+                    9.2.29 tinydbg> step
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.22" data-path="../9-develop-sym-debugger/2-核心调试逻辑/30-debug_pmem.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/30-debug_pmem.html">
+            
+                    
+                    9.2.30 tinydbg> pmem
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.23" data-path="../9-develop-sym-debugger/2-核心调试逻辑/31-debug_regs.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/31-debug_regs.html">
+            
+                    
+                    9.2.31 tinydbg> regs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.24" data-path="../9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/32-debug_funcs.html">
+            
+                    
+                    9.2.32 tinydbg> funcs
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.25" data-path="../9-develop-sym-debugger/2-核心调试逻辑/33-debug_vars.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/33-debug_vars.html">
+            
+                    
+                    9.2.33 tinydbg> vars
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.26" data-path="../9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/34-debug_bt.html">
+            
+                    
+                    9.2.34 tinydbg> bt
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.27" data-path="../9-develop-sym-debugger/2-核心调试逻辑/100-how_listfunctions_work.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/100-how_listfunctions_work.html">
+            
+                    
+                    9.2.100 how ListFunctions work
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.28" data-path="../9-develop-sym-debugger/2-核心调试逻辑/100-debug_goroutines.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/100-debug_goroutines.html">
+            
+                    
+                    9.2.100 tinydbg> goroutines
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.2.29" data-path="../9-develop-sym-debugger/2-核心调试逻辑/100-multi-threads.html">
+            
+                <a href="../9-develop-sym-debugger/2-核心调试逻辑/100-multi-threads.html">
+            
+                    
+                    9.2.100 跟踪多线程程序
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3" data-path="../9-develop-sym-debugger/3-高级功能扩展/">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/">
+            
+                    
+                    9.3 高级功能扩展
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.9.3.1" data-path="../9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/100-howto_integrate_starlark.html">
+            
+                    
+                    9.3.100 集成starlark
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.2" data-path="../9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/101-howto_tracing_via_ebpf.html">
+            
+                    
+                    9.3.101 基于eBPF跟踪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.3" data-path="../9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/102-howto_syntax_highlight.html">
+            
+                    
+                    9.3.102 实现语法高亮
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.4" data-path="../9-develop-sym-debugger/3-高级功能扩展/103-howto_paging_output.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/103-howto_paging_output.html">
+            
+                    
+                    9.3.103 实现分页输出
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.5" data-path="../9-develop-sym-debugger/3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/104-howto_read_separate_dwarfdata.html">
+            
+                    
+                    9.3.104 读取分离存储的DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.6" data-path="../9-develop-sym-debugger/3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/105-howto_guess_substitutepath.html">
+            
+                    
+                    9.3.105 自动推测源文件路径映射
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.7" data-path="../9-develop-sym-debugger/3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/106-howto_redirect_target_io.html">
+            
+                    
+                    9.3.106 实现目标进程IO重定向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.8" data-path="../9-develop-sym-debugger/3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/107-howto_customize_tinydbg.html">
+            
+                    
+                    9.3.107 支持用户偏好配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.9" data-path="../9-develop-sym-debugger/3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/108-howto_accept_multiclient.html">
+            
+                    
+                    9.3.108 支持多客户端调试模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.10" data-path="../9-develop-sym-debugger/3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/109-howto_transcript_debugging.html">
+            
+                    
+                    9.3.109 支持调试活动记录本
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.9.3.11" data-path="../9-develop-sym-debugger/3-高级功能扩展/110-howto_debug_deterministically.html">
+            
+                <a href="../9-develop-sym-debugger/3-高级功能扩展/110-howto_debug_deterministically.html">
+            
+                    
+                    9.3.110 如何实现确定性调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10" data-path="../10-extras/">
+            
+                <a href="../10-extras/">
+            
+                    
+                    10 主流调试技术解析
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.10.1" data-path="../10-extras/1-development-of-debugger.html">
+            
+                <a href="../10-extras/1-development-of-debugger.html">
+            
+                    
+                    10.1 调试器发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.2" data-path="../10-extras/2-development-of-logging.html">
+            
+                <a href="../10-extras/2-development-of-logging.html">
+            
+                    
+                    10.2 日志系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.3" data-path="../10-extras/3-development-of-metrics.html">
+            
+                <a href="../10-extras/3-development-of-metrics.html">
+            
+                    
+                    10.3 指标系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.4" data-path="../10-extras/4-development-of-tracing.html">
+            
+                <a href="../10-extras/4-development-of-tracing.html">
+            
+                    
+                    10.4 跟踪系统发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.5" data-path="../10-extras/5-development-of-bisect.html">
+            
+                <a href="../10-extras/5-development-of-bisect.html">
+            
+                    
+                    10.5 Bisect发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.6" data-path="../10-extras/6-development-of-ebpf.html">
+            
+                <a href="../10-extras/6-development-of-ebpf.html">
+            
+                    
+                    10.6 eBPF发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.7" data-path="../10-extras/7-development-of-replay.html">
+            
+                <a href="../10-extras/7-development-of-replay.html">
+            
+                    
+                    10.7 录制重放发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.8" data-path="../10-extras/8-development-of-debug-dsys.html">
+            
+                <a href="../10-extras/8-development-of-debug-dsys.html">
+            
+                    
+                    10.8 分布式调试发展历程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.9" data-path="../10-extras/9-ai-assisted-debugging.html">
+            
+                <a href="../10-extras/9-ai-assisted-debugging.html">
+            
+                    
+                    10.9 AI助力软件调试
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.10" data-path="../10-extras/10-ai-assisted-reverse-engineering.html">
+            
+                <a href="../10-extras/10-ai-assisted-reverse-engineering.html">
+            
+                    
+                    10.10 AI助力软件逆向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.10.11" data-path="../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                <a href="../10-extras/11-how-cobra-parses-dashdash.html">
+            
+                    
+                    10.11 命令行参数与选项的分离：cobra 如何解析 --
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.11" data-path="../11-thanks/">
+            
+                <a href="../11-thanks/">
+            
+                    
+                    11 致谢
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    12 附录
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.12.1" data-path="1-go-programme-start.html">
+            
+                <a href="1-go-programme-start.html">
+            
+                    
+                    12.1 go程序启动流程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.2" data-path="2-auto-trace-cloned-threads.html">
+            
+                <a href="2-auto-trace-cloned-threads.html">
+            
+                    
+                    12.2 自动跟踪新线程
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.3" data-path="3-git-bisect.html">
+            
+                <a href="3-git-bisect.html">
+            
+                    
+                    12.3 git bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.4" data-path="4-vscode-extension-bisect.html">
+            
+                <a href="4-vscode-extension-bisect.html">
+            
+                    
+                    12.4 vscode extension bisect
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.5" data-path="5-ptrace-attach-race.html">
+            
+                <a href="5-ptrace-attach-race.html">
+            
+                    
+                    12.5 ptrace attach的竞态问题
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.6" data-path="6-go-dwarf-version-matrix.html">
+            
+                <a href="6-go-dwarf-version-matrix.html">
+            
+                    
+                    12.6 Go调试信息版本矩阵
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.7" data-path="7-x86-real-and-protected-mode.html">
+            
+                <a href="7-x86-real-and-protected-mode.html">
+            
+                    
+                    12.7 x86 实模式与内存保护模式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.8" data-path="8-aslr.html">
+            
+                <a href="8-aslr.html">
+            
+                    
+                    12.8 认识ASLR
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.9" data-path="9-ptrace-attach-after-exec-sigtrap.html">
+            
+                <a href="9-ptrace-attach-after-exec-sigtrap.html">
+            
+                    
+                    12.9 案例：Start后立刻Attach先等到SIGTRAP
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.10" data-path="80-go-tool-compile.html">
+            
+                <a href="80-go-tool-compile.html">
+            
+                    
+                    12.10 编译工具链/compile
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.11" data-path="81-go-tool-asm.html">
+            
+                <a href="81-go-tool-asm.html">
+            
+                    
+                    12.11 编译工具链/asm
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.12" data-path="82-go-tool-link.html">
+            
+                <a href="82-go-tool-link.html">
+            
+                    
+                    12.12 编译工具链/link
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.13" data-path="90-why-buildid-loaded.html">
+            
+                <a href="90-why-buildid-loaded.html">
+            
+                    
+                    12.13 More: GNU build-id+gobuildid
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.14" data-path="91-syntax-and-semantic-analysis.html">
+            
+                <a href="91-syntax-and-semantic-analysis.html">
+            
+                    
+                    12.14 More: 语法分析vs语义分析区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.15" data-path="92-why-gdb-uses-symtab.html">
+            
+                <a href="92-why-gdb-uses-symtab.html">
+            
+                    
+                    12.15 More: 为什么GDB使用符号表+DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.12.16" data-path="93-anatomy-of-elf-core-file.html">
+            
+                <a href="93-anatomy-of-elf-core-file.html">
+            
+                    
+                    12.16 More: ELF core文件格式剖析
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.12.17" data-path="94-why-pie-has-dyn-sections.html">
+            
+                <a href="94-why-pie-has-dyn-sections.html">
+            
+                    
+                    12.17 More: PIE可执行文件为什么有.interp/.dynsym/.dynamic
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >12.17 More: PIE可执行文件为什么有.interp/.dynsym/.dynamic</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <p><style>
+body {
+  counter-reset: h1 155;
+}
+</style></p>
+<h2 id="&#x6269;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;pie-&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E3A;&#x4EC0;&#x4E48;&#x6709;-interpdynsymdynamic">&#x6269;&#x5C55;&#x9605;&#x8BFB;&#xFF1A;PIE &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E3A;&#x4EC0;&#x4E48;&#x6709; .interp/.dynsym/.dynamic</h2>
+<h3 id="&#x4ECE;&#x4E00;&#x4E2A;&#x5BB9;&#x6613;&#x8BEF;&#x89E3;&#x7684;&#x73B0;&#x8C61;&#x8BF4;&#x8D77;">&#x4ECE;&#x4E00;&#x4E2A;&#x5BB9;&#x6613;&#x8BEF;&#x89E3;&#x7684;&#x73B0;&#x8C61;&#x8BF4;&#x8D77;</h3>
+<p>7.3 &#x8282;&#x672B;&#x5C3E;&#x63D0;&#x5230;&#xFF1A;&#x7EAF; Go &#x7A0B;&#x5E8F;&#x9ED8;&#x8BA4;&#x6784;&#x5EFA;&#x51FA;&#x6765;&#x7684;&#x662F;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x7684; <code>ET_EXEC</code>&#xFF0C;&#x5176;&#x4E2D;&#x6CA1;&#x6709;&#x9700;&#x8981;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x7684; symbol &#x6216; section&#xFF1B;&#x53EF;&#x4E00;&#x65E6;&#x52A0;&#x4E0A; <code>-buildmode=pie</code>&#xFF0C;&#x4EA7;&#x7269;&#x91CC;&#x5C31;&#x51FA;&#x73B0;&#x4E86; <code>.interp</code>&#x3001;<code>.dynsym</code>&#x3001;<code>.dynamic</code>&#xFF0C;&#x800C; <code>ldd</code> &#x6709;&#x65F6;&#x4ECD;&#x7136;&#x6253;&#x5370; <code>statically linked</code>&#x3002;&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x3001;cgo&#x3001;<code>-linkshared</code> &#x6784;&#x5EFA;&#x7684;&#x4EA7;&#x7269;&#x4E5F;&#x6709;&#x8FD9;&#x4E9B; section&#x3002;</p>
+<p>&#x521D;&#x770B;&#x8FD9;&#x50CF;&#x662F;&#x81EA;&#x76F8;&#x77DB;&#x76FE;&#xFF1A;&#x65E2;&#x7136; <code>ldd</code> &#x8BF4;&#x201C;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x201D;&#xFF0C;&#x600E;&#x4E48;&#x53C8;&#x4F1A;&#x6709;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x8868;&#x548C;&#x52A8;&#x6001;&#x6BB5;&#xFF1F;</p>
+<p>&#x7B54;&#x6848;&#x5728;&#x4E8E;&#xFF0C;&#x5E73;&#x65F6;&#x8BF4;&#x7684;&#x201C;&#x9759;&#x6001;/&#x52A8;&#x6001;&#x201D;&#x5176;&#x5B9E;&#x6DF7;&#x5728;&#x4E00;&#x8D77;&#x8BB2;&#x4E86;&#x4E24;&#x4EF6;&#x4E0D;&#x540C;&#x7684;&#x4E8B;&#xFF1A;</p>
+<ul>
+<li><strong>&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF08;dynamic linking&#xFF09;</strong>&#xFF1A;&#x94FE;&#x63A5;&#x9636;&#x6BB5;&#x4E0D;&#x89E3;&#x6790;&#x5168;&#x90E8;&#x7B26;&#x53F7;&#xFF0C;&#x800C;&#x628A;&#x4E00;&#x90E8;&#x5206;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x63A8;&#x8FDF;&#x5230;&#x88C5;&#x8F7D;/&#x8FD0;&#x884C;&#x65F6;&#xFF0C;&#x7531;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#x5230;&#x5171;&#x4EAB;&#x5E93;&#xFF08;<code>.so</code>&#xFF09;&#x91CC;&#x67E5;&#x627E;&#x3002;&#x8BC1;&#x636E;&#x662F; <code>DT_NEEDED</code>&#x3001;<code>.dynsym</code> &#x4E2D;&#x7684; <code>UND</code> &#x7B26;&#x53F7;&#x3001;<code>.rela.plt</code> &#x91CC;&#x7684; <code>JUMP_SLOT</code> &#x91CD;&#x5B9A;&#x4F4D;&#x3002;</li>
+<li><strong>&#x52A8;&#x6001;&#x88C5;&#x8F7D;/&#x91CD;&#x5B9A;&#x4F4D;&#xFF08;dynamic loading &amp; relocation&#xFF09;</strong>&#xFF1A;&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4EE5; <code>ET_DYN</code> &#x5F62;&#x5F0F;&#x6784;&#x5EFA;&#xFF0C;&#x53EF;&#x4EE5;&#x88AB;&#x88C5;&#x8F7D;&#x5230;&#x4EFB;&#x610F;&#x57FA;&#x5740;&#xFF0C;&#x88C5;&#x8F7D;&#x5668;&#x9700;&#x8981;&#x5728;&#x8FD0;&#x884C;&#x65F6;&#x7ED9;&#x4EE3;&#x7801;/&#x6570;&#x636E;&#x4E2D;&#x7684;&#x5730;&#x5740;&#x6253;&#x8865;&#x4E01;&#xFF08;&#x91CD;&#x5B9A;&#x4F4D;&#xFF09;&#x3002;</li>
+</ul>
+<p><code>-buildmode=pie</code> &#x6539;&#x53D8;&#x7684;&#x662F;&#x540E;&#x8005;&#x3002;&#x4E00;&#x4E2A;&#x7EAF; Go &#x7684; PIE &#x7A0B;&#x5E8F;<strong>&#x6CA1;&#x6709;&#x94FE;&#x63A5;&#x4EFB;&#x4F55;&#x5171;&#x4EAB;&#x5E93;</strong>&#xFF0C;&#x4F46;&#x5B83;&#x5FC5;&#x987B;&#x501F;&#x52A9;&#x7CFB;&#x7EDF;&#x7684;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x5668; <code>ld.so</code> &#x6765;&#x5B8C;&#x6210;&#x81EA;&#x91CD;&#x5B9A;&#x4F4D;&#xFF08;self-relocation&#xFF09;&#xFF0C;&#x4E8E;&#x662F; ELF &#x91CC;&#x5C31;&#x5E26;&#x4E0A;&#x4E86;&#x52A8;&#x6001;&#x6587;&#x4EF6;&#x6240;&#x9700;&#x7684;&#x4E00;&#x5957;&#x6807;&#x51C6;&#x7ED3;&#x6784;&#x3002;</p>
+<h3 id="&#x4E24;&#x79CD;&#x9759;&#x6001;&#x52A8;&#x6001;&#x8981;&#x5206;&#x5F00;&#x770B;">&#x4E24;&#x79CD;&#x201C;&#x9759;&#x6001;/&#x52A8;&#x6001;&#x201D;&#x8981;&#x5206;&#x5F00;&#x770B;</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>&#x9759;&#x6001;&#x94FE;&#x63A5;</th>
+<th>&#x52A8;&#x6001;&#x94FE;&#x63A5;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x65F6;&#x673A;</td>
+<td>&#x94FE;&#x63A5;&#x65F6;&#x5168;&#x90E8;&#x5B8C;&#x6210;</td>
+<td>&#x63A8;&#x8FDF;&#x5230;&#x88C5;&#x8F7D;/&#x8FD0;&#x884C;&#x65F6;</td>
+</tr>
+<tr>
+<td>&#x662F;&#x5426;&#x4F9D;&#x8D56; <code>.so</code></td>
+<td>&#x5426;</td>
+<td>&#x662F;&#xFF0C;&#x8BB0;&#x5F55;&#x5728; <code>DT_NEEDED</code></td>
+</tr>
+<tr>
+<td>&#x5178;&#x578B;&#x8BC1;&#x636E;</td>
+<td>&#x65E0; <code>DT_NEEDED</code>&#xFF0C;&#x65E0; <code>UND</code> &#x52A8;&#x6001;&#x7B26;&#x53F7;</td>
+<td><code>.dynsym</code> &#x6709; <code>UND</code> &#x7B26;&#x53F7;&#xFF0C;<code>.rela.plt</code> &#x6709; <code>JUMP_SLOT</code></td>
+</tr>
+<tr>
+<td>&#x5E38;&#x89C1;&#x4EA7;&#x7269;</td>
+<td><code>ET_EXEC</code> &#x6216; <code>ET_DYN</code></td>
+<td><code>ET_EXEC</code> &#x6216; <code>ET_DYN</code></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><code>ET_EXEC</code></th>
+<th><code>ET_DYN</code>&#xFF08;PIE&#xFF09;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x88C5;&#x8F7D;&#x57FA;&#x5740;</td>
+<td>&#x94FE;&#x63A5;&#x65F6;&#x56FA;&#x5B9A;</td>
+<td>&#x88C5;&#x8F7D;&#x65F6;&#x968F;&#x673A;&#x9009;&#x62E9;</td>
+</tr>
+<tr>
+<td>&#x91CD;&#x5B9A;&#x4F4D;&#x65F6;&#x673A;</td>
+<td>&#x94FE;&#x63A5;&#x65F6;&#x5B8C;&#x6210;</td>
+<td>&#x88C5;&#x8F7D;&#x65F6;&#x7531; <code>ld.so</code> &#x5B8C;&#x6210;</td>
+</tr>
+<tr>
+<td>&#x662F;&#x5426;&#x9700;&#x8981; loader</td>
+<td>&#x5426;</td>
+<td>&#x662F;&#xFF0C;&#x901A;&#x8FC7; <code>PT_INTERP</code> &#x6307;&#x5B9A;</td>
+</tr>
+<tr>
+<td>&#x5178;&#x578B;&#x8BC1;&#x636E;</td>
+<td>&#x65E0; <code>.interp</code>/<code>.dynamic</code></td>
+<td>&#x6709; <code>.interp</code>/<code>.dynamic</code>/<code>.rela</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>ET_EXEC</code> &#x548C; <code>ET_DYN</code> &#x90FD;&#x53EF;&#x4EE5;&#x662F;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x7684;&#xFF08;&#x4E0D;&#x4F9D;&#x8D56; <code>.so</code>&#xFF09;&#xFF1B;<code>ET_DYN</code> &#x4E5F;&#x4E0D;&#x4E00;&#x5B9A;&#x52A8;&#x6001;&#x94FE;&#x63A5; libc&#x3002;PIE &#x53EA;&#x662F;&#x9009;&#x62E9;&#x4E86; <code>ET_DYN</code> &#x8FD9;&#x79CD;&#x201C;&#x53EF;&#x88AB;&#x91CD;&#x5B9A;&#x4F4D;&#x201D;&#x7684;&#x5F62;&#x6001;&#x3002;</p>
+<h3 id="&#x9ED8;&#x8BA4;--buildmodeexe&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#x6CA1;&#x6709;&#x8FD9;&#x4E9B;-section">&#x9ED8;&#x8BA4; <code>-buildmode=exe</code>&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#x6CA1;&#x6709;&#x8FD9;&#x4E9B; section</h3>
+<p>&#x7EAF; Go&#x3001;&#x5185;&#x90E8;&#x94FE;&#x63A5;&#x3001;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code> &#x65F6;&#xFF0C;Go &#x94FE;&#x63A5;&#x5668;&#x81EA;&#x5DF1;&#x5B8C;&#x6210;&#x6240;&#x6709;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x548C;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x4EA7;&#x7269;&#x662F; <code>ET_EXEC</code>&#xFF0C;&#x4EE3;&#x7801;&#x6BB5;&#x4ECE;&#x56FA;&#x5B9A;&#x5730;&#x5740;&#xFF08;linux/amd64 &#x4E0A;&#x901A;&#x5E38;&#x662F; <code>0x400000</code>&#xFF09;&#x5F00;&#x59CB;&#x6620;&#x5C04;&#x3002;&#x7A0B;&#x5E8F;&#x91CC;&#x6240;&#x6709;&#x7B26;&#x53F7;&#x5730;&#x5740;&#x5728;&#x94FE;&#x63A5;&#x65F6;&#x5C31;&#x5DF2;&#x7ECF;&#x786E;&#x5B9A;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x4E0D;&#x9700;&#x8981;&#x4EFB;&#x4F55;&#x52A8;&#x6001;&#x89E3;&#x6790;&#x3002;</p>
+<p>&#xFF08;go1.24.13&#x3001;linux/amd64 &#x5B9E;&#x6D4B;&#xFF09;</p>
+<pre><code class="lang-bash">$ file exe
+exe: ELF 64-bit LSB executable, x86-64, ... statically linked, ...
+$ readelf -h exe | grep Type
+  Type: EXEC (Executable file)
+$ readelf <span class="hljs-_">-d</span> exe
+There is no dynamic section <span class="hljs-keyword">in</span> this file.
+$ ldd -r ./exe
+        not a dynamic executable
+</code></pre>
+<p>Go runtime &#x76F4;&#x63A5;&#x4F7F;&#x7528;&#x539F;&#x59CB;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#xFF0C;vDSO &#x4E5F;&#x662F;&#x8FD0;&#x884C;&#x65F6;&#x4ECE; auxv &#x91CC;&#x627E;&#x5230;&#x7684;&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x3002;&#x4EA7;&#x7269;&#x4E2D;&#x5F53;&#x7136;&#x8FD8;&#x6709; <code>.symtab</code>/<code>.strtab</code>&#xFF08;&#x94FE;&#x63A5;&#x548C;&#x8C03;&#x8BD5;&#x7528;&#x7684;&#x7B26;&#x53F7;&#x8868;&#xFF0C;Go &#x9ED8;&#x8BA4;&#x8FD8;&#x5E26; DWARF&#xFF09;&#xFF0C;&#x4F46;&#x5B83;&#x4EEC;&#x662F;&#x7ED9;&#x94FE;&#x63A5;&#x5668;&#x548C;&#x8C03;&#x8BD5;&#x5668;&#x7528;&#x7684;&#xFF0C;&#x4E0D;&#x662F;&#x88C5;&#x8F7D;&#x5668;&#x8FD0;&#x884C;&#x65F6;&#x505A;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x7528;&#x7684;&#x3002;</p>
+<h3 id="buildmodepie&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#x5FC5;&#x987B;&#x751F;&#x6210;&#x52A8;&#x6001;&#x7ED3;&#x6784;"><code>-buildmode=pie</code>&#xFF1A;&#x4E3A;&#x4EC0;&#x4E48;&#x5FC5;&#x987B;&#x751F;&#x6210;&#x52A8;&#x6001;&#x7ED3;&#x6784;</h3>
+<p>PIE &#x4EA7;&#x7269;&#x662F; <code>ET_DYN</code>&#xFF08;&#x65E7;&#x7248; <code>file</code> &#x751A;&#x81F3;&#x79F0;&#x5176;&#x4E3A; shared object&#xFF09;&#x3002;&#x5B83;&#x53EF;&#x80FD;&#x88AB;&#x88C5;&#x8F7D;&#x5230;&#x4EFB;&#x610F;&#x57FA;&#x5740;&#xFF0C;&#x800C; x86-64 &#x4E0A; Go &#x4EE3;&#x7801;&#x672C;&#x8EAB;&#x867D;&#x7136;&#x4F4D;&#x7F6E;&#x65E0;&#x5173;&#xFF0C;<strong>&#x6570;&#x636E;&#x6BB5;&#x91CC;&#x4ECD;&#x6709;&#x5927;&#x91CF;&#x7EDD;&#x5BF9;&#x5730;&#x5740;</strong>&#xFF1A;&#x51FD;&#x6570;&#x6307;&#x9488;&#x8868;&#x3001;itab/type &#x94FE;&#x63A5;&#x3001;<code>moduledata</code>&#x3001;GC &#x5143;&#x6570;&#x636E;&#x7B49;&#x3002;&#x94FE;&#x63A5;&#x65F6;&#x4E0D;&#x77E5;&#x9053;&#x6700;&#x7EC8;&#x57FA;&#x5740;&#xFF0C;&#x53EA;&#x80FD;&#x5728;&#x6587;&#x4EF6;&#x91CC;&#x7559;&#x4E0B;&#x91CD;&#x5B9A;&#x4F4D;&#x8BB0;&#x5F55;&#xFF0C;&#x7B49;&#x88C5;&#x8F7D;&#x65F6;&#x518D;&#x8865;&#x4E0A;&#x57FA;&#x5740;&#xFF1A;</p>
+<p>&#xFF08;go1.24.13 &#x5B9E;&#x6D4B;&#xFF0C;&#x793A;&#x4F8B;&#x7A0B;&#x5E8F;&#x6709; 6519 &#x6761;&#x91CD;&#x5B9A;&#x4F4D;&#xFF09;</p>
+<pre><code class="lang-bash">$ readelf -rW pie | awk <span class="hljs-string">&apos;/R_X86_64/{print $3}&apos;</span> | sort | uniq -c
+   6519 R_X86_64_RELATIVE
+</code></pre>
+<p>&#x5185;&#x6838;&#x88C5;&#x8F7D; <code>ET_DYN</code> &#x4E3B;&#x7A0B;&#x5E8F;&#x65F6;&#xFF0C;&#x53EA;&#x8D1F;&#x8D23;&#x6309; <code>PT_LOAD</code> &#x6620;&#x5C04;&#xFF0C;&#x7136;&#x540E;&#x8DF3;&#x5230; <code>PT_INTERP</code> &#x6307;&#x5B9A;&#x7684;&#x89E3;&#x91CA;&#x5668;&#xFF1B;<strong>&#x5185;&#x6838;&#x4E0D;&#x505A;&#x52A8;&#x6001;&#x91CD;&#x5B9A;&#x4F4D;</strong>&#x3002;&#x5982;&#x679C; PIE &#x6CA1;&#x6709;&#x81EA;&#x5E26;&#x91CD;&#x5B9A;&#x4F4D;&#x4EE3;&#x7801;&#xFF08;&#x53EA;&#x6709; static-pie &#x624D;&#x5E26;&#xFF09;&#xFF0C;&#x5C31;&#x5FC5;&#x987B;&#x628A;&#x63A7;&#x5236;&#x6743;&#x4EA4;&#x7ED9;&#x7528;&#x6237;&#x6001;&#x7684; <code>ld.so</code>&#x3002;</p>
+<p>&#x56E0;&#x6B64; ELF &#x5FC5;&#x987B;&#x643A;&#x5E26;&#xFF1A;</p>
+<ul>
+<li><code>PT_INTERP</code> &#x2192; <code>.interp</code>&#xFF1A;&#x544A;&#x8BC9;&#x5185;&#x6838;&#x7528;&#x54EA;&#x4E2A; loader&#xFF0C;&#x4F8B;&#x5982; <code>/lib64/ld-linux-x86-64.so.2</code>&#xFF1B;</li>
+<li><code>PT_DYNAMIC</code> &#x2192; <code>.dynamic</code>&#xFF1A;&#x544A;&#x8BC9; loader &#x91CD;&#x5B9A;&#x4F4D;&#x8868;&#x3001;&#x7B26;&#x53F7;&#x8868;&#x3001;hash &#x8868;&#x7684;&#x4F4D;&#x7F6E;&#xFF0C;&#x5373; <code>DT_RELA/DT_RELASZ/DT_RELAENT</code>&#x3001;<code>DT_SYMTAB/DT_STRTAB/DT_HASH</code>&#x3001;<code>DT_PLTGOT</code>&#x3001;<code>DT_FLAGS_1=DF_1_PIE</code> &#x7B49;&#xFF1B;</li>
+<li><code>.rela</code>&#xFF1A;&#x91CD;&#x5B9A;&#x4F4D;&#x6761;&#x76EE;&#x672C;&#x8EAB;&#xFF1B;</li>
+<li><code>.dynsym/.dynstr/.hash</code>&#xFF1A;&#x52A8;&#x6001; ELF &#x7684;&#x6807;&#x51C6;&#x8868;&#x7ED3;&#x6784;&#x3002;</li>
+</ul>
+<p>&#xFF08;go1.24.13&#x3001;&#x7EAF; Go &#x5185;&#x90E8;&#x94FE;&#x63A5; PIE &#x5B9E;&#x6D4B;&#xFF1B;&#x8282;&#x533A;&#x6392;&#x5217;&#x987A;&#x5E8F;&#x4E0E; GNU ld &#x4EA7;&#x7269;&#x4E0D;&#x540C;&#xFF0C;&#x4E0D;&#x5F71;&#x54CD;&#x542B;&#x4E49;&#xFF09;</p>
+<pre><code class="lang-bash">$ readelf -SW pie | grep -E <span class="hljs-string">&apos;\.(interp|rela|rela\.plt|dynsym|dynstr|hash|dynamic|plt|got)&apos;</span>
+  [ 2] .plt        PROGBITS  0000000000491f80 091f80 000010 10  AX  0   0 16
+  [ 4] .rela       RELA      00000000004b9018 0b9018 026328 18   A 10   0  8
+  [ 5] .rela.plt   RELA      00000000004df340 0df340 000000 18   A 10   2  8
+  [ 7] .dynstr     STRTAB    00000000004df340 0df340 000001 00   A  0   0  1
+  [ 9] .hash       HASH      00000000004df350 0df350 000014 04   A 10   0  8
+  [10] .dynsym     DYNSYM    00000000004df370 0df370 000018 18   A  7   1  8
+  [12] .got        PROGBITS  0000000000504180 104180 000000 08  WA  0   0  8
+  [13] .dynamic    DYNAMIC   0000000000504180 104180 0000c0 10  WA  7   0  8
+  [20] .got.plt    PROGBITS  000000000057e160 17e160 000018 08  WA  0   0  8
+  [33] .interp     PROGBITS  0000000000400fe4 000fe4 00001c 00   A  0   0  1
+</code></pre>
+<pre><code class="lang-bash">$ readelf <span class="hljs-_">-d</span>W pie
+Dynamic section at offset 0x104180 contains 12 entries:
+  Tag        Type                         Name/Value
+ 0x0000000000000004 (HASH)               0x4df350
+ 0x0000000000000006 (SYMTAB)             0x4df370
+ 0x000000000000000b (SYMENT)             24 (bytes)
+ 0x0000000000000005 (STRTAB)             0x4df340
+ 0x000000000000000a (STRSZ)              1 (bytes)
+ 0x0000000000000007 (RELA)               0x4b9018
+ 0x0000000000000008 (RELASZ)             156456 (bytes)
+ 0x0000000000000009 (RELAENT)            24 (bytes)
+ 0x0000000000000003 (PLTGOT)             0x57e160
+ 0x0000000000000015 (DEBUG)              0x0
+ 0x000000006ffffffb (FLAGS_1)            Flags: PIE
+ 0x0000000000000000 (NULL)               0x0
+</code></pre>
+<p>&#x6CE8;&#x610F;&#x8FD9;&#x4E9B;&#x201C;&#x6700;&#x5C0F;&#x5316;&#x201D;&#x7684;&#x7EC6;&#x8282;&#xFF1A;<strong>&#x6CA1;&#x6709; <code>NEEDED</code>&#xFF0C;&#x4E5F;&#x6CA1;&#x6709; <code>JMPREL</code></strong>&#xFF1B;<code>STRSZ</code> &#x53EA;&#x6709; 1 &#x5B57;&#x8282;&#xFF1B;<code>.dynsym</code> &#x91CC;&#x53EA;&#x6709; 1 &#x4E2A; 0 &#x53F7;&#x7A7A;&#x7B26;&#x53F7;&#xFF1B;<code>.rela.plt</code> &#x4E3A;&#x7A7A;&#xFF1B;<code>.plt</code> &#x53EA;&#x6709;&#x4E00;&#x6BB5;&#x6C38;&#x8FDC;&#x4E0D;&#x4F1A;&#x88AB;&#x8C03;&#x7528;&#x7684; PLT0 &#x6869;&#x4EE3;&#x7801;&#xFF1B;<code>.got</code> &#x5927;&#x5C0F;&#x4E3A; 0&#x3002;&#x8FD9;&#x8BF4;&#x660E; PIE &#x6A21;&#x5F0F;&#x4E0B;&#x7684; <code>ld.so</code> &#x53EA;&#x8D1F;&#x8D23;<strong>&#x505A;&#x91CD;&#x5B9A;&#x4F4D;</strong>&#xFF0C;&#x4E0D;&#x9700;&#x8981;&#x89E3;&#x6790;&#x4EFB;&#x4F55;&#x7B26;&#x53F7;&#x3002;</p>
+<p>loader &#x505A;&#x5B8C;&#x91CD;&#x5B9A;&#x4F4D;&#x3001;&#x586B;&#x5199; <code>DT_DEBUG</code>&#xFF08;&#x4F9B;&#x8C03;&#x8BD5;&#x5668;&#x8BFB;&#x53D6; <code>link_map</code>&#xFF09;&#x540E;&#x8DF3;&#x5230; entry&#xFF1B;Go runtime &#x542F;&#x52A8;&#x540E;&#x4ECD;&#x7136;&#x53EA;&#x7528;&#x539F;&#x59CB;&#x7CFB;&#x7EDF;&#x8C03;&#x7528;&#x548C; vDSO&#xFF0C;&#x4E0D;&#x4F9D;&#x8D56; libc&#x3002;</p>
+<p>&#x6240;&#x4EE5;&#x66F4;&#x51C6;&#x786E;&#x7684;&#x8BF4;&#x6CD5;&#x662F;&#xFF1A;<strong>PIE &#x662F;&#x201C;&#x52A8;&#x6001; ELF + &#x9759;&#x6001;&#x94FE;&#x63A5;&#x201D;&#xFF0C;&#x5B83;&#x9700;&#x8981;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x5668;&#xFF0C;&#x4F46;&#x4E0D;&#x4F9D;&#x8D56;&#x5171;&#x4EAB;&#x5E93;&#x3002;</strong></p>
+<h3 id="&#x4E3A;&#x4EC0;&#x4E48;-ldd-&#x4ECD;&#x7136;&#x663E;&#x793A;-statically-linked">&#x4E3A;&#x4EC0;&#x4E48; <code>ldd</code> &#x4ECD;&#x7136;&#x663E;&#x793A; statically linked</h3>
+<p><code>ldd</code> &#x4E0D;&#x662F;&#x72EC;&#x7ACB;&#x5206;&#x6790;&#x5DE5;&#x5177;&#xFF0C;&#x5B83;&#x672C;&#x8D28;&#x4E0A;&#x662F;&#x8BA9;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x5668;&#x4EE5; <code>LD_TRACE_LOADED_OBJECTS=1</code> &#x6A21;&#x5F0F;&#x8DD1;&#x4E00;&#x904D;&#xFF0C;&#x62A5;&#x544A;&#x201C;&#x9700;&#x8981;&#x88C5;&#x8F7D;&#x54EA;&#x4E9B;&#x5171;&#x4EAB;&#x5E93;&#x201D;&#xFF1A;</p>
+<ul>
+<li>&#x5BF9;&#x6CA1;&#x6709; <code>PT_INTERP</code> &#x7684;&#x9759;&#x6001; <code>ET_EXEC</code>&#xFF0C;<code>ldd</code> &#x7ED9;&#x51FA; <code>not a dynamic executable</code>&#xFF1B;</li>
+<li>&#x5BF9;&#x6709; <code>PT_INTERP</code> &#x4F46;&#x6CA1;&#x6709; <code>DT_NEEDED</code> &#x7684; PIE&#xFF0C;<code>ld.so</code> &#x53D1;&#x73B0;&#x6CA1;&#x6709;&#x5171;&#x4EAB;&#x5E93;&#x4F9D;&#x8D56;&#xFF0C;&#x4E8E;&#x662F;&#x6253;&#x5370; <code>statically linked</code>&#x3002;</li>
+</ul>
+<p>&#x6240;&#x4EE5;&#x4E24;&#x4E2A;&#x8BF4;&#x6CD5;&#x90FD;&#x5BF9;&#xFF0C;&#x53EA;&#x662F;&#x5C42;&#x9762;&#x4E0D;&#x540C;&#xFF1A;</p>
+<ul>
+<li><code>file</code> &#x8F93;&#x51FA;&#x91CC;&#x7684; <code>dynamically linked</code> &#x8868;&#x793A;&#x201C;&#x5B58;&#x5728; <code>PT_INTERP</code>&#x201D;&#xFF1B;</li>
+<li><code>ldd</code> &#x8F93;&#x51FA;&#x91CC;&#x7684; <code>statically linked</code> &#x8868;&#x793A;&#x201C;&#x6CA1;&#x6709; <code>DT_NEEDED</code> &#x5171;&#x4EAB;&#x5E93;&#x4F9D;&#x8D56;&#x201D;&#x3002;</li>
+</ul>
+<p>&#xFF08;go1.24.13 &#x5B9E;&#x6D4B;&#xFF1A;<code>ldd -r ./exe</code> &#x8F93;&#x51FA; <code>not a dynamic executable</code>&#xFF1B;<code>ldd -r ./pie</code> &#x8F93;&#x51FA; <code>statically linked</code>&#x3002;&#xFF09;</p>
+<p>&#x8FD8;&#x8981;&#x6CE8;&#x610F; <code>.interp</code> &#x662F;<strong>&#x771F;&#x5B9E;&#x4F9D;&#x8D56;</strong>&#xFF1A;&#x5B83;&#x786C;&#x7F16;&#x7801;&#x4E86; loader &#x7684;&#x8DEF;&#x5F84;&#x3002;&#x628A;&#x8FD9;&#x79CD; PIE &#x62F7;&#x5230;&#x6CA1;&#x6709; glibc loader &#x7684;&#x7CFB;&#x7EDF;&#xFF08;&#x4F8B;&#x5982;&#x7EAF; musl &#x5BB9;&#x5668;&#xFF09;&#x91CC;&#x4F1A;&#x8DD1;&#x4E0D;&#x8D77;&#x6765;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x5E76;&#x4E0D;&#x662F;&#x201C;&#x81EA;&#x5305;&#x542B;&#x201D;&#x7684;&#x3002;</p>
+<h3 id="&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x3001;cgo&#x3001;-linkshared-&#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;">&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x3001;cgo&#x3001;<code>-linkshared</code> &#x624D;&#x662F;&#x771F;&#x6B63;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;</h3>
+<p>&#x540C;&#x6837;&#x662F;&#x201C;&#x6709;&#x8FD9;&#x4E9B; section&#x201D;&#xFF0C;&#x542B;&#x4E49;&#x5E76;&#x4E0D;&#x76F8;&#x540C;&#xFF1A;</p>
+<ul>
+<li><strong>cgo / &#x5916;&#x90E8;&#x94FE;&#x63A5;</strong>&#xFF1A;&#x4EA7;&#x7269;&#x91CC;&#x51FA;&#x73B0; <code>DT_NEEDED libc.so.6</code>&#x3001;<code>libpthread.so.0</code>&#xFF0C;<code>.dynsym</code> &#x91CC;&#x6709;&#x5927;&#x91CF; <code>UND</code> &#x7B26;&#x53F7;&#xFF08;&#x5E26; <code>GLIBC_2.2.5</code> &#x4E4B;&#x7C7B;&#x7684;&#x7248;&#x672C;&#xFF09;&#xFF0C;<code>.rela.plt</code> &#x91CC;&#x6709; <code>JUMP_SLOT</code>&#xFF0C;&#x88C5;&#x8F7D;&#x65F6;&#x7531; <code>ld.so</code> &#x771F;&#x6B63;&#x505A;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x548C;&#x5171;&#x4EAB;&#x5E93;&#x88C5;&#x8F7D;&#x3002;</li>
+<li><strong>&#x7EAF; Go + <code>-linkmode=external</code></strong>&#xFF08;&#x9700; <code>CGO_ENABLED=1</code>&#xFF09;&#xFF1A;&#x5373;&#x4F7F;&#x6E90;&#x7801;&#x6CA1;&#x6709; <code>import &quot;C&quot;</code>&#xFF0C;&#x4E5F;&#x4F1A;&#x4EA4;&#x7ED9; gcc/ld &#x94FE;&#x63A5;&#xFF0C;&#x9ED8;&#x8BA4;&#x4EA7;&#x51FA;&#x52A8;&#x6001; <code>ET_EXEC</code>&#xFF08;&#x5B9E;&#x6D4B;&#x5E26; <code>NEEDED libpthread/libc</code>&#xFF09;&#x3002;&#x8981;&#x9759;&#x6001;&#x53EF;&#x52A0; <code>-extldflags=-static</code>&#xFF0C;&#x4F46;&#x8FD9;&#x8981;&#x6C42;&#x7CFB;&#x7EDF;&#x5B89;&#x88C5;&#x4E86;&#x9759;&#x6001; libc&#xFF1B;&#x672C;&#x673A;&#x672A;&#x88C5;&#xFF0C;ld &#x4F1A;&#x62A5; <code>cannot find -lpthread</code>/<code>-lc</code>&#x3002;</li>
+<li><strong><code>-linkshared</code></strong>&#xFF1A;&#x94FE;&#x63A5; Go &#x81EA;&#x5DF1;&#x6784;&#x5EFA;&#x7684; <code>libstd.so</code>&#x3001;<code>libruntime.so</code>&#xFF0C;<code>DT_NEEDED</code> &#x5B83;&#x4EEC;&#xFF0C;Go &#x7B26;&#x53F7;&#x901A;&#x8FC7; <code>.dynsym</code> &#x52A8;&#x6001;&#x89E3;&#x6790;&#x3002;</li>
+<li><strong><code>-buildmode=pie</code> &#x53EA;&#x662F;&#x628A; <code>ET_EXEC</code> &#x6362;&#x6210; <code>ET_DYN</code></strong>&#xFF1B;&#x4E0E;&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x53E0;&#x52A0;&#x65F6;&#xFF0C;&#x5C31;&#x540C;&#x65F6;&#x5177;&#x5907; PIE &#x548C;&#x771F;&#x6B63;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x3002;</li>
+</ul>
+<p>&#x5404;&#x79CD;&#x6784;&#x5EFA;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x7167;&#xFF08;&#x8F93;&#x51FA;&#x57FA;&#x4E8E; go1.24.13&#x3001;linux/amd64&#xFF09;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th>&#x6784;&#x5EFA;&#x65B9;&#x5F0F;</th>
+<th>Type</th>
+<th><code>PT_INTERP</code></th>
+<th><code>.dynsym</code></th>
+<th><code>DT_NEEDED</code></th>
+<th><code>ldd -r</code></th>
+<th>&#x8BF4;&#x660E;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>&#x7EAF; Go&#xFF0C;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code></td>
+<td><code>EXEC</code></td>
+<td>&#x65E0;</td>
+<td>&#x65E0;</td>
+<td>&#x65E0;</td>
+<td><code>not a dynamic executable</code></td>
+<td>&#x5185;&#x6838;&#x76F4;&#x63A5;&#x88C5;&#x8F7D;</td>
+</tr>
+<tr>
+<td>&#x7EAF; Go&#xFF0C;<code>-buildmode=pie</code></td>
+<td><code>DYN</code></td>
+<td>&#x6709;</td>
+<td>&#x4EC5; 0 &#x53F7;&#x7A7A;&#x7B26;&#x53F7;</td>
+<td>&#x65E0;</td>
+<td><code>statically linked</code></td>
+<td><code>ld.so</code> &#x53EA;&#x505A;&#x91CD;&#x5B9A;&#x4F4D;</td>
+</tr>
+<tr>
+<td>cgo / &#x5916;&#x90E8;&#x94FE;&#x63A5;</td>
+<td><code>EXEC</code></td>
+<td>&#x6709;</td>
+<td>&#x5927;&#x91CF; <code>UND</code>&#xFF08;&#x5E26;&#x7248;&#x672C;&#xFF09;</td>
+<td>libc&#x3001;libpthread</td>
+<td>&#x5217;&#x51FA;&#x5171;&#x4EAB;&#x5E93;</td>
+<td>&#x771F;&#x6B63;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;</td>
+</tr>
+<tr>
+<td><code>-buildmode=pie</code> + &#x5916;&#x90E8;&#x94FE;&#x63A5;</td>
+<td><code>DYN</code></td>
+<td>&#x6709;</td>
+<td>&#x540C;&#x4E0A;</td>
+<td>libc&#x3001;libpthread</td>
+<td>&#x5217;&#x51FA;&#x5171;&#x4EAB;&#x5E93;</td>
+<td>&#x52A8;&#x6001;&#x94FE;&#x63A5; + PIE</td>
+</tr>
+<tr>
+<td><code>-linkshared</code></td>
+<td><code>DYN</code>/<code>EXEC</code></td>
+<td>&#x6709;</td>
+<td>Go &#x7B26;&#x53F7;</td>
+<td>libstd/libruntime</td>
+<td>&#x5217;&#x51FA;&#x5171;&#x4EAB;&#x5E93;</td>
+<td>&#x94FE;&#x63A5; Go &#x5171;&#x4EAB;&#x5E93;</td>
+</tr>
+<tr>
+<td>static-pie&#xFF08;&#x5916;&#x90E8;&#x94FE;&#x63A5;&#xFF09;</td>
+<td><code>DYN</code></td>
+<td>&#x65E0;</td>
+<td>&#x6700;&#x5C0F;</td>
+<td>&#x65E0;</td>
+<td>&#x901A;&#x5E38; <code>not a dynamic executable</code></td>
+<td>&#x81EA;&#x5E26;&#x81EA;&#x4E3E;&#x91CD;&#x5B9A;&#x4F4D;</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x771F;&#x6B63;&#x81EA;&#x5305;&#x542B;&#x7684;-pie&#xFF1A;static-pie">&#x771F;&#x6B63;&#x81EA;&#x5305;&#x542B;&#x7684; PIE&#xFF1A;static-pie</h3>
+<p>&#x5982;&#x679C; PIE &#x4E0D;&#x5E26; <code>PT_INTERP</code>&#xFF0C;&#x4E5F;&#x4E0D;&#x9700;&#x8981;&#x7CFB;&#x7EDF; loader&#xFF0C;&#x90A3;&#x5B83;&#x5FC5;&#x987B;&#x5728;&#x542F;&#x52A8;&#x4EE3;&#x7801;&#x91CC;&#x81EA;&#x5DF1;&#x5B8C;&#x6210;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x8FD9;&#x7C7B;&#x4EA7;&#x7269;&#x79F0;&#x4E3A; <strong>static-pie</strong>&#xFF08;gcc &#x7684; <code>-static-pie</code>&#x3001;musl &#x7684; <code>rcrt1.o</code> &#x90FD;&#x63D0;&#x4F9B;&#x8FD9;&#x79CD;&#x81EA;&#x4E3E;&#x91CD;&#x5B9A;&#x4F4D;&#x542F;&#x52A8;&#x4EE3;&#x7801;&#xFF09;&#x3002;</p>
+<p>Go &#x5185;&#x90E8;&#x94FE;&#x63A5;&#x5668;&#x6CA1;&#x6709;&#x751F;&#x6210;&#x8FD9;&#x79CD;&#x81EA;&#x4E3E;&#x91CD;&#x5B9A;&#x4F4D;&#x4EE3;&#x7801;&#xFF0C;&#x6240;&#x4EE5;&#x5B83;&#x7684; PIE &#x5FC5;&#x987B;&#x501F;&#x7528;&#x7CFB;&#x7EDF; <code>ld.so</code>&#x3002;&#x82E5;&#x60F3;&#x7528; Go &#x6784;&#x5EFA; static-pie&#xFF0C;&#x9700;&#x8981;&#x8D70;&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x5E76;&#x8BA9; C &#x5DE5;&#x5177;&#x94FE;&#x53C2;&#x4E0E;&#xFF0C;&#x4F8B;&#x5982; <code>-buildmode=pie -ldflags=&quot;-linkmode=external -extldflags=-static-pie&quot;</code>&#xFF0C;&#x5177;&#x4F53;&#x662F;&#x5426;&#x53EF;&#x7528;&#x53D6;&#x51B3;&#x4E8E;&#x7CFB;&#x7EDF;&#x7684; C &#x5DE5;&#x5177;&#x94FE;&#x548C;&#x9759;&#x6001;&#x5E93;&#x652F;&#x6301;&#x3002;</p>
+<h3 id="&#x5BF9;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x610F;&#x4E49;">&#x5BF9;&#x8C03;&#x8BD5;&#x5668;&#x7684;&#x610F;&#x4E49;</h3>
+<p>&#x7406;&#x89E3;&#x4E86;&#x8FD9;&#x4E9B;&#x533A;&#x522B;&#xFF0C;&#x5BF9;&#x5F00;&#x53D1;&#x548C;&#x4F7F;&#x7528;&#x8C03;&#x8BD5;&#x5668;&#x90FD;&#x6709;&#x76F4;&#x63A5;&#x5E2E;&#x52A9;&#xFF1A;</p>
+<ul>
+<li><strong>&#x5224;&#x65AD;&#x662F;&#x4E0D;&#x662F; PIE</strong>&#xFF1A;<code>e_type == ET_DYN</code>&#x3001;&#x5B58;&#x5728; <code>PT_INTERP</code>&#x3001;<code>DT_FLAGS_1</code> &#x542B; <code>DF_1_PIE</code>&#xFF1B;&#x4E5F;&#x53EF;&#x4EE5;&#x7ED3;&#x5408; auxv &#x7684; <code>AT_PHDR</code>/<code>AT_ENTRY</code> &#x4E0E; ELF &#x5934;&#x4E2D;&#x7684; <code>p_vaddr</code>/<code>e_entry</code> &#x8BA1;&#x7B97;&#x88C5;&#x8F7D;&#x57FA;&#x5740;&#xFF08;load bias&#xFF09;&#x3002;</li>
+<li><strong>&#x7B26;&#x53F7;&#x5730;&#x5740;&#x6362;&#x7B97;</strong>&#xFF1A;PIE &#x7684; <code>.symtab</code>/<code>.dynsym</code> &#x4E2D;&#x8BB0;&#x5F55;&#x7684;&#x662F;&#x94FE;&#x63A5;&#x65F6;&#x5730;&#x5740;&#xFF0C;&#x8FD0;&#x884C;&#x65F6;&#x5730;&#x5740;&#x9700;&#x8981;&#x52A0;&#x4E0A; load bias&#xFF1B;&#x9759;&#x6001; <code>ET_EXEC</code> &#x7684; load bias &#x53EF;&#x89C6;&#x4E3A; 0&#x3002;</li>
+<li><strong>&#x4E0D;&#x8981;&#x88AB; <code>.dynsym</code> &#x8BEF;&#x5BFC;</strong>&#xFF1A;&#x6709; <code>.dynsym</code> &#x4E0D;&#x7B49;&#x4E8E;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x4E86; libc&#xFF0C;&#x5185;&#x90E8;&#x94FE;&#x63A5;&#x7684; Go PIE &#x91CC;&#x5B83;&#x53EF;&#x80FD;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x7A7A;&#x7B26;&#x53F7;&#xFF1B;&#x8981;&#x5224;&#x65AD;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x770B; <code>DT_NEEDED</code> &#x548C; <code>UND</code> &#x7B26;&#x53F7;&#x3002;</li>
+<li><strong>&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x7A0B;&#x5E8F;&#x7684;&#x542F;&#x52A8;&#x4FE1;&#x606F;</strong>&#xFF1A;<code>ld.so</code> &#x4F1A;&#x586B;&#x5199; <code>DT_DEBUG</code>&#xFF0C;&#x6307;&#x5411; <code>r_debug</code>/<code>link_map</code>&#xFF1B;GDB &#x7B49;&#x8C03;&#x8BD5;&#x5668;&#x901A;&#x8FC7;&#x5B83;&#x83B7;&#x53D6;&#x5DF2;&#x88C5;&#x8F7D;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x4FE1;&#x606F;&#x3002;&#x8FD9;&#x662F;&#x8C03;&#x8BD5;&#x5668;&#x5904;&#x7406;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x7A0B;&#x5E8F;&#x7684;&#x91CD;&#x8981;&#x5165;&#x53E3;&#x3002;</li>
+</ul>
+<h3 id="&#x9A8C;&#x8BC1;&#x547D;&#x4EE4;">&#x9A8C;&#x8BC1;&#x547D;&#x4EE4;</h3>
+<pre><code class="lang-bash"><span class="hljs-comment"># 1. &#x770B; ELF &#x7C7B;&#x578B;&#xFF1A;EXEC &#x8FD8;&#x662F; DYN</span>
+readelf -h bin | grep Type
+
+<span class="hljs-comment"># 2. &#x770B;&#x662F;&#x5426;&#x9700;&#x8981; loader&#xFF1A;&#x6709;&#x6CA1;&#x6709; PT_INTERP</span>
+readelf <span class="hljs-_">-l</span>W bin | grep -E <span class="hljs-string">&apos;INTERP|DYNAMIC&apos;</span>
+
+<span class="hljs-comment"># 3. &#x770B;&#x662F;&#x5426;&#x771F;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF1A;&#x6709;&#x6CA1;&#x6709; NEEDED &#x4EE5;&#x53CA; PIE &#x6807;&#x8BB0;</span>
+readelf <span class="hljs-_">-d</span>W bin | grep -E <span class="hljs-string">&apos;NEEDED|FLAGS_1&apos;</span>
+
+<span class="hljs-comment"># 4. &#x770B;&#x91CD;&#x5B9A;&#x4F4D;&#x7C7B;&#x578B;&#xFF1A;RELATIVE &#x662F;&#x81EA;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;JUMP_SLOT/GLOB_DAT &#x624D;&#x662F;&#x7B26;&#x53F7;&#x89E3;&#x6790;</span>
+readelf -rW bin | awk <span class="hljs-string">&apos;/R_X86_64/{print $3}&apos;</span> | sort | uniq -c
+
+<span class="hljs-comment"># 5. &#x770B;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#xFF1A;&#x6709; UND &#x7B26;&#x53F7;&#x624D;&#x8BF4;&#x660E;&#x9700;&#x8981;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;</span>
+readelf <span class="hljs-_">-s</span>W --dyn-syms bin
+
+<span class="hljs-comment"># 6. ldd &#x53EA;&#x80FD;&#x56DE;&#x7B54;&#x201C;&#x4F9D;&#x8D56;&#x54EA;&#x4E9B;&#x5171;&#x4EAB;&#x5E93;&#x201D;</span>
+ldd -r bin
+</code></pre>
+<p>&#x4E00;&#x53E5;&#x8BDD;&#x603B;&#x7ED3;&#xFF1A;&#x5224;&#x65AD;&#x201C;&#x662F;&#x5426;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x201D;&#x770B; <code>DT_NEEDED</code>&#xFF0C;&#x5224;&#x65AD;&#x201C;&#x662F;&#x5426;&#x9700;&#x8981; loader&#x201D;&#x770B; <code>PT_INTERP</code>&#xFF0C;&#x5224;&#x65AD;&#x201C;&#x662F;&#x5426;&#x6709;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x201D;&#x770B; <code>.dynsym</code> &#x4E2D;&#x662F;&#x5426;&#x6709; <code>UND</code> &#x7B26;&#x53F7;&#xFF1B;&#x4E09;&#x8005;&#x53EF;&#x4EE5;&#x5F7C;&#x6B64;&#x72EC;&#x7ACB;&#x3002;</p>
+<h3 id="&#x7248;&#x672C;&#x8BF4;&#x660E;">&#x7248;&#x672C;&#x8BF4;&#x660E;</h3>
+<p>&#x4EE5;&#x4E0A;&#x8F93;&#x51FA;&#x57FA;&#x4E8E; go1.24.13&#x3001;linux/amd64&#xFF08;Oracle Linux 8&#xFF0C;glibc 2.28&#xFF09;&#x5B9E;&#x6D4B;&#xFF1B;&#x4E0D;&#x540C; Go &#x7248;&#x672C;&#x3001;&#x4E0D;&#x540C;&#x53D1;&#x884C;&#x7248;&#x5728; section &#x987A;&#x5E8F;&#x3001;section &#x540D;&#x5B57;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x6761;&#x6570;&#x7B49;&#x7EC6;&#x8282;&#x4E0A;&#x53EF;&#x80FD;&#x7565;&#x6709;&#x5DEE;&#x5F02;&#xFF0C;&#x4F46;&#x7ED3;&#x8BBA;&#x4E0D;&#x53D8;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="93-anatomy-of-elf-core-file.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 12.16 More: ELF core文件格式剖析">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"12.17 More: PIE可执行文件为什么有.interp/.dynsym/.dynamic","level":"1.12.17","depth":2,"previous":{"title":"12.16 More: ELF core文件格式剖析","level":"1.12.16","depth":2,"path":"12-appendix/93-anatomy-of-elf-core-file.md","ref":"12-appendix/93-anatomy-of-elf-core-file.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"12-appendix/94-why-pie-has-dyn-sections.md","mtime":"2026-11-07T19:34:52.089Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T19:35:19.407Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-github/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/anchor.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/gumshoe.polyfills.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-intopic-toc/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

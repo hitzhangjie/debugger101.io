@@ -2661,6 +2661,56 @@ Key to Flags:
   C (compressed), x (unknown), o (OS specific), E (exclude),
   D (mbind), l (large), p (processor specific)
 </code></pre>
+<h3 id="&#x7528;-readelf-&#x770B;-go-&#x4EA7;&#x7269;&#x7684;&#x6587;&#x4EF6;&#x5E03;&#x5C40;">&#x7528; readelf &#x770B; Go &#x4EA7;&#x7269;&#x7684;&#x6587;&#x4EF6;&#x5E03;&#x5C40;</h3>
+<p>&#x5F00;&#x5934;&#x8BF4; Go &#x5185;&#x90E8;&#x94FE;&#x63A5;&#x5E38;&#x89C1;&#x7684;&#x6392;&#x5E03;&#x662F;&#x8282;&#x5934;&#x8868;&#x7D27;&#x8DDF;&#x6BB5;&#x5934;&#x8868;&#x3001;&#x8282;&#x6570;&#x636E;&#x5728;&#x540E;&#x3002;&#x8FD8;&#x662F;&#x540C;&#x4E00;&#x4EFD; hello&#xFF08;go1.24.13&#xFF0C;linux/amd64&#xFF09;&#x3002;</p>
+<p><code>readelf -h hello</code> &#x91CC;&#x548C;&#x5E03;&#x5C40;&#x6709;&#x5173;&#x7684;&#x662F;&#x8FD9;&#x51E0;&#x884C;&#xFF1A;64 &#x662F; <code>e_phoff</code>&#xFF0C;400 &#x662F; <code>e_shoff</code>&#x3002;</p>
+<pre><code class="lang-bash">$ readelf -h hello
+  Start of program headers:          64 (bytes into file)
+  Start of section headers:          400 (bytes into file)
+  Size of this header:               64 (bytes)
+  Size of program headers:           56 (bytes)
+  Number of program headers:         6
+  Size of section headers:           64 (bytes)
+  Number of section headers:         25
+</code></pre>
+<p>&#x6587;&#x4EF6;&#x5934;&#x5360; [0, 0x40)&#x3002;&#x6BB5;&#x5934;&#x8868; 6 &#x9879; &#xD7; 56 &#x5B57;&#x8282; = 0x150&#xFF0C;&#x5230; 0x190 &#x7ED3;&#x675F;&#xFF0C;&#x548C; <code>readelf -l</code> &#x91CC; PHDR &#x7684; FileSiz <code>0x150</code> &#x662F;&#x540C;&#x4E00;&#x5757;&#x3002;&#x8282;&#x5934;&#x8868; 25 &#x9879; &#xD7; 64 &#x5B57;&#x8282; = 0x640&#xFF0C;&#x4ECE; 0x190 &#x5230; 0x7d0&#x3002;&#x524D;&#x90E8;&#x5C31;&#x662F;&#x6587;&#x4EF6;&#x5934;&#x3001;&#x6BB5;&#x5934;&#x8868;&#x3001;&#x8282;&#x5934;&#x8868;&#x3002;</p>
+<p>&#x8282;&#x6570;&#x636E;&#x770B; <code>Off</code>&#x3002;<code>[Nr]</code> &#x53EA;&#x662F;&#x8282;&#x5934;&#x8868;&#x4E0B;&#x6807;&#x3002;&#x4ECE;&#x524D;&#x9762;&#x90A3;&#x4EFD; <code>readelf -W -S</code> &#x62BD;&#x51FA;&#x8FD9;&#x51E0;&#x884C;&#xFF1A;&#x8282;&#x5934;&#x8868;&#x4ECE; 0x190 &#x5F00;&#x59CB;&#xFF0C;<code>.note.go.buildid</code> &#x5728; 0xf78&#xFF0C;<code>.note.gnu.build-id</code> &#x5728; 0xfdc&#xFF0C;<code>.text</code> &#x5728; 0x1000&#x3002;<code>[1]</code> &#x662F; <code>.text</code>&#xFF0C;note &#x6392;&#x5728; <code>[20]</code>&#x3001;<code>[21]</code>&#xFF0C;&#x6587;&#x4EF6;&#x504F;&#x79FB;&#x66F4;&#x9760;&#x524D;&#x3002;</p>
+<pre><code class="lang-bash">$ readelf -W -S hello
+There are 25 section headers, starting at offset 0x190:
+
+Section Headers:
+  [Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
+  [ 1] .text             PROGBITS        0000000000401000 001000 0b0bb1 00  AX  0   0 32
+  ...
+  [20] .note.gnu.build-id NOTE            0000000000400fdc 000fdc 000024 00   A  0   0  4
+  [21] .note.go.buildid  NOTE            0000000000400f78 000f78 000064 00   A  0   0  4
+</code></pre>
+<p>0x7d0 &#x5230; 0xf78 &#x6CA1;&#x6709;&#x8282;&#x3002;<code>hexdump -C -s 0x780 -n 0x200 hello</code> &#x4ECE;&#x8282;&#x5934;&#x8868;&#x672B;&#x5C3E;&#x770B; 512 &#x5B57;&#x8282;&#xFF1A;0x7d0 &#x4E4B;&#x524D;&#x662F;&#x6700;&#x540E;&#x51E0;&#x9879;&#x8282;&#x5934;&#xFF0C;&#x4E4B;&#x540E;&#x7684;&#x5168; 0 &#x884C;&#x88AB;&#x6298;&#x6210; <code>*</code>&#x3002;</p>
+<pre><code class="lang-bash">$ hexdump -C <span class="hljs-_">-s</span> 0x780 -n 0x200 hello
+00000780  08 00 00 00 00 00 00 00  18 00 00 00 00 00 00 00  |................|
+00000790  b6 00 00 00 03 00 00 00  00 00 00 00 00 00 00 00  |................|
+000007a0  00 00 00 00 00 00 00 00  88 61 1f 00 00 00 00 00  |.........a......|
+000007b0  c6 59 01 00 00 00 00 00  00 00 00 00 00 00 00 00  |.Y..............|
+000007c0  01 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+000007d0  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  |................|
+*
+00000980
+</code></pre>
+<p><code>hexdump -C -s 0xf70 -n 0xa0 hello</code> &#x5BF9;&#x7740; note &#x548C; <code>.text</code> &#x7684;&#x4EA4;&#x754C;&#xFF1A;0xf78 &#x4E4B;&#x524D;&#x4ECD;&#x662F; 0&#xFF0C;&#x63A5;&#x7740;&#x662F;&#x540D;&#x5B57; <code>Go</code> &#x7684; <code>.note.go.buildid</code>&#x3001;&#x540D;&#x5B57; <code>GNU</code> &#x7684; <code>.note.gnu.build-id</code>&#xFF0C;0x1000 &#x8D77;&#x662F; <code>.text</code>&#x3002;</p>
+<pre><code class="lang-bash">$ hexdump -C <span class="hljs-_">-s</span> 0xf70 -n 0xa0 hello
+00000f70  00 00 00 00 00 00 00 00  04 00 00 00 53 00 00 00  |............S...|
+00000f80  04 00 00 00 47 6f 00 00  30 5a 34 6b 68 5a 4c 56  |....Go..0Z4khZLV|
+00000f90  34 36 55 64 66 44 37 56  6e 43 75 4e 2f 4d 74 37  |46UdfD7VnCuN/Mt7|
+00000fa0  76 59 4f 46 69 70 37 43  39 55 37 44 56 46 72 4d  |vYOFip7C9U7DVFrM|
+00000fb0  47 2f 47 73 38 50 67 63  54 64 52 63 72 39 77 49  |G/Gs8PgcTdRcr9wI|
+00000<span class="hljs-built_in">fc</span>0  35 37 55 59 50 47 2f 66  38 34 49 53 44 4c 53 59  |57UYPG/f84ISDLSY|
+00000fd0  63 5f 43 5a 4f 5f 79 4e  74 46 38 00 04 00 00 00  |c_CZO_yNtF8.....|
+00000fe0  14 00 00 00 03 00 00 00  47 4e 55 00 6d 8c fa 48  |........GNU.m..H|
+00000ff0  92 6d 82 67 18 92 36 22  17 df 13 86 12 44 95 9c  |.m.g..6<span class="hljs-string">&quot;.....D..|
+00001000  49 3b 66 10 76 53 55 48  89 e5 48 83 ec 10 48 83  |I;f.vSUH..H...H.|
+00001010
+</span></code></pre>
+<p>&#x8FD9;&#x4E9B; 0 &#x5199;&#x5728;&#x6587;&#x4EF6;&#x504F;&#x79FB;&#x4E3A; 0 &#x7684;&#x90A3;&#x4E2A; PT_LOAD &#x91CC;&#xFF08;FileSiz <code>0xb1bb1</code>&#xFF09;&#xFF0C;&#x662F;&#x5BF9;&#x9F50;&#x586B;&#x5145;&#xFF0C;&#x4E00;&#x822C;&#x4E0D;&#x662F;&#x7A00;&#x758F;&#x7A7A;&#x6D1E;&#x3002;&#x6587;&#x4EF6;&#x5C31;&#x662F;&#x4ECE;&#x504F;&#x79FB; 0 &#x8D77;&#x7684;&#x8FDE;&#x7EED;&#x5B57;&#x8282;&#xFF0C;&#x4F4D;&#x7F6E;&#x4EE5; <code>e_phoff</code>&#x3001;<code>e_shoff</code> &#x548C; <code>Off</code> &#x4E3A;&#x51C6;&#x3002;&#x53EA;&#x6709;&#x94FE;&#x63A5;&#x5668;&#x7279;&#x610F;&#x505A;&#x6210; sparse &#x65F6;&#xFF0C;<code>SEEK_HOLE</code> &#x624D;&#x4F1A;&#x663E;&#x793A;&#x771F;&#x6B63;&#x7684;&#x7A7A;&#x6D1E;&#xFF1B;Go &#x9ED8;&#x8BA4;&#x94FE;&#x63A5;&#x4EA7;&#x7269;&#x901A;&#x5E38;&#x4E0D;&#x662F; sparse&#xFF0C;&#x7A7A;&#x9699;&#x5728;&#x6587;&#x4EF6;&#x4E2D;&#x7528; 0 &#x586B;&#x4E0A;&#xFF0C;&#x7559;&#x6D1E;&#x53EA;&#x5728;&#x94FE;&#x63A5;&#x5668;&#x6216;&#x5DE5;&#x5177;&#x94FE;&#x6709;&#x610F;&#x4E3A;&#x4E4B;&#xFF0C;&#x6216;&#x62F7;&#x8D1D;&#x65F6;&#x4F7F;&#x7528;&#x4E86;&#x4FDD;&#x7559;&#x7A7A;&#x6D1E;&#x7684;&#x9009;&#x9879;&#x65F6;&#x51FA;&#x73B0;&#x3002;&#x82E5;&#x6587;&#x4EF6;&#x4E2D;&#x4E0D;&#x5199;&#x8FD9;&#x4E9B; 0&#x3001;&#x7559;&#x7ED9;&#x6587;&#x4EF6;&#x7CFB;&#x7EDF;&#x7A7A;&#x6D1E;&#xFF0C;<code>ls -ls</code> &#x4E0E; <code>stat</code> &#x4F1A;&#x663E;&#x793A;&#x5360;&#x7528;&#x5757;&#x6570;&#x8FDC;&#x5C0F;&#x4E8E;&#x903B;&#x8F91;&#x5927;&#x5C0F;&#xFF0C;<code>lseek(..., SEEK_HOLE)</code> &#x4EE5;&#x53CA; <code>fiemap</code>&#x3001;<code>FIBMAP</code> &#x80FD;&#x5B9A;&#x4F4D;&#x7A7A;&#x6D1E;&#xFF1B;<code>hexdump</code>&#x3001;<code>od</code> &#x8BFB;&#x5230;&#x8BE5;&#x533A;&#x57DF;&#x65F6;&#x5185;&#x6838;&#x4ECD;&#x8FD4;&#x56DE; 0&#xFF0C;&#x4E0E;&#x6587;&#x4EF6;&#x4E2D;&#x5199;&#x4E86; 0 &#x76F8;&#x540C;&#xFF0C;&#x4E0D;&#x80FD;&#x636E;&#x6B64;&#x5224;&#x65AD;&#x78C1;&#x76D8;&#x4E0A;&#x5360;&#x4E86;&#x8FD9;&#x4E9B;&#x5757;&#x3002;</p>
 <h3 id="&#x8282;-sections">&#x8282; (Sections)</h3>
 <h4 id="&#x7C7B;&#x578B;&#x5B9A;&#x4E49;">&#x7C7B;&#x578B;&#x5B9A;&#x4E49;</h4>
 <p>&#x8FD9;&#x91CC;&#x7684;section&#x6307;&#x7684;&#x5C31;&#x662F;ELF section&#x91CC;&#x9762;&#x7684;&#x6570;&#x636E;&#x4E86;&#xFF0C;&#x5C31;&#x662F;&#x4E00;&#x5806;bytes&#xFF0C;&#x5B83;&#x7531;&#x8282;&#x5934;&#x8868;&#x3001;&#x6BB5;&#x5934;&#x8868;&#x6765;&#x5F15;&#x7528;&#x3002;&#x6BD4;&#x5982;&#x8282;&#x5934;&#x8868;&#x8868;&#x9879;&#x4E2D;&#x6709;&#x5730;&#x5740;&#x3001;size&#x6307;&#x5411;&#x5BF9;&#x5E94;&#x7684;&#x67D0;&#x5757;section&#x6570;&#x636E;&#x3002;</p>
@@ -2763,7 +2813,7 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2026-11-07T09:57:32.415Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T09:58:01.139Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2026-11-07T10:42:32.653Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T10:42:57.864Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

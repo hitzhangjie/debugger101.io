@@ -2494,16 +2494,32 @@ LOAD        0x0000000000000df0 0x0000000000600df0 0x0000000000600df0
 </code></pre>
 </blockquote>
 <h4 id="&#x5DE5;&#x5177;&#x6F14;&#x793A;">&#x5DE5;&#x5177;&#x6F14;&#x793A;</h4>
-<p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x793A;&#x4F8B;&#xFF0C;&#x5219;&#x5C55;&#x793A;&#x4E86;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F; golang-debugger-lessons/testdata/loop2 &#x7684;&#x5B8C;&#x6574;&#x6BB5;&#x5934;&#x8868;&#x5B9A;&#x4E49;&#xFF0C;&#x8FD0;&#x884C; <code>readelf -l</code>&#x67E5;&#x770B;&#x5176;&#x6BB5;&#x5934;&#x8868;&#xFF0C;&#x5171;&#x6709;7&#x4E2A;&#x8868;&#x9879;&#xFF0C;&#x6BCF;&#x4E2A;&#x6BB5;&#x5B9A;&#x4E49;&#x5305;&#x542B;&#x4E86;&#x7C7B;&#x578B;&#x3001;&#x5728;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5730;&#x5740;&#x3001;&#x8BFB;&#x5199;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x4EE5;&#x53CA;&#x5F15;&#x7528;&#x7684;sections&#x3002;&#x901A;&#x8FC7; <code>Section to Segment mapping: Segment Sections...</code>&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF0C;&#x6700;&#x7EC8;&#x7EC4;&#x7EC7;&#x597D;&#x7684;&#xFF1A;</p>
+<p>&#x4E0B;&#x9762;&#x8FD9;&#x4E2A;&#x7A0B;&#x5E8F;&#x7528;&#x6765;&#x770B;&#x5B8C;&#x6574;&#x6BB5;&#x5934;&#x8868;&#x3002;<code>main.go</code>&#xFF1A;</p>
+<pre><code class="lang-go"><span class="hljs-keyword">package</span> main
+
+<span class="hljs-keyword">import</span> <span class="hljs-string">&quot;fmt&quot;</span>
+
+<span class="hljs-keyword">func</span> main() {
+    fmt.Println(<span class="hljs-string">&quot;hello&quot;</span>)
+}
+</code></pre>
+<p><code>go.mod</code> &#x5199;&#x6210; <code>module hello</code>&#x3001;<code>go 1.24</code>&#x3002;&#x6784;&#x5EFA;&#xFF1A;</p>
+<pre><code class="lang-bash">$ CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -trimpath -gcflags=<span class="hljs-string">&apos;all=-N -l&apos;</span> -o hello main.go
+</code></pre>
+<p>&#x8FD0;&#x884C; <code>readelf -l hello</code> &#x67E5;&#x770B;&#x5176;&#x6BB5;&#x5934;&#x8868;&#xFF0C;&#x5171;&#x6709;6&#x4E2A;&#x8868;&#x9879;&#xFF0C;&#x6BCF;&#x4E2A;&#x6BB5;&#x5B9A;&#x4E49;&#x5305;&#x542B;&#x4E86;&#x7C7B;&#x578B;&#x3001;&#x5728;&#x865A;&#x62DF;&#x5185;&#x5B58;&#x4E2D;&#x7684;&#x5730;&#x5740;&#x3001;&#x8BFB;&#x5199;&#x6267;&#x884C;&#x6743;&#x9650;&#xFF0C;&#x4EE5;&#x53CA;&#x5F15;&#x7528;&#x7684;sections&#x3002;&#x901A;&#x8FC7; <code>Section to Segment mapping: Segment Sections...</code>&#x90E8;&#x5206;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#xFF1A;</p>
 <ul>
-<li>text segment&#xFF08;&#x7F16;&#x53F7;02&#x7684;segment&#x5176;Flags&#x4E3A;R+E&#xFF0C;&#x8868;&#x793A;&#x53EF;&#x8BFB;&#x53EF;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;text segment&#xFF09;&#x5305;&#x542B;&#x4E86;&#x5982;&#x4E0B;sections <code>.text .note.go.buildid</code>;</li>
+<li>&#x7F16;&#x53F7;00&#x662F; PHDR&#xFF0C;&#x7F16;&#x53F7;05&#x662F; GNU_STACK&#xFF0C;&#x8FD9;&#x4E24;&#x9879;&#x6CA1;&#x6709;&#x5F15;&#x7528; section&#xFF1B;</li>
+<li>text segment&#xFF08;&#x7F16;&#x53F7;02&#x7684;segment&#x5176;Flags&#x4E3A;R+E&#xFF0C;&#x8868;&#x793A;&#x53EF;&#x8BFB;&#x53EF;&#x6267;&#x884C;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;text segment&#xFF09;&#x5305;&#x542B;&#x4E86;&#x5982;&#x4E0B;sections <code>.text .note.gnu.build-id .note.go.buildid</code>&#xFF1B;</li>
 <li>rodata segment (&#x7F16;&#x53F7;03&#x7684;segment&#x5176;Flags&#x4E3A;R&#xFF0C;&#x8868;&#x793A;&#x53EA;&#x8BFB;&#xFF0C;&#x5C31;&#x662F;rodata segment) &#x5305;&#x542B;&#x4E86; <code>.rodata .typelink .itablink .gosymtab .gopclntab</code> &#x8FD9;&#x4E9B;go&#x8FD0;&#x884C;&#x65F6;&#x9700;&#x8981;&#x7684;&#x6570;&#x636E;&#xFF1B;</li>
-<li>data segment (&#x7F16;&#x53F7;04&#x7684;segment&#x5176;Flags&#x4E3A;RW&#xFF0C;&#x8868;&#x793A;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#xFF0C;&#x5C31;&#x662F;data segment) &#x5305;&#x542B;&#x4E86; <code>.data .bss</code> &#x7B49;&#x8FD9;&#x4E9B;&#x53EF;&#x8BFB;&#x5199;&#x7684;&#x6570;&#x636E;&#xFF1B;</li>
+<li>data segment (&#x7F16;&#x53F7;04&#x7684;segment&#x5176;Flags&#x4E3A;RW&#xFF0C;&#x8868;&#x793A;&#x53EF;&#x8BFB;&#x53EF;&#x5199;&#xFF0C;&#x5C31;&#x662F;data segment) &#x5305;&#x542B;&#x4E86; <code>.go.buildinfo .go.fipsinfo .noptrdata .data .bss .noptrbss</code>&#xFF1B;</li>
 </ul>
-<pre><code class="lang-bash">$ readelf <span class="hljs-_">-l</span> testdata/loop2
+<blockquote>
+<p>ps&#xFF1A;&#x4E0B;&#x9762;&#x7684; <code>readelf -l</code> &#x548C; <code>readelf -W -S</code> &#x662F;&#x540C;&#x4E00;&#x6B21;&#x6784;&#x5EFA;&#x7684;&#x8F93;&#x51FA;&#x3002;go1.24.13&#xFF0C;linux/amd64&#x3002;&#x4E0D;&#x52A0; <code>-W</code> &#x65F6;&#xFF0C;&#x8D85;&#x8FC7; 16 &#x4E2A;&#x5B57;&#x7B26;&#x7684;&#x8282;&#x540D;&#x4F1A;&#x88AB;&#x622A;&#x65AD;&#x3002;</p>
+</blockquote>
+<pre><code class="lang-bash">$ readelf <span class="hljs-_">-l</span> hello
 
 Elf file <span class="hljs-built_in">type</span> is EXEC (Executable file)
-Entry point 0x475a80
+Entry point 0x477ee0
 There are 6 program headers, starting at offset 64
 
 Program Headers:
@@ -2511,26 +2527,25 @@ Program Headers:
                  FileSiz            MemSiz              Flags  Align
   PHDR           0x0000000000000040 0x0000000000400040 0x0000000000400040
                  0x0000000000000150 0x0000000000000150  R      0x1000
-  NOTE           0x0000000000000f9c 0x0000000000400f9c 0x0000000000400f9c
+  NOTE           0x0000000000000f78 0x0000000000400f78 0x0000000000400f78
                  0x0000000000000064 0x0000000000000064  R      0x4
   LOAD           0x0000000000000000 0x0000000000400000 0x0000000000400000
-                 0x00000000000af317 0x00000000000af317  R E    0x1000
-  LOAD           0x00000000000b0000 0x00000000004b0000 0x00000000004b0000
-                 0x00000000000a6e70 0x00000000000a6e70  R      0x1000
-  LOAD           0x0000000000157000 0x0000000000557000 0x0000000000557000
-                 0x000000000000a520 0x000000000002e0c0  RW     0x1000
+                 0x00000000000b1bb1 0x00000000000b1bb1  R E    0x1000
+  LOAD           0x00000000000b2000 0x00000000004b2000 0x00000000004b2000
+                 0x00000000000ae938 0x00000000000ae938  R      0x1000
+  LOAD           0x0000000000161000 0x0000000000561000 0x0000000000561000
+                 0x0000000000009f60 0x000000000002dc80  RW     0x1000
   GNU_STACK      0x0000000000000000 0x0000000000000000 0x0000000000000000
                  0x0000000000000000 0x0000000000000000  RW     0x8
 
  Section to Segment mapping:
   Segment Sections...
-   00
-   01     .note.go.buildid
-   02     .text .note.go.buildid
-   03     .rodata .typelink .itablink .gosymtab .gopclntab
-   04     .go.buildinfo .noptrdata .data .bss .noptrbss
+   00     
+   01     .note.go.buildid 
+   02     .text .note.gnu.build-id .note.go.buildid 
+   03     .rodata .typelink .itablink .gosymtab .gopclntab 
+   04     .go.buildinfo .go.fipsinfo .noptrdata .data .bss .noptrbss 
    05
-   06
 </code></pre>
 <p>&#x4E00;&#x4E2A;section&#x4E2D;&#x6570;&#x636E;&#x6700;&#x7EC8;&#x4F1A;&#x4E0D;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x4E5F;&#x662F;&#x7531;&#x5F15;&#x7528;&#x5B83;&#x7684;&#x6BB5;&#x7684;&#x7C7B;&#x578B;&#x51B3;&#x5B9A;&#xFF1A;PT_LOAD&#x7C7B;&#x578B;&#x4F1A;&#x88AB;&#x52A0;&#x8F7D;&#x5230;&#x5185;&#x5B58;&#xFF0C;&#x53CD;&#x4E4B;&#x4E0D;&#x4F1A;&#x3002;</p>
 <p>&#x4EE5;&#x4E0A;&#x9762;&#x7684;go&#x7A0B;&#x5E8F;demo&#x4E3A;&#x4F8B;&#xFF1A;</p>
@@ -2609,48 +2624,42 @@ Program Headers:
 <li>sh_entsize: &#x8868;&#x793A;&#x6BCF;&#x4E2A;section&#x7684;&#x5927;&#x5C0F;&#xFF1B;</li>
 </ul>
 <h4 id="&#x5DE5;&#x5177;&#x6F14;&#x793A;">&#x5DE5;&#x5177;&#x6F14;&#x793A;</h4>
-<p>OK&#xFF0C;&#x4EE5;&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;golang-debugger-lessons/testdata/loop2&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x4E3A;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5176;&#x94FE;&#x63A5;&#x5668;&#x89D2;&#x5EA6;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x5305;&#x542B;&#x4E86;25&#x4E2A;sections&#xFF0C;&#x6BCF;&#x4E2A;section&#x90FD;&#x6709;&#x7C7B;&#x578B;&#x3001;&#x504F;&#x79FB;&#x91CF;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x94FE;&#x63A5;&#x987A;&#x5E8F;&#x3001;&#x5BF9;&#x9F50;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4EE5;&#x6307;&#x5BFC;&#x94FE;&#x63A5;&#x5668;&#x5B8C;&#x6210;&#x94FE;&#x63A5;&#x64CD;&#x4F5C;&#x3002;</p>
-<pre><code class="lang-bash">$ readelf -S testdata/loop2 
-There are 25 section headers, starting at offset 0x1c8:
+<p>OK&#xFF0C;&#x8FD8;&#x662F;&#x8FD9;&#x4E2A; hello&#xFF0C;&#x6211;&#x4EEC;&#x6765;&#x770B;&#x4E0B;&#x5176;&#x94FE;&#x63A5;&#x5668;&#x89D2;&#x5EA6;&#x7684;&#x89C6;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5176;&#x5305;&#x542B;&#x4E86;25&#x4E2A;sections&#xFF0C;&#x6BCF;&#x4E2A;section&#x90FD;&#x6709;&#x7C7B;&#x578B;&#x3001;&#x504F;&#x79FB;&#x91CF;&#x3001;&#x5927;&#x5C0F;&#x3001;&#x94FE;&#x63A5;&#x987A;&#x5E8F;&#x3001;&#x5BF9;&#x9F50;&#x7B49;&#x4FE1;&#x606F;&#xFF0C;&#x7528;&#x4EE5;&#x6307;&#x5BFC;&#x94FE;&#x63A5;&#x5668;&#x5B8C;&#x6210;&#x94FE;&#x63A5;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre><code class="lang-bash">$ readelf -W -S hello
+There are 25 section headers, starting at offset 0x190:
 
 Section Headers:
-  [Nr] Name              Type             Address           Offset
-       Size              EntSize          Flags  Link  Info  Align
-  [ 0]                   NULL             0000000000000000  00000000
-       0000000000000000  0000000000000000           0     0     0
-  [ 1] .text             PROGBITS         0000000000401000  00001000
-       0000000000098294  0000000000000000  AX       0     0     32
-  [ 2] .rodata           PROGBITS         000000000049a000  0009a000
-       00000000000440c7  0000000000000000   A       0     0     32
-       .............................................................
-  [ 4] .typelink         PROGBITS         00000000004de2a0  000de2a0
-       0000000000000734  0000000000000000   A       0     0     32
-  [ 5] .itablink         PROGBITS         00000000004de9d8  000de9d8
-       0000000000000050  0000000000000000   A       0     0     8
-  [ 6] .gosymtab         PROGBITS         00000000004dea28  000dea28
-       0000000000000000  0000000000000000   A       0     0     1
-  [ 7] .gopclntab        PROGBITS         00000000004dea40  000dea40
-       000000000005fe86  0000000000000000   A       0     0     32
-       .............................................................
-  [10] .data             PROGBITS         000000000054d4e0  0014d4e0
-       0000000000007410  0000000000000000  WA       0     0     32
-       .............................................................
-  [14] .zdebug_line      PROGBITS         0000000000588119  00155119
-       000000000001cc0d  0000000000000000           0     0     1
-  [15] .zdebug_frame     PROGBITS         00000000005a4d26  00171d26
-       00000000000062e9  0000000000000000           0     0     1
-       .............................................................
-  [22] .note.go.buildid  NOTE             0000000000400f9c  00000f9c
-       0000000000000064  0000000000000000   A       0     0     4
-  [23] .symtab           SYMTAB           0000000000000000  001d0000
-       0000000000011370  0000000000000018          24   422     8
-  [24] .strtab           STRTAB           0000000000000000  001e1370
-       00000000000109fb  0000000000000000           0     0     1
+  [Nr] Name              Type            Address          Off    Size   ES Flg Lk Inf Al
+  [ 0]                   NULL            0000000000000000 000000 000000 00      0   0  0
+  [ 1] .text             PROGBITS        0000000000401000 001000 0b0bb1 00  AX  0   0 32
+  [ 2] .rodata           PROGBITS        00000000004b2000 0b2000 0363f2 00   A  0   0 32
+  [ 3] .typelink         PROGBITS        00000000004e8400 0e8400 0007a0 00   A  0   0 32
+  [ 4] .itablink         PROGBITS        00000000004e8ba0 0e8ba0 000070 00   A  0   0 32
+  [ 5] .gosymtab         PROGBITS        00000000004e8c10 0e8c10 000000 00   A  0   0  1
+  [ 6] .gopclntab        PROGBITS        00000000004e8c20 0e8c20 077d18 00   A  0   0 32
+  [ 7] .go.buildinfo     PROGBITS        0000000000561000 161000 000110 00  WA  0   0 16
+  [ 8] .go.fipsinfo      PROGBITS        0000000000561120 161120 000078 00  WA  0   0 32
+  [ 9] .noptrdata        PROGBITS        00000000005611a0 1611a0 004e02 00  WA  0   0 32
+  [10] .data             PROGBITS        0000000000565<span class="hljs-built_in">fc</span>0 165<span class="hljs-built_in">fc</span>0 004f92 00  WA  0   0 32
+  [11] .bss              NOBITS          000000000056af60 16af60 020290 00  WA  0   0 32
+  [12] .noptrbss         NOBITS          000000000058b200 18b200 003a80 00  WA  0   0 32
+  [13] .debug_abbrev     PROGBITS        0000000000000000 16b000 000157 00   C  0   0  1
+  [14] .debug_line       PROGBITS        0000000000000000 16b157 01a065 00   C  0   0  1
+  [15] .debug_frame      PROGBITS        0000000000000000 1851bc 0099a8 00   C  0   0  1
+  [16] .debug_gdb_scripts PROGBITS        0000000000000000 18eb64 000018 00      0   0  1
+  [17] .debug_info       PROGBITS        0000000000000000 18eb7c 036676 00   C  0   0  1
+  [18] .debug_loc        PROGBITS        0000000000000000 1c51f2 019ba7 00   C  0   0  1
+  [19] .debug_ranges     PROGBITS        0000000000000000 1ded99 003dfd 00   C  0   0  1
+  [20] .note.gnu.build-id NOTE            0000000000400fdc 000fdc 000024 00   A  0   0  4
+  [21] .note.go.buildid  NOTE            0000000000400f78 000f78 000064 00   A  0   0  4
+  [22] .shstrtab         STRTAB          0000000000000000 20bb4e 000127 00      0   0  1
+  [23] .symtab           SYMTAB          0000000000000000 1e2b98 0135f0 18     24 102  8
+  [24] .strtab           STRTAB          0000000000000000 1f6188 0159c6 00      0   0  1
 Key to Flags:
   W (write), A (alloc), X (execute), M (merge), S (strings), I (info),
   L (link order), O (extra OS processing required), G (group), T (TLS),
   C (compressed), x (unknown), o (OS specific), E (exclude),
-  l (large), p (processor specific)
+  D (mbind), l (large), p (processor specific)
 </code></pre>
 <h3 id="&#x8282;-sections">&#x8282; (Sections)</h3>
 <h4 id="&#x7C7B;&#x578B;&#x5B9A;&#x4E49;">&#x7C7B;&#x578B;&#x5B9A;&#x4E49;</h4>
@@ -2754,7 +2763,7 @@ String dump of section <span class="hljs-string">&apos;.note.go.buildid&apos;</s
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2026-11-07T05:05:19.016Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T05:05:40.663Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"next":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"path":"7-headto-sym-debugger/3-syms.md","ref":"7-headto-sym-debugger/3-syms.md","articles":[]},"previous":{"title":"7.1 Go构建内幕","level":"1.7.1","depth":2,"path":"7-headto-sym-debugger/1-how-go-build-works.md","ref":"7-headto-sym-debugger/1-how-go-build-works.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/2-elf.md","mtime":"2026-11-07T07:19:45.907Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T07:20:05.650Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

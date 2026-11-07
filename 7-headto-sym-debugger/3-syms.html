@@ -2472,10 +2472,10 @@ body {
 }
 </code></pre>
 <h4 id="&#x5217;&#x51FA;&#x6240;&#x6709;&#x7684;&#x7B26;&#x53F7;">&#x5217;&#x51FA;&#x6240;&#x6709;&#x7684;&#x7B26;&#x53F7;</h4>
-<p><code>readelf -s &lt;prog&gt;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x51FA;&#x7A0B;&#x5E8F;prog&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7B26;&#x53F7;&#x5217;&#x8868;&#xFF0C;&#x4E3E;&#x4E2A;&#x4F8B;&#x5B50;&#xFF1A;</p>
+<p><code>readelf -s &lt;prog&gt;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x51FA;&#x7A0B;&#x5E8F;prog&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7B26;&#x53F7;&#x5217;&#x8868;&#x3002;&#x4E0B;&#x9762;&#x662F; go1.24.13&#x3001;linux/amd64 &#x4E0B; <code>go build</code>&#xFF08;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code>&#xFF09;&#x5F97;&#x5230;&#x7684;&#x4E00;&#x4EFD;&#x793A;&#x4F8B;&#xFF0C;&#x672C;&#x673A;&#x6761;&#x76EE;&#x6570;&#x4E0E;&#x5730;&#x5740;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x4EE5;&#x672C;&#x673A; <code>readelf -s</code> &#x4E3A;&#x51C6;&#x3002;</p>
 <pre><code class="lang-bash">$ readelf <span class="hljs-_">-s</span> main
 
-Symbol table <span class="hljs-string">&apos;.symtab&apos;</span> contains 1991 entries:
+Symbol table <span class="hljs-string">&apos;.symtab&apos;</span> contains 2298 entries:
    Num:    Value          Size Type    Bind   Vis      Ndx Name
      0: 0000000000000000     0 NOTYPE  LOCAL  DEFAULT  UND 
      1: 0000000000000000     0 FILE    LOCAL  DEFAULT  ABS go.go
@@ -2483,12 +2483,12 @@ Symbol table <span class="hljs-string">&apos;.symtab&apos;</span> contains 1991 
      3: 0000000000402d00   557 FUNC    LOCAL  DEFAULT    1 cmpbody
      4: 0000000000402f50   339 FUNC    LOCAL  DEFAULT    1 memeqbody
      5: 0000000000403100   297 FUNC    LOCAL  DEFAULT    1 indexbytebody
-     6: 000000000045f5c0    64 FUNC    LOCAL  DEFAULT    1 gogo
-     7: 000000000045f600    43 FUNC    LOCAL  DEFAULT    1 callRet
-     8: 000000000045f640    47 FUNC    LOCAL  DEFAULT    1 gosave_systemsta[...]
-     9: 000000000045f680    13 FUNC    LOCAL  DEFAULT    1 setg_gcc
-    10: 000000000045f690  1380 FUNC    LOCAL  DEFAULT    1 aeshashbody
-    11: 000000000045<span class="hljs-built_in">fc</span>00   205 FUNC    LOCAL  DEFAULT    1 gcWriteBarrier
+     6: 000000000046ae80    64 FUNC    LOCAL  DEFAULT    1 gogo
+     7: 000000000046aec0    43 FUNC    LOCAL  DEFAULT    1 callRet
+     8: 000000000046af00    47 FUNC    LOCAL  DEFAULT    1 gosave_systemsta[...]
+     9: 000000000046af40    13 FUNC    LOCAL  DEFAULT    1 setg_gcc
+    10: 000000000046af50  1380 FUNC    LOCAL  DEFAULT    1 aeshashbody
+    11: 000000000046b4c0   205 FUNC    LOCAL  DEFAULT    1 gcWriteBarrier
         ...
 </code></pre>
 <h4 id="&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x7684;&#x4F9D;&#x8D56;&#x56FE;">&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x7684;&#x4F9D;&#x8D56;&#x56FE;</h4>
@@ -2730,7 +2730,7 @@ $ ldd -r test2 // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x4E86;&#x517
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"next":{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},"previous":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/3-syms.md","mtime":"2026-11-07T20:07:29.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T20:07:56.327Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"next":{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},"previous":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/3-syms.md","mtime":"2026-11-07T20:18:12.926Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T20:18:38.827Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

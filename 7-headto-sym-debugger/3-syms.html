@@ -2485,7 +2485,7 @@ body {
 }
 </code></pre>
 <h4 id="&#x5217;&#x51FA;&#x6240;&#x6709;&#x7684;&#x7B26;&#x53F7;">&#x5217;&#x51FA;&#x6240;&#x6709;&#x7684;&#x7B26;&#x53F7;</h4>
-<p><code>readelf -s &lt;prog&gt;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x51FA;&#x7A0B;&#x5E8F;prog&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7B26;&#x53F7;&#x5217;&#x8868;&#x3002;&#x4E0B;&#x9762;&#x662F; go1.24.13&#x3001;linux/amd64 &#x4E0B; <code>go build</code>&#xFF08;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code>&#xFF09;&#x5F97;&#x5230;&#x7684;&#x4E00;&#x4EFD;&#x793A;&#x4F8B;&#xFF0C;&#x672C;&#x673A;&#x6761;&#x76EE;&#x6570;&#x4E0E;&#x5730;&#x5740;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x4EE5;&#x672C;&#x673A; <code>readelf -s</code> &#x4E3A;&#x51C6;&#x3002;</p>
+<p><code>readelf -s &lt;prog&gt;</code>&#xFF0C;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x51FA;&#x7A0B;&#x5E8F;prog&#x4E2D;&#x7684;&#x6240;&#x6709;&#x7B26;&#x53F7;&#x5217;&#x8868;&#x3002;&#x4E0B;&#x9762;&#x662F; go1.24.6&#x3001;linux/amd64 &#x4E0B; <code>go build</code>&#xFF08;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code>&#xFF09;&#x5F97;&#x5230;&#x7684;&#x4E00;&#x4EFD;&#x793A;&#x4F8B;&#xFF0C;&#x672C;&#x673A;&#x6761;&#x76EE;&#x6570;&#x4E0E;&#x5730;&#x5740;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;&#x4EE5;&#x672C;&#x673A; <code>readelf -s</code> &#x4E3A;&#x51C6;&#x3002;</p>
 <pre><code class="lang-bash">$ readelf <span class="hljs-_">-s</span> main
 
 Symbol table <span class="hljs-string">&apos;.symtab&apos;</span> contains 2298 entries:
@@ -2498,7 +2498,7 @@ Symbol table <span class="hljs-string">&apos;.symtab&apos;</span> contains 2298 
      5: 0000000000403100   297 FUNC    LOCAL  DEFAULT    1 indexbytebody
      6: 000000000046ae80    64 FUNC    LOCAL  DEFAULT    1 gogo
      7: 000000000046aec0    43 FUNC    LOCAL  DEFAULT    1 callRet
-     8: 000000000046af00    47 FUNC    LOCAL  DEFAULT    1 gosave_systemsta[...]
+     8: 000000000046af00    47 FUNC    LOCAL  DEFAULT    1 gosave_systemstack_switch
      9: 000000000046af40    13 FUNC    LOCAL  DEFAULT    1 setg_gcc
     10: 000000000046af50  1380 FUNC    LOCAL  DEFAULT    1 aeshashbody
     11: 000000000046b4c0   205 FUNC    LOCAL  DEFAULT    1 gcWriteBarrier
@@ -2507,51 +2507,67 @@ Symbol table <span class="hljs-string">&apos;.symtab&apos;</span> contains 2298 
 <h4 id="&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x7684;&#x4F9D;&#x8D56;&#x56FE;">&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x7684;&#x4F9D;&#x8D56;&#x56FE;</h4>
 <p>&#x793A;&#x4F8B;&#x4E2D;&#x7684;&#x5305;&#x540D;main&#x3001;&#x51FD;&#x6570;&#x540D;main.main&#x3001;&#x5BFC;&#x5165;&#x7684;&#x5916;&#x90E8;&#x5305;&#x540D;fmt&#x3001;&#x5F15;&#x7528;&#x7684;&#x5916;&#x90E8;&#x51FD;&#x6570;fmt.Println&#xFF0C;&#x8FD9;&#x4E9B;&#x90FD;&#x5C5E;&#x4E8E;&#x7B26;&#x53F7;&#x7684;&#x8303;&#x7574;&#x3002;</p>
 <p>&#x201C;vim-go&#x201D;&#x7B97;&#x4E0D;&#x7B97;&#x7B26;&#x53F7;&#xFF1F;&#x5176;&#x672C;&#x8EAB;&#x662F;&#x4E00;&#x4E2A;&#x53EA;&#x8BFB;&#x6570;&#x636E;&#xFF0C;&#x5B58;&#x50A8;&#x5728;.rodata section&#x4E2D;&#xFF0C;&#x5176;&#x672C;&#x8EAB;&#x7B97;&#x4E0D;&#x4E0A;&#x7B26;&#x53F7;&#xFF0C;&#x4F46;&#x53EF;&#x4EE5;&#x88AB;&#x7B26;&#x53F7;&#x5F15;&#x7528;&#xFF0C;&#x6BD4;&#x5982;&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x5168;&#x5C40;&#x53D8;&#x91CF; <code>var s = &quot;vim-go&quot;</code> &#x5219;&#x53D8;&#x91CF;s&#x6709;&#x5BF9;&#x5E94;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x5176;&#x7B26;&#x53F7;&#x540D;&#x79F0;&#x4E3A;s&#xFF0C;&#x53D8;&#x91CF;&#x503C;&#x5F15;&#x7528;&#x81EA;.rodata&#x4E2D;&#x7684;vim-go&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>readelf --hex-dump .rodata | grep vim-go</code>&#x6765;&#x9A8C;&#x8BC1;&#x3002;&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4E2D;&#x5176;&#x5B9E;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF0C;&#x8BE5;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x4E3A;&quot;vim-go&quot;&#xFF0C;&#x8981;&#x60F3;&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x4F9D;&#x8D56;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>go tool link --dumpdep main.o | grep main.main</code>&#x9A8C;&#x8BC1;&#xFF0C;&#x6216;&#x8005; <code>go build -ldflags &quot;--dumpdep&quot; main.go | grep main.main</code> &#x4E5F;&#x53EF;&#x4EE5;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>readelf --hex-dump .rodata main | grep vim-go</code>&#x6765;&#x9A8C;&#x8BC1;&#xFF1A;</p>
+<pre><code class="lang-bash">$ readelf --hex-dump .rodata main | grep vim-go
+  0x004b3e40 73737365 3376696d 2d676f53 7472696e ssse3vim-goStrin
+</code></pre>
+<p>&#x4E0A;&#x8FF0;&#x793A;&#x4F8B;&#x4E2D;&#x5176;&#x5B9E;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#xFF0C;&#x8BE5;&#x4E34;&#x65F6;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x4E3A;&quot;vim-go&quot;&#xFF0C;&#x8981;&#x60F3;&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x4F9D;&#x8D56;&#x56FE;&#xFF0C;&#x53EF;&#x4EE5;&#x501F;&#x52A9; <code>go build -ldflags &quot;--dumpdep&quot;</code>&#xFF0C;&#x5B83;&#x4F1A;&#x628A;&#x94FE;&#x63A5;&#x5668;&#x770B;&#x5230;&#x7684;&#x7B26;&#x53F7;&#x4F9D;&#x8D56;&#x8FB9;&#x6253;&#x5370;&#x5230; stderr&#xFF1A;</p>
 <blockquote>
-<pre><code class="lang-bash">$ go build -ldflags <span class="hljs-string">&quot;--dumpdep&quot;</span> main.go 2&gt;&amp;1 | grep main.main
+<pre><code class="lang-bash">$ go build -ldflags <span class="hljs-string">&quot;--dumpdep&quot;</span> main.go 2&gt;&amp;1 | grep -E <span class="hljs-string">&apos;main\.main -&gt;|main_main&#xB7;f -&gt;|main\.\.stmp_0 -&gt;&apos;</span>
 
 runtime.main_main&#xB7;f -&gt; main.main
 main.main -&gt; main..stmp_0
-main.main -&gt; go.itab.*os.File,io.Writer
+main.main -&gt; os.Stdout
+main.main -&gt; go:itab.*os.File,io.Writer
 main.main -&gt; fmt.Fprintln
-main.main -&gt; gclocals&#xB7;8658ec02c587fb17d31955e2d572c2ff
-main.main -&gt; main.main.stkobj
-main..stmp_0 -&gt; go.string.<span class="hljs-string">&quot;vim-go&quot;</span>
-main.main.stkobj -&gt; type.[1]interface {}
+main..stmp_0 -&gt; go:string.<span class="hljs-string">&quot;vim-go&quot;</span>
 </code></pre>
 </blockquote>
-<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;main..stmp_0&#xFF0C;&#x5B83;&#x5F15;&#x7528;&#x4E86;go.string.&quot;vim-go&quot;&#xFF0C;&#x5E76;&#x4F5C;&#x4E3A;fmt.Println&#x7684;&#x53C2;&#x6570;&#x3002;</p>
+<p>&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A;&#x4E34;&#x65F6;&#x53D8;&#x91CF;main..stmp_0&#xFF0C;&#x5B83;&#x5F15;&#x7528;&#x4E86;go:string.&quot;vim-go&quot;&#xFF0C;&#x5E76;&#x4F5C;&#x4E3A;fmt.Println&#x7684;&#x53C2;&#x6570;&#x3002;</p>
 <h4 id="&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x8868;&#x7B26;&#x53F7;">&#x67E5;&#x770B;&#x7B26;&#x53F7;&#x8868;&amp;&#x7B26;&#x53F7;</h4>
 <p>&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x4E0D;&#x53D8;&#xFF0C;&#x6765;&#x4ECB;&#x7ECD;&#x4E0B;&#x5982;&#x4F55;&#x5FEB;&#x901F;&#x67E5;&#x770B;&#x7B26;&#x53F7;&amp;&#x7B26;&#x53F7;&#x8868;&#x4FE1;&#x606F;&#xFF1A;</p>
 <p><code>go build -o main main.go</code> &#x7F16;&#x8BD1;&#x6210;&#x5B8C;&#x6574;&#x7A0B;&#x5E8F;&#xFF0C;&#x7136;&#x540E;&#x53EF;&#x901A;&#x8FC7;readelf&#x3001;nm&#x3001;objdump&#x7B49;&#x5206;&#x6790;&#x7A0B;&#x5E8F;main&#x5305;&#x542B;&#x7684;&#x7B26;&#x53F7;&#x5217;&#x8868;&#xFF0C;&#x867D;&#x7136;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x5F88;&#x7B80;&#x5355;&#xFF0C;&#x4F46;&#x662F;&#x7531;&#x4E8E;go&#x8FD0;&#x884C;&#x65F6;&#x975E;&#x5E38;&#x5E9E;&#x5927;&#xFF0C;&#x4F1A;&#x5F15;&#x5165;&#x975E;&#x5E38;&#x591A;&#x7684;&#x7B26;&#x53F7;&#x3002;</p>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x53EA;&#x7F16;&#x8BD1;main.go&#x8FD9;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#xFF0C;<code>go tool compile main.go</code>&#x4F1A;&#x8F93;&#x51FA;&#x4E00;&#x4E2A;&#x6587;&#x4EF6;main.o&#xFF0C;&#x8FD9;&#x91CC;&#x7684;main.o&#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x5374;&#x4E0D;&#x80FD;&#x88AB;readelf&#x3001;nm&#x5206;&#x6790;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;go&#x81EA;&#x5DF1;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x79CD;&#x5BF9;&#x8C61;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x5728; <a href="https://docs.google.com/document/d/1D13QhciikbdLtaI67U6Ble5d_1nsI4befEd6_k1z91U/view" target="_blank">proposal: build a better linker</a> &#x4E2D;&#x6709;&#x63D0;&#x53CA;&#xFF0C;&#x8981;&#x5206;&#x6790;main.o&#x53EA;&#x80FD;&#x901A;&#x8FC7;go&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x8003;&#x8651;&#x53EA;&#x7F16;&#x8BD1; main.go &#x8FD9;&#x4E00;&#x4E2A;&#x7F16;&#x8BD1;&#x5355;&#x5143;&#x3002;Go 1.20 &#x8D77;&#x6807;&#x51C6;&#x5E93;&#x4E0D;&#x518D;&#x9884;&#x7F16;&#x8BD1;&#x5230; <code>$GOROOT/pkg</code>&#xFF0C;<code>go tool compile</code> &#x4E0D;&#x80FD;&#x76F4;&#x63A5;&#x89E3;&#x6790; <code>import &quot;fmt&quot;</code>&#xFF0C;&#x9700;&#x8981;&#x5148;&#x63D0;&#x4F9B; importcfg&#xFF0C;&#x53EF;&#x4EE5;&#x5148;&#x7528; <code>go list -export -deps</code> &#x751F;&#x6210;&#xFF1A;</p>
+<pre><code class="lang-bash">$ go list -export -deps <span class="hljs-_">-f</span> <span class="hljs-string">&apos;{{if .Export}}packagefile {{.ImportPath}}={{.Export}}{{end}}&apos;</span> main.go &gt; importcfg
+$ go tool compile -p main -trimpath <span class="hljs-string">&quot;<span class="hljs-variable">$PWD</span>=&gt;.&quot;</span> -importcfg importcfg -o main.o main.go
+</code></pre>
+<p>&#x5F97;&#x5230;&#x7684; main.o &#x662F;&#x4E00;&#x4E2A;&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#xFF0C;&#x4F46;&#x662F;&#x5176;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x5374;&#x4E0D;&#x80FD;&#x88AB;readelf&#x3001;nm&#x5206;&#x6790;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x662F;go&#x81EA;&#x5DF1;&#x8BBE;&#x8BA1;&#x7684;&#x4E00;&#x79CD;&#x5BF9;&#x8C61;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x5728; <a href="https://docs.google.com/document/d/1D13QhciikbdLtaI67U6Ble5d_1nsI4befEd6_k1z91U/view" target="_blank">proposal: build a better linker</a> &#x4E2D;&#x6709;&#x63D0;&#x53CA;&#xFF0C;&#x8981;&#x5206;&#x6790;main.o&#x53EA;&#x80FD;&#x901A;&#x8FC7;go&#x5B98;&#x65B9;&#x63D0;&#x4F9B;&#x7684;&#x5DE5;&#x5177;&#x3002;</p>
+<blockquote>
+<p>ps: <code>-p main</code> &#x7528;&#x6765;&#x6307;&#x5B9A;&#x5305;&#x8DEF;&#x5F84;&#xFF0C;&#x8FD9;&#x6837;&#x7B26;&#x53F7;&#x540D;&#x662F; <code>main.</code> &#x5F00;&#x5934;&#x7684;&#x5199;&#x6CD5;&#xFF1B;<code>-trimpath &quot;$PWD=&gt;.&quot;</code> &#x628A;&#x6E90;&#x6587;&#x4EF6;&#x7EDD;&#x5BF9;&#x8DEF;&#x5F84;&#x66FF;&#x6362;&#x4E3A; <code>./</code>&#xFF0C;&#x4F7F;&#x4E0D;&#x540C;&#x76EE;&#x5F55;&#x4E0B;&#x7F16;&#x8BD1;&#x5F97;&#x5230;&#x7684;&#x7B26;&#x53F7;&#x503C;&#x4E00;&#x81F4;&#xFF0C;&#x4FBF;&#x4E8E;&#x5BF9;&#x7167;&#x672C;&#x6587;&#x8F93;&#x51FA;&#x3002;</p>
+</blockquote>
 <p>&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>go tool nm</code>&#x6765;&#x67E5;&#x770B;main.o&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x7B26;&#x53F7;&#x4FE1;&#x606F;&#xFF1A;</p>
-<pre><code class="lang-bash">$ go tool compile main.go
-$ go tool nm main.o
+<pre><code class="lang-bash">$ go tool nm main.o
 
          U 
-         U <span class="hljs-string">&quot;&quot;</span>..stmp_0
-    1477 ? %22%22..inittask
-    1497 R %22%22..stmp_0
-    13ed T %22%22.main
-    14a7 R %22%22.main.stkobj
+         U 
+         U 
+         U 
+         U 
+         U 
+         U <span class="hljs-variable">$GOROOT</span>/src/fmt/print.go
+         U ./main.go
+         U &lt;autogenerated&gt;
          U fmt..inittask
          U fmt.Fprintln
-    17af R gclocals&#xB7;33cdeccccebe80329f1fdbee7f5874cb
-    17a6 R gclocals&#xB7;d4dc2f11db048877dbc0f60a22b4adb3
-    17b7 R gclocals&#xB7;f207267fbf96a0178e8758c6e3e0ce28
-    1585 ? go.cuinfo.packagename.
-         U go.info.[]interface {}
-         U go.info.error
-    1589 ? go.info.fmt.Println<span class="hljs-variable">$abstract</span>
-         U go.info.int
-    1778 R go.itab.*os.File,io.Writer
-    1798 R go.itablink.*os.File,io.Writer
-    15b3 R go.string.<span class="hljs-string">&quot;vim-go&quot;</span>
+    3a32 R gclocals&#xB7;FzY36IO2mY0y4dZ1+Izd/w==
+    3a65 R gclocals&#xB7;ISb46fRPFoZ9pIfykFK/kQ==
+    3a5b R gclocals&#xB7;rJbr+btbFJy3NLIRCgNSZQ==
+    3a3a R gclocals&#xB7;ynuM6ptGWxUYldU3ztZ9GQ==
+    3a82 ? go:cuinfo.packagename.main
+    3a7c ? go:cuinfo.producer.main
+         U go:info.*sync/atomic.Pointer[os.dirInfo]
+         U go:info.[]interface {}
+         U go:info.bool
+         U go:info.error
+    3a86 ? go:info.fmt.Println<span class="hljs-variable">$abstract</span>
+         U go:info.int
+    382c R go:itab.*os.File,io.Writer
+    37d7 R go:string.<span class="hljs-string">&quot;vim-go&quot;</span>
+    35f1 D main..inittask
+    3a10 r main..stmp_0&lt;1&gt;
+    359e T main.main
+    3a43 r main.main.stkobj&lt;1&gt;
          U os.(*File).Write
-    156b T os.(*File).close
-         U os.(*file).close
          U os.Stdout
     ....
 </code></pre>
@@ -2606,34 +2622,34 @@ $ go tool nm main.o
 </span></code></pre>
 </li>
 <li>&#x7B2C;&#x4E09;&#x5217;&#xFF0C;symbol name&#xFF0C;&#x5DF2;&#x7ECF;&#x89E3;&#x7801;&#x51FA;&#x6765;&#x7684;&#x7B26;&#x53F7;&#x540D;&#x5B57;&#x7B26;&#x4E32;&#x3002;ELF &#x7B26;&#x53F7;&#x8868;&#x9879;&#x91CC;&#x7684; <code>st_name</code> &#x624D;&#x662F;&#x7B26;&#x53F7;&#x540D;&#x5728;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#x4E2D;&#x7684;&#x7D22;&#x5F15;&#xFF0C;<code>nm</code> &#x8F93;&#x51FA;&#x65F6;&#x5DF2;&#x7ECF;&#x628A;&#x5B83;&#x89E3;&#x6210;&#x4E86;&#x8FD9;&#x4E00;&#x5217;&#x7684;&#x540D;&#x5B57;&#xFF1B;</li>
+<li>&#x8865;&#x5145;&#xFF1A;<code>go tool nm</code> &#x8BFB; goobj &#x65F6;&#xFF0C;&#x4F1A;&#x628A;&#x7F16;&#x8BD1;&#x5668;&#x9759;&#x6001;&#x751F;&#x6210;&#x7684;&#x7B26;&#x53F7;&#xFF08;&#x5982; <code>main..stmp_0</code>&#x3001;<code>main.main.stkobj</code>&#xFF09;&#x7684;&#x7B2C;&#x4E8C;&#x5217;&#x663E;&#x793A;&#x4E3A;&#x5C0F;&#x5199;&#xFF0C;&#x5E76;&#x5728;&#x540D;&#x5B57;&#x540E;&#x52A0; <code>&lt;1&gt;</code>&#xFF0C;&#x4F8B;&#x5982; <code>main..stmp_0&lt;1&gt;</code>&#xFF1B;<code>&lt;1&gt;</code> &#x662F; goobj &#x7684; static &#x6807;&#x8BB0;&#xFF0C;&#x4E0D;&#x662F;&#x7B26;&#x53F7;&#x540D;&#x7684;&#x4E00;&#x90E8;&#x5206;&#xFF1B;</li>
+<li>&#x53E6;&#x5916;&#xFF0C;Go 1.24 &#x7684;&#x7B26;&#x53F7;&#x547D;&#x540D;&#x4E0E;&#x66F4;&#x65E9;&#x7248;&#x672C;&#x4E0D;&#x540C;&#xFF0C;&#x8FD9;&#x91CC;&#x662F; <code>main.main</code>&#x3001;<code>go:string</code>&#x3001;<code>go:itab</code>&#x3001;<code>go:cuinfo</code>&#x3001;<code>go:info</code>&#x3001;<code>type:string</code>&#xFF0C;&#x66F4;&#x65E9;&#x7248;&#x672C;&#x53EF;&#x80FD;&#x5199;&#x4F5C; <code>&quot;&quot;.main</code>&#x3001;<code>go.string</code>&#x3001;<code>go.itab</code>&#x3001;<code>go.cuinfo</code>&#x3001;<code>go.info</code>&#x3001;<code>type.string</code>&#xFF1B;</li>
 </ul>
-<p>&#x6211;&#x4EEC;&#x56DE;&#x5934;&#x518D;&#x770B;&#x4E0B;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x6765;&#x52A0;&#x6DF1;&#x4E0B;&#x7406;&#x89E3;&#xFF0C;OK&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x5173;&#x6CE8;&#x4E0B;main&#x51FD;&#x6570;&#x672C;&#x8EAB;&#xFF0C;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;nm&#x8F93;&#x51FA;&#x663E;&#x793A;&#x7B26;&#x53F7; <code>%22%22.main</code>&#x7684;&#x7B26;&#x53F7;&#x503C;&#x662F; <code>0x13ed</code>&#xFF0C;&#x8FD9;&#x662F; .text &#x7684;&#x8282;&#x5185;&#x504F;&#x79FB;&#xFF0C;&#x5E76;&#x4E14;&#x8868;&#x793A;&#x5B83;&#x662F;&#x4E00;&#x4E2A;.text section&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x90A3;&#x53EA;&#x6709;&#x4E00;&#x79CD;&#x53EF;&#x80FD;&#x8981;&#x4E48;&#x662F;package main&#xFF0C;&#x8981;&#x4E48;&#x662F;func main.main&#xFF0C;&#x5176;&#x5B9E;&#x662F;main.main&#x3002;</p>
-<pre><code class="lang-bash">$ go tool nm main.o
-
-         U 
-         U <span class="hljs-string">&quot;&quot;</span>..stmp_0
-    1477 ? %22%22..inittask
-    1497 R %22%22..stmp_0
-    13ed T %22%22.main
-    14a7 R %22%22.main.stkobj
-         U fmt..inittask
-         U fmt.Fprintln
-    ....
+<p>&#x6211;&#x4EEC;&#x56DE;&#x5934;&#x518D;&#x770B;&#x4E0B;&#x6211;&#x4EEC;&#x7684;&#x793A;&#x4F8B;&#x6765;&#x52A0;&#x6DF1;&#x4E0B;&#x7406;&#x89E3;&#xFF0C;OK&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x5173;&#x6CE8;&#x4E0B;main&#x51FD;&#x6570;&#x672C;&#x8EAB;&#xFF0C;&#x6211;&#x4EEC;&#x6CE8;&#x610F;&#x5230;nm&#x8F93;&#x51FA;&#x663E;&#x793A;&#x7B26;&#x53F7; <code>main.main</code> &#x7684;&#x7B26;&#x53F7;&#x503C;&#x662F; <code>0x359e</code>&#xFF0C;&#x8FD9;&#x662F; .text &#x7684;&#x8282;&#x5185;&#x504F;&#x79FB;&#xFF0C;&#x5E76;&#x4E14;&#x8868;&#x793A;&#x5B83;&#x662F;&#x4E00;&#x4E2A; .text section &#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x4E5F;&#x5C31;&#x662F; func main.main&#x3002;</p>
+<pre><code class="lang-bash">$ go tool nm main.o | grep -E <span class="hljs-string">&apos;main\.\.|main\.main|go:string|go:itab&apos;</span>
+    382c R go:itab.*os.File,io.Writer
+    37d7 R go:string.<span class="hljs-string">&quot;vim-go&quot;</span>
+    35f1 D main..inittask
+    3a10 r main..stmp_0&lt;1&gt;
+    359e T main.main
+    3a43 r main.main.stkobj&lt;1&gt;
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>go tool objdump -S main.o</code>&#x53CD;&#x6C47;&#x7F16;main.o&#x6765;&#x5BF9;&#x7167;&#x8FD9;&#x4E00;&#x7B26;&#x53F7;&#x503C;&#xFF0C;<code>0x13ed</code>&#x5904;&#x6070;&#x4E3A;func main.main&#x7684;&#x5165;&#x53E3;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x901A;&#x8FC7; <code>go tool objdump -S main.o</code>&#x53CD;&#x6C47;&#x7F16;main.o&#x6765;&#x5BF9;&#x7167;&#x8FD9;&#x4E00;&#x7B26;&#x53F7;&#x503C;&#xFF0C;<code>0x359e</code>&#x5904;&#x6070;&#x4E3A;func main.main&#x7684;&#x5165;&#x53E3;&#x3002;</p>
 <pre><code class="lang-bash">$ go tool objdump -S main.o
-TEXT %22%22.main(SB) gofile../root/debugger101/testdata/xxxx/main.go
+TEXT main.main(SB) ./main.go
 func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
-  0x13ed        64488b0c2500000000    MOVQ FS:0, CX        [5:9]R_TLS_LE
-  0x13f6        483b6110        CMPQ 0x10(CX), SP
-  0x13fa        7671            JBE 0x146d
-  0x13<span class="hljs-built_in">fc</span>        4883ec58        SUBQ <span class="hljs-variable">$0x58</span>, SP
-  0x1400        48896c2450        MOVQ BP, 0x50(SP)
-  0x1405        488d6c2450        LEAQ 0x50(SP), BP
+  0x359e        493b6610        CMPQ SP, 0x10(R14)    [2:2]R_USEIFACE:<span class="hljs-built_in">type</span>:string [2:2]R_USEIFACE:<span class="hljs-built_in">type</span>:*os.File
+  0x35a2        7646            JBE 0x35ea
+  0x35a4        55            PUSHQ BP
+  0x35a5        4889e5            MOVQ SP, BP
+  0x35a8        4883ec38        SUBQ <span class="hljs-variable">$0x38</span>, SP
     fmt.Println(<span class="hljs-string">&quot;vim-go&quot;</span>)
-  0x140a        0f57c0            XORPS X0, X0
-  0x140d        0f11442440        MOVUPS X0, 0x40(SP)
-  0x1412        488d0500000000        LEAQ 0(IP), AX        [3:7]R_PCREL:type.string
+  0x35ac        488d1500000000        LEAQ 0(IP), DX        [3:7]R_PCREL:<span class="hljs-built_in">type</span>:string
+  0x35b3        4889542428        MOVQ DX, 0x28(SP)
+  0x35b8        488d1500000000        LEAQ 0(IP), DX        [3:7]R_PCREL:main..stmp_0&lt;1&gt;
+  0x35bf        4889542430        MOVQ DX, 0x30(SP)
+    <span class="hljs-built_in">return</span> Fprintln(os.Stdout, a...)
+  0x35c4        488b1d00000000        MOVQ 0(IP), BX        [3:7]R_PCREL:os.Stdout
   ......
 </code></pre>
 <p>&#x53E6;&#x5916;&#x6211;&#x4EEC;&#x4E5F;&#x6CE8;&#x610F;&#x5230;&#x793A;&#x4F8B;&#x4E2D;&#x6709;&#x5F88;&#x591A;&#x7B26;&#x53F7;&#x7C7B;&#x578B;&#x662F; <code>U</code>&#xFF0C;&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x90FD;&#x662F;&#x5728;&#x5F53;&#x524D;&#x6A21;&#x5757;main.o&#x4E2D;&#x672A;&#x5B9A;&#x4E49;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x662F;&#x5B9A;&#x4E49;&#x5728;&#x5176;&#x4ED6;&#x6A21;&#x5757;&#x4E2D;&#x7684;&#xFF0C;&#x5C06;&#x6765;&#x9700;&#x8981;&#x94FE;&#x63A5;&#x5668;&#x6765;&#x89E3;&#x6790;&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x5E76;&#x5B8C;&#x6210;&#x91CD;&#x5B9A;&#x4F4D;&#x3002;</p>
@@ -2642,42 +2658,40 @@ func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
 </blockquote>
 <p>&#x4E4B;&#x524D;&#x6211;&#x4EEC;&#x63D0;&#x5230;&#xFF0C;&#x53EF;&#x91CD;&#x5B9A;&#x4F4D;&#x6587;&#x4EF6;&#x4E2D;&#xFF0C;&#x5B58;&#x5728;&#x4E00;&#x4E9B;.rel.text&#x3001;.rel.data sections&#x6765;&#x5B9E;&#x73B0;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x4F46;&#x6211;&#x4EEC;&#x4E5F;&#x63D0;&#x5230;&#x4E86;&#xFF0C;go&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x662F;&#x81EA;&#x5B9A;&#x4E49;&#x7684;&#xFF0C;&#x5B83;&#x53C2;&#x8003;&#x4E86;plan9&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF08;<code>-go115newobj</code> &#x662F; Go 1.15 &#x7684;&#x8FC7;&#x6E21;&#x9009;&#x9879;&#xFF0C;&#x73B0;&#x5728;&#x7684;&#x94FE;&#x63A5;&#x5668;&#x5DF2;&#x7ECF;&#x4E0D;&#x518D;&#x63D0;&#x4F9B;&#xFF09;&#xFF0C;Linux binutils&#x63D0;&#x4F9B;&#x7684;readelf&#x5DE5;&#x5177;&#x662F;&#x65E0;&#x6CD5;&#x8BFB;&#x53D6;&#x7684;&#xFF0C;go&#x63D0;&#x4F9B;&#x4E86;&#x5DE5;&#x5177;objdump&#x6765;&#x67E5;&#x770B;&#x3002;</p>
 <pre><code class="lang-bash">$ go tool objdump main.o | grep R_
-  main.go:5     0x13ed  64488b0c2500000000  MOVQ FS:0, CX  [5:9]R_TLS_LE
-  main.go:6     0x1412  488d0500000000      LEAQ 0(IP), AX  [3:7]R_PCREL:type.string
-  main.go:6     0x141e  488d0500000000      LEAQ 0(IP), AX  [3:7]R_PCREL:<span class="hljs-string">&quot;&quot;</span>..stmp_0
-  print.go:274  0x142a  488b0500000000      MOVQ 0(IP), AX  [3:7]R_PCREL:os.Stdout
-  print.go:274  0x1431  488d0d00000000      LEAQ 0(IP), CX  [3:7]R_PCREL:go.itab.*os.File,io.Writer
-  print.go:274  0x145d  e800000000          CALL 0x1462  [1:5]R_CALL:fmt.Fprintln
-  main.go:5     0x146d  e800000000          CALL 0x1472  [1:5]R_CALL:runtime.morestack_noctxt
-  gofile..&lt;autogenerated&gt;:1  0x1580  e900000000  JMP 0x1585  [1:5]R_CALL:os.(*file).close
+  main.go:5        0x359e            493b6610        CMPQ SP, 0x10(R14)    [2:2]R_USEIFACE:<span class="hljs-built_in">type</span>:string [2:2]R_USEIFACE:<span class="hljs-built_in">type</span>:*os.File
+  main.go:6        0x35ac            488d1500000000        LEAQ 0(IP), DX        [3:7]R_PCREL:<span class="hljs-built_in">type</span>:string
+  main.go:6        0x35b8            488d1500000000        LEAQ 0(IP), DX        [3:7]R_PCREL:main..stmp_0&lt;1&gt;
+  print.go:314        0x35c4            488b1d00000000        MOVQ 0(IP), BX        [3:7]R_PCREL:os.Stdout
+  print.go:314        0x35cb            488d0500000000        LEAQ 0(IP), AX        [3:7]R_PCREL:go:itab.*os.File,io.Writer
+  print.go:314        0x35df            e800000000        CALL 0x35e4        [1:5]R_CALL:fmt.Fprintln
+  main.go:5        0x35ea            e800000000        CALL 0x35ef        [1:5]R_CALL:runtime.morestack_noctxt
 </code></pre>
-<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>grep R_</code>&#x6765;&#x8FC7;&#x6EE4;objdump&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7684;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF0C;&#x5176;&#x4E2D;&#x90FD;&#x6D89;&#x53CA;&#x4E86;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x91CD;&#x5B9A;&#x4F4D;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x6BD4;&#x5982;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;type.string&#xFF0C;&#x6BD4;&#x5982;&#x5168;&#x5C40;&#x53D8;&#x91CF;os.Stdout&#xFF0C;&#x6BD4;&#x5982;&#x5168;&#x5C40;&#x51FD;&#x6570;fmt.Fprintln&#x3001;os.(*file).close&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4F7F;&#x7528; <code>grep R_</code>&#x6765;&#x8FC7;&#x6EE4;objdump&#x7684;&#x8F93;&#x51FA;&#xFF0C;&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x770B;&#x5230;&#x7684;&#x8FD9;&#x4E9B;&#x64CD;&#x4F5C;&#x6307;&#x4EE4;&#xFF0C;&#x5176;&#x4E2D;&#x90FD;&#x6D89;&#x53CA;&#x4E86;&#x4E00;&#x4E9B;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x91CD;&#x5B9A;&#x4F4D;&#x7684;&#x7B26;&#x53F7;&#xFF0C;&#x6BD4;&#x5982;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;type:string&#xFF0C;&#x6BD4;&#x5982;&#x5168;&#x5C40;&#x53D8;&#x91CF;os.Stdout&#xFF0C;&#x6BD4;&#x5982;&#x5168;&#x5C40;&#x51FD;&#x6570;fmt.Fprintln&#x3002;</p>
 <blockquote>
-<p>ps: &#x8FD9;&#x91CC;&#x7684; R_PCREL&#x3001;R_CALL &#x662F; Go &#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x91CD;&#x5B9A;&#x4F4D;&#x7C7B;&#x578B;&#xFF08;objabi.RelocType&#xFF09;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x4ECB;&#x7ECD;&#x3002;</p>
+<p>ps: &#x8FD9;&#x91CC;&#x7684; R_USEIFACE&#x3001;R_PCREL&#x3001;R_CALL &#x662F; Go &#x76EE;&#x6807;&#x6587;&#x4EF6;&#x4E2D;&#x7684;&#x91CD;&#x5B9A;&#x4F4D;&#x7C7B;&#x578B;&#xFF08;objabi.RelocType&#xFF09;&#xFF0C;&#x8868;&#x793A;&#x8FD9;&#x91CC;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x540E;&#x9762;&#x4F1A;&#x4ECB;&#x7ECD;&#x3002;</p>
 </blockquote>
-<p>&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x5C06;&#x5728;&#x540E;&#x7EED; <code>go tool link</code>&#x65F6;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x5E76;&#x5B8C;&#x6210;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x6700;&#x7EC8;&#x6784;&#x5EFA;&#x51FA;&#x4E00;&#x4E2A;&#x5B8C;&#x5168;&#x94FE;&#x63A5;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#xFF0C;&#x53EF;&#x4EE5;&#x5C1D;&#x8BD5;&#x8FD0;&#x884C; <code>go tool link main.o</code>&#xFF0C;&#x4F1A;&#x751F;&#x6210;&#x4E00;&#x4E2A;a.out&#x6587;&#x4EF6;&#xFF0C;&#x8FD9;&#x5C31;&#x662F;&#x94FE;&#x63A5;&#x5B8C;&#x5168;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
-<pre><code class="lang-bash">$ go tool link main.o
+<p>&#x8FD9;&#x4E9B;&#x7B26;&#x53F7;&#x5C06;&#x5728;&#x540E;&#x7EED; <code>go tool link</code> &#x65F6;&#x8FDB;&#x884C;&#x89E3;&#x6790;&#x5E76;&#x5B8C;&#x6210;&#x91CD;&#x5B9A;&#x4F4D;&#x3002;&#x94FE;&#x63A5;&#x65F6;&#x540C;&#x6837;&#x9700;&#x8981; importcfg&#xFF0C;&#x5426;&#x5219; link &#x4F1A;&#x56E0;&#x4E3A;&#x627E;&#x4E0D;&#x5230;&#x6807;&#x51C6;&#x5E93;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x800C;&#x62A5;&#x9519;&#xFF08;<code>cannot open file .../pkg/linux_amd64/fmt.o</code>&#xFF09;&#xFF0C;&#x53EF;&#x4EE5;&#x8FD0;&#x884C;&#xFF1A;</p>
+<pre><code class="lang-bash">$ go tool link -importcfg importcfg -o a.out main.o
 $ ls
-./a.out main.o main.go
+a.out  importcfg  main  main.go  main.o
 $ ./a.out
 vim-go
 </code></pre>
-<p>&#x6700;&#x540E;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728; linux/amd64&#x3001;go1.24 &#x4E0A;&#xFF0C;&#x7EAF;go&#x7A0B;&#x5E8F;&#x8D70;&#x5185;&#x90E8;&#x94FE;&#x63A5;&#x4E14;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code> &#x65F6;&#xFF0C;&#x6700;&#x7EC8;&#x6784;&#x5EFA;&#x51FA;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x5927;&#x4F53;&#x4ECD;&#x662F;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x7684; ET_EXEC&#xFF0C;&#x5176;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x9700;&#x8981;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x7684;symbol&#x6216;section&#x3002;&#x4F7F;&#x7528; <code>-buildmode=pie</code> &#x65F6;&#x4F1A;&#x51FA;&#x73B0; <code>.interp</code>&#x3001;<code>.dynsym</code>&#x3001;<code>.dynamic</code>&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; PIE &#x9700;&#x8981;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x5668;&#x5B8C;&#x6210;&#x81EA;&#x4E3E;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x5E76;&#x4E0D;&#x4EE3;&#x8868;&#x4F9D;&#x8D56;&#x5171;&#x4EAB;&#x5E93;&#xFF0C;&#x6240;&#x4EE5; <code>ldd</code> &#x6709;&#x65F6;&#x4ECD;&#x663E;&#x793A; <code>statically linked</code>&#xFF1B;&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x3001;cgo&#x3001;<code>-linkshared</code> &#x5219;&#x5C5E;&#x4E8E;&#x771F;&#x6B63;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x540C;&#x6837;&#x4F1A;&#x5E26;&#x4E0A;&#x8FD9;&#x4E9B;section&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x4E9B;section&#x7684;&#x6765;&#x9F99;&#x53BB;&#x8109;&#x3001;<code>ldd</code> &#x8F93;&#x51FA;&#x7684;&#x542B;&#x4E49;&#x4EE5;&#x53CA;&#x51E0;&#x79CD;&#x6784;&#x5EFA;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x6BD4;&#xFF0C;&#x89C1;&#x9644;&#x5F55; <a href="../12-appendix/94-why-pie-has-dyn-sections.html">12.17 PIE&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E3A;&#x4EC0;&#x4E48;&#x6709;.interp/.dynsym/.dynamic</a>&#x3002;</p>
+<p>&#x8FD9;&#x91CC;&#x751F;&#x6210;&#x7684; a.out &#x5C31;&#x662F;&#x94FE;&#x63A5;&#x5B8C;&#x5168;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x4E86;&#x3002;</p>
+<p>&#x6700;&#x540E;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x7684;&#x662F;&#xFF0C;&#x5728; linux/amd64&#x3001;go1.24.6 &#x4E0A;&#xFF0C;&#x7EAF;go&#x7A0B;&#x5E8F;&#x8D70;&#x5185;&#x90E8;&#x94FE;&#x63A5;&#x4E14;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4; <code>-buildmode=exe</code> &#x65F6;&#xFF0C;&#x6700;&#x7EC8;&#x6784;&#x5EFA;&#x51FA;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x5927;&#x4F53;&#x4ECD;&#x662F;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x7684; ET_EXEC&#xFF0C;&#x5176;&#x4E2D;&#x4E0D;&#x5B58;&#x5728;&#x9700;&#x8981;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x7684;symbol&#x6216;section&#x3002;&#x4F7F;&#x7528; <code>-buildmode=pie</code> &#x65F6;&#x4F1A;&#x51FA;&#x73B0; <code>.interp</code>&#x3001;<code>.dynsym</code>&#x3001;<code>.dynamic</code>&#xFF0C;&#x8FD9;&#x662F;&#x56E0;&#x4E3A; PIE &#x9700;&#x8981;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x5668;&#x5B8C;&#x6210;&#x81EA;&#x4E3E;&#x91CD;&#x5B9A;&#x4F4D;&#xFF0C;&#x5E76;&#x4E0D;&#x4EE3;&#x8868;&#x4F9D;&#x8D56;&#x5171;&#x4EAB;&#x5E93;&#xFF0C;&#x6240;&#x4EE5; <code>ldd</code> &#x6709;&#x65F6;&#x4ECD;&#x663E;&#x793A; <code>statically linked</code>&#xFF1B;&#x5916;&#x90E8;&#x94FE;&#x63A5;&#x3001;cgo&#x3001;<code>-linkshared</code> &#x5219;&#x5C5E;&#x4E8E;&#x771F;&#x6B63;&#x7684;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x540C;&#x6837;&#x4F1A;&#x5E26;&#x4E0A;&#x8FD9;&#x4E9B;section&#x3002;&#x5173;&#x4E8E;&#x8FD9;&#x4E9B;section&#x7684;&#x6765;&#x9F99;&#x53BB;&#x8109;&#x3001;<code>ldd</code> &#x8F93;&#x51FA;&#x7684;&#x542B;&#x4E49;&#x4EE5;&#x53CA;&#x51E0;&#x79CD;&#x6784;&#x5EFA;&#x65B9;&#x5F0F;&#x7684;&#x5BF9;&#x6BD4;&#xFF0C;&#x89C1;&#x9644;&#x5F55; <a href="../12-appendix/94-why-pie-has-dyn-sections.html">12.17 PIE&#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;&#x4E3A;&#x4EC0;&#x4E48;&#x6709;.interp/.dynsym/.dynamic</a>&#x3002;</p>
 <pre><code>$ ldd -r test1 // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x7684;&#x7EAF;go&#x7A0B;&#x5E8F;&#xFF0C;&#x9ED8;&#x8BA4; -buildmode=exe &#x6784;&#x5EFA;
         not a dynamic executable
 
 $ ldd -r test1-pie // &#x540C;&#x4E00;&#x7A0B;&#x5E8F;&#x7684; -buildmode=pie &#x6784;&#x5EFA;
         statically linked
 
-$ ldd -r test2 // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x4E86;&#x5171;&#x4EAB;&#x5E93;&#x7684;cgo&#x6784;&#x5EFA;&#x7684;go&#x7A0B;&#x5E8F;
-        linux-vdso.so.1 (0x00007fff35dec000)
-        /$LIB/libonion.so =&gt; /lib64/libonion.so (0x00007f7c6f744000)
-        libresolv.so.2 =&gt; /lib64/libresolv.so.2 (0x00007f7c6f308000)
-        libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f7c6f0e8000)
-        libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f7c6ed12000)
-        libdl.so.2 =&gt; /lib64/libdl.so.2 (0x00007f7c6eb0e000)
-        /lib64/ld-linux-x86-64.so.2 (0x00007f7c6f520000)
-</code></pre><p>&#x800C;&#x5BF9;c&#x7A0B;&#x5E8F;&#x4E14;&#x4F7F;&#x7528;&#x4E86;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#xFF0C;&#x6784;&#x5EFA;&#x51FA;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x8FD9;&#x6837;&#x7684;&#x7B26;&#x53F7;&#x6216;section&#xFF0C;&#x5728;&#x540E;&#x7EED;loader&#x52A0;&#x8F7D;&#x7A0B;&#x5E8F;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#xFF08;&#x5982;ld-linux&#xFF09;&#x6765;&#x5B8C;&#x6210;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3002;</p>
+$ ldd -r test2 // &#x8FD9;&#x662F;&#x4E00;&#x4E2A; cgo &#x6784;&#x5EFA;&#x3001;&#x94FE;&#x63A5;&#x4E86; libc &#x7B49;&#x5171;&#x4EAB;&#x5E93;&#x7684; go &#x7A0B;&#x5E8F;
+        linux-vdso.so.1 (0x00007ffd6c7fc000)
+        libpthread.so.0 =&gt; /lib64/libpthread.so.0 (0x00007f9664a00000)
+        libc.so.6 =&gt; /lib64/libc.so.6 (0x00007f9664600000)
+        /lib64/ld-linux-x86-64.so.2 (0x00007f9664e00000)
+</code></pre><p>&#x4E0D;&#x540C;&#x673A;&#x5668;&#x3001;&#x4E0D;&#x540C;&#x6B21;&#x8FD0;&#x884C;&#x65F6;&#x52A8;&#x6001;&#x5E93;&#x5730;&#x5740;&#x53EF;&#x80FD;&#x4E0D;&#x540C;&#xFF0C;test2 &#x5177;&#x4F53;&#x4F9D;&#x8D56;&#x54EA;&#x4E9B;&#x5171;&#x4EAB;&#x5E93;&#x4E5F;&#x53D6;&#x51B3;&#x4E8E;&#x7A0B;&#x5E8F;&#x672C;&#x8EAB;&#x548C;&#x7CFB;&#x7EDF;&#x73AF;&#x5883;&#x3002;</p>
+<p>&#x800C;&#x5BF9;c&#x7A0B;&#x5E8F;&#x4E14;&#x4F7F;&#x7528;&#x4E86;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#xFF0C;&#x6784;&#x5EFA;&#x51FA;&#x7684;&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x4E2D;&#x5B58;&#x5728;&#x4E00;&#x4E9B;&#x8FD9;&#x6837;&#x7684;&#x7B26;&#x53F7;&#x6216;section&#xFF0C;&#x5728;&#x540E;&#x7EED;loader&#x52A0;&#x8F7D;&#x7A0B;&#x5E8F;&#x65F6;&#x4F1A;&#x8C03;&#x7528;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#x5668;&#xFF08;&#x5982;ld-linux&#xFF09;&#x6765;&#x5B8C;&#x6210;&#x52A8;&#x6001;&#x7B26;&#x53F7;&#x89E3;&#x6790;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
 <p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x7ED3;&#x5408;go&#x6D4B;&#x8BD5;&#x7A0B;&#x5E8F;&#x8BE6;&#x7EC6;&#x4ECB;&#x7ECD;&#x4E86;&#xFF1A;</p>
 <ul>
@@ -2743,7 +2757,7 @@ $ ldd -r test2 // &#x8FD9;&#x662F;&#x4E00;&#x4E2A;&#x5F15;&#x7528;&#x4E86;&#x517
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"next":{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},"previous":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/3-syms.md","mtime":"2026-11-07T20:38:14.630Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-07T20:38:41.608Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.3 符号&符号表","level":"1.7.3","depth":2,"next":{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},"previous":{"title":"7.2 理解ELF文件","level":"1.7.2","depth":2,"path":"7-headto-sym-debugger/2-elf.md","ref":"7-headto-sym-debugger/2-elf.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/3-syms.md","mtime":"2026-11-08T04:47:57.056Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-08T04:48:24.567Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

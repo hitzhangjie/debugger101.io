@@ -2350,13 +2350,26 @@ SUM:                            34            920            573           6413
 <li>&#x6240;&#x6709;.debug<em> .zdebug</em> sections&#xFF0C;dwarf.Data&#x91CC;&#x9762;&#x7EDF;&#x4E00;&#x8F6C;&#x6362;&#x4E3A;.debug_ sections&#xFF1B;</li>
 <li>&#x6240;&#x6709;&#x7684;DWARF sections&#x90FD;&#x4F1A;&#x88AB;&#x6B63;&#x5E38;&#x8BFB;&#x53D6;&#xFF01;</li>
 </ul>
+<p>file: src/debug/elf/file.go&#xFF08;go1.24&#xFF0C;<code>(*File).DWARF</code>&#xFF09;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x7B80;&#x5316;&#x540E;&#x7684;&#x7ED3;&#x6784;&#x793A;&#x610F;&#xFF1A;&#x7701;&#x7565;&#x4E86;&#x9519;&#x8BEF;&#x5904;&#x7406;&#xFF0C;&#x91CD;&#x5B9A;&#x4F4D;&#x5FAA;&#x73AF;&#x4E5F;&#x53EA;&#x4FDD;&#x7559;&#x8981;&#x70B9;&#x3002;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> (f *File) DWARF() (*dwarf.Data, error) {
-    <span class="hljs-comment">// &#x83B7;&#x53D6; .[z]debug_ sections&#x540E;&#x9762;&#x7684;&#x540E;&#x7F00;&#xFF0C;&#x5176;&#x4ED6;section&#x8FD4;&#x56DE;&#x7A7A;:w</span>
+    <span class="hljs-comment">// &#x83B7;&#x53D6; .[z]debug_ sections &#x540E;&#x9762;&#x7684;&#x540E;&#x7F00;&#xFF0C;&#x5176;&#x4ED6; section &#x8FD4;&#x56DE; &quot;&quot;</span>
     dwarfSuffix := <span class="hljs-keyword">func</span>(s *Section) <span class="hljs-keyword">string</span> { ... }
-    <span class="hljs-comment">// &#x83B7;&#x53D6; .[z]debug_ sections&#x7684;&#x6570;&#x636E;&#xFF0C;&#x5E76;&#x6309;&#x9700;&#x89E3;&#x538B;&#x7F29;&#xFF0C;&#x6309;&#x9700;&#x91CD;&#x5B9A;&#x4F4D;</span>
-    sectionData := <span class="hljs-keyword">func</span>(i <span class="hljs-keyword">int</span>, s *Section) ([]<span class="hljs-keyword">byte</span>, error) { ... }
 
-    <span class="hljs-comment">// DWARFv4 &#x6709;&#x975E;&#x5E38;&#x591A;&#x7684;.[z]debug_ sections&#xFF0C;&#x6700;&#x5F00;&#x59CB; debug/dwarf &#x4E3B;&#x8981;&#x5904;&#x7406;&#x4E0B;&#x9762;&#x8FD9;&#x4E9B; sections</span>
+    <span class="hljs-comment">// &#x53D6; section &#x6570;&#x636E;&#xFF1A;Section.Data() &#x5185;&#x90E8;&#x6309;&#x9700;&#x89E3;&#x538B;&#x7F29;&#xFF0C;&#x8FD9;&#x91CC;&#x518D;&#x6309;&#x9700;&#x91CD;&#x5B9A;&#x4F4D;</span>
+    sectionData := <span class="hljs-keyword">func</span>(i <span class="hljs-keyword">int</span>, s *Section) ([]<span class="hljs-keyword">byte</span>, error) {
+        b, _ := s.Data()
+        <span class="hljs-keyword">if</span> f.Type == ET_EXEC {
+            <span class="hljs-comment">// ET_EXEC &#x7684;&#x91CD;&#x5B9A;&#x4F4D;&#x5728;&#x94FE;&#x63A5;&#x671F;&#x5DF2;&#x5B8C;&#x6210;&#xFF0C;.rela &#x91CC;&#x7684;&#x6570;&#x636E;&#x53EF;&#x80FD;&#x662F;&#x9519;&#x7684;</span>
+            <span class="hljs-keyword">return</span> b, <span class="hljs-literal">nil</span>
+        }
+        <span class="hljs-comment">// &#x975E; ET_EXEC&#xFF1A;&#x627E;&#x51FA; Info &#x6307;&#x5411;&#x672C;&#x8282; s &#x7684; SHT_REL/SHT_RELA&#xFF0C;</span>
+        <span class="hljs-comment">// &#x628A;&#x91CD;&#x5B9A;&#x4F4D;&#x5E94;&#x7528;&#x5230; b &#x4E0A;&#xFF0C;&#x5373; f.applyRelocations(b, rd)</span>
+        ...
+        <span class="hljs-keyword">return</span> b, <span class="hljs-literal">nil</span>
+    }
+
+    <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x8F6E;&#xFF1A;&#x53EA;&#x5904;&#x7406; debug/dwarf &#x6700;&#x65E9;&#x652F;&#x6301;&#x7684;&#x90A3;&#x51E0;&#x4E2A; section</span>
     <span class="hljs-keyword">var</span> dat = <span class="hljs-keyword">map</span>[<span class="hljs-keyword">string</span>][]<span class="hljs-keyword">byte</span>{<span class="hljs-string">&quot;abbrev&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;info&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;str&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;line&quot;</span>: <span class="hljs-literal">nil</span>, <span class="hljs-string">&quot;ranges&quot;</span>: <span class="hljs-literal">nil</span>}
     <span class="hljs-keyword">for</span> i, s := <span class="hljs-keyword">range</span> f.Sections {
         suffix := dwarfSuffix(s)
@@ -2370,27 +2383,24 @@ SUM:                            34            920            573           6413
         dat[suffix] = b
     }
 
-    <span class="hljs-comment">// &#x521B;&#x5EFA;dwarf.Data&#xFF0C;&#x53EA;&#x5305;&#x542B;&#x4E86;&#x5DF2;&#x7ECF;&#x5904;&#x7406;&#x7684;.[z]debug_ sections</span>
+    <span class="hljs-comment">// &#x5148;&#x53EA;&#x7528;&#x7B2C;&#x4E00;&#x8F6E;&#x7684;&#x7ED3;&#x679C;&#x6784;&#x9020; dwarf.Data</span>
     d, _ := dwarf.New(dat[<span class="hljs-string">&quot;abbrev&quot;</span>], <span class="hljs-literal">nil</span>, <span class="hljs-literal">nil</span>, dat[<span class="hljs-string">&quot;info&quot;</span>], dat[<span class="hljs-string">&quot;line&quot;</span>], <span class="hljs-literal">nil</span>, dat[<span class="hljs-string">&quot;ranges&quot;</span>], dat[<span class="hljs-string">&quot;str&quot;</span>])
 
-    <span class="hljs-comment">// &#x7EE7;&#x7EED;&#x5904;&#x7406; multiple .debug_types sections and other DWARFv4/v5 sections.</span>
+    <span class="hljs-comment">// &#x7B2C;&#x4E8C;&#x8F6E;&#xFF1A;&#x6536;&#x4E0B; .debug_types &#x548C;&#x5176;&#x4ED6; DWARFv4/v5 sections</span>
     <span class="hljs-keyword">for</span> i, s := <span class="hljs-keyword">range</span> f.Sections {
         suffix := dwarfSuffix(s)
         <span class="hljs-keyword">if</span> suffix == <span class="hljs-string">&quot;&quot;</span> {
             <span class="hljs-keyword">continue</span>
         }
         <span class="hljs-keyword">if</span> _, ok := dat[suffix]; ok {
-            <span class="hljs-comment">// Already handled.</span>
-            <span class="hljs-keyword">continue</span>
+            <span class="hljs-keyword">continue</span> <span class="hljs-comment">// &#x7B2C;&#x4E00;&#x8F6E;&#x5DF2;&#x5904;&#x7406;</span>
         }
-
         b, _ := sectionData(i, s)
-        <span class="hljs-comment">// &#x5982;&#x679C;&#x6709;&#x591A;&#x4E2A;.debug_types sections&#xFF0C;dwarf.Data&#x91CC;&#x7684;section&#x540D;&#x52A0;&#x4E0A;&#x7F16;&#x53F7;&#xFF0C;&#x65B9;&#x4FBF;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;</span>
         <span class="hljs-keyword">if</span> suffix == <span class="hljs-string">&quot;types&quot;</span> {
-            _ = d.AddTypes(fmt.Sprintf(<span class="hljs-string">&quot;types-%d&quot;</span>, i), b); err != <span class="hljs-literal">nil</span> {
+            <span class="hljs-comment">// &#x591A;&#x4E2A; .debug_types &#x65F6;&#xFF0C;section &#x540D;&#x5E26;&#x4E0A;&#x7F16;&#x53F7;&#xFF0C;&#x65B9;&#x4FBF;&#x5B9A;&#x4F4D;&#x95EE;&#x9898;</span>
+            d.AddTypes(fmt.Sprintf(<span class="hljs-string">&quot;types-%d&quot;</span>, i), b)
         } <span class="hljs-keyword">else</span> {
-            <span class="hljs-comment">// &#x5176;&#x4ED6;DWARF sections</span>
-            _ = d.AddSection(<span class="hljs-string">&quot;.debug_&quot;</span>+suffix, b); err != <span class="hljs-literal">nil</span> {
+            d.AddSection(<span class="hljs-string">&quot;.debug_&quot;</span>+suffix, b)
         }
     }
 
@@ -2568,7 +2578,7 @@ go-delve/delve&#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x63D0;&#x4F9B;&#x8FD9;&#x6837;&#
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"next":{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.4 链接器生成DWARF数据","level":"1.7.7.4","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","articles":[]},{"title":"7.7.5 可以了解DWARF了","level":"1.7.7.5","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","mtime":"2026-11-22T18:01:24.149Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-22T18:01:40.135Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"next":{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},"previous":{"title":"7.7 挺进DWARF","level":"1.7.7","depth":2,"path":"7-headto-sym-debugger/7-headto-dwarf/README.md","ref":"7-headto-sym-debugger/7-headto-dwarf/README.md","articles":[{"title":"7.7.1 相关的GoPackages","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","articles":[]},{"title":"7.7.2 如何破解那些细节","level":"1.7.7.2","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","ref":"7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.md","articles":[]},{"title":"7.7.3 编译器生成DWARF数据","level":"1.7.7.3","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.md","articles":[]},{"title":"7.7.4 链接器生成DWARF数据","level":"1.7.7.4","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","ref":"7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.md","articles":[]},{"title":"7.7.5 可以了解DWARF了","level":"1.7.7.5","depth":3,"path":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","ref":"7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.md","mtime":"2026-11-22T18:08:53.773Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-22T18:09:17.943Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

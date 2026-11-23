@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>8.9 DWARF解析与应用 · GitBook</title>
+        <title>8.9 DWARF解析与对照实验 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -1119,7 +1119,7 @@
                 <a href="8-gopkg-dwarf-support.html">
             
                     
-                    8.8 从标准库到delve：Go DWARF实现选型
+                    8.8 从标准库到自研：Go DWARF实现参考
             
                 </a>
             
@@ -1132,7 +1132,7 @@
                 <a href="9-practices.html">
             
                     
-                    8.9 DWARF解析与应用
+                    8.9 DWARF解析与对照实验
             
                 </a>
             
@@ -2303,7 +2303,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >8.9 DWARF解析与应用</a>
+        <a href=".." >8.9 DWARF解析与对照实验</a>
     </h1>
 </div>
 
@@ -2323,9 +2323,9 @@ body {
   counter-reset: h1 74;
 }
 </style></p>
-<h2 id="dwarf&#x89E3;&#x6790;&#x4E0E;&#x5E94;&#x7528;">DWARF&#x89E3;&#x6790;&#x4E0E;&#x5E94;&#x7528;</h2>
-<p>8.8 &#x6211;&#x4EEC;&#x6BD4;&#x8F83;&#x4E86;&#x6807;&#x51C6;&#x5E93;&#x548C; delve &#x7684; DWARF &#x5B9E;&#x73B0;&#xFF0C;&#x8BF4;&#x660E;&#x4E86;&#x4E3A;&#x4EC0;&#x4E48;&#x6700;&#x7EC8;&#x9009;&#x62E9; delve &#x7684; <code>pkg/dwarf</code>&#x3002;&#x8FD9;&#x4E00;&#x8282;&#x8FDB;&#x5165;&#x5B9E;&#x8DF5;&#xFF1A;&#x5148;&#x770B; delve <code>pkg/dwarf</code> &#x7684;&#x76EE;&#x5F55;&#x548C; package &#x5206;&#x5DE5;&#xFF0C;&#x518D;&#x5199;&#x51E0;&#x4E2A;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x9A8C;&#x8BC1; DWARF &#x80FD;&#x5E2E;&#x6211;&#x4EEC;&#x62FF;&#x5230;&#x54EA;&#x4E9B;&#x4FE1;&#x606F;&#x3002;</p>
-<h3 id="dwarf&#x89E3;&#x6790;">DWARF&#x89E3;&#x6790;</h3>
+<h2 id="dwarf&#x89E3;&#x6790;&#x4E0E;&#x5BF9;&#x7167;&#x5B9E;&#x9A8C;">DWARF&#x89E3;&#x6790;&#x4E0E;&#x5BF9;&#x7167;&#x5B9E;&#x9A8C;</h2>
+<p>8.8 &#x6211;&#x4EEC;&#x6BD4;&#x8F83;&#x4E86;&#x6807;&#x51C6;&#x5E93;&#x548C; delve &#x7684; DWARF &#x5B9E;&#x73B0;&#xFF0C;&#x8BF4;&#x660E;&#x4E86; godbgv2 &#x4E3A;&#x4EC0;&#x4E48;&#x8981;&#x81EA;&#x7814; <code>pkg/dwarf</code>&#x3001;delve &#x53EA;&#x662F;&#x53C2;&#x8003;&#x5B9E;&#x73B0;&#x3002;&#x8FD9;&#x4E00;&#x8282;&#x7528; delve &#x7684;&#x5305;&#x505A;&#x51E0;&#x4E2A;&#x5BF9;&#x7167;&#x5B9E;&#x9A8C;&#xFF1A;&#x5148;&#x770B;&#x5B83;&#x7684;&#x76EE;&#x5F55;&#x548C; package &#x5206;&#x5DE5;&#xFF0C;&#x518D;&#x5199;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x9A8C;&#x8BC1; DWARF &#x80FD;&#x5E2E;&#x6211;&#x4EEC;&#x62FF;&#x5230;&#x54EA;&#x4E9B;&#x4FE1;&#x606F;&#xFF1B;&#x8FD9;&#x4E9B;&#x5B9E;&#x9A8C;&#x4E0D;&#x662F; godbgv2 &#x7684;&#x6700;&#x7EC8;&#x5B9E;&#x73B0;&#x3002;</p>
+<h3 id="&#x53C2;&#x8003;&#x5B9E;&#x73B0;&#xFF1A;delve-pkgdwarf">&#x53C2;&#x8003;&#x5B9E;&#x73B0;&#xFF1A;delve pkg/dwarf</h3>
 <p>&#x4ECB;&#x7ECD;&#x4E0B;<a href="https://github.com/go-delve/delve" target="_blank">go-delve/delve</a>&#x4E2D;&#x7684;DWARF&#x89E3;&#x6790;&#x76F8;&#x5173;&#x7684;&#x4EE3;&#x7801;&#xFF0C;&#x8FD9;&#x91CC;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x4E0B;&#x76F8;&#x5173;package&#x7684;&#x4F5C;&#x7528;&#x548C;&#x4F7F;&#x7528;&#x65B9;&#x6CD5;&#xFF0C;&#x5728;&#x540E;&#x7EED;&#x5C0F;&#x8282;&#x4E2D;&#x5C06;&#x6709;&#x66F4;&#x8BE6;&#x7EC6;&#x7684;&#x4F7F;&#x7528;&#x3002;</p>
 <p>&#x8FD9;&#x91CC;&#x7684;&#x4ECB;&#x7ECD;&#x91C7;&#x7528;&#x7684;delve&#x6E90;&#x7801;&#x7248;&#x672C;&#x4E3A;&#xFF1A;commit cba1a524&#x3002;&#x60A8;&#x53EF;&#x4EE5;&#x68C0;&#x51FA;delve&#x7684;&#x6E90;&#x7801;&#x7684;&#x5BF9;&#x5E94;&#x7248;&#x672C;&#xFF0C;&#x6765;&#x8FDB;&#x4E00;&#x6B65;&#x6DF1;&#x5165;&#x4E86;&#x89E3;&#xFF0C;&#x6211;&#x4EEC;&#x5148;&#x8DDF;&#x968F;&#x4F5C;&#x8005;&#x7684;&#x8282;&#x594F;&#x6765;&#x5FEB;&#x901F;&#x4E86;&#x89E3;&#x3002;</p>
 <h4 id="&#x76EE;&#x5F55;&#x7ED3;&#x6784;">&#x76EE;&#x5F55;&#x7ED3;&#x6784;</h4>
@@ -2435,9 +2435,9 @@ body {
 </tr>
 </tbody>
 </table>
-<p><code>github.com/go-delve/delve/pkg/dwarf</code>&#xFF0C;&#x6C89;&#x6DC0;&#x4E86;delve&#x5BF9;DWARF&#x6570;&#x636E;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x652F;&#x6301;&#x3002;&#x624B;&#x5199;&#x4E00;&#x4E2A;&#x5B8C;&#x5907;&#x7684;DWARF&#x89E3;&#x6790;&#x5E93;&#xFF0C;&#x8981;&#x7CBE;&#x901A;DWARF&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#xFF0C;&#x8FD8;&#x8981;&#x4E86;&#x89E3;go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x5728;&#x4ECE;DWARF v4&#x6F14;&#x53D8;&#x5230;DWARF v5&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x6240;&#x505A;&#x7684;&#x5404;&#x79CD;&#x8C03;&#x6574;&#xFF0C;&#x5DE5;&#x4F5C;&#x91CF;&#x8FD8;&#x662F;&#x5F88;&#x5927;&#x7684;&#x3002;&#x4E3A;&#x4E86;&#x907F;&#x514D;&#x5927;&#x5BB6;&#x5B66;&#x4E60;&#x8FC7;&#x7A0B;&#x8FC7;&#x4E8E;&#x67AF;&#x71E5;&#xFF0C;&#x6211;&#x4EEC;&#x4E0D;&#x4F1A;&#x518D;&#x624B;&#x5199;&#x4E00;&#x4E2A;&#x65B0;&#x7684;DWARF&#x652F;&#x6301;&#x5E93;&#xFF0C;&#x800C;&#x662F;&#x590D;&#x7528;go-delve/delve&#x4E2D;&#x7684;&#x5B9E;&#x73B0;&#xFF08;&#x53EF;&#x80FD;&#x4F1A;&#x9002;&#x5F53;&#x88C1;&#x526A;&#xFF0C;&#x5E76;&#x5728;&#x5FC5;&#x8981;&#x65F6;&#x8FDB;&#x884C;&#x5F3A;&#x8C03;&#xFF09;&#x3002;</p>
+<p><code>github.com/go-delve/delve/pkg/dwarf</code> &#x6C89;&#x6DC0;&#x4E86; delve &#x5BF9; DWARF &#x6570;&#x636E;&#x8BFB;&#x5199;&#x64CD;&#x4F5C;&#x7684;&#x652F;&#x6301;&#x3002;&#x624B;&#x5199;&#x4E00;&#x4E2A;&#x5B8C;&#x5907;&#x7684; DWARF &#x89E3;&#x6790;&#x5E93;&#xFF0C;&#x8981;&#x7CBE;&#x901A; DWARF &#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x6807;&#x51C6;&#xFF0C;&#x8FD8;&#x8981;&#x4E86;&#x89E3; Go &#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x5728;&#x4ECE; DWARF v4 &#x6F14;&#x53D8;&#x5230; DWARF v5 &#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#x6240;&#x505A;&#x7684;&#x5404;&#x79CD;&#x8C03;&#x6574;&#xFF0C;&#x5DE5;&#x4F5C;&#x91CF;&#x8FD8;&#x662F;&#x5F88;&#x5927;&#x7684;&#x3002;&#x672C;&#x4E66;&#x4F1A;&#x53C2;&#x8003;&#x5B83;&#x7684;&#x8BBE;&#x8BA1;&#xFF0C;&#x5728; godbgv2 &#x4E2D;&#x81EA;&#x7814;&#x6211;&#x4EEC;&#x9700;&#x8981;&#x7684; API&#xFF1B;&#x672C;&#x8282;&#x5148;&#x7528;&#x5B83;&#x505A;&#x5BF9;&#x7167;&#x5B9E;&#x9A8C;&#xFF0C;&#x9A8C;&#x8BC1;&#x6BCF;&#x4E2A; API &#x80CC;&#x540E;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x628A;&#x6574;&#x4E2A;&#x5E93;&#x642C;&#x8FDB; godbgv2&#x3002;</p>
 <h3 id="dwarf&#x5E94;&#x7528;">DWARF&#x5E94;&#x7528;</h3>
-<p>&#x672C;&#x5C0F;&#x8282;&#x76F8;&#x5173;&#x4EE3;&#x7801;&#x60A8;&#x53EF;&#x4EE5;&#x4ECE;&#x8FD9;&#x91CC;&#x83B7;&#x53D6;&#xFF1A;<a href="https://github.com/hitzhangjie/codemaster/tree/master/dwarf/test&#x3002;" target="_blank">https://github.com/hitzhangjie/codemaster/tree/master/dwarf/test&#x3002;</a></p>
+<p>&#x672C;&#x5C0F;&#x8282;&#x7684;&#x793A;&#x4F8B;&#x4EE3;&#x7801;&#x8BA1;&#x5212;&#x7EDF;&#x4E00;&#x6536;&#x655B;&#x5230; godbgv2 &#x7684; ch8 tag&#xFF1B;&#x5728; tag &#x53D1;&#x5E03;&#x524D;&#xFF0C;&#x5148;&#x4EE5;&#x6587;&#x4E2D;&#x7684;&#x4EE3;&#x7801;&#x7247;&#x6BB5;&#x4E3A;&#x51C6;&#x3002;</p>
 <h4 id="elf&#x8BFB;&#x53D6;dwarf">ELF&#x8BFB;&#x53D6;DWARF</h4>
 <p>ELF&#x6587;&#x4EF6;&#x4E2D;&#x8BFB;&#x53D6;DWARF&#x76F8;&#x5173;&#x7684;&#x8C03;&#x8BD5;section&#xFF0C;&#x5E76;&#x6253;&#x5370;section&#x540D;&#x79F0;&#x53CA;&#x6570;&#x636E;&#x91CF;&#x5927;&#x5C0F;&#xFF1A;</p>
 <pre><code class="lang-go"><span class="hljs-keyword">func</span> Test_ElfReadDWARF(t *testing.T) {
@@ -2910,7 +2910,7 @@ func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
 <p>&#x5F53;&#x7136;&#xFF0C;CFI&#x4FE1;&#x606F;&#x8868;&#x63D0;&#x4F9B;&#x7684;&#x4E0D;&#x5149;&#x662F;CFA&#x7684;&#x8BA1;&#x7B97;&#xFF0C;&#x5B83;&#x8FD8;&#x8BB0;&#x5F55;&#x4E86;&#x6307;&#x4EE4;&#x6267;&#x884C;&#x8FC7;&#x7A0B;&#x4E2D;&#x5BF9;&#x5176;&#x4ED6;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x5F71;&#x54CD;&#xFF0C;&#x56E0;&#x6B64;&#x8FD8;&#x53EF;&#x4EE5;&#x663E;&#x793A;&#x4E0D;&#x540C;&#x6808;&#x5E27;&#x4E2D;&#x65F6;&#x5BC4;&#x5B58;&#x5668;&#x7684;&#x503C;&#x3002;&#x901A;&#x8FC7;&#x5728;&#x4E0D;&#x540C;&#x6808;&#x5E27;&#x4E2D;&#x6E38;&#x8D70;&#xFF0C;&#x8FD8;&#x53EF;&#x4EE5;&#x770B;&#x5230;&#x6808;&#x5E27;&#x4E2D;&#x5B9A;&#x4E49;&#x7684;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x7684;&#x503C;&#x3002;</p>
 <p>&#x5173;&#x4E8E;CFI&#x7684;&#x4F7F;&#x7528;&#x6211;&#x4EEC;&#x5C31;&#x5148;&#x7B80;&#x5355;&#x4ECB;&#x7ECD;&#x5230;&#x8FD9;&#xFF0C;&#x540E;&#x9762;&#x5B9E;&#x73B0;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x65F6;&#x518D;&#x8FDB;&#x4E00;&#x6B65;&#x89E3;&#x91CA;&#x3002;</p>
 <h3 id="&#x672C;&#x8282;&#x5C0F;&#x7ED3;">&#x672C;&#x8282;&#x5C0F;&#x7ED3;</h3>
-<p>&#x672C;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86; <code>github.com/go-delve/delve/pkg/dwarf</code> &#x7684;&#x4E00;&#x4E9B;DWARF&#x652F;&#x6301;&#xFF0C;&#x7136;&#x540E;&#x4F7F;&#x7528;&#x8FD9;&#x4E9B;&#x5305;&#x7F16;&#x5199;&#x4E86;&#x4E00;&#x4E9B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x5206;&#x522B;&#x6D4B;&#x8BD5;&#x4E86;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x3001;&#x8BFB;&#x53D6;&#x53D8;&#x91CF;&#x3001;&#x8BFB;&#x53D6;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x3001;&#x8BFB;&#x53D6;&#x884C;&#x53F7;&#x8868;&#x3001;&#x8BFB;&#x53D6;&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;&#x8868;&#xFF0C;&#x901A;&#x8FC7;&#x7F16;&#x5199;&#x8FD9;&#x4E9B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x52A0;&#x6DF1;&#x4E86;&#x5BF9;DWARF&#x89E3;&#x6790;&#x4EE5;&#x53CA;&#x5E94;&#x7528;&#x7684;&#x7406;&#x89E3;&#x3002;</p>
+<p>&#x672C;&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x7528; delve &#x7684; <code>pkg/dwarf</code> &#x505A;&#x5BF9;&#x7167;&#x5B9E;&#x9A8C;&#xFF0C;&#x7F16;&#x5199;&#x4E86;&#x4E00;&#x4E9B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#xFF0C;&#x5206;&#x522B;&#x9A8C;&#x8BC1;&#x4E86;&#x8BFB;&#x53D6;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x5B9A;&#x4E49;&#x3001;&#x53D8;&#x91CF;&#x3001;&#x51FD;&#x6570;&#x5B9A;&#x4E49;&#x3001;&#x884C;&#x53F7;&#x8868;&#x3001;&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;&#x8868;&#x7684;&#x8FC7;&#x7A0B;&#x3002;&#x8FD9;&#x4E9B;&#x6D4B;&#x8BD5;&#x7528;&#x4F8B;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x7406;&#x89E3; DWARF &#x7684;&#x8BED;&#x4E49;&#xFF0C;&#x4E5F;&#x9A8C;&#x8BC1;&#x4E86; delve &#x7684;&#x5B9E;&#x73B0;&#xFF1B;godbgv2 &#x7684;&#x81EA;&#x7814; <code>pkg/dwarf</code> &#x4F1A;&#x6309;&#x7B2C;9&#x7AE0;&#x7684;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x5BF9;&#x5E94;&#x7684; API&#xFF0C;&#x800C;&#x4E0D;&#x662F;&#x76F4;&#x63A5;&#x590D;&#x7528;&#x8FD9;&#x4E9B;&#x5305;&#x3002;</p>
 
                                 
                                 </section>
@@ -2938,7 +2938,7 @@ func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
 
             
                 
-                <a href="8-gopkg-dwarf-support.html" class="navigation navigation-prev " aria-label="Previous page: 8.8 从标准库到delve：Go DWARF实现选型">
+                <a href="8-gopkg-dwarf-support.html" class="navigation navigation-prev " aria-label="Previous page: 8.8 从标准库到自研：Go DWARF实现参考">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -2954,7 +2954,7 @@ func <span class="hljs-function"><span class="hljs-title">main</span></span>() {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"8.9 DWARF解析与应用","level":"1.8.9","depth":2,"next":{"title":"8.10 本章总结","level":"1.8.10","depth":2,"path":"8-dwarf/10-summary.md","ref":"8-dwarf/10-summary.md","articles":[]},"previous":{"title":"8.8 从标准库到delve：Go DWARF实现选型","level":"1.8.8","depth":2,"path":"8-dwarf/8-gopkg-dwarf-support.md","ref":"8-dwarf/8-gopkg-dwarf-support.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/9-practices.md","mtime":"2026-11-23T16:20:30.351Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-23T16:20:53.866Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"8.9 DWARF解析与对照实验","level":"1.8.9","depth":2,"next":{"title":"8.10 本章总结","level":"1.8.10","depth":2,"path":"8-dwarf/10-summary.md","ref":"8-dwarf/10-summary.md","articles":[]},"previous":{"title":"8.8 从标准库到自研：Go DWARF实现参考","level":"1.8.8","depth":2,"path":"8-dwarf/8-gopkg-dwarf-support.md","ref":"8-dwarf/8-gopkg-dwarf-support.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"8-dwarf/9-practices.md","mtime":"2026-11-23T16:40:13.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-23T16:40:39.032Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

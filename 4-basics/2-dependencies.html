@@ -659,7 +659,7 @@
                 <a href="../7-headto-sym-debugger/">
             
                     
-                    7 符号级调试基础
+                    7 从源码到可调试进程
             
                 </a>
             
@@ -725,7 +725,7 @@
                 <a href="../7-headto-sym-debugger/5-loading.html">
             
                     
-                    7.5 加载
+                    7.5 程序加载
             
                 </a>
             
@@ -733,12 +733,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
+        <li class="chapter " data-level="1.7.6" data-path="../7-headto-sym-debugger/6-load-bias.html">
+            
+                <a href="../7-headto-sym-debugger/6-load-bias.html">
+            
+                    
+                    7.6 文件地址、链接地址与运行时地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/6-gopkg-debug/">
             
                 <a href="../7-headto-sym-debugger/6-gopkg-debug/">
             
                     
-                    7.6 go标准库debug/*
+                    7.7 用Go标准库读取ELF与符号表
             
                 </a>
             
@@ -747,12 +760,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.6.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
+        <li class="chapter " data-level="1.7.7.1" data-path="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
             
                 <a href="../7-headto-sym-debugger/6-gopkg-debug/1-elf.html">
             
                     
-                    7.6.1 debug/elf
+                    7.7.1 debug/elf
             
                 </a>
             
@@ -760,25 +773,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
+        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
             
                 <a href="../7-headto-sym-debugger/6-gopkg-debug/2-gosym.html">
             
                     
-                    7.6.2 debug/gosym
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.6.3" data-path="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
-            
-                <a href="../7-headto-sym-debugger/6-gopkg-debug/3-dwarf.html">
-            
-                    
-                    7.6.3 debug/dwarf
+                    7.7.2 debug/gosym
             
                 </a>
             
@@ -791,87 +791,16 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7" data-path="../7-headto-sym-debugger/7-headto-dwarf/">
+        <li class="chapter " data-level="1.7.8" data-path="../7-headto-sym-debugger/7-summary.html">
             
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/">
+                <a href="../7-headto-sym-debugger/7-summary.html">
             
                     
-                    7.7 挺进DWARF
+                    7.8 从二进制到DWARF
             
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.7.1" data-path="../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
-            
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/1-gopkgs-about-dwarf.html">
-            
-                    
-                    7.7.1 相关的GoPackages
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
-            
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/2-delve-into-internals.html">
-            
-                    
-                    7.7.2 如何破解那些细节
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
-            
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/3-compiler-gen-dwarfdata.html">
-            
-                    
-                    7.7.3 编译器生成DWARF数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.4" data-path="../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
-            
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/4-linker-gen-dwarfdata.html">
-            
-                    
-                    7.7.4 链接器生成DWARF数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.5" data-path="../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
-            
-                <a href="../7-headto-sym-debugger/7-headto-dwarf/5-headto-dwarf.html">
-            
-                    
-                    7.7.5 可以了解DWARF了
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -1114,12 +1043,26 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-practices.html">
+        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-dwarf-generation/">
             
-                <a href="../8-dwarf/6-practices.html">
+                <a href="../8-dwarf/6-dwarf-generation/">
             
                     
-                    8.6 DWARF解析及应用
+                    8.6 DWARF数据是如何生成的
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../8-dwarf/6-dwarf-generation/1-trace.html">
+            
+                <a href="../8-dwarf/6-dwarf-generation/1-trace.html">
+            
+                    
+                    8.6.1 如何跟踪DWARF生成过程
             
                 </a>
             
@@ -1127,12 +1070,82 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-summary.html">
+        <li class="chapter " data-level="1.8.6.2" data-path="../8-dwarf/6-dwarf-generation/2-compiler.html">
             
-                <a href="../8-dwarf/7-summary.html">
+                <a href="../8-dwarf/6-dwarf-generation/2-compiler.html">
             
                     
-                    8.7 本章总结
+                    8.6.2 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../8-dwarf/6-dwarf-generation/3-linker.html">
+            
+                <a href="../8-dwarf/6-dwarf-generation/3-linker.html">
+            
+                    
+                    8.6.3 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-gopkg-dwarf.html">
+            
+                <a href="../8-dwarf/7-gopkg-dwarf.html">
+            
+                    
+                    8.7 用Go标准库读取DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../8-dwarf/8-gopkg-dwarf-support.html">
+            
+                <a href="../8-dwarf/8-gopkg-dwarf-support.html">
+            
+                    
+                    8.8 从标准库到delve：Go DWARF实现选型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../8-dwarf/9-practices.html">
+            
+                <a href="../8-dwarf/9-practices.html">
+            
+                    
+                    8.9 DWARF解析与应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../8-dwarf/10-summary.html">
+            
+                <a href="../8-dwarf/10-summary.html">
+            
+                    
+                    8.10 本章总结
             
                 </a>
             
@@ -2587,7 +2600,7 @@ main.dSYM/Contents/Resources/DWARF/main: file format Mach-O arm64
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.2 调试依赖","level":"1.4.2","depth":2,"next":{"title":"4.3 反调试技术","level":"1.4.3","depth":2,"path":"4-basics/3-countertactics.md","ref":"4-basics/3-countertactics.md","articles":[]},"previous":{"title":"4.1 调试目的","level":"1.4.1","depth":2,"path":"4-basics/1-purposes.md","ref":"4-basics/1-purposes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4-basics/2-dependencies.md","mtime":"2026-11-22T18:37:07.394Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-22T18:37:23.855Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.2 调试依赖","level":"1.4.2","depth":2,"next":{"title":"4.3 反调试技术","level":"1.4.3","depth":2,"path":"4-basics/3-countertactics.md","ref":"4-basics/3-countertactics.md","articles":[]},"previous":{"title":"4.1 调试目的","level":"1.4.1","depth":2,"path":"4-basics/1-purposes.md","ref":"4-basics/1-purposes.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"4-basics/2-dependencies.md","mtime":"2026-11-23T16:20:30.290Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-23T16:20:53.866Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

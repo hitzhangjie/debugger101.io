@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>7.5 加载 · GitBook</title>
+        <title>7.5 程序加载 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -65,7 +65,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="6-gopkg-debug/" />
+    <link rel="next" href="6-load-bias.html" />
     
     
     <link rel="prev" href="4-syms-resolve-reloc.html" />
@@ -659,7 +659,7 @@
                 <a href="./">
             
                     
-                    7 符号级调试基础
+                    7 从源码到可调试进程
             
                 </a>
             
@@ -725,7 +725,7 @@
                 <a href="5-loading.html">
             
                     
-                    7.5 加载
+                    7.5 程序加载
             
                 </a>
             
@@ -733,12 +733,25 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6" data-path="6-gopkg-debug/">
+        <li class="chapter " data-level="1.7.6" data-path="6-load-bias.html">
+            
+                <a href="6-load-bias.html">
+            
+                    
+                    7.6 文件地址、链接地址与运行时地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.7.7" data-path="6-gopkg-debug/">
             
                 <a href="6-gopkg-debug/">
             
                     
-                    7.6 go标准库debug/*
+                    7.7 用Go标准库读取ELF与符号表
             
                 </a>
             
@@ -747,12 +760,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.6.1" data-path="6-gopkg-debug/1-elf.html">
+        <li class="chapter " data-level="1.7.7.1" data-path="6-gopkg-debug/1-elf.html">
             
                 <a href="6-gopkg-debug/1-elf.html">
             
                     
-                    7.6.1 debug/elf
+                    7.7.1 debug/elf
             
                 </a>
             
@@ -760,25 +773,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6.2" data-path="6-gopkg-debug/2-gosym.html">
+        <li class="chapter " data-level="1.7.7.2" data-path="6-gopkg-debug/2-gosym.html">
             
                 <a href="6-gopkg-debug/2-gosym.html">
             
                     
-                    7.6.2 debug/gosym
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.6.3" data-path="6-gopkg-debug/3-dwarf.html">
-            
-                <a href="6-gopkg-debug/3-dwarf.html">
-            
-                    
-                    7.6.3 debug/dwarf
+                    7.7.2 debug/gosym
             
                 </a>
             
@@ -791,87 +791,16 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7" data-path="7-headto-dwarf/">
+        <li class="chapter " data-level="1.7.8" data-path="7-summary.html">
             
-                <a href="7-headto-dwarf/">
+                <a href="7-summary.html">
             
                     
-                    7.7 挺进DWARF
+                    7.8 从二进制到DWARF
             
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.7.1" data-path="7-headto-dwarf/1-gopkgs-about-dwarf.html">
-            
-                <a href="7-headto-dwarf/1-gopkgs-about-dwarf.html">
-            
-                    
-                    7.7.1 相关的GoPackages
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.2" data-path="7-headto-dwarf/2-delve-into-internals.html">
-            
-                <a href="7-headto-dwarf/2-delve-into-internals.html">
-            
-                    
-                    7.7.2 如何破解那些细节
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.3" data-path="7-headto-dwarf/3-compiler-gen-dwarfdata.html">
-            
-                <a href="7-headto-dwarf/3-compiler-gen-dwarfdata.html">
-            
-                    
-                    7.7.3 编译器生成DWARF数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.4" data-path="7-headto-dwarf/4-linker-gen-dwarfdata.html">
-            
-                <a href="7-headto-dwarf/4-linker-gen-dwarfdata.html">
-            
-                    
-                    7.7.4 链接器生成DWARF数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.5" data-path="7-headto-dwarf/5-headto-dwarf.html">
-            
-                <a href="7-headto-dwarf/5-headto-dwarf.html">
-            
-                    
-                    7.7.5 可以了解DWARF了
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -1114,12 +1043,26 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-practices.html">
+        <li class="chapter " data-level="1.8.6" data-path="../8-dwarf/6-dwarf-generation/">
             
-                <a href="../8-dwarf/6-practices.html">
+                <a href="../8-dwarf/6-dwarf-generation/">
             
                     
-                    8.6 DWARF解析及应用
+                    8.6 DWARF数据是如何生成的
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../8-dwarf/6-dwarf-generation/1-trace.html">
+            
+                <a href="../8-dwarf/6-dwarf-generation/1-trace.html">
+            
+                    
+                    8.6.1 如何跟踪DWARF生成过程
             
                 </a>
             
@@ -1127,12 +1070,82 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-summary.html">
+        <li class="chapter " data-level="1.8.6.2" data-path="../8-dwarf/6-dwarf-generation/2-compiler.html">
             
-                <a href="../8-dwarf/7-summary.html">
+                <a href="../8-dwarf/6-dwarf-generation/2-compiler.html">
             
                     
-                    8.7 本章总结
+                    8.6.2 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../8-dwarf/6-dwarf-generation/3-linker.html">
+            
+                <a href="../8-dwarf/6-dwarf-generation/3-linker.html">
+            
+                    
+                    8.6.3 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../8-dwarf/7-gopkg-dwarf.html">
+            
+                <a href="../8-dwarf/7-gopkg-dwarf.html">
+            
+                    
+                    8.7 用Go标准库读取DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../8-dwarf/8-gopkg-dwarf-support.html">
+            
+                <a href="../8-dwarf/8-gopkg-dwarf-support.html">
+            
+                    
+                    8.8 从标准库到delve：Go DWARF实现选型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../8-dwarf/9-practices.html">
+            
+                <a href="../8-dwarf/9-practices.html">
+            
+                    
+                    8.9 DWARF解析与应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../8-dwarf/10-summary.html">
+            
+                <a href="../8-dwarf/10-summary.html">
+            
+                    
+                    8.10 本章总结
             
                 </a>
             
@@ -2290,7 +2303,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >7.5 加载</a>
+        <a href=".." >7.5 程序加载</a>
     </h1>
 </div>
 
@@ -2403,7 +2416,7 @@ body {
 </ul>
 <h3 id="&#x603B;&#x7ED3;">&#x603B;&#x7ED3;</h3>
 <p>&#x672C;&#x6587;&#x4ECB;&#x7ECD;&#x4E86;&#x7A0B;&#x5E8F;&#x88AB;&#x52A0;&#x8F7D;&#x8FD0;&#x884C;&#x65F6;&#x7684;&#x6267;&#x884C;&#x7EC6;&#x8282;&#xFF0C;&#x8003;&#x8651;&#x5230;&#x94FE;&#x63A5;&#xFF08;&#x9759;&#x6001;&#x94FE;&#x63A5;&#x3001;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF09;&#x548C;&#x52A0;&#x8F7D;&#xFF08;&#x9759;&#x6001;&#x52A0;&#x8F7D;&#x3001;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#xFF09;&#x7684;&#x591A;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x672C;&#x6587;&#x5206;&#x522B;&#x4ECB;&#x7ECD;&#x4E86;&#x8FD9;&#x51E0;&#x79CD;&#x94FE;&#x63A5;&#x3001;&#x52A0;&#x8F7D;&#x65B9;&#x5F0F;&#x53CA;&#x9002;&#x7528;&#x573A;&#x666F;&#x3002;&#x6211;&#x4EEC;&#x4E5F;&#x7279;&#x522B;&#x63CF;&#x8FF0;&#x4E86;&#x4E0B;&#xFF0C;&#x4F7F;&#x7528;&#x4E86;&#x52A8;&#x6001;&#x5171;&#x4EAB;&#x5E93;&#x7684;&#x60C5;&#x666F;&#x4E0B;&#xFF0C;loader&#x52A0;&#x8F7D;&#x7A0B;&#x5E8F;&#x3001;&#x5B8C;&#x6210;&#x52A8;&#x6001;&#x94FE;&#x63A5;&#xFF0C;&#x4EE5;&#x53CA;&#x53EF;&#x80FD;&#x540E;&#x7EED;&#x7684;&#x52A8;&#x6001;&#x52A0;&#x8F7D;&#x5E93;&#x3001;&#x52A8;&#x6001;&#x89E3;&#x6790;&#x7B26;&#x53F7;&#x7684;&#x8FD9;&#x51E0;&#x4E2A;&#x4E0D;&#x540C;&#x7684;&#x9636;&#x6BB5;&#x3002;</p>
-<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x4ECE;&#x6E90;&#x4EE3;&#x7801;&#x5230;&#x7F16;&#x8BD1;&#x3001;&#x5230;&#x94FE;&#x63A5;&#x3001;&#x5230;&#x52A0;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x7EC6;&#x8282;&#x90FD;&#x4ECB;&#x7ECD;&#x5230;&#x4E86;&#x3002;&#x63A5;&#x4E0B;&#x6765;&#x6211;&#x4EEC;&#x4F1A;&#x5728;&#x7B2C;6&#x5C0F;&#x8282;&#x5FEB;&#x901F;&#x6D4F;&#x89C8;&#x4E0B;&#x76F8;&#x5173;&#x7684;go&#x6807;&#x51C6;&#x5E93;go/src/debug&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x8FD9;&#x5176;&#x4E2D;&#x5305;&#x542B;&#x4E86;ELF&#x76F8;&#x5173;&#x3001;&#x7B26;&#x53F7;&#x8868;&#x76F8;&#x5173;&#x3001;DWARF&#x76F8;&#x5173;&#x7684;&#x652F;&#x6301;&#x4EE3;&#x7801;&#x3002;&#x7136;&#x540E;&#x7B2C;7&#x5C0F;&#x8282;&#x6211;&#x4EEC;&#x4F1A;&#x7B80;&#x5355;&#x603B;&#x7ED3;&#x4E0B;go&#x6807;&#x51C6;&#x5E93;go/src/debug/dwarf&#x76F8;&#x5173;&#x7684;&#x5B9E;&#x73B0;&#xFF0C;&#x4E86;&#x89E3;&#x8FD9;&#x4E9B;&#x8FD8;&#x662F;&#x4E0D;&#x591F;&#x7684;&#xFF0C;&#x7B2C;8&#x7AE0;&#x6211;&#x4EEC;&#x4F1A;&#x6DF1;&#x5165;&#x4ECB;&#x7ECD;&#x4E0B;DWARF&#x662F;&#x5982;&#x4F55;&#x5BF9;&#x9AD8;&#x7EA7;&#x8BED;&#x8A00;&#x6E90;&#x7A0B;&#x5E8F;&#x6784;&#x9020;&#x8FDB;&#x884C;&#x63CF;&#x8FF0;&#x7684;&#xFF0C;&#x6BD4;&#x5982;&#x5982;&#x4F55;&#x63CF;&#x8FF0;&#x4E00;&#x4E2A;&#x51FD;&#x6570;&#x3001;&#x4E00;&#x4E2A;&#x7C7B;&#x578B;&#x7B49;&#x3002;</p>
+<p>&#x73B0;&#x5728;&#x6211;&#x4EEC;&#x4ECE;&#x6E90;&#x4EE3;&#x7801;&#x5230;&#x7F16;&#x8BD1;&#x3001;&#x5230;&#x94FE;&#x63A5;&#x3001;&#x5230;&#x52A0;&#x8F7D;&#x6267;&#x884C;&#x7684;&#x8FC7;&#x7A0B;&#x7EC6;&#x8282;&#x90FD;&#x4ECB;&#x7ECD;&#x5230;&#x4E86;&#x3002;&#x63A5;&#x4E0B;&#x6765; 7.6 &#x5148;&#x628A;&#x6587;&#x4EF6;&#x5730;&#x5740;&#x3001;&#x94FE;&#x63A5;&#x5730;&#x5740;&#x3001;&#x8FD0;&#x884C;&#x65F6;&#x5730;&#x5740;&#x7684;&#x6362;&#x7B97;&#x8BB2;&#x6E05;&#x695A;&#xFF1B;7.7 &#x7528; Go &#x6807;&#x51C6;&#x5E93;&#x8BFB;&#x53D6; ELF &#x548C;&#x7B26;&#x53F7;&#x8868;&#xFF1B;7.8 &#x6536;&#x675F;&#x672C;&#x7AE0;&#xFF0C;&#x8FDB;&#x5165;&#x7B2C;8&#x7AE0;&#x7684; DWARF&#x3002;</p>
 <p>OK&#xFF0C;&#x6211;&#x4EEC;&#x79BB;&#x76EE;&#x6807;&#x53C8;&#x8FDB;&#x4E86;&#x4E00;&#x6B65;&#xFF0C;&#x8BA9;&#x6211;&#x4EEC;&#x7EE7;&#x7EED;&#x5427;&#x3002;</p>
 <h3 id="&#x53C2;&#x8003;&#x5185;&#x5BB9;">&#x53C2;&#x8003;&#x5185;&#x5BB9;</h3>
 <ol>
@@ -2444,7 +2457,7 @@ body {
                 </a>
                 
                 
-                <a href="6-gopkg-debug/" class="navigation navigation-next " aria-label="Next page: 7.6 go标准库debug/*">
+                <a href="6-load-bias.html" class="navigation navigation-next " aria-label="Next page: 7.6 文件地址、链接地址与运行时地址">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2455,7 +2468,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.5 加载","level":"1.7.5","depth":2,"next":{"title":"7.6 go标准库debug/*","level":"1.7.6","depth":2,"path":"7-headto-sym-debugger/6-gopkg-debug/README.md","ref":"7-headto-sym-debugger/6-gopkg-debug/README.md","articles":[{"title":"7.6.1 debug/elf","level":"1.7.6.1","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","articles":[]},{"title":"7.6.2 debug/gosym","level":"1.7.6.2","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","ref":"7-headto-sym-debugger/6-gopkg-debug/2-gosym.md","articles":[]},{"title":"7.6.3 debug/dwarf","level":"1.7.6.3","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/3-dwarf.md","articles":[]}]},"previous":{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/5-loading.md","mtime":"2026-11-22T18:37:07.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-22T18:37:23.855Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.5 程序加载","level":"1.7.5","depth":2,"next":{"title":"7.6 文件地址、链接地址与运行时地址","level":"1.7.6","depth":2,"path":"7-headto-sym-debugger/6-load-bias.md","ref":"7-headto-sym-debugger/6-load-bias.md","articles":[]},"previous":{"title":"7.4 符号解析&重定位","level":"1.7.4","depth":2,"path":"7-headto-sym-debugger/4-syms-resolve-reloc.md","ref":"7-headto-sym-debugger/4-syms-resolve-reloc.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/5-loading.md","mtime":"2026-11-23T16:20:30.299Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-23T16:20:53.866Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

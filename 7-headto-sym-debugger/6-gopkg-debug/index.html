@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>7.6 go标准库debug/* · GitBook</title>
+        <title>7.7 用Go标准库读取ELF与符号表 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -68,7 +68,7 @@
     <link rel="next" href="1-elf.html" />
     
     
-    <link rel="prev" href="../5-loading.html" />
+    <link rel="prev" href="../6-load-bias.html" />
     
 
     </head>
@@ -659,7 +659,7 @@
                 <a href="../">
             
                     
-                    7 符号级调试基础
+                    7 从源码到可调试进程
             
                 </a>
             
@@ -725,7 +725,7 @@
                 <a href="../5-loading.html">
             
                     
-                    7.5 加载
+                    7.5 程序加载
             
                 </a>
             
@@ -733,12 +733,25 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.7.6" data-path="./">
+        <li class="chapter " data-level="1.7.6" data-path="../6-load-bias.html">
+            
+                <a href="../6-load-bias.html">
+            
+                    
+                    7.6 文件地址、链接地址与运行时地址
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.7.7" data-path="./">
             
                 <a href="./">
             
                     
-                    7.6 go标准库debug/*
+                    7.7 用Go标准库读取ELF与符号表
             
                 </a>
             
@@ -747,12 +760,12 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.7.6.1" data-path="1-elf.html">
+        <li class="chapter " data-level="1.7.7.1" data-path="1-elf.html">
             
                 <a href="1-elf.html">
             
                     
-                    7.6.1 debug/elf
+                    7.7.1 debug/elf
             
                 </a>
             
@@ -760,25 +773,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.6.2" data-path="2-gosym.html">
+        <li class="chapter " data-level="1.7.7.2" data-path="2-gosym.html">
             
                 <a href="2-gosym.html">
             
                     
-                    7.6.2 debug/gosym
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.6.3" data-path="3-dwarf.html">
-            
-                <a href="3-dwarf.html">
-            
-                    
-                    7.6.3 debug/dwarf
+                    7.7.2 debug/gosym
             
                 </a>
             
@@ -791,87 +791,16 @@
             
         </li>
     
-        <li class="chapter " data-level="1.7.7" data-path="../7-headto-dwarf/">
+        <li class="chapter " data-level="1.7.8" data-path="../7-summary.html">
             
-                <a href="../7-headto-dwarf/">
+                <a href="../7-summary.html">
             
                     
-                    7.7 挺进DWARF
+                    7.8 从二进制到DWARF
             
                 </a>
             
 
-            
-            <ul class="articles">
-                
-    
-        <li class="chapter " data-level="1.7.7.1" data-path="../7-headto-dwarf/1-gopkgs-about-dwarf.html">
-            
-                <a href="../7-headto-dwarf/1-gopkgs-about-dwarf.html">
-            
-                    
-                    7.7.1 相关的GoPackages
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.2" data-path="../7-headto-dwarf/2-delve-into-internals.html">
-            
-                <a href="../7-headto-dwarf/2-delve-into-internals.html">
-            
-                    
-                    7.7.2 如何破解那些细节
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.3" data-path="../7-headto-dwarf/3-compiler-gen-dwarfdata.html">
-            
-                <a href="../7-headto-dwarf/3-compiler-gen-dwarfdata.html">
-            
-                    
-                    7.7.3 编译器生成DWARF数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.4" data-path="../7-headto-dwarf/4-linker-gen-dwarfdata.html">
-            
-                <a href="../7-headto-dwarf/4-linker-gen-dwarfdata.html">
-            
-                    
-                    7.7.4 链接器生成DWARF数据
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.7.7.5" data-path="../7-headto-dwarf/5-headto-dwarf.html">
-            
-                <a href="../7-headto-dwarf/5-headto-dwarf.html">
-            
-                    
-                    7.7.5 可以了解DWARF了
-            
-                </a>
-            
-
-            
-        </li>
-    
-
-            </ul>
             
         </li>
     
@@ -1114,12 +1043,26 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-practices.html">
+        <li class="chapter " data-level="1.8.6" data-path="../../8-dwarf/6-dwarf-generation/">
             
-                <a href="../../8-dwarf/6-practices.html">
+                <a href="../../8-dwarf/6-dwarf-generation/">
             
                     
-                    8.6 DWARF解析及应用
+                    8.6 DWARF数据是如何生成的
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.8.6.1" data-path="../../8-dwarf/6-dwarf-generation/1-trace.html">
+            
+                <a href="../../8-dwarf/6-dwarf-generation/1-trace.html">
+            
+                    
+                    8.6.1 如何跟踪DWARF生成过程
             
                 </a>
             
@@ -1127,12 +1070,82 @@
             
         </li>
     
-        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-summary.html">
+        <li class="chapter " data-level="1.8.6.2" data-path="../../8-dwarf/6-dwarf-generation/2-compiler.html">
             
-                <a href="../../8-dwarf/7-summary.html">
+                <a href="../../8-dwarf/6-dwarf-generation/2-compiler.html">
             
                     
-                    8.7 本章总结
+                    8.6.2 编译器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.6.3" data-path="../../8-dwarf/6-dwarf-generation/3-linker.html">
+            
+                <a href="../../8-dwarf/6-dwarf-generation/3-linker.html">
+            
+                    
+                    8.6.3 链接器生成DWARF数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.7" data-path="../../8-dwarf/7-gopkg-dwarf.html">
+            
+                <a href="../../8-dwarf/7-gopkg-dwarf.html">
+            
+                    
+                    8.7 用Go标准库读取DWARF
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.8" data-path="../../8-dwarf/8-gopkg-dwarf-support.html">
+            
+                <a href="../../8-dwarf/8-gopkg-dwarf-support.html">
+            
+                    
+                    8.8 从标准库到delve：Go DWARF实现选型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.9" data-path="../../8-dwarf/9-practices.html">
+            
+                <a href="../../8-dwarf/9-practices.html">
+            
+                    
+                    8.9 DWARF解析与应用
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.8.10" data-path="../../8-dwarf/10-summary.html">
+            
+                <a href="../../8-dwarf/10-summary.html">
+            
+                    
+                    8.10 本章总结
             
                 </a>
             
@@ -2290,7 +2303,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >7.6 go标准库debug/*</a>
+        <a href="../.." >7.7 用Go标准库读取ELF与符号表</a>
     </h1>
 </div>
 
@@ -2307,48 +2320,38 @@
                                 
                                 <p><style>
 body {
-  counter-reset: h1 46;
+  counter-reset: h1 47;
 }
 </style></p>
-<h2 id="go&#x6807;&#x51C6;&#x5E93;--debug">go&#x6807;&#x51C6;&#x5E93; : debug/*</h2>
+<h2 id="go&#x6807;&#x51C6;&#x5E93;&#xFF1A;debugelf-&#x4E0E;-debuggosym">go&#x6807;&#x51C6;&#x5E93;&#xFF1A;debug/elf &#x4E0E; debug/gosym</h2>
 <h3 id="&#x7B80;&#x8981;&#x56DE;&#x987E;">&#x7B80;&#x8981;&#x56DE;&#x987E;</h3>
-<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;ELF&#x6587;&#x4EF6;&#x5934;&#x3001;&#x6BB5;&#x5934;&#x8868;&#xFF08;program header table&#xFF09;&#x3001;&#x8282;&#x5934;&#x8868;&#xFF08;section header table&#xFF09;&#x3001;&#x5E38;&#x89C1;&#x7684;&#x8282;&#xFF08;sections&#xFF09;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x4F5C;&#x7528;&#xFF0C;&#x6211;&#x4EEC;&#x4E5F;&#x4ECB;&#x7ECD;&#x4E86;&#x7B26;&#x53F7;&#x3001;&#x7B26;&#x53F7;&#x8868;&#xFF08;.symtab&#xFF09;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#xFF08;.strtab&#xFF09;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x4F5C;&#x7528;&#x3002;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5411;&#x56F0;&#x96BE;&#x7684;&#x94FE;&#x63A5;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x3001;&#x52A0;&#x8F7D;&#x7EC6;&#x8282;&#x4F4E;&#x5934;&#xFF0C;&#x65C1;&#x5F81;&#x535A;&#x5F15;&#x3001;&#x53C2;&#x8003;&#x4E86;&#x4F17;&#x591A;&#x6280;&#x672F;&#x8D44;&#x6599;&#xFF0C;&#x4E3A;&#x5927;&#x5BB6;&#x7CFB;&#x7EDF;&#x6027;&#x5730;&#x68B3;&#x7406;&#x4E86;&#x94FE;&#x63A5;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x3001;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x7EC6;&#x8282;&#x3002;</p>
-<p>&#x6211;&#x575A;&#x4FE1;&#x4ECB;&#x7ECD;&#x6E05;&#x695A;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x52A0;&#x6DF1;&#x5927;&#x5BB6;&#x7684;&#x8BA4;&#x8BC6;&#xFF0C;&#x5C06;&#x6709;&#x52A9;&#x4E8E;&#x6211;&#x4EEC;&#x5F00;&#x53D1;&#x8C03;&#x8BD5;&#x5668;&#x8FC7;&#x7A0B;&#x4E2D;&#x5C11;&#x8D70;&#x4E9B;&#x5F2F;&#x8DEF;&#x3002;</p>
-<p>&#x81F3;&#x6B64;&#xFF0C;&#x76F8;&#x4FE1;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x4EEC;&#x5BF9;ELF&#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x5F88;&#x591A;&#x754F;&#x60E7;&#x5FC3;&#x7406;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x8BB2;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x5927;&#x5BB6;&#x7684;&#x7591;&#x8651;&#x3001;&#x52A0;&#x6DF1;&#x8BA4;&#x8BC6;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x5EFA;&#x7ACB;&#x5927;&#x5BB6;&#x5BF9;&#x4E8C;&#x8FDB;&#x5236;&#x5206;&#x6790;&#x3001;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x7684;&#x4FE1;&#x5FC3;&#x3002;&#x800C;&#x4E14;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x6211;&#x66F4;&#x770B;&#x91CD;&#x4FE1;&#x5FC3;&#x7684;&#x5EFA;&#x7ACB;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x540C;&#x62AB;&#x6302;&#x4E0A;&#x9635;&#x7684;&#x6218;&#x58EB;&#xFF0C;&#x4FE1;&#x5FC3;&#x6EE1;&#x6EE1;&#xFF0C;&#x5373;&#x5C06;&#x51FA;&#x5F81;&#x3002;</p>
-<h3 id="go&#x6807;&#x51C6;&#x5E93;">go&#x6807;&#x51C6;&#x5E93;</h3>
-<p>&#x6211;&#x4EEC;&#x662F;&#x57FA;&#x4E8E;go&#x8BED;&#x8A00;&#x5F00;&#x53D1;&#x4E00;&#x6B3E;&#x9762;&#x5411;go&#x7A0B;&#x5E8F;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5728;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86;&#x5F88;&#x591A;&#x7CFB;&#x7EDF;&#x539F;&#x7406;&#x3001;&#x6280;&#x672F;&#x7EC6;&#x8282;&#x3001;&#x5176;&#x4ED6;&#x8BED;&#x8A00;&#x793A;&#x4F8B;&#x4E4B;&#x540E;&#xFF0C;&#x6211;&#x4EEC;&#x6700;&#x7EC8;&#x5C06;&#x56DE;&#x5230;&#x5982;&#x4F55;&#x901A;&#x8FC7;go&#x8BED;&#x8A00;&#x6765;&#x843D;&#x5730;&#x7684;&#x95EE;&#x9898;&#x4E0A;&#x3002;</p>
-<p>&#x9996;&#x5F53;&#x5176;&#x51B2;&#x7684;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x89E3;&#x6790;ELF&#x6587;&#x4EF6;&#x7684;&#x95EE;&#x9898;&#xFF0C;&#x5305;&#x62EC;&#x5982;&#x4F55;&#x89E3;&#x6790;ELF&#x6587;&#x4EF6;&#x5934;&#xFF0C;ELF&#x4E2D;&#x7684;&#x6BB5;&#x5934;&#x8868;&#x3001;&#x8282;&#x5934;&#x8868;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x5E38;&#x89C1;section&#x4E2D;&#x6570;&#x636E;&#x7684;&#x89E3;&#x6790;&#xFF0C;&#x5982;.debug_* sections&#x4E2D;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#x3002;</p>
-<p>go&#x6807;&#x51C6;&#x5E93;&#x4E2D;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x7C7B;&#x4F3C;&#x7684;&#x5DE5;&#x5177;&#xFF0C;&#x5E2E;&#x6211;&#x4EEC;&#x7B80;&#x5316;&#x4E0A;&#x8FF0;&#x4EFB;&#x52A1;&#xFF0C;&#x4E0B;&#x9762;&#x5C31;&#x6765;&#x770B;&#x4E0B;&#x3002;</p>
-<p>go&#x6807;&#x51C6;&#x5E93;package <code>debug/*</code>&#xFF0C;&#x4E13;&#x95E8;&#x7528;&#x6765;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;go&#x7F16;&#x8BD1;&#x5DE5;&#x5177;&#x94FE;&#x751F;&#x6210;&#x7684;ELF&#x6587;&#x4EF6;&#x4FE1;&#x606F;&#xFF1A;</p>
+<p>&#x524D;&#x9762;&#x6211;&#x4EEC;&#x4ECB;&#x7ECD;&#x4E86; ELF &#x6587;&#x4EF6;&#x5934;&#x3001;&#x6BB5;&#x5934;&#x8868;&#xFF08;program header table&#xFF09;&#x3001;&#x8282;&#x5934;&#x8868;&#xFF08;section header table&#xFF09;&#x3001;&#x5E38;&#x89C1;&#x8282;&#xFF08;sections&#xFF09;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x4F5C;&#x7528;&#xFF0C;&#x4E5F;&#x4ECB;&#x7ECD;&#x4E86;&#x7B26;&#x53F7;&#x3001;&#x7B26;&#x53F7;&#x8868;&#xFF08;<code>.symtab</code>&#xFF09;&#x3001;&#x5B57;&#x7B26;&#x4E32;&#x8868;&#xFF08;<code>.strtab</code>&#xFF09;&#x7684;&#x7ED3;&#x6784;&#x548C;&#x4F5C;&#x7528;&#x3002;&#x5728;&#x6B64;&#x57FA;&#x7840;&#x4E0A;&#xFF0C;&#x6211;&#x4EEC;&#x6CA1;&#x6709;&#x5411;&#x56F0;&#x96BE;&#x7684;&#x94FE;&#x63A5;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x3001;&#x52A0;&#x8F7D;&#x7EC6;&#x8282;&#x4F4E;&#x5934;&#xFF0C;&#x7CFB;&#x7EDF;&#x6027;&#x5730;&#x68B3;&#x7406;&#x4E86;&#x94FE;&#x63A5;&#x3001;&#x91CD;&#x5B9A;&#x4F4D;&#x3001;&#x52A0;&#x8F7D;&#x5668;&#x7684;&#x7EC6;&#x8282;&#x3002;</p>
+<p>&#x6211;&#x575A;&#x4FE1;&#x4ECB;&#x7ECD;&#x6E05;&#x695A;&#x8FD9;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x52A0;&#x6DF1;&#x5927;&#x5BB6;&#x7684;&#x8BA4;&#x8BC6;&#xFF0C;&#x5C06;&#x6709;&#x52A9;&#x4E8E;&#x6211;&#x4EEC;&#x5F00;&#x53D1;&#x8C03;&#x8BD5;&#x5668;&#x8FC7;&#x7A0B;&#x4E2D;&#x5C11;&#x8D70;&#x4E9B;&#x5F2F;&#x8DEF;&#x3002;&#x81F3;&#x6B64;&#xFF0C;&#x76F8;&#x4FE1;&#x8BFB;&#x8005;&#x670B;&#x53CB;&#x4EEC;&#x5BF9; ELF &#x6587;&#x4EF6;&#x6CA1;&#x6709;&#x5F88;&#x591A;&#x754F;&#x60E7;&#x5FC3;&#x7406;&#x4E86;&#x3002;&#x6211;&#x4EEC;&#x8BB2;&#x8FD9;&#x4E48;&#x591A;&#xFF0C;&#x4E00;&#x65B9;&#x9762;&#x662F;&#x4E3A;&#x4E86;&#x89E3;&#x51B3;&#x5927;&#x5BB6;&#x7684;&#x7591;&#x8651;&#x3001;&#x52A0;&#x6DF1;&#x8BA4;&#x8BC6;&#xFF0C;&#x53E6;&#x4E00;&#x65B9;&#x9762;&#x4E5F;&#x662F;&#x4E3A;&#x4E86;&#x5EFA;&#x7ACB;&#x5927;&#x5BB6;&#x5BF9;&#x4E8C;&#x8FDB;&#x5236;&#x5206;&#x6790;&#x3001;&#x8C03;&#x8BD5;&#x5668;&#x5F00;&#x53D1;&#x7684;&#x4FE1;&#x5FC3;&#x3002;&#x800C;&#x4E14;&#x76F8;&#x6BD4;&#x4E4B;&#x4E0B;&#xFF0C;&#x6211;&#x66F4;&#x770B;&#x91CD;&#x4FE1;&#x5FC3;&#x7684;&#x5EFA;&#x7ACB;&#xFF0C;&#x6211;&#x4EEC;&#x5982;&#x540C;&#x62AB;&#x6302;&#x4E0A;&#x9635;&#x7684;&#x6218;&#x58EB;&#xFF0C;&#x4FE1;&#x5FC3;&#x6EE1;&#x6EE1;&#xFF0C;&#x5373;&#x5C06;&#x51FA;&#x5F81;&#x3002;</p>
+<h3 id="&#x56DE;&#x5230;-go-&#x8BED;&#x8A00;">&#x56DE;&#x5230; Go &#x8BED;&#x8A00;</h3>
+<p>&#x6211;&#x4EEC;&#x662F;&#x57FA;&#x4E8E; Go &#x8BED;&#x8A00;&#x5F00;&#x53D1;&#x4E00;&#x6B3E;&#x9762;&#x5411; Go &#x7A0B;&#x5E8F;&#x7684;&#x8C03;&#x8BD5;&#x5668;&#xFF0C;&#x5728;&#x4ECB;&#x7ECD;&#x4E86;&#x5F88;&#x591A;&#x7CFB;&#x7EDF;&#x539F;&#x7406;&#x3001;&#x6280;&#x672F;&#x7EC6;&#x8282;&#x4E4B;&#x540E;&#xFF0C;&#x6700;&#x7EC8;&#x8981;&#x56DE;&#x5230;&#x5982;&#x4F55;&#x901A;&#x8FC7; Go &#x8BED;&#x8A00;&#x6765;&#x843D;&#x5730;&#x7684;&#x95EE;&#x9898;&#x4E0A;&#x3002;</p>
+<p>&#x9996;&#x5F53;&#x5176;&#x51B2;&#x7684;&#x5C31;&#x662F;&#x5982;&#x4F55;&#x89E3;&#x6790; ELF &#x6587;&#x4EF6;&#xFF1A;ELF &#x6587;&#x4EF6;&#x5934;&#x3001;&#x6BB5;&#x5934;&#x8868;&#x3001;&#x8282;&#x5934;&#x8868;&#xFF0C;&#x4EE5;&#x53CA;&#x4E00;&#x4E9B;&#x5E38;&#x89C1; section &#x4E2D;&#x6570;&#x636E;&#x7684;&#x89E3;&#x6790;&#x3002;Go &#x6807;&#x51C6;&#x5E93;&#x63D0;&#x4F9B;&#x4E86;&#x4E00;&#x4E9B;&#x5DE5;&#x5177;&#xFF0C;&#x5E2E;&#x6211;&#x4EEC;&#x7B80;&#x5316;&#x4E0A;&#x8FF0;&#x4EFB;&#x52A1;&#x3002;<code>debug/*</code> &#x4E0B;&#x6709;&#x51E0;&#x4E2A;&#x5305;&#xFF1A;</p>
 <ul>
-<li><code>debug/elf</code>&#x652F;&#x6301;ELF&#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x6CD5;&#x6765;&#x6839;&#x636E;&#x540D;&#x79F0;&#x5B9A;&#x4F4D;section&#xFF1B;</li>
-<li><code>debug/gosym</code>&#x652F;&#x6301;.gosymtab&#x7B26;&#x53F7;&#x8868;&#x3001;.gopclntab&#x884C;&#x53F7;&#x8868;&#x7684;&#x89E3;&#x6790;&#x3002;&#x8BBE;&#x8BA1;&#x4E0A;.gopclntab&#x4E2D;&#x901A;&#x8FC7;pcsp&#x8BB0;&#x5F55;&#x4E86;pc&#x503C;&#x5BF9;&#x5E94;&#x7684;&#x6808;&#x5E27;&#x5927;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5B9A;&#x4F4D;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF0C;&#x53EF;&#x8FDB;&#x4E00;&#x6B65;&#x786E;&#x5B9A;caller&#xFF0C;&#x91CD;&#x590D;&#x8BE5;&#x8FC7;&#x7A0B;&#x53EF;&#x8DDF;&#x8E2A;goroutine&#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;&#xFF0C;&#x5982;panic&#x65F6;&#x6253;&#x5370;&#x7684;stacktrace&#x4FE1;&#x606F;&#xFF1B;</li>
-<li><code>debug/dwarf</code>DWARF&#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;&#xFF1A;<code>.debug_*</code> &#x4E3A;&#x672A;&#x538B;&#x7F29;&#x8282;&#xFF0C;&#x6216; ELF &#x4E0A;&#x5E26; <code>SHF_COMPRESSED</code> &#x7684;&#x538B;&#x7F29;&#x8282;&#xFF1B;<code>.zdebug_*</code> &#x4E3A;&#x65E7;&#x5F0F; zlib &#x538B;&#x7F29;&#x8282;&#x3002;ELF &#x81EA; Go 1.19 &#x8D77;&#x7528;&#x524D;&#x8005;&#xFF0C;PE &#x4ECD;&#x7528; <code>.zdebug_*</code>&#xFF0C;Mach-O &#x4ECD;&#x7528; <code>__zdebug_*</code>&#xFF1B;</li>
+<li><code>debug/elf</code>&#xFF1A;ELF &#x6587;&#x4EF6;&#x7684;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x65B9;&#x6CD5;&#x6765;&#x6839;&#x636E;&#x540D;&#x79F0;&#x5B9A;&#x4F4D; section&#xFF1B;</li>
+<li><code>debug/gosym</code>&#xFF1A;<code>.gosymtab</code> &#x7B26;&#x53F7;&#x8868;&#x3001;<code>.gopclntab</code> &#x884C;&#x53F7;&#x8868;&#x7684;&#x89E3;&#x6790;&#x3002;&#x8BBE;&#x8BA1;&#x4E0A; <code>.gopclntab</code> &#x4E2D;&#x901A;&#x8FC7; pcsp &#x8BB0;&#x5F55;&#x4E86; pc &#x503C;&#x5BF9;&#x5E94;&#x7684;&#x6808;&#x5E27;&#x5927;&#x5C0F;&#xFF0C;&#x6240;&#x4EE5;&#x5F88;&#x5BB9;&#x6613;&#x5B9A;&#x4F4D;&#x8FD4;&#x56DE;&#x5730;&#x5740;&#xFF0C;&#x53EF;&#x8FDB;&#x4E00;&#x6B65;&#x786E;&#x5B9A; caller&#xFF0C;&#x91CD;&#x590D;&#x8BE5;&#x8FC7;&#x7A0B;&#x53EF;&#x8DDF;&#x8E2A; goroutine &#x8C03;&#x7528;&#x6808;&#x4FE1;&#x606F;&#xFF0C;&#x5982; panic &#x65F6;&#x6253;&#x5370;&#x7684; stacktrace &#x4FE1;&#x606F;&#xFF1B;</li>
+<li><code>debug/dwarf</code>&#xFF1A;DWARF &#x6570;&#x636E;&#x7684;&#x8BFB;&#x53D6;&#x3001;&#x89E3;&#x6790;&#x3002;&#x8FD9;&#x4E2A;&#x5305;&#x6211;&#x4EEC;&#x653E;&#x5230;&#x7B2C;8&#x7AE0;&#x518D;&#x8BB2;&#xFF0C;&#x56E0;&#x4E3A;&#x5B83;&#x9700;&#x8981;&#x5148;&#x7406;&#x89E3; DWARF &#x7684;&#x6570;&#x636E;&#x6A21;&#x578B;&#xFF0C;&#x5426;&#x5219;&#x5C31;&#x53EA;&#x80FD;&#x7167;&#x6284; API&#xFF0C;&#x51FA;&#x4E86;&#x95EE;&#x9898;&#x4E5F;&#x4E0D;&#x77E5;&#x9053;&#x4ECE;&#x54EA;&#x91CC;&#x67E5;&#x3002;</li>
 </ul>
 <blockquote>
-<p>  <code>debug</code>&#x4E0B;&#x51E0;&#x4E2A;&#x4E0E;ELF&#x65E0;&#x5173;&#x7684;package&#x8BF4;&#x660E;&#xFF1A;</p>
+<p><code>debug</code> &#x4E0B;&#x51E0;&#x4E2A;&#x4E0E; ELF &#x65E0;&#x5173;&#x7684; package&#xFF1A;</p>
 <ul>
-<li>macOS&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3001;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x5E76;&#x4E0D;&#x662F;Unix/Linux&#x6BD4;&#x8F83;&#x901A;&#x7528;&#x7684;ELF&#x683C;&#x5F0F;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x7684;&#x662F;macho&#x683C;&#x5F0F;&#xFF0C;package <code>debug/macho</code> &#x662F;&#x7528;&#x6765;&#x89E3;&#x6790;macho&#x683C;&#x5F0F;&#x7684;&#xFF1B;</li>
-<li>windows&#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3001;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x6709;&#x91C7;&#x7528;pe&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#xFF0C;<code>debug/pe</code>&#x662F;&#x7528;&#x6765;&#x89E3;&#x6790;pe&#x683C;&#x5F0F;&#xFF1B;</li>
-<li><p>plan9obj&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5B83;&#x6E90;&#x4E8E;plan9&#x5206;&#x5E03;&#x5F0F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x9879;&#x76EE;&#xFF0C;<code>debug/plan9obj</code>&#x7528;&#x6765;&#x89E3;&#x6790;&#x8FD9;&#x79CD;plan9obj&#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#xFF1B;</p>
-<p>&#x9700;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F;&#xFF0C;&#x5728;Linux&#x4E0B;&#xFF0C;go&#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x867D;&#x7136;&#x662F;ELF&#x683C;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x5728;&#x4E2D;&#x9014;&#x751F;&#x6210;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;<em>.o&#x5374;&#x4E0D;&#x662F;&#x91C7;&#x7528;&#x7684;ELF&#x683C;&#x5F0F;&#xFF0C;&#x800C;&#x662F;&#x501F;&#x9274;&#x4E86;plan9obj&#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x4F46;&#x662F;&#x4E5F;&#x6709;&#x4E9B;&#x53D8;&#x5316;&#x3002;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x60F3;&#x67E5;&#x770B;go&#x8F93;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x627E;&#x5230;&#x5176;&#x5B9A;&#x4E49;&#x4EE5;&#x53CA;&#x89E3;&#x6790;&#x76F8;&#x5173;&#x7684;package&#x5B9E;&#x73B0; &quot;<a href="https://github.com/golang/go/blob/f5978a09589badb927d3aa96998fc785524cae02/src/cmd/internal/goobj/objfile.go#L33" target="_blank">cmd/internal/goobj/objfile.go</a>&quot;&#x3002;
-&#x4F46;&#x662F;&#x7531;&#x4E8E;&#x8BE5;package&#x4E3A;internal&#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x53EA;&#x5141;&#x8BB8;&#x5728;cmd/&#x4E0B;&#x7684;package&#x5F15;&#x7528;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x6B63;&#x786E;&#x8BFB;&#x53D6;go&#x751F;&#x6210;&#x7684;\</em>.o&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x7684;&#x8BDD;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5199;&#x5DE5;&#x5177;&#x3002;github&#x4E0A;&#x6709;&#x7C7B;&#x4F3C;&#x9879;&#x76EE;&#x53EF;&#x4F9B;&#x501F;&#x9274;&#xFF0C;see <a href="https://github.com/hitzhangjie/codemaster/tree/master/debug" target="_blank">hitzhangjie/codemaster/debug</a>&#x3002;</p>
-</li>
+<li>macOS &#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3001;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x5E76;&#x4E0D;&#x662F; Unix/Linux &#x6BD4;&#x8F83;&#x901A;&#x7528;&#x7684; ELF &#x683C;&#x5F0F;&#xFF0C;&#x5B83;&#x4F7F;&#x7528;&#x7684;&#x662F; macho &#x683C;&#x5F0F;&#xFF0C;package <code>debug/macho</code> &#x7528;&#x6765;&#x89E3;&#x6790; macho &#x683C;&#x5F0F;&#xFF1B;</li>
+<li>Windows &#x53EF;&#x6267;&#x884C;&#x7A0B;&#x5E8F;&#x3001;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x7684;&#x683C;&#x5F0F;&#x6709;&#x91C7;&#x7528; PE &#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#xFF0C;<code>debug/pe</code> &#x7528;&#x6765;&#x89E3;&#x6790; PE &#x683C;&#x5F0F;&#xFF1B;</li>
+<li>plan9obj &#x8FD9;&#x79CD;&#x683C;&#x5F0F;&#x6BD4;&#x8F83;&#x7279;&#x6B8A;&#xFF0C;&#x5B83;&#x6E90;&#x4E8E; plan9 &#x5206;&#x5E03;&#x5F0F;&#x64CD;&#x4F5C;&#x7CFB;&#x7EDF;&#x9879;&#x76EE;&#xFF0C;<code>debug/plan9obj</code> &#x7528;&#x6765;&#x89E3;&#x6790; plan9obj &#x683C;&#x5F0F;&#x3002;</li>
 </ul>
+<p>&#x9700;&#x8981;&#x8BF4;&#x660E;&#x7684;&#x662F;&#xFF0C;&#x5728; Linux &#x4E0B;&#xFF0C;Go &#x6700;&#x7EC8;&#x8F93;&#x51FA;&#x7684;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#x867D;&#x7136;&#x662F; ELF&#xFF0C;&#x4F46;&#x662F;&#x4E2D;&#x9014;&#x751F;&#x6210;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6; <code>*.o</code> &#x5374;&#x4E0D;&#x662F; ELF&#xFF0C;&#x800C;&#x662F;&#x501F;&#x9274;&#x4E86; plan9obj &#x7684;&#x683C;&#x5F0F;&#xFF0C;&#x4F46;&#x4E5F;&#x6709;&#x4E00;&#x4E9B;&#x53D8;&#x5316;&#x3002;&#x5982;&#x679C;&#x8BFB;&#x8005;&#x60F3;&#x67E5;&#x770B; Go &#x8F93;&#x51FA;&#x7684;&#x76EE;&#x6807;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x8FD9;&#x91CC;&#x627E;&#x5230;&#x5176;&#x5B9A;&#x4E49;&#x4EE5;&#x53CA;&#x89E3;&#x6790;&#x76F8;&#x5173;&#x7684; package &#x5B9E;&#x73B0; <a href="https://github.com/golang/go/blob/f5978a09589badb927d3aa96998fc785524cae02/src/cmd/internal/goobj/objfile.go#L33" target="_blank">cmd/internal/goobj/objfile.go</a>&#x3002;&#x7531;&#x4E8E;&#x8BE5; package &#x4F4D;&#x4E8E; internal &#x76EE;&#x5F55;&#x4E0B;&#xFF0C;&#x53EA;&#x5141;&#x8BB8;&#x5728; <code>cmd/</code> &#x4E0B;&#x7684; package &#x5F15;&#x7528;&#xFF1B;&#x5982;&#x679C;&#x8981;&#x6B63;&#x786E;&#x8BFB;&#x53D6; Go &#x751F;&#x6210;&#x7684; <code>*.o</code> &#x76EE;&#x6807;&#x6587;&#x4EF6;&#x683C;&#x5F0F;&#xFF0C;&#x9700;&#x8981;&#x81EA;&#x5DF1;&#x5199;&#x5DE5;&#x5177;&#x3002;</p>
 </blockquote>
-<p>&#x63A5;&#x4E0B;&#x6765;&#x5404;&#x4E2A;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5C06;&#x4ECB;&#x7ECD;&#x4E0B;&#x4E0A;&#x8FF0;package&#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x4E86;&#x89E3;&#x5B83;&#x4EEC;&#x5BF9;&#x5F00;&#x53D1;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x54EA;&#x4E9B;&#x5E2E;&#x52A9;&#x3002;</p>
+<h3 id="&#x672C;&#x7AE0;&#x600E;&#x4E48;&#x5B89;&#x6392;">&#x672C;&#x7AE0;&#x600E;&#x4E48;&#x5B89;&#x6392;</h3>
+<p>&#x63A5;&#x4E0B;&#x6765;&#x4E24;&#x5C0F;&#x8282;&#xFF0C;&#x6211;&#x4EEC;&#x5206;&#x522B;&#x770B; <code>debug/elf</code> &#x548C; <code>debug/gosym</code> &#x7684;&#x4F7F;&#x7528;&#xFF0C;&#x4E86;&#x89E3;&#x5B83;&#x4EEC;&#x5BF9;&#x5F00;&#x53D1;&#x7B26;&#x53F7;&#x7EA7;&#x8C03;&#x8BD5;&#x5668;&#x63D0;&#x4F9B;&#x4E86;&#x54EA;&#x4E9B;&#x5E2E;&#x52A9;&#x3002;<code>debug/dwarf</code> &#x7559;&#x5230;&#x7B2C;8&#x7AE0;&#xFF0C;&#x7B49;&#x6211;&#x4EEC;&#x8BB2;&#x5B8C; DWARF &#x7684; DIE&#x3001;&#x884C;&#x53F7;&#x8868;&#x3001;CFI &#x4E4B;&#x540E;&#xFF0C;&#x518D;&#x56DE;&#x6765;&#x7528;&#x5B83;&#x8BFB;&#x771F;&#x6B63;&#x7684;&#x8C03;&#x8BD5;&#x4FE1;&#x606F;&#xFF0C;&#x90A3;&#x65F6;&#x5019;&#x4F60;&#x4F1A;&#x77E5;&#x9053;&#x6BCF;&#x4E2A; API &#x80CC;&#x540E;&#x5BF9;&#x5E94;&#x7684;&#x662F;&#x54EA;&#x4E00;&#x5757;&#x6807;&#x51C6;&#x3002;</p>
 <p>&#x53C2;&#x8003;&#x5185;&#x5BB9;&#xFF1A;</p>
 <ol>
-<li><p>How to Fool Analysis Tools, <a href="https://tuanlinh.gitbook.io/ctf/golang-function-name-obfuscation-how-to-fool-analysis-tools" target="_blank">https://tuanlinh.gitbook.io/ctf/golang-function-name-obfuscation-how-to-fool-analysis-tools</a></p>
-</li>
-<li><p>Go 1.2 Runtime Symbol Information, Russ Cox, <a href="https://docs.google.com/document/d/1lyPIbmsYbXnpNj57a261hgOYVpNRcgydurVQIyZOz_o/pub" target="_blank">https://docs.google.com/document/d/1lyPIbmsYbXnpNj57a261hgOYVpNRcgydurVQIyZOz_o/pub</a></p>
-</li>
-<li><p>Some notes on the structure of Go Binaries, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/GoBinaryStructureNotes" target="_blank">https://utcc.utoronto.ca/~cks/space/blog/programming/GoBinaryStructureNotes</a></p>
-</li>
-<li><p>Buiding a better Go Linker, Austin Clements, <a href="https://docs.google.com/document/d/1D13QhciikbdLtaI67U6Ble5d_1nsI4befEd6_k1z91U/view" target="_blank">https://docs.google.com/document/d/1D13QhciikbdLtaI67U6Ble5d_1nsI4befEd6_k1z91U/view</a></p>
-</li>
-</ol>
-<ol>
+<li>How to Fool Analysis Tools, <a href="https://tuanlinh.gitbook.io/ctf/golang-function-name-obfuscation-how-to-fool-analysis-tools" target="_blank">https://tuanlinh.gitbook.io/ctf/golang-function-name-obfuscation-how-to-fool-analysis-tools</a></li>
+<li>Go 1.2 Runtime Symbol Information, Russ Cox, <a href="https://docs.google.com/document/d/1lyPIbmsYbXnpNj57a261hgOYVpNRcgydurVQIyZOz_o/pub" target="_blank">https://docs.google.com/document/d/1lyPIbmsYbXnpNj57a261hgOYVpNRcgydurVQIyZOz_o/pub</a></li>
+<li>Some notes on the structure of Go Binaries, <a href="https://utcc.utoronto.ca/~cks/space/blog/programming/GoBinaryStructureNotes" target="_blank">https://utcc.utoronto.ca/~cks/space/blog/programming/GoBinaryStructureNotes</a></li>
+<li>Building a better Go Linker, Austin Clements, <a href="https://docs.google.com/document/d/1D13QhciikbdLtaI67U6Ble5d_1nsI4befEd6_k1z91U/view" target="_blank">https://docs.google.com/document/d/1D13QhciikbdLtaI67U6Ble5d_1nsI4befEd6_k1z91U/view</a></li>
 <li>Time for Some Function Recovery, <a href="https://www.mdeditor.tw/pl/2DRS/zh-hk" target="_blank">https://www.mdeditor.tw/pl/2DRS/zh-hk</a></li>
 </ol>
 
@@ -2378,12 +2381,12 @@ body {
 
             
                 
-                <a href="../5-loading.html" class="navigation navigation-prev " aria-label="Previous page: 7.5 加载">
+                <a href="../6-load-bias.html" class="navigation navigation-prev " aria-label="Previous page: 7.6 文件地址、链接地址与运行时地址">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="1-elf.html" class="navigation navigation-next " aria-label="Next page: 7.6.1 debug/elf">
+                <a href="1-elf.html" class="navigation navigation-next " aria-label="Next page: 7.7.1 debug/elf">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -2394,7 +2397,7 @@ body {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"7.6 go标准库debug/*","level":"1.7.6","depth":2,"next":{"title":"7.6.1 debug/elf","level":"1.7.6.1","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","articles":[]},"previous":{"title":"7.5 加载","level":"1.7.5","depth":2,"path":"7-headto-sym-debugger/5-loading.md","ref":"7-headto-sym-debugger/5-loading.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/6-gopkg-debug/README.md","mtime":"2026-11-22T18:37:07.402Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-22T18:37:23.855Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"7.7 用Go标准库读取ELF与符号表","level":"1.7.7","depth":2,"next":{"title":"7.7.1 debug/elf","level":"1.7.7.1","depth":3,"path":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","ref":"7-headto-sym-debugger/6-gopkg-debug/1-elf.md","articles":[]},"previous":{"title":"7.6 文件地址、链接地址与运行时地址","level":"1.7.6","depth":2,"path":"7-headto-sym-debugger/6-load-bias.md","ref":"7-headto-sym-debugger/6-load-bias.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["numbered-headings","github","intopic-toc","splitter","-lunr","-search","search-pro"],"pluginsConfig":{"disqus":{"shortName":"gitbookuse"},"github":{"url":"https://github.com/hitzhangjie/golang-debugger-book"},"intopic-toc":{"isCollapsed":false,"isScrollspyActive":false,"label":"本文目录","maxDepth":6,"mode":"nested","selector":".markdown-section h1, .markdown-section h2, .markdown-section h3, .markdown-section h4, .markdown-section h5, .markdown-section h6","visible":true},"splitter":{},"search-pro":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"numbered-headings":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"7-headto-sym-debugger/6-gopkg-debug/README.md","mtime":"2026-11-23T16:20:30.300Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-11-23T16:20:53.866Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
